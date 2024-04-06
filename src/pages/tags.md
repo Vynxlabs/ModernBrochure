@@ -6,6 +6,6 @@ pagination:
   size: 1
   alias: tag
   filter: ['blog', 'work', 'featuredWork', 'people', 'rss']
-# permalink: '/tag/{{ tag | slug }}/'
+permalink: '/tag/{{ tag | slug }}/'
 eleventyExcludeFromCollections: true
 ---
