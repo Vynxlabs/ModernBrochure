@@ -104,6 +104,7 @@ module.exports = (eleventyConfig) => {
     cssTemplateEngine: "njk",
     dir: {
       input: "src",
+      pages:'pages',
       output: "dist",
     },
   };
