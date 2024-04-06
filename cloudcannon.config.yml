@@ -29,8 +29,8 @@ collections_config:
     singular_key:
     _editables:
     _enabled_editors:
-      - visual
       - content
+      - visual
     _inputs:
     _select_data:
     _structures:
