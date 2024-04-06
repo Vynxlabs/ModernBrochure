@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" class="mx-auto my-0 max-w-[1440px] overflow-x-hidden scroll-pt-20">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    {% include "partials/meta-info.html" %}
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      href="{{ site.url }}/feed.xml"
+    />
+    {% set css %} {% include "css/styles.css" %} {% endset %}
+
+    <link rel="stylesheet" href="/css/styles.css" />
+    <style defer>
+      {{ css | safe }}
+    </style>
+  </head>
+  {% include "partials/watermark.html" %}
+  <body class="mx-4 sm:mx-10  flex flex-col h-screen">
+    {% include "partials/site-head.html" %}
+
+    <main tabindex="-1" id="main-content" class="flex-1 mt-20 md:mt-28">
+      {% block content %}{% endblock %}
+    </main>
+    {% include "partials/site-foot.html" %}
+    <script src="https://unpkg.com/hyperscript.org@0.9.11"></script>
+  </body>
+</html>
