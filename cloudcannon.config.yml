@@ -1,9 +1,9 @@
 source: src
 paths:
-  uploads: uploads
-  static: ''
-  collections: ''
-  data: ''
+  uploads: "uploads/:title"
+  static: ""
+  collections: ""
+  data: ""
   layouts:
 collections_config:
   pages:
@@ -11,20 +11,26 @@ collections_config:
     output: true
     url: dist/pages
     filter:
+      exclude:
+      - robots.njk
+      - rss.html
+      - sitemap.njk
+      - tags.md
+      - pages.json
     parse_branch_index:
     name: Pages
-    description: ''
+    description: "All your pages"
     icon: description
     documentation:
-    preview:
+    preview: 
     sort:
     sort_options:
     singular_name:
     singular_key:
     _editables:
     _enabled_editors:
-      - content
       - visual
+      - content
     _inputs:
     _select_data:
     _structures:
