@@ -12,18 +12,18 @@ collections_config:
     url: dist/pages
     filter:
       exclude:
-      - robots.njk
-      - rss.html
-      - sitemap.njk
-      - tags.md
-      - pages.json
+        - robots.njk
+        - rss.html
+        - sitemap.njk
+        - tags.md
+        - pages.json
     parse_branch_index:
     name: Pages
     description: "All your pages"
     icon: description
     documentation:
-    preview: 
-      icon: description
+    preview:
+      gallery: description
     sort:
     sort_options:
     singular_name:
