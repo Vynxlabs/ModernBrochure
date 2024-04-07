@@ -1,7 +1,7 @@
 {
     "permalink":"/{{ title | slug }}/index.html",
     "layout":"layouts/page.html",
-    "_inputs":{
+    "_options":{
         "permalink":{
             "hidden":true
         }
