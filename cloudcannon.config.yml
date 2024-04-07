@@ -32,7 +32,6 @@ collections_config:
       - content
       - visual
     _inputs:
-      ex
       pageLink:
         label: "Page Location"
         comment: "The location of this page on your webiste i.e. {{ site.url }}/mylocation"
