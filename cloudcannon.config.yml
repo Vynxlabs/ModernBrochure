@@ -39,6 +39,13 @@ collections_config:
         type: "switch"
         label: "Remove from navigation"
         comment: "Will remove this page from top navigation top nav and footer"
+      eleventyNavigation:
+        label: "Navigation"
+        key:
+          label: "Name"
+          comment: "What will show up in the navigation"
+        order:
+          comment: "What order in the navigation"
       pageLink:
         label: "Page Location"
         comment: "The location of this page on your webiste i.e. Example.com/mylocation"

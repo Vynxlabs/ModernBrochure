@@ -1,9 +1,11 @@
 ---
 title: "Seo focused title"
-eleventyExcludeFromCollections: true
+eleventyExcludeFromCollections: false
 eleventyNavigation:
   key: Home
   order: 1
+  title:
+  parent:
 pageLink: "mylocation"
 permalink: "/{{ pageLink | slug }}/index.html"
 metaDesc: "SEO focused meta description"
