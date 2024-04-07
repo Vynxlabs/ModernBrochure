@@ -7,6 +7,7 @@ const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const markdownIt = require('markdown-it')
 const markdownItAnchor = require('markdown-it-anchor')
 const pluginTOC = require('eleventy-plugin-toc')
+const pluginBookshop = require("@bookshop/eleventy-bookshop");
 
 const imageShortcode = async (
   src,
@@ -87,6 +88,10 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPlugin(rssPlugin);
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
   eleventyConfig.addPlugin(pluginTOC,{tags:['h1','h2','h3','h4']})
+  eleventyConfig.addPlugin(pluginBookshop({
+    bookshopLocations: ["_component-library"],  
+    pathPrefix: '', 
+  }));
 
   // Returns a collection of blog posts in reverse date order
   eleventyConfig.addCollection("blog", (collection) => {
