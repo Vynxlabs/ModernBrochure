@@ -34,7 +34,6 @@ collections_config:
     _inputs:
       permalink:
         hidden: true
-        instance_value: "/{{ title | slug }}/index.html"
       title:
         label: "page Title"
         instance_value: "title"
@@ -47,5 +46,7 @@ collections_config:
     disable_file_actions: false
     new_preview_url:
     schemas:
+      default:
+        path: src/_schemas/site.md
     schema_key:
 timezone: Etc/UTC
