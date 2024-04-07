@@ -93,6 +93,10 @@ module.exports = (eleventyConfig) => {
     return [...collection.getFilteredByGlob("./src/posts/*.md")].reverse();
   });
 
+  eleventyConfig.addCollection("pages", (collection)=>{
+    return collection.getFilteredByGlob("./src/pages/*.md")
+  })
+
 
   eleventyConfig.addFilter("dateFilter", dateFilter);
   eleventyConfig.addFilter("w3DateFilter", w3DateFilter);
