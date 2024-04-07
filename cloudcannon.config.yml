@@ -33,8 +33,10 @@ collections_config:
       - visual
     _inputs:
       permalink:
-          hidden: true
-          instance_value: "/{{ title | slug }}/index.html"
+        hidden: true
+        instance_value: "/{{ title | slug }}/index.html"
+      title:
+        instance_value: "title"
     _select_data:
     _structures:
     add_options:
