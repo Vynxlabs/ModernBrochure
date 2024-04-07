@@ -42,10 +42,14 @@ collections_config:
       eleventyNavigation:
         label: "Navigation"
         key:
-          label: "Name"
-          comment: "What will show up in the navigation"
+          comment: "How this page is identified in the navigation"
         order:
           comment: "What order in the navigation"
+        title:
+          label: "Display Title"
+          comment: "What website visitors will see. Leave blank if you want to use the key as Display Title"
+        parent:
+          comment: "What key this should be grouped with. Leave blank for no grouping"
       pageLink:
         label: "Page Location"
         comment: "The location of this page on your webiste i.e. Example.com/mylocation"
@@ -54,7 +58,6 @@ collections_config:
         hidden: true
       layout:
         hidden: true
-      
     _select_data:
     _structures:
     add_options:
