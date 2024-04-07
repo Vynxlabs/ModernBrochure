@@ -1,7 +1,7 @@
 ---
 _schema: default
 title: Something
-eleventyExcludeFromCollections: false
+eleventyExcludeFromCollections: true
 eleventyNavigation:
   key: Something
   order: 1
