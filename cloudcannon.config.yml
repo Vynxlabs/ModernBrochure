@@ -33,8 +33,7 @@ collections_config:
       - visual
     _inputs:
       title:
-        label: "page Title"
-        instance_value: "title"
+        label: "Page Title"
       eleventyExcludeFromCollections:
         type: "switch"
         label: "Remove from navigation"
