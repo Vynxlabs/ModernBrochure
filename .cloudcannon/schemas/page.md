@@ -4,7 +4,7 @@ eleventyExcludeFromCollections: true
 eleventyNavigation:
   key: Home
   order: 1
-pageLink: "example"
+pageLink: "mylocation"
 permalink: "/{{ pageLink | slug }}/index.html"
 metaDesc: "SEO focused meta description"
 layout: "layouts/page.html"

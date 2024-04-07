@@ -32,17 +32,22 @@ collections_config:
       - content
       - visual
     _inputs:
+      title:
+        label: "page Title"
+        instance_value: "title"
+      eleventyExcludeFromCollections:
+        type: "switch"
+        label: "Remove from navigation"
+        comment: "Will remove this page from top navigation top nav and footer"
       pageLink:
         label: "Page Location"
-        comment: "The location of this page on your webiste i.e. {{ site.url }}/mylocation"
+        comment: "The location of this page on your webiste i.e. Example.com/mylocation"
         type: "text"
       permalink:
         hidden: true
       layout:
         hidden: true
-      title:
-        label: "page Title"
-        instance_value: "title"
+      
     _select_data:
     _structures:
     add_options:
