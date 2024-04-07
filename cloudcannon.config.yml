@@ -47,6 +47,6 @@ collections_config:
     new_preview_url:
     schemas:
       default:
-        path: .cloudcannon/schemas/site.md
+        path: .cloudcannon/schemas/page.md
     schema_key:
 timezone: Etc/UTC
