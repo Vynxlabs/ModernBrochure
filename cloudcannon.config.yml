@@ -63,7 +63,7 @@ collections_config:
     add_options:
     create:
     disable_add: false
-    disable_add_folder: true
+    disable_add_folder: false
     disable_file_actions: false
     new_preview_url:
     schemas:
