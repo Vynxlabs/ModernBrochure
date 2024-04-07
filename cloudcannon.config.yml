@@ -34,6 +34,7 @@ collections_config:
     _inputs:
       permalink:
           hidden: true
+          instance_value: "/{{ title | slug }}/index.html"
     _select_data:
     _structures:
     add_options:
