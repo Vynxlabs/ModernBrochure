@@ -1,7 +1,8 @@
----
-layout: layouts/base.html
-pageHeaderTitle: {{ title }}
----
+{% layout "layouts/base.html" %} 
+
+
+
+{% assign pageHeaderTitle = title %}
 {% comment %}
 Render post date and any tags that this post has been filed under
 {% endcomment %}
@@ -33,9 +34,9 @@ Render post date and any tags that this post has been filed under
               <a class="accordion-link toggle-open" href="#TOC">Table of Contents</a>
               <a class="accordion-link toggle-close" href="#">Table of Contents</a>
               <div class="answer">
-                {% raw %}
+                
                 {{ content | toc }}
-                {% endraw %}
+                
                 
               </div>
             </div>
@@ -44,9 +45,9 @@ Render post date and any tags that this post has been filed under
       </section>
       {% endif %}
       <div>
-        {% raw %}
+        
         {{ content }}
-        {% endraw %}
+        
          </div>
     </div>
   </article>

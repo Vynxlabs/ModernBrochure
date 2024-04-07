@@ -1,5 +1,5 @@
 ---
-eleventyExcludeFromCollections: true
+eleventyExcludeFromCollections: false
 eleventyNavigation:
   key: Blog
   order: 6

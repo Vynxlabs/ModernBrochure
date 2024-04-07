@@ -1,7 +1,8 @@
 {% assign entry = include.entry %}
 {% if entry.title == "Blog" %}
+
   {% assign blogPosts = collections.blog %}
-  {% if blogPosts and blogPosts.size > 0 %}
+  {% if  blogPosts.size > 0 %}
     <li>
       <a
         class="data-[state=active]:link hover:text-sopris-green block rounded py-2 pl-3 pr-4 uppercase text-white transition-colors hover:bg-gray-700 dark:border-gray-700 md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent"
@@ -19,7 +20,7 @@
     >{{ entry.title }}</a>
   </li>
 {% endif %}
-{% if entry.children and entry.children.size > 0 %}
+{% if  entry.children.size > 0 %}
 <ul>
   {% for child in entry.children %}
     {% include "partials/render-nav.html" with entry=child %}

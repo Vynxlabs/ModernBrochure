@@ -6,7 +6,7 @@ eleventyNavigation:
   key: Page
   order: 3
   title: OPage2
-  parent: Menu
+  parent: 
 pageLink: page
 permalink: /{{ pageLink | slug }}/index.html
 metaDesc: SEO focused meta description
