@@ -10,9 +10,6 @@ collections_config:
     path: pages
     output: true
     url: dist/pages
-    _inputs:
-      permalink:
-        hidden: true
     filter:
       exclude:
       - robots.njk
@@ -35,6 +32,8 @@ collections_config:
       - content
       - visual
     _inputs:
+      permalink:
+          hidden: true
     _select_data:
     _structures:
     add_options:
