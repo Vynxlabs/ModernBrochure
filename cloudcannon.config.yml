@@ -13,7 +13,7 @@ collections_config:
     filter:
       exclude:
         - robots.njk
-        - rss.html
+        - rss.njk
         - sitemap.njk
         - tags.md
         - pages.json
