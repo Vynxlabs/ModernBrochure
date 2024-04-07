@@ -1,8 +1,9 @@
-{% set navPages = collections.all | eleventyNavigation %} {% macro renderNavListItem(entry)
--%} {% if entry.title == "Blog" %} {% if collections.blog.length %}
+{% set navPages = collections.all | eleventyNavigation %} {% macro
+renderNavListItem(entry) -%} {% if entry.title == "Blog" %} {% if
+collections.blog.length %}
 <li>
   <a
-    class="data-[state=active]:link block rounded py-2 pl-3 pr-4 text-white hover:bg-gray-700 hover:text-sopris-green dark:border-gray-700 md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent"
+    class="data-[state=active]:link hover:text-sopris-green block rounded py-2 pl-3 pr-4 text-white hover:bg-gray-700 dark:border-gray-700 md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent"
     href="{{ entry.url }}"
     {{
     helpers.getLinkActiveState(entry.url,
@@ -12,10 +13,10 @@
     >{{ entry.title }}</a
   >
 </li>
-{% endif %}  {% else %}
+{% endif %} {% else %}
 <li>
   <a
-    class="data-[state=active]:link block rounded py-2 pl-3 pr-4 text-white hover:bg-gray-700 hover:text-sopris-green dark:border-gray-700 md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent"
+    class="data-[state=active]:link hover:text-sopris-green block rounded py-2 pl-3 pr-4 text-white hover:bg-gray-700 dark:border-gray-700 md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent"
     href="{{ entry.url }}"
     {{
     helpers.getLinkActiveState(entry.url,
@@ -31,9 +32,7 @@
 </ul>
 {%- endif -%} {%- endmacro %}
 
-<footer
-  class="mt-36 flex flex-col gap-8"
->
+<footer class="mt-36 flex flex-col gap-8">
   {% include "partials/contact-form.html" %}
   <div class="flex flex-col items-center justify-center">
     <div class="footer-content">
@@ -50,8 +49,8 @@
       © {{ helpers.getTodaysYear() }}, by {{site.legalName}}
     </p>
     <p class="text-center text-sm" data-type="neutral">
-      Custom site designed & developed by
-      <a href="https://vynxlabs.com/" class="underline">Vynxlabs</a>
+      This site is powered by Vynxlabs SiteStitcher. Like it?
+      <a href="https://vynxlabs.com/" class="underline">Build one your self</a>
     </p>
   </div>
 </footer>
