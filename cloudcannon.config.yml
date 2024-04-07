@@ -34,6 +34,8 @@ collections_config:
     _inputs:
       permalink:
         hidden: true
+      layout:
+        hidden: true
       title:
         label: "page Title"
         instance_value: "title"
