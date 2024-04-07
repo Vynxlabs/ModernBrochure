@@ -32,21 +32,23 @@ collections_config:
       - content
       - visual
     _inputs:
+      title:
+        label: "Page Title"
       eleventyExcludeFromCollections:
         type: "switch"
         label: "Remove from navigation"
         comment: "Will remove this page from top navigation top nav and footer"
       eleventyNavigation:
         label: "Navigation"
-        key:
-          comment: "How this page is identified in the navigation"
-        order:
-          comment: "What order in the navigation"
-        title:
-          label: "Display Title"
-          comment: "What website visitors will see. Leave blank if you want to use the key as Display Title"
-        parent:
-          comment: "What key this should be grouped with. Leave blank for no grouping"
+      eleventyNavigation.key:
+        comment: "How this page is identified in the navigation"
+      eleventyNavigation.order:
+        comment: "What order in the navigation"
+      eleventyNavigation.title:
+        label: "Display Title"
+        comment: "What website visitors will see. Leave blank if you want to use the key as Display Title"
+      eleventyNavigation.parent:
+        comment: "What key this should be grouped with. Leave blank for no grouping"
       pageLink:
         label: "Page Location"
         comment: "The location of this page on your webiste i.e. Example.com/mylocation"
