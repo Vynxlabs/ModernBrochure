@@ -36,6 +36,7 @@ collections_config:
         hidden: true
         instance_value: "/{{ title | slug }}/index.html"
       title:
+        label: "page Title"
         instance_value: "title"
     _select_data:
     _structures:
