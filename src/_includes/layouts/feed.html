@@ -1,29 +1,31 @@
-{% extends "layouts/base.html" %}
+---
+layout: layouts/base.html
+---
 
+{% assign postListItems = pagination.items %}
+{% assign pageHeaderTitle = title %}
+{% assign pageHeaderSummary = subheadline %}
 
-{% set postListItems = pagination.items %}
-
-{% set pageHeaderTitle = title %}
-{% set pageHeaderSummary = subheadline %}
-
-{# If this is a tag, grab those items instead as one large collection #}
+{% comment %}
+If this is a tag, grab those items instead as one large collection
+{% endcomment %}
 {% if tag %}
-  {% set postListItems = collections[tag] %}
-  {% set pageHeaderTitle = 'Blog posts filed under “' + tag + '”' %}
+  {% assign postListItems = collections[tag] %}
+  {% assign pageHeaderTitle = 'Blog posts filed under “' | append: tag | append: '”' %}
 {% endif %}
 
-
 {% block content %}
-{% include "partials/page-header.html" %}
-<article class="blog-main-container">
-  
-    <div class="">
+  {% include "partials/page-header.html" %}
+
+  <article class="blog-main-container">
+    <div>
       {% include "partials/post-list.html" %}
-      {# If we leave pagination in for tags, the next and prev links will
-        link to tags and be rather confusing, so don't render in that situation #}
-        {% if not tag %}
+      {% comment %}
+      If we leave pagination in for tags, the next and prev links will link to tags and be rather confusing, so don't render in that situation
+      {% endcomment %}
+      {% unless tag %}
         {% include "partials/pagination.html" %}
-      {% endif %}
+      {% endunless %}
     </div>
-</article>
+  </article>
 {% endblock %}

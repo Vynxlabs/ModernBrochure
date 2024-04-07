@@ -1,12 +1,12 @@
-{% extends "layouts/base.html" %} {% set pageHeaderTitle = title %} 
+---
+layout: layouts/base.html
+pageHeaderTitle: {{ title }}
+---
+{% comment %}
+Render post date and any tags that this post has been filed under
+{% endcomment %}
 
-{# Render post date and any tags that this post has been filed under #} 
-{% set pageHeaderSummary %} 
-
-{# Grab other posts that aren’t this one for the 'more from the blog' feed #} 
-{% set recommendedPosts = helpers.getSiblingContent(collections.blog, page) %}
-
-<time datetime="{{ date | w3DateFilter }}">{{ date | dateFilter }}</time>
+<time datetime="{{ date | date: "%Y-%m-%d" }}">{{ date | date: "%B %d, %Y" }}</time>
 {% if tags %}
 <p class="visually-hidden" id="tags-desc">
   Tags that this post has been filed under.
@@ -14,15 +14,18 @@
 <ul class="tags-list" aria-describedby="tags-desc">
   {% for tag in tags %}
   <li>
-    <a href="/tag/{{ tag | slug }}/" {% if backgroundImg %} data-type="neutral" {% endif %}>#{{ tag | title | replace(' ', '') }}</a>
+    <a href="/tag/{{ tag | slugify }}/" {% if backgroundImg %} data-type="neutral" {% endif %}>#{{ tag | capitalize | replace: ' ', '' }}</a>
   </li>
   {% endfor %}
 </ul>
-{% endif %} {% endset %} {% block content %}
+{% endif %}
+
+{% block content %}
 <div class="post-container">
   {% include "partials/page-header.html" %}
   <article class="post-main-container">
-    <div class="lt-container">{% if content | toc %}
+    <div class="lt-container">
+      {% if content | toc %}
       <section class="accordion-section">
         <div class="accordion-container">
           <div class="accordion">
@@ -30,21 +33,29 @@
               <a class="accordion-link toggle-open" href="#TOC">Table of Contents</a>
               <a class="accordion-link toggle-close" href="#">Table of Contents</a>
               <div class="answer">
-                {{ content | toc | safe }}
+                {% raw %}
+                {{ content | toc }}
+                {% endraw %}
+                
               </div>
             </div>
           </div>
         </div>
       </section>
-  {% endif %}
-  <div>{{ content | safe}} 
-  </div>
+      {% endif %}
+      <div>
+        {% raw %}
+        {{ content }}
+        {% endraw %}
+         </div>
+    </div>
   </article>
-  {% if recommendedPosts.length %}
-    <footer class="recommended-posts">
-      {% set postListItems = recommendedPosts %} {% set postListHeadline = 'More
-      from the blog' %} {% include "partials/post-list.html" %}
-    </footer>
-    {% endif %}
+  {% if recommendedPosts.size > 0 %}
+  <footer class="recommended-posts">
+    {% assign postListItems = recommendedPosts %}
+    {% assign postListHeadline = 'More from the blog' %}
+    {% include "partials/post-list.html" %}
+  </footer>
+  {% endif %}
 </div>
 {% endblock %}

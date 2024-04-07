@@ -1,1 +1,5 @@
-{% extends "layouts/base.html" %} {% block content %} {% endblock %}
+
+{% layout "layouts/base.html" %} 
+{% bookshop_include "page" content_blocks: content_blocks %}
+{% bookshop "sample" text: "hello from the sample component" %}
+{% block content %} {% endblock %}

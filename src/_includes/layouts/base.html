@@ -10,11 +10,14 @@
       type="application/rss+xml"
       href="{{ site.url }}/feed.xml"
     />
-    {% set css %} {% include "css/styles.css" %} {% endset %}
+    {% capture css %} {% include "css/styles.css" %} {% endcapture%}
 
     <link rel="stylesheet" href="/css/styles.css" />
     <style defer>
-      {{ css | safe }}
+      {% raw %}
+      {{ css  }}
+        {% endraw %}
+      
     </style>
   </head>
   {% include "partials/watermark.html" %}
@@ -23,6 +26,7 @@
 
     <main tabindex="-1" id="main-content" class="flex-1 mt-20 md:mt-28">
       {% block content %}{% endblock %}
+      
     </main>
     {% include "partials/site-foot.html" %}
     <script src="https://unpkg.com/hyperscript.org@0.9.11"></script>

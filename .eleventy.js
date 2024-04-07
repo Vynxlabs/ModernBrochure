@@ -83,8 +83,8 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy("./src/fonts");
   //eleventyConfig.addPassthroughCopy({ './src/robots.txt': '/robots.txt' });
   eleventyConfig.addPassthroughCopy('./src/_redirects');
-  eleventyConfig.addNunjucksAsyncShortcode("image", imageShortcode);
-  eleventyConfig.addNunjucksShortcode("cssBackground", imageCssBackground);
+  eleventyConfig.addAsyncShortcode("image", imageShortcode);
+  eleventyConfig.addShortcode("cssBackground", imageCssBackground);
   eleventyConfig.addPlugin(rssPlugin);
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
   eleventyConfig.addPlugin(pluginTOC,{tags:['h1','h2','h3','h4']})
@@ -107,10 +107,10 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addFilter("w3DateFilter", w3DateFilter);
 
   return {
-    markdownTemplateEngine: "njk",
-    dataTemplateEngine: "njk",
-    htmlTemplateEngine: "njk",
-    cssTemplateEngine: "njk",
+    markdownTemplateEngine: "liquid",
+    dataTemplateEngine: "liquid",
+    htmlTemplateEngine: "liquid",
+    cssTemplateEngine: "liquid",
     dir: {
       input: "src",
       pages:'pages',
