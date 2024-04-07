@@ -23,6 +23,7 @@ collections_config:
     icon: description
     documentation:
     preview: 
+      icon: description
     sort:
     sort_options:
     singular_name:
