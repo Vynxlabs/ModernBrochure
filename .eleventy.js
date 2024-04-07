@@ -94,7 +94,7 @@ module.exports = (eleventyConfig) => {
   });
 
   eleventyConfig.addCollection("pages", (collection)=>{
-    return collection.getFilteredByGlob("./src/pages/*.md")
+    return collection.getFilteredByGlob("./src/pages/**/*.md")
   })
 
 
