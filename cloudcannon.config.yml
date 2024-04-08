@@ -5,6 +5,17 @@ paths:
   collections: ""
   data: ""
   layouts:
+
+_structures:
+  content_blocks:
+    style: modal
+
+_inputs:
+  page_components:
+    type: array 
+    options:
+      structures: _structures.content_blocks
+
 collections_config:
   pages:
     path: pages
