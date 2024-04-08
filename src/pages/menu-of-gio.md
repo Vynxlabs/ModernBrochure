@@ -1,5 +1,6 @@
 ---
 _schema: default
+draft: false
 title: Menu of gio
 eleventyExcludeFromCollections: false
 eleventyNavigation:
