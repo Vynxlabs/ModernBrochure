@@ -1,6 +1,6 @@
 {
     "permalink":"/{{ title | slug }}/index.html",
-    "layout":"layouts/page.liquid",
+    "layout":"layouts/page.html",
     "_options":{
         "permalink":{
             "hidden":true

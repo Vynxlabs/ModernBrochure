@@ -9,6 +9,6 @@ eleventyNavigation:
 pageLink: "mylocation"
 permalink: "/{{ pageLink | slug }}/index.html"
 metaDesc: "SEO focused meta description"
-layout: "layouts/page.liquid"
-page_components:
+layout: "layouts/page.html"
+content_blocks: []
 ---
