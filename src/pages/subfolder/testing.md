@@ -11,5 +11,6 @@ pageLink: lel
 permalink: /{{ pageLink | slug }}/index.html
 metaDesc: SEO focused meta description
 layout: layouts/base.html
-content_blocks: []
+content_blocks:
+  - asdfasdfasdf
 ---
