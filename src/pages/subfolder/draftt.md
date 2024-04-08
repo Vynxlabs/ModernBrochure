@@ -8,7 +8,7 @@ eleventyNavigation:
   order: 1
   title:
   parent:
-pageLink: mylocation
+pageLink: other
 permalink: /{{ pageLink | slug }}/index.html
 metaDesc: ''
 layout: layouts/base.html
