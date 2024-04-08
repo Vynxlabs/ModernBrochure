@@ -4,7 +4,7 @@
   "description": "",
   "main": ".eleventy.js",
   "scripts": {
-    "start": "concurrently --kill-others  \"npx tailwindcss -i ./src/css/styles.css -o ./dist/css/styles.css --watch\" \"npx eleventy --serve\"",
+    "start": "concurrently --kill-others  \"npx tailwindcss -i ./src/css/styles.css -o ./dist/css/styles.css --watch\" \"npx eleventy --serve\" \"bookshop-sass -b _component-library -o dist/assets/bookshop.css -w\"",
     "eleventy": "npx tailwindcss -i ./src/css/styles.css -o ./dist/css/styles.css && npx eleventy",
     "tailwind": "npx tailwindcss -i ./src/css/styles.css -o ./dist/css/styles.css --watch",
     "unlighthouse": "unlighthouse-ci --site sopriscuisine.com --build-static --root ./dist --output-path ./sopriscuisine",
@@ -19,7 +19,6 @@
     "@11ty/eleventy-navigation": "^0.3.5",
     "@11ty/eleventy-plugin-rss": "^1.2.0",
     "@bookshop/eleventy-bookshop": "3.9.0",
-    "@bookshop/eleventy-engine": "^3.9.0",
     "@netlify/functions": "^2.1.0",
     "@unlighthouse/cli": "^0.10.0",
     "eleventy-plugin-toc": "^1.1.5",
@@ -30,7 +29,10 @@
     "puppeteer": "^21.5.0"
   },
   "devDependencies": {
-    "@bookshop/browser": "^3.9.0",
+    "@bookshop/browser": "3.9.0",
+    "@bookshop/eleventy-engine": "3.9.0",
+    "@bookshop/generate": "3.9.0",
+    "@bookshop/sass": "^3.9.0",
     "concurrently": "^8.2.1",
     "netlify-plugin-chromium": "^1.1.4",
     "prettier": "^3.0.3",
