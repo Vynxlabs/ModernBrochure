@@ -12,4 +12,6 @@ permalink: /{{ pageLink | slug }}/index.html
 metaDesc: SEO focused meta description
 layout: layouts/page.liquid
 page_components:
+  - test
+  - test
 ---
