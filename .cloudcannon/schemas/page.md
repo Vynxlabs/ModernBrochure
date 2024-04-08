@@ -1,4 +1,5 @@
 ---
+draft: false
 title: "Seo focused title"
 eleventyExcludeFromCollections: false
 eleventyNavigation:

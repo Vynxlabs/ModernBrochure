@@ -6,8 +6,11 @@
   <div
     class="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between gap-2 p-4 md:gap-1"
   >
-    <a href="/" class="flex items-center md:order-3"> 
-
+    <a href="/" class="flex items-center md:order-3">
+      {% comment %} {# Logo goes here #} {# {% image
+      "src/images/Logo/soprisLogo.png", "mr-3 w-14 h-7 w-[86px]
+      h-[50px]","Sopris Logo","(max-width: 850px) 60px",[100]%} #}{% endcomment
+      %}
     </a>
     <div class="flex items-center md:order-3">
       {% include "partials/cta-button.html" %}
@@ -80,7 +83,7 @@
         </div>
         <div class="flex gap-1">
           {% include "partials/icons/clock.svg" %}
-          <p>{{ contactInfo.hours }} </p>
+          <p>{{ contactInfo.hours }}</p>
         </div>
       </div>
       <div class="flex flex-col justify-between gap-2 md:flex-row md:gap-8">
@@ -106,8 +109,8 @@
       <ul
         class="mt-4 flex flex-col rounded border border-gray-700 bg-[rgba(0,0,0,.7)] p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-transparent md:p-0"
       >
-        {% for entry in navPages %} {% render "partials/render-nav.html" with entry as entry
-        %} {% endfor %}
+        {% for entry in navPages %} {% render "partials/render-nav.html" with
+        entry as entry %} {% endfor %}
       </ul>
     </div>
   </div>
