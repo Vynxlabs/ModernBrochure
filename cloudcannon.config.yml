@@ -62,7 +62,7 @@ collections_config:
         comment: "The location of this page on your webiste i.e. Example.com/mylocation"
         type: "text"
       metaDesc:
-        type: "area"
+        type: "textarea"
         label: "Meta Description"
         comment: "SEO focused page summary"
       permalink:
