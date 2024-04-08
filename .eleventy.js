@@ -95,6 +95,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPlugin(rssPlugin);
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
   eleventyConfig.addPlugin(pluginTOC,{tags:['h1','h2','h3','h4']})
+
   eleventyConfig.addPlugin(pluginBookshop({
     bookshopLocations: ["_component-library"],  
     pathPrefix: '', 
@@ -107,7 +108,7 @@ module.exports = (eleventyConfig) => {
 
   eleventyConfig.addCollection("pages", (collection)=>{
     return collection.getFilteredByGlob("./src/pages/**/*.md")
-  })
+  });
 
 
   eleventyConfig.addFilter("dateFilter", dateFilter);
