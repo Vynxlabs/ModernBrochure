@@ -1,6 +1,6 @@
 ---
 _schema: default
-draft: true
+draft: false
 title: Draft
 eleventyExcludeFromCollections: false
 eleventyNavigation:
