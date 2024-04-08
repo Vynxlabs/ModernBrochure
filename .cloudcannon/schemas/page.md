@@ -10,5 +10,5 @@ pageLink: "mylocation"
 permalink: "/{{ pageLink | slug }}/index.html"
 metaDesc: "SEO focused meta description"
 layout: "layouts/page.liquid"
-content_blocks:
+page_components:
 ---

@@ -10,8 +10,8 @@ eleventyNavigation:
 pageLink: component
 permalink: /{{ pageLink | slug }}/index.html
 metaDesc: SEO focused meta description
-layout: layouts/page.html
-content_blocks:
+layout: layouts/page.liquid
+page_components:
   - fasdfasdf
   - asdfasdf
 ---
