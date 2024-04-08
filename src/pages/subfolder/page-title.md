@@ -1,17 +1,16 @@
 ---
 _schema: default
-title: Component 2
+title: Page Title
 eleventyExcludeFromCollections: false
 eleventyNavigation:
   key: Home
   order: 1
   title:
   parent:
-pageLink: '333'
+pageLink: some
 permalink: /{{ pageLink | slug }}/index.html
 metaDesc: SEO focused meta description
 layout: layouts/page.html
 page_components:
-  - test
-  - test
+  - Not working
 ---
