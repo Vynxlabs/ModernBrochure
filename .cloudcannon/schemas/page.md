@@ -1,6 +1,6 @@
 ---
-draft: false
-title: "Seo focused title"
+draft: true
+title: ""
 eleventyExcludeFromCollections: false
 eleventyNavigation:
   key: Home
@@ -9,7 +9,7 @@ eleventyNavigation:
   parent:
 pageLink: "mylocation"
 permalink: "/{{ pageLink | slug }}/index.html"
-metaDesc: "SEO focused meta description"
+metaDesc: ""
 layout: "layouts/base.html"
 content_blocks: []
 ---

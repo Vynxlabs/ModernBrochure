@@ -41,6 +41,7 @@ collections_config:
     _inputs:
       title:
         label: "Page Title"
+        comment: "Seo focused page title"
       eleventyExcludeFromCollections:
         type: "switch"
         label: "Remove from navigation"
@@ -60,6 +61,10 @@ collections_config:
         label: "Page Location"
         comment: "The location of this page on your webiste i.e. Example.com/mylocation"
         type: "text"
+      metaDesc:
+        type: "area"
+        label: "Meta Description"
+        comment: "SEO focused page summary"
       permalink:
         hidden: true
       layout:
