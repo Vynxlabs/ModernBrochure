@@ -106,7 +106,7 @@
       <ul
         class="mt-4 flex flex-col rounded border border-gray-700 bg-[rgba(0,0,0,.7)] p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-transparent md:p-0"
       >
-        {% for entry in navPages %} {% include "partials/render-nav.html" with entry=entry
+        {% for entry in navPages %} {% render "partials/render-nav.html" with entry as entry
         %} {% endfor %}
       </ul>
     </div>

@@ -1,3 +1,4 @@
+
 module.exports = {
   /**
    * Returns back some attributes based on whether the
@@ -31,6 +32,7 @@ module.exports = {
    * @returns {Array} The resulting collection
    */
   getSiblingContent(collection, item, limit = 3, random = true) {
+    console.log(collection)
     let filteredItems = collection.filter((x) => x.url !== item.url);
 
     if (random) {
@@ -60,6 +62,9 @@ module.exports = {
   getTodaysYear() {
     return new Date().getFullYear();
   },
+  logit(){
+    console.log("ehre")
+  }
   
 
 };

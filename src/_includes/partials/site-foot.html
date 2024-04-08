@@ -6,8 +6,8 @@
     <div class="footer-content">
       <div>
         <ul class="flex flex-wrap justify-center gap-1 md:gap-4">
-          {% for entry in navPages %} {% include "partials/render-nav.html" with
-            entry=entry %} {% endfor %}
+          {% for entry in navPages %} {% render "partials/render-nav.html" with
+            entry as entry %} {% endfor %}
         </ul>
       </div>
     </div>

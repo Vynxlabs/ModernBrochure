@@ -3,9 +3,10 @@
 
 
 {% assign pageHeaderTitle = title %}
-{% comment %}
-Render post date and any tags that this post has been filed under
-{% endcomment %}
+
+{% comment %}{% assign recommendedPosts = helpers.getSiblingContent(collections.blog, page) %} {% endcomment %}
+
+
 
 <time datetime="{{ date | date: "%Y-%m-%d" }}">{{ date | date: "%B %d, %Y" }}</time>
 {% if tags %}
@@ -34,7 +35,7 @@ Render post date and any tags that this post has been filed under
               <a class="accordion-link toggle-open" href="#TOC">Table of Contents</a>
               <a class="accordion-link toggle-close" href="#">Table of Contents</a>
               <div class="answer">
-                
+
                 {{ content | toc }}
                 
                 

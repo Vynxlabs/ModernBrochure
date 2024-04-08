@@ -1,4 +1,4 @@
-{% assign entry = include.entry %}
+
 {% if entry.title == "Blog" %}
 
   {% assign blogPosts = collections.blog %}
@@ -22,8 +22,9 @@
 {% endif %}
 {% if  entry.children.size > 0 %}
 <ul>
+    
   {% for child in entry.children %}
-    {% include "partials/render-nav.html" with entry=child %}
+    {% render "partials/render-nav.html" with child as entry %}
   {% endfor %}
 </ul>
 {% endif %}

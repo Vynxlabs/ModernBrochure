@@ -9,6 +9,7 @@ const markdownItAnchor = require('markdown-it-anchor')
 const pluginTOC = require('eleventy-plugin-toc')
 const pluginBookshop = require("@bookshop/eleventy-bookshop");
 
+
 const imageShortcode = async (
   src,
   cls,
@@ -74,6 +75,7 @@ module.exports = (eleventyConfig) => {
     'md',
     markdownIt().use(markdownItAnchor)
   )
+
   eleventyConfig.setServerPassthroughCopyBehavior("passthrough");
   eleventyConfig.addPassthroughCopy("./src/images/");
   eleventyConfig.addPassthroughCopy("./src/images/");
