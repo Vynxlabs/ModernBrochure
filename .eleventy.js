@@ -8,6 +8,7 @@ const markdownIt = require('markdown-it')
 const markdownItAnchor = require('markdown-it-anchor')
 const pluginTOC = require('eleventy-plugin-toc')
 const pluginBookshop = require("@bookshop/eleventy-bookshop");
+const { execSync } = require("child_process");
 
 
 const imageShortcode = async (
@@ -75,6 +76,10 @@ module.exports = (eleventyConfig) => {
     'md',
     markdownIt().use(markdownItAnchor)
   )
+
+  eleventyConfig.on('eleventy.before', ()=>{
+    execSync('npx tailwindcss -i ./src/css/styles.css -o ./dist/css/styles.css --minify')
+  })
 
   eleventyConfig.setServerPassthroughCopyBehavior("passthrough");
   eleventyConfig.addPassthroughCopy("./src/images/");
