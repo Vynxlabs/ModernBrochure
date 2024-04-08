@@ -1,16 +1,16 @@
 ---
 _schema: default
 draft: false
-title: Menu of gio
+title: Draftt
 eleventyExcludeFromCollections: false
 eleventyNavigation:
-  key: Menu
-  order: 2
+  key: Draf
+  order: 1
   title:
   parent:
-pageLink: menu
+pageLink: other
 permalink: /{{ pageLink | slug }}/index.html
-metaDesc: SEO focused meta description
-layout: layouts/page.html
+metaDesc: ''
+layout: layouts/base.html
 content_blocks: []
 ---
