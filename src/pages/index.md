@@ -14,5 +14,7 @@ metaDesc: >-
   events and Taco Tuesday extravaganzas, immerse yourself in a warm, familiar
   ambiance
 layout: layouts/base.html
-content_blocks: []
+content_blocks:
+  - _bookshop_name: sample
+    text: Hello World!
 ---

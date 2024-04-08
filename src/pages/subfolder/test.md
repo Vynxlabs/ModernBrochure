@@ -1,5 +1,6 @@
 ---
 _schema: default
+draft: true
 title: test
 eleventyExcludeFromCollections: false
 eleventyNavigation:
