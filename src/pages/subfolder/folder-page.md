@@ -10,5 +10,5 @@ eleventyNavigation:
 pageLink: page
 permalink: /{{ pageLink | slug }}/index.html
 metaDesc: SEO focused meta description
-layout: layouts/page.html
+layout: layouts/page.liquid
 ---
