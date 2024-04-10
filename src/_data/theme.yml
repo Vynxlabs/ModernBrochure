@@ -12,6 +12,6 @@ custom_color_groups:
     background_color: '#2f2f43'
     foreground_color: '#ffffff'
     interation_color: '#1353b4'
-heading_font:
-content_font:
-logo_font:
+heading_font: Rubik
+content_font: Karla
+logo_font: Inter
