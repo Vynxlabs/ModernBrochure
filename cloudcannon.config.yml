@@ -3,14 +3,21 @@ paths:
   uploads: "uploads/:title"
   static: ""
   collections: ""
-  data: ""
-  layouts:
+  data: _data
+  layouts: _includes
 
 _structures:
   content_blocks:
     style: modal
 
 collections_config:
+  data:
+    path: _data
+    output: false
+    icon: insert_chart_outline
+    disable_add: false
+    disable_add_folder: false
+    disable_file_actions: false
   pages:
     path: pages
     output: true
