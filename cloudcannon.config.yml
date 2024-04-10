@@ -83,11 +83,25 @@ collections_config:
     schema_key:
 _inputs:
   heading_font:
+    type: select
+    options:
+      values: data.fonts
     comment: >-
       Write the name of any font from
       [https://fonts.google.com/](https://fonts.google.com/) in data/fonts to
       access it here
   content_font:
+    type: select
+    options:
+      values: data.fonts
+    comment: >-
+      Write the name of any font from
+      [https://fonts.google.com/](https://fonts.google.com/) in data/fonts to
+      access it here
+  logo_font:
+    type: select
+    options:
+      values: data.fonts
     comment: >-
       Write the name of any font from
       [https://fonts.google.com/](https://fonts.google.com/) in data/fonts to
