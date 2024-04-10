@@ -1,6 +1,6 @@
 ---
 _schema: default
-draft: false
+draft: true
 title: Draftt
 eleventyExcludeFromCollections: false
 eleventyNavigation:
@@ -12,5 +12,9 @@ pageLink: other
 permalink: /{{ pageLink | slug }}/index.html
 metaDesc: ''
 layout: layouts/base.html
-content_blocks: []
+content_blocks:
+  - _bookshop_name: sample
+    text: Hello World!
+  - _bookshop_name: sample
+    text: Hello World!
 ---
