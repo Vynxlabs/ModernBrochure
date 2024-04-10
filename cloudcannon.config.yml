@@ -6,11 +6,6 @@ paths:
   data: _data
   layouts: _includes
   includes: _includes
-
-_structures:
-  content_blocks:
-    style: modal
-
 collections_config:
   data:
     path: _data
@@ -90,31 +85,25 @@ collections_config:
     schema_key:
 _inputs:
   heading_font:
-    type: select
-    options:
-      values: data.fonts
     comment: >-
       Write the name of any font from
       [https://fonts.google.com/](https://fonts.google.com/) in data/fonts to
       access it here
   content_font:
-    type: select
-    options:
-      values: data.fonts
     comment: >-
       Write the name of any font from
       [https://fonts.google.com/](https://fonts.google.com/) in data/fonts to
       access it here
   logo_font:
-    type: select
-    options:
-      values: data.fonts
     comment: >-
       Write the name of any font from
       [https://fonts.google.com/](https://fonts.google.com/) in data/fonts to
       access it here
+_select_data: {}
+_structures:
+  content_blocks:
+    style: modal
+_editables: {}
 data_config:
   fonts: true
-_select_data: {}
-_editables: {}
 timezone: Etc/UTC
