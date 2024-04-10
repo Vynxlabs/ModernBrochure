@@ -5,6 +5,7 @@ paths:
   collections: ""
   data: _data
   layouts: _includes
+  includes: _includes
 
 _structures:
   content_blocks:
