@@ -80,8 +80,6 @@ collections_config:
       default:
         path: .cloudcannon/schemas/page.md
     schema_key:
-data_config:
-  fonts: true
 _inputs:
   heading_font:
     comment: >-
@@ -98,4 +96,8 @@ _inputs:
       Write the name of any font from
       [https://fonts.google.com/](https://fonts.google.com/) in data/fonts to
       access it here
+data_config:
+  fonts: true
+_select_data: {}
+_editables: {}
 timezone: Etc/UTC
