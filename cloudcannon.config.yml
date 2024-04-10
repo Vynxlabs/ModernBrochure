@@ -10,7 +10,6 @@ _structures:
   content_blocks:
     style: modal
 
-
 collections_config:
   pages:
     path: pages
@@ -106,4 +105,6 @@ _inputs:
       Write the name of any font from
       [https://fonts.google.com/](https://fonts.google.com/) in data/fonts to
       access it here
+data_config:
+  fonts: true
 timezone: Etc/UTC
