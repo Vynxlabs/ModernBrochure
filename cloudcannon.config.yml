@@ -6,6 +6,8 @@ paths:
   data: _data
   layouts: _includes
   includes: _includes
+data_config:
+  fonts: true
 collections_config:
   data:
     path: _data
@@ -85,30 +87,40 @@ collections_config:
     schema_key:
 _inputs:
   font:
-  comment: >-
-    Write the name of any font from
-    [https://fonts.google.com/](https://fonts.google.com/) in data/fonts to
-    access it here
+    comment: >-
+      Write the name of any font from
+      [https://fonts.google.com/](https://fonts.google.com/) in data/fonts to
+      access it here
+    type: select
+    options:
+      values: data.fonts
   heading_font:
     comment: >-
       Write the name of any font from
       [https://fonts.google.com/](https://fonts.google.com/) in data/fonts to
       access it here
+    type: select
+    options:
+      values: data.fonts
   content_font:
     comment: >-
       Write the name of any font from
       [https://fonts.google.com/](https://fonts.google.com/) in data/fonts to
       access it here
+    type: select
+    options:
+      values: data.fonts
   logo_font:
     comment: >-
       Write the name of any font from
       [https://fonts.google.com/](https://fonts.google.com/) in data/fonts to
       access it here
+    type: select
+    options:
+      values: data.fonts
 _select_data: {}
 _structures:
   content_blocks:
     style: modal
 _editables: {}
-data_config:
-  fonts: true
 timezone: Etc/UTC
