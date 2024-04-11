@@ -7,7 +7,7 @@ paths:
   layouts: _includes
   includes: _includes
 data_config:
-  fents: true
+  fonts: true
 collections_config:
   data:
     path: _data
@@ -93,7 +93,7 @@ _inputs:
       access it here
     type: select
     options:
-      values: data.fents
+      values: data.fonts
   heading_font:
     comment: >-
       Write the name of any font from
@@ -101,7 +101,7 @@ _inputs:
       access it here
     type: select
     options:
-      values: data.fents
+      values: data.fonts
   content_font:
     comment: >-
       Write the name of any font from
@@ -109,7 +109,7 @@ _inputs:
       access it here
     type: select
     options:
-      values: data.fents
+      values: data.fonts
   logo_font:
     comment: >-
       Write the name of any font from
@@ -117,7 +117,7 @@ _inputs:
       access it here
     type: select
     options:
-      values: data.fents
+      values: data.fonts
 _select_data: {}
 _structures:
   content_blocks:
