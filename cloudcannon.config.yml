@@ -93,7 +93,26 @@ _inputs:
       access it here
     type: select
     options:
-      values: data.fonts
+      values:
+        - Alegreya Sans
+        - Fira Sans
+        - Source Sans
+        - Inria Sans
+        - Inter
+        - Public Sans
+        - Karla
+        - Work Sans
+        - Oswald
+        - Figtree
+        - Rubik
+        - Cardo
+        - Crimson Text
+        - Source Serif Pro
+        - Faustina
+        - Merriweather
+        - Piazzolla
+        - Bitter
+
   heading_font:
     comment: >-
       Write the name of any font from
@@ -101,7 +120,26 @@ _inputs:
       access it here
     type: select
     options:
-      values: data.fonts
+      values:
+        - Alegreya Sans
+        - Fira Sans
+        - Source Sans
+        - Inria Sans
+        - Inter
+        - Public Sans
+        - Karla
+        - Work Sans
+        - Oswald
+        - Figtree
+        - Rubik
+        - Cardo
+        - Crimson Text
+        - Source Serif Pro
+        - Faustina
+        - Merriweather
+        - Piazzolla
+        - Bitter
+
   content_font:
     comment: >-
       Write the name of any font from
@@ -109,7 +147,26 @@ _inputs:
       access it here
     type: select
     options:
-      values: data.fonts
+      values:
+        - Alegreya Sans
+        - Fira Sans
+        - Source Sans
+        - Inria Sans
+        - Inter
+        - Public Sans
+        - Karla
+        - Work Sans
+        - Oswald
+        - Figtree
+        - Rubik
+        - Cardo
+        - Crimson Text
+        - Source Serif Pro
+        - Faustina
+        - Merriweather
+        - Piazzolla
+        - Bitter
+
   logo_font:
     comment: >-
       Write the name of any font from
@@ -117,7 +174,26 @@ _inputs:
       access it here
     type: select
     options:
-      values: data.fonts
+      values:
+        - Alegreya Sans
+        - Fira Sans
+        - Source Sans
+        - Inria Sans
+        - Inter
+        - Public Sans
+        - Karla
+        - Work Sans
+        - Oswald
+        - Figtree
+        - Rubik
+        - Cardo
+        - Crimson Text
+        - Source Serif Pro
+        - Faustina
+        - Merriweather
+        - Piazzolla
+        - Bitter
+
 _select_data: {}
 _structures:
   content_blocks:
