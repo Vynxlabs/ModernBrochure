@@ -24,6 +24,12 @@ customColor_groups:
     primaryColor: '#d6d28f'
     secondaryColor: '#2d7b41'
     accentColor: '#54c093'
+  - name: CottonCandy
+    textColor: '#011524'
+    backgroundColor: '#f7fbff'
+    primaryColor: '#1595f8'
+    secondaryColor: '#bc6bfb'
+    accentColor:
 heading_font: Rubik
 content_font: Karla
 logo_font: Inter
