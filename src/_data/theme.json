@@ -17,11 +17,15 @@
       "background_color": "#2f2f43",
       "foreground_color": "#ffffff",
       "interaction_color": "#1353b4"
+    },
+    {
+      "name": "Testing",
+      "background_color": "#9f4b4b",
+      "foreground_color": "#d22020",
+      "interaction_color": "#2543af"
     }
   ],
   "heading_font": "Rubik",
   "content_font": "Karla",
   "logo_font": "Inter"
 }
-
-
