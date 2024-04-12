@@ -9,8 +9,8 @@ let dataFile = yaml.load(fs.readFileSync('src/_data/theme.yml','utf-8'))
     extract the color_groups and then delete them from the dataFile object so
     they don't get twice processed when we iterate through the dataFile object
 */
-let color_groups = dataFile["custom_color_groups"]
-let primary_color = dataFile["primary_color_group"]
+let color_groups = dataFile["customColor_groups"]
+let primary_color = dataFile["primaryColor_group"]
 delete dataFile["custom_color_groups"]
 delete dataFile["primary_color_group"]
 
@@ -43,6 +43,46 @@ let css_string_root = `:root {\n`
 let css_string_component = `.component {\n`
 let css_string_nav = `.c-navigation {\n`
 let css_string_footer = `.c-footer {\n`
+let css_string_utilities = ``
+console.log(color_groups)
+css_string_utilities += `.text-primary-textcolor { color: ${primary_color.textColor}; }\n`
+css_string_utilities += `.text-primary-primarycolor { color: ${primary_color.primaryColor}; }\n`
+css_string_utilities += `.text-primary-secondarycolor { color: ${primary_color.secondaryColor}; }\n`
+css_string_utilities += `.text-primary-accentcolor { color: ${primary_color.accentColor}; }\n`
+css_string_utilities += `.bg-primary-backgroundcolor { background-color: ${primary_color.backgroundColor}; }\n`
+css_string_utilities += `.bg-primary-primarycolor { background-color: ${primary_color.primaryColor}; }\n`
+css_string_utilities += `.bg-primary-secondarycolor { background-color: ${primary_color.secondaryColor}; }\n`
+css_string_utilities += `.bg-primary-accentcolor { background-color: ${primary_color.accentColor}; }\n\n`
+
+function generateTailwindUtilityClasses(color_groups) {
+    let cssString = ''; // Initialize an empty string to store CSS rules
+
+    // Check if custom color groups exist in the data file
+    if (color_groups && Array.isArray(color_groups)) {
+        // Iterate over each custom color group
+        color_groups.forEach((colorSet, index) => {
+            // Generate CSS classes for text color and background color
+            cssString += `.text-${colorSet.name.toLowerCase()}-textcolor { color: ${colorSet.textColor}; }\n`;
+            cssString += `.text-${colorSet.name.toLowerCase()}-primarycolor { color: ${colorSet.primaryColor}; }\n`;
+            cssString += `.text-${colorSet.name.toLowerCase()}-secondarycolor { color: ${colorSet.secondaryColor}; }\n`;
+            cssString += `.text-${colorSet.name.toLowerCase()}-accentcolor { color: ${colorSet.accentColor}; }\n`;
+            cssString += `.bg-${colorSet.name.toLowerCase()}-backgroundcolor { background-color: ${colorSet.backgroundColor}; }\n`;
+            cssString += `.bg-${colorSet.name.toLowerCase()}-primarycolor { background-color: ${colorSet.primaryColor}; }\n`;
+            cssString += `.bg-${colorSet.name.toLowerCase()}-secondarycolor { background-color: ${colorSet.secondaryColor}; }\n`;
+            cssString += `.bg-${colorSet.name.toLowerCase()}-accentcolor { background-color: ${colorSet.accentColor}; }\n`;
+
+
+            cssString += '\n'; // Add a newline for readability
+        });
+    }
+
+    // Write the generated CSS to the output file
+    return cssString
+
+    console.log(`🎨 Tailwind utility classes generated and written to ${outputFile}`);
+}
+
+css_string_utilities+=generateTailwindUtilityClasses(color_groups)
 
 css_string_component += `--main-background-color: #3B3B3D;\n`
 css_string_component += `--main-text-color: #F9F9FB;\n`
@@ -124,7 +164,7 @@ css_string_footer += `}\n\n`
 fs.writeFileSync(configFileLocation, yaml.dump(config))
 
 // write the css strings into a single file
-let css_string = `${css_string_root}${css_string_component}${css_string_nav}${css_string_footer}`
+let css_string = `${css_string_root}${css_string_utilities}${css_string_component}${css_string_nav}${css_string_footer}`
 fs.appendFileSync(colorsFileLocation, css_string)
 
 
