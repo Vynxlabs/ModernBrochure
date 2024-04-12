@@ -5,7 +5,7 @@
   "main": ".eleventy.js",
   "scripts": {
     "fetch-theme-variables": "node ./utils/fetch-theme-variables.js",
-    "start": "fetch-theme-variables concurrently --kill-others  \"npx tailwindcss -i ./src/css/styles.css -o ./dist/css/styles.css --watch\" \"npx eleventy --serve\" \"bookshop-sass -b _component-library -o dist/assets/bookshop.css -w\"",
+    "start": "concurrently --kill-others   \"npx tailwindcss -i ./src/css/styles.css -o ./dist/css/styles.css --watch\" \"npx eleventy --serve\" \"bookshop-sass -b _component-library -o dist/assets/bookshop.css -w\"",
     "bookshop-sass:build": "bookshop-sass -b _component-library -o dist/assets/bookshop.css",
     "eleventy": "npx eleventy",
     "tailwind": "npx tailwindcss -i ./src/css/styles.css -o ./dist/css/styles.css --watch",
