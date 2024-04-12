@@ -18,6 +18,12 @@ customColor_groups:
     primaryColor: '#2566f2'
     secondaryColor: '#2566f2'
     accentColor: '#2566f2'
+  - name: WhatDa
+    textColor: '#f5f6e4'
+    backgroundColor: '#0b0a04'
+    primaryColor: '#d6d28f'
+    secondaryColor: '#2d7b41'
+    accentColor: '#54c093'
 heading_font: Rubik
 content_font: Karla
 logo_font: Inter
