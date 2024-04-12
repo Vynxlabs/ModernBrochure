@@ -81,8 +81,8 @@ module.exports = (eleventyConfig) => {
     execSync('npx tailwindcss -i ./src/css/styles.css -o ./dist/css/styles.css --minify')
   })
 
-  eleventyConfig.addDataExtension("yaml", (contents) => yaml.load(contents));
-  eleventyConfig.addDataExtension("yml", (contents) => yaml.load(contents));
+  //eleventyConfig.addDataExtension("yaml", (contents) => yaml.load(contents));
+  //eleventyConfig.addDataExtension("yml", (contents) => yaml.load(contents));
 
   eleventyConfig.setServerPassthroughCopyBehavior("passthrough");
   eleventyConfig.addPassthroughCopy("./src/images/");

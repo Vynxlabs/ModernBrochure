@@ -5,7 +5,8 @@
   "main": ".eleventy.js",
   "scripts": {
     "fetch-theme-variables": "node ./utils/fetch-theme-variables.js",
-    "start": "concurrently --kill-others   \"npx tailwindcss -i ./src/css/styles.css -o ./dist/css/styles.css --watch\" \"npx eleventy --serve\" \"bookshop-sass -b _component-library -o dist/assets/bookshop.css -w\"",
+    "start": "concurrently --kill-others  \"npx tailwindcss -i ./src/css/styles.css -o ./dist/css/styles.css --watch\" \"npx eleventy --serve\" \"bookshop-sass -b _component-library -o dist/assets/bookshop.css -w\" \"sass --no-source-map --watch src/assets/styles:css\" ",
+    "sass:build": "sass --no-source-map src/assets/styles:css",
     "bookshop-sass:build": "bookshop-sass -b _component-library -o dist/assets/bookshop.css",
     "eleventy": "npx eleventy",
     "tailwind": "npx tailwindcss -i ./src/css/styles.css -o ./dist/css/styles.css --watch",
@@ -31,7 +32,8 @@
     "markdown-it-anchor": "^8.6.7",
     "moment": "^2.29.4",
     "node-fetch": "^3.3.2",
-    "puppeteer": "^21.5.0"
+    "puppeteer": "^21.5.0",
+    "sass": "^1.75.0"
   },
   "devDependencies": {
     "@bookshop/sass": "^3.9.0",
