@@ -29,7 +29,7 @@ customColor_groups:
     backgroundColor: '#f7fbff'
     primaryColor: '#1595f8'
     secondaryColor: '#bc6bfb'
-    accentColor:
+    accentColor: '#f23df9'
 heading_font: Rubik
 content_font: Karla
 logo_font: Major Mono Display
