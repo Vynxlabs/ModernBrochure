@@ -21,14 +21,40 @@ let config = yaml.load(fs.readFileSync(configFileLocation,'utf-8'))
 config['_inputs']['color_group']['options']['values'] = []
 
 /* 
-    remove any existing color_groups.css file and create a new one
+    remove any existing color_groups.scss file and create a new one
     easier to overwrite the file entirely each time than figure out
     what changed and update only those parts
 */
-const colorsFileLocation = './src/assets/styles/color_groups.css'
+const colorsFileLocation = './src/assets/styles/color_groups.scss'
 if(fs.existsSync(colorsFileLocation))
     fs.unlinkSync(colorsFileLocation)
 fs.writeFileSync(colorsFileLocation, "")
+
+/*
+    We have to do a few things to make the user colors usable and show up in the 
+    CloudCannon config. 
+    
+    - We need to define all the variables in the :root element of the CSS (css_string_root)
+    - We need to assign background, text and interaction colors to components (css_string_component)
+    - We need to assign the background, text and interaction colors to the nav (css_string_nav)
+    - We need to assign the background, text and interaction colors to the footer (css_string_footer)
+*/
+let css_string_root = `:root {\n`
+let css_string_component = `.component {\n`
+let css_string_nav = `.c-navigation {\n`
+let css_string_footer = `.c-footer {\n`
+
+css_string_component += `--main-background-color: #3B3B3D;\n`
+css_string_component += `--main-text-color: #F9F9FB;\n`
+css_string_component += `--interaction-color: #2566f2;\n`
+css_string_component += `background-color: var(--main-background-color);\n`
+css_string_component += `color: var(--main-text-color);\n`
+
+css_string_nav += `--main-background-color: #1B1B1D;\n`
+css_string_nav += `--main-text-color: #D9D9DC;\n`
+
+css_string_footer += `--main-background-color: #1B1B1D;\n`
+css_string_footer += `--main-text-color: #D9D9DC;\n`
 
 /*
     Function to build the CSS rules:
@@ -36,19 +62,19 @@ fs.writeFileSync(colorsFileLocation, "")
     - id - the id value of the color_group
 */
 let addColorDefinitions = (str, id) => {
-    str += `.component--${id} {\n`
-    str += `  background-color: var(--${id}__background);\n`
-    str += `  color: var(--${id}__foreground);\n`
-    str += `  --interaction-color: var(--${id}__interaction);\n`
+    str += `&--${id} {\n`
+    str += `--main-background-color: var(--${id}__background);\n`
+    str += `--main-text-color: var(--${id}__foreground);\n`
+    str += `--interaction-color: var(--${id}__interaction);\n`
     str += `}\n`    
     return str
 }
 
 // these are hardcoded default themes so the user always has at least these color_groups
-css_string_component += `.component--primary{`
-css_string_component += `  background-color: ${primary_color.background_color};\n`
-css_string_component += `  color: ${primary_color.foreground_color};\n`
-css_string_component += `  --interaction-color: ${primary_color.interaction_color};\n`
+css_string_component += `&--primary{`
+css_string_component += `--main-background-color : ${primary_color.background_color};\n`
+css_string_component += `--main-text-color : ${primary_color.foreground_color};\n`
+css_string_component += `--interaction-color : ${primary_color.interaction_color};\n`
 css_string_component += `}\n`
 
 css_string_nav = addColorDefinitions(css_string_nav, 'primary')      
@@ -76,21 +102,34 @@ color_groups = color_groups.forEach((color_set, i) => {
     let obj = { name, id }
     config['_inputs']['color_group']['options']['values'].push(obj)
     
+    css_string_root += `--${id}__background : ${background};\n`
+    css_string_root += `--${id}__foreground : ${foreground};\n`
+    css_string_root += `--${id}__interaction : ${interaction};\n`
+    
     css_string_component = addColorDefinitions(css_string_component, id)      
     css_string_nav = addColorDefinitions(css_string_nav, id)      
     css_string_footer = addColorDefinitions(css_string_footer, id)        
 })
+css_string_root += `}\n\n`
+css_string_component += `}\n\n`
+css_string_nav += `}\n\n`
+css_string_footer += `}\n\n`
+
+// adjust options for card_color_group, nav_color_group and footer_color_group
+//config['_inputs']['card_color_group']['options']['values'] = Array.from(config['_inputs']['color_group']['options']['values'])
+//config['_inputs']['nav_color_group']['options']['values'] = Array.from(config['_inputs']['color_group']['options']['values'])
+//config['_inputs']['footer_color_group']['options']['values'] = Array.from(config['_inputs']['color_group']['options']['values'])
 
 // write the config file with the new options
 fs.writeFileSync(configFileLocation, yaml.dump(config))
 
 // write the css strings into a single file
-let css_string = `${css_string_component}${css_string_nav}${css_string_footer}`
+let css_string = `${css_string_root}${css_string_component}${css_string_nav}${css_string_footer}`
 fs.appendFileSync(colorsFileLocation, css_string)
 
 
 // Process all other user defined varaibles, such as fonts
-const variableFileLocation = './src/assets/styles/variables.css'
+const variableFileLocation = './src/assets/styles/variables.scss'
 fs.readFile(variableFileLocation, 'utf-8', (err, cssFile) => {
 
     if(err){
@@ -107,7 +146,7 @@ fs.readFile(variableFileLocation, 'utf-8', (err, cssFile) => {
         replaced = replaced.replace(re,`--${k}: ${v};`)
     })
 
-    // Write result back to variables.css
+    // Write result back to variables.scss
     fs.writeFile(variableFileLocation, replaced, 'utf-8', err => {
         if(err)
             console.log(err);

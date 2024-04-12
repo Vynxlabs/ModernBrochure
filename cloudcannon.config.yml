@@ -1,8 +1,8 @@
 source: src
 paths:
-  uploads: "assets/uploads/:title"
-  static: ""
-  collections: ""
+  uploads: 'assets/uploads/:title'
+  static: ''
+  collections: ''
   data: _data
   layouts: _includes
   includes: _includes
@@ -27,65 +27,84 @@ collections_config:
         - sitemap.njk
         - tags.md
         - pages.json
-    parse_branch_index:
+    parse_branch_index: null
     name: Pages
-    description: "All your pages"
+    description: All your pages
     icon: description
-    documentation:
+    documentation: null
     preview:
       gallery: description
-    sort:
-    sort_options:
-    singular_name:
-    singular_key:
-    _editables:
+    sort: null
+    sort_options: null
+    singular_name: null
+    singular_key: null
+    _editables: null
     _enabled_editors:
       - content
       - visual
     _inputs:
       title:
-        label: "Page Title"
-        comment: "Seo focused page title"
+        label: Page Title
+        comment: Seo focused page title
       eleventyExcludeFromCollections:
-        type: "switch"
-        label: "Remove from navigation"
-        comment: "Will remove this page from top navigation top nav and footer"
+        type: switch
+        label: Remove from navigation
+        comment: Will remove this page from top navigation top nav and footer
       eleventyNavigation:
-        label: "Navigation"
+        label: Navigation
       eleventyNavigation.key:
-        comment: "How this page is identified in the navigation"
+        comment: How this page is identified in the navigation
       eleventyNavigation.order:
-        comment: "What order in the navigation"
+        comment: What order in the navigation
       eleventyNavigation.title:
-        label: "Display Title"
-        comment: "What website visitors will see. Leave blank if you want to use the key as Display Title"
+        label: Display Title
+        comment: >-
+          What website visitors will see. Leave blank if you want to use the key
+          as Display Title
       eleventyNavigation.parent:
-        comment: "What key this should be grouped with. Leave blank for no grouping"
+        comment: What key this should be grouped with. Leave blank for no grouping
       pageLink:
-        label: "Page Location"
-        comment: "The location of this page on your webiste i.e. Example.com/mylocation"
-        type: "text"
+        label: Page Location
+        comment: The location of this page on your webiste i.e. Example.com/mylocation
+        type: text
       metaDesc:
-        type: "textarea"
-        label: "Meta Description"
-        comment: "SEO focused page summary"
+        type: textarea
+        label: Meta Description
+        comment: SEO focused page summary
       permalink:
         hidden: true
       layout:
         hidden: true
-    _select_data:
-    _structures:
-    add_options:
-    create:
+    _select_data: null
+    _structures: null
+    add_options: null
+    create: null
     disable_add: false
     disable_add_folder: false
     disable_file_actions: false
-    new_preview_url:
+    new_preview_url: null
     schemas:
       default:
         path: .cloudcannon/schemas/page.md
-    schema_key:
+    schema_key: null
 _inputs:
+  color_group:
+    type: select
+    options:
+      allow_empty: false
+      value_key: id
+      preview:
+        text:
+          - key: name
+        icon:
+          - key: icon
+      values:
+        - id: primary
+          name: Primary
+        - name: Secondary
+          id: secondary0
+        - name: terddddddd
+          id: terddddddd1
   font:
     comment: >-
       Write the name of any font from
