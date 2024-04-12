@@ -77,7 +77,7 @@ module.exports = (eleventyConfig) => {
     markdownIt().use(markdownItAnchor)
   )
 
-  eleventyConfig.on('eleventy.after', ()=>{
+  eleventyConfig.on('eleventy.before', ()=>{
     execSync('npx tailwindcss -i ./src/css/styles.css -o ./dist/css/styles.css --minify')
   })
 

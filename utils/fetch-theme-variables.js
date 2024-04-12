@@ -24,20 +24,20 @@ const tailwindConfig = {
   },
 };
 
-const primaryColorGroup = theme.primary_color_group;
-const customColorGroups = theme.custom_color_groups;
+const primaryColorGroup = theme.primaryColor_group;
+const customColorGroups = theme.customColor_groups;
 
 tailwindConfig.theme.extend.colors[primaryColorGroup.name] = {
-  background_color: primaryColorGroup.background_color,
-  foreground_color: primaryColorGroup.foreground_color,
-  interaction_color: primaryColorGroup.interaction_color,
+  backgroundColor: primaryColorGroup.backgroundColor,
+  foregroundColor: primaryColorGroup.foregroundColor,
+  interactionColor: primaryColorGroup.interactionColor,
 };
 
 customColorGroups.forEach(colorGroup => {
   tailwindConfig.theme.extend.colors[colorGroup.name] = {
-    background_color: colorGroup.background_color,
-    foreground_color: colorGroup.foreground_color,
-    interaction_color: colorGroup.interaction_color,
+    backgroundColor: colorGroup.backgroundColor,
+    foregroundColor: colorGroup.foregroundColor,
+    interactionColor: colorGroup.interactionColor,
   };
 });
 

@@ -15,19 +15,24 @@ module.exports = {
           "light": "#474949"
         },
         "Primary": {
-          "background_color": "#3b3b3d",
-          "foreground_color": "#f9f9fb",
-          "interaction_color": "#2566f2"
+          "backgroundColor": "#3b3b3d",
+          "foregroundColor": "#f9f9fb",
+          "interactionColor": "#2566f2"
         },
         "Secondary": {
-          "background_color": "#1b1b1d",
-          "foreground_color": "#d9d9dc",
-          "interaction_color": "#2566f2"
+          "backgroundColor": "#1b1b1d",
+          "foregroundColor": "#d9d9dc",
+          "interactionColor": "#2566f2"
         },
         "terd": {
-          "background_color": "#2f2f43",
-          "foreground_color": "#ffffff",
-          "interaction_color": "#1353b4"
+          "backgroundColor": "#2f2f43",
+          "foregroundColor": "#ffffff",
+          "interactionColor": "#1353b4"
+        },
+        "Testing": {
+          "backgroundColor": "#9f4b4b",
+          "foregroundColor": "#d22020",
+          "interactionColor": "#2543af"
         }
       }
     }
