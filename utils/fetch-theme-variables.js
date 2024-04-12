@@ -1,45 +1,117 @@
-
 const fs = require('fs');
-const path = require('path');
+const yaml = require('js-yaml')
 
-// Read theme file (e.g., theme.json)
-const themeFilePath = path.join(__dirname, '..', 'src', '_data', 'theme.json');
-const theme = JSON.parse(fs.readFileSync(themeFilePath, 'utf-8'));
+// read theme colors and fonts from _data/theme.yml
+let dataFile = yaml.load(fs.readFileSync('src/_data/theme.yml','utf-8'))
+    
+/* 
+    color_groups get processed differently than other user variables - so
+    extract the color_groups and then delete them from the dataFile object so
+    they don't get twice processed when we iterate through the dataFile object
+*/
+let color_groups = dataFile["custom_color_groups"]
+let primary_color = dataFile["primary_color_group"]
+delete dataFile["custom_color_groups"]
+delete dataFile["primary_color_group"]
 
-// Read Tailwind configuration template
-const tailwindConfigPath = path.join(__dirname, '..', 'tailwind.config.js');
-const tailwindConfigTemplate = require(tailwindConfigPath);
+const configFileLocation = './cloudcannon.config.yml'
 
-// Populate Tailwind configuration with theme colors
-const tailwindConfig = {
-  ...tailwindConfigTemplate,
-  theme: {
-    ...tailwindConfigTemplate.theme,
-    extend: {
-      ...tailwindConfigTemplate.theme.extend,
-      colors: {
-        ...tailwindConfigTemplate.theme.extend.colors,
-      },
-    },
-  },
-};
+// load the cloudcannon config and reset the color_group values
+let config = yaml.load(fs.readFileSync(configFileLocation,'utf-8'))
+config['_inputs']['color_group']['options']['values'] = []
 
-const primaryColorGroup = theme.primaryColor_group;
-const customColorGroups = theme.customColor_groups;
+/* 
+    remove any existing color_groups.css file and create a new one
+    easier to overwrite the file entirely each time than figure out
+    what changed and update only those parts
+*/
+const colorsFileLocation = './src/assets/styles/color_groups.css'
+if(fs.existsSync(colorsFileLocation))
+    fs.unlinkSync(colorsFileLocation)
+fs.writeFileSync(colorsFileLocation, "")
 
-tailwindConfig.theme.extend.colors[primaryColorGroup.name] = {
-  backgroundColor: primaryColorGroup.backgroundColor,
-  foregroundColor: primaryColorGroup.foregroundColor,
-  interactionColor: primaryColorGroup.interactionColor,
-};
+/*
+    Function to build the CSS rules:
+    - str - the css_string to append values to
+    - id - the id value of the color_group
+*/
+let addColorDefinitions = (str, id) => {
+    str += `.component--${id} {\n`
+    str += `  background-color: var(--${id}__background);\n`
+    str += `  color: var(--${id}__foreground);\n`
+    str += `  --interaction-color: var(--${id}__interaction);\n`
+    str += `}\n`    
+    return str
+}
 
-customColorGroups.forEach(colorGroup => {
-  tailwindConfig.theme.extend.colors[colorGroup.name] = {
-    backgroundColor: colorGroup.backgroundColor,
-    foregroundColor: colorGroup.foregroundColor,
-    interactionColor: colorGroup.interactionColor,
-  };
+// these are hardcoded default themes so the user always has at least these color_groups
+css_string_component += `.component--primary{`
+css_string_component += `  background-color: ${primary_color.background_color};\n`
+css_string_component += `  color: ${primary_color.foreground_color};\n`
+css_string_component += `  --interaction-color: ${primary_color.interaction_color};\n`
+css_string_component += `}\n`
+
+css_string_nav = addColorDefinitions(css_string_nav, 'primary')      
+css_string_footer = addColorDefinitions(css_string_footer, 'primary') 
+
+config['_inputs']['color_group']['options']['values'].push({id: 'primary', name: primary_color.name})
+
+/* 
+    iterate through all the user defined color_groups and:
+    - create CSS variables for them
+    - add them into the cloudcannon config as options for the dropdowns
+*/
+color_groups = color_groups.forEach((color_set, i) => {
+    /* 
+        generate an id for the user defined color_group to be used in CSS class and variable names
+        - replace illegal characters
+        - append index to end for auto-increment unique ids
+    */
+    let id = `${color_set.name.toLowerCase().replace(/[\s|&;$%@'"<>()+,]/g, "_")}${i}`
+    let name = color_set.name
+    let background = color_set.background_color
+    let foreground = color_set.foreground_color
+    let interaction = color_set.interaction_color
+    
+    let obj = { name, id }
+    config['_inputs']['color_group']['options']['values'].push(obj)
+    
+    css_string_component = addColorDefinitions(css_string_component, id)      
+    css_string_nav = addColorDefinitions(css_string_nav, id)      
+    css_string_footer = addColorDefinitions(css_string_footer, id)        
+})
+
+// write the config file with the new options
+fs.writeFileSync(configFileLocation, yaml.dump(config))
+
+// write the css strings into a single file
+let css_string = `${css_string_component}${css_string_nav}${css_string_footer}`
+fs.appendFileSync(colorsFileLocation, css_string)
+
+
+// Process all other user defined varaibles, such as fonts
+const variableFileLocation = './src/assets/styles/variables.css'
+fs.readFile(variableFileLocation, 'utf-8', (err, cssFile) => {
+
+    if(err){
+        console.log(err);
+        return;
+    }
+
+    let replaced = cssFile;
+
+    // Change the variables to whatever was set in the data file
+    Object.entries(dataFile).forEach(([k,v]) => {
+        k = k.split("_").join("-");
+        const re = new RegExp(`--${k}: .*`, 'g')
+        replaced = replaced.replace(re,`--${k}: ${v};`)
+    })
+
+    // Write result back to variables.css
+    fs.writeFile(variableFileLocation, replaced, 'utf-8', err => {
+        if(err)
+            console.log(err);
+        
+        console.log(`📚 Writing variables to ${variableFileLocation}`)
+    });
 });
-
-// Write updated Tailwind configuration to file
-fs.writeFileSync(tailwindConfigPath, `module.exports = ${JSON.stringify(tailwindConfig, null, 2)};`);
