@@ -87,6 +87,12 @@ module.exports = (eleventyConfig) => {
   // Markdown
   eleventyConfig.setLibrary("md", markdownIt().use(markdownItAnchor));
 
+  eleventyConfig.on("eleventy.before", () => {
+    execSync(
+      "node ./utils/fetch-theme-variables.js",
+    );
+  });
+
   eleventyConfig.on("eleventy.after", () => {
     execSync(
       "npx tailwindcss -i ./src/css/styles.css -o ./dist/css/styles.css --minify",

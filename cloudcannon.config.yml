@@ -1,6 +1,6 @@
 source: src
 paths:
-  uploads: 'assets/uploads/:title'
+  uploads: assets/uploads/:title
   static: ''
   collections: ''
   data: _data

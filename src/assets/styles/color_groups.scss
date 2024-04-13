@@ -13,15 +13,6 @@
 --cottoncandy3__interaction : undefined;
 }
 
-.text-primary-textcolor { color: #3b3b3d; }
-.text-primary-primarycolor { color: #2566f2; }
-.text-primary-secondarycolor { color: #2566f2; }
-.text-primary-accentcolor { color: #2566f2; }
-.bg-primary-backgroundcolor { background-color: #f9f9fb; }
-.bg-primary-primarycolor { background-color: #2566f2; }
-.bg-primary-secondarycolor { background-color: #2566f2; }
-.bg-primary-accentcolor { background-color: #2566f2; }
-
 .text-secondary-textcolor { color: #3b3b3d; }
 .text-secondary-primarycolor { color: #2566f2; }
 .text-secondary-secondarycolor { color: #2566f2; }
@@ -30,6 +21,10 @@
 .bg-secondary-primarycolor { background-color: #2566f2; }
 .bg-secondary-secondarycolor { background-color: #2566f2; }
 .bg-secondary-accentcolor { background-color: #2566f2; }
+.border-secondary-backgroundcolor { border-color: #f9f9fb; }
+.border-secondary-primarycolor { border-color: #2566f2; }
+.border-secondary-secondarycolor { border-color: #2566f2; }
+.border-secondary-accentcolor { border-color: #2566f2; }
 
 .text-terddddddd-textcolor { color: #3b3b3d; }
 .text-terddddddd-primarycolor { color: #2566f2; }
@@ -39,6 +34,10 @@
 .bg-terddddddd-primarycolor { background-color: #2566f2; }
 .bg-terddddddd-secondarycolor { background-color: #2566f2; }
 .bg-terddddddd-accentcolor { background-color: #2566f2; }
+.border-terddddddd-backgroundcolor { border-color: #f9f9fb; }
+.border-terddddddd-primarycolor { border-color: #2566f2; }
+.border-terddddddd-secondarycolor { border-color: #2566f2; }
+.border-terddddddd-accentcolor { border-color: #2566f2; }
 
 .text-whatda-textcolor { color: #f5f6e4; }
 .text-whatda-primarycolor { color: #d6d28f; }
@@ -48,6 +47,10 @@
 .bg-whatda-primarycolor { background-color: #d6d28f; }
 .bg-whatda-secondarycolor { background-color: #2d7b41; }
 .bg-whatda-accentcolor { background-color: #54c093; }
+.border-whatda-backgroundcolor { border-color: #0b0a04; }
+.border-whatda-primarycolor { border-color: #d6d28f; }
+.border-whatda-secondarycolor { border-color: #2d7b41; }
+.border-whatda-accentcolor { border-color: #54c093; }
 
 .text-cottoncandy-textcolor { color: #011524; }
 .text-cottoncandy-primarycolor { color: #1595f8; }
@@ -57,6 +60,10 @@
 .bg-cottoncandy-primarycolor { background-color: #1595f8; }
 .bg-cottoncandy-secondarycolor { background-color: #bc6bfb; }
 .bg-cottoncandy-accentcolor { background-color: #f23df9; }
+.border-cottoncandy-backgroundcolor { border-color: #f7fbff; }
+.border-cottoncandy-primarycolor { border-color: #1595f8; }
+.border-cottoncandy-secondarycolor { border-color: #bc6bfb; }
+.border-cottoncandy-accentcolor { border-color: #f23df9; }
 
 .component {
 --main-background-color: #3B3B3D;
