@@ -10,6 +10,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   content:
+    highlightEybrow: false
     eyebrow:
     headline:
     description: "Hello World!"
@@ -25,6 +26,9 @@ preview:
     contentAlignment: left
     color_group: primary
   content:
+    highlightEybrow: true
+    eyebrow: eybrow
+    headline: headline
     button:
       url: "#"
       text: "Button text"

@@ -4,7 +4,10 @@
     {% endif %}
 <div class="basecontainer">
 <div class="max-w-[600px]">
-    <p>{{content.eyebrow}}</p>
+    
+        
+    
+    <p class=" {% if content.highlightEybrow %} text-{{styles.color_group}}-accentcolor {% endif %} " >{{content.eyebrow}}</p>
     <h1>{{content.headline}}</h1>
     {% if content.buttons %}
         <div>
