@@ -12,24 +12,12 @@ customColor_groups:
     primaryColor: '#2566f2'
     secondaryColor: '#2566f2'
     accentColor: '#2566f2'
-  - name: terddddddd
-    textColor: '#3b3b3d'
-    backgroundColor: '#f9f9fb'
-    primaryColor: '#2566f2'
-    secondaryColor: '#2566f2'
-    accentColor: '#2566f2'
-  - name: WhatDa
-    textColor: '#f5f6e4'
-    backgroundColor: '#0b0a04'
-    primaryColor: '#d6d28f'
-    secondaryColor: '#2d7b41'
-    accentColor: '#54c093'
-  - name: CottonCandy
-    textColor: '#011524'
-    backgroundColor: '#f7fbff'
-    primaryColor: '#1595f8'
-    secondaryColor: '#bc6bfb'
-    accentColor: '#f23df9'
+  - name: Rose
+    textColor: '#120618'
+    backgroundColor: '#f8f3fc'
+    primaryColor: '#4e1a6b'
+    secondaryColor: '#de789a'
+    accentColor: '#c53a30'
 heading_font: Rubik
 content_font: Karla
 logo_font: Major Mono Display
