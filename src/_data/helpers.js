@@ -63,7 +63,8 @@ module.exports = {
     return new Date().getFullYear();
   },
   logit(){
-    console.log("ehre")
+    console.log(this)
+    return this
   }
   
 

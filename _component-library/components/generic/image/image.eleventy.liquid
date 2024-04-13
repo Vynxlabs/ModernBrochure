@@ -1,16 +1,15 @@
 {% if env_bookshop_live %}
-
+    {% assign log = helpers.logit  %}
     <img class="w-full" src="{{ imagePath }}" alt="{{ imageAlt }}">
 
 {% elsif imagePath contains 'http://' or imagePath contains 'https://' %}
-
+    {% assign log = helpers.logit  %}
     <img class="w-full" src="{{ imagePath }}" alt="{{ imageAlt }}">
 
 {% else  %}
 
-    {% unless env_bookshop_live %}
-        {% image imagePath, imageAlt, 'w-full h-auto', imageSizes %}
-    {% endunless %}
-    
+<img class="w-full h-auto" src="{{ imagePath }}" alt="{{ imageAlt }}">
+{% comment %} {% image imagePath, imageAlt, 'w-full h-auto', imageSizes %} {% endcomment %}
 
+    
 {% endif %}
