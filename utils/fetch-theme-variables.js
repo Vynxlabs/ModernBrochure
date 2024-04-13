@@ -54,6 +54,31 @@ console.log(color_groups)
 // css_string_utilities += `.bg-primary-secondarycolor { background-color: ${primary_color.secondaryColor}; }\n`
 // css_string_utilities += `.bg-primary-accentcolor { background-color: ${primary_color.accentColor}; }\n\n`
 
+function appendTailwindUtilityClasses(colorSet){
+    let cssString=''
+    //text
+    cssString += `.text-${colorSet.name.toLowerCase()}-textcolor { color: ${colorSet.textColor}; }\n`;
+    cssString += `.text-${colorSet.name.toLowerCase()}-primarycolor { color: ${colorSet.primaryColor}; }\n`;
+    cssString += `.text-${colorSet.name.toLowerCase()}-secondarycolor { color: ${colorSet.secondaryColor}; }\n`;
+    cssString += `.text-${colorSet.name.toLowerCase()}-accentcolor { color: ${colorSet.accentColor}; }\n`;
+
+    //background
+    cssString += `.bg-${colorSet.name.toLowerCase()}-backgroundcolor { background-color: ${colorSet.backgroundColor}; }\n`;
+    cssString += `.bg-${colorSet.name.toLowerCase()}-primarycolor { background-color: ${colorSet.primaryColor}; }\n`;
+    cssString += `.bg-${colorSet.name.toLowerCase()}-secondarycolor { background-color: ${colorSet.secondaryColor}; }\n`;
+    cssString += `.bg-${colorSet.name.toLowerCase()}-accentcolor { background-color: ${colorSet.accentColor}; }\n`;
+    
+    //border color
+    cssString += `.border-${colorSet.name.toLowerCase()}-backgroundcolor { border-color: ${colorSet.backgroundColor}; }\n`;
+    cssString += `.border-${colorSet.name.toLowerCase()}-primarycolor { border-color: ${colorSet.primaryColor}; }\n`;
+    cssString += `.border-${colorSet.name.toLowerCase()}-secondarycolor { border-color: ${colorSet.secondaryColor}; }\n`;
+    cssString += `.border-${colorSet.name.toLowerCase()}-accentcolor { border-color: ${colorSet.accentColor}; }\n`;
+
+
+    cssString += '\n'; // Add a newline for readability
+    return cssString
+}
+
 function generateTailwindUtilityClasses(color_groups) {
     let cssString = ''; // Initialize an empty string to store CSS rules
 
@@ -62,37 +87,18 @@ function generateTailwindUtilityClasses(color_groups) {
         // Iterate over each custom color group
         color_groups.forEach((colorSet, index) => {
             // Generate CSS classes for text color and background color
-
-            //text
-            cssString += `.text-${colorSet.name.toLowerCase()}-textcolor { color: ${colorSet.textColor}; }\n`;
-            cssString += `.text-${colorSet.name.toLowerCase()}-primarycolor { color: ${colorSet.primaryColor}; }\n`;
-            cssString += `.text-${colorSet.name.toLowerCase()}-secondarycolor { color: ${colorSet.secondaryColor}; }\n`;
-            cssString += `.text-${colorSet.name.toLowerCase()}-accentcolor { color: ${colorSet.accentColor}; }\n`;
-
-            //background
-            cssString += `.bg-${colorSet.name.toLowerCase()}-backgroundcolor { background-color: ${colorSet.backgroundColor}; }\n`;
-            cssString += `.bg-${colorSet.name.toLowerCase()}-primarycolor { background-color: ${colorSet.primaryColor}; }\n`;
-            cssString += `.bg-${colorSet.name.toLowerCase()}-secondarycolor { background-color: ${colorSet.secondaryColor}; }\n`;
-            cssString += `.bg-${colorSet.name.toLowerCase()}-accentcolor { background-color: ${colorSet.accentColor}; }\n`;
+            cssString += appendTailwindUtilityClasses(colorSet)
             
-            //border color
-            cssString += `.border-${colorSet.name.toLowerCase()}-backgroundcolor { border-color: ${colorSet.backgroundColor}; }\n`;
-            cssString += `.border-${colorSet.name.toLowerCase()}-primarycolor { border-color: ${colorSet.primaryColor}; }\n`;
-            cssString += `.border-${colorSet.name.toLowerCase()}-secondarycolor { border-color: ${colorSet.secondaryColor}; }\n`;
-            cssString += `.border-${colorSet.name.toLowerCase()}-accentcolor { border-color: ${colorSet.accentColor}; }\n`;
-
-
-            cssString += '\n'; // Add a newline for readability
         });
     }
-
+    console.log(`🎨 Tailwind utility classes generated`);
     // Write the generated CSS to the output file
     return cssString
 
-    console.log(`🎨 Tailwind utility classes generated and written to ${outputFile}`);
+    
 }
 
-css_string_utilities+=generateTailwindUtilityClasses(primary_color)
+css_string_utilities+=appendTailwindUtilityClasses(primary_color)
 css_string_utilities+=generateTailwindUtilityClasses(color_groups)
 
 css_string_component += `--main-background-color: #3B3B3D;\n`
