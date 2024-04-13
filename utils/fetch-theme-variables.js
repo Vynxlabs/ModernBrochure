@@ -164,7 +164,7 @@ color_groups = color_groups.forEach((color_set, i) => {
     css_string_root += `--${id}__foreground : ${foreground};\n`
     css_string_root += `--${id}__interaction : ${interaction};\n`
     
-    css_string_utilities+=generateTailwindUtilityClasses(color_groups,id)
+    css_string_utilities+=appendTailwindUtilityClasses(color_set,id)
     css_string_component = addColorDefinitions(css_string_component, id)      
     css_string_nav = addColorDefinitions(css_string_nav, id)      
     css_string_footer = addColorDefinitions(css_string_footer, id)        

@@ -114,14 +114,10 @@ _inputs:
       values:
         - id: primary
           name: Primary
-        - name: Secondary
-          id: secondary0
-        - name: terddddddd
-          id: terddddddd1
-        - name: WhatDa
-          id: whatda2
-        - name: CottonCandy
-          id: cottoncandy3
+        - name: Magic
+          id: magic0
+        - name: Rose
+          id: rose1
   font:
     comment: >-
       Write the name of any font from
