@@ -11,5 +11,6 @@ pageLink: "mylocation"
 permalink: "/{{ pageLink | slug }}/index.html"
 metaDesc: ""
 layout: "layouts/base.html"
+hero:
 content_blocks: []
 ---
