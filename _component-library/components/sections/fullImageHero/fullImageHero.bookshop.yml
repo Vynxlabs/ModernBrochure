@@ -13,7 +13,7 @@ blueprint:
     eyebrow:
     headline:
     description: "Hello World!"
-    button: [bookshop:generic/button]
+    buttons: [bookshop:generic/button]
     image: bookshop:generic/image!
   styles:
     color_group: primary
