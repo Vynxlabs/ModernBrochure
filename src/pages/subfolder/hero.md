@@ -26,6 +26,13 @@ hero:
         color_group: primary
         ghostButton: false
         blackText: false
+      - _bookshop_name: generic/button
+        url: '#'
+        openInNewTab: false
+        text: Another button
+        color_group: primary
+        ghostButton: false
+        blackText: false
     image:
       _bookshop_name: generic/image
       imagePath: /images/tree.jpg
