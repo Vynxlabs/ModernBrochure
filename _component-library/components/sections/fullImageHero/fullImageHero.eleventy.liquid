@@ -1,6 +1,6 @@
-<section class="cs-w-full">
+<section class="cs-w-full relative">
     {% if content.image.imagePath %}
-        {%bookshop "generic/image" bind:content.image%}
+        <div class="absolute inset-0 -z-10">{%bookshop "generic/image" bind:content.image%}</div>
     {% endif %}
 <div class="basecontainer">
 <div class="max-w-[600px]">
