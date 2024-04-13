@@ -15,7 +15,8 @@ layout: layouts/base.html
 hero:
   _bookshop_name: sections/fullImageHero
   content:
-    eyebrow: brow
+    highlightEybrow: false
+    eyebrow: 'Eyebrow highlight '
     headline: My headline
     description: This is my very cool description about my service
     buttons:
@@ -30,7 +31,7 @@ hero:
         url: '#'
         openInNewTab: false
         text: Button text
-        color_group: magic0
+        color_group: rose1
         ghostButton: false
         blackText: false
     image:
