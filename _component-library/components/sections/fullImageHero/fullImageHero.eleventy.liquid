@@ -1,10 +1,14 @@
-<section class="cs-w-full relative">
+<section class="cs-w-full relative flex flex-col items-center">
     {% if content.image.imagePath %}
         <div class="absolute inset-0 -z-10 flex justify-center items-center">
             {%bookshop "generic/image" bind:content.image class: "max-w-full max-h-full" %}
         </div>
     {% endif %}
-<div class="basecontainer flex flex-col items-center">
+    
+        
+        
+    
+<div class="basecontainer flex flex-col {% if styles.contentAlignment == left %} items-start {% elsif styles.contentAlignment == center %} items-center {% else %} items-end {% endif %} items-start">
 <div class="max-w-[600px]">
     
         

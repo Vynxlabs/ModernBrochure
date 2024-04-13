@@ -48,7 +48,7 @@ _inputs:
       value_key: id
       values:
         - name: Left
-          id: 
+          id: left
           icon: format_align_left
         - name: Center
           id: center
