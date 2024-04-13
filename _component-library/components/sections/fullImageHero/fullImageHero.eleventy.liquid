@@ -1,0 +1,16 @@
+<section class="cs-w-full">
+    {% if content.image.imagePath %}
+        {%bookshop "generic/image" bind:content.image%}
+    {% endif %}
+<div class="basecontainer">
+<div class="max-w-[600px]">
+    <p>{{content.eyebrow}}</p>
+    <h1>{{content.headline}}</h1>
+    {% if content.button %}
+        <div>
+            {%bookshop "generic/button" bind:content.button%}
+        </div>
+    {% endif %}
+</div>
+</div>
+</section>

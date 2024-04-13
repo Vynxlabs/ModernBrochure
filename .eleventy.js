@@ -13,11 +13,11 @@ const { execSync } = require("child_process");
 
 const imageShortcode = async (
   src,
-  cls,
   alt,
-  sizes,
-  widths = [200, 400, 850, 1920, 2500, null],
-  formats = ["webp", "jpeg"]
+  cls="",  
+  sizes = "100vw",
+  widths = [200, 400, 850, 1280,1920, 2500, null],
+  formats = ["avif", "webp", "svg", "jpeg"]
 ) => {
   const imageMetadata = await Image(src, {
     widths: [...widths],
@@ -77,7 +77,7 @@ module.exports = (eleventyConfig) => {
     markdownIt().use(markdownItAnchor)
   )
 
-  eleventyConfig.on('eleventy.before', ()=>{
+  eleventyConfig.on('eleventy.after', ()=>{
     execSync('npx tailwindcss -i ./src/css/styles.css -o ./dist/css/styles.css --minify')
   })
 

@@ -3,6 +3,22 @@
 @tailwind utilities;
 
 
+@layer components {
+  .basecontainer{
+    @apply px-4 flex flex-col max-w-[1440px] sm:px-10
+  }
+  .cs-w-full-l{
+    @apply w-[50vw] relative left-1/2 right-1/2 ml-[-50vw] mr-0
+  }
+  .cs-w-full-r{
+    @apply w-[50vw] relative left-1/2 right-1/2 mr-[-50vw] ml-0
+  }
+  .cs-w-full{
+    @apply w-screen relative left-1/2 right-1/2 mx-[-50vw] 
+  }
+
+}
+
 /* Globals */
 
 @font-face {

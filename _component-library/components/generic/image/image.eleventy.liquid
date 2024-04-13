@@ -1,0 +1,13 @@
+{% if env_bookshop_live %}
+
+    <img class="w-full" src="{{ imagePath }}" alt="{{ imageAlt }}">
+
+{% elsif imagePath contains 'http://' or imagePath contains 'https://' %}
+
+    <img class="w-full" src="{{ imagePath }}" alt="{{ imageAlt }}">
+
+{% else %}
+
+    {% image imagePath, imageAlt, 'w-full h-auto', imageSizes, true %}
+
+{% endif %}

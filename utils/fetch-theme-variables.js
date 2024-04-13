@@ -45,14 +45,14 @@ let css_string_nav = `.c-navigation {\n`
 let css_string_footer = `.c-footer {\n`
 let css_string_utilities = ``
 console.log(color_groups)
-css_string_utilities += `.text-primary-textcolor { color: ${primary_color.textColor}; }\n`
-css_string_utilities += `.text-primary-primarycolor { color: ${primary_color.primaryColor}; }\n`
-css_string_utilities += `.text-primary-secondarycolor { color: ${primary_color.secondaryColor}; }\n`
-css_string_utilities += `.text-primary-accentcolor { color: ${primary_color.accentColor}; }\n`
-css_string_utilities += `.bg-primary-backgroundcolor { background-color: ${primary_color.backgroundColor}; }\n`
-css_string_utilities += `.bg-primary-primarycolor { background-color: ${primary_color.primaryColor}; }\n`
-css_string_utilities += `.bg-primary-secondarycolor { background-color: ${primary_color.secondaryColor}; }\n`
-css_string_utilities += `.bg-primary-accentcolor { background-color: ${primary_color.accentColor}; }\n\n`
+// css_string_utilities += `.text-primary-textcolor { color: ${primary_color.textColor}; }\n`
+// css_string_utilities += `.text-primary-primarycolor { color: ${primary_color.primaryColor}; }\n`
+// css_string_utilities += `.text-primary-secondarycolor { color: ${primary_color.secondaryColor}; }\n`
+// css_string_utilities += `.text-primary-accentcolor { color: ${primary_color.accentColor}; }\n`
+// css_string_utilities += `.bg-primary-backgroundcolor { background-color: ${primary_color.backgroundColor}; }\n`
+// css_string_utilities += `.bg-primary-primarycolor { background-color: ${primary_color.primaryColor}; }\n`
+// css_string_utilities += `.bg-primary-secondarycolor { background-color: ${primary_color.secondaryColor}; }\n`
+// css_string_utilities += `.bg-primary-accentcolor { background-color: ${primary_color.accentColor}; }\n\n`
 
 function generateTailwindUtilityClasses(color_groups) {
     let cssString = ''; // Initialize an empty string to store CSS rules
@@ -62,14 +62,24 @@ function generateTailwindUtilityClasses(color_groups) {
         // Iterate over each custom color group
         color_groups.forEach((colorSet, index) => {
             // Generate CSS classes for text color and background color
+
+            //text
             cssString += `.text-${colorSet.name.toLowerCase()}-textcolor { color: ${colorSet.textColor}; }\n`;
             cssString += `.text-${colorSet.name.toLowerCase()}-primarycolor { color: ${colorSet.primaryColor}; }\n`;
             cssString += `.text-${colorSet.name.toLowerCase()}-secondarycolor { color: ${colorSet.secondaryColor}; }\n`;
             cssString += `.text-${colorSet.name.toLowerCase()}-accentcolor { color: ${colorSet.accentColor}; }\n`;
+
+            //background
             cssString += `.bg-${colorSet.name.toLowerCase()}-backgroundcolor { background-color: ${colorSet.backgroundColor}; }\n`;
             cssString += `.bg-${colorSet.name.toLowerCase()}-primarycolor { background-color: ${colorSet.primaryColor}; }\n`;
             cssString += `.bg-${colorSet.name.toLowerCase()}-secondarycolor { background-color: ${colorSet.secondaryColor}; }\n`;
             cssString += `.bg-${colorSet.name.toLowerCase()}-accentcolor { background-color: ${colorSet.accentColor}; }\n`;
+            
+            //border color
+            cssString += `.border-${colorSet.name.toLowerCase()}-backgroundcolor { border-color: ${colorSet.backgroundColor}; }\n`;
+            cssString += `.border-${colorSet.name.toLowerCase()}-primarycolor { border-color: ${colorSet.primaryColor}; }\n`;
+            cssString += `.border-${colorSet.name.toLowerCase()}-secondarycolor { border-color: ${colorSet.secondaryColor}; }\n`;
+            cssString += `.border-${colorSet.name.toLowerCase()}-accentcolor { border-color: ${colorSet.accentColor}; }\n`;
 
 
             cssString += '\n'; // Add a newline for readability
@@ -82,6 +92,7 @@ function generateTailwindUtilityClasses(color_groups) {
     console.log(`🎨 Tailwind utility classes generated and written to ${outputFile}`);
 }
 
+css_string_utilities+=generateTailwindUtilityClasses(primary_color)
 css_string_utilities+=generateTailwindUtilityClasses(color_groups)
 
 css_string_component += `--main-background-color: #3B3B3D;\n`

@@ -1,0 +1,27 @@
+# Metadata about this component, to be used in the CMS
+spec:
+  structures:
+    - asset_blocks
+    - card_imagery_blocks
+  label: "Image"
+  description: An image that wil be optimized
+  icon: image
+  tags: []
+
+# Defines the structure of this component, as well as the default values
+blueprint:
+  imagePath:
+  imageAlt:
+  imageSizes:
+
+# Overrides any fields in the blueprint when viewing this component in the component browser
+preview:
+  imagePath: /images/tree.jpg
+  imageAlt: Tree in the middle of a field with the sunsetting on the left
+  imageSizes: 100vw
+
+# Any extra CloudCannon inputs configuration to apply to the blueprint
+_inputs:
+  imageSizes:
+    hidden: true  
+

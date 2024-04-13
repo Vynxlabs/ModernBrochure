@@ -88,6 +88,15 @@ collections_config:
         path: .cloudcannon/schemas/page.md
     schema_key: null
 _inputs:
+  description:
+    type: markdown
+    options:
+      link: true
+      bold: true
+      italic: true
+      undo: true
+      redo: true
+      initial_height: 135
   color_group:
     type: select
     options:
@@ -105,6 +114,10 @@ _inputs:
           id: secondary0
         - name: terddddddd
           id: terddddddd1
+        - name: WhatDa
+          id: whatda2
+        - name: CottonCandy
+          id: cottoncandy3
   font:
     comment: >-
       Write the name of any font from
