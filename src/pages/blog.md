@@ -6,7 +6,7 @@ eleventyExcludeFromCollections: false
 eleventyNavigation:
   key: Blog
   order: 6
-pageLink: mylocation
+pageLink: blog
 permalink: >-
   blog{% if pagination.pageNumber > 0 %}/page/{{ pagination.pageNumber }}{%
   endif %}/index.html
