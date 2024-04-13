@@ -98,7 +98,7 @@ module.exports = (eleventyConfig) => {
 
   eleventyConfig.setServerPassthroughCopyBehavior("passthrough");
   eleventyConfig.addPassthroughCopy("./src/images/");
-  eleventyConfig.addPassthroughCopy("./src/images/");
+  eleventyConfig.addPassthroughCopy("/src/images/");
   eleventyConfig.addPassthroughCopy("./src/_includes/partials/background");
   // eleventyConfig.addPassthroughCopy("./src/css/");
   eleventyConfig.addPassthroughCopy({ "./src/images/favicon": "/" });
