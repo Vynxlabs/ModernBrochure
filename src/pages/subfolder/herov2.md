@@ -23,7 +23,7 @@ hero:
         url: '#'
         openInNewTab: false
         text: asdfasdfasdf
-        color_group: cottoncandy3
+        color_group: primary
         ghostButton: false
         blackText: false
       - _bookshop_name: generic/button
@@ -32,8 +32,12 @@ hero:
         text: asdfasdfasdfasdf
         color_group: primary
         ghostButton: true
-        blackText: false
+        blackText: true
     image:
+      _bookshop_name: generic/image
+      imagePath: /images/tree.jpg
+      imageAlt:
+      imageSizes:
   styles:
     color_group: primary
     contentAlignment: left
