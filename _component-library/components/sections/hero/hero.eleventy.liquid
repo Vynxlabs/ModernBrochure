@@ -3,14 +3,16 @@
         {%bookshop "generic/image" bind:content.image%}
     {% endif %}
 <div class="basecontainer">
-<div class="max-w-[600px]">
-    <p>{{content.eyebrow}}</p>
+<header class="max-w-[600px]">
+    {% if content.eyebrow %}
+        <p>{{content.eyebrow}}</p>
+    {% endif %}
     <h1>{{content.headline}}</h1>
     {% if content.button %}
         <div>
             {%bookshop "generic/button" bind:content.button%}
         </div>
     {% endif %}
-</div>
+</header>
 </div>
 </section>

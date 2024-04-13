@@ -8,7 +8,9 @@ const markdownIt = require('markdown-it')
 const markdownItAnchor = require('markdown-it-anchor')
 const pluginTOC = require('eleventy-plugin-toc')
 const pluginBookshop = require("@bookshop/eleventy-bookshop");
+const yaml = require("js-yaml");
 const { execSync } = require("child_process");
+
 
 
 const imageShortcode = async (
@@ -116,6 +118,7 @@ module.exports = (eleventyConfig) => {
 
   eleventyConfig.addFilter("dateFilter", dateFilter);
   eleventyConfig.addFilter("w3DateFilter", w3DateFilter);
+  eleventyConfig.addFilter("ymlify", (yml) => yaml.load(yml));
 
   return {
     markdownTemplateEngine: "liquid",
