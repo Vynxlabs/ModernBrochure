@@ -6,30 +6,30 @@ eleventyExcludeFromCollections: false
 eleventyNavigation:
   key: Hero
   order: 1
-  title:
+  title: HEROO
   parent:
-pageLink: hero
+pageLink: Hero
 permalink: /{{ pageLink | slug }}/index.html
-metaDesc: ''
+metaDesc: So much meta
 layout: layouts/base.html
 hero:
   _bookshop_name: sections/fullImageHero
   content:
-    eyebrow: Eye
-    headline: Test
-    description: Hello World!
+    eyebrow: Test
+    headline: Testestsesesetset
+    description: adfasdfasdfasdfasdfasdf
     button:
       - _bookshop_name: generic/button
-        url: '#'
+        url: /menu/
         openInNewTab: false
-        text: Text
+        text: So much text
         color_group: primary
         ghostButton: false
         blackText: false
     image:
       _bookshop_name: generic/image
       imagePath: /images/tree.jpg
-      imageAlt: Tree in the middle of a field
+      imageAlt: Tree in a field
       imageSizes:
   styles:
     color_group: primary
