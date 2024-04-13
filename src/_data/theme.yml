@@ -6,12 +6,12 @@ primaryColor_group:
   secondaryColor: '#f57b91'
   accentColor: '#f1cc4e'
 customColor_groups:
-  - name: Secondary
-    textColor: '#3b3b3d'
-    backgroundColor: '#f9f9fb'
-    primaryColor: '#2566f2'
-    secondaryColor: '#2566f2'
-    accentColor: '#2566f2'
+  - name: Magic
+    textColor: '#060c0b'
+    backgroundColor: '#f9fcfb'
+    primaryColor: '#62afa0'
+    secondaryColor: '#a4aed1'
+    accentColor: '#7c78bb'
   - name: Rose
     textColor: '#120618'
     backgroundColor: '#f8f3fc'
