@@ -18,7 +18,14 @@ hero:
     eyebrow: Test
     headline: Testestsesesetset
     description: adfasdfasdfasdfasdfasdf
-    button: []
+    button:
+      - _bookshop_name: generic/button
+        url: /menu/
+        openInNewTab: false
+        text: So much text
+        color_group: primary
+        ghostButton: false
+        blackText: false
     image:
       _bookshop_name: generic/image
       imagePath: /images/tree.jpg
