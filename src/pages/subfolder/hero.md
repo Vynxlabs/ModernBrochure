@@ -8,15 +8,15 @@ eleventyNavigation:
   order: 1
   title:
   parent:
-pageLink: mylocation
+pageLink: hero
 permalink: /{{ pageLink | slug }}/index.html
 metaDesc: ''
 layout: layouts/base.html
 hero:
   _bookshop_name: sections/fullImageHero
   content:
-    eyebrow:
-    headline:
+    eyebrow: Eye
+    headline: Test
     description: Hello World!
     button:
       - _bookshop_name: generic/button
