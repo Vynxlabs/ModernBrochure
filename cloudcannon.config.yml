@@ -88,6 +88,10 @@ collections_config:
         path: .cloudcannon/schemas/page.md
     schema_key: null
 _inputs:
+  hero:
+    type: object
+    options:
+      structures: _structures.hero_blocks
   description:
     type: markdown
     options:
