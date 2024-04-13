@@ -54,32 +54,32 @@ console.log(color_groups)
 // css_string_utilities += `.bg-primary-secondarycolor { background-color: ${primary_color.secondaryColor}; }\n`
 // css_string_utilities += `.bg-primary-accentcolor { background-color: ${primary_color.accentColor}; }\n\n`
 
-function appendTailwindUtilityClasses(colorSet){
+function appendTailwindUtilityClasses(colorSet,id){
     let cssString=''
     //text
-    cssString += `.text-${colorSet.name.toLowerCase()}-textcolor { color: ${colorSet.textColor}; }\n`;
-    cssString += `.text-${colorSet.name.toLowerCase()}-primarycolor { color: ${colorSet.primaryColor}; }\n`;
-    cssString += `.text-${colorSet.name.toLowerCase()}-secondarycolor { color: ${colorSet.secondaryColor}; }\n`;
-    cssString += `.text-${colorSet.name.toLowerCase()}-accentcolor { color: ${colorSet.accentColor}; }\n`;
+    cssString += `.text-${id}-textcolor { color: ${colorSet.textColor}; }\n`;
+    cssString += `.text-${id}-primarycolor { color: ${colorSet.primaryColor}; }\n`;
+    cssString += `.text-${id}-secondarycolor { color: ${colorSet.secondaryColor}; }\n`;
+    cssString += `.text-${id}-accentcolor { color: ${colorSet.accentColor}; }\n`;
 
     //background
-    cssString += `.bg-${colorSet.name.toLowerCase()}-backgroundcolor { background-color: ${colorSet.backgroundColor}; }\n`;
-    cssString += `.bg-${colorSet.name.toLowerCase()}-primarycolor { background-color: ${colorSet.primaryColor}; }\n`;
-    cssString += `.bg-${colorSet.name.toLowerCase()}-secondarycolor { background-color: ${colorSet.secondaryColor}; }\n`;
-    cssString += `.bg-${colorSet.name.toLowerCase()}-accentcolor { background-color: ${colorSet.accentColor}; }\n`;
+    cssString += `.bg-${id}-backgroundcolor { background-color: ${colorSet.backgroundColor}; }\n`;
+    cssString += `.bg-${id}-primarycolor { background-color: ${colorSet.primaryColor}; }\n`;
+    cssString += `.bg-${id}-secondarycolor { background-color: ${colorSet.secondaryColor}; }\n`;
+    cssString += `.bg-${id}-accentcolor { background-color: ${colorSet.accentColor}; }\n`;
     
     //border color
-    cssString += `.border-${colorSet.name.toLowerCase()}-backgroundcolor { border-color: ${colorSet.backgroundColor}; }\n`;
-    cssString += `.border-${colorSet.name.toLowerCase()}-primarycolor { border-color: ${colorSet.primaryColor}; }\n`;
-    cssString += `.border-${colorSet.name.toLowerCase()}-secondarycolor { border-color: ${colorSet.secondaryColor}; }\n`;
-    cssString += `.border-${colorSet.name.toLowerCase()}-accentcolor { border-color: ${colorSet.accentColor}; }\n`;
+    cssString += `.border-${id}-backgroundcolor { border-color: ${colorSet.backgroundColor}; }\n`;
+    cssString += `.border-${id}-primarycolor { border-color: ${colorSet.primaryColor}; }\n`;
+    cssString += `.border-${id}-secondarycolor { border-color: ${colorSet.secondaryColor}; }\n`;
+    cssString += `.border-${id}-accentcolor { border-color: ${colorSet.accentColor}; }\n`;
 
 
     cssString += '\n'; // Add a newline for readability
     return cssString
 }
 
-function generateTailwindUtilityClasses(color_groups) {
+function generateTailwindUtilityClasses(color_groups,id) {
     let cssString = ''; // Initialize an empty string to store CSS rules
 
     // Check if custom color groups exist in the data file
@@ -87,7 +87,7 @@ function generateTailwindUtilityClasses(color_groups) {
         // Iterate over each custom color group
         color_groups.forEach((colorSet, index) => {
             // Generate CSS classes for text color and background color
-            cssString += appendTailwindUtilityClasses(colorSet)
+            cssString += appendTailwindUtilityClasses(colorSet,id)
             
         });
     }
@@ -98,8 +98,8 @@ function generateTailwindUtilityClasses(color_groups) {
     
 }
 
-css_string_utilities+=appendTailwindUtilityClasses(primary_color)
-css_string_utilities+=generateTailwindUtilityClasses(color_groups)
+css_string_utilities+=appendTailwindUtilityClasses(primary_color,'primary')
+
 
 css_string_component += `--main-background-color: #3B3B3D;\n`
 css_string_component += `--main-text-color: #F9F9FB;\n`
@@ -150,6 +150,7 @@ color_groups = color_groups.forEach((color_set, i) => {
         - replace illegal characters
         - append index to end for auto-increment unique ids
     */
+   
     let id = `${color_set.name.toLowerCase().replace(/[\s|&;$%@'"<>()+,]/g, "_")}${i}`
     let name = color_set.name
     let background = color_set.background_color
@@ -163,6 +164,7 @@ color_groups = color_groups.forEach((color_set, i) => {
     css_string_root += `--${id}__foreground : ${foreground};\n`
     css_string_root += `--${id}__interaction : ${interaction};\n`
     
+    css_string_utilities+=generateTailwindUtilityClasses(color_groups,id)
     css_string_component = addColorDefinitions(css_string_component, id)      
     css_string_nav = addColorDefinitions(css_string_nav, id)      
     css_string_footer = addColorDefinitions(css_string_footer, id)        
