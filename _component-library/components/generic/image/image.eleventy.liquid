@@ -6,8 +6,11 @@
 
     <img class="w-full" src="{{ imagePath }}" alt="{{ imageAlt }}">
 
-{% else %}
+{% else  %}
 
-    {% image imagePath, imageAlt, 'w-full h-auto', imageSizes %}
+    {% unless env_bookshop_live %}
+        {% image imagePath, imageAlt, 'w-full h-auto', imageSizes %}
+    {% endunless %}
+    
 
 {% endif %}
