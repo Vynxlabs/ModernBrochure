@@ -1,6 +1,6 @@
-<section class="cs-w-full relative flex flex-col items-center h-screen overflow-hidden">
+<section class="cs-w-full relative flex flex-col items-center min-h-[80vh] overflow-hidden">
   {% if content.image.imagePath %}
-    <div class="absolute inset-0 -z-10 flex justify-center items-center">
+    <div class="absolute inset-0 -z-10 flex justify-center items-center object-cover">
       {% bookshop "generic/image" bind: content.image class: "max-w-full max-h-full" %}
     </div>
   {% endif %}
