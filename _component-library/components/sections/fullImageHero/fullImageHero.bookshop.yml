@@ -55,4 +55,4 @@ _inputs:
           icon: format_align_center
         - name: Right
           id: right
-          icon: format_align_center
+          icon: format_align_right
