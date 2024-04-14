@@ -9,6 +9,7 @@
 {% assign font_string = '' %}
 
 {% for font in google_fonts %}
+<p>{{google_fonts}}</p>
   {% assign stripped_font = font | replace: ' ', '+' %}
   {% assign stripped_font = stripped_font | append: ':wght@400;700' %}
   {% if forloop.last %}

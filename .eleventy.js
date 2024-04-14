@@ -92,8 +92,8 @@ module.exports = (eleventyConfig) => {
 
   eleventyConfig.addWatchTarget("./_component-library/**/*");  
 
-  //eleventyConfig.addDataExtension("yaml", (contents) => yaml.load(contents));
-  //eleventyConfig.addDataExtension("yml", (contents) => yaml.load(contents));
+  eleventyConfig.addDataExtension("yaml", (contents) => yaml.load(contents));
+  eleventyConfig.addDataExtension("yml", (contents) => yaml.load(contents));
 
   eleventyConfig.setServerPassthroughCopyBehavior("passthrough");
   eleventyConfig.addPassthroughCopy("./src/images/");
