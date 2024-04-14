@@ -6,15 +6,15 @@
   {% endif %}
 
 
-  <div class="basecontainer w-full flex flex-col {% if styles.contentAlignment == 'left' %} items-start {% elsif styles.contentAlignment == 'center' %} items-center {% else %} items-end {% endif %}">
+  <div class="basecontainer w-full flex flex-col h-full justify-center {% if styles.contentAlignment == 'left' %} items-start {% elsif styles.contentAlignment == 'center' %} items-center {% else %} items-end {% endif %}">
     <div class="max-w-[600px]">
 
 
       <p class=" {% if content.highlightEybrow %} text-{{styles.color_group}}-accentcolor {% endif %} ">{{ content.eyebrow }}</p>
-      <h1>{{ content.headline }}</h1>
-      <p>{{ content.description }}</p>
+      <h1 class="md:text-5xl text-4xl -mt-2">{{ content.headline }}</h1>
+      <p class="mt-3">{{ content.description }}</p>
       {% if content.buttons %}
-        <div>
+        <div class="mt-3 flex w-full justify-between flex-wrap">
           {% for button in content.buttons %}
             {% bookshop "generic/button" bind: button %}
           {% endfor %}
