@@ -1,15 +1,23 @@
+{% capture classes %}
+    {% if class %}
+        {{class}}
+        {% else %}
+        w-full h-auto
+    {% endif %}
+
+{% endcapture %}
+
 {% if env_bookshop_live %}
-    {% assign log = helpers.logit  %}
+    
     <img class="w-full" src="{{ imagePath }}" alt="{{ imageAlt }}">
 
 {% elsif imagePath contains 'http://' or imagePath contains 'https://' %}
-    {% assign log = helpers.logit  %}
     <img class="w-full" src="{{ imagePath }}" alt="{{ imageAlt }}">
 
 {% else  %}
 
-<img class="w-full h-auto" src="{{ imagePath }}" alt="{{ imageAlt }}">
-{% comment %} {% image imagePath, imageAlt, 'w-full h-auto', imageSizes %} {% endcomment %}
+{% comment %} <img class="w-full h-auto" src="{{ imagePath }}" alt="{{ imageAlt }}"> {% endcomment %}
+{% image imagePath, imageAlt, classes, imageSizes %}
 
     
 {% endif %}

@@ -87,17 +87,7 @@ module.exports = (eleventyConfig) => {
   // Markdown
   eleventyConfig.setLibrary("md", markdownIt().use(markdownItAnchor));
 
-  eleventyConfig.on("eleventy.before", () => {
-    execSync(
-      "node ./utils/fetch-theme-variables.js",
-    );
-  });
-
-  eleventyConfig.on("eleventy.after", () => {
-    execSync(
-      "npx tailwindcss -i ./src/css/styles.css -o ./dist/css/styles.css --minify",
-    );
-  });
+  eleventyConfig.addWatchTarget("./_component-library/**/*");  
 
   //eleventyConfig.addDataExtension("yaml", (contents) => yaml.load(contents));
   //eleventyConfig.addDataExtension("yml", (contents) => yaml.load(contents));
@@ -136,6 +126,18 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addFilter("dateFilter", dateFilter);
   eleventyConfig.addFilter("w3DateFilter", w3DateFilter);
   eleventyConfig.addFilter("ymlify", (yml) => yaml.load(yml));
+
+  eleventyConfig.on("eleventy.before", () => {
+    execSync(
+      "node ./utils/fetch-theme-variables.js",
+    );
+  });
+
+  eleventyConfig.on("eleventy.after", () => {
+    execSync(
+      "npx tailwindcss -i ./src/css/styles.css -o ./dist/css/styles.css --minify",
+    );
+  });
 
   return {
     markdownTemplateEngine: "liquid",
