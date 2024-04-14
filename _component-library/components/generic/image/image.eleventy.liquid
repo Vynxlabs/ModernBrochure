@@ -16,8 +16,8 @@
 
 {% else  %}
 
-{% comment %} <img class="w-full h-auto" src="{{ imagePath }}" alt="{{ imageAlt }}"> {% endcomment %}
-{% image imagePath, imageAlt, classes, imageSizes %}
+<img class="{{classes}}" src="{{ imagePath }}" alt="{{ imageAlt }}">
+{% comment %} {% image imagePath, imageAlt, classes, imageSizes %} {% endcomment %}
 
     
 {% endif %}
