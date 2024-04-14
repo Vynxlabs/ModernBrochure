@@ -4,7 +4,10 @@ const dateFilter = require("./src/filters/date-filter.js");
 const w3DateFilter = require("./src/filters/w3-date-filter.js");
 const rssPlugin = require("@11ty/eleventy-plugin-rss");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
-const markdownIt = require("markdown-it");
+const markdownIt = require("markdown-it"),
+md = new markdownIt({
+  html: true,
+});
 const markdownItAnchor = require("markdown-it-anchor");
 const pluginTOC = require("eleventy-plugin-toc");
 const pluginBookshop = require("@bookshop/eleventy-bookshop");
@@ -105,7 +108,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addShortcode("cssBackground", imageCssBackground);
   eleventyConfig.addPlugin(rssPlugin);
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
-  eleventyConfig.addPlugin(pluginTOC, { tags: ["h1", "h2", "h3", "h4"] });
+  eleventyConfig.addPlugin(pluginTOC, { tags: ["h1", "h2", "h3", "h4", "h5", "h6"] });
 
   eleventyConfig.addPlugin(
     pluginBookshop({
@@ -126,6 +129,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addFilter("dateFilter", dateFilter);
   eleventyConfig.addFilter("w3DateFilter", w3DateFilter);
   eleventyConfig.addFilter("ymlify", (yml) => yaml.load(yml));
+  eleventyConfig.addFilter("markdownify", (markdown) => md.render(markdown));
 
   eleventyConfig.on("eleventy.before", () => {
     execSync(
