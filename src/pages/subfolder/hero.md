@@ -43,6 +43,6 @@ hero:
   styles:
     color_group: primary
     contentAlignment: left
-    backgroundOpacity: 15
+    backgroundOpacity: 45
 content_blocks: []
 ---
