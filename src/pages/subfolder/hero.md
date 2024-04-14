@@ -15,10 +15,10 @@ layout: layouts/base.html
 hero:
   _bookshop_name: sections/fullImageHero
   content:
-    highlightEybrow: false
+    highlightEybrow: true
     eyebrow: My Eybroe
     headline: This is my really cool headline telling you about all my stuff
-    description: Hello World!
+    description: THis is ym amazing description convincing you to buy
     buttons:
       - _bookshop_name: generic/button
         url: '#'
@@ -27,9 +27,16 @@ hero:
         color_group: primary
         ghostButton: false
         blackText: false
+      - _bookshop_name: generic/button
+        url: '#'
+        openInNewTab: false
+        text: Button text
+        color_group: magic0
+        ghostButton: true
+        blackText: false
     image:
       _bookshop_name: generic/image
-      imagePath:
+      imagePath: /images/tree.jpg
       imageAlt:
       imageSizes:
   styles:
