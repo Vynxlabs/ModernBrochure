@@ -46,6 +46,6 @@ hero:
     color_group: primary
     contentAlignment: center
     textAlignment: center
-    backgroundOpacity: 30
+    backgroundOpacity: 40
 content_blocks: []
 ---
