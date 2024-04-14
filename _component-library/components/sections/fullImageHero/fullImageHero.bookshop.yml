@@ -19,6 +19,7 @@ blueprint:
   styles:
     color_group: primary
     contentAlignment: left
+    textAlignment: left
     backgroundOpacity: 50
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
@@ -43,6 +44,21 @@ preview:
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
   contentAlignment:
+    type: choice
+    options:
+      allow_empty: false
+      value_key: id
+      values:
+        - name: Left
+          id: left
+          icon: format_align_left
+        - name: Center
+          id: center
+          icon: format_align_center
+        - name: Right
+          id: right
+          icon: format_align_right
+  textAlignment:
     type: choice
     options:
       allow_empty: false
