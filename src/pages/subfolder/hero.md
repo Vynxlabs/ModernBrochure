@@ -4,26 +4,26 @@ draft: false
 title: Hero
 eleventyExcludeFromCollections: false
 eleventyNavigation:
-  key: Hero
+  key: HEro
   order: 1
-  title: lel
+  title: Lel
   parent:
 pageLink: hero
 permalink: /{{ pageLink | slug }}/index.html
-metaDesc: Yoga sessions in Boise
+metaDesc: ''
 layout: layouts/base.html
 hero:
   _bookshop_name: sections/fullImageHero
   content:
-    highlightEybrow: false
-    eyebrow: 'Eyebrow highlight '
-    headline: My headline
-    description: This is my very cool description about my service
+    highlightEybrow: true
+    eyebrow: My Eybroe
+    headline: This is my really cool headline telling you about all my stuff
+    description: THis is ym amazing description convincing you to buy
     buttons:
       - _bookshop_name: generic/button
         url: '#'
         openInNewTab: false
-        text: Sign Up
+        text: Contact Us
         color_group: primary
         ghostButton: false
         blackText: false
@@ -31,13 +31,13 @@ hero:
         url: '#'
         openInNewTab: false
         text: Button text
-        color_group: rose1
-        ghostButton: false
+        color_group: magic0
+        ghostButton: true
         blackText: false
     image:
       _bookshop_name: generic/image
       imagePath: /images/tree.jpg
-      imageAlt: Tree in the middle of a field
+      imageAlt:
       imageSizes:
   styles:
     color_group: primary
