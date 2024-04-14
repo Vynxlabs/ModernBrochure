@@ -122,7 +122,7 @@ _inputs:
     comment: >-
       Write the name of any font from
       [https://fonts.google.com/](https://fonts.google.com/) in data/fonts to
-      access it here
+      access it here. Note: fonts needs to have at least style 400 and 700 available
     type: select
     options:
       values: data.fonts
@@ -130,7 +130,7 @@ _inputs:
     comment: >-
       Write the name of any font from
       [https://fonts.google.com/](https://fonts.google.com/) in data/fonts to
-      access it here
+      access it here. Note: fonts needs to have at least style 400 and 700 available
     type: select
     options:
       values: data.fonts
@@ -138,7 +138,7 @@ _inputs:
     comment: >-
       Write the name of any font from
       [https://fonts.google.com/](https://fonts.google.com/) in data/fonts to
-      access it here
+      access it here. Note: fonts needs to have at least style 400 and 700 available
     type: select
     options:
       values: data.fonts
@@ -146,7 +146,7 @@ _inputs:
     comment: >-
       Write the name of any font from
       [https://fonts.google.com/](https://fonts.google.com/) in data/fonts to
-      access it here
+      access it here. Note: fonts needs to have at least style 400 and 700 available
     type: select
     options:
       values: data.fonts
