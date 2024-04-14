@@ -16,33 +16,33 @@ hero:
   _bookshop_name: sections/fullImageHero
   content:
     highlightEybrow: true
-    eyebrow: The best in the business
-    headline: This is my awesome headline explaining how I am the nest
-    description: We are the best in the business because we just simply are
+    eyebrow: YogaMate best
+    headline: This is my headline about how cool I am
+    description: This is my text talking about how cool my business is if you know you know
     buttons:
       - _bookshop_name: generic/button
         url: '#'
         openInNewTab: false
-        text: Contact Us
+        text: Sign up
         color_group: primary
         ghostButton: false
         blackText: false
       - _bookshop_name: generic/button
         url: '#'
         openInNewTab: false
-        text: Sign Up
+        text: Contact Us
         color_group: primary
         ghostButton: true
         blackText: false
     image:
       _bookshop_name: generic/image
       imagePath: /images/tree.jpg
-      imageAlt: Single tree in a field
+      imageAlt:
       imageSizes:
       class:
   styles:
     color_group: primary
     contentAlignment: left
-    backgroundOpacity: 30
+    backgroundOpacity: 15
 content_blocks: []
 ---
