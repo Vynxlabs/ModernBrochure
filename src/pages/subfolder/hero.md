@@ -16,19 +16,16 @@ hero:
   _bookshop_name: sections/fullImageHero
   content:
     highlightEybrow: true
-    eyebrow: Very cool eyebrow
+    eyebrow: This is my really cool eyebrow
     headline: >-
-      This is my headline about how cool my business isThis is my headline about
-      how cool my business is
-    description: >-
-      This is even more text talking about how cool this business isThis is even
-      more text talking about how cool this business isThis is even more text
-      talking about how cool this business is
+      This is my headline talking about all the cool stuff my business does and
+      things
+    description: This text is actually kind of hard to read
     buttons:
       - _bookshop_name: generic/button
-        url: /menu/
+        url: '#'
         openInNewTab: false
-        text: Sign up
+        text: Sign Up
         color_group: primary
         ghostButton: false
         blackText: false
@@ -42,12 +39,13 @@ hero:
     image:
       _bookshop_name: generic/image
       imagePath: /images/tree.jpg
-      imageAlt: Single tree in field
+      imageAlt: Single tree in a field
       imageSizes:
       class:
   styles:
     color_group: primary
-    contentAlignment: right
+    contentAlignment: center
+    textAlignment: center
     backgroundOpacity: 30
 content_blocks: []
 ---
