@@ -15,10 +15,10 @@ layout: layouts/base.html
 hero:
   _bookshop_name: sections/fullImageHero
   content:
-    highlightEybrow: false
-    eyebrow: Very coo business
-    headline: This is me telling you how cool my business is
-    description: This is **even** more text about me telling you how cool my business is
+    highlightEybrow: true
+    eyebrow: Very cool eyebrow
+    headline: This is my headline about how cool my business is
+    description: This is even more text talking about how cool this business is
     buttons:
       - _bookshop_name: generic/button
         url: '#'
@@ -37,12 +37,12 @@ hero:
     image:
       _bookshop_name: generic/image
       imagePath: /images/tree.jpg
-      imageAlt: Single tree in a field
+      imageAlt: Single tree in field
       imageSizes:
       class:
   styles:
     color_group: primary
     contentAlignment: left
-    backgroundOpacity: 27
+    backgroundOpacity: 50
 content_blocks: []
 ---
