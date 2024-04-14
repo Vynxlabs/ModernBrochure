@@ -25,4 +25,6 @@ preview:
 _inputs:
   imageSizes:
     hidden: true  
+  class:
+    hidden: true
 
