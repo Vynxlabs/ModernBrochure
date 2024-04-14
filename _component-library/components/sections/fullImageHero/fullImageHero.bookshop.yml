@@ -58,7 +58,7 @@ _inputs:
           id: right
           icon: format_align_right
   backgroundOpacity:
-    type: number
+    type: range
     options:
       min: 0
       max: 100
