@@ -16,11 +16,13 @@ hero:
   _bookshop_name: sections/fullImageHero
   content:
     highlightEybrow: true
-    eyebrow: This is my really cool eyebrow
+    eyebrow: This is my really cool eyebrow text
     headline: >-
       This is my headline talking about all the cool stuff my business does and
       things
-    description: This **text** is actually kind of hard to read
+    description: >-
+      This is my description talking about how cool my business is at doing
+      stuff compared to other businesses
     buttons:
       - _bookshop_name: generic/button
         url: '#'
@@ -46,6 +48,6 @@ hero:
     color_group: primary
     contentAlignment: center
     textAlignment: center
-    backgroundOpacity: 40
+    backgroundOpacity: 35
 content_blocks: []
 ---
