@@ -17,11 +17,16 @@ hero:
   content:
     highlightEybrow: true
     eyebrow: Very cool eyebrow
-    headline: This is my headline about how cool my business is
-    description: This is even more text talking about how cool this business is
+    headline: >-
+      This is my headline about how cool my business isThis is my headline about
+      how cool my business is
+    description: >-
+      This is even more text talking about how cool this business isThis is even
+      more text talking about how cool this business isThis is even more text
+      talking about how cool this business is
     buttons:
       - _bookshop_name: generic/button
-        url: '#'
+        url: /menu/
         openInNewTab: false
         text: Sign up
         color_group: primary
@@ -43,6 +48,6 @@ hero:
   styles:
     color_group: primary
     contentAlignment: left
-    backgroundOpacity: 50
+    backgroundOpacity: 30
 content_blocks: []
 ---
