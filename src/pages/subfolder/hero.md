@@ -20,7 +20,7 @@ hero:
     headline: >-
       This is my headline talking about all the cool stuff my business does and
       things
-    description: This text is actually kind of hard to read
+    description: This **text** is actually kind of hard to read
     buttons:
       - _bookshop_name: generic/button
         url: '#'
