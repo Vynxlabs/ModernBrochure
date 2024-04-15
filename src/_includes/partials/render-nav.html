@@ -34,7 +34,7 @@ blogPosts %}
     "
 
     >{{entry.key}}</button></summary>
-  <ul id="{{ entry.key }}" class="md:absolute transition-all md:hidden ml-4 pl-4 md:ml-0 md:p-2 md:left-0 md:z-10 mt-2 w-min origin-top-right rounded bg-primary-backgroundcolornav  border-l-2 border-primary-secondarycolor  focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+  <ul id="{{ entry.key }}" class="md:absolute transition-all md:hidden ml-4 pl-4 md:ml-0 md:p-2 md:left-0 md:z-10 mt-2 w-min origin-top-right rounded bg-{{color_group}}-backgroundcolornav  border-l-2 border-{{color_group}}-secondarycolor  focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
     {% for child in entry.children %} {% render "partials/render-nav.html" with
     child as entry %} {% endfor %}
   </ul>

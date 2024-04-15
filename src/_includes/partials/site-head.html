@@ -1,7 +1,7 @@
 {% assign navPages = collections.all | eleventyNavigation %}
 
 <nav
-  class="fixed left-0 top-0 z-20 h-20 w-full bg-primary-backgroundcolornav text-primary-textcolor md:h-40 lg:h-28 backdrop-blur-sm "
+  class="fixed left-0 top-0 z-20 h-20 w-full bg-{{site.color_group}}-backgroundcolornav text-{{site.color_group}}-textcolor md:h-40 lg:h-28 backdrop-blur-sm "
 >
   <div
     class="mx-auto flex max-w-[1440px] flex-wrap items-center justify-between gap-2 p-4 md:gap-1"
@@ -107,10 +107,10 @@
       id="navbar-sticky"
     >
       <ul
-        class="mt-4 flex flex-col rounded border border-primary-accentcolor  p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-transparent md:p-0 max-h-[50vh] overflow-y-scroll md:overflow-visible md:max-h-none"
+        class="mt-4 flex flex-col rounded border border-{{site.color_group}}-accentcolor  p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-transparent md:p-0 max-h-[50vh] overflow-y-scroll md:overflow-visible md:max-h-none"
       >
-        {% for entry in navPages %} {% render "partials/render-nav.html" with
-        entry as entry %} {% endfor %}
+        {% for entry in navPages %} {% render "partials/render-nav.html", 
+        entry: entry, color_group: site.color_group %} {% endfor %}
       </ul>
     </div>
   </div>
