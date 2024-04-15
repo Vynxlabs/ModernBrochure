@@ -64,9 +64,9 @@ function appendTailwindUtilityClasses(colorSet,id){
 
     //background
     cssString += `.bg-${id}-backgroundcolor { background-color: ${colorSet.backgroundColor}; }\n`;
-    cssString += `.bg-${id}-primarycolor { background-color: ${colorSet.primaryColor}; }\n`;
-    cssString += `.bg-${id}-secondarycolor { background-color: ${colorSet.secondaryColor}; }\n`;
-    cssString += `.bg-${id}-accentcolor { background-color: ${colorSet.accentColor}; }\n`;
+    cssString += `.bg-${id}-primarycolor { background-color: ${hexToRgb(colorSet.primaryColor)}; }\n`;
+    cssString += `.bg-${id}-secondarycolor { background-color: ${hexToRgb(colorSet.secondaryColor)}; }\n`;
+    cssString += `.bg-${id}-accentcolor { background-color: ${hexToRgb(colorSet.accentColor)}; }\n`;
     
     //border color
     cssString += `.border-${id}-backgroundcolor { border-color: ${colorSet.backgroundColor}; }\n`;
@@ -77,6 +77,12 @@ function appendTailwindUtilityClasses(colorSet,id){
 
     cssString += '\n'; // Add a newline for readability
     return cssString
+}
+
+// Convert Hex to RGB format with opacity
+function hexToRgb(hex) {
+    let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? `rgb(${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)} / --tw-bg-opacity)` : null;
 }
 
 function generateTailwindUtilityClasses(color_groups,id) {

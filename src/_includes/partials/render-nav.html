@@ -1,30 +1,31 @@
-
-{% if entry.title == "Blog" %}
-
-  {% assign blogPosts = collections.blog %}
-  {% if  blogPosts %}
-    <li>
-      <a
-        class="data-[state=active]:link hover:text-sopris-green block rounded py-2 pl-3 pr-4 uppercase text-white transition-colors hover:bg-gray-700 dark:border-gray-700 md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent"
-        href="{{ entry.url }}"
-        
-      >{{ entry.title }}</a>
-    </li>
-  {% endif %}
-{% else %}
-  <li>
-    <a
-      class="data-[state=active]:link hover:text-sopris-green block rounded py-2 pl-3 pr-4 uppercase text-white transition-colors hover:bg-gray-700 dark:border-gray-700 md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent"
-      href="{{ entry.url }}"
-      
-    >{{ entry.title }}</a>
-  </li>
-{% endif %}
-{% if  entry.children.size > 0 %}
-<summary>{{entry.key}}</summary>
-<ul>
-  {% for child in entry.children %}
-    {% render "partials/render-nav.html" with child as entry %}
-  {% endfor %}
-</ul>
+{% if entry.title == "Blog" %} {% assign blogPosts = collections.blog %} {% if
+blogPosts %}
+<li>
+  <a
+    class="data-[state=active]:link hover:text-sopris-green block rounded py-2 pl-3 pr-4 uppercase text-white transition-colors hover:bg-gray-700 dark:border-gray-700 md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent"
+    href="{{ entry.url }}"
+    >{{ entry.title }}</a
+  >
+</li>
+{% endif %} {% else %}
+<li>
+  <a
+    class="data-[state=active]:link hover:text-sopris-green block rounded py-2 pl-3 pr-4 uppercase text-white transition-colors hover:bg-gray-700 dark:border-gray-700 md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent"
+    href="{{ entry.url }}"
+    >{{ entry.title }}</a
+  >
+</li>
+{% endif %} {% if entry.children.size > 0 %}
+<div class="relative">
+  <summary><button class="data-[state=active]:link hover:text-sopris-green block rounded py-2 pl-3 pr-4 uppercase text-white transition-colors hover:bg-gray-700 dark:border-gray-700 md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent" 
+    _=
+    "
+    set :submenu to #{{ entry.key }}
+    on click toggle .hidden on "
+    >{{entry.key}}</button></summary>
+  <ul id="{{ entry.key }}" class="md:absolute transition-all block md:hidden md:left-0 md:z-10 mt-2 w-min origin-top-right rounded bg-black shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+    {% for child in entry.children %} {% render "partials/render-nav.html" with
+    child as entry %} {% endfor %}
+  </ul>
+</div>
 {% endif %}
