@@ -34,7 +34,7 @@ blogPosts %}
     _="
     set element opened to false
     set element submenu to #{{ entry.key }} 
-    on click or hover 
+    on click
     if opened then
     js(submenu)
       submenu.classList.add('md:hidden'); 
@@ -43,7 +43,7 @@ blogPosts %}
     js(submenu)
       submenu.classList.remove('md:hidden'); 
     end then set opened to true end
-
+    log 'lellll'
     "
     
     >{{entry.key}} <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -55,4 +55,13 @@ blogPosts %}
     entry:child, color_group: color_group, level: level %} {% endfor %}
   </ul>
 </div>
+<script >
+  document.addEventListener('click', function(event) {
+    console.log("Looogggg")
+    var submenu = document.querySelector('#{{ entry.key }}');
+    if (!submenu.contains(event.target) && submenu.classList.contains('md:hidden') === false) {
+      submenu.classList.add('md:hidden');
+    }
+  });
+</script>
 {% endif %}
