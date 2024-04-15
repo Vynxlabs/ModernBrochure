@@ -118,6 +118,8 @@ _inputs:
           id: magic0
         - name: Rose
           id: rose1
+        - name: Cotton Candy
+          id: cotton_candy2
   font:
     comment: >-
       Write the name of any font from

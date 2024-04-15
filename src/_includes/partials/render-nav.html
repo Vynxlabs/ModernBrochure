@@ -1,5 +1,18 @@
+{% assign level=level | plus: 1%}
+
+{% capture display %}
+{% if level <= 0%}
+md:absolute
+{% else  %}
+  fixed
+    {% endif %}
+ {% endcapture %}
+
+ {%assign hex = 'text-{{color_group}}-textcolor'%}
+
 {% if entry.title == "Blog" %} {% assign blogPosts = collections.blog %} {% if
 blogPosts %}
+ 
 <li>
   <a
     class="data-[state=active]:link hover:text-sopris-green block rounded py-2 pl-3 pr-4 uppercase  transition-colors hover:bg-gray-700 dark:border-gray-700 md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent"
@@ -17,7 +30,7 @@ blogPosts %}
 </li>
 {% endif %} {% if entry.children.size > 0 %}
 <div class="relative">
-  <summary><button class="data-[state=active]:link hover:text-sopris-green block rounded py-2 pl-3 pr-4 uppercase  transition-colors hover:bg-gray-700 dark:border-gray-700 md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent" 
+  <summary><button class="data-[state=active]:link flex hover:text-sopris-green rounded py-2 pl-3 pr-4 uppercase  transition-colors hover:bg-gray-700 dark:border-gray-700 md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent" 
     _="
     set element opened to false
     set element submenu to #{{ entry.key }} 
@@ -32,11 +45,14 @@ blogPosts %}
     end then set opened to true
 
     "
-
-    >{{entry.key}}</button></summary>
-  <ul id="{{ entry.key }}" class="md:absolute transition-all md:hidden ml-4 pl-4 md:ml-0 md:p-2 md:left-0 md:z-10 mt-2 w-min origin-top-right rounded bg-{{color_group}}-backgroundcolornav  border-l-2 border-{{color_group}}-secondarycolor  focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+    
+    >{{entry.key}} <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 7L10 13L16 7" stroke="" stroke-width="2"/>
+      </svg>
+      </button></summary>
+  <ul id="{{ entry.key }}" class="{{display}} relative transition-all md:hidden ml-4 pl-4 md:ml-0 md:p-2 md:left-0 md:z-10 mt-2 w-max origin-top-right rounded bg-{{color_group}}-backgroundcolornav  border-l-2 border-{{color_group}}-secondarycolor  focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
     {% for child in entry.children %} {% render "partials/render-nav.html",
-    child:entry, color_group: color_group %} {% endfor %}
+    entry:child, color_group: color_group, level: level %} {% endfor %}
   </ul>
 </div>
 {% endif %}
