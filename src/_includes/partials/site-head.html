@@ -1,10 +1,10 @@
 {% assign navPages = collections.all | eleventyNavigation %}
 
 <nav
-  class="fixed left-0 top-0 z-20 h-20 w-full bg-primary-backgroundcolor bg-opacity-50 md:h-40 lg:h-28 backdrop-blur-sm"
+  class="fixed left-0 top-0 z-20 h-20 w-full bg-primary-backgroundcolornav text-primary-textcolor md:h-40 lg:h-28 backdrop-blur-sm "
 >
   <div
-    class="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between gap-2 p-4 md:gap-1"
+    class="mx-auto flex max-w-[1440px] flex-wrap items-center justify-between gap-2 p-4 md:gap-1"
   >
     <a href="/" class="flex items-center md:order-3">
       {% comment %} {# Logo goes here #} {# {% image
@@ -71,7 +71,7 @@
       </button>
     </div>
     <div
-      class="md:border-1 flex hidden w-full items-center justify-between border-b border-white border-opacity-20 py-2 text-xs text-white md:order-1 md:flex md:text-sm"
+      class="md:border-1 flex hidden w-full items-center justify-between border-b border-white border-opacity-20 py-2 text-xs  md:order-1 md:flex md:text-sm"
       id="physical"
     >
       <div class="flex flex-col justify-between gap-2 md:flex-row md:gap-8">
@@ -107,7 +107,7 @@
       id="navbar-sticky"
     >
       <ul
-        class="mt-4 flex flex-col rounded border border-gray-700 bg-[rgba(0,0,0,.7)] p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-transparent md:p-0 max-h-[50vh] overflow-y-scroll md:overflow-auto md:max-h-none"
+        class="mt-4 flex flex-col rounded border border-primary-accentcolor  p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-transparent md:p-0 max-h-[50vh] overflow-y-scroll md:overflow-visible md:max-h-none"
       >
         {% for entry in navPages %} {% render "partials/render-nav.html" with
         entry as entry %} {% endfor %}

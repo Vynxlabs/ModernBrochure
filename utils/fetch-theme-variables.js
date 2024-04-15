@@ -1,5 +1,6 @@
 const fs = require('fs');
 const yaml = require('js-yaml')
+const path = require('path');
 
 // read theme colors and fonts from _data/theme.yml
 let dataFile = yaml.load(fs.readFileSync('src/_data/theme.yml','utf-8'))
@@ -64,9 +65,15 @@ function appendTailwindUtilityClasses(colorSet,id){
 
     //background
     cssString += `.bg-${id}-backgroundcolor { background-color: ${colorSet.backgroundColor}; }\n`;
-    cssString += `.bg-${id}-primarycolor { background-color: ${hexToRgb(colorSet.primaryColor)}; }\n`;
-    cssString += `.bg-${id}-secondarycolor { background-color: ${hexToRgb(colorSet.secondaryColor)}; }\n`;
-    cssString += `.bg-${id}-accentcolor { background-color: ${hexToRgb(colorSet.accentColor)}; }\n`;
+    cssString += `.bg-${id}-primarycolor { background-color: ${colorSet.primaryColor}; }\n`;
+    cssString += `.bg-${id}-secondarycolor { background-color: ${colorSet.secondaryColor}; }\n`;
+    cssString += `.bg-${id}-accentcolor { background-color: ${colorSet.accentColor}; }\n`;
+
+    //Nav
+    cssString += `.bg-${id}-backgroundcolornav { background-color: ${colorSet.backgroundColor}70; }\n`;
+    cssString += `.bg-${id}-primarycolornav { background-color: ${colorSet.primaryColor}70; }\n`;
+    cssString += `.bg-${id}-secondarycolornav { background-color: ${colorSet.secondaryColor}70; }\n`;
+    cssString += `.bg-${id}-accentcolornav { background-color: ${colorSet.accentColor}70; }\n`;
     
     //border color
     cssString += `.border-${id}-backgroundcolor { border-color: ${colorSet.backgroundColor}; }\n`;
@@ -77,12 +84,6 @@ function appendTailwindUtilityClasses(colorSet,id){
 
     cssString += '\n'; // Add a newline for readability
     return cssString
-}
-
-// Convert Hex to RGB format with opacity
-function hexToRgb(hex) {
-    let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-    return result ? `rgb(${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)} / --tw-bg-opacity)` : null;
 }
 
 function generateTailwindUtilityClasses(color_groups,id) {
@@ -219,3 +220,52 @@ fs.readFile(variableFileLocation, 'utf-8', (err, cssFile) => {
         console.log(`📚 Writing variables to ${variableFileLocation}`)
     });
 });
+
+////////////////////////////
+// TAILWDIN CONFIG UPDATE //
+///////////////////////////
+// Why? Becuase I don't to use scss and Tailwind at the same time.
+
+// Read theme file (e.g., theme.json)
+// const themeFilePath = path.join(__dirname, '..', 'src', '_data', 'theme.yml');
+// const theme = JSON.parse(fs.readFileSync(themeFilePath, 'utf-8'));
+
+// // Read Tailwind configuration template
+// const tailwindConfigPath = path.join(__dirname, '..', 'tailwind.config.js');
+// const tailwindConfigTemplate = require(tailwindConfigPath);
+
+// // Populate Tailwind configuration with theme colors
+// const tailwindConfig = {
+//   ...tailwindConfigTemplate,
+//   theme: {
+//     ...tailwindConfigTemplate.theme,
+//     extend: {
+//       ...tailwindConfigTemplate.theme.extend,
+//       colors: {
+//         ...tailwindConfigTemplate.theme.extend.colors,
+//       },
+//     },
+//   },
+// };
+
+// const primaryColorGroup = theme.primaryColor_group;
+// const customColorGroups = theme.customColor_groups;
+
+// tailwindConfig.theme.extend.colors[primaryColorGroup.name] = {
+//     textColor: primaryColorGroup.textColor,
+//     backgroundColor: primaryColorGroup.backgroundColor,
+//     primaryColor: primaryColorGroup.primaryColor,
+//     secondaryColor: primaryColorGroup.secondaryColor,
+//     accentColor: primaryColorGroup.accentColor,
+// };
+
+// customColorGroups.forEach(colorGroup => {
+//   tailwindConfig.theme.extend.colors[colorGroup.name] = {
+//     backgroundColor: colorGroup.backgroundColor,
+//     foregroundColor: colorGroup.foregroundColor,
+//     interactionColor: colorGroup.interactionColor,
+//   };
+// });
+
+// // Write updated Tailwind configuration to file
+// fs.writeFileSync(tailwindConfigPath, `module.exports = ${JSON.stringify(tailwindConfig, null, 2)};`);

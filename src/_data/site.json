@@ -3,5 +3,6 @@
     "legalName": "Legal Name",
     "url": "https://exampe.com",
     "authorName":"Sopris",
-    "authorEmail": "info@example.com"
+    "authorEmail": "info@example.com",
+    "color_group": "primary"
 }
