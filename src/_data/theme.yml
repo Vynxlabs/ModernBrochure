@@ -18,6 +18,12 @@ customColor_groups:
     primaryColor: '#4e1a6b'
     secondaryColor: '#de789a'
     accentColor: '#c53a30'
+  - name: Cotton Candy
+    textColor: '#dceffe'
+    backgroundColor: '#00050a'
+    primaryColor: '#0787e9'
+    secondaryColor: '#560495'
+    accentColor: '#bb06c1'
 heading_font: Oswald
 content_font: Fira Sans
 logo_font: Major Mono Display
