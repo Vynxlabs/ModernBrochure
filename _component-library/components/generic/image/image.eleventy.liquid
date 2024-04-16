@@ -16,12 +16,7 @@
 
 {% else  %}
 
-<img class="{{classes}}" src="{{ imagePath }}" alt="{{ imageAlt }}">
-{% comment %} 
-    Problamatic code. Shouldn't be rendering when live editing 
-    but is and causes the component to error out.
-{% endcomment %}
-{% comment %} {% image imagePath, imageAlt, classes, imageSizes %} {% endcomment %}
+{% image imagePath, imageAlt, classes, imageSizes %}
 
     
 {% endif %}

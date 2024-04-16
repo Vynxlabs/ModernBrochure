@@ -20,7 +20,7 @@ blogPosts %}
     >{{ entry.title }}</a
   >
 </li>
-{% endif %} {% else %}
+{% endif %} {% elsif entry.children.size <= 0 %}
 <li>
   <a
     class="data-[state=active]:link hover:text-sopris-green block rounded py-2 pl-3 pr-4 uppercase  transition-colors hover:bg-gray-700 dark:border-gray-700 md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent"
