@@ -6,7 +6,7 @@ eleventyExcludeFromCollections: false
 eleventyNavigation:
   key: service
   order: 1
-  title: Hero
+  title: Test
   parent:
 pageLink: hero
 permalink: /{{ pageLink | slug }}/index.html
