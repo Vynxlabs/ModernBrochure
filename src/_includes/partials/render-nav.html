@@ -4,13 +4,13 @@
 {% if level <= 0%}
 md:absolute
 {% else  %}
-  fixed
+  relative
     {% endif %}
  {% endcapture %}
 
  {%assign hex = 'text-{{color_group}}-textcolor'%}
 
-{% if entry.title == "Blog" %} {% assign blogPosts = collections.blog %} {% if
+{% if entry.title == "Blog" %} {% if
 blogPosts %}
  
 <li>
@@ -35,6 +35,7 @@ blogPosts %}
     set element opened to false
     set element submenu to #{{ entry.key }} 
     on click
+   
     if opened then
     js(submenu)
       submenu.classList.add('md:hidden'); 
@@ -43,25 +44,25 @@ blogPosts %}
     js(submenu)
       submenu.classList.remove('md:hidden'); 
     end then set opened to true end
-    log 'lellll'
+    halt
+    on click from elsewhere
+    if opened then
+    js(submenu)
+      submenu.classList.add('md:hidden'); 
+
+    end then set opened to false 
+
+
     "
     
     >{{entry.key}} <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path class="stroke-{{color_group}}-textcolor" d="M4 7L10 13L16 7" stroke="white" stroke-width="2"/>
+      <path class="stroke-{{color_group}}-textcolor hidden md:inline-block" d="M4 7L10 13L16 7" stroke="white" stroke-width="2"/>
       </svg>
       </button></summary>
-  <ul id="{{ entry.key }}" class="{{display}} backdrop-blur-sm relative transition-all md:hidden ml-4 pl-4 md:ml-0 md:p-2 md:left-0 md:z-10 mt-2 w-max origin-top-right rounded bg-{{color_group}}-backgroundcolornav  border-l-2 border-{{color_group}}-accentcolor  focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+  <ul id="{{ entry.key }}" class="{{display}} backdrop-blur-sm   transition-all md:hidden ml-3 pl- md:ml-0 md:p-2 md:left-0 md:z-10 mt-2 w-max origin-top-right rounded bg-{{color_group}}-backgroundcolornav  border-l-2 border-{{color_group}}-backgroundcolor  focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
     {% for child in entry.children %} {% render "partials/render-nav.html",
-    entry:child, color_group: color_group, level: level %} {% endfor %}
+    entry:child, color_group: color_group, level: level, blogPosts: blogPosts %} {% endfor %}
   </ul>
 </div>
-<script >
-  document.addEventListener('click', function(event) {
-    console.log("Looogggg")
-    var submenu = document.querySelector('#{{ entry.key }}');
-    if (!submenu.contains(event.target) && submenu.classList.contains('md:hidden') === false) {
-      submenu.classList.add('md:hidden');
-    }
-  });
-</script>
+
 {% endif %}

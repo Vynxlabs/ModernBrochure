@@ -30,6 +30,7 @@
     toggle .hidden on .logic-hamburger
     toggle .h-20 on the first <nav/> end
 
+
     "
       >
         <span class="sr-only">Open main menu</span>
@@ -79,25 +80,25 @@
     >
       <div class="flex flex-col justify-between gap-2 md:flex-row md:gap-8">
         <div class="flex gap-1">
-          {% include "partials/icons/map-pin.svg" %}
+          
           <a href="/location" class="block underline"
             >{{ contactInfo.location }}</a
           >
         </div>
         <div class="flex gap-1">
-          {% include "partials/icons/clock.svg" %}
+          
           <p>{{ contactInfo.hours }}</p>
         </div>
       </div>
       <div class="flex flex-col justify-between gap-2 md:flex-row md:gap-8">
         <div class="flex gap-1">
-          {% include "partials/icons/phone.svg" %}
+          
           <a href="tel:{{ contactInfo.phone }}" class="block underline"
             >{{ contactInfo.phone }}</a
           >
         </div>
         <div class="flex gap-1">
-          {% include "partials/icons/mail.svg" %}
+          
           <a href="mailto:{{ contactInfo.email }}" class="block underline"
             >{{ contactInfo.email }}</a
           >
@@ -113,7 +114,7 @@
         class="mt-4 flex flex-col rounded border border-{{site.color_group}}-backgroundcolor  p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-transparent md:p-0 max-h-[50vh] overflow-y-scroll md:overflow-visible md:max-h-none"
       >
         {% for entry in navPages %} {% render "partials/render-nav.html", 
-        entry: entry, color_group: site.color_group %} {% endfor %}
+        entry: entry, color_group: site.color_group, level:level, blogPosts: collections.blog %} {% endfor %}
       </ul>
     </div>
   </div>
