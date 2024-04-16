@@ -6,7 +6,7 @@ eleventyExcludeFromCollections: false
 eleventyNavigation:
   key: service1
   order: 1
-  title:
+  title: CoolService
   parent: service
 pageLink: service1
 permalink: /{{ pageLink | slug }}/index.html
