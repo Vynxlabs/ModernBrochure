@@ -21,13 +21,14 @@
     </style>
   </head>
   {% include "partials/watermark.html" %}
-  <body class="mx-4 sm:mx-10  flex flex-col h-screen">
+  <body class="mx-4 sm:mx-10  flex flex-col h-screen text-{{site.color_group}}-textcolor bg-{{site.color_group}}-backgroundcolor ">
     {% include "partials/site-head.html" %}
 
     <main tabindex="-1" id="main-content" class="flex-1 ">
       {% bookshop_include "hero" hero: hero %}
       {% bookshop_include "page" content_blocks: content_blocks %}
       {% block content %}{% endblock %}
+      
     </main>
     {% include "partials/site-foot.html" %}
     <script src="https://unpkg.com/hyperscript.org@0.9.11"></script>
