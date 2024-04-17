@@ -4,7 +4,7 @@ draft: false
 title: Hero
 eleventyExcludeFromCollections: false
 eleventyNavigation:
-  key: services
+  key: hero
   order: 1
   title: services
   parent:
