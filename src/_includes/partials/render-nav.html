@@ -30,12 +30,7 @@ blogPosts %}
 </li>
 {% endif %} {% if entry.children.size > 0 %}
 <div class="relative ">
-  <li>
-    <a
-      class="md:hidden data-[state=active]:link hover:text-sopris-green block rounded py-2 pl-3 pr-4 uppercase  transition-colors hover:bg-gray-700 dark:border-gray-700 md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent"
-      href="{{ entry.url }}"
-      >{{ entry.title }}</a
-    >
+  
   <summary class=""><button class="hidden md:flex data-[state=active]:link hover:text-sopris-green rounded py-2 pl-3 pr-4 uppercase  transition-colors hover:bg-gray-700 dark:border-gray-700 md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent" 
     _="
     set element opened to false
@@ -65,7 +60,7 @@ blogPosts %}
       <path class="stroke-{{color_group}}-textcolor hidden md:inline-block" d="M4 7L10 13L16 7" stroke="white" stroke-width="2"/>
       </svg>
       </button></summary>
-  <ul id="{{ entry.key }}" class="{{display}} backdrop-blur-sm   transition-all md:hidden ml-3 pl- md:ml-0 md:p-2 md:left-0 md:z-10 mt-2 w-max origin-top-right rounded bg-{{color_group}}-backgroundcolornav  border-l-2 border-{{color_group}}-backgroundcolor  focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+  <ul id="{{ entry.key }}" class="{{display}} backdrop-blur-sm md:rotate-[rotateX(-90deg)] md:translate-x-1/2 md:origin-top transition-all md:duration-300  md:opacity-30 md:hover:opacity-100 md:hover:rotate-[rotateX(0deg)] md:hover:translate-x-1/2 md:hover:visible md:invisible   ml-3 pl- md:ml-0 md:p-2 md:left-0 md:z-10 mt-2 w-max  rounded bg-{{color_group}}-backgroundcolornav  border-l-2 border-{{color_group}}-backgroundcolor  focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
     {% for child in entry.children %} {% render "partials/render-nav.html",
     entry:child, color_group: color_group, level: level, blogPosts: blogPosts %} {% endfor %}
   </ul>
