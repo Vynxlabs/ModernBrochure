@@ -30,7 +30,13 @@ blogPosts %}
 </li>
 {% endif %} {% if entry.children.size > 0 %}
 <div class="relative ">
-  <summary><button class="data-[state=active]:link flex hover:text-sopris-green rounded py-2 pl-3 pr-4 uppercase  transition-colors hover:bg-gray-700 dark:border-gray-700 md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent" 
+  <li>
+    <a
+      class="md:hidden data-[state=active]:link hover:text-sopris-green block rounded py-2 pl-3 pr-4 uppercase  transition-colors hover:bg-gray-700 dark:border-gray-700 md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent"
+      href="{{ entry.url }}"
+      >{{ entry.title }}</a
+    >
+  <summary class=""><button class="hidden md:flex data-[state=active]:link hover:text-sopris-green rounded py-2 pl-3 pr-4 uppercase  transition-colors hover:bg-gray-700 dark:border-gray-700 md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent" 
     _="
     set element opened to false
     set element submenu to #{{ entry.key }} 
