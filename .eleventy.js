@@ -14,12 +14,14 @@ const pluginBookshop = require("@bookshop/eleventy-bookshop");
 const yaml = require("js-yaml");
 const { execSync } = require("child_process");
 const fs = require("fs");
+const svgContents = require("eleventy-plugin-svg-contents");
 
 const imageShortcode = async (
   src,
   alt,
   cls = "",
   sizes = "100vw",
+  preferSvg = true,
   widths = [200, 400, 850, 1280, 1600],
   formats = ["avif", "webp", "svg", "jpeg"],
 ) => {
@@ -33,6 +35,47 @@ const imageShortcode = async (
       `[11ty/eleventy-img] ${Date.now() - before}ms: ${inputFilePath}`,
     );
     const imageMetadata = await Image(inputFilePath, {
+      svgShortCircuit: preferSvg ? "size" :false,
+      widths: [...widths],
+      formats: [...formats, null],
+      outputDir: "dist/assets/images",
+      urlPath: "/assets/images",
+    });
+
+    const imageAttributes = {
+      class: cls,
+      alt,
+      sizes: sizes || "100vw",
+      loading: "lazy",
+      decoding: "async",
+    };
+
+    return Image.generateHTML(imageMetadata, imageAttributes);
+  } else{
+    return `<img class='${cls}' src='${src}' alt='${alt}'>`;
+  }
+};
+
+const logoShortcode = async (
+  src,
+  alt,
+  cls = "",
+  sizes = "100vw",
+  preferSvg = true,
+  widths = [200],
+  formats = ["avif", "webp", "svg", "jpeg"],
+) => {
+  let before = Date.now();
+  let inputFilePath =
+    src == null ? src : path.join("src", src);
+console.log(inputFilePath)
+  if (fs.existsSync(inputFilePath)) {
+    
+    console.log(
+      `[11ty/eleventy-img] ${Date.now() - before}ms: ${inputFilePath}`,
+    );
+    const imageMetadata = await Image(inputFilePath, {
+      svgShortCircuit: preferSvg ? "size" :false,
       widths: [...widths],
       formats: [...formats, null],
       outputDir: "dist/assets/images",
@@ -105,10 +148,12 @@ module.exports = (eleventyConfig) => {
   //eleventyConfig.addPassthroughCopy({ './src/robots.txt': '/robots.txt' });
   eleventyConfig.addPassthroughCopy("./src/_redirects");
   eleventyConfig.addAsyncShortcode("image", imageShortcode);
+  eleventyConfig.addAsyncShortcode("logo", logoShortcode);
   eleventyConfig.addShortcode("cssBackground", imageCssBackground);
   eleventyConfig.addPlugin(rssPlugin);
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
   eleventyConfig.addPlugin(pluginTOC, { tags: ["h1", "h2", "h3", "h4", "h5", "h6"] });
+  eleventyConfig.addPlugin(svgContents);
 
   eleventyConfig.addPlugin(
     pluginBookshop({

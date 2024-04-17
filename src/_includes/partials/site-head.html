@@ -2,19 +2,22 @@
 
 {% assign level=-1%}
 
+{% capture widths %}
+    [100]
+{% endcapture %}
 
 <nav
-  class="fixed left-0 top-0 z-20 h-20 w-full bg-{{site.color_group}}-backgroundcolornav text-{{site.color_group}}-textcolor md:h-40 lg:h-28 backdrop-blur-sm "
+  class="fixed left-0 top-0 z-20 h-max w-full bg-{{site.color_group}}-backgroundcolornav text-{{site.color_group}}-textcolor  backdrop-blur-sm flex "
 >
+<a href="/" class="md:flex items-center self-start md:self-center p-4 ml-4 flex-shrink-0 hidden ">
+
+      
+  {% logo "/images/logo-white.svg", "logo for sopris", " w-[100px]"  %}
+</a>
   <div
-    class="mx-auto flex max-w-[1440px] flex-wrap items-center justify-between gap-2 p-4 md:gap-1"
+    class="mx-auto flex max-w-[1440px] flex-wrap items-center justify-between gap-2 p-4 md:gap-1 w-full"
   >
-    <a href="/" class="flex items-center md:order-3">
-      {% comment %} {# Logo goes here #} {# {% image
-      "src/images/Logo/soprisLogo.png", "mr-3 w-14 h-7 w-[86px]
-      h-[50px]","Sopris Logo","(max-width: 850px) 60px",[100]%} #}{% endcomment
-      %}
-    </a>
+  <a href="/" class="md:hidden ">{% image "/images/logo-white.svg", "logo for sopris", " w-[100px]" %}</a>
     <div class="flex items-center md:order-3">
       {% include "partials/cta-button.html" %}
       <button

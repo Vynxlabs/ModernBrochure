@@ -28,6 +28,7 @@
     "@bookshop/generate": "^3.9.0",
     "@netlify/functions": "^2.1.0",
     "@unlighthouse/cli": "^0.10.0",
+    "eleventy-plugin-svg-contents": "^0.7.0",
     "eleventy-plugin-toc": "^1.1.5",
     "js-yaml": "^4.1.0",
     "liquidjs": "^10.10.2",
