@@ -27,7 +27,8 @@
     <main tabindex="-1" id="main-content" class="flex-1 ">
       {% bookshop_include "hero" hero: hero %}
       {% bookshop_include "page" content_blocks: content_blocks %}
-      {% block content %}{% endblock %}
+      
+        {{ content }}
       
     </main>
     {% include "partials/site-foot.html" %}
