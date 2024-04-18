@@ -39,17 +39,20 @@ blogPosts %}
    
     if opened then
     js(submenu)
-      submenu.classList.add('md:hidden'); 
+      submenu.classList.remove('md:scale-y-100');
+      submenu.classList.add('md:invisible');
 
     end then set opened to false else
     js(submenu)
-      submenu.classList.remove('md:hidden'); 
+      submenu.classList.add('md:scale-y-100');
+      submenu.classList.remove('md:invisible'); 
     end then set opened to true end
     halt
     on click from elsewhere
     if opened then
     js(submenu)
-      submenu.classList.add('md:hidden'); 
+    submenu.classList.remove('md:scale-y-100');
+    submenu.classList.add('md:invisible');
 
     end then set opened to false 
 
@@ -60,7 +63,7 @@ blogPosts %}
       <path class="stroke-{{color_group}}-textcolor hidden md:inline-block" d="M4 7L10 13L16 7" stroke="white" stroke-width="2"/>
       </svg>
       </button></summary>
-  <ul id="{{ entry.key }}" class="{{display}} backdrop-blur-sm md:rotate-[rotateX(-90deg)] md:translate-x-1/2 md:origin-top transition-all md:duration-300  md:opacity-30 md:hover:opacity-100 md:hover:rotate-[rotateX(0deg)] md:hover:translate-x-1/2 md:hover:visible md:invisible   ml-3 pl- md:ml-0 md:p-2 md:left-0 md:z-10 mt-2 w-max  rounded bg-{{color_group}}-backgroundcolornav  border-l-2 border-{{color_group}}-backgroundcolor  focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+  <ul id="{{ entry.key }}" class="{{display}}  transition-all md:duration-300 origin-top md:invisible   md:scale-y-0  ml-3 pl- md:ml-0 md:p-2 md:left-0 md:z-10 mt-2 w-max  rounded   border-l-2 border-{{color_group}}-backgroundcolor bg-{{color_group}}-backgroundcolornav  focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
     {% for child in entry.children %} {% render "partials/render-nav.html",
     entry:child, color_group: color_group, level: level, blogPosts: blogPosts %} {% endfor %}
   </ul>
