@@ -6,7 +6,7 @@ eleventyExcludeFromCollections: false
 eleventyNavigation:
   key: services
   order: 1
-  title: services
+  title: all services
   parent:
 pageLink: hero
 permalink: /{{ pageLink | slug }}/index.html
@@ -58,3 +58,19 @@ Something about my service being awesome
 ### asdfasdfasdfasdfasdfasdf
 
 asdfasdfasdfasdfasdfasf
+* 4t2This is my list
+* lel
+
+Now this is my ***other*** list:
+1. 456
+2. asdf
+3. a456
+
+#### Heading 4
+This is some text
+
+##### Heading 5
+This is some more text
+
+###### Heading 6
+This is all the textThis is all the textThis is all the textThis is all the textThis is all the textThis is all the textThis is all the textThis is all the textThis is all the textThis is all the textThis is all the textThis is all the textThis is all the textThis is all the textThis is all the textThis is all the textThis is all the textThis is all the textThis is all the textThis is all the textThis is all the textThis is all the textThis is all the text

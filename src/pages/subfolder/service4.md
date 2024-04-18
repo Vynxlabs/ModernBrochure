@@ -7,7 +7,7 @@ eleventyNavigation:
   key: service4
   order: 1
   title:
-  parent: 
+  parent: service3
 pageLink: service4
 permalink: /{{ pageLink | slug }}/index.html
 metaDesc: ''

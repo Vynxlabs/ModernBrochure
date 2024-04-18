@@ -28,7 +28,9 @@
       {% bookshop_include "hero" hero: hero %}
       {% bookshop_include "page" content_blocks: content_blocks %}
       
-        {{ content }}
+        <div class="flex justify-center">
+          <section class="w-full max-w-[720px] cs-mainContent">{{ content }}</section>
+        </div>
       
     </main>
     {% include "partials/site-foot.html" %}

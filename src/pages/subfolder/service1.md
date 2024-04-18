@@ -7,7 +7,7 @@ eleventyNavigation:
   key: service1
   order: 1
   title: CoolService
-  parent: 
+  parent: services
 pageLink: service1
 permalink: /{{ pageLink | slug }}/index.html
 metaDesc: ''
