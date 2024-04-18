@@ -4,9 +4,9 @@ draft: false
 title: Hero
 eleventyExcludeFromCollections: false
 eleventyNavigation:
-  key: service
+  key: hero
   order: 1
-  title: Test
+  title: services
   parent:
 pageLink: hero
 permalink: /{{ pageLink | slug }}/index.html
