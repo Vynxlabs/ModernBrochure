@@ -24,6 +24,6 @@ customColor_groups:
     primaryColor: '#0787e9'
     secondaryColor: '#560495'
     accentColor: '#bb06c1'
-heading_font: Oswald
+heading_font: Merriweather
 content_font: Fira Sans
 logo_font: Major Mono Display
