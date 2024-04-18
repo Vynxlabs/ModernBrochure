@@ -2,9 +2,9 @@
 
 {% capture display %}
 {% if level <= 0%}
-md:absolute
+md:absolute md:left-0
 {% else  %}
-  relative
+  md:absolute md:left-full md:top-1/4
     {% endif %}
  {% endcapture %}
 
@@ -60,13 +60,15 @@ blogPosts %}
     "
     
     >{{entry.key}} <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path class="stroke-{{color_group}}-textcolor hidden md:inline-block" d="M4 7L10 13L16 7" stroke="white" stroke-width="2"/>
+      <path class="stroke-{{color_group}}-textcolor hidden md:inline-block " d="M4 7L10 13L16 7" stroke="white" stroke-width="2"/>
       </svg>
       </button></summary>
-  <ul id="{{ entry.key }}" class="{{display}}  transition-all md:duration-300 origin-top md:invisible   md:scale-y-0  ml-3 pl- md:ml-0 md:p-2 md:left-0 md:z-10 mt-2 w-max  rounded   border-l-2 border-{{color_group}}-backgroundcolor bg-{{color_group}}-backgroundcolornav  focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+  <ul id="{{ entry.key }}" class="{{display}}    transition-all md:duration-300 origin-top md:invisible   md:scale-y-0  ml-3 pl- md:ml-0 md:p-2  md:z-10 mt-2 w-max  rounded   border-l-2 border-{{color_group}}-backgroundcolor bg-{{color_group}}-backgroundcolornav  focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
     {% for child in entry.children %} {% render "partials/render-nav.html",
     entry:child, color_group: color_group, level: level, blogPosts: blogPosts %} {% endfor %}
   </ul>
 </div>
+
+  
 
 {% endif %}

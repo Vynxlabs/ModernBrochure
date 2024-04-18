@@ -2,12 +2,11 @@
 
 {% assign level=-1%}
 
-{% capture widths %}
-    [100]
-{% endcapture %}
+
 
 <nav
-  class="fixed left-0 top-0 z-20 h-max w-full bg-{{site.color_group}}-backgroundcolornav text-{{site.color_group}}-textcolor  backdrop-blur-sm flex transition-all"
+id="navbar"
+  class="fixed left-0 top-0 z-20 h-24 md:h-auto w-full bg-{{site.color_group}}-backgroundcolornav text-{{site.color_group}}-textcolor  backdrop-blur-sm flex "
 >
 <a href="/" class="md:flex items-center self-start md:self-center p-4 ml-4 flex-shrink-0 hidden ">
 
@@ -27,10 +26,17 @@
         aria-controls="navbar-sticky"
         aria-expanded="false"
         _="
-    on click toggle .hidden on #navbar-sticky
-    toggle .hidden on #physical
+    on click 
+    toggle .scale-y-100 on #navbar-sticky
+    toggle .invisible on #navbar-sticky
+
+    toggle .scale-y-100 on #physical
+    toggle .invisible on #physical
+
     toggle .hidden on .logic-x
     toggle .hidden on .logic-hamburger
+
+    toggle .h-auto on #navbar
     end
 
 
@@ -78,7 +84,7 @@
       </button>
     </div>
     <div
-      class="md:border-1 flex hidden w-full items-center justify-between border-b border-white border-opacity-20 py-2 text-xs  md:order-1 md:flex md:text-sm gap-2"
+      class="md:border-1 flex scale-y-0 invisible transition-all duration-300 origin-top md:scale-y-100 md:visible w-full items-center justify-between border-b border-white border-opacity-20 py-2 text-xs  md:order-1 md:flex md:text-sm gap-2"
       id="physical"
     >
       <div class="flex flex-col justify-between gap-2 md:flex-row md:gap-8">
@@ -110,7 +116,7 @@
     </div>
 
     <div
-      class="hidden w-full items-center justify-between md:order-2 md:flex md:w-auto"
+      class="scale-y-0 md:scale-y-100 invisible transition-all duration-300 origin-top md:visible w-full items-center justify-between md:order-2 md:flex md:w-auto"
       id="navbar-sticky"
     >
       <ul
