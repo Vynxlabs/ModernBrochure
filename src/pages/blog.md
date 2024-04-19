@@ -14,6 +14,6 @@ metaDesc: ''
 layout: layouts/feed.html
 pagination:
     data: collections.blog
-    size: 3
+    size: 10
 content_blocks: []
 ---
