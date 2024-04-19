@@ -4,11 +4,11 @@ draft: false
 title: This is my cool page
 eleventyExcludeFromCollections: false
 eleventyNavigation:
-  key: page
+  key: da page
   order: 1
   title:
   parent:
-pageLink:
+pageLink: da page
 permalink: >-
   {% if pageLink and pageLink == 'blog' or pageLink == 'Blog' %}blog{% if
   pagination.pageNumber > 0 %}/page/{{ pagination.pageNumber }}{%endif
