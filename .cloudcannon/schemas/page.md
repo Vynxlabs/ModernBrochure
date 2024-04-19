@@ -3,12 +3,23 @@ draft: true
 title: ""
 eleventyExcludeFromCollections: false
 eleventyNavigation:
-  key: Home
+  pageKey: 
+  key: >-
+    {% if pageKey %}{{pageKey}}{% else %}{{title | slug}}{%
+  endif %}
   order: 1
   title:
   parent:
-pageLink: "mylocation"
-permalink: "/{{ pageLink | slug }}/index.html"
+pageLink: ""
+permalink: >- 
+  {% if pageLink and pageLink | downcase == "blog" %}
+  blog{% if pagination.pageNumber > 0 %}/page/{{ pagination.pageNumber }}{%endif %}/index.html
+  {% elsif pageLink %}
+  "/{{ pageLink | slug }}/index.html"
+  {% else %}
+  "/{{ title | slug }}/index.html"{%endif %}
+   
+  
 metaDesc: ""
 layout: "layouts/base.html"
 hero:

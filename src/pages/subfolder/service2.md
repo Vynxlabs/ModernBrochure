@@ -4,6 +4,7 @@ draft: false
 title: service2
 eleventyExcludeFromCollections: false
 eleventyNavigation:
+  test:
   key: service2
   order: 2
   title:

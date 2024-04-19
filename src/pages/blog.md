@@ -12,5 +12,8 @@ permalink: >-
   endif %}/index.html
 metaDesc: ''
 layout: layouts/feed.html
+pagination:
+    data: collections.blog
+    size: 3
 content_blocks: []
 ---

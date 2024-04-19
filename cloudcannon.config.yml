@@ -52,8 +52,10 @@ collections_config:
         comment: Will remove this page from top navigation top nav and footer
       eleventyNavigation:
         label: Navigation
-      eleventyNavigation.key:
+      eleventyNavigation.parentKey:
         comment: How this page is identified in the navigation
+      eleventyNavigation.key:
+        hidden: true
       eleventyNavigation.order:
         comment: What order in the navigation
       eleventyNavigation.title:
