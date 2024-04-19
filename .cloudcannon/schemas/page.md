@@ -4,8 +4,7 @@ title: ""
 eleventyExcludeFromCollections: false
 eleventyNavigation:
   pageKey: 
-  key: >-
-    {% if pageKey %}{{pageKey}}{% else %}{{title | slug}}{%endif %}
+  key: {% if pageKey %}{{pageKey}}{% else %}{{title | slug}}{%endif %}
   order: 1
   title:
   parent:
