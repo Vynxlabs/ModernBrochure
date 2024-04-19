@@ -4,7 +4,7 @@ draft: false
 title: jola
 eleventyExcludeFromCollections: false
 eleventyNavigation:
-  key: page
+  key: jjjj
   order: 1
   title:
   parent:
