@@ -1,7 +1,7 @@
 ---
 _schema: default
 draft: false
-title: This is my cool page
+title: This is my cool page dfg
 eleventyExcludeFromCollections: false
 eleventyNavigation:
   key: da page
