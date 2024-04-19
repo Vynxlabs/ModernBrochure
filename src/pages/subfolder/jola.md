@@ -8,7 +8,7 @@ eleventyNavigation:
   order: 1
   title:
   parent:
-pageLink:
+pageLink: dld
 permalink: >-
   {% if pageLink and pageLink == 'blog' or pageLink == 'Blog' %}blog{% if
   pagination.pageNumber > 0 %}/page/{{ pagination.pageNumber }}{%endif
