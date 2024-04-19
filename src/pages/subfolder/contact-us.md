@@ -4,7 +4,7 @@ draft: false
 title: Contact Us
 eleventyExcludeFromCollections: false
 eleventyNavigation:
-  key: page
+  key: Contact
   order: 1
   title:
   parent:
