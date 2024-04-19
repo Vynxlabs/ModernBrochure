@@ -11,7 +11,7 @@ eleventyNavigation:
   parent:
 pageLink: ""
 permalink: >-
-  {% if pageLink and pageLink | downcase == 'blog' %}
+  {% if pageLink and pageLink == 'blog' or pageLink == 'Blog' %}
   blog{% if pagination.pageNumber > 0 %}/page/{{ pagination.pageNumber }}{%endif %}/index.html
   {% elsif pageLink %}
   "/{{ pageLink | slug }}/index.html"
