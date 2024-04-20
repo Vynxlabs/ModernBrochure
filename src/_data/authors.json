@@ -1,6 +1,9 @@
-{"authors":[
-    {"firstName":"Jhon",
-    "lastName":"Doe",
-    "image":"/assets/images/authors/jhon.jpg"
+{
+    "authors": [
+        {
+            "firstName": "Jhon",
+            "lastName": "Doe",
+            "image": "/assets/uploads/2149529892.jpg"
+        }
+    ]
 }
-]}
