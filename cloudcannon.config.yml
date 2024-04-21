@@ -14,7 +14,7 @@ collections_config:
   data:
     path: _data
     output: false
-    icon: insert_chart_outlined
+    icon: manufacturing
     disable_add: false
     disable_add_folder: false
     disable_file_actions: false
