@@ -110,9 +110,9 @@ collections_config:
         instance_value: NOW
       image:
         hidden: true
-      schemas:
-        default:
-          path: .cloudcannon/schemas/post.md
+    schemas:
+      default:
+        path: .cloudcannon/schemas/post.md
       
 _inputs:
   hero:
