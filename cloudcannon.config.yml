@@ -8,6 +8,7 @@ paths:
   includes: _includes
 data_config:
   fonts: true
+  blog: true
 collections_config:
   data:
     path: _data
