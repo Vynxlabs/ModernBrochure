@@ -111,6 +111,8 @@ collections_config:
         type: select
         options:
           values: data.authors
+          value_key: id
+          text_key: name
       tags:
         type: multiselect
         options:
@@ -122,8 +124,7 @@ collections_config:
         hidden: true
     schemas:
       default:
-        path: .cloudcannon/schemas/post.md
-      
+        path: .cloudcannon/schemas/post.md 
 _inputs:
   hero:
     type: object
@@ -157,6 +158,9 @@ _inputs:
           id: rose1
         - name: Cotton Candy
           id: cotton_candy2
+  id:
+    hidden: true
+    instance_value: UUID
   font:
     comment: >-
       Write the name of any font from
