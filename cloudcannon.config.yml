@@ -88,7 +88,7 @@ collections_config:
         path: .cloudcannon/schemas/page.md
     schema_key: null
   blog:
-    path: blog
+    path: posts
     output: true
     url: dist/blog
     filter:
