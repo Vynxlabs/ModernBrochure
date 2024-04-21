@@ -8,7 +8,8 @@ paths:
   includes: _includes
 data_config:
   fonts: true
-  blog: true
+  authors: true
+  tags: true
 collections_config:
   data:
     path: _data
@@ -109,11 +110,11 @@ collections_config:
       author:
         type: select
         options:
-          values: data.blog.authors
+          values: data.authors
       tags:
         type: multiselect
         options:
-          values: data.blog.tags
+          values: data.tags
       date:
         label: Published Date
         instance_value: NOW
