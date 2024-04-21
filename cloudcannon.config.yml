@@ -87,6 +87,33 @@ collections_config:
       default:
         path: .cloudcannon/schemas/page.md
     schema_key: null
+  blog:
+    path: blog
+    output: true
+    url: dist/blog
+    filter:
+      exclude:
+        - posts.json
+    -enabled_editors:
+      - content
+      - visual
+    _inputs:
+      title:
+        label: Page Title
+        comment: Seo focused page title
+      metaDesc:
+        type: textarea
+        label: Meta Description
+        comment: SEO focused page summary
+      date:
+        label: Published Date
+        instance_value: NOW
+      image:
+        hidden: true
+      schemas:
+        default:
+          path: .cloudcannon/schemas/post.md
+      
 _inputs:
   hero:
     type: object
