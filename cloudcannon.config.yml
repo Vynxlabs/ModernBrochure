@@ -105,6 +105,14 @@ collections_config:
         type: textarea
         label: Meta Description
         comment: SEO focused page summary
+      author:
+        type: select
+        options:
+          values: data.blog.authors
+      tags:
+        type: multiselect
+        options:
+          values: data.blog.tags
       date:
         label: Published Date
         instance_value: NOW

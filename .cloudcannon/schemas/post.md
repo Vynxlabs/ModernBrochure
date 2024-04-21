@@ -2,10 +2,11 @@
 title: ""
 metaDesc: ""
 date: ""
+author:
 tags: 
 blogImage: ""
 image: >-
-    {% if blogImage %} {{blog.defaultImage}} {% endif %}
+    {% if blogImage %}{{blogImage}}{% else %}{{blog.defaultImage}}{% endif %}
 ---
 ## Once upon a time...
 There was a...
