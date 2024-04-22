@@ -16,6 +16,9 @@ permalink: >-
   %}/{{ title | slug }}/index.html{%endif %}
 metaDesc: ''
 layout: layouts/base.html
+pagination:
+  data: collections.blog
+  size: 22
 hero:
 content_blocks: []
 ---
