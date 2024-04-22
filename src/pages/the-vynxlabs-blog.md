@@ -4,7 +4,7 @@ draft: false
 title: The Vynxlabs Blog
 eleventyExcludeFromCollections: false
 eleventyNavigation:
-  key: page
+  key: blog
   order: 1
   title:
   parent:
