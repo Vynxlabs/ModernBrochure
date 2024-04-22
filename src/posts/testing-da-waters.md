@@ -9,7 +9,8 @@ tags:
   - Announcement
   - Service Updates
 blogImage: /assets/uploads/black-abstract.jpg
-image: '{% if blogImage %}{{blogImage}}{% else %}{{blog.defaultImage}}{% endif %}'
+image: >-
+  {% if blogImage %}{{blogImage}}{% else %}{{blog.defaultImage}}{% endif %}
 ---
 ## Once upon a time...
 
@@ -17,4 +18,3 @@ There was a...
 
 ## asdfasdfasdf
 
-&nbsp;

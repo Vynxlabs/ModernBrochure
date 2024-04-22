@@ -1,24 +1,33 @@
-<div class="w-full hover:underline">
+{% capture image %}
+  {% if image %}
+    {{image}}
+    {% else %}
+    image:
+      imagePath: {{ blog.defaultImage }}
+      imageAlt: {{ blog.defaultImageAltText }}
+  {% endif %}
+{% endcapture %}
+{% assign image = image | ymlify %}
+<div class="w-full ">
   <div class="flex justify-between text-sm opacity-70">
     <div>
-      <p>Writteny by</p>
+      <p>Written by</p>
       <p>{{ author }}</p>
     </div>
     <div>
-      <p>{{ date }}</p>
-      <p>{{ length }}</p>
+      <p>{{ length  }}</p>
+      <time datetime="{{ date | date: "%Y-%m-%d" }}">{{ date | date: "%B %d, %Y" }}</time>
     </div>
   </div>
-  <a class="transition-all hover:scale-105" href="{{url}}">{% bookshop "generic/image" bind: image  %}</a>
-  <ul class="flex text-{{color_group}}-textcolor">
-    {% for tag in tags %}
-      <li class="after:absolute after:contents['·'] after:left-2 relative">
+  <a class="" href="{{url}}">{% bookshop "generic/image" bind: image class: "rounded transition-all duration-300 scale-100 hover:scale-105"  %}</a>
+  <ul class="flex text-{{color_group}}-accentcolor flex flex-wrap gap-2 overflow-hidden opacity-70">
+    {% for tag in blogTags %}
+      <li class="after:absolute after:content-['·']  after:left-2 relative before:content-[' '] after:left-[-5px] after:text-lg">
         <a
           href="/tag/{{ tag | slug }}/"
           >{{ tag | capitalize | replace: ' ', '' }}</a>
       </li>
     {% endfor %}
   </ul>
-  <h2><a href="{{url}}">{{ blogTitle }}</a></h2>
-
+  <h2 class="hover:underline text-2xl"><a href="{{url}}">{{ blogTitle }}</a></h2>
 </div>

@@ -14,7 +14,7 @@ blueprint:
   author: "Jane Doe"
   date: "2020-01-01"
   length: "5 min"
-  tags: ['tag1', 'tag2']
+  blogTags: ['tag1', 'tag2']
   image: bookshop:generic/image
   color_group: primary
 
@@ -26,7 +26,7 @@ preview:
   author: "Jane Doe"
   date: "2020-01-01"
   length: "5 min"
-  tags: ['tag1', 'tag2']
+  blogTags: ['tag1', 'tag2']
   image: bookshop:generic/image
   color_group: primary
   

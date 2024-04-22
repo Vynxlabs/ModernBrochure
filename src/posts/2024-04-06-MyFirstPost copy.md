@@ -1,9 +1,16 @@
 ---
-title: "How yogo and mediation go hand in hand 0"
-metaDesc: ""
-date: "2024-03-09"
-tags: ["Journal", "Marketing"]
-#backgroundImg: "/images/background/red-flag.jpg"
+_schema: default
+title: Lelllllell
+metaDesc: asdfasfasdf
+date:
+author: e8b58d19-77b3-4e15-9d00-88808b9dc2b3
+tags:
+  - Business Tips
+  - Customer Stories
+blogImage: ''
+image: >-
+  {% if blogImage %}{{blogImage}}{% else %}{{blog.defaultImage}}{% endif %}
 ---
 ## Once upon a time...
+
 There was a...

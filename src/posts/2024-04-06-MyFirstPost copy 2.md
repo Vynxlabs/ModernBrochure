@@ -1,23 +1,16 @@
 ---
-title: How yogo and mediation go hand in hand 2
-metaDesc: ''
-date: 2024-03-09T00:00:00Z
+_schema: default
+title: Lelll
+metaDesc: asdfasfasdf
+date:
+author: e8b58d19-77b3-4e15-9d00-88808b9dc2b3
 tags:
-  - Journal
-  - Marketing
+  - Business Tips
+  - Customer Stories
+blogImage: ''
+image: >-
+  {% if blogImage %}{{blogImage}}{% else %}{{blog.defaultImage}}{% endif %}
 ---
-## The difference between yoga and mediation
+## Once upon a time...
 
-Yoga and mediation are not the same thing. This is common misconception.
-
-### What is Yoga
-
-Explanation of Yoga
-
-### What is meditation?
-
-Explanation of Yoga
-
-## How they go hand in hand
-
-This is how they work together...
+There was a...

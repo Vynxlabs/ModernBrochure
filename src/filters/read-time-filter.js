@@ -1,21 +1,17 @@
-module.exports = text => {
+module.exports = (text) => {
     const averageWPM = 250;
 
-    const words = text.trim().split(/\s+/);
+    // Remove HTML tags from the text
+    const plainText = text.replace(/<[^>]+>/g, '');
 
-    const adjustedText = text.replace(/(.)\1+/g, '$1');
+    // Calculate the number of words in the text
+    const wordCount = plainText.trim().split(/\s+/).length;
 
-    const adjustedSentences = adjustedText.replace(/([.!?])\s*\1+/g, '$1');
+    // Calculate the estimated reading time
+    const estimatedTime = Math.ceil(wordCount / averageWPM);
 
-    const adjustedCharCount = adjustedSentences.length;
+    // Format the reading time
+    const formattedTime = estimatedTime > 1 ? `${estimatedTime} min` : 'Less than 1 min';
 
-    const adjustedWords = adjustedSentences.trim().split(/\s+/);
-    const adjustedWordCount = adjustedWords.length;
-    const averageWordLength = adjustedCharCount / adjustedWordCount;
-
-    const adjustedTime = (adjustedCharCount / averageWPM) * (averageWordLength / 5);
-
-    const formattedAdjustedTime = adjustedTime > 1 ? Math.round(adjustedTime) + " min" : "Less than 1 min";
-
-    return formattedAdjustedTime;
-}
+    return formattedTime;
+};

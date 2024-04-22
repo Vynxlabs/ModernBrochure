@@ -9,7 +9,7 @@ paths:
 data_config:
   fonts: true
   authors: true
-  tags: true
+  blogTags: true
 collections_config:
   data:
     path: _data
@@ -116,7 +116,7 @@ collections_config:
       tags:
         type: multiselect
         options:
-          values: data.tags
+          values: data.blogTags
       date:
         label: Published Date
         instance_value: NOW

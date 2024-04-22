@@ -5,6 +5,7 @@ date: ""
 author:
 tags: 
 blogImage: ""
+imageAltText: ""
 image: >-
     {% if blogImage %}{{blogImage}}{% else %}{{blog.defaultImage}}{% endif %}
 ---
