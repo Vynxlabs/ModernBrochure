@@ -4,8 +4,8 @@ metaDesc: ""
 date: ""
 author:
 tags: 
-blogImage: ""
-imageAltText: ""
+blogImage: 
+imageAltText: 
 image: >-
     {% if blogImage %}{{blogImage}}{% else %}{{blog.defaultImage}}{% endif %}
 ---

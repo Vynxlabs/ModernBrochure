@@ -2,27 +2,36 @@
 <div class="cs-w-full py-10 bg-{{styles.color_group}}-backgroundcolor flex justify-center text-{{styles.color_group}}-textcolor">
     
     <div class="grid grid-cols-3 gap-10 md:gap-20 basecontainer">
-        {% for blog in collections.blog %}
+        {% for entry in collections.blog %}
             {% capture blogAuthor %}
                 {% for writer in authors %}
-                    {% if blog.data.author == writer.id %}
+                    {% if entry.data.author == writer.id %}
                         {{ writer.name }}
                     {% endif %}
                 {% endfor %}
             {% endcapture %}
-            {% capture blogInfo %}
-                blogTitle: {{ blog.data.title }}
-                url: {{ blog.url }}
-                author: {{blogAuthor}}
-                date: {{ blog.date }}
-                length: {{ blog.content | readTimeFilter }}
-                blogTags: {{ blog.data.tags | ymlify | split: "," | json}}
+            {% capture image %}
+                {% if entry.data.blogImage and entry.data.blogImage != ""  %}
                 image:
-                    imagePath: {{ blog.data.blogImage }}
-                    imageAlt: {{ blog.data.imageAltText }}
+                    imagePath: {{ entry.data.blogImage }}
+                    imageAlt: {{ entry.data.imageAltText }}
+                {% else %}
+                image:
+                    imagePath: {{ blog.defaultImage }}
+                    imageAlt: {{ blog.defaultImageAltText }}
+                {% endif %}
+              {% endcapture %}
+            {% capture blogInfo %}
+                blogTitle: {{ entry.data.title }}
+                url: {{ entry.url }}
+                author: {{blogAuthor}}
+                date: {{ entry.date }}
+                length: {{ entry.content | readTimeFilter }}
+                blogTags: {{ entry.data.tags | ymlify | split: "," | json}}
+                {{image}}
                 color_group: {{styles.color_group}}
             {% endcapture %}
-    
+            
             {% assign blogInfo = blogInfo | ymlify %}
             
             {% bookshop "generic/blog/card1" bind:blogInfo %}
