@@ -1,3 +1,18 @@
-<div class="c-blogCards">
-    <p>{{ text }}</p>
+
+
+<div class="grid grid-cols-4 gap-10 md:gap-20">
+    {% for blog in collections.blog %}
+        {% capture blogInfo %}
+            blogTitle: "{{ blog.data.title }}"
+            url: "{{ blog.url }}"
+            author: "{{ blog.data.author }}"
+            date: {{ blog.data.date }}
+            length: "{{ blog.content }}"
+            tags: {{ blog.data.tags }}
+            image: "{{ blog.data.image }}"
+            color_group: {{styles.color_group}}
+        {% endcapture %}
+        {% assign blog = blog | ymlify %}
+        {% bookshop "generic/blog/card1" bind:blog %}
+    {% endfor %}
 </div>

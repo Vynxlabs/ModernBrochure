@@ -2,15 +2,13 @@
 spec:
   structures:
     - content_blocks
-  label: "BlogCards"
+  label: "Blog Cards"
   description:
   icon:
   tags: []
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  content:
-    blogCards:
   styles:
     color_group: primary
 
