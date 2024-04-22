@@ -1,7 +1,7 @@
 ---
 _schema: default
 draft: false
-title: The Vynxlabs 
+title: The Vynxlabs
 eleventyExcludeFromCollections: false
 eleventyNavigation:
   key: blog
@@ -16,9 +16,27 @@ permalink: >-
   %}/{{ title | slug }}/index.html{%endif %}
 metaDesc: ''
 layout: layouts/feed.html
-pagination:
-  data: collections.blog
-  size: 22
 hero:
-content_blocks: []
+  _bookshop_name: sections/fullImageHero
+  content:
+    highlightEybrow: false
+    eyebrow:
+    headline:
+    description: Hello World!
+    buttons: []
+    image:
+      _bookshop_name: generic/image
+      imagePath:
+      imageAlt:
+      imageSizes:
+      class:
+  styles:
+    color_group: primary
+    contentAlignment: left
+    textAlignment: left
+    backgroundOpacity: 50
+content_blocks:
+  - _bookshop_name: sections/blogCards
+    styles:
+      color_group: primary
 ---
