@@ -1,0 +1,24 @@
+<div class="w-full hover:underline">
+  <div class="flex justify-between text-sm opacity-70">
+    <div>
+      <p>Writteny by</p>
+      <p>{{ author }}</p>
+    </div>
+    <div>
+      <p>{{ date }}</p>
+      <p>{{ length }}</p>
+    </div>
+  </div>
+  <a class="transition-all hover:scale-105" href="{{url}}">{% bookshop "generic/image" bind: image  %}</a>
+  <ul class="flex text-{{color_group}}-textcolor">
+    {% for tag in tags %}
+      <li class="after:absolute after:contents['·'] after:left-2 relative">
+        <a
+          href="/tag/{{ tag | slug }}/"
+          >{{ tag | capitalize | replace: ' ', '' }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+  <h2><a href="{{url}}">{{ blogTitle }}</a></h2>
+
+</div>

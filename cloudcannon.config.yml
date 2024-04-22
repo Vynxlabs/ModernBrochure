@@ -96,7 +96,7 @@ collections_config:
     filter:
       exclude:
         - posts.json
-    -enabled_editors:
+    '-enabled_editors':
       - content
       - visual
     _inputs:
@@ -124,8 +124,12 @@ collections_config:
         hidden: true
     schemas:
       default:
-        path: .cloudcannon/schemas/post.md 
+        path: .cloudcannon/schemas/post.md
 _inputs:
+  blogCards:
+    type: object
+    options:
+      structures: _structures.blog_cards
   hero:
     type: object
     options:
