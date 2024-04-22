@@ -1,7 +1,7 @@
 ---
 _schema: default
 draft: false
-title: The Vynxlabs Blog
+title: The Vynxlabs 
 eleventyExcludeFromCollections: false
 eleventyNavigation:
   key: blog
@@ -10,12 +10,12 @@ eleventyNavigation:
   parent:
 pageLink: blog
 permalink: >-
-  {% if pageLink and pageLink == 'blog' or pageLink == 'Blog' %}blog{% if
-  pagination.pageNumber > 0 %}/page/{{ pagination.pageNumber }}{%endif
-  %}/index.html {% elsif pageLink %}/{{ pageLink | slug }}/index.html{% else
+  {% if pageLink == 'blog' or pageLink == 'Blog' %}/{{pageLink | slug}}{% if
+  pagination.pageNumber > 0 %}/page/{{ pagination.pageNumber }}{% endif
+  %}/index.html{% elsif pageLink %}/{{ pageLink | slug }}/index.html{% else
   %}/{{ title | slug }}/index.html{%endif %}
 metaDesc: ''
-layout: layouts/base.html
+layout: layouts/feed.html
 pagination:
   data: collections.blog
   size: 22
