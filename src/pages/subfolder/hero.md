@@ -11,7 +11,7 @@ eleventyNavigation:
 pageLink: hero
 permalink: /{{ pageLink | slug }}/index.html
 metaDesc: ''
-layout: layouts/base.html
+layout: layouts/page.html
 hero:
   _bookshop_name: sections/fullImageHero
   content:

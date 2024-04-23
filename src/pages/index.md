@@ -13,7 +13,7 @@ metaDesc: >-
   unite. From our never-rushed dining experience to the thrill of game-day
   events and Taco Tuesday extravaganzas, immerse yourself in a warm, familiar
   ambiance
-layout: layouts/base.html
+layout: layouts/page.html
 content_blocks:
   - _bookshop_name: sample
     text: Hello World!

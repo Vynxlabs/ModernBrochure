@@ -11,7 +11,7 @@ eleventyNavigation:
 pageLink: service3
 permalink: /{{ pageLink | slug }}/index.html
 metaDesc: ''
-layout: layouts/base.html
+layout: layouts/page.html
 hero:
 content_blocks: []
 ---

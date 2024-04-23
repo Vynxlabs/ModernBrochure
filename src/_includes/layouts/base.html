@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="mx-auto my-0 max-w-[1440px] overflow-x-hidden scroll-pt-20">
+<html lang="en" class="mx-auto my-0 max-w-[1440px] overflow-x-hidden scroll-pt-32">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -21,7 +21,7 @@
     </style>
   </head>
   {% include "partials/watermark.html" %}
-  <body class="mx-4 sm:mx-10  flex flex-col h-screen text-{{site.color_group}}-textcolor bg-{{site.color_group}}-backgroundcolor text-lg">
+  <body class="mx-4 sm:mx-10  flex flex-col h-screen text-{{site.color_group}}-textcolor bg-{{site.color_group}}-backgroundcolor text-lg ">
     {% include "partials/site-head.html" %}
 
     <main tabindex="-1" id="main-content" class="flex-1 ">
@@ -29,9 +29,8 @@
       {% bookshop_include "page" content_blocks: content_blocks %}
       
       {% block content %}{% endblock %}
-        <div class="flex justify-center">
-          <section class="w-full max-w-[720px] cs-mainContent">{{ content }}</section>
-        </div>
+
+        
       
     </main>
     {% include "partials/site-foot.html" %}

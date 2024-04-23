@@ -43,16 +43,12 @@ body {
     margin-top: 12px;
     
   }
-  ol{
+  ol,ul{
     margin-top: 8px ;
     margin-bottom: 8px;
-    padding-left: 16px;
+    padding-left: 32px;
   }
-  ul{
-    margin-top: 8px ;
-    margin-bottom: 8px;
-    padding-left: 16px;
-  }
+
   ul>li{
   
     list-style-type: circle;

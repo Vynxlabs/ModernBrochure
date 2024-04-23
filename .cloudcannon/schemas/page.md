@@ -14,7 +14,7 @@ permalink: >-
   %}/index.html{% elsif pageLink %}/{{ pageLink | slug }}/index.html{% else
   %}/{{ title | slug }}/index.html{%endif %}
 metaDesc: ""
-layout: "layouts/base.html"
+layout: "layouts/page.html"
 hero:
 content_blocks: []
 ---
