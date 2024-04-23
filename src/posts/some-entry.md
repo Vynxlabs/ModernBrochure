@@ -7,7 +7,8 @@ author: e8b58d19-77b3-4e15-9d00-88808b9dc2b3
 tags:
   - Business Tips
   - Service Updates
-blogImage:
+blogImage: >-
+  /assets/uploads/dark-floral-seamless-pattern-luxury-wallpaper-vintage-texture-generative-ai.jpg
 imageAltText: dark luxury rose
 image: '{% if blogImage %}{{blogImage}}{% else %}{{blog.defaultImage}}{% endif %}'
 ---
