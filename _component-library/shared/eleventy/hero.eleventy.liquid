@@ -9,5 +9,9 @@
             color_group: "primary"
     {% endcapture %}
     {% assign default_hero = default_hero | ymlify %}
-    {% bookshop "sections/fullImageHero" bind: default_hero %}
+    {% if permalink contains "blog/" %}
+        {% else %}
+        {% bookshop "sections/fullImageHero" bind: default_hero %}
+    {% endif %}
+    
 {% endif %}

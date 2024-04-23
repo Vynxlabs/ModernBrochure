@@ -1,7 +1,7 @@
 ---
-title: ""
-metaDesc: ""
-date: ""
+title: 
+metaDesc: 
+date: 
 author:
 tags: 
 blogImage: 

@@ -15,26 +15,7 @@ permalink: >-
   %}/index.html{% elsif pageLink %}/{{ pageLink | slug }}/index.html{% else
   %}/{{ title | slug }}/index.html{%endif %}
 metaDesc: ''
-layout: layouts/feed.html
-hero:
-  _bookshop_name: sections/fullImageHero
-  content:
-    highlightEybrow: false
-    eyebrow:
-    headline:
-    description: Hello World!
-    buttons: []
-    image:
-      _bookshop_name: generic/image
-      imagePath:
-      imageAlt:
-      imageSizes:
-      class:
-  styles:
-    color_group: primary
-    contentAlignment: left
-    textAlignment: left
-    backgroundOpacity: 50
+layout: layouts/base.html
 content_blocks:
   - _bookshop_name: sections/blogCards
     styles:
