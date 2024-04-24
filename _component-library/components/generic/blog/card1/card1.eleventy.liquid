@@ -2,7 +2,7 @@
   {% assign author = 'jane Doe' %}
   {% assign length = '2 min' %}
   {% assign date = '2020-01-17' %}
-  {% assign blogTags = ['tag1', 'tag2'] %}
+  {% assign blogTags = 'tag1 tag2' | json %}
   {% capture image %}
     imagePath: {{ blog.defaultImage }}
     imageAlt: {{ blog.defaultImageAltText }}
