@@ -52,10 +52,10 @@
   Tags that this post has been filed under.
 </p>
 
-<ul class=" flex text-{{site.color_group}}-secondarycolor flex flex-wrap gap-2 overflow-hidden mt-4" aria-describedby="tags-desc">
+<ul class=" flex text-{{site.color_group}}-secondarycolor flex flex-wrap gap-y-1 gap-x-4 overflow-hidden mt-4" aria-describedby="tags-desc">
   {% for tag in tags %}
-    <li class="hover:underline after:absolute after:content-['·']  after:left-2 relative before:content-[' '] after:left-[-5px] after:text-lg ">
-      <a class=""
+    <li class="hover:underline after:absolute after:content-['·'] after:scale-150  after:left-2 relative before:content-[' '] after:left-[-10px] after:text-lg ">
+      <a class="font-bold"
         href="/tag/{{ tag | slug }}/"
         >#{{ tag | capitalize | replace: ' ', '' }}</a>
     </li>

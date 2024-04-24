@@ -26,10 +26,10 @@
     {% else %}
       {% bookshop "generic/image" bind: image class: "rounded transition-all duration-300 scale-100 hover:scale-105 object-cover aspect-[3/2]" %}{% endif %}
   </a>
-  <ul class=" flex text-{{color_group}}-secondarycolor flex flex-wrap gap-2 overflow-hidden opacity-70">
+  <ul class=" flex text-{{color_group}}-secondarycolor flex flex-wrap gap-x-4 overflow-hidden opacity-70">
     {% for tag in blogTags %}
-      <li class="hover:underline after:absolute after:content-['·']  after:left-2 relative before:content-[' '] after:left-[-5px] after:text-lg ">
-        <a class="" href="/tag/{{ tag | slug }}/">{{ tag | capitalize | replace: ' ', '' }}</a>
+      <li class="hover:underline after:absolute after:content-['·'] after:scale-150  after:left-2 relative before:content-[' '] after:left-[-10px] after:text-lg ">
+        <a class="font-bold" href="/tag/{{ tag | slug }}/">{{ tag | capitalize | replace: ' ', '' }}</a>
       </li>
     {% endfor %}
   </ul>
