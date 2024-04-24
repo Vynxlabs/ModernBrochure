@@ -19,5 +19,5 @@ layout: layouts/page.html
 content_blocks:
   - _bookshop_name: sections/blogCards
     styles:
-      color_group: rose1
+      color_group: cotton_candy2
 ---
