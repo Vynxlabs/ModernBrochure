@@ -38,7 +38,7 @@
 {% block content %}
 
 <div class=" mt-40">
-  <h1 class=" text-5xl font-semibold md:text-8xl" >{{title}}</h1>
+  <h1 class=" text-3xl sm:text-5xl font-semibold md:text-8xl" >{{title}}</h1>
   {% bookshop "generic/image" bind: image class: "rounded  object-cover aspect-video mt-4"  %}
   <div class="flex gap-2 mt-4">
     {% bookshop "generic/image" imagePath: blogAuthor.imagePath imageAlt: blogAuthor.name  class: "rounded object-cover aspect-square w-20 "  %}
