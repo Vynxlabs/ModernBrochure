@@ -1,4 +1,5 @@
 {% assign postListItems = pagination.items %}
+{% assign color_group = styles.color_group %}
 
 <div class="cs-w-full py-10 bg-{{styles.color_group}}-backgroundcolor flex justify-center text-{{styles.color_group}}-textcolor">
     
@@ -44,18 +45,8 @@
     </div>
     
 </div>
-{% if pagination.href.next or pagination.href.previous %}
-<footer class="flex justify-center">
-  <nav class="flex justify-between gap-4">
-    {% if pagination.href.previous %}
-    <a class="text" href="{{ pagination.href.previous }}{{ paginationNumber }}"
-      >{{ paginationPrevText if paginationPrevText else 'Previous'}}previous</a
-    >
-    {% endif %} {% if pagination.href.next %}
-    <a class="" href="{{ pagination.href.next }}{{ paginationAnchor }}">
-      {{ paginationNextText if paginationNextText else 'Next' }}next
-    </a>
-    {% endif %}
-  </nav>
-</footer>
+{% if env_bookshop_live %}
+    {% else %}
+    {% bookshop "generic/blog/pagination" pagination:pagination color_group:color_group %}
 {% endif %}
+
