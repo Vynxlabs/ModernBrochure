@@ -33,8 +33,12 @@
             {% endcapture %}
             
             {% assign blogInfo = blogInfo | ymlify %}
+            {% if entry == collections.blog.first %}
+                {% bookshop "generic/blog/featured1" bind:blogInfo %}
+                {% else %}
+                    {% bookshop "generic/blog/card1" bind:blogInfo %}
+            {% endif %}
             
-            {% bookshop "generic/blog/card1" bind:blogInfo %}
         {% endfor %}
     </div>
 </div>

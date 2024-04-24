@@ -2,7 +2,7 @@
 spec:
   structures:
     - content_blocks
-  label: "Blog Cards"
+  label: "Blog Cards Section"
   description:
   icon:
   tags: []
