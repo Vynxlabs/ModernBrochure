@@ -9,7 +9,7 @@
     {% assign blogTitle = 'How to quickly build a website visually' %}
   {% endif %}
 
-<div class="w-full col-span-3">
+<div class="w-full col-span-1 md:col-span-2 lg:col-span-3">
     <ul class=" flex text-{{color_group}}-secondarycolor flex flex-wrap gap-x-4 overflow-hidden opacity-70">
     {% for tag in blogTags %}
       <li class="hover:underline after:absolute after:content-['·'] after:scale-150  after:left-2 relative before:content-[' '] after:left-[-10px] after:text-lg ">
@@ -17,8 +17,8 @@
       </li>
     {% endfor %}
   </ul>
-    <h2 class="text-5xl hover:underline">{{blogTitle}}</h2>
-    <div class="opacity-70 mt-10 flex justify-between">
+    <h2 class="text-4xl md:text-5xl hover:underline">{{blogTitle}}</h2>
+    <div class="opacity-70 mt-4 md:mt-10 flex justify-between flex-wrap">
         <div class="flex gap-2">
             <p>Written by {{ author }}</p>
             <div>·</div>
