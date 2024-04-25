@@ -15,9 +15,9 @@
     {% if content.eyebrow %}
       <p class=" {% if content.highlightEybrow %} text-{{styles.color_group}}-accentcolor {% endif %} ">{{ content.eyebrow }}</p>
     {% endif %}
-    <h{{content.headingHierarchy | default: "h2" }} class="font-bold">
+    <{{content.headingHierarchy | default: "h2" }} class="font-bold">
       {{ content.headline }}
-    </h{{content.headingHierarchy | default: "h2" }}>
+    </{{content.headingHierarchy | default: "h2" }}>
     <p>{% if content.description %}{% bookshop "generic/textBlock" text:content.description %}{% endif %}</p>
   </div>
 </header>
