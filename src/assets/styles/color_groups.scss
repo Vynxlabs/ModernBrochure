@@ -8,6 +8,9 @@
 --cotton_candy2__background : undefined;
 --cotton_candy2__foreground : undefined;
 --cotton_candy2__interaction : undefined;
+--orange3__background : undefined;
+--orange3__foreground : undefined;
+--orange3__interaction : undefined;
 }
 
 .text-primary-textcolor { color: #021015; }
@@ -98,6 +101,28 @@
 .stroke-cotton_candy2-secondarycolor { stroke: #560495; }
 .stroke-cotton_candy2-accentcolor { stroke: #bb06c1; }
 
+.text-orange3-textcolor { color: #170b01; }
+.text-orange3-primarycolor { color: #f77f1f; }
+.text-orange3-secondarycolor { color: #7afa9b; }
+.text-orange3-accentcolor { color: #52f9dc; }
+.bg-orange3-backgroundcolor { background-color: #fef6ef; }
+.bg-orange3-primarycolor { background-color: #f77f1f; }
+.bg-orange3-secondarycolor { background-color: #7afa9b; }
+.bg-orange3-accentcolor { background-color: #52f9dc; }
+.bg-orange3-backgroundcolornav { background-color: #fef6ef70; }
+.bg-orange3-primarycolornav { background-color: #f77f1f70; }
+.bg-orange3-secondarycolornav { background-color: #7afa9b70; }
+.bg-orange3-accentcolornav { background-color: #52f9dc70; }
+.border-orange3-backgroundcolor { border-color: #fef6ef; }
+.border-orange3-primarycolor { border-color: #f77f1f; }
+.border-orange3-secondarycolor { border-color: #7afa9b; }
+.border-orange3-accentcolor { border-color: #52f9dc; }
+.stroke-orange3-textcolor { stroke: #170b01; }
+.stroke-orange3-backgroundcolor { stroke: #fef6ef; }
+.stroke-orange3-primarycolor { stroke: #f77f1f; }
+.stroke-orange3-secondarycolor { stroke: #7afa9b; }
+.stroke-orange3-accentcolor { stroke: #52f9dc; }
+
 .component {
 --main-background-color: #3B3B3D;
 --main-text-color: #F9F9FB;
@@ -122,6 +147,11 @@ color: var(--main-text-color);
 --main-background-color: var(--cotton_candy2__background);
 --main-text-color: var(--cotton_candy2__foreground);
 --interaction-color: var(--cotton_candy2__interaction);
+}
+&--orange3 {
+--main-background-color: var(--orange3__background);
+--main-text-color: var(--orange3__foreground);
+--interaction-color: var(--orange3__interaction);
 }
 }
 
@@ -148,6 +178,11 @@ color: var(--main-text-color);
 --main-text-color: var(--cotton_candy2__foreground);
 --interaction-color: var(--cotton_candy2__interaction);
 }
+&--orange3 {
+--main-background-color: var(--orange3__background);
+--main-text-color: var(--orange3__foreground);
+--interaction-color: var(--orange3__interaction);
+}
 }
 
 .c-footer {
@@ -172,6 +207,11 @@ color: var(--main-text-color);
 --main-background-color: var(--cotton_candy2__background);
 --main-text-color: var(--cotton_candy2__foreground);
 --interaction-color: var(--cotton_candy2__interaction);
+}
+&--orange3 {
+--main-background-color: var(--orange3__background);
+--main-text-color: var(--orange3__foreground);
+--interaction-color: var(--orange3__interaction);
 }
 }
 

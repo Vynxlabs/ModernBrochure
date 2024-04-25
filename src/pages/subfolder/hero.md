@@ -28,14 +28,14 @@ hero:
         url: '#'
         openInNewTab: false
         text: Sign Up
-        color_group: primary
+        color_group: orange3
         ghostButton: false
         blackText: false
       - _bookshop_name: generic/button
         url: '#'
         openInNewTab: false
         text: Contact us
-        color_group: primary
+        color_group: orange3
         ghostButton: true
         blackText: false
     image:
@@ -45,7 +45,7 @@ hero:
       imageSizes:
       class:
   styles:
-    color_group: primary
+    color_group: orange3
     contentAlignment: left
     textAlignment: left
     backgroundOpacity: 35

@@ -162,6 +162,8 @@ _inputs:
           id: rose1
         - name: Cotton Candy
           id: cotton_candy2
+        - name: Orange
+          id: orange3
   id:
     hidden: true
     instance_value: UUID

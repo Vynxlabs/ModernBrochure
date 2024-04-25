@@ -1,0 +1,23 @@
+{% capture contentAlignment %}
+{% if styles.contentAlignment == 'left' %} items-start {% elsif styles.contentAlignment == 'center' %} items-center {% else %} items-end {% endif %}
+{% endcapture %}
+
+{% capture textAlignment %}
+{% if styles.textAlignment == 'left' %} text-left {% elsif styles.textAlignment == 'center' %} text-center {% else %} text-right {% endif %}
+{% endcapture %}
+
+{% capture buttonAlignment %}
+{% if styles.textAlignment == 'left' %}  {% elsif styles.textAlignment == 'center' %} justify-center {% else %} justify-end {% endif %}
+{% endcapture %}
+
+<header class="c-heading w-full flex flex-col justify-center {{contentAlignment}} text-{{styles.color_group}}-textcolor">
+  <div class="{{textAlignment}}">
+    {% if content.eyebrow %}
+      <p class=" {% if content.highlightEybrow %} text-{{styles.color_group}}-accentcolor {% endif %} ">{{ content.eyebrow }}</p>
+    {% endif %}
+    <h{{content.headingHierarchy | default: "h2" }} class="font-bold">
+      {{ content.headline }}
+    </h{{content.headingHierarchy | default: "h2" }}>
+    <p>{% if content.description %}{% bookshop "generic/textBlock" text:content.description %}{% endif %}</p>
+  </div>
+</header>
