@@ -16,11 +16,11 @@ permalink: >-
   %}/{{ title | slug }}/index.html{%endif %}
 pagination:
     data: collections.blog
-    size: 4
+    size: 22
 metaDesc: ''
 layout: layouts/page.html
 content_blocks:
   - _bookshop_name: sections/blogCards
     styles:
-      color_group: cotton_candy2
+      color_group: primary
 ---

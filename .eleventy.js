@@ -3,6 +3,7 @@ const path = require("path");
 const dateFilter = require("./src/filters/date-filter.js");
 const w3DateFilter = require("./src/filters/w3-date-filter.js");
 const readTimeFilter = require("./src/filters/read-time-filter.js");
+const randomBlogsFilter = require("./src/filters/random-blogs-filter.js");
 const rssPlugin = require("@11ty/eleventy-plugin-rss");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const markdownIt = require("markdown-it"),
@@ -175,6 +176,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addFilter("dateFilter", dateFilter);
   eleventyConfig.addFilter("w3DateFilter", w3DateFilter);
   eleventyConfig.addFilter("readTimeFilter", readTimeFilter);
+  eleventyConfig.addFilter("randomBlogsFilter", randomBlogsFilter);
   eleventyConfig.addFilter("ymlify", (yml) => yaml.load(yml));
   eleventyConfig.addFilter("markdownify", (markdown) => md.render(markdown));
 

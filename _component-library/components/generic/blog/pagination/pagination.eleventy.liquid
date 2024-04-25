@@ -1,5 +1,5 @@
 {% if pagination.href.next or pagination.href.previous %}
-    <footer class="flex justify-center">
+    <footer class="flex justify-center mt-10">
       <nav class="flex justify-between gap-4 text-{{color_group}}-accentcolor ">
         {% if pagination.href.previous %}
         <a class="hover:underline" href="{{ pagination.href.previous }}{{ paginationNumber }}"

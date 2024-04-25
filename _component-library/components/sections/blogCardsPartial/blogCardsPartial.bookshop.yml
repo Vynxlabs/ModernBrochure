@@ -2,15 +2,16 @@
 spec:
   structures:
     - content_blocks
-  label: "Blog Cards Full"
+  label: "Blog Cards Partial"
   description:
   icon:
   tags: []
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  styles:
-    color_group: primary
+  content:
+    
+  text: "Hello World!"
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
