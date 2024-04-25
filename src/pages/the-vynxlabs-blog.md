@@ -15,11 +15,27 @@ permalink: >-
   %}/index.html{% elsif pageLink %}/{{ pageLink | slug }}/index.html{% else
   %}/{{ title | slug }}/index.html{%endif %}
 pagination:
-    data: collections.blog
-    size: 22
+  data: collections.blog
+  size: 22
 metaDesc: ''
 layout: layouts/page.html
 content_blocks:
+  - _bookshop_name: sections/blogCardsPartial
+    content:
+      heading:
+        _bookshop_name: generic/heading
+        content:
+          highlightEybrow: false
+          eyebrow: Eyebrow headline
+          headline: primary heading
+          description: Hello World!
+          headingHierarchy: h2
+        styles:
+          color_group: primary
+          contentAlignment: left
+          textAlignment: left
+    styles:
+      color_group: primary
   - _bookshop_name: sections/blogCards
     styles:
       color_group: primary
