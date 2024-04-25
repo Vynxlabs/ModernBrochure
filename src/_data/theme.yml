@@ -24,6 +24,12 @@ customColor_groups:
     primaryColor: '#0787e9'
     secondaryColor: '#560495'
     accentColor: '#bb06c1'
+  - name: Orange
+    textColor: '#170b01'
+    backgroundColor: '#fef6ef'
+    primaryColor: '#f77f1f'
+    secondaryColor: '#7afa9b'
+    accentColor: '#52f9dc'
 heading_font: Merriweather
 content_font: Fira Sans
 logo_font: Major Mono Display
