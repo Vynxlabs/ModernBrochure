@@ -1,4 +1,8 @@
-{% assign postListItems = pagination.items %}
+{% if env_bookshop_live %}
+    {% assign postListItems = collections.blog %}
+    {% else %}
+    {% assign postListItems = pagination.items %}
+{% endif %}
 {% assign color_group = styles.color_group %}
 
 <div class="cs-w-full py-10 bg-{{styles.color_group}}-backgroundcolor flex justify-center text-{{styles.color_group}}-textcolor">
