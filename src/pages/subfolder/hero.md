@@ -10,6 +10,9 @@ eleventyNavigation:
   parent:
 pageLink: hero
 permalink: /{{ pageLink | slug }}/index.html
+pagination:
+  data: collections.blog
+  size: 22
 metaDesc: ''
 layout: layouts/page.html
 hero:
@@ -49,7 +52,23 @@ hero:
     contentAlignment: left
     textAlignment: left
     backgroundOpacity: 35
-content_blocks: []
+content_blocks:
+  - _bookshop_name: sections/blogCardsPartial
+    contents:
+      heading:
+        _bookshop_name: generic/heading
+        content:
+          highlightEyebrow: true
+          eyebrow: Its free!
+          headline: Check out the blog
+          description: Looking for more? [See all our posts](/blog/ "blog")
+          headingHierarchy: h2
+        styles:
+          contentAlignment: center
+          textAlignment: center
+      randomize: true
+    styles:
+      color_group: magic0
 ---
 ## This is me adding some content
 
