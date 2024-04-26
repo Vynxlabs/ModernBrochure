@@ -27,7 +27,10 @@ If this is a tag, grab those items instead as one large collection
       {% unless tag %}
       {% render "partials/pagination.html" pagination:pagination %}
       {% endunless %}
+      {% unless tag == "pages" %}
       {% bookshop "sections/blogCards" bind: styles %}
+      {% endunless %}
+      
     </div>
   </article>
 {% endblock %}

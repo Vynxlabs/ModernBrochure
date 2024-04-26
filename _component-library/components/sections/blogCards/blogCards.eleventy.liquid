@@ -59,7 +59,10 @@
     </div>
     {% if env_bookshop_live %}
         {% else %}
-        {% bookshop "generic/blog/pagination" pagination:pagination color_group:color_group %}
+        {% unless tag %}
+            {% bookshop "generic/blog/pagination" pagination:pagination color_group:color_group %}
+        {% endunless %}
+        
     {% endif %}
 </div>
 
