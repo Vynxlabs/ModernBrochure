@@ -30,6 +30,12 @@ customColor_groups:
     primaryColor: '#f77f1f'
     secondaryColor: '#7afa9b'
     accentColor: '#52f9dc'
+  - name: PurpleNurple
+    textColor: '#040610'
+    backgroundColor: '#fafafe'
+    primaryColor: '#3c54d1'
+    secondaryColor: '#b18ce4'
+    accentColor: '#aa68dc'
 heading_font: Merriweather
 content_font: Fira Sans
 logo_font: Major Mono Display
