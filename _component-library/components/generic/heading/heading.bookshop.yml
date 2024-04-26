@@ -9,13 +9,12 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   content:
-    highlightEybrow: false
+    highlightEyebrow: false
     eyebrow: 
     headline: primary heading
     description: 
     headingHierarchy: h2
   styles:
-    color_group: primary
     contentAlignment: left
     textAlignment: left
 
@@ -25,6 +24,8 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  styles.color_group:
+    hidden: true
   contentAlignment:
     type: choice
     options:

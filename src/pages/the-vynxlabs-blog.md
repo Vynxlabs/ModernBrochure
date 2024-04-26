@@ -25,18 +25,17 @@ content_blocks:
       heading:
         _bookshop_name: generic/heading
         content:
-          highlightEybrow: false
-          eyebrow:
+          highlightEyebrow: true
+          eyebrow: fsdfdsf
           headline: Check out the blog
           description: Explore our free knowledge
           headingHierarchy: h2
         styles:
-          color_group: orange3
           contentAlignment: left
           textAlignment: left
       randomize: true
     styles:
-      color_group: primary
+      color_group: cotton_candy2
   - _bookshop_name: sections/blogCards
     styles:
       color_group: primary
