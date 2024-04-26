@@ -1,5 +1,7 @@
 {% if env_bookshop_live %}
     {% assign postListItems = collections.blog %}
+    {% elsif tag %}
+        {% assign postListItems = collections[tag] %}
     {% else %}
     {% assign postListItems = pagination.items %}
 {% endif %}
@@ -9,48 +11,51 @@
 
 <div class="cs-w-full py-20 bg-{{styles.color_group}}-backgroundcolor flex flex-col items-center justify-center text-{{styles.color_group}}-textcolor">
     
-    <div class="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3   gap-10 md:gap-20 basecontainer">
-        {% for entry in postListItems %}
-            {% capture blogAuthor %}
-                {% for writer in authors %}
-                    {% if entry.data.author == writer.id %}
-                        {{ writer.name }}
+    <div class="basecontainer">
+        {% bookshop "generic/heading" bind: content.heading %}
+        <div class="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3   gap-10 md:gap-20 mt-12">
+            {% for entry in postListItems %}
+                {% capture blogAuthor %}
+                    {% for writer in authors %}
+                        {% if entry.data.author == writer.id %}
+                            {{ writer.name }}
+                        {% endif %}
+                    {% endfor %}
+                {% endcapture %}
+                {% capture image %}
+                    {% if entry.data.blogImage and entry.data.blogImage != ""  %}
+                    image:
+                        imagePath: {{ entry.data.blogImage }}
+                        imageAlt: {{ entry.data.imageAltText }}
+                    {% else %}
+                    image:
+                        imagePath: {{ blog.defaultImage }}
+                        imageAlt: {{ blog.defaultImageAltText }}
                     {% endif %}
-                {% endfor %}
-            {% endcapture %}
-            {% capture image %}
-                {% if entry.data.blogImage and entry.data.blogImage != ""  %}
-                image:
-                    imagePath: {{ entry.data.blogImage }}
-                    imageAlt: {{ entry.data.imageAltText }}
-                {% else %}
-                image:
-                    imagePath: {{ blog.defaultImage }}
-                    imageAlt: {{ blog.defaultImageAltText }}
+                  {% endcapture %}
+                {% capture blogInfo %}
+                    blogTitle: {{ entry.data.title }}
+                    url: {{ entry.url }}
+                    author: {{blogAuthor}}
+                    date: {% if entry.data.date %} {{ entry.data.date }} {% else %} {{ entry.date }} {% endif %}
+                    length: {{ entry.content | readTimeFilter }}
+                    blogTags: {{ entry.data.tags | ymlify | split: "," | json}}
+                    {{image}}
+                    color_group: {{styles.color_group}}
+                {% endcapture %}
+        
+                {% assign blogInfo = blogInfo | ymlify %}
+                {% if entry == postListItems.first %}
+                    {% bookshop "generic/blog/featured1" bind:blogInfo %}
+                    {% elsif counter<21 %}
+                        {% bookshop "generic/blog/card1" bind:blogInfo %}
+                        {% if env_bookshop_live %}
+                            {% assign counter = counter | plus: 1 %}
+                        {% endif %}
                 {% endif %}
-              {% endcapture %}
-            {% capture blogInfo %}
-                blogTitle: {{ entry.data.title }}
-                url: {{ entry.url }}
-                author: {{blogAuthor}}
-                date: {% if entry.data.date %} {{ entry.data.date }} {% else %} {{ entry.date }} {% endif %}
-                length: {{ entry.content | readTimeFilter }}
-                blogTags: {{ entry.data.tags | ymlify | split: "," | json}}
-                {{image}}
-                color_group: {{styles.color_group}}
-            {% endcapture %}
-            
-            {% assign blogInfo = blogInfo | ymlify %}
-            {% if entry == collections.blog.first %}
-                {% bookshop "generic/blog/featured1" bind:blogInfo %}
-                {% elsif counter<21 %}
-                    {% bookshop "generic/blog/card1" bind:blogInfo %}
-                    {% if env_bookshop_live %}
-                        {% assign counter = counter | plus: 1 %}
-                    {% endif %}
-            {% endif %}
-            
-        {% endfor %}
+        
+            {% endfor %}
+        </div>
     </div>
     {% if env_bookshop_live %}
         {% else %}

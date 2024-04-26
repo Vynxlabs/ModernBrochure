@@ -3,7 +3,10 @@
 {% assign postListItems = pagination.items %}
 {% assign pageHeaderTitle = title %}
 {% assign pageHeaderSummary = subheadline %}
-
+{% capture styles %}
+color_group: {{site.color_group}}
+{% endcapture %}
+{% assign styles = styles | ymlify %}
 {% comment %}
 If this is a tag, grab those items instead as one large collection
 {% endcomment %}
@@ -24,6 +27,7 @@ If this is a tag, grab those items instead as one large collection
       {% unless tag %}
       {% render "partials/pagination.html" pagination:pagination %}
       {% endunless %}
+      {% bookshop "sections/blogCards" bind: styles %}
     </div>
   </article>
 {% endblock %}
