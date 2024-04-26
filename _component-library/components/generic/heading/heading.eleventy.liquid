@@ -18,6 +18,6 @@
     <{{content.headingHierarchy | default: "h2" }} class="font-bold">
       {{ content.headline }}
     </{{content.headingHierarchy | default: "h2" }}>
-    <p>{% if content.description %}{% bookshop "generic/textBlock" text:content.description %}{% endif %}</p>
+    <div class="mt-4">{% if content.description %}{% bookshop "generic/textBlock" text:content.description %}{% endif %}</div>
   </div>
 </header>

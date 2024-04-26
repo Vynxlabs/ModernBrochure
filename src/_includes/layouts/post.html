@@ -31,9 +31,11 @@
     {% endfor %}
 {% endcapture %}
 
+
+
 {% assign blogAuthor = blogAuthor | ymlify %}
 
-
+{% assign recommendedPosts = collections.blog | randomBlogsFilter: page  %}
 
 {% block content %}
 
@@ -78,6 +80,8 @@
     {% assign postListHeadline = 'More from the blog' %}
     {% include "partials/post-list.html" %}
   </footer>
+  {% bookshop "sections/blogCardsPartial" content.collection: recommendedPosts %}
   {% endif %}
+
 </div>
 {% endblock %}

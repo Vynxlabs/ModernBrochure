@@ -5,9 +5,9 @@
   "main": ".eleventy.js",
   "scripts": {
     "fetch-theme-variables": "node ./utils/fetch-theme-variables.js",
-    "start": "concurrently --kill-others  \"npx tailwindcss -i ./src/css/styles.css -o ./dist/css/styles.css --watch\" \"bookshop-sass -b _component-library -o dist/assets/bookshop.css -w\" \"npx eleventy --serve\"  \"sass --no-source-map --watch src/assets/styles:dist/css\" ",
+    "start": "concurrently --kill-others  \"npx tailwindcss -i ./src/css/styles.css -o ./dist/css/styles.css --watch\" \"bookshop-sass -b _component-library -o dist/css/bookshop.css -w\" \"npx eleventy --serve\"  \"sass --no-source-map --watch src/assets/styles:dist/css\" ",
     "sass:build": "sass --no-source-map src/assets/styles:dist/css",
-    "bookshop-sass:build": "bookshop-sass -b _component-library -o dist/assets/bookshop.css",
+    "bookshop-sass:build": "bookshop-sass -b _component-library -o dist/css/bookshop.css",
     "browser": "npx @bookshop/browser",
     "eleventy": "npx eleventy",
     "tailwind": "npx tailwindcss -i ./src/css/styles.css -o ./dist/css/styles.css --watch",

@@ -21,7 +21,7 @@ metaDesc: ''
 layout: layouts/page.html
 content_blocks:
   - _bookshop_name: sections/blogCardsPartial
-    content:
+    contents:
       heading:
         _bookshop_name: generic/heading
         content:
@@ -31,7 +31,7 @@ content_blocks:
           description: Hello World!
           headingHierarchy: h2
         styles:
-          color_group: primary
+          color_group: orange3
           contentAlignment: left
           textAlignment: left
     styles:
