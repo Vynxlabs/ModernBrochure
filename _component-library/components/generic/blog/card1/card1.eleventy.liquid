@@ -3,7 +3,7 @@
   {% assign length = '2 min' %}
   {% assign date = '2020-01-17' %}
   {% capture blogTags %}
-  tag1,tag2
+  Business,Announcement
   {% endcapture %}
   {% assign blogTags = blogTags | split: "," %}
   {% assign blogTitle = 'How to quickly build a website visually' %}
@@ -22,9 +22,9 @@
   </div>
   <a class="" href="{{url}}">
     {% if env_bookshop_live %}
-      {% bookshop "generic/image" imagePath: "https://picsum.photos/600" imageAlt: "place holder image" class: "rounded transition-all duration-300 scale-100 hover:scale-105 object-cover aspect-[3/2]" %}
+      {% bookshop "generic/image" imagePath: "https://picsum.photos/600" imageAlt: "place holder image" class: "w-full rounded transition-all duration-300 scale-100 hover:scale-105 object-cover aspect-[3/2]" %}
     {% else %}
-      {% bookshop "generic/image" bind: image class: "rounded transition-all duration-300 scale-100 hover:scale-105 object-cover aspect-[3/2]" %}{% endif %}
+      {% bookshop "generic/image" bind: image class: "w-full rounded transition-all duration-300 scale-100 hover:scale-105 object-cover aspect-[3/2]" %}{% endif %}
   </a>
   <ul class=" flex text-{{color_group}}-secondarycolor flex flex-wrap gap-x-4 overflow-hidden opacity-70">
     {% for tag in blogTags %}

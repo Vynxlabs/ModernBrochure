@@ -28,10 +28,13 @@ const imageShortcode = async (
   formats = ["avif", "webp", "svg", "jpeg"],
 ) => {
   let before = Date.now();
+
   let inputFilePath =
     src == null ? src : path.join("src", src);
 
-  if (fs.existsSync(inputFilePath)) {
+  if(src.includes("http://") || src.includes("https://")) {
+    inputFilePath = src;
+  }
     
     // console.log(
     //   `[11ty/eleventy-img] ${Date.now() - before}ms: ${inputFilePath}`,
@@ -53,9 +56,7 @@ const imageShortcode = async (
     };
 
     return Image.generateHTML(imageMetadata, imageAttributes);
-  } else{
-    return `<img class='${cls}' src='${src}' alt='${alt}'>`;
-  }
+
 };
 
 const logoShortcode = async (
