@@ -26,14 +26,15 @@ content_blocks:
         _bookshop_name: generic/heading
         content:
           highlightEybrow: false
-          eyebrow: Eyebrow headline
-          headline: primary heading
-          description: Hello World!
+          eyebrow:
+          headline: Check out the blog
+          description: Explore our free knowledge
           headingHierarchy: h2
         styles:
           color_group: orange3
           contentAlignment: left
           textAlignment: left
+      randomize: false
     styles:
       color_group: primary
   - _bookshop_name: sections/blogCards
