@@ -34,7 +34,7 @@ content_blocks:
           color_group: orange3
           contentAlignment: left
           textAlignment: left
-      randomize: false
+      randomize: true
     styles:
       color_group: primary
   - _bookshop_name: sections/blogCards

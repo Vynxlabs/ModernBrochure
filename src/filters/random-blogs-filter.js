@@ -1,5 +1,4 @@
 module.exports=(collection, item, limit = 3, random = true)=> {
-    console.log(collection)
     let filteredItems = collection.filter((x) => x.url !== item.url);
 
     if (random) {

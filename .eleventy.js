@@ -33,9 +33,9 @@ const imageShortcode = async (
 
   if (fs.existsSync(inputFilePath)) {
     
-    console.log(
-      `[11ty/eleventy-img] ${Date.now() - before}ms: ${inputFilePath}`,
-    );
+    // console.log(
+    //   `[11ty/eleventy-img] ${Date.now() - before}ms: ${inputFilePath}`,
+    // );
     const imageMetadata = await Image(inputFilePath, {
       svgShortCircuit: preferSvg ? "size" :false,
       widths: [...widths],
@@ -70,12 +70,11 @@ const logoShortcode = async (
   let before = Date.now();
   let inputFilePath =
     src == null ? src : path.join("src", src);
-console.log(inputFilePath)
   if (fs.existsSync(inputFilePath)) {
     
-    console.log(
-      `[11ty/eleventy-img] ${Date.now() - before}ms: ${inputFilePath}`,
-    );
+    // console.log(
+    //   `[11ty/eleventy-img] ${Date.now() - before}ms: ${inputFilePath}`,
+    // );
     const imageMetadata = await Image(inputFilePath, {
       svgShortCircuit: preferSvg ? "size" :false,
       widths: [...widths],
