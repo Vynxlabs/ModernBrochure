@@ -4,8 +4,8 @@
   {% assign postListItems = pagination.items %}
 {% endif %}
 {% assign color_group = styles.color_group %}
-{% if contents.collection %}
-  {% assign postListItems = contents.collection %}
+{% if contents.randomize %}
+  {% assign postListItems = collections.blog | randomBlogsFilter: page %}
 {% else %}
   {% assign postListItems = collections.blog %}
 {% endif %}

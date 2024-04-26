@@ -37,6 +37,25 @@
 
 {% assign recommendedPosts = collections.blog | randomBlogsFilter: page  %}
 
+{% capture infoPosts %}
+  contents:
+    randomize: true 
+    heading:
+      content: 
+        headline: "More from the blog"
+        description: "These are some of the more interesting posts from our blog."
+      styles:
+        color_group: primary
+        contentAlignment: left
+        textAlignment: left
+  styles:
+    color_group: {{site.color_group}}
+    
+{% endcapture %}
+{% assign infoPosts = infoPosts | ymlify %}
+
+
+
 {% block content %}
 
 <div class=" mt-40">
@@ -75,12 +94,7 @@
       </div>
   </article>
   {% if recommendedPosts.size > 0 %}
-  <footer class="recommended-posts">
-    {% assign postListItems = recommendedPosts %}
-    {% assign postListHeadline = 'More from the blog' %}
-    {% include "partials/post-list.html" %}
-  </footer>
-  {% bookshop "sections/blogCardsPartial" content.collection: recommendedPosts %}
+  {% bookshop "sections/blogCardsPartial" bind: infoPosts  %}
   {% endif %}
 
 </div>
