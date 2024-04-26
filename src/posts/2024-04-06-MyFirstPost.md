@@ -2,7 +2,7 @@
 _schema: default
 title: Lelllllelle
 metaDesc: asdfasfasdf
-date:
+date: '2025-01-05'
 author: e8b58d19-77b3-4e15-9d00-88808b9dc2b3
 tags:
   - Business Tips
