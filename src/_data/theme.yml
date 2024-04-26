@@ -36,6 +36,6 @@ customColor_groups:
     primaryColor: '#3c54d1'
     secondaryColor: '#b18ce4'
     accentColor: '#aa68dc'
-heading_font: Merriweather
-content_font: Fira Sans
+heading_font: Rubik
+content_font: Rubik
 logo_font: Major Mono Display
