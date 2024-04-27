@@ -75,6 +75,8 @@ collections_config:
         comment: SEO focused page summary
       permalink:
         hidden: true
+      pagination:
+        hidden: true
       layout:
         hidden: true
     _select_data: null
