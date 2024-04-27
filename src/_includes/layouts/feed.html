@@ -15,8 +15,17 @@ If this is a tag, grab those items instead as one large collection
   {% assign pageHeaderTitle = 'Blog posts filed under “' | append: tag | append: '”' %}
 {% endif %}
 
+{% capture heading %}
+        content:
+            headline: {{pageHeaderTitle}}
+            headingHierarchy: h1
+        styles:
+            contentAlignment: center
+            textAlignment: center
+    {% endcapture %}
+{% assign heading = heading | ymlify %}
 {% block content %}
-  {% include "partials/page-header.html" %}
+{% bookshop "sections/simpleHero" heading: heading %}
   <article class="blog-main-container">
     <div>
       

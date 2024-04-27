@@ -1,25 +1,35 @@
 {% capture contentAlignment %}
 {% if styles.contentAlignment == 'left' %} items-start {% elsif styles.contentAlignment == 'center' %} items-center {% else %} items-end {% endif %}
 {% endcapture %}
-
 {% capture textAlignment %}
 {% if styles.textAlignment == 'left' %} text-left {% elsif styles.textAlignment == 'center' %} text-center {% else %} text-right {% endif %}
 {% endcapture %}
-
 {% capture buttonAlignment %}
 {% if styles.textAlignment == 'left' %}  {% elsif styles.textAlignment == 'center' %} justify-center {% else %} justify-end {% endif %}
 {% endcapture %}
 {% if content.headingHierarchy == "h1" %}
   {% assign margin = "mb-24" %}
+  {% assign headingSize = "md:text-6xl text-5xl" %}
+{% elsif "h2" %}
+  {% assign headingSize = "text-4xl" %}
+{% elsif "h3" %}
+  {% assign headingSize = "text-3xl" %}
+{% elsif "h4" %}
+  {% assign headingSize = "text-2xl" %}
+{% elsif "h5" %}
+  {% assign headingSize = "text-xl" %}
 {% endif %}
 <header class="c-heading w-full flex flex-col justify-center {{contentAlignment}} text-{{color_group}}-textcolor {{margin}}">
   <div class="{{textAlignment}}">
     {% if content.eyebrow %}
       <p class=" {% if content.highlightEyebrow %} text-{{color_group}}-accentcolor {% endif %} ">{{ content.eyebrow }}</p>
     {% endif %}
-    <{{content.headingHierarchy | default: "h2" }} class="font-bold mt-1">
+    <{{content.headingHierarchy | default: "h2" }} class="font-bold mt-1 {{headingSize}}">
       {{ content.headline }}
-    </{{content.headingHierarchy | default: "h2" }}>
-    <div class="mt-4">{% if content.description %}{% bookshop "generic/textBlock" text:content.description %}{% endif %}</div>
-  </div>
-</header>
+      </{{content.headingHierarchy | default: "h2" }}>
+      <div class="mt-4">
+        {% if content.description %}
+          {% bookshop "generic/textBlock" text: content.description %}{% endif %}
+      </div>
+    </div>
+  </header>

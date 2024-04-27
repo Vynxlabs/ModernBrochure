@@ -15,8 +15,8 @@ blueprint:
     description: 
     headingHierarchy: h2
   styles:
-    contentAlignment: left
-    textAlignment: left
+    contentAlignment: center
+    textAlignment: center
 
 
 # Overrides any fields in the blueprint when viewing this component in the component browser

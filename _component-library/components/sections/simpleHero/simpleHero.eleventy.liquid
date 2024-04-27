@@ -1,7 +1,16 @@
-{% assign color_group = {{site.color_group}} %}
+{% assign color_group = site.color_group %}
 {% capture heading %}
-    
+    content:
+        highlightEyebrow: {{heading.content.highlightEyebrow}}
+        eyebrow: {{heading.content.eyebrow}}
+        headline: {{heading.content.headline}}
+        description: {{heading.content.description}}
+        headingHierarchy: "h1"
+    styles:
+        contentAlignment: {{heading.styles.contentAlignment}}
+        textAlignment: {{heading.styles.textAlignment}}
 {% endcapture %}
-<div class="cs-w-full py-20 flex flex-col items-center justify-center">
-    <div class="basecontainer" >{% bookshop "generic/heading" bind: heading  %}</div>
+{% assign heading = heading | ymlify %}
+<div class="cs-w-full py-20 flex flex-col items-center justify-center mt-24">
+    <div class="basecontainer" >{% bookshop "generic/heading" bind: heading headingHierarchy: "h1"  %}</div>
 </div>
