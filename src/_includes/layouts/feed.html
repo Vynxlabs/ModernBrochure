@@ -19,14 +19,7 @@ If this is a tag, grab those items instead as one large collection
   {% include "partials/page-header.html" %}
   <article class="blog-main-container">
     <div>
-      {% render "partials/post-list.html", postListItems: postListItems %}
-      {% comment %}
-      If we leave pagination in for tags, the next and prev links will link to tags and be rather confusing, so don't render in that situation
-      {% endcomment %}
       
-      {% unless tag %}
-      {% render "partials/pagination.html" pagination:pagination %}
-      {% endunless %}
       {% unless tag == "pages" %}
       {% bookshop "sections/blogCards" bind: styles %}
       {% endunless %}

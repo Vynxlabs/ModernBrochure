@@ -24,8 +24,6 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
-  styles.color_group:
-    hidden: true
   contentAlignment:
     type: choice
     options:

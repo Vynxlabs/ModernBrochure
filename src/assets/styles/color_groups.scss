@@ -11,6 +11,9 @@
 --orange3__background : undefined;
 --orange3__foreground : undefined;
 --orange3__interaction : undefined;
+--purplenurple4__background : undefined;
+--purplenurple4__foreground : undefined;
+--purplenurple4__interaction : undefined;
 }
 
 .text-primary-textcolor { color: #021015; }
@@ -123,6 +126,28 @@
 .stroke-orange3-secondarycolor { stroke: #7afa9b; }
 .stroke-orange3-accentcolor { stroke: #52f9dc; }
 
+.text-purplenurple4-textcolor { color: #040610; }
+.text-purplenurple4-primarycolor { color: #3c54d1; }
+.text-purplenurple4-secondarycolor { color: #b18ce4; }
+.text-purplenurple4-accentcolor { color: #aa68dc; }
+.bg-purplenurple4-backgroundcolor { background-color: #fafafe; }
+.bg-purplenurple4-primarycolor { background-color: #3c54d1; }
+.bg-purplenurple4-secondarycolor { background-color: #b18ce4; }
+.bg-purplenurple4-accentcolor { background-color: #aa68dc; }
+.bg-purplenurple4-backgroundcolornav { background-color: #fafafe70; }
+.bg-purplenurple4-primarycolornav { background-color: #3c54d170; }
+.bg-purplenurple4-secondarycolornav { background-color: #b18ce470; }
+.bg-purplenurple4-accentcolornav { background-color: #aa68dc70; }
+.border-purplenurple4-backgroundcolor { border-color: #fafafe; }
+.border-purplenurple4-primarycolor { border-color: #3c54d1; }
+.border-purplenurple4-secondarycolor { border-color: #b18ce4; }
+.border-purplenurple4-accentcolor { border-color: #aa68dc; }
+.stroke-purplenurple4-textcolor { stroke: #040610; }
+.stroke-purplenurple4-backgroundcolor { stroke: #fafafe; }
+.stroke-purplenurple4-primarycolor { stroke: #3c54d1; }
+.stroke-purplenurple4-secondarycolor { stroke: #b18ce4; }
+.stroke-purplenurple4-accentcolor { stroke: #aa68dc; }
+
 .component {
 --main-background-color: #3B3B3D;
 --main-text-color: #F9F9FB;
@@ -152,6 +177,11 @@ color: var(--main-text-color);
 --main-background-color: var(--orange3__background);
 --main-text-color: var(--orange3__foreground);
 --interaction-color: var(--orange3__interaction);
+}
+&--purplenurple4 {
+--main-background-color: var(--purplenurple4__background);
+--main-text-color: var(--purplenurple4__foreground);
+--interaction-color: var(--purplenurple4__interaction);
 }
 }
 
@@ -183,6 +213,11 @@ color: var(--main-text-color);
 --main-text-color: var(--orange3__foreground);
 --interaction-color: var(--orange3__interaction);
 }
+&--purplenurple4 {
+--main-background-color: var(--purplenurple4__background);
+--main-text-color: var(--purplenurple4__foreground);
+--interaction-color: var(--purplenurple4__interaction);
+}
 }
 
 .c-footer {
@@ -212,6 +247,11 @@ color: var(--main-text-color);
 --main-background-color: var(--orange3__background);
 --main-text-color: var(--orange3__foreground);
 --interaction-color: var(--orange3__interaction);
+}
+&--purplenurple4 {
+--main-background-color: var(--purplenurple4__background);
+--main-text-color: var(--purplenurple4__foreground);
+--interaction-color: var(--purplenurple4__interaction);
 }
 }
 
