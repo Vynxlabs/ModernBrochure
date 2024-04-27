@@ -1,7 +1,7 @@
 ---
 _schema: default
 draft: false
-title: The Vynxlabs
+title: The Vynxlabs Blog
 eleventyExcludeFromCollections: false
 eleventyNavigation:
   key: blog
@@ -21,6 +21,7 @@ metaDesc: ''
 layout: layouts/page.html
 content_blocks:
   - _bookshop_name: sections/blogCards
+    content: {}
     styles:
       color_group: primary
 ---

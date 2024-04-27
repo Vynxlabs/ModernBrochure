@@ -25,12 +25,12 @@ hero:
     _bookshop_name: generic/heading
     content:
       highlightEyebrow: false
-      eyebrow:
-      headline: Welcome
-      description: ''
+      eyebrow: And my eyebrow
+      headline: This is my hero
+      description: Do you think its cool?
       headingHierarchy: h2
     styles:
-      contentAlignment: center
-      textAlignment: center
+      contentAlignment: left
+      textAlignment: left
 content_blocks: []
 ---
