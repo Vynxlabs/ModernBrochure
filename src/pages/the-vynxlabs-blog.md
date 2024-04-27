@@ -19,6 +19,19 @@ pagination:
   size: 22
 metaDesc: ''
 layout: layouts/page.html
+hero:
+  _bookshop_name: sections/simpleHero
+  heading:
+    _bookshop_name: generic/heading
+    content:
+      highlightEyebrow: true
+      eyebrow: asdfasdfasdfasdf
+      headline: Welcome to the blog
+      description: this is my cool blog
+      headingHierarchy: h2
+    styles:
+      contentAlignment: center
+      textAlignment: center
 content_blocks:
   - _bookshop_name: sections/blogCards
     content: {}
