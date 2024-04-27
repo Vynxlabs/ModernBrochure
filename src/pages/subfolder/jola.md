@@ -4,7 +4,7 @@ draft: false
 title: jola
 eleventyExcludeFromCollections: false
 eleventyNavigation:
-  key: jjjj
+  key: Hero2
   order: 1
   title:
   parent:
@@ -14,8 +14,23 @@ permalink: >-
   pagination.pageNumber > 0 %}/page/{{ pagination.pageNumber }}{%endif
   %}/index.html {% elsif pageLink %}/{{ pageLink | slug }}/index.html{% else
   %}/{{ title | slug }}/index.html{%endif %}
+pagination:
+  data: collections.blog
+  size: 22
 metaDesc: ''
 layout: layouts/page.html
 hero:
+  _bookshop_name: sections/simpleHero
+  heading:
+    _bookshop_name: generic/heading
+    content:
+      highlightEyebrow: false
+      eyebrow:
+      headline: Welcome
+      description: ''
+      headingHierarchy: h2
+    styles:
+      contentAlignment: center
+      textAlignment: center
 content_blocks: []
 ---
