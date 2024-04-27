@@ -20,7 +20,7 @@
   {% assign headingSize = "text-xl" %}
 {% endif %}
 <header class="c-heading w-full flex flex-col justify-center {{contentAlignment}} text-{{color_group}}-textcolor {{margin}}">
-  <div class="{{textAlignment}}">
+  <div class="{{textAlignment}} max-w-[700px]">
     {% if content.eyebrow %}
       <p class=" {% if content.highlightEyebrow %} text-{{color_group}}-accentcolor {% endif %} ">{{ content.eyebrow }}</p>
     {% endif %}

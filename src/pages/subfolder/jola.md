@@ -26,7 +26,7 @@ hero:
     content:
       highlightEyebrow: false
       eyebrow: And my eyebrow
-      headline: This is my hero
+      headline: This is my hero This is my hero This is my hero This is my hero This is my hero This is my hero 
       description: Do you think its cool?
       headingHierarchy: h2
     styles:

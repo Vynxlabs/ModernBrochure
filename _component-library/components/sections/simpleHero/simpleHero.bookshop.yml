@@ -4,7 +4,7 @@ spec:
     - hero_blocks
   label: "Simple Hero"
   description:
-  icon:
+  icon: feed
   tags: []
 
 # Defines the structure of this component, as well as the default values
