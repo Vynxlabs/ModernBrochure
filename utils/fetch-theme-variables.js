@@ -88,6 +88,14 @@ function appendTailwindUtilityClasses(colorSet,id){
     cssString += `.stroke-${id}-secondarycolor { stroke: ${colorSet.secondaryColor}; }\n`;
     cssString += `.stroke-${id}-accentcolor { stroke: ${colorSet.accentColor}; }\n`;
 
+    //fill
+    cssString += `.fill-${id}-textcolor { fill: ${colorSet.textColor}; }\n`;
+    cssString += `.fill-${id}-backgroundcolor { fill: ${colorSet.backgroundColor}; }\n`;
+    cssString += `.fill-${id}-primarycolor { fill: ${colorSet.primaryColor}; }\n`;
+    cssString += `.fill-${id}-secondarycolor { fill: ${colorSet.secondaryColor}; }\n`;
+    cssString += `.fill-${id}-accentcolor { fill: ${colorSet.accentColor}; }\n`;
+    
+
 
     cssString += '\n'; // Add a newline for readability
     return cssString

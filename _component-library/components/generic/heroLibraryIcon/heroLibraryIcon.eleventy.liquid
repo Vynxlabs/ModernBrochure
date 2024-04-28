@@ -1,0 +1,39 @@
+{% assign iconPath = "assets/images/icons/" | append: iconType | append: "/" | append: heroLibraryIconName | ".svg" %}
+{% capture iconSizeClasses %}
+    {% if iconSize == 'large' %}
+        w-[70px] h-[70px]
+        {% elsif iconSize == 'small' %}
+            w-[32px] h-[32px]
+        {% elsif iconSize == 'micro' %}
+            w-[16px] h-[16px]
+    {% endif %}
+{% endcapture %}
+{% capture iconStrokeColor %}
+    {% if themeColor %}
+        stroke-{{color_group}}-textcolor
+        {% else %}
+            {{color}}
+{% endif %}
+
+{% capture iconFillColor %}
+    {% if themeColor %}
+        fill-{{color_group}}-textcolor
+        {% else %}
+            {{color}}
+{% endif %}
+{% endcapture %}
+
+{% capture chosenType %}
+    {% if iconType == 'solid' %}
+        {{ iconFillColor }} 
+        {% else %}
+            {{ iconStrokeColor }} 
+    {% endif %}    
+{% endcapture %}
+<span class="c-heroLibraryIcon flex justify-center items-center {{ iconSizeClasses }} {{chosenType}}" >
+  {% if env_bookshop_live %}
+    <span class="{{ c }}__image" style="--url: url('{{ iconPath }}')"></span>
+  {% else %}
+    {{ '/src' | append: icon_path | svgContents }}
+  {% endif %}
+</span>
