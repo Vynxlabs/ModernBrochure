@@ -1,0 +1,10 @@
+<div class="">
+  <input class="" 
+      type="checkbox" 
+      id="{{ id }}" 
+      name="{{ groupName }}" 
+      value="{{ label }}"
+      {% if checked %}checked{% endif %} 
+      {% if required %}required{% endif %} />
+  <label class="" for="{{ id }}">{{ label }}{% if required %} *{% endif %}</label>
+</div>

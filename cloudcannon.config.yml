@@ -121,7 +121,7 @@ collections_config:
           values: data.blogTags
       date:
         label: Published Date
-        instance_value: NOW
+        _instance_value: NOW
       image:
         hidden: true
     schemas:
@@ -170,7 +170,7 @@ _inputs:
           id: purplenurple4
   id:
     hidden: true
-    instance_value: UUID
+    _instance_value: UUID
   font:
     comment: >-
       Write the name of any font from
