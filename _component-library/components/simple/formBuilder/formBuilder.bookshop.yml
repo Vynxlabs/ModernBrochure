@@ -11,7 +11,7 @@ blueprint:
   formName:
   sectionId:
   successPage:
-  form_elements: [bookshop:structures:form_blocks]
+  form_elements: [bookshop:structure:form_blocks]
   submitButton: 
     text: "Button text"
     color_group: primary
