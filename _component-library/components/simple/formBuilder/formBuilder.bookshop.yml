@@ -17,7 +17,7 @@ blueprint:
     color_group: primary
     ghostButton: false
     blackText: false
-    form: true
+    formSubmit: true
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
@@ -30,5 +30,5 @@ _inputs:
   blackText:
     type: switch
     label: Black Text
-  form:
+  formSubmit:
     hidden: true
