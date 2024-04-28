@@ -1,0 +1,11 @@
+<section>
+    {% if content.heading or content.description %}
+        <div class="component__heading {{ c }}__heading">
+            {% if content.heading %}{% bookshop "generic/heading" bind:content.heading %}{% endif %}
+            {% if content.description %}{% bookshop "generic/textBlock" text:content.description %}{% endif %}
+        </div>
+    {% endif %}
+    <div class="">
+        {% bookshop "simple/formBuilder" bind:content.form %}
+    </div>
+</section>
