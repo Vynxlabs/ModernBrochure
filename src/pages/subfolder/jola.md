@@ -40,8 +40,8 @@ content_blocks:
   - _bookshop_name: generic/heroLibraryIcon
     heroLibraryIconName: academic-cap
     iconSize: large
-    iconType: solid
+    iconType: outline
     roundedBorder: false
-    themeColor: false
-    color: '#7d7f7c'
+    themeColor: true
+    color: '#6c9e22'
 ---
