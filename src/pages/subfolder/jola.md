@@ -26,11 +26,22 @@ hero:
     content:
       highlightEyebrow: false
       eyebrow: And my eyebrow
-      headline: This is my hero This is my hero This is my hero This is my hero This is my hero This is my hero 
+      headline: >-
+        This is my hero This is my hero This is my hero This is my hero This is
+        my hero This is my hero
       description: Do you think its cool?
       headingHierarchy: h2
     styles:
       contentAlignment: left
       textAlignment: left
-content_blocks: []
+content_blocks:
+  - _bookshop_name: sample
+    text: Hello World!
+  - _bookshop_name: generic/heroLibraryIcon
+    heroLibraryIconName: academic-cap
+    iconSize: large
+    iconType: solid
+    roundedBorder: false
+    themeColor: false
+    color: '#7d7f7c'
 ---
