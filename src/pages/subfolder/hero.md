@@ -34,6 +34,7 @@ hero:
         color_group: orange3
         ghostButton: false
         blackText: false
+        formSubmit: false
         form: false
       - _bookshop_name: generic/button
         url: '#'
@@ -42,6 +43,7 @@ hero:
         color_group: orange3
         ghostButton: true
         blackText: false
+        formSubmit: false
         form: false
     image:
       _bookshop_name: generic/image
@@ -80,24 +82,42 @@ content_blocks:
           highlightEyebrow: false
           eyebrow:
           headline: primary heading
-          description: ''
+          description:
           headingHierarchy: h2
         styles:
           contentAlignment: center
           textAlignment: center
-      description: asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf
+      description: ''
       form:
         _bookshop_name: simple/formBuilder
         formName:
         sectionId:
         successPage:
-        form_elements: []
+        form_elements:
+          - _bookshop_name: generic/form/checkBoxGroup
+            label: ''
+            id:
+            checkboxes:
+              - label: Testing
+                id:
+                checked: false
+                required: false
+              - label: Testing2
+                id:
+                checked: false
+                required: false
+              - label: CHECKBOX GBROUP
+                id:
+                checked: false
+                required: false
+            arrangement: inline
+            helperText:
         submitButton:
           text: Button text
           color_group: primary
           ghostButton: false
           blackText: false
-          form: true
+          formSubmit: true
     styles:
       color_group: primary
 ---
