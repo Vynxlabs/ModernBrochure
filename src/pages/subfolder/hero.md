@@ -34,6 +34,7 @@ hero:
         color_group: orange3
         ghostButton: false
         blackText: false
+        form: false
       - _bookshop_name: generic/button
         url: '#'
         openInNewTab: false
@@ -41,6 +42,7 @@ hero:
         color_group: orange3
         ghostButton: true
         blackText: false
+        form: false
     image:
       _bookshop_name: generic/image
       imagePath: /images/tree.jpg
@@ -69,6 +71,35 @@ content_blocks:
       randomize: true
     styles:
       color_group: magic0
+  - _bookshop_name: sections/simpleForm
+    content:
+      sectionId:
+      heading:
+        _bookshop_name: generic/heading
+        content:
+          highlightEyebrow: false
+          eyebrow:
+          headline: primary heading
+          description: ''
+          headingHierarchy: h2
+        styles:
+          contentAlignment: center
+          textAlignment: center
+      description: asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf
+      form:
+        _bookshop_name: simple/formBuilder
+        formName:
+        sectionId:
+        successPage:
+        form_elements: []
+        submitButton:
+          text: Button text
+          color_group: primary
+          ghostButton: false
+          blackText: false
+          form: true
+    styles:
+      color_group: primary
 ---
 ## This is me adding some content
 
