@@ -182,7 +182,8 @@ _inputs:
           id: stacked
   sectionId:
     comment: >-
-      An ID given to a section to be able to link to it Example: example.com/#sectionId where sectionID is what you type in this box
+      An ID given to a section to be able to link to it Example:
+      example.com/#sectionId where sectionID is what you type in this box
   font:
     comment: >-
       Write the name of any font from
