@@ -68,6 +68,11 @@ function appendTailwindUtilityClasses(colorSet,id){
     cssString += `.bg-${id}-primarycolor { background-color: ${colorSet.primaryColor}; }\n`;
     cssString += `.bg-${id}-secondarycolor { background-color: ${colorSet.secondaryColor}; }\n`;
     cssString += `.bg-${id}-accentcolor { background-color: ${colorSet.accentColor}; }\n`;
+    //background hover
+    cssString += `.hover\:bg-${id}-backgroundcolor:hover { background-color: ${colorSet.backgroundColor}; }\n`;
+    cssString += `.hover\:bg-${id}-primarycolor:hover { background-color: ${colorSet.primaryColor}; }\n`;
+    cssString += `.hover\:bg-${id}-secondarycolor:hover { background-color: ${colorSet.secondaryColor}; }\n`;
+    cssString += `.hover\:bg-${id}-accentcolor:hover { background-color: ${colorSet.accentColor}; }\n`;
 
     //Nav
     cssString += `.bg-${id}-backgroundcolornav { background-color: ${colorSet.backgroundColor}70; }\n`;
@@ -80,6 +85,11 @@ function appendTailwindUtilityClasses(colorSet,id){
     cssString += `.border-${id}-primarycolor { border-color: ${colorSet.primaryColor}; }\n`;
     cssString += `.border-${id}-secondarycolor { border-color: ${colorSet.secondaryColor}; }\n`;
     cssString += `.border-${id}-accentcolor { border-color: ${colorSet.accentColor}; }\n`;
+    //border color hover
+    cssString += `.hover\:border-${id}-backgroundcolor:hover { border-color: ${colorSet.backgroundColor}; }\n`;
+    cssString += `.hover\:border-${id}-primarycolor:hover { border-color: ${colorSet.primaryColor}; }\n`;
+    cssString += `.hover\:border-${id}-secondarycolor:hover { border-color: ${colorSet.secondaryColor}; }\n`;
+    cssString += `.hover\:border-${id}-accentcolor:hover { border-color: ${colorSet.accentColor}; }\n`;
 
     //stroke
     cssString += `.stroke-${id}-textcolor { stroke: ${colorSet.textColor}; }\n`;

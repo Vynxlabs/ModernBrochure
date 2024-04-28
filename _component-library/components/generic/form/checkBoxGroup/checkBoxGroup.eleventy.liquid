@@ -1,3 +1,18 @@
+{% assign_local groupName = label | append: "-" | append: id %}
+
 <div class="c-checkBoxGroup">
-    <p>{{ text }}</p>
+    <fieldset {% if helper_text %}aria-describedby="{{ id }}--helper"{% endif %}>
+        {% if label and label != '' %}
+            <legend class="">{{ label }}</legend>
+        {% endif %}
+        <div class="{{ c }}__group__inputs {{ c }}__group__inputs--arrangement-{{ arrangement }}">
+            {% assign_local group_name = label | append: "-" | append: id %}
+            {% for checkbox in checkboxes %}
+                {% bookshop "generic/form/checkboxInput" bind:checkbox group_name:groupName %}
+            {% endfor %}
+        </div>
+    </fieldset>
+    {% if helper_text %}
+        {% bookshop "generic/form/helper-text" id={{ id }} helperText={{ helperText }} %}
+    {% endif %}
 </div>

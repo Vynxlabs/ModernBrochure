@@ -171,6 +171,18 @@ _inputs:
   id:
     hidden: true
     _instance_value: UUID
+  arrangement:
+    type: select
+    comment: The layout of the icon and text together
+    options:
+      values:
+        - name: Inline
+          id: inline
+        - name: Stacked
+          id: stacked
+  sectionId:
+    comment: >-
+      An ID given to a section to be able to link to it Example: example.com/#sectionId where sectionID is what you type in this box
   font:
     comment: >-
       Write the name of any font from
