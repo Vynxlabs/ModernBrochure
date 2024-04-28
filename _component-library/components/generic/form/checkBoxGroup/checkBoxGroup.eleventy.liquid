@@ -7,7 +7,7 @@
         {% endif %}
         <div class="{{ c }}__group__inputs {{ c }}__group__inputs--arrangement-{{ arrangement }}">
             {% for checkbox in checkboxes %}
-                {% bookshop "generic/form/checkboxInput" bind:checkbox group_name:groupName %}
+                {% bookshop "generic/form/checkBoxInput" bind:checkbox group_name:groupName %}
             {% endfor %}
         </div>
     </fieldset>
