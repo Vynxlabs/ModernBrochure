@@ -36,6 +36,18 @@ customColor_groups:
     primaryColor: '#3c54d1'
     secondaryColor: '#b18ce4'
     accentColor: '#aa68dc'
+  - name: darkGreen
+    textColor: '#EAFDE4'
+    backgroundColor: '#061001'
+    primaryColor: '#A8F683'
+    secondaryColor: '#0B9561'
+    accentColor: '#37F0D2'
+  - name: earth
+    textColor: '#090807'
+    backgroundColor: '#FBFBFA'
+    primaryColor: '#97816C'
+    secondaryColor: '#B9CAB4'
+    accentColor: '#90B09A'
 heading_font: Rubik
 content_font: Rubik
 logo_font: Major Mono Display

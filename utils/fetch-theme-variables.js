@@ -87,11 +87,11 @@ function appendTailwindUtilityClasses(colorSet,id){
     cssString += `.border-${id}-secondarycolor { border-color: ${colorSet.secondaryColor}; }\n`;
     cssString += `.border-${id}-accentcolor { border-color: ${colorSet.accentColor}; }\n`;
     //border color hover
-    cssString += `.hover\:border-${id}-textcolor:hover { border-color: ${colorSet.textColor}; }\n`;
-    cssString += `.hover\:border-${id}-backgroundcolor:hover { border-color: ${colorSet.backgroundColor}; }\n`;
-    cssString += `.hover\:border-${id}-primarycolor:hover { border-color: ${colorSet.primaryColor}; }\n`;
-    cssString += `.hover\:border-${id}-secondarycolor:hover { border-color: ${colorSet.secondaryColor}; }\n`;
-    cssString += `.hover\:border-${id}-accentcolor:hover { border-color: ${colorSet.accentColor}; }\n`;
+    cssString += `.hover\\:border-${id}-textcolor:hover { border-color: ${colorSet.textColor}; }\n`;
+    cssString += `.hover\\:border-${id}-backgroundcolor:hover { border-color: ${colorSet.backgroundColor}; }\n`;
+    cssString += `.hover\\:border-${id}-primarycolor:hover { border-color: ${colorSet.primaryColor}; }\n`;
+    cssString += `.hover\\:border-${id}-secondarycolor:hover { border-color: ${colorSet.secondaryColor}; }\n`;
+    cssString += `.hover\\:border-${id}-accentcolor:hover { border-color: ${colorSet.accentColor}; }\n`;
 
     //stroke
     cssString += `.stroke-${id}-textcolor { stroke: ${colorSet.textColor}; }\n`;

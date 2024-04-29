@@ -168,6 +168,10 @@ _inputs:
           id: orange3
         - name: PurpleNurple
           id: purplenurple4
+        - name: darkGreen
+          id: darkgreen5
+        - name: earth
+          id: earth6
   id:
     hidden: true
     instance_value: UUID

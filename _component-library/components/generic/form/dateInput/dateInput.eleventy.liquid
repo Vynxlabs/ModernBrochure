@@ -1,0 +1,19 @@
+
+<div class="{{ c }}">
+    <label class="" for="{{ id }}">{{ label }}{% if required %} *{% endif %}</label>
+    <input class=" {% if min_today %}{{ c }}__input--min-today{% endif %} {% if max_today %}{{ c }}__input--max-today{% endif %}"
+        type="date"
+        id="{{ id }}" 
+        name="{{ label }}" 
+        {% if minToday %}min="{{ 'now' | date: '%Y-%m-%d' }}"{% elsif minToday %}min="{{ min | date: '%Y-%m-%d' }}"{% endif %}
+        {% if maxToday %}max="{{ 'now' | date: '%Y-%m-%d' }}"{% elsif maxToday %}max="{{ max | date: '%Y-%m-%d' }}"{% endif %}
+        {% if required %}required{% endif %}
+        {% if helperText %}aria-describedby="{{ id }}--helper"{% endif %}>
+    <div class="{{ c }}__icon">{% bookshop "generic/heroLibraryIcon" heroLibraryIconName:"calendar-days" iconType:"outline" iconSize:'extra-small' roundedBorder:false theme:true %}</div>
+    <div class="{{ c }}__dropdown-arrow">{% bookshop "generic/heroLibraryIcon" heroLibraryIconName:"chevron-down" iconType:"solid" iconSize:'extra-small' roundedBorder:false themeColor:true %}</div>
+
+    {% if helperText %}
+        {% bookshop "generic/form/helperText" id:id helperText:helperText %}
+    {% endif %}
+
+</div>
