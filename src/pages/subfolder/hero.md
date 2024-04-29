@@ -87,10 +87,12 @@ content_blocks:
         styles:
           contentAlignment: center
           textAlignment: center
-      description: 'fadfasdfasdfasfasdfasdfasdfasdfasdfasd asdf asdfasd fas dfasfasdfasdfasdff'
+      description: >-
+        fadfasdfasdfasfasdfasdfasdfasdfasdfasd asdf asdfasd fas
+        dfasfasdfasdfasdff
       form:
         _bookshop_name: simple/formBuilder
-        formName: ""
+        formName: ''
         sectionId:
         successPage:
         form_elements:
@@ -142,6 +144,11 @@ content_blocks:
                 required: false
             arrangement: stacked
             helperText: Choose 1
+          - _bookshop_name: generic/form/countrySelectInput
+            label: asdfasdf
+            id: 16ed8b71-7eaf-42d0-bd6d-a793a8c90fbb
+            required: true
+            helperText: asdfasdf
         submitButton:
           text: submit
           color_group: primary
