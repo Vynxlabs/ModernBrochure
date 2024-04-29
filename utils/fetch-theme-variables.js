@@ -81,11 +81,13 @@ function appendTailwindUtilityClasses(colorSet,id){
     cssString += `.bg-${id}-accentcolornav { background-color: ${colorSet.accentColor}70; }\n`;
     
     //border color
+    cssString += `.border-${id}-textcolor { border-color: ${colorSet.textColor}; }\n`;
     cssString += `.border-${id}-backgroundcolor { border-color: ${colorSet.backgroundColor}; }\n`;
     cssString += `.border-${id}-primarycolor { border-color: ${colorSet.primaryColor}; }\n`;
     cssString += `.border-${id}-secondarycolor { border-color: ${colorSet.secondaryColor}; }\n`;
     cssString += `.border-${id}-accentcolor { border-color: ${colorSet.accentColor}; }\n`;
     //border color hover
+    cssString += `.hover\:border-${id}-textcolor:hover { border-color: ${colorSet.textColor}; }\n`;
     cssString += `.hover\:border-${id}-backgroundcolor:hover { border-color: ${colorSet.backgroundColor}; }\n`;
     cssString += `.hover\:border-${id}-primarycolor:hover { border-color: ${colorSet.primaryColor}; }\n`;
     cssString += `.hover\:border-${id}-secondarycolor:hover { border-color: ${colorSet.secondaryColor}; }\n`;

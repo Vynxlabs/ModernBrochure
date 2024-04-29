@@ -2,14 +2,14 @@
 spec:
   structures:
   label: "CheckBoxInput"
-  description: "A single checkbox input" 
+  description: "A single checkbox input"
   icon: check_box
   tags: []
 
 # Defines the structure of this component, as well as the default values
 blueprint:
   groupName:
-  label: 
+  label:
   id:
   checked: false
   required: false
@@ -23,5 +23,5 @@ preview:
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
   id:
-    _instance_value: UUID
+    instance_value: UUID
     hidden: true

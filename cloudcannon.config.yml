@@ -121,7 +121,7 @@ collections_config:
           values: data.blogTags
       date:
         label: Published Date
-        _instance_value: NOW
+        instance_value: NOW
       image:
         hidden: true
     schemas:
@@ -170,7 +170,7 @@ _inputs:
           id: purplenurple4
   id:
     hidden: true
-    _instance_value: UUID
+    instance_value: UUID
   arrangement:
     type: select
     comment: The layout of the icon and text together

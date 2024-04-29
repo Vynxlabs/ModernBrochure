@@ -1,10 +1,15 @@
 <div class="">
-  <input class="" 
-      type="checkbox" 
-      id="{{ id }}" 
-      name="{{ groupName }}" 
+
+  <label class=" flex items-center gap-1 text-{{color_group}}-textcolor" for="{{ id }}"><input
+      class="appearance-none w-4 h-4 rounded border-2 border-{{color_group}}-textcolor cursor-pointer relative flex justify-center items-center shrink-0 checked:after:content-['✔']"
+      type="checkbox"
+      id="{{ id }}"
+      name="{{ groupName }}"
       value="{{ label }}"
-      {% if checked %}checked{% endif %} 
-      {% if required %}required{% endif %} />
-  <label class="" for="{{ id }}">{{ label }}{% if required %} *{% endif %}</label>
+      {% if checked %}
+      checked{% endif %}
+      {% if required %}
+      required{% endif %} />{{ label }}{% if required %}
+      *{% endif %}
+  </label>
 </div>
