@@ -90,7 +90,7 @@ content_blocks:
       description: ''
       form:
         _bookshop_name: simple/formBuilder
-        formName:
+        formName: ""
         sectionId:
         successPage:
         form_elements:
