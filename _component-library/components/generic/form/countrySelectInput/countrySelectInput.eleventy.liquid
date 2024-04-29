@@ -1,9 +1,12 @@
 
 <div class="">
-  <label class="" for="{{ id }}">{{ label }}</label>
+  <label class="" for="{{ id }}">{{ label }} {% if required %}
+*{% endif %}</label>
   <select class=""
     name="{{ label }}"
     id="{{ id }}"
+    {% if required %}
+    required{% endif %}
     {% if helperText %}aria-describedby="{{ id }}--helper"{% endif %}>
     <option value="USA" selected>USA</option>
     <option value="Aaland Islands">Aaland Islands</option>
