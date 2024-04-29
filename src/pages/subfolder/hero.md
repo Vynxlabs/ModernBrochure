@@ -95,23 +95,23 @@ content_blocks:
         successPage:
         form_elements:
           - _bookshop_name: generic/form/checkBoxGroup
-            label: ''
-            id:
+            label: Day
+            id: 39aeb58c-c2f7-4697-bb2f-5d679405bcec
             checkboxes:
-              - label: Testing
-                id:
+              - label: Monday
+                id: 8e2a29f6-5666-4231-a24f-27f89a923a6f
                 checked: false
                 required: false
-              - label: Testing2
-                id:
-                checked: false
+              - label: Wednesday
+                id: 669bd2a9-764c-4cca-bbc5-162748eaa9ed
+                checked: true
                 required: false
-              - label: CHECKBOX GBROUP
-                id:
+              - label: Friday
+                id: 3560883e-5d4e-4c8f-a294-44dc5c75ee9c
                 checked: false
                 required: false
             arrangement: inline
-            helperText:
+            helperText: Hello
         submitButton:
           text: Button text
           color_group: primary
