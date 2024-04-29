@@ -105,7 +105,7 @@ content_blocks:
               - label: Wednesday
                 id: 669bd2a9-764c-4cca-bbc5-162748eaa9ed
                 checked: true
-                required: false
+                required: true
               - label: Friday
                 id: 3560883e-5d4e-4c8f-a294-44dc5c75ee9c
                 checked: false
@@ -113,7 +113,7 @@ content_blocks:
             arrangement: inline
             helperText: Hello
         submitButton:
-          text: Button text
+          text: submit
           color_group: primary
           ghostButton: false
           blackText: false

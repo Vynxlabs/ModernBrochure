@@ -15,8 +15,8 @@
             <legend class="text-xs uppercase font-bold ">{{ label }}</legend>
         {% endif %}
         <div class="flex   {{ arrangementClasses }}">
-            {% for checkbox in checkboxes %}
-                {% bookshop "generic/form/checkBoxInput" bind:checkbox groupName:groupName %}
+            {% for radio in radioButtons %}
+                {% bookshop "generic/form/radioInput" bind:radio groupName:groupName %}
             {% endfor %}
         </div>
     </fieldset>
