@@ -87,7 +87,7 @@ content_blocks:
         styles:
           contentAlignment: center
           textAlignment: center
-      description: ''
+      description: 'fadfasdfasdfasfasdfasdfasdfasdfasdfasd asdf asdfasd fas dfasfasdfasdfasdff'
       form:
         _bookshop_name: simple/formBuilder
         formName: ""

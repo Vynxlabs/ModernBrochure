@@ -8,7 +8,7 @@
   class="w-full max-w-[512px]"
   >
   {% for element in form_elements %}
-    {% bookshop "{{element._bookshop_name}}" bind: element %}
+    <div class="mt-4">{% bookshop "{{element._bookshop_name}}" bind: element %}</div>
   {% endfor %}
   <div data-netlify-recaptcha="true"></div>
   <div class="mt-5">{% bookshop "generic/button" bind: submitButton %}</div>
