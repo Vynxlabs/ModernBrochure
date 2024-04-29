@@ -112,6 +112,36 @@ content_blocks:
                 required: false
             arrangement: inline
             helperText: Hello
+          - _bookshop_name: generic/form/radioButtonGroup
+            label: My group
+            id: 74ede366-8d1d-41a2-b4a8-5d3e0bbbfc6d
+            radioButtons:
+              - label: One radio
+                id: 8361a61d-07e8-4ddf-83e1-9094c651b5c1
+                checked: true
+                required: false
+              - label: My other radio
+                id: b19ef905-1438-4690-9779-ebca47418b7b
+                checked: false
+                required: false
+              - label: Third
+                id: c72e0c29-8766-48df-9f8e-ce0ae9695fd5
+                checked: false
+                required: false
+              - label: Fourth
+                id: f14b3676-e1b3-4f88-ad22-d53bf86de98f
+                checked: false
+                required: false
+              - label: Fifth
+                id: 66d9e531-2186-4cef-923e-e6e89e2a5725
+                checked: false
+                required: false
+              - label: Sixth
+                id: f91f101b-2fa5-4ffa-8486-86364d49fb73
+                checked: false
+                required: false
+            arrangement: stacked
+            helperText: Choose 1
         submitButton:
           text: submit
           color_group: primary
