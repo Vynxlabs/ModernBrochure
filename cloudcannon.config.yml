@@ -172,6 +172,8 @@ _inputs:
           id: darkgreen5
         - name: earth
           id: earth6
+        - name: Teal
+          id: teal7
   id:
     hidden: true
     instance_value: UUID

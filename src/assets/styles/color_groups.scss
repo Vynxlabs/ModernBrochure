@@ -20,6 +20,9 @@
 --earth6__background : undefined;
 --earth6__foreground : undefined;
 --earth6__interaction : undefined;
+--teal7__background : undefined;
+--teal7__foreground : undefined;
+--teal7__interaction : undefined;
 }
 
 .text-primary-textcolor { color: #021015; }
@@ -318,6 +321,43 @@
 .fill-earth6-secondarycolor { fill: #B9CAB4; }
 .fill-earth6-accentcolor { fill: #90B09A; }
 
+.text-teal7-textcolor { color: #e4f0f6; }
+.text-teal7-primarycolor { color: #90c5e0; }
+.text-teal7-secondarycolor { color: #1f5c7a; }
+.text-teal7-accentcolor { color: #339fd1; }
+.bg-teal7-backgroundcolor { background-color: #081a21; }
+.bg-teal7-primarycolor { background-color: #90c5e0; }
+.bg-teal7-secondarycolor { background-color: #1f5c7a; }
+.bg-teal7-accentcolor { background-color: #339fd1; }
+.hover:bg-teal7-backgroundcolor:hover { background-color: #081a21; }
+.hover:bg-teal7-primarycolor:hover { background-color: #90c5e0; }
+.hover:bg-teal7-secondarycolor:hover { background-color: #1f5c7a; }
+.hover:bg-teal7-accentcolor:hover { background-color: #339fd1; }
+.bg-teal7-backgroundcolornav { background-color: #081a2170; }
+.bg-teal7-primarycolornav { background-color: #90c5e070; }
+.bg-teal7-secondarycolornav { background-color: #1f5c7a70; }
+.bg-teal7-accentcolornav { background-color: #339fd170; }
+.border-teal7-textcolor { border-color: #e4f0f6; }
+.border-teal7-backgroundcolor { border-color: #081a21; }
+.border-teal7-primarycolor { border-color: #90c5e0; }
+.border-teal7-secondarycolor { border-color: #1f5c7a; }
+.border-teal7-accentcolor { border-color: #339fd1; }
+.hover\:border-teal7-textcolor:hover { border-color: #e4f0f6; }
+.hover\:border-teal7-backgroundcolor:hover { border-color: #081a21; }
+.hover\:border-teal7-primarycolor:hover { border-color: #90c5e0; }
+.hover\:border-teal7-secondarycolor:hover { border-color: #1f5c7a; }
+.hover\:border-teal7-accentcolor:hover { border-color: #339fd1; }
+.stroke-teal7-textcolor { stroke: #e4f0f6; }
+.stroke-teal7-backgroundcolor { stroke: #081a21; }
+.stroke-teal7-primarycolor { stroke: #90c5e0; }
+.stroke-teal7-secondarycolor { stroke: #1f5c7a; }
+.stroke-teal7-accentcolor { stroke: #339fd1; }
+.fill-teal7-textcolor { fill: #e4f0f6; }
+.fill-teal7-backgroundcolor { fill: #081a21; }
+.fill-teal7-primarycolor { fill: #90c5e0; }
+.fill-teal7-secondarycolor { fill: #1f5c7a; }
+.fill-teal7-accentcolor { fill: #339fd1; }
+
 .component {
 --main-background-color: #3B3B3D;
 --main-text-color: #F9F9FB;
@@ -362,6 +402,11 @@ color: var(--main-text-color);
 --main-background-color: var(--earth6__background);
 --main-text-color: var(--earth6__foreground);
 --interaction-color: var(--earth6__interaction);
+}
+&--teal7 {
+--main-background-color: var(--teal7__background);
+--main-text-color: var(--teal7__foreground);
+--interaction-color: var(--teal7__interaction);
 }
 }
 
@@ -408,6 +453,11 @@ color: var(--main-text-color);
 --main-text-color: var(--earth6__foreground);
 --interaction-color: var(--earth6__interaction);
 }
+&--teal7 {
+--main-background-color: var(--teal7__background);
+--main-text-color: var(--teal7__foreground);
+--interaction-color: var(--teal7__interaction);
+}
 }
 
 .c-footer {
@@ -452,6 +502,11 @@ color: var(--main-text-color);
 --main-background-color: var(--earth6__background);
 --main-text-color: var(--earth6__foreground);
 --interaction-color: var(--earth6__interaction);
+}
+&--teal7 {
+--main-background-color: var(--teal7__background);
+--main-text-color: var(--teal7__foreground);
+--interaction-color: var(--teal7__interaction);
 }
 }
 
