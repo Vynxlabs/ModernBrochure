@@ -182,12 +182,12 @@ content_blocks:
             helperText: f
         submitButton:
           text: submit
-          color_group: primary
+          color_group: teal7
           ghostButton: false
           blackText: false
           formSubmit: true
     styles:
-      color_group: primary
+      color_group: teal7
 ---
 ## This is me adding some content
 
