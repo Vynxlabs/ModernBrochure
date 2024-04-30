@@ -172,6 +172,8 @@ content_blocks:
             helperText: Use your business phone number
           - _bookshop_name: generic/form/sectionBreak
             line: false
+          - _bookshop_name: generic/form/sectionHeading
+            text: asdfasdf
           - _bookshop_name: generic/form/emailInput
             label: Llelele
             id: 92ae888e-4de8-4cb3-83c7-9d445428a6b7
