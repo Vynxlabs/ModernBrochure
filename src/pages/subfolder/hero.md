@@ -170,6 +170,14 @@ content_blocks:
             required: true
             placeholder: 208-555-5555
             helperText: Use your business phone number
+          - _bookshop_name: generic/form/sectionBreak
+            line: false
+          - _bookshop_name: generic/form/emailInput
+            label: Llelele
+            id: 92ae888e-4de8-4cb3-83c7-9d445428a6b7
+            required: false
+            placeholder: fasdfdsf
+            helperText: f
         submitButton:
           text: submit
           color_group: primary
