@@ -164,6 +164,12 @@ content_blocks:
             required: true
             placeholder: jsmith@example.com
             helperText: Use your business email
+          - _bookshop_name: generic/form/phoneInput
+            label: Business Phone
+            id: 01eb32bd-4942-448b-adef-30d28c25f60e
+            required: true
+            placeholder: 208-555-5555
+            helperText: Use your business phone number
         submitButton:
           text: submit
           color_group: primary
