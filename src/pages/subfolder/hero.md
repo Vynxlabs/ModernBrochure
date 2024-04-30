@@ -149,6 +149,15 @@ content_blocks:
             id: 16ed8b71-7eaf-42d0-bd6d-a793a8c90fbb
             required: true
             helperText: asdfasdf
+          - _bookshop_name: generic/form/dateInput
+            label: Choose a date
+            id: b8d87900-f8a9-4e7e-ab16-1668637c8736
+            required: true
+            minToday: false
+            min:
+            maxToday: false
+            max:
+            helperText: Some date
         submitButton:
           text: submit
           color_group: primary
