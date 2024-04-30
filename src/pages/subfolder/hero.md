@@ -158,6 +158,12 @@ content_blocks:
             maxToday: false
             max:
             helperText: Some date
+          - _bookshop_name: generic/form/emailInput
+            label: Email
+            id: c33537aa-f69a-4408-8ed2-fd1083293a61
+            required: true
+            placeholder: jsmith@example.com
+            helperText: Use your business email
         submitButton:
           text: submit
           color_group: primary
