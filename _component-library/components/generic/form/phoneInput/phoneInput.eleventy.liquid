@@ -4,7 +4,8 @@
       *{% endif %}
       <input
     class="block text-base appearance-none rounded font-normal w-full border-2 border-{{color_group}}-textcolor py-1 px-2 bg-{{color_group}}-backgroundcolor hover:border-{{color_group}}-accentcolor"
-    type="email"
+    type="tel"
+    pattern="^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$"
     id="{{ id }}"
     name="{{ label }}"
     placeholder="{{ placeholder }}"

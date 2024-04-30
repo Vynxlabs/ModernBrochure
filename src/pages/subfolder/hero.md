@@ -152,7 +152,7 @@ content_blocks:
           - _bookshop_name: generic/form/dateInput
             label: Choose a date
             id: b8d87900-f8a9-4e7e-ab16-1668637c8736
-            required: true
+            required: false
             minToday: false
             min:
             maxToday: false
@@ -161,7 +161,7 @@ content_blocks:
           - _bookshop_name: generic/form/emailInput
             label: Email
             id: c33537aa-f69a-4408-8ed2-fd1083293a61
-            required: true
+            required: false
             placeholder: jsmith@example.com
             helperText: Use your business email
           - _bookshop_name: generic/form/phoneInput
