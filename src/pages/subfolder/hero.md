@@ -174,12 +174,41 @@ content_blocks:
             line: false
           - _bookshop_name: generic/form/sectionHeading
             text: Personal information
+          - _bookshop_name: generic/form/simpleText
+            text: asdfasdfasdfasdfasdfasdfasdfasdfasdfa
           - _bookshop_name: generic/form/emailInput
             label: Llelele
             id: 92ae888e-4de8-4cb3-83c7-9d445428a6b7
             required: false
             placeholder: fasdfdsf
             helperText: f
+          - _bookshop_name: generic/form/selectInput
+            label: Select input
+            id: 33bcb118-f4d1-4a94-badb-5c6455664c4d
+            options:
+              - name: One
+              - name: Two
+            helperText: fd
+          - _bookshop_name: generic/form/textAreaInput
+            label: Message
+            placeholder: Your message here
+            id: b5e6de18-34f2-4f4e-a4eb-363ad1ea7a4b
+            rows: 4
+            required: false
+            helperText: Da feet
+          - _bookshop_name: generic/form/textInput
+            label: Nammmee
+            placeholder: fd a
+            id: 06f6baa6-a365-4597-a522-432971569c27
+            required: false
+            helperText: ' asdf sdf '
+          - _bookshop_name: generic/form/timeInput
+            label: Time test
+            placeholder:
+            id: 77ae593a-9310-4a4b-aff4-e731b067edb2
+            helperText:
+            min:
+            max:
         submitButton:
           text: submit
           color_group: teal7
