@@ -1,0 +1,12 @@
+
+{% capture formSectionHeading %}
+    content:
+        headline: {{text}}
+        headingHierarchy: h3
+{% endcapture %}
+
+{% assign formSectionHeading = formSectionHeading | ymlify %}
+
+<div class="">
+    {% bookshop "generic/heading" bind: formSectionHeading %}
+</div>
