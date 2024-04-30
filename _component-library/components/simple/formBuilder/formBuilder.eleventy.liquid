@@ -1,15 +1,17 @@
-<form
-
-  method="POST"
-  data-netlify="true"
-  data-netlify-recaptcha="true"
-  name="{{ formName }}"
-  id="{{ sectionId }}"
-  class="w-full max-w-[512px]"
-  >
-  {% for element in form_elements %}
-    <div class="mt-4">{% bookshop "{{element._bookshop_name}}" bind: element %}</div>
-  {% endfor %}
-  <div data-netlify-recaptcha="true"></div>
-  <div class="mt-5">{% bookshop "generic/button" bind: submitButton %}</div>
-  </form>
+<div class="w-full flex flex-col justify-center items-center">
+  <form
+  
+    method="POST"
+    data-netlify="true"
+    data-netlify-recaptcha="true"
+    name="{{ formName }}"
+    id="{{ sectionId }}"
+    class="w-full max-w-[512px]"
+    >
+    {% for element in form_elements %}
+      <div class="mt-4">{% bookshop "{{element._bookshop_name}}" bind: element %}</div>
+    {% endfor %}
+    <div data-netlify-recaptcha="true"></div>
+    <div class="mt-5 flex justify-end">{% bookshop "generic/button" bind: submitButton %}</div>
+    </form>
+</div>

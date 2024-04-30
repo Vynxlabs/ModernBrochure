@@ -13,7 +13,7 @@ blueprint:
   successPage:
   form_elements: [bookshop:structure:form_blocks]
   submitButton: 
-    text: "Button text"
+    text: "Submit"
     color_group: primary
     ghostButton: false
     blackText: false
