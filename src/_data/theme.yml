@@ -48,6 +48,12 @@ customColor_groups:
     primaryColor: '#97816C'
     secondaryColor: '#B9CAB4'
     accentColor: '#90B09A'
-heading_font: Rubik
-content_font: Rubik
+  - name: Teal
+    textColor: '#e4f0f6'
+    backgroundColor: '#081a21'
+    primaryColor: '#90c5e0'
+    secondaryColor: '#1f5c7a'
+    accentColor: '#339fd1'
+heading_font: Crimson Text
+content_font: Fira Sans
 logo_font: Major Mono Display
