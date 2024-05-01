@@ -1,18 +1,24 @@
 {% assign navPages = collections.all | eleventyNavigation %}
 
-<footer class="mt-36 flex flex-col gap-8">
-  {% include "partials/contact-form.html" %}
-  <div class="flex flex-col items-center justify-center">
-    <div class="footer-content">
+<footer
+  class=" cs-w-full pt-20 bg-{{site.color_group}}-backgroundcolor flex flex-col items-center justify-center text-{{site.color_group}}-textcolor"
+>
+  <div class="basecontainer w-full">
+    <div class="flex flex-wrap justify-around gap-10">
       <div>
-        <ul class="flex flex-wrap justify-center gap-1 md:gap-4">
-          {% for entry in navPages %} {% render "partials/render-nav.html" with
-            entry as entry %} {% endfor %}
+        {% image "/images/logo-white.svg", "logo for sopris", "w-full max-w-[300px]"  %}
+        <p class="mt-2">Dribble | Facebook | LInked In | Xwitter</p>
+      </div>
+      <div class="">
+        <p class="font-bold opacity-90">Navigation</p>
+        <ul class="mt-2  flex flex-col justify-center gap-1 md:gap-4">
+          {% for entry in navPages %} {% render "partials/render-footer.html" with
+          entry as entry %} {% endfor %}
         </ul>
       </div>
     </div>
   </div>
-  <div>
+  <div class="mt-20">
     <p class="text-center" data-type="neutral">
       © {{ helpers.getTodaysYear }}, by {{site.legalName}}
     </p>

@@ -1,0 +1,72 @@
+{% assign level=level | plus: 1%}
+
+{% capture display %}
+{% if level <= 0%}
+md:absolute md:left-0
+{% else  %}
+  md:absolute md:left-full md:top-1/4
+    {% endif %}
+ {% endcapture %}
+
+ {%assign hex = 'text-{{color_group}}-textcolor'%}
+
+{% if entry.title == "Blog" %} {% if
+blogPosts %}
+ 
+<li>
+  <a
+    class="data-[state=active]:link hover:text-sopris-green block rounded py-2 pl-3 pr-4 uppercase  transition-colors hover:bg-gray-700 dark:border-gray-700 md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent"
+    href="{{ entry.url }}"
+    >{{ entry.title }}</a
+  >
+</li>
+{% endif %} {% else %}
+<li>
+  <a
+    class="data-[state=active]:link hover:text-sopris-green block rounded py-2 pl-3 pr-4 uppercase  transition-colors hover:bg-gray-700 dark:border-gray-700 md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent"
+    href="{{ entry.url }}"
+    >{{ entry.title }}</a
+  >
+</li>
+{% endif %} {% if entry.children.size > 0 %}
+<div class="relative ">
+  
+  <summary class=""><button class="hidden data-[state=active]:link hover:text-sopris-green rounded py-2 pl-3 pr-4 uppercase  transition-colors hover:bg-gray-700 dark:border-gray-700 md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent" 
+    _="
+    set element opened to false
+    set element submenu to #{{ entry.key }} 
+    on click
+   
+    if opened then
+    js(submenu)
+      submenu.classList.remove('md:scale-y-100');
+      submenu.classList.add('md:invisible');
+
+    end then set opened to false else
+    js(submenu)
+      submenu.classList.add('md:scale-y-100');
+      submenu.classList.remove('md:invisible'); 
+    end then set opened to true end
+    halt
+    on click from elsewhere
+    if opened then
+    js(submenu)
+    submenu.classList.remove('md:scale-y-100');
+    submenu.classList.add('md:invisible');
+
+    end then set opened to false 
+
+
+    "
+    
+    >{{entry.key}}
+      </button></summary>
+  <ul id="{{ entry.key }}" class="pl-4 pb-1 ml-1    transition-all md:duration-300 origin-top mt-2 w-max  rounded   border-l-2 border-{{color_group}}-backgroundcolor bg-{{color_group}}-backgroundcolornav  focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+    {% for child in entry.children %} {% render "partials/render-footer.html",
+    entry:child, color_group: color_group, level: level, blogPosts: blogPosts %} {% endfor %}
+  </ul>
+</div>
+
+  
+
+{% endif %}
