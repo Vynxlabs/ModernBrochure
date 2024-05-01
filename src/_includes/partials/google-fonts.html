@@ -23,4 +23,6 @@
   {% assign font_string = font_string | append: '&display=swap' %}
 {% endif %}
 
+{% assign font_string = font_string | append: '&' %}
+{% assign font_string = font_string | append: helpers.getUID %}
 <link href="https://fonts.bunny.net/css2?family={{ font_string }}" rel="stylesheet"> 

@@ -65,7 +65,12 @@ module.exports = {
   logit(){
     console.log(this)
     return this
+  },
+  
+  getUID() {
+    return crypto.randomUUID();
   }
+
   
 
 };
