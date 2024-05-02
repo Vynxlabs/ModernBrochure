@@ -35,6 +35,7 @@
   "color_group": "teal7",
   "_inputs": {
     "logoImage": {
+      "hidden": false,
       "type": "image"
     },
     "button": {
