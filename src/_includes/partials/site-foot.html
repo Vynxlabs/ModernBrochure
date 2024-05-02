@@ -5,9 +5,15 @@
 >
   <div class="basecontainer w-full">
     <div class="flex flex-wrap justify-around gap-10">
-      <div>
-        {% image "/images/logo-white.svg", "logo for sopris", "w-full max-w-[300px]"  %}
-        <p class="mt-2">Dribble | Facebook | LInked In | Xwitter</p>
+      <div class="max-w-[300px]">
+        {% image site.logo, "logo for sopris", "w-full "  %}
+        <ul class="mt-4 flex flex-wrap overflow-hidden gap-x-4 gap-y-1">
+        {% for socialLink in site.socialMediaLinks %}
+        <li class="hover:underline after:absolute after:content-['|'] after:scale-150   relative before:content-[' '] after:left-[-11px] after:text-lg">
+          <a href="{{ socialLink.linkUrl }}" target="_blank" >{{socialLink.label}}</a>
+        </li>
+        {% endfor %}
+      </ul>
       </div>
       <div class="">
         <p class="font-bold opacity-90">Navigation</p>
