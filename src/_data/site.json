@@ -35,7 +35,7 @@
                 "icon": "link",
                 "value": {
                     "label": null,
-                  "link_url": null
+                  "linkUrl": null
                 },
                 "_inputs": {
                   "icon_path": {
