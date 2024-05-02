@@ -34,8 +34,8 @@
                 "label": "Social Media Link",
                 "icon": "link",
                 "value": {
-                  "link_url": null,
-                  "icon_path": null
+                    "label": null,
+                  "link_url": null
                 },
                 "_inputs": {
                   "icon_path": {
