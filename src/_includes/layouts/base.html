@@ -1,40 +1,53 @@
 <!doctype html>
-<html lang="en" class="mx-auto my-0 max-w-[1440px] overflow-x-hidden scroll-pt-32">
+<html
+  lang="en"
+  class="mx-auto my-0 max-w-[1440px] scroll-pt-32 overflow-x-hidden"
+>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    {% include "partials/meta-info.html" %}
-    {% include "partials/google-fonts.html" %}
+    {% include "partials/meta-info.html" %} {% include
+    "partials/google-fonts.html" %}
     <link
       rel="alternate"
       type="application/rss+xml"
       href="{{ site.url }}/feed.xml"
     />
     {% capture css %} {% include "css/styles.css" %} {% endcapture%}
-    <link rel="stylesheet" href="/css/bookshop.css">
+    <link rel="stylesheet" href="/css/bookshop.css" />
     <link rel="stylesheet" href="/css/styles.css" />
     <link rel="stylesheet" href="/css/main.css" />
     <style defer>
       {{ css  }}
-      
     </style>
   </head>
   {% include "partials/watermark.html" %}
-  <body class="mx-4 sm:mx-10  flex flex-col h-screen text-{{site.color_group}}-textcolor bg-{{site.color_group}}-backgroundcolor text-lg ">
+  <body
+    class="mx-4 sm:mx-10  flex flex-col h-screen text-{{site.color_group}}-textcolor bg-{{site.color_group}}-backgroundcolor text-lg "
+  >
     {% include "partials/site-head.html" %}
 
-    <main tabindex="-1" id="main-content" class="flex-1 ">
-      {% bookshop_include "hero" hero: hero %}
-      {% bookshop_include "page" content_blocks: content_blocks %}
-      
-      {% block content %}{% endblock %}
-
-        
-      
+    <main tabindex="-1" id="main-content" class="flex-1">
+      {% bookshop_include "hero" hero: hero %} {% bookshop_include "page"
+      content_blocks: content_blocks %} {% block content %}{% endblock %}
     </main>
     {% include "partials/site-foot.html" %}
     <script src="https://unpkg.com/hyperscript.org@0.9.11"></script>
-    
+    <script>
+      var prevScrollpos = window.pageYOffset;
+      window.onscroll = function () {
+        var nav = document.getElementById("navbar");
+        var currentScrollPos = window.pageYOffset;
+
+        if (currentScrollPos > 250 && prevScrollpos < currentScrollPos) {
+          nav.style.top = "-" + nav.offsetHeight + "px";
+        } else if (currentScrollPos <= 250 || prevScrollpos > currentScrollPos) {
+          nav.style.top = "0";
+        }
+
+        prevScrollpos = currentScrollPos;
+      };
+    </script>
   </body>
 </html>

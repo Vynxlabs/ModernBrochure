@@ -7,7 +7,7 @@
     <div class="flex flex-wrap justify-around gap-10">
       <div class="max-w-[300px]">
         <a href="/">
-          {% if site.logoPath or site.logoPath == "" %}
+          {% if not site.logoPath or site.logoPath == "" %}
             <p class="cs-logoFont text-2xl hover:underline">{{site.name}}</p>
             {% else condition %}
             {% image site.logoPath, "logo for sopris", "w-full "  %}
