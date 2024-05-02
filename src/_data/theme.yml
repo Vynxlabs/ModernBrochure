@@ -54,6 +54,6 @@ customColor_groups:
     primaryColor: '#90c5e0'
     secondaryColor: '#1f5c7a'
     accentColor: '#339fd1'
-heading_font: Megrim
+heading_font: Alegreya Sans
 content_font: Fira Sans
 logo_font: Major Mono Display
