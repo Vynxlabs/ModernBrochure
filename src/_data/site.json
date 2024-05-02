@@ -1,4 +1,5 @@
-{ "logo": "/images/logo-white.svg",
+{ 
+  "logoImage": "/images/logo-white.svg",
   "name": "Name",
   "legalName": "Legal Name LLC",
   "url": "https://exampe.com",
@@ -33,7 +34,7 @@
   },
   "color_group": "teal7",
   "_inputs": {
-    "logo": {
+    "logoImage": {
       "type": "image"
     },
     "button": {
