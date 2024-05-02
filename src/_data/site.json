@@ -1,5 +1,5 @@
 { 
-  "logoImage": "/images/logo-white.svg",
+  "logoPath": "",
   "name": "Name",
   "legalName": "Legal Name LLC",
   "url": "https://exampe.com",
@@ -34,7 +34,7 @@
   },
   "color_group": "teal7",
   "_inputs": {
-    "logoImage": {
+    "logoPath": {
       "hidden": false,
       "type": "image"
     },
