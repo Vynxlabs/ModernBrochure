@@ -1,5 +1,5 @@
 {
-  "logoPath": "",
+  "logoPath": "/assets/uploads/freepik-export-20240502025651sdft.png",
   "name": "My Business Name",
   "legalName": "Legal Name LLC",
   "url": "https://exampe.com",
@@ -21,6 +21,10 @@
     {
       "label": "Dribble",
       "linkUrl": "https://dribbble.com/"
+    },
+    {
+      "label": null,
+      "linkUrl": null
     }
   ],
   "button": {
