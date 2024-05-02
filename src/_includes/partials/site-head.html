@@ -18,7 +18,7 @@ id="navbar"
   >
   <a href="/" class="md:hidden ">{% image "/images/logo-white.svg", "logo for sopris", " w-[100px]" %}</a>
     <div class="flex items-center md:order-3 justify-self-end">
-      {% include "partials/cta-button.html" %}
+      {% bookshop "generic/button" bind: site.button %}
       <button
         data-collapse-toggle="navbar-sticky"
         type="button"
@@ -91,25 +91,25 @@ id="navbar"
         <div class="flex gap-1">
           
           <a href="/location" class="block underline"
-            >{{ contactInfo.location }}</a
+            >{{ site.contactInfo.location }}</a
           >
         </div>
         <div class="flex gap-1">
           
-          <p>{{ contactInfo.hours }}</p>
+          <p>{{ site.contactInfo.hours }}</p>
         </div>
       </div>
       <div class="flex flex-col justify-between gap-2 md:flex-row md:gap-8">
         <div class="flex gap-1">
           
-          <a href="tel:{{ contactInfo.phone }}" class="block underline"
-            >{{ contactInfo.phone }}</a
+          <a href="tel:{{ site.contactInfo.phone }}" class="block underline"
+            >{{ site.contactInfo.phone }}</a
           >
         </div>
         <div class="flex gap-1">
           
-          <a href="mailto:{{ contactInfo.email }}" class="block underline"
-            >{{ contactInfo.email }}</a
+          <a href="mailto:{{ site.contactInfo.email }}" class="block underline"
+            >{{ site.contactInfo.email }}</a
           >
         </div>
       </div>

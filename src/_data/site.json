@@ -1,6 +1,57 @@
 {
-    "name": "Name",
-    "legalName": "Legal Name",
-    "url": "https://exampe.com",
-    "color_group": "teal7"
+  "name": "Name",
+  "legalName": "Legal Name",
+  "url": "https://exampe.com",
+  "contactInfo": {
+    "email": "info@example.com",
+    "phone": "123-456-7890",
+    "location": "Some Rd, Somecity, ID ",
+    "hours": "Mon - Fri: 8am-5pm"
+  },
+  "socialMediaLinks": [
+
+  ],
+  "button": {
+    "_bookshop_name": "generic/button",
+    "url": "https://example.com",
+    "openInNewTab": false,
+    "text": "Button Text",
+    "color_group": "teal7",
+    "ghostButton": true,
+    "blackText": false
+  },
+  "color_group": "teal7",
+  "_inputs": {
+    "button": {
+      "comment": "This is the button will show up in your navigation bar and across all pages on the website"
+    },
+    "socialMediaLinks": {
+        "type": "array",
+        "options": {
+          "structures": {
+            "values": [
+              {
+                "label": "Social Media Link",
+                "icon": "link",
+                "value": {
+                  "link_url": null,
+                  "icon_path": null
+                },
+                "_inputs": {
+                  "icon_path": {
+                    "type": "image",
+                    "comment": "This input is restricted to only allow images with type SVG",
+                    "options": {
+                      "accepts_mime_types": [
+                        "image/svg+xml"
+                      ]
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+  }
 }

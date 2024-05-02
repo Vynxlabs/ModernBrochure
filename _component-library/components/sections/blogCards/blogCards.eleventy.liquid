@@ -11,7 +11,9 @@
 
 <div class="cs-w-full py-20 bg-{{styles.color_group}}-backgroundcolor flex flex-col items-center justify-center text-{{styles.color_group}}-textcolor">
     
-    <div class="basecontainer">
+    <div {% if content.sectionId %}
+        id="{{ content.sectionId }}"
+    {% endif %} class="basecontainer">
         {% bookshop "generic/heading" bind: content.heading %}
         <div class="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3   gap-10 md:gap-20 mt-12">
             {% for entry in postListItems %}
