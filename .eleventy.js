@@ -4,6 +4,7 @@ const dateFilter = require("./src/filters/date-filter.js");
 const w3DateFilter = require("./src/filters/w3-date-filter.js");
 const readTimeFilter = require("./src/filters/read-time-filter.js");
 const randomBlogsFilter = require("./src/filters/random-blogs-filter.js");
+const uuidFilter = require("./src/filters/uuid-filter.js");
 const military_time = require('./src/filters/military-time-filter.js')
 const rssPlugin = require("@11ty/eleventy-plugin-rss");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
@@ -181,6 +182,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addFilter("ymlify", (yml) => yaml.load(yml));
   eleventyConfig.addFilter("militaryTime", military_time);
   eleventyConfig.addFilter("markdownify", (markdown) => md.render(markdown));
+  eleventyConfig.addFilter("uuidFilter", uuidFilter);
 
   eleventyConfig.on("eleventy.before", () => {
     execSync(
