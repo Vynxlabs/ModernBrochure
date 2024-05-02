@@ -18,6 +18,10 @@ body {
   }
 }
 
+.cs-logoFont{
+  font-family: var(--logo-font), Lato, sans-serif;
+}
+
 .cs-mainContent{
   h2{
     margin-top: 48px;

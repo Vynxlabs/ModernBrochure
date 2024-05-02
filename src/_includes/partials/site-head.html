@@ -10,13 +10,20 @@ id="navbar"
 >
 <a href="/" class="md:flex items-center self-start md:self-center p-4 ml-4 flex-shrink-0 hidden ">
 
-      
+  {% if site.logoPath or site.logoPath == "" %}
+  <p class="cs-logoFont text-2xl hover:underline">{{site.name}}</p>
+  {% else condition %}
   {% logo site.logoPath, "logo for sopris", " w-[100px]"  %}
+{% endif %}
 </a>
   <div
     class="mx-auto flex max-w-[1440px] flex-wrap items-center  justify-between gap-2 p-4 md:gap-1 w-full"
   >
-  <a href="/" class="md:hidden ">{% image site.logoPath, "logo for sopris", " w-[100px]" %}</a>
+  <a href="/" class="md:hidden ">{% if site.logoPath or site.logoPath == "" %}
+    <p class="cs-logoFont text-2xl hover:underline">{{site.name}}</p>
+    {% else condition %}
+    {% logo site.logoPath, "logo for sopris", " w-[100px]"  %}
+  {% endif %}</a>
     <div class="flex items-center md:order-3 justify-self-end">
       {% bookshop "generic/button" bind: site.button %}
       <button

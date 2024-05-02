@@ -6,7 +6,13 @@
   <div class="basecontainer w-full">
     <div class="flex flex-wrap justify-around gap-10">
       <div class="max-w-[300px]">
-        {% image site.logoPath, "logo for sopris", "w-full "  %}
+        <a href="/">
+          {% if site.logoPath or site.logoPath == "" %}
+            <p class="cs-logoFont text-2xl hover:underline">{{site.name}}</p>
+            {% else condition %}
+            {% image site.logoPath, "logo for sopris", "w-full "  %}
+          {% endif %}
+        </a>
         <ul class="mt-4 flex flex-wrap overflow-hidden gap-x-4 gap-y-1">
         {% for socialLink in site.socialMediaLinks %}
         <li class="hover:underline after:absolute after:content-['|'] after:scale-150   relative before:content-[' '] after:left-[-11px] after:text-lg">
