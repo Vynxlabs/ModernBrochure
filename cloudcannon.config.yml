@@ -120,6 +120,7 @@ collections_config:
         options:
           values: data.blogTags
       date:
+        type: date
         label: Published Date
         instance_value: NOW
       image:
