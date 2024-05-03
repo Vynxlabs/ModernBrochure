@@ -2,7 +2,7 @@
 _schema: default
 title: This is my blog post testing the Somefolder
 metaDesc:
-date: 2024-05-03T02:37:16Z
+date: 2024-05-10T02:37:16Z
 author: e8b58d19-77b3-4e15-9d00-88808b9dc2b3
 tags:
   - Customer Stories
