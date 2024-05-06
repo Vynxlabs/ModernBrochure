@@ -32,7 +32,7 @@
     "ghostButton": true,
     "blackText": false
   },
-  "color_group": "teal7",
+  "color_group": "primary",
   "_inputs": {
     "logoPath": {
       "hidden": false,
