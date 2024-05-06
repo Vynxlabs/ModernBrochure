@@ -1,5 +1,6 @@
 ---
 _schema: default
+draft: false
 title: MyBlogTestFolder
 metaDesc: Soimething
 date: 2024-05-06T00:53:50Z
