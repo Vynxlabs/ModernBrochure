@@ -10,6 +10,7 @@ data_config:
   fonts: true
   authors: true
   blogTags: true
+collections_config_override: true
 collections_config:
   data:
     path: _data
