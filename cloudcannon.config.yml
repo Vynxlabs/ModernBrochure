@@ -99,9 +99,8 @@ collections_config:
     filter:
       exclude:
         - posts.json
-    '-enabled_editors':
+    -enabled_editors:
       - content
-      - visual
     _inputs:
       title:
         label: Page Title
