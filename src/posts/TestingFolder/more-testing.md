@@ -1,6 +1,6 @@
 ---
 _schema: default
-draft: true
+draft: false
 eleventyExcludeFromCollections: false
 title: More testing
 metaDesc:
