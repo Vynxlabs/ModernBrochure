@@ -7,6 +7,6 @@ serviceImage:
 imageAltText:
 category: 
 summary:
-permalink: /service/{{ title | slug }}/index.html
+permalink: /services/{{ title | slug }}/index.html
 eleventyExcludeFromCollections: false
 ---

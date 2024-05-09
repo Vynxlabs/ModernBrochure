@@ -137,8 +137,8 @@ collections_config:
     path: services
     output: true
     url: dist/services
-    name: Pages
-    description: All your pages
+    name: Services
+    description: All your services
     icon: design_services
     documentation: null
     preview:
