@@ -8,5 +8,10 @@ imageAltText:
 category: 
 summary:
 permalink: /services/{{ title | slug }}/index.html
-eleventyExcludeFromCollections: false
+pagination:
+  data: collections.blog
+  size: 22
+layout: "layouts/page.html"
+hero:
+content_blocks: []
 ---
