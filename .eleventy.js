@@ -175,6 +175,10 @@ module.exports = (eleventyConfig) => {
     return collection.getFilteredByGlob("./src/pages/**/*.md");
   });
 
+  eleventyConfig.addCollection("services", (collection) => {
+    return collection.getFilteredByGlob("./src/services/**/*.md");
+  });
+
   eleventyConfig.addFilter("dateFilter", dateFilter);
   eleventyConfig.addFilter("w3DateFilter", w3DateFilter);
   eleventyConfig.addFilter("readTimeFilter", readTimeFilter);
