@@ -137,6 +137,12 @@ collections_config:
     path: services
     output: true
     url: dist/services
+    name: Pages
+    description: All your pages
+    icon: design_services
+    documentation: null
+    preview:
+      gallery: design_services
     filter:
       exclude:
         - services.json
