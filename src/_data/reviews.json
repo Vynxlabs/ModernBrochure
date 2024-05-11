@@ -26,7 +26,8 @@
       "hidden": false
     },
     "review": {
-      "hidden": false
+      "hidden": false,
+      "type": "textarea"
     },
     "personImage": {
       "hidden": false
