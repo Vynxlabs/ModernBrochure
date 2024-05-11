@@ -34,6 +34,7 @@
     "blackText": false
   },
   "color_group": "earth6",
+  "footer_color_group": "earth6",
   "_inputs": {
     "googleAnalytics": {
       "comment": "Place your Google Analytics Measurement ID here"
