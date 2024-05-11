@@ -35,6 +35,9 @@
   },
   "color_group": "primary",
   "_inputs": {
+    "googleAnalytics": {
+      "comment": "Place your Google Analytics Measurement ID here"
+    },
     "logoPath": {
       "hidden": false,
       "type": "image"
@@ -53,18 +56,6 @@
               "value": {
                 "label": null,
                 "linkUrl": null
-              },
-              "_inputs": {
-                "googleAnalytics": {
-                  "comment":"Place your Google Analytics Measurement ID here"
-                },
-                "icon_path": {
-                  "type": "image",
-                  "comment": "This input is restricted to only allow images with type SVG",
-                  "options": {
-                    "accepts_mime_types": ["image/svg+xml"]
-                  }
-                }
               }
             }
           ]
