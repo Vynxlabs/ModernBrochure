@@ -9,6 +9,7 @@
     "location": "Some Rd, Somecity, ID ",
     "hours": "Mon - Fri: 8am-5pm"
   },
+  "googleAnalytics": "",
   "socialMediaLinks": [
     {
       "label": "Xwitter",
@@ -54,13 +55,14 @@
                 "linkUrl": null
               },
               "_inputs": {
+                "googleAnalytics": {
+                  "comment":"Place your Google Analytics Measurement ID here"
+                },
                 "icon_path": {
                   "type": "image",
                   "comment": "This input is restricted to only allow images with type SVG",
                   "options": {
-                    "accepts_mime_types": [
-                      "image/svg+xml"
-                    ]
+                    "accepts_mime_types": ["image/svg+xml"]
                   }
                 }
               }
