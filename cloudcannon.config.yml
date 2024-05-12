@@ -200,22 +200,51 @@ _inputs:
       values:
         - id: primary
           name: Primary
-        - name: Magic
+        - &ref_0
+          name: Magic
           id: magic0
-        - name: Rose
+        - &ref_1
+          name: Rose
           id: rose1
-        - name: Cotton Candy
+        - &ref_2
+          name: Cotton Candy
           id: cotton_candy2
-        - name: Orange
+        - &ref_3
+          name: Orange
           id: orange3
-        - name: PurpleNurple
+        - &ref_4
+          name: PurpleNurple
           id: purplenurple4
-        - name: darkGreen
+        - &ref_5
+          name: darkGreen
           id: darkgreen5
-        - name: earth
+        - &ref_6
+          name: earth
           id: earth6
-        - name: Teal
+        - &ref_7
+          name: Teal
           id: teal7
+  footer_color_group:
+    type: select
+    options:
+      allow_empty: false
+      value_key: id
+      preview:
+        text:
+          - key: name
+        icon:
+          - key: icon
+      values:
+        - id: primary
+          name: Primary
+        - *ref_0
+        - *ref_1
+        - *ref_2
+        - *ref_3
+        - *ref_4
+        - *ref_5
+        - *ref_6
+        - *ref_7
   id:
     hidden: true
     instance_value: UUID
