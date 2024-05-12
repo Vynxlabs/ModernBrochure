@@ -168,6 +168,8 @@ collections_config:
       default:
         path: .cloudcannon/schemas/service.md
 _inputs:
+  pagination:
+    hidden: true
   layout:
     hidden: true
   blogCards:
