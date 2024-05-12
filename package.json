@@ -9,7 +9,7 @@
     "sass:build": "sass --no-source-map src/assets/styles:dist/css",
     "bookshop-sass:build": "bookshop-sass -b _component-library -o dist/css/bookshop.css",
     "browser": "npx @bookshop/browser",
-    "eleventy": "npx eleventy",
+    "eleventy": "node ./utils/fetch-theme-variables.js && npx eleventy",
     "tailwind": "npx tailwindcss -i ./src/css/styles.css -o ./dist/css/styles.css --watch",
     "unlighthouse": "unlighthouse-ci --site sopriscuisine.com --build-static --root ./dist --output-path ./sopriscuisine",
     "new": "npx @bookshop/init --component"
