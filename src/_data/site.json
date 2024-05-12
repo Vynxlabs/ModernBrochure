@@ -38,7 +38,7 @@
   "footer_color_group": "cotton_candy2",
   "_inputs": {
     "socialImage":{
-      "comment": "This is the image that will be shown when sharing your page social media"
+      "comment": "This is the image that will be shown when sharing your page social media like Facebook, and X (Twitter)"
     },
     "googleAnalytics": {
       "comment": "Place your Google Analytics Measurement ID here"

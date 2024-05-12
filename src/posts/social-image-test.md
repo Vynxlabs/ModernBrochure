@@ -13,7 +13,8 @@ blogImage: >-
 imageAltText:
 image: '{% if blogImage %}{{blogImage}}{% else %}{{blog.defaultImage}}{% endif %}'
 permalink: /blog/{{ title | slug }}/index.html
-socialImage: '{{image}}'
+socialImage: >- 
+  {{image}}
 ---
 ## Once upon a time...
 
