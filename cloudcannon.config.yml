@@ -187,6 +187,9 @@ _inputs:
       undo: true
       redo: true
       initial_height: 135
+  socialImage:
+    type: image
+    hidden: true
   color_group:
     type: select
     options:

@@ -3,6 +3,10 @@
 {% endcomment %}
    
  {% if site.name == title %}
+ {% caputre socialShareImage %}
+ {% if socialImage %} {{ socialImage }} {% else %} {{ site.socialImage }} {% endif %}
+ {% endcapture %}
+{% assign  = title %} {% else %}
 {% assign pageTitle = title %} {% endif %} {% assign siteTitle = site.name %} {%
 assign currentUrl = site.url | append: page.url %} {%comment %}{# If the page’s Front Matter has specific metaTitle and/or metaDesc items, switch them into the mix. #}   {%endcomment%}
 {% if metaTitle %} {% assign pageTitle = metaTitle %} {% endif %} {% if not metaDesc
@@ -20,8 +24,8 @@ assign currentUrl = site.url | append: page.url %} {%comment %}{# If the page’
 
 {% if socialImage %}
 <meta name="twitter:card" content="summary_large_image" />
-<meta property="og:image" content="{{ socialImage }}" />
-<meta name="twitter:image" content="{{ socialImage }}" />
+<meta property="og:image" content="{{ socialShareImage }}" />
+<meta name="twitter:image" content="{{ socialShareImage }}" />
 <meta property="og:image:alt" content="Page image for {{ site.name }}" />
 <meta name="twitter:image:alt" content="Page image for {{ site.name }}" />
 {% endif %} {% if metaDesc %}

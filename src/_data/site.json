@@ -24,6 +24,7 @@
       "linkUrl": "https://dribbble.com/"
     }
   ],
+  "socialImage": "",
   "button": {
     "_bookshop_name": "generic/button",
     "url": "https://example.com",
@@ -36,6 +37,9 @@
   "color_group": "earth6",
   "footer_color_group": "cotton_candy2",
   "_inputs": {
+    "socialImage":{
+      "comment": "This is the image that will be shown when sharing your page social media"
+    },
     "googleAnalytics": {
       "comment": "Place your Google Analytics Measurement ID here"
     },
