@@ -20,7 +20,7 @@ assign currentUrl = site.url | append: page.url %} {%comment %}{# If the page’
 <meta property="og:type" content="website" />
 <meta property="og:url" content="{{ currentUrl }}" />
 
-{% if socialImage %}
+{% if socialShareImage and socialShareImage != "" %}
 <meta name="twitter:card" content="summary_large_image" />
 <meta property="og:image" content="{{ socialImage }}" />
 <meta name="twitter:image" content="{{ socialImage }}" />
