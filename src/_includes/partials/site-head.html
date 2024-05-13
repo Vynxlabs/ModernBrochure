@@ -84,7 +84,7 @@ id="navbar"
         {% if site.contactInfo.phone and site.contactInfo.phone != "" %}
         <div class="flex gap-1 items-center">
           {% bookshop "generic/heroLibraryIcon" heroLibraryIconName: "phone" iconType: "outline" iconSize: 'micro' roundedBorder: false themeColor: true %}
-          <a href="tel:{{ site.contactInfo.phone }}" class="block underline"
+          <a href="tel:{{ site.contactInfo.phone | remove: "-" | remove: " " | remove: "." | remove: "(" | remove: ")" }}" class="block underline"
             >{{ site.contactInfo.phone }}</a
           >
         </div>
