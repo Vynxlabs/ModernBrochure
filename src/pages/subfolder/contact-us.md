@@ -8,13 +8,16 @@ eleventyNavigation:
   order: 1
   title:
   parent:
-  url: https://www.youtube.com/
+  url:
 pageLink:
 permalink: >-
   {% if pageLink and pageLink == 'blog' or pageLink == 'Blog' %}blog{% if
   pagination.pageNumber > 0 %}/page/{{ pagination.pageNumber }}{%endif
   %}/index.html {% elsif pageLink %}/{{ pageLink | slug }}/index.html{% else
   %}/{{ title | slug }}/index.html{%endif %}
+pagination:
+  data: collections.blog
+  size: 22
 metaDesc: ''
 layout: layouts/page.html
 hero:
