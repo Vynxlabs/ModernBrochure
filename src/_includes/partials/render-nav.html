@@ -10,10 +10,11 @@ md:absolute md:left-0
 
  {%assign hex = 'text-{{color_group}}-textcolor'%}
 
-{% if entry.title == "Blog" %} {% if
-blogPosts %}
+{% if entry.url == "/blog/" %} {% if
+blogPosts.size > 0 %}
  
 <li>
+  
   <a {{entry.url | linkFilter: page.url}}
     class="data-[state=active]:link data-[state=active]:decoration-{{color_group}}-accentcolor  block rounded py-2 pl-3 pr-4 uppercase  transition-colors hover:bg-gray-700 dark:border-gray-700 md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent"
     href="{{ entry.url }}"

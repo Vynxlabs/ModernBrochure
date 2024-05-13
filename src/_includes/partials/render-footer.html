@@ -10,8 +10,8 @@ md:absolute md:left-0
 
  {%assign hex = 'text-{{color_group}}-textcolor'%}
 
-{% if entry.title == "Blog" %} {% if
-blogPosts %}
+ {% if entry.url == "/blog/" %} {% if
+  blogPosts.size > 0 %}
  
 <li>
   <a {{entry.url | linkFilter: page.url}}

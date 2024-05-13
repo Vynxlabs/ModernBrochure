@@ -26,7 +26,6 @@ module.exports = {
       } else {
         permalinkTrue = false;
       }
-      console.log(data.eleventyNavigation);
       if (typeof data.eleventyNavigation !== "undefined") {
         if (typeof data.eleventyNavigation.url !== "undefined") {
           if (
