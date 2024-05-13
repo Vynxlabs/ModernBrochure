@@ -6,6 +6,7 @@ eleventyExcludeFromCollections: true
 eleventyNavigation:
   key: Home
   order: 1
+  url:
 pageLink: mylocation
 permalink: /privacy-policy/index.html
 metaDesc: ''

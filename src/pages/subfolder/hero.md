@@ -8,6 +8,7 @@ eleventyNavigation:
   order: 1
   title: all services
   parent:
+  url:
 pageLink: hero
 permalink: /{{ pageLink | slug }}/index.html
 pagination:

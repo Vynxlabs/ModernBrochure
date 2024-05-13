@@ -8,6 +8,7 @@ eleventyNavigation:
   order: 1
   title:
   parent:
+  url: https://www.youtube.com/
 pageLink:
 permalink: >-
   {% if pageLink and pageLink == 'blog' or pageLink == 'Blog' %}blog{% if

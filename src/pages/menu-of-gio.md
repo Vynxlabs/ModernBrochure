@@ -8,6 +8,7 @@ eleventyNavigation:
   order: 2
   title:
   parent:
+  url:
 pageLink: menu
 permalink: /{{ pageLink | slug }}/index.html
 metaDesc: SEO focused meta description

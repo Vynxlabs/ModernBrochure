@@ -25,7 +25,7 @@
         <p class="font-bold opacity-90">Navigation</p>
         <ul class="mt-2  flex flex-col justify-center gap-1 md:gap-4">
           {% for entry in navPages %} {% render "partials/render-footer.html" with
-          entry as entry %} {% endfor %}
+          entry as entry, page:page %} {% endfor %}
         </ul>
       </div>
     </div>

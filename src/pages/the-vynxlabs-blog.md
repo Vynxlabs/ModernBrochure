@@ -8,6 +8,7 @@ eleventyNavigation:
   order: 1
   title:
   parent:
+  url:
 pageLink: blog
 permalink: >-
   {% if pageLink == 'blog' or pageLink == 'Blog' %}/{{pageLink | slug}}{% if

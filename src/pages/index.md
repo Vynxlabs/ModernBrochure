@@ -6,6 +6,8 @@ eleventyExcludeFromCollections: false
 eleventyNavigation:
   key: Home
   order: 1
+  parent:
+  url:
 pageLink: mylocation
 permalink: /
 metaDesc: >-
