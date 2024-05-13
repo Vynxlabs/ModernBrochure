@@ -64,6 +64,20 @@ function appendTailwindUtilityClasses(colorSet,id){
     cssString += `.text-${id}-secondarycolor { color: ${colorSet.secondaryColor}; }\n`;
     cssString += `.text-${id}-accentcolor { color: ${colorSet.accentColor}; }\n`;
 
+    //decoration
+    cssString += `.decoration-${id}-textcolor { text-decoration-color: ${colorSet.textColor}; }\n`;
+    cssString += `.decoration-${id}-primarycolor { text-decoration-color: ${colorSet.primaryColor}; }\n`;
+    cssString += `.decoration-${id}-secondarycolor { text-decoration-color: ${colorSet.secondaryColor}; }\n`;
+    cssString += `.decoration-${id}-accentcolor { text-decoration-color: ${colorSet.accentColor}; }\n`;
+
+    //decoration active state
+    cssString += `.data-\\[state\\=active\\]\\:decoration-${id}-textcolor[data-state=active] { text-decoration-color: ${colorSet.textColor}; }\n`;
+    cssString += `.data-\\[state\\=active\\]\\:decoration-${id}-primarycolor[data-state=active] { text-decoration-color: ${colorSet.primaryColor}; }\n`;
+    cssString += `.data-\\[state\\=active\\]\\:decoration-${id}-secondarycolor[data-state=active] { text-decoration-color: ${colorSet.secondaryColor}; }\n`;
+    cssString += `.data-\\[state\\=active\\]\\:decoration-${id}-accentcolor[data-state=active] { text-decoration-color: ${colorSet.accentColor}; }\n`;
+
+
+
     //background
     cssString += `.bg-${id}-backgroundcolor { background-color: ${colorSet.backgroundColor}; }\n`;
     cssString += `.bg-${id}-primarycolor { background-color: ${colorSet.primaryColor}; }\n`;
