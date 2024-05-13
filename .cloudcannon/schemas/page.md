@@ -17,6 +17,7 @@ permalink: >-
 pagination:
   data: collections.blog
   size: 22
+  generatePageOnEmptyData: true
 metaDesc: ""
 layout: "layouts/page.html"
 hero:
