@@ -30,6 +30,7 @@ collections_config:
         - sitemap.njk
         - tags.md
         - pages.json
+        - 404.md
     parse_branch_index: null
     name: Pages
     description: All your pages
