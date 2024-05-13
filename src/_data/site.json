@@ -34,10 +34,10 @@
     "ghostButton": true,
     "blackText": false
   },
-  "color_group": "earth6",
+  "color_group": "rose1",
   "footer_color_group": "cotton_candy2",
   "_inputs": {
-    "socialImage":{
+    "socialImage": {
       "comment": "This is the image that will be shown when sharing your page social media like Facebook, and X (Twitter)"
     },
     "googleAnalytics": {
