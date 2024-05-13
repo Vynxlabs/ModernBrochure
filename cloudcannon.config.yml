@@ -67,6 +67,11 @@ collections_config:
           as Display Title
       eleventyNavigation.parent:
         comment: What key this should be grouped with. Leave blank for no grouping
+      eleventyNavigation.url:
+        label: External Link
+        comment: >-
+          If you want to have a link to another website or file on your site,
+          place that link here. Leave blank for all other situations.
       pageLink:
         label: Page Location
         comment: The location of this page on your webiste i.e. Example.com/mylocation
