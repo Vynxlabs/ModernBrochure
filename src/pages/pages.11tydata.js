@@ -32,6 +32,7 @@ module.exports = {
             data.eleventyNavigation.url !== null &&
             data.eleventyNavigation.url !== ""
           ) {
+			console.log("in false")
             permalinkTrue = false;
           }
         }

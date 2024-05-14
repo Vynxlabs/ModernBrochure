@@ -4,7 +4,6 @@ module.exports = (itemUrl, pageUrl) => {
     response = ' aria-current="page"';
   }
 
-  console.log(itemUrl, pageUrl)
   if (
     typeof pageUrl !== "undefined" &&
     pageUrl !== false &&

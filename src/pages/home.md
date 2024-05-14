@@ -1,6 +1,6 @@
 ---
 _schema: default
-draft: true
+draft: false
 title: Home
 eleventyExcludeFromCollections: false
 eleventyNavigation:
@@ -19,7 +19,7 @@ pagination:
   data: collections.blog
   size: 22
   generatePageOnEmptyData: true
-metaDesc: Testing
+metaDesc: 
 layout: layouts/page.html
 hero:
 content_blocks: []

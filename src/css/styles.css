@@ -69,31 +69,3 @@
   width: 1px;
 }
 
-/* "cs-" is the naming convetion for custom css that isn't tailwind.
-Classes with "lg-" are classes created just for logic purposes and don't have styling */
-
-.cs-menu-category::before {
-  content: " ";
-}
-.cs-menu-category::after {
-  position: absolute;
-  content: "·—·";
-  font-family: "piazzolla", sans-serif;
-  font-size: 1.5em;
-  left: -19px;
-  top: -7px;
-}
-
-.cs-full-width {
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-}
-
-/* .cs-nav-background{
-  background-image:linear-gradient(180deg, rgba(0,0,0,0.5) 81.58%, rgba(0,0,0,0.00) 100%)
-} */
-/* Exceptions */

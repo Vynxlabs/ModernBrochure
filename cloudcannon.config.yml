@@ -212,7 +212,7 @@ _inputs:
           - key: icon
       values:
         - id: primary
-          name: Primary
+          name: Primaryasdf
         - &ref_0
           name: Magic
           id: magic0
@@ -249,7 +249,7 @@ _inputs:
           - key: icon
       values:
         - id: primary
-          name: Primary
+          name: Primaryasdf
         - *ref_0
         - *ref_1
         - *ref_2

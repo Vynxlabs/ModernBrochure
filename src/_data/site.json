@@ -30,12 +30,12 @@
     "url": "https://example.com",
     "openInNewTab": false,
     "text": "Button Text",
-    "color_group": "teal7",
+    "color_group": "primary",
     "ghostButton": true,
-    "blackText": false
+    "blackText": true
   },
-  "color_group": "rose1",
-  "footer_color_group": "cotton_candy2",
+  "color_group": "primary",
+  "footer_color_group": "primary",
   "_inputs": {
     "socialImage": {
       "comment": "This is the image that will be shown when sharing your page social media like Facebook, and X (Twitter)"
