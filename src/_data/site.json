@@ -35,7 +35,7 @@
     "blackText": true
   },
   "color_group": "primary",
-  "footer_color_group": "primary",
+  "footer_color_group": "primary_dark0",
   "_inputs": {
     "socialImage": {
       "comment": "This is the image that will be shown when sharing your page social media like Facebook, and X (Twitter)"
