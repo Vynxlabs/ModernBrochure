@@ -212,31 +212,10 @@ _inputs:
           - key: icon
       values:
         - id: primary
-          name: Primaryasdf
+          name: Primary
         - &ref_0
-          name: Magic
-          id: magic0
-        - &ref_1
-          name: Rose
-          id: rose1
-        - &ref_2
-          name: Cotton Candy
-          id: cotton_candy2
-        - &ref_3
-          name: Orange
-          id: orange3
-        - &ref_4
-          name: PurpleNurple
-          id: purplenurple4
-        - &ref_5
-          name: darkGreen
-          id: darkgreen5
-        - &ref_6
-          name: earth
-          id: earth6
-        - &ref_7
-          name: Teal
-          id: teal7
+          name: Primary Dark
+          id: primary_dark0
   footer_color_group:
     type: select
     options:
@@ -249,15 +228,8 @@ _inputs:
           - key: icon
       values:
         - id: primary
-          name: Primaryasdf
+          name: Primary
         - *ref_0
-        - *ref_1
-        - *ref_2
-        - *ref_3
-        - *ref_4
-        - *ref_5
-        - *ref_6
-        - *ref_7
   id:
     hidden: true
     instance_value: UUID
