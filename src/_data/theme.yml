@@ -1,59 +1,17 @@
 primaryColor_group:
-  name: Primaryasdf
-  textColor: '#021015'
-  backgroundColor: '#f0fafe'
-  primaryColor: '#12b5ed'
-  secondaryColor: '#f57b91'
-  accentColor: '#f1cc4e'
+  name: Primary
+  textColor: '#041e25'
+  backgroundColor: '#f6fdfe'
+  primaryColor: '#25cbe4'
+  secondaryColor: '#ef808f'
+  accentColor: '#eaca57'
 customColor_groups:
-  - name: Magic
-    textColor: '#060c0b'
-    backgroundColor: '#f9fcfb'
-    primaryColor: '#62afa0'
-    secondaryColor: '#a4aed1'
-    accentColor: '#7c78bb'
-  - name: Rose
-    textColor: '#120618'
-    backgroundColor: '#f8f3fc'
-    primaryColor: '#4e1a6b'
-    secondaryColor: '#de789a'
-    accentColor: '#c53a30'
-  - name: Cotton Candy
-    textColor: '#dceffe'
-    backgroundColor: '#00050a'
-    primaryColor: '#0787e9'
-    secondaryColor: '#560495'
-    accentColor: '#bb06c1'
-  - name: Orange
-    textColor: '#170b01'
-    backgroundColor: '#fef6ef'
-    primaryColor: '#f77f1f'
-    secondaryColor: '#7afa9b'
-    accentColor: '#52f9dc'
-  - name: PurpleNurple
-    textColor: '#040610'
-    backgroundColor: '#fafafe'
-    primaryColor: '#3c54d1'
-    secondaryColor: '#b18ce4'
-    accentColor: '#aa68dc'
-  - name: darkGreen
-    textColor: '#EAFDE4'
-    backgroundColor: '#061001'
-    primaryColor: '#A8F683'
-    secondaryColor: '#0B9561'
-    accentColor: '#37F0D2'
-  - name: earth
-    textColor: '#090807'
-    backgroundColor: '#FBFBFA'
-    primaryColor: '#97816C'
-    secondaryColor: '#B9CAB4'
-    accentColor: '#90B09A'
-  - name: Teal
-    textColor: '#e4f0f6'
-    backgroundColor: '#081a21'
-    primaryColor: '#90c5e0'
-    secondaryColor: '#1f5c7a'
-    accentColor: '#339fd1'
+  - name: Primary Dark
+    textColor: '#daf4fb'
+    backgroundColor: '#010809'
+    primaryColor: '#1bc0da'
+    secondaryColor: '#7f101f'
+    accentColor: '#a88815'
 heading_font: Alegreya Sans
 content_font: Fira Sans
 logo_font: Oswald
