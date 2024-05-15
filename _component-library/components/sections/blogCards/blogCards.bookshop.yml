@@ -11,7 +11,7 @@ spec:
 blueprint:
   content:
     sectionId:
-    showNote: false
+    showNote: true
     heading: bookshop:generic/heading!
   styles:
     color_group: primary

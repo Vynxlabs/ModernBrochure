@@ -11,6 +11,7 @@ spec:
 blueprint:
   contents:
     sectionId:
+    showNote: true
     heading: bookshop:generic/heading!
     randomize: false
   styles:
