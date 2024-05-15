@@ -282,6 +282,11 @@ _inputs:
     type: select
     options:
       values: data.fonts
+  showNote:
+    type: switch
+    comment: >-
+      Hide/Show the note that contains helpful information about the live
+      editing of this component. This note doesn't show up on the live site.
 _select_data: {}
 _structures:
   content_blocks:
