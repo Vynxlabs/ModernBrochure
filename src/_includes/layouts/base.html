@@ -29,7 +29,7 @@
   >
     {% include "partials/site-head.html" %}
 
-    <main tabindex="-1" id="main-content" class="flex-1">
+    <main tabindex="-1" id="main-content" class="flex-1 flex flex-col last:h-full">
       {% bookshop_include "hero" hero: hero %} {% bookshop_include "page"
       content_blocks: content_blocks %} {% block content %}{% endblock %}
     </main>
