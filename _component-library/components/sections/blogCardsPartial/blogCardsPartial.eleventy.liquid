@@ -19,7 +19,7 @@
     id="{{ content.sectionId }}"
     {% endif %}
     class="basecontainer">
-    {% if env_bookshop_live and content.showNote %}
+    {% if env_bookshop_live and contents.showNote %}
       {% bookshop "generic/notification" heading: "Blog Cards" text: "The blog cards have place holder information. You're real information will show up on the live site. <br> I you see no blog cards its probably because you haven't added any." %}
     {% endif %}
     {% bookshop "generic/heading" bind: contents.heading %}
