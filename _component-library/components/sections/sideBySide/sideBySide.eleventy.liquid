@@ -3,7 +3,7 @@
     {% if content.sectionId %}
     id="{{ content.sectionId | idFilter }}"
     {% endif %}
-    class="basecontainer">
+    class="basecontainer w-full">
     {% bookshop "generic/heading" bind: content.heading %}
     {% if content.services %}
       {% for service in content.services %}
