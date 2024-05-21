@@ -11,8 +11,7 @@
 
 <div class="cs-w-full py-20 h-full bg-{{styles.color_group}}-backgroundcolor flex flex-col items-center justify-center text-{{styles.color_group}}-textcolor">
     
-    <div {% if content.sectionId %}
-        id="{{ content.sectionId }}"
+    <div {% if content.sectionId %}id="{{ content.sectionId | id_filter }}"
     {% endif %} class="basecontainer">
         {% if env_bookshop_live %}
             

@@ -1,7 +1,6 @@
 {% assign color_group = styles.color_group %}
 <div class="cs-w-full py-20 bg-{{styles.color_group}}-backgroundcolor flex flex-col items-center justify-center text-{{styles.color_group}}-textcolor">
-    <section {% if content.sectionId %}
-        id="{{ content.sectionId }}"
+    <section {% if content.sectionId %}id="{{ content.sectionId | id_filter }}"
     {% endif %} class="basecontainer w-full">
         {% if content.heading or content.description %}
             <div class="">
