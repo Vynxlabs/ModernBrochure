@@ -13,10 +13,13 @@
     @apply relative left-1/2 right-1/2 ml-0 mr-[-50vw] w-[50vw];
   }
   .cs-w-full {
-    @apply relative left-1/2 right-1/2 mx-[-50vw] w-screen h-full py-20 flex flex-col items-center justify-center;
+    @apply relative left-1/2 right-1/2 mx-[-50vw] flex h-full w-screen flex-col items-center justify-center py-20;
+  }
+  .footer {
+    @apply relative left-1/2 right-1/2 mx-[-50vw] w-screen;
   }
   .link {
-    @apply underline decoration-4 underline-offset-4 transition-colors ;
+    @apply underline decoration-4 underline-offset-4 transition-colors;
   }
 }
 
@@ -68,4 +71,3 @@
   white-space: nowrap;
   width: 1px;
 }
-
