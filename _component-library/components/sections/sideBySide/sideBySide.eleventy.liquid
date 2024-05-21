@@ -1,3 +1,7 @@
-<div class="c-sideBySide">
-    <p>{{ text }}</p>
-</div>
+<section {% if content.sectionId %}id="{{ content.sectionId | idFilter }}"
+{% endif %} >{% if content.services %}
+    {% for service in content.services %}
+        <p>{{service.title}}</p>
+    {% endfor %}
+    
+{% endif %}</section>
