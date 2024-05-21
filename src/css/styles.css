@@ -74,10 +74,8 @@
 
 main > :last-child{
   flex: 1 1 0;
-  background-color: red;
 }
 
 main > :last-child > :only-child {
   height: 100%;
-  background-color: purple;
 }
