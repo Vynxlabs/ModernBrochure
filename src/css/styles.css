@@ -13,7 +13,7 @@
     @apply relative left-1/2 right-1/2 ml-0 mr-[-50vw] w-[50vw];
   }
   .componentcontainer {
-    @apply relative left-1/2 right-1/2 mx-[-50vw] flex h-full w-screen flex-col items-center justify-center py-20;
+    @apply relative left-1/2 right-1/2 mx-[-50vw] flex w-screen flex-col items-center justify-center py-20;
   }
   .cs-w-full {
     @apply relative left-1/2 right-1/2 mx-[-50vw] w-screen;
@@ -70,4 +70,12 @@
   position: absolute;
   white-space: nowrap;
   width: 1px;
+}
+
+main > :last-child{
+  flex: 1 1 0;
+}
+
+main > :last-child:only-child {
+  height: 100%;
 }
