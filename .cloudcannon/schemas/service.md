@@ -12,6 +12,7 @@ pagination:
   data: collections.blog
   size: 22
 layout: "layouts/page.html"
+id:
 hero:
 content_blocks: []
 ---
