@@ -6,8 +6,12 @@
     class="basecontainer w-full">
     {% bookshop "generic/heading" bind: content.heading %}
     {% if content.services %}
-      {% for service in content.services %}
-        <p>{{ service.title }}</p>
+      {% for item in content.services %}
+        {% for service in collections.services %}
+            {% if item.id == service.data.id %}
+            <p>{{service.data.title}}</p>
+            {% endif %}
+        {% endfor %}
       {% endfor %}
 
     {% endif %}
