@@ -1,6 +1,6 @@
 {% assign imageClasses = 'z-[' | append: counter | append: ']' %}
 {% assign imageClasses = imageClasses |  append: ' object-cover absolute top-0 transition-all aspect-[3/2]' %}
-<div class="op hidden grid-cols-2 gap-[7vw] lg:grid">
+<div class=" hidden grid-cols-2 gap-[7vw] lg:grid">
     <div class="sticky top-[20vh] h-[60vh]">
         <div id="a{{content.id}}" class="lg-benefit-img opacity-0 transition-all duration-500">{% bookshop "generic/image" bind: content.image class: imageClasses %}</div>
       </div>

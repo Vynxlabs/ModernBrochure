@@ -12,7 +12,12 @@ blueprint:
   content:
     sectionId:
     heading: bookshop:generic/heading!
-    entries: [bookshop:generic/leftRightAnimation]
+    entries:
+      - entry:
+          heading: bookshop:generic/heading!
+          image: bookshop:generic/image!
+          id:
+          buttons: [bookshop:generic/button]
   styles:
     color_group: primary
     imagePosition: left

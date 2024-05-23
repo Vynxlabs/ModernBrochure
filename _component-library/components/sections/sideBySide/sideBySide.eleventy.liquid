@@ -8,13 +8,42 @@
     class="basecontainer w-full">
     {% bookshop "generic/heading" bind: content.heading %}
     {% if content.entries %}
-      
+
     {% endif %}
-    <div class="flex flex-col justify-center items-center">
-      {% for entry in content.entries %}
-        {% assign counter = counter | minus: 1 %}
-        {% bookshop "generic/leftRightAnimation" bind: entry %}
-      {% endfor %}
+    <div class="hidden grid-cols-2 gap-[7vw] lg:grid">
+      <div class="sticky top-[20vh] h-[60vh]">
+        {% for entry in content.entries %}
+          {% assign counter = counter | minus: 1 %}
+          {% assign imageClasses = 'z-[' | append: counter | append: ']' %}
+          {% assign imageClasses = imageClasses | append: ' object-cover absolute top-0 transition-all aspect-[3/2]' %}
+          {% comment %} The a in the a is to prevent errors caused when id starts with numerical value {% endcomment %}
+          <div id="a{{content.id}}" class="lg-benefit-img opacity-0 transition-all duration-500">{% bookshop "generic/image" bind: entry.image class: imageClasses %}</div>
+        {% endfor %}
+      </div>
+      <div class="flex flex-col gap-[50vh] py-[30vh]">
+        {% for entry in content.entries %}
+          <div class="w-[500px]" _="
+              on intersection(intersecting) having threshold 1
+              if intersecting
+              add .opacity-0 to .lg-benefit-img
+              remove .opacity-100 from .lg-benefit-img
+              add .opacity-100 to #a{{content.id}}
+              remove .opacity-0 from #a{{content.id}}
+              log '{{content.id}}'
+              
+              ">
+            {% bookshop "generic/heading" bind: entry.heading %}
+            {% if entry.buttons %}
+              <div class="flex gap-2 mt-4">
+                {% for button in entry.buttons %}
+                  {% bookshop "generic/button" bind: button %}
+                {% endfor %}
+              </div>
+            {% endif %}
+
+          </div>
+        {% endfor %}
+      </div>
     </div>
   </section>
 </div>
