@@ -6,18 +6,18 @@
     id="{{ content.sectionId | idFilter }}"
     {% endif %}
     class="basecontainer w-full">
-    {% bookshop "generic/heading" bind: content.heading %}
+    <div class="mb-36">{% bookshop "generic/heading" bind: content.heading %}</div>
     {% if content.entries %}
-
     {% endif %}
     <div class="hidden grid-cols-2 gap-[7vw] lg:grid">
       <div class="sticky top-[20vh] h-[60vh]">
         {% for entry in content.entries %}
           {% assign counter = counter | minus: 1 %}
           {% assign imageClasses = 'z-[' | append: counter | append: ']' %}
-          {% assign imageClasses = imageClasses | append: ' object-cover absolute top-0 transition-all aspect-[3/2]' %}
+          {% assign imageClasses = imageClasses | append: ' object-cover absolute top-0 transition-all aspect-[3/2] w-full rounded' %}
           {% comment %} The a in the a is to prevent errors caused when id starts with numerical value {% endcomment %}
-          <div id="a{{content.id}}" class="lg-benefit-img opacity-0 transition-all duration-500">{% bookshop "generic/image" bind: entry.image class: imageClasses %}</div>
+          
+          <div id="a{{entry.entry.id}}" class="lg-benefit-img opacity-0 transition-all duration-500">{% bookshop "generic/image" bind: entry.entry.image class: imageClasses %}</div>
         {% endfor %}
       </div>
       <div class="flex flex-col gap-[50vh] py-[30vh]">
@@ -27,15 +27,15 @@
               if intersecting
               add .opacity-0 to .lg-benefit-img
               remove .opacity-100 from .lg-benefit-img
-              add .opacity-100 to #a{{content.id}}
-              remove .opacity-0 from #a{{content.id}}
-              log '{{content.id}}'
+              add .opacity-100 to #a{{entry.entry.id}}
+              remove .opacity-0 from #a{{entry.entry.id}}
+              log '{{entry.entry.id}}'
               
               ">
-            {% bookshop "generic/heading" bind: entry.heading %}
-            {% if entry.buttons %}
+            {% bookshop "generic/heading" bind: entry.entry.heading %}
+            {% if entry.entry.buttons %}
               <div class="flex gap-2 mt-4">
-                {% for button in entry.buttons %}
+                {% for button in entry.entry.buttons %}
                   {% bookshop "generic/button" bind: button %}
                 {% endfor %}
               </div>
