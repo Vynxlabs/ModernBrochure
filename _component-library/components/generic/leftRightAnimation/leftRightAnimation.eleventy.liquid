@@ -1,9 +1,16 @@
-<div class="max-w-[500px]">
-    {% bookshop "generic/heading" bind: content.heading %}
-    {% if content.buttons %}
-        {% for button in content.buttons %}
-            {% bookshop "generic/button" bind: button %}
-        {% endfor %}
-    {% endif %}
-    {% bookshop "generic/image" bind: content.image class: "w-full rounded object-cover aspect-[3/2]" %}
+{% assign counter = 100 %}
+<div class="op hidden grid-cols-2 gap-[7vw] lg:grid">
+    <div class="w-[500px]">
+        {% bookshop "generic/heading" bind: content.heading %}
+        {% if content.buttons %}
+            <div class="flex gap-2 mt-4">
+                {% for button in content.buttons %}
+                    {% bookshop "generic/button" bind: button %}
+                {% endfor %}
+            </div>
+        {% endif %}
+    
+    </div>
+    
+    <div id="{{content.id}}">{% bookshop "generic/image" bind: content.image class: "w-full max-w-[500px] rounded object-cover aspect-[3/2]" %}</div>
 </div>

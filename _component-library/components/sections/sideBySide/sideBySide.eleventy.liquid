@@ -10,8 +10,10 @@
     {% if content.entries %}
       
     {% endif %}
-    {% for entry in content.entries %}
-      {% bookshop "generic/leftRightAnimation" bind: entry %}
-    {% endfor %}
+    <div class="flex flex-col justify-center items-center">
+      {% for entry in content.entries %}
+        {% bookshop "generic/leftRightAnimation" bind: entry %}
+      {% endfor %}
+    </div>
   </section>
 </div>
