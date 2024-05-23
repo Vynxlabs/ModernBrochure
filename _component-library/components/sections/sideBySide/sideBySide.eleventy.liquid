@@ -45,5 +45,15 @@
         {% endfor %}
       </div>
     </div>
+    <div class="flex flex-col gap-20 lg:hidden">
+      {% for entry in content.entries %}
+        <div>
+          <div>
+            {% bookshop "generic/image" bind: entry.entry.image class: "w-full object-cover lg:hidden aspect-[3/2] rounded" %}
+          </div>
+          <div class="mt-4">{% bookshop "generic/heading" bind: entry.entry.heading %}</div>
+        </div>
+      {% endfor %}
+    </div>
   </section>
 </div>
