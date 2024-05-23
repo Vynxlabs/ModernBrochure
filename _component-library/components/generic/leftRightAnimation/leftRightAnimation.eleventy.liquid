@@ -1,0 +1,9 @@
+<div class="max-w-[500px]">
+    {% bookshop "generic/heading" bind: content.heading %}
+    {% if content.buttons %}
+        {% for button in content.buttons %}
+            {% bookshop "generic/button" bind: button %}
+        {% endfor %}
+    {% endif %}
+    {% bookshop "generic/image" bind: content.image class: "w-full rounded object-cover aspect-[3/2]" %}
+</div>

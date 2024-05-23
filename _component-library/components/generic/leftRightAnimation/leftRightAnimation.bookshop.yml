@@ -2,28 +2,20 @@
 spec:
   structures:
     - content_blocks
-  label: "Side By Side"
-  description: A versatile section that combines text, images, and and a animation transitions between them.
-  icon: ballot
+  label: "LeftRightAnimation"
+  description:
+  icon:
   tags: []
 
 # Defines the structure of this component, as well as the default values
 blueprint:
   content:
-    sectionId:
     heading: bookshop:generic/heading!
-    entries: [bookshop:generic/leftRightAnimation]
-  styles:
-    color_group: primary
-    imagePosition: left
-    imageVisualInterest: 
+    image: bookshop:generic/image!
+    buttons: [bookshop:generic/button]
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
-  content:
-    services:
-      type: array
-      comment: A list of services to display

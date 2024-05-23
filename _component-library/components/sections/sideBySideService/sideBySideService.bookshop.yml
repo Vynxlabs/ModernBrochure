@@ -12,7 +12,8 @@ blueprint:
   content:
     sectionId:
     heading: bookshop:generic/heading!
-    entries: [bookshop:generic/leftRightAnimation]
+    services:
+      - service:
   styles:
     color_group: primary
     imagePosition: left

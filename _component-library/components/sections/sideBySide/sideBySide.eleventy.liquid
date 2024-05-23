@@ -7,24 +7,11 @@
     {% endif %}
     class="basecontainer w-full">
     {% bookshop "generic/heading" bind: content.heading %}
-    {% if content.services %}
-        {% for item in content.services %}
-          {% for service in collections.services %}
-              {% if item.service == service.data.id %}
-                {% capture image %}
-                    image:
-                        imagePath: {{ service.data.serviceImage }}
-                        imageAlt: {{ service.data.imageAltText }}
-                  {% endcapture %}
-                {% if service.data.category and service.data.category !="" %}
-                    <p>{{service.data.category}}</p>
-                {% endif %}
-              <p>{{service.data.title}}</p>
-              {% bookshop "generic/image" bind: image class: "w-full rounded transition-all duration-300 scale-100 hover:scale-105 object-cover aspect-[3/2]" %}
-              {% endif %}
-          {% endfor %}
-        {% endfor %}
-
+    {% if content.entries %}
+      
     {% endif %}
+    {% for entry in content.entries %}
+      {% bookshop "generic/leftRightAnimation" bind: entry %}
+    {% endfor %}
   </section>
 </div>
