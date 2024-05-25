@@ -4,7 +4,7 @@
 {% comment %} Animation based on live website {% endcomment %}
 {% if env_bookshop_live %}
   {% for entry in content.entries %}
-    {% capture heading %}
+    {% capture entryHeading %}
         content:
             highlightEyebrow: {{entry.entry.heading.content.highlightEyebrow}}
             eyebrow: {{entry.entry.heading.content.eyebrow}}
@@ -24,7 +24,7 @@
       </div>
 
       <div class="w-[500px]">
-        {% bookshop "generic/heading" bind: heading %}
+        {% bookshop "generic/heading" bind: entryHeading %}
           </div>
 
       </div>
@@ -39,7 +39,7 @@
         {% assign counter = counter | minus: 1 %}
         {% assign imageClasses = 'z-[' | append: counter | append: ']' %}
         {% assign imageClasses = imageClasses | append: ' object-cover absolute top-0 transition-all aspect-[3/2] w-full rounded' %}
-        {% capture heading %}
+        {% capture entryHeading %}
           content:
               highlightEyebrow: {{entry.entry.heading.content.highlightEyebrow}}
               eyebrow: {{entry.entry.heading.content.eyebrow}}
@@ -70,7 +70,7 @@
             log '{{entry.entry.id}}'
             
             ">
-          {% bookshop "generic/heading" bind: heading %}
+          {% bookshop "generic/heading" bind: entryHeading %}
 
         </div>
       {% endfor %}
@@ -82,7 +82,7 @@
 {% comment %} Mobile view {% endcomment %}
 <div class="flex flex-col gap-20 lg:hidden">
   {% for entry in content.entries %}
-    {% capture heading %}
+    {% capture entryHeading %}
         content:
             highlightEyebrow: {{entry.entry.heading.content.highlightEyebrow}}
             eyebrow: {{entry.entry.heading.content.eyebrow}}
@@ -100,7 +100,7 @@
       <div>
         {% bookshop "generic/image" bind: entry.entry.image class: "w-full object-cover lg:hidden aspect-[3/2] rounded" %}
       </div>
-      <div class="mt-4">{% bookshop "generic/heading" bind: heading %}</div>
+      <div class="mt-4">{% bookshop "generic/heading" bind: entryHeading %}</div>
     </div>
   {% endfor %}
 </div>
