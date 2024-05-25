@@ -1,21 +1,28 @@
 {% assign counter = 21 %}
-{% assign imageClasses = imageClasses | append: ' object-cover absolute top-0 transition-all aspect-[3/2] w-full rounded' %}
+
 
 {% comment %} Animation based on live website {% endcomment %}
 {% if env_bookshop_live %}
   {% for entry in content.entries %}
+    {% capture heading %}
+      content:
+          highlightEyebrow: {{entry.entry.heading.content.highlightEyebrow}}
+          eyebrow: {{entry.entry.heading.content.eyebrow}}
+          headline: {{entry.entry.heading.content.headline}}
+          description: {{entry.entry.heading.content.description}}
+          headingHierarchy: "h3"
+      styles:
+          contentAlignment: {{entry.entry.heading.styles.contentAlignment}}
+          textAlignment: {{entry.entry.heading.styles.textAlignment}}
+    {% endcapture %}
+
     <div class=" hidden grid-cols-2 gap-[7vw] lg:grid">
       <div class="sticky top-[20vh] h-[60vh]">
         <div id="a{{content.id}}" class="lg-benefit-img ">{% bookshop "generic/image" bind: entry.entry.image class: imageClasses %}</div>
       </div>
 
       <div class="w-[500px]">
-        {% bookshop "generic/heading" bind: entry.entry.heading %}
-        {% if entry.entry.buttons %}
-          <div class="flex gap-2 mt-4">
-            {% for button in entry.entry.buttons %}
-              {% bookshop "generic/button" bind: button %}
-            {% endfor %}
+        {% bookshop "generic/heading" bind: heading %}
           </div>
         {% endif %}
 
@@ -25,11 +32,23 @@
   {% endfor %}
 
 {% else %}
-  <div class="hidden grid-cols-2 gap-[7vw] lg:grid">
+  <div class="hidden grid-cols-2 gap-[7vw] lg:grid ">
     <div class="sticky top-[20vh] h-[60vh]">
       {% for entry in content.entries %}
         {% assign counter = counter | minus: 1 %}
         {% assign imageClasses = 'z-[' | append: counter | append: ']' %}
+        {% assign imageClasses = imageClasses | append: ' object-cover absolute top-0 transition-all aspect-[3/2] w-full rounded' %}
+        {% capture heading %}
+          content:
+              highlightEyebrow: {{entry.entry.heading.content.highlightEyebrow}}
+              eyebrow: {{entry.entry.heading.content.eyebrow}}
+              headline: {{entry.entry.heading.content.headline}}
+              description: {{entry.entry.heading.content.description}}
+              headingHierarchy: "h3"
+          styles:
+              contentAlignment: {{entry.entry.heading.styles.contentAlignment}}
+              textAlignment: {{entry.entry.heading.styles.textAlignment}}
+        {% endcapture %}
         {% comment %} The a in the a is to prevent errors caused when id starts with numerical value {% endcomment %}
 
         <div id="a{{entry.entry.id}}" class="lg-benefit-img opacity-0 transition-all duration-500">{% bookshop "generic/image" bind: entry.entry.image class: imageClasses %}</div>
@@ -47,14 +66,7 @@
             log '{{entry.entry.id}}'
             
             ">
-          {% bookshop "generic/heading" bind: entry.entry.heading %}
-          {% if entry.entry.buttons %}
-            <div class="flex gap-2 mt-4">
-              {% for button in entry.entry.buttons %}
-                {% bookshop "generic/button" bind: button %}
-              {% endfor %}
-            </div>
-          {% endif %}
+          {% bookshop "generic/heading" bind: heading %}
 
         </div>
       {% endfor %}
@@ -70,7 +82,7 @@
       <div>
         {% bookshop "generic/image" bind: entry.entry.image class: "w-full object-cover lg:hidden aspect-[3/2] rounded" %}
       </div>
-      <div class="mt-4">{% bookshop "generic/heading" bind: entry.entry.heading %}</div>
+      <div class="mt-4">{% bookshop "generic/heading" bind: heading %}</div>
     </div>
   {% endfor %}
 </div>

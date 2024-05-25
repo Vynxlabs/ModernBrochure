@@ -14,7 +14,6 @@ blueprint:
           heading: bookshop:generic/heading!
           image: bookshop:generic/image!
           id:
-          buttons: [bookshop:generic/button]
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
