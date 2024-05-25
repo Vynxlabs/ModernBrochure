@@ -1,42 +1,35 @@
 {% assign counter = 21 %}
-
+{% assign imageClasses = imageClasses | append: ' object-cover absolute top-0 transition-all aspect-[3/2] w-full rounded' %}
 
 {% comment %} Animation based on live website {% endcomment %}
 {% if env_bookshop_live %}
-  <div class=" hidden grid-cols-2 gap-[7vw] lg:grid">
-    <div class="sticky top-[20vh] h-[60vh]">
-      <div id="a{{content.id}}" class="lg-benefit-img opacity-0 transition-all duration-500">{% bookshop "generic/image" bind: content.image class: imageClasses %}</div>
-    </div>
+  {% for entry in content.entries %}
+    <div class=" hidden grid-cols-2 gap-[7vw] lg:grid">
+      <div class="sticky top-[20vh] h-[60vh]">
+        <div id="a{{content.id}}" class="lg-benefit-img ">{% bookshop "generic/image" bind: entry.entry.image class: imageClasses %}</div>
+      </div>
 
-    <div class="w-[500px]" _="
-    on intersection(intersecting) having threshold 1
-    if intersecting
-    add .opacity-0 to .lg-benefit-img
-    remove .opacity-100 from .lg-benefit-img
-    add .opacity-100 to #a{{content.id}}
-    remove .opacity-0 from #a{{content.id}}
-    log '{{content.id}}'
-    
-    ">
-      {% bookshop "generic/heading" bind: content.heading %}
-      {% if content.buttons %}
-        <div class="flex gap-2 mt-4">
-          {% for button in content.buttons %}
-            {% bookshop "generic/button" bind: button %}
-          {% endfor %}
-        </div>
-      {% endif %}
+      <div class="w-[500px]">
+        {% bookshop "generic/heading" bind: entry.entry.heading %}
+        {% if entry.entry.buttons %}
+          <div class="flex gap-2 mt-4">
+            {% for button in entry.entry.buttons %}
+              {% bookshop "generic/button" bind: button %}
+            {% endfor %}
+          </div>
+        {% endif %}
+
+      </div>
 
     </div>
+  {% endfor %}
 
-  </div>
 {% else %}
   <div class="hidden grid-cols-2 gap-[7vw] lg:grid">
     <div class="sticky top-[20vh] h-[60vh]">
       {% for entry in content.entries %}
         {% assign counter = counter | minus: 1 %}
         {% assign imageClasses = 'z-[' | append: counter | append: ']' %}
-        {% assign imageClasses = imageClasses | append: ' object-cover absolute top-0 transition-all aspect-[3/2] w-full rounded' %}
         {% comment %} The a in the a is to prevent errors caused when id starts with numerical value {% endcomment %}
 
         <div id="a{{entry.entry.id}}" class="lg-benefit-img opacity-0 transition-all duration-500">{% bookshop "generic/image" bind: entry.entry.image class: imageClasses %}</div>
@@ -83,25 +76,25 @@
 </div>
 
 {% comment %} 
-      z-[20]
-      z-[19]
-      z-[18]
-      z-[17]
-      z-[16]
-      z-[15]
-      z-[14]
-      z-[13]
-      z-[12]
-      z-[11]
-      z-[10]
-      z-[9]
-      z-[8]
-      z-[7]
-      z-[6]
-      z-[5]
-      z-[4]
-      z-[3]
-      z-[2]
-      z-[1]
+        z-[20]
+        z-[19]
+        z-[18]
+        z-[17]
+        z-[16]
+        z-[15]
+        z-[14]
+        z-[13]
+        z-[12]
+        z-[11]
+        z-[10]
+        z-[9]
+        z-[8]
+        z-[7]
+        z-[6]
+        z-[5]
+        z-[4]
+        z-[3]
+        z-[2]
+        z-[1]
 
  {% endcomment %}
