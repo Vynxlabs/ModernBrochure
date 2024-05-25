@@ -6,7 +6,7 @@
     {% if content.sectionId %}
     id="{{ content.sectionId | idFilter }}"
     {% endif %}
-    class="basecontainer w-full">
+    class="basecontainer w-full py-20">
     <div class="mb-36">{% bookshop "generic/heading" bind: content.heading %}</div>
     {% if env_bookshop_live and content.showNote %}
       <div class="mb-20">{% bookshop "generic/notification" heading: "Image Animation" text: "The animation for this section will be on the live site, but while editing they'll show up without animation" %}</div>
