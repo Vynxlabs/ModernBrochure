@@ -1,4 +1,4 @@
-{% if env_bookshop_live %}
+{% comment %} {% if env_bookshop_live %}
   {% assign author = 'jane Doe' %}
   {% assign length = '2 min' %}
   {% assign date = '2020-01-17' %}
@@ -7,7 +7,7 @@
   {% endcapture %}
   {% assign blogTags = blogTags | split: "," %}
   {% assign blogTitle = 'How to quickly build a website visually' %}
-{% endif %}
+{% endif %} {% endcomment %}
 
 <div class="w-full ">
   <div class="flex justify-between text-sm opacity-70">
