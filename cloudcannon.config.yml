@@ -290,9 +290,9 @@ _inputs:
   service:
     type: select
     options:
-        values: collections.services
-        value_key: id
-        text_key: title
+      values: collections.services
+      value_key: id
+      text_key: title
 _select_data: {}
 _structures:
   content_blocks:

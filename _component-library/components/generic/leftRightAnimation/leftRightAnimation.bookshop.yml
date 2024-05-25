@@ -9,10 +9,12 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   content:
-    heading: bookshop:generic/heading!
-    image: bookshop:generic/image!
-    id:
-    buttons: [bookshop:generic/button]
+    entries:
+      - entry:
+          heading: bookshop:generic/heading!
+          image: bookshop:generic/image!
+          id:
+          buttons: [bookshop:generic/button]
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
