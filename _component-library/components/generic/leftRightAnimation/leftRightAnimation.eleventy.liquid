@@ -17,7 +17,7 @@
             contentAlignment: {{entry.entry.heading.styles.contentAlignment}}
             textAlignment: {{entry.entry.heading.styles.textAlignment}}
       {% endcapture %}
-      {% assign heading = heading | ymlify %}
+      {% assign entryHeading = entryHeading | ymlify %}
     <div class=" hidden grid-cols-2 gap-[7vw] lg:grid">
       <div class="sticky top-[20vh] h-[60vh]">
         <div id="a{{content.id}}" class="lg-benefit-img ">{% bookshop "generic/image" bind: entry.entry.image class: imageClasses %}</div>
@@ -52,7 +52,7 @@
               contentAlignment: {{entry.entry.heading.styles.contentAlignment}}
               textAlignment: {{entry.entry.heading.styles.textAlignment}}
         {% endcapture %}
-        {% assign heading = heading | ymlify %}
+        {% assign entryHeading = entryHeading | ymlify %}
         {% comment %} The a in the a is to prevent errors caused when id starts with numerical value {% endcomment %}
 
         <div id="a{{entry.entry.id}}" class="lg-benefit-img opacity-0 transition-all duration-500">{% bookshop "generic/image" bind: entry.entry.image class: imageClasses %}</div>
@@ -95,7 +95,7 @@
             contentAlignment: {{entry.entry.heading.styles.contentAlignment}}
             textAlignment: {{entry.entry.heading.styles.textAlignment}}
       {% endcapture %}
-      {% assign heading = heading | ymlify %}
+      {% assign entryHeading = entryHeading | ymlify %}
     <div>
       <div>
         {% bookshop "generic/image" bind: entry.entry.image class: "w-full object-cover lg:hidden aspect-[3/2] rounded" %}
