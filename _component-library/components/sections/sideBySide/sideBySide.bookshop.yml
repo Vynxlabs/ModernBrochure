@@ -18,7 +18,6 @@ blueprint:
           heading: bookshop:generic/heading!
           image: bookshop:generic/image!
           id:
-          buttons: [bookshop:generic/button]
   styles:
     color_group: primary
     imagePosition: left

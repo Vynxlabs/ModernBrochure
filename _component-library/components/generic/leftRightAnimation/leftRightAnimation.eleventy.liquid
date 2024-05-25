@@ -5,17 +5,19 @@
 {% if env_bookshop_live %}
   {% for entry in content.entries %}
     {% capture heading %}
-      content:
-          highlightEyebrow: {{entry.entry.heading.content.highlightEyebrow}}
-          eyebrow: {{entry.entry.heading.content.eyebrow}}
-          headline: {{entry.entry.heading.content.headline}}
-          description: {{entry.entry.heading.content.description}}
-          headingHierarchy: "h3"
-      styles:
-          contentAlignment: {{entry.entry.heading.styles.contentAlignment}}
-          textAlignment: {{entry.entry.heading.styles.textAlignment}}
-    {% endcapture %}
-
+        content:
+            highlightEyebrow: {{entry.entry.heading.content.highlightEyebrow}}
+            eyebrow: {{entry.entry.heading.content.eyebrow}}
+            headline: {{entry.entry.heading.content.headline}}
+            description: {{entry.entry.heading.content.description}}
+            headingHierarchy: "h3"
+            buttons: 
+              {{entry.entry.heading.content.buttons | json}}
+        styles:
+            contentAlignment: {{entry.entry.heading.styles.contentAlignment}}
+            textAlignment: {{entry.entry.heading.styles.textAlignment}}
+      {% endcapture %}
+      {% assign heading = heading | ymlify %}
     <div class=" hidden grid-cols-2 gap-[7vw] lg:grid">
       <div class="sticky top-[20vh] h-[60vh]">
         <div id="a{{content.id}}" class="lg-benefit-img ">{% bookshop "generic/image" bind: entry.entry.image class: imageClasses %}</div>
@@ -44,10 +46,13 @@
               headline: {{entry.entry.heading.content.headline}}
               description: {{entry.entry.heading.content.description}}
               headingHierarchy: "h3"
+              buttons: 
+                {{entry.entry.heading.content.buttons | json}}
           styles:
               contentAlignment: {{entry.entry.heading.styles.contentAlignment}}
               textAlignment: {{entry.entry.heading.styles.textAlignment}}
         {% endcapture %}
+        {% assign heading = heading | ymlify %}
         {% comment %} The a in the a is to prevent errors caused when id starts with numerical value {% endcomment %}
 
         <div id="a{{entry.entry.id}}" class="lg-benefit-img opacity-0 transition-all duration-500">{% bookshop "generic/image" bind: entry.entry.image class: imageClasses %}</div>
@@ -77,6 +82,20 @@
 {% comment %} Mobile view {% endcomment %}
 <div class="flex flex-col gap-20 lg:hidden">
   {% for entry in content.entries %}
+    {% capture heading %}
+        content:
+            highlightEyebrow: {{entry.entry.heading.content.highlightEyebrow}}
+            eyebrow: {{entry.entry.heading.content.eyebrow}}
+            headline: {{entry.entry.heading.content.headline}}
+            description: {{entry.entry.heading.content.description}}
+            headingHierarchy: "h3"
+            buttons: 
+              {{entry.entry.heading.content.buttons | json}}
+        styles:
+            contentAlignment: {{entry.entry.heading.styles.contentAlignment}}
+            textAlignment: {{entry.entry.heading.styles.textAlignment}}
+      {% endcapture %}
+      {% assign heading = heading | ymlify %}
     <div>
       <div>
         {% bookshop "generic/image" bind: entry.entry.image class: "w-full object-cover lg:hidden aspect-[3/2] rounded" %}
