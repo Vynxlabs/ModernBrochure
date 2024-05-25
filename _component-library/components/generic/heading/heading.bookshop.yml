@@ -12,7 +12,8 @@ blueprint:
     highlightEyebrow: false
     eyebrow: 
     headline: primary heading
-    description: 
+    description:
+    buttons: [bookshop:generic/button]
     headingHierarchy: h2
   styles:
     contentAlignment: center

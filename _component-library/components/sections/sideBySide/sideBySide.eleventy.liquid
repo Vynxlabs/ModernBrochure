@@ -9,7 +9,7 @@
     class="basecontainer w-full">
     <div class="mb-36">{% bookshop "generic/heading" bind: content.heading %}</div>
     {% if env_bookshop_live and content.showNote %}
-      {% bookshop "generic/notification" heading: "Left Right Animation" text: "The animation for this section will be on the live site, but while editing they'll show up without animation" %}
+      <div class="mb-20">{% bookshop "generic/notification" heading: "Image Animation" text: "The animation for this section will be on the live site, but while editing they'll show up without animation" %}</div>
     {% endif %}
     {% if content.entries %}
       {% bookshop "generic/leftRightAnimation" bind: content %}
