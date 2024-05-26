@@ -10,13 +10,13 @@
 {% if content.headingHierarchy == "h1" %}
   {% assign margin = "mb-24" %}
   {% assign headingSize = "md:text-6xl text-5xl" %}
-{% elsif "h2" %}
+{% elsif content.headingHierarchy == "h2" %}
   {% assign headingSize = "text-4xl" %}
-{% elsif "h3" %}
+{% elsif content.headingHierarchy == "h3" %}
   {% assign headingSize = "text-3xl" %}
-{% elsif "h4" %}
+{% elsif content.headingHierarchy == "h4" %}
   {% assign headingSize = "text-2xl" %}
-{% elsif "h5" %}
+{% elsif content.headingHierarchy == "h5" %}
   {% assign headingSize = "text-xl" %}
 {% endif %}
 

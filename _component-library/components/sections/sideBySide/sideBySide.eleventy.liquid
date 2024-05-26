@@ -12,7 +12,7 @@
       <div class="mb-20">{% bookshop "generic/notification" heading: "Image Animation" text: "The animation for this section will be on the live site, but while editing they'll show up without animation" %}</div>
     {% endif %}
     {% if content.entries %}
-      {% bookshop "generic/leftRightAnimation" bind: content %}
+      {% bookshop "generic/leftRightAnimation" content: content styles: styles %}
     {% endif %}
   </section>
 </div>

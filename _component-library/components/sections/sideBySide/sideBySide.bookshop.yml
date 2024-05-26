@@ -28,7 +28,16 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
-  content:
-    services:
-      type: array
-      comment: A list of services to display
+  imagePosition:
+    type: choice
+    options:
+      allow_empty: false
+      value_key: id
+      values:
+        - name: Left
+          id: left
+          icon: format_align_left
+        - name: Right
+          id: right
+          icon: format_align_right
+    
