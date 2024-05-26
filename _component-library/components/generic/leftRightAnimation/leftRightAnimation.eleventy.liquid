@@ -16,6 +16,8 @@
         styles:
             contentAlignment: {{entry.entry.heading.styles.contentAlignment}}
             textAlignment: {{entry.entry.heading.styles.textAlignment}}
+            visualInterest: {{entry.entry.heading.styles.visualInterest}}
+            visualInterestColor: "{{entry.entry.heading.styles.visualInterestColor}}"
       {% endcapture %}
       {% assign entryHeading = entryHeading | ymlify %}
     <div class=" hidden grid-cols-2 gap-[7vw] lg:grid">
@@ -59,8 +61,7 @@
               contentAlignment: {{entry.entry.heading.styles.contentAlignment}}
               textAlignment: {{entry.entry.heading.styles.textAlignment}}
               visualInterest: {{entry.entry.heading.styles.visualInterest}}
-              visualInterestColor: {{entry.entry.heading.styles.visualInterestColor}}
-
+              visualInterestColor: "{{entry.entry.heading.styles.visualInterestColor}}"
         {% endcapture %}
         {% assign entryHeading = entryHeading | ymlify %}
         <div class="w-[500px]" _="
@@ -98,7 +99,7 @@
             contentAlignment: {{entry.entry.heading.styles.contentAlignment}}
             textAlignment: {{entry.entry.heading.styles.textAlignment}}
             visualInterest: {{entry.entry.heading.styles.visualInterest}}
-            visualInterestColor: {{entry.entry.heading.styles.visualInterestColor}}
+            visualInterestColor: "{{entry.entry.heading.styles.visualInterestColor}}"
       {% endcapture %}
       {% assign entryHeading = entryHeading | ymlify %}
     <div>
