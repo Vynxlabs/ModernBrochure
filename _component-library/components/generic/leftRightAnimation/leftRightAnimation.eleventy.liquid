@@ -39,6 +39,13 @@
         {% assign counter = counter | minus: 1 %}
         {% assign imageClasses = 'z-[' | append: counter | append: ']' %}
         {% assign imageClasses = imageClasses | append: ' object-cover absolute top-0 transition-all aspect-[3/2] w-full rounded' %}
+        {% comment %} The a in the a is to prevent errors caused when id starts with numerical value {% endcomment %}
+        <div id="a{{entry.entry.id}}" class="lg-benefit-img relative opacity-0 transition-all duration-500">{% bookshop "generic/image" bind: entry.entry.image class: imageClasses %}</div>
+      {% endfor %}
+    </div>
+    <div class="flex flex-col gap-[50vh] py-[30vh]">
+      {% for entry in content.entries %}
+        
         {% capture entryHeading %}
           content:
               highlightEyebrow: {{entry.entry.heading.content.highlightEyebrow}}
@@ -51,15 +58,11 @@
           styles:
               contentAlignment: {{entry.entry.heading.styles.contentAlignment}}
               textAlignment: {{entry.entry.heading.styles.textAlignment}}
+              visualInterest: {{entry.entry.heading.styles.visualInterest}}
+              visualInterestColor: {{entry.entry.heading.styles.visualInterestColor}}
+
         {% endcapture %}
         {% assign entryHeading = entryHeading | ymlify %}
-        {% comment %} The a in the a is to prevent errors caused when id starts with numerical value {% endcomment %}
-
-        <div id="a{{entry.entry.id}}" class="lg-benefit-img opacity-0 transition-all duration-500">{% bookshop "generic/image" bind: entry.entry.image class: imageClasses %}</div>
-      {% endfor %}
-    </div>
-    <div class="flex flex-col gap-[50vh] py-[30vh]">
-      {% for entry in content.entries %}
         <div class="w-[500px]" _="
             on intersection(intersecting) having threshold 1
             if intersecting
@@ -94,6 +97,8 @@
         styles:
             contentAlignment: {{entry.entry.heading.styles.contentAlignment}}
             textAlignment: {{entry.entry.heading.styles.textAlignment}}
+            visualInterest: {{entry.entry.heading.styles.visualInterest}}
+            visualInterestColor: {{entry.entry.heading.styles.visualInterestColor}}
       {% endcapture %}
       {% assign entryHeading = entryHeading | ymlify %}
     <div>
