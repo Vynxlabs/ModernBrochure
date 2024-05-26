@@ -51,10 +51,9 @@
         <div class="sticky top-[20vh] h-[60vh] {{imagePositionClasses}}">
           <div id="a{{content.id}}" class="lg-benefit-img ">
             {% bookshop "generic/image" bind: entry.entry.image class: imageClasses %}
-            <div class="relative">
-              <div class="{{visualInterestClasses}} bg-clip-content [background-image:var(--url)]" style="--url: url('{{ visualInterestPath }}')"></div>
-              {% include  %}
-            </div>
+            {% if styles.imageVisualInterest != "none" %}
+              <div class="relative">{{ '/src' | append: visualInterestPath | svgContents: visualInterestClasses }}</div>
+            {% endif %}
             </div>
         </div>
         <div class="w-[500px]">
