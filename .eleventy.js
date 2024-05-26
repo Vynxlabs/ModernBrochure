@@ -149,6 +149,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy("./src/images/");
   eleventyConfig.addPassthroughCopy("/src/images/");
   eleventyConfig.addPassthroughCopy("./src/assets/uploads/**");
+  eleventyConfig.addPassthroughCopy("./src/assets/images");
   eleventyConfig.addPassthroughCopy("./src/_includes/partials/background");
   // eleventyConfig.addPassthroughCopy("./src/css/");
   eleventyConfig.addPassthroughCopy({ "./src/images/favicon": "/" });
