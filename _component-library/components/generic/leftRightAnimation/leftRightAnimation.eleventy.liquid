@@ -5,8 +5,27 @@
     {% endif %}
 {% endcapture %}
 {% assign visualInterestPath = "/assets/images/visual-interest/" | append: styles.imageVisualInterest | append: '.svg' %}
+{% assign visualInterestClasses = "" %}
+{% if styles.imageVisualInterest == "dot-grid" %}
+    {% assign visualInterestClasses = "absolute -top-[45px] opacity-50 " | append: "fill-" | append: color_group | append: "-primarycolor " %}
+    {% elsif styles.imageVisualInterest == "cross-grid" %}
+        {% assign visualInterestClasses = "absolute -top-[40px] opacity-50 " | append: "stroke-" | append: color_group | append: "-primarycolor " %}
+{% endif %}
 
-{% assign visualInterestClasses = "absolute top-0" %}
+{% if styles.imagePosition == 'right' %}
+    {% if styles.imageVisualInterest == "dot-grid" %}
+        {% assign visualInterestClasses = visualInterestClasses |  append: ' left-[45%]' %}
+        {% elsif styles.imageVisualInterest == "cross-grid" %}
+        {% assign visualInterestClasses = visualInterestClasses |  append: ' left-[58%]' %}
+    {% endif %}
+    
+    {% else %}
+    {% if styles.imageVisualInterest == "dot-grid" %}
+        {% assign visualInterestClasses = visualInterestClasses |  append: ' right-[45%]' %}
+        {% elsif styles.imageVisualInterest == "cross-grid" %}
+        {% assign visualInterestClasses = visualInterestClasses |  append: ' right-[58%]' %}
+    {% endif %}
+{% endif %}
 
 {% comment %} Animation based on live website {% endcomment %}
 {% if env_bookshop_live %}
@@ -32,7 +51,7 @@
         <div class="sticky top-[20vh] h-[60vh] {{imagePositionClasses}}">
           <div id="a{{content.id}}" class="lg-benefit-img ">
             {% bookshop "generic/image" bind: entry.entry.image class: imageClasses %}
-            <span class="w-full h-full bg-clip-content bg-[var(--url)]" style="--url: url('{{ iconPath }}')"></span>
+            <span class="w-full h-full bg-clip-content bg-[var(--url)]" style="--url: url('{{ visualInterestPath }}')"></span>
             </div>
         </div>
         <div class="w-[500px]">
@@ -44,7 +63,7 @@
   </div>
 
 {% else %}
-  <div class="hidden grid-cols-2 gap-[7vw] lg:grid ">
+  <div class="hidden grid-cols-2 gap-[7vw] lg:grid overflow-visible">
     <div class="sticky top-[20vh] h-[60vh] {{imagePositionClasses}}">
       {% for entry in content.entries %}
         {% assign counter = counter | minus: 1 %}
@@ -53,7 +72,10 @@
         {% comment %} The a in the a is to prevent errors caused when id starts with numerical value {% endcomment %}
         <div id="a{{entry.entry.id}}" class="lg-benefit-img relative opacity-0 transition-all duration-500">
           {% bookshop "generic/image" bind: entry.entry.image class: imageClasses %}
-          {{ '/src' | append: iconPath | svgContents: visualInterestClasses }}
+          {% if styles.imageVisualInterest != "none" %}
+            <div class="relative">{{ '/src' | append: visualInterestPath | svgContents: visualInterestClasses }}</div>
+          {% endif %}
+          
           </div>
       {% endfor %}
     </div>
