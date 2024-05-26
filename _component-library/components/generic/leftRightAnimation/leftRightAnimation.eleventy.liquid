@@ -1,42 +1,45 @@
 {% assign counter = 21 %}
-
+{% capture imagePositionClasses %}
+    {% if styles.imagePosition == 'right' %}
+        order-1
+    {% endif %}
+{% endcapture %}
 
 {% comment %} Animation based on live website {% endcomment %}
 {% if env_bookshop_live %}
-  {% for entry in content.entries %}
-    {% capture entryHeading %}
-        content:
-            highlightEyebrow: {{entry.entry.heading.content.highlightEyebrow}}
-            eyebrow: {{entry.entry.heading.content.eyebrow}}
-            headline: {{entry.entry.heading.content.headline}}
-            description: {{entry.entry.heading.content.description}}
-            headingHierarchy: "h3"
-            buttons: 
-              {{entry.entry.heading.content.buttons | json}}
-        styles:
-            contentAlignment: {{entry.entry.heading.styles.contentAlignment}}
-            textAlignment: {{entry.entry.heading.styles.textAlignment}}
-            visualInterest: {{entry.entry.heading.styles.visualInterest}}
-            visualInterestColor: "{{entry.entry.heading.styles.visualInterestColor}}"
-      {% endcapture %}
-      {% assign entryHeading = entryHeading | ymlify %}
-    <div class=" hidden grid-cols-2 gap-[7vw] lg:grid">
-      <div class="sticky top-[20vh] h-[60vh]">
-        <div id="a{{content.id}}" class="lg-benefit-img ">{% bookshop "generic/image" bind: entry.entry.image class: imageClasses %}</div>
+  <div class="bg-{{color_group}}-backgroundcolor  text-{{color_group}}-textcolor">
+    {% for entry in content.entries %}
+      {% capture entryHeading %}
+          content:
+              highlightEyebrow: {{entry.entry.heading.content.highlightEyebrow}}
+              eyebrow: {{entry.entry.heading.content.eyebrow}}
+              headline: {{entry.entry.heading.content.headline}}
+              description: {{entry.entry.heading.content.description}}
+              headingHierarchy: "h3"
+              buttons:
+                {{entry.entry.heading.content.buttons | json}}
+          styles:
+              contentAlignment: {{entry.entry.heading.styles.contentAlignment}}
+              textAlignment: {{entry.entry.heading.styles.textAlignment}}
+              visualInterest: {{entry.entry.heading.styles.visualInterest}}
+              visualInterestColor: "{{entry.entry.heading.styles.visualInterestColor}}"
+        {% endcapture %}
+        {% assign entryHeading = entryHeading | ymlify %}
+      <div class=" hidden grid-cols-2 gap-[7vw] lg:grid">
+        <div class="sticky top-[20vh] h-[60vh] {{imagePositionClasses}}">
+          <div id="a{{content.id}}" class="lg-benefit-img ">{% bookshop "generic/image" bind: entry.entry.image class: imageClasses %}</div>
+        </div>
+        <div class="w-[500px]">
+          {% bookshop "generic/heading" bind: entryHeading %}
+            </div>
+        </div>
       </div>
-
-      <div class="w-[500px]">
-        {% bookshop "generic/heading" bind: entryHeading %}
-          </div>
-
-      </div>
-
-    </div>
-  {% endfor %}
+    {% endfor %}
+  </div>
 
 {% else %}
   <div class="hidden grid-cols-2 gap-[7vw] lg:grid ">
-    <div class="sticky top-[20vh] h-[60vh]">
+    <div class="sticky top-[20vh] h-[60vh] {{imagePositionClasses}}">
       {% for entry in content.entries %}
         {% assign counter = counter | minus: 1 %}
         {% assign imageClasses = 'z-[' | append: counter | append: ']' %}
