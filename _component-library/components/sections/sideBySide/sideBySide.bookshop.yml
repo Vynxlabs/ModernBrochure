@@ -21,7 +21,7 @@ blueprint:
   styles:
     color_group: primary
     imagePosition: left
-    imageVisualInterest: 
+    imageVisualInterest: none
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
@@ -40,4 +40,14 @@ _inputs:
         - name: Right
           id: right
           icon: format_align_right
-    
+  imageVisualInterest:
+    type: select
+    options:
+      value_key: id
+      values:
+        - name: None
+          id: none
+        - name: Dots
+          id: dot-grid
+        - name: Crosses
+          id: cross-grid
