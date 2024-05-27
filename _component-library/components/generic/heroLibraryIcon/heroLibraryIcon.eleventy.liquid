@@ -11,19 +11,21 @@
 {% capture iconStrokeColor %}
     {% if themeColor %}
         stroke-{{color_group}}-textcolor
+        {% elsif classOverride and classOverride != "" %}
+            {{classOverride}}
         {% else %}
-            c-heroLibraryIcon__svg
+        c-heroLibraryIcon__svg
 {% endif %}
 {% endcapture %}
-
 {% capture iconFillColor %}
     {% if themeColor %}
         fill-{{color_group}}-textcolor
+        {% elsif classOverride and classOverride != "" %}
+            {{classOverride}}
         {% else %}
-            c-heroLibraryIcon__svg
+        c-heroLibraryIcon__svg
 {% endif %}
 {% endcapture %}
-
 {% capture chosenType %}
     {% if iconType == 'solid' %}
         {{ iconFillColor }} 

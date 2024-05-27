@@ -16,12 +16,15 @@ blueprint:
   roundedBorder: false
   themeColor: false
   color: "#7d7f7c"
+  classOverride:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  classOverride:
+    hidden: true
   heroLibraryIconName:
     comment: >-
       Visit [https://heroicons.com/](https://heroicons.com/) to see the full

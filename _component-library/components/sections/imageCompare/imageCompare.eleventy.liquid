@@ -1,0 +1,47 @@
+{% assign color_group = styles.color_group %}
+{% capture iconClass %}
+    fill-{{styles.color_group}}-secondarycolor
+{% endcapture %}
+<div class="c-imageCompare componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
+  <section
+    {% if content.sectionId %}
+    id="{{ content.sectionId | idFilter }}"
+    {% endif %}
+    class="basecontainer w-full py-20"
+    id="{{content.sectionId | }}">
+    {% bookshop "generic/heading" bind: content.heading %}
+    {% comment %} Image container {% endcomment %}
+    <div class="relative mt-10 flex overflow-hidden rounded">
+        {% bookshop "generic/image" bind: content.leftImage classes:"lg-before-img absolute top-0 w-1/2 h-full object-cover object-left" %}
+        {% bookshop "generic/image" bind: content.rightImage %}
+        <div
+        id="sliderLine"
+        class="absolute left-1/2 h-full w-1 -translate-x-1/2 bg-{{color_group}}-secondarycolor shadow-[0px_0px_8px_2px_rgba(204,_237,_193,_0.50)]"
+      ></div>
+      <div
+        id="sliderIcon"
+        class="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 justify-between"
+      >
+      {% bookshop "generic/heroLibraryIcon" heroLibraryIconName:"chevron-left" iconType:"solid" iconSize:'small' roundedBorder:false classOverride: iconClass %}
+      {% bookshop "generic/heroLibraryIcon" heroLibraryIconName:"chevron-right" iconType:"solid" iconSize:'small' roundedBorder:false classOverride: iconClass %}
+      </div>
+      <input
+        id="slider"
+        type="range"
+        class="absolute inset-0 opacity-0"
+        min="0"
+        max="100"
+        _="
+      on input
+      set img to .lg-before-img
+      set sliderLine to #sliderLine
+      set sliderIcon to #sliderIcon
+      set sliderVal to my value + '%'
+      set img.style.width to sliderVal
+      set sliderLine.style.left to sliderVal
+      set sliderIcon.style.left to sliderVal
+      "
+      />
+    </div>
+  </section>
+</div>
