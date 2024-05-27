@@ -18,6 +18,7 @@ blueprint:
     buttons: [bookshop:generic/button]
   styles:
     color_group: primary
+    imageOrientation: landscape
 
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
@@ -25,3 +26,15 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  imageOrientation:
+    type: choice
+    options:
+      allow_empty: false
+      value_key: id
+      values:
+        - name: Landscape
+          id: landscape
+          icon: crop_landscape
+        - name: Portrait
+          id: portrait
+          icon: crop_portrait

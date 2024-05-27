@@ -2,20 +2,27 @@
 {% capture iconClass %}
     fill-{{styles.color_group}}-secondarycolor
 {% endcapture %}
+{% capture orientationClasses %}
+  {% if styles.imageOrientation == "landscape" %}
+    max-w-[700px] max-h-[500px]
+    {% else %}
+    max-w-[500px] max-h-[700px]
+  {% endif %}
+{% endcapture %}
 <div class="c-imageCompare componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
   <section
     {% if content.sectionId %}
     id="{{ content.sectionId | idFilter }}"
     {% endif %}
-    class="basecontainer w-full py-20"
+    class="basecontainer w-full flex flex-col items-center"
     id="{{content.sectionId | }}">
     {% bookshop "generic/heading" bind: content.heading %}
     {% if env_bookshop_live and content.showNote %}
         <div class="mb-20">{% bookshop "generic/notification" heading: "Slider no sliding" text: "The slider will not slide while editing, but will work on your live site" %}</div>
       {% endif %}
     {% comment %} Image container {% endcomment %}
-    <div class="relative mt-10 flex overflow-hidden rounded">
-        {% bookshop "generic/image" bind: content.leftImage classes:"lg-before-img absolute top-0 w-1/2 h-full object-cover object-left" %}
+    <div class="relative mt-10 flex overflow-hidden rounded {{orientationClasses}}">
+        {% bookshop "generic/image" bind: content.leftImage class:"lg-before-img absolute top-0 w-1/2 h-full object-cover object-left" %}
         {% bookshop "generic/image" bind: content.rightImage %}
         <div
         id="sliderLine"
@@ -47,7 +54,7 @@
       />
     </div>
     {% if content.buttons %}
-        <div class="mt-14 flex w-full gap-8 flex-wrap {{buttonAlignment}}">
+        <div class="mt-14 flex w-full gap-8 flex-wrap justify-center {{buttonAlignment}}">
           {% for button in content.buttons %}
             {% bookshop "generic/button" bind: button %}
           {% endfor %}
