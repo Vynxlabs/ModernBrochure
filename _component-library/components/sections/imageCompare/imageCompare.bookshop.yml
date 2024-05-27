@@ -11,6 +11,7 @@ spec:
 blueprint:
   content:
     sectionId:
+    showNote: true
     heading: bookshop:generic/heading!
     leftImage: bookshop:generic/image!
     rightImage: bookshop:generic/image!
