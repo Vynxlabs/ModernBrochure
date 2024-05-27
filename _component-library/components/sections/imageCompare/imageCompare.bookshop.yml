@@ -15,6 +15,7 @@ blueprint:
     heading: bookshop:generic/heading!
     leftImage: bookshop:generic/image!
     rightImage: bookshop:generic/image!
+    buttons: [bookshop:generic/button]
   styles:
     color_group: primary
 

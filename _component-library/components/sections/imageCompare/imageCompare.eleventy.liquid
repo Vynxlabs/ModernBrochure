@@ -46,5 +46,13 @@
       "
       />
     </div>
+    {% if content.buttons %}
+        <div class="mt-14 flex w-full gap-8 flex-wrap {{buttonAlignment}}">
+          {% for button in content.buttons %}
+            {% bookshop "generic/button" bind: button %}
+          {% endfor %}
+
+        </div>
+      {% endif %}
   </section>
 </div>
