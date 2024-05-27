@@ -2,7 +2,7 @@
 spec:
   structures:
     - content_blocks
-  label: "ImageGalleryMasonryGrid"
+  label: "Image Gallery Masonry Grid"
   description:
   icon:
   tags: []
@@ -13,13 +13,15 @@ blueprint:
     sectionId:
     showNote: true
     heading: bookshop:generic/heading!
-    images:
+    imageSets:
+      - images: [bookshop:generic/imageModal]
   styles:
     color_group: primary
-    galleryType:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  imageSets:
+    comment: "Each image set can have up to 8 images. Any image added past the eith will not show up"
