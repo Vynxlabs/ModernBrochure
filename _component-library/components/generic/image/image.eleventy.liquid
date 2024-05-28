@@ -1,4 +1,4 @@
-{% capture classes %}
+{% capture imageComponentclasses %}
     {% if class %}
         {{class}}
         {% else %}
@@ -9,13 +9,13 @@
 
 {% if env_bookshop_live %}
     
-    <img class="{{classes}}" src="{{ imagePath }}" alt="{{ imageAlt }}">
+    <img class="{{imageComponentclasses}}" src="{{ imagePath }}" alt="{{ imageAlt }}">
 
 
 
 {% else  %}
 
-{% image imagePath, imageAlt, classes, imageSizes %}
+{% image imagePath, imageAlt, imageComponentclasses, imageSizes %}
 
     
 {% endif %}
