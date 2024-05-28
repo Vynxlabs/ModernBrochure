@@ -15,8 +15,9 @@ blueprint:
     heading: bookshop:generic/heading!
     imageSets:
       - images: [bookshop:generic/image]
+    setLimit: 8
+    patternLimit: 16
     imageClasses:
-    - ""
     - sm:row-span-2 sm:col-span-2 sm:row-start-1 sm:col-start-1
     - sm:row-span-1 sm:col-span-2 sm:row-start-1 sm:col-start-3
     - sm:row-span-1 sm:col-span-2 sm:row-start-2 sm:col-start-3
@@ -44,4 +45,8 @@ _inputs:
   imageSets:
     comment: "Each image set can have up to 8 images. Any image added past the eith will not show up"
   imageClasses:
+    hidden: true
+  setLimit:
+    hidden: true
+  patternLimit:
     hidden: true
