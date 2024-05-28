@@ -1,3 +1,38 @@
+{% assign setCounter = 0 %}
+{% assign imageCounter = 0 %}
+{% assign classesIndex = 0 %}
+{% capture classes %}
+    - 
+    - sm:row-span-2 sm:col-span-2 sm:row-start-1 sm:col-start-1
+    - sm:row-span-1 sm:col-span-2 sm:row-start-1 sm:col-start-3
+    - sm:row-span-1 sm:col-span-2 sm:row-start-2 sm:col-start-3
+    - sm:row-span-1 sm:col-span-2 sm:row-start-3 sm:col-start-1
+    - 
+    - sm:row-span-2 sm:col-span-1 sm:row-start-3 sm:col-start-4
+    - 
+    - sm:row-span-1 sm:col-span-2 sm:row-start-4 sm:col-start-3
+    - sm:row-span-2 sm:col-span-2 sm:row-start-1 sm:col-start-3
+    - sm:row-span-1 sm:col-span-2 sm:row-start-1 sm:col-start-1
+    - sm:row-span-1 sm:col-span-2 sm:row-start-2 sm:col-start-1
+    - sm:row-span-2 sm:col-span-1 sm:row-start-3 sm:col-start-1
+    - 
+    - sm:row-span-1 sm:col-span-2 sm:row-start-3 sm:col-start-3
+    - sm:row-span-1 sm:col-span-2 sm:row-start-4 sm:col-start-2
+    - 
+{% endcapture %}
+{% assign classes = classes | ymlify %}
 <div class="c-imageGrid">
-    <p>{{ text }}</p>
+    <div class="flex flex-col gap-1 py-32">
+    {% for imageSet in imageSets %}
+        {% assign setCounter = setCounter | plus: 1 %}
+        {% assign imageCounter = 0 %}
+        <div class="grid grid-cols-[repeat(2,minmax(0px,320px))] grid-rows-[repeat(4,minmax(0px,320px))] gap-1 sm:grid-rows-[repeat(4,minmax(0px,320px))]">
+            {% for image in imageSet limit:8 %}
+                {% assign imageCounter = imageCounter | plus: 1 %}
+                {% assign classesIndex = setCounter | times: imageCounter %}
+                {% bookshop "generic/imageModal" image: image classes:classes[classesIndex] %}
+            {% endfor %}
+        </div>
+    {% endfor %}
+    </div>
 </div>

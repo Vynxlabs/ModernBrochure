@@ -14,7 +14,7 @@ blueprint:
     showNote: true
     heading: bookshop:generic/heading!
     imageSets:
-      - images: [bookshop:generic/imageModal]
+      - images: [bookshop:generic/image]
   styles:
     color_group: primary
 

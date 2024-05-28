@@ -27,4 +27,6 @@ _inputs:
     hidden: true  
   class:
     hidden: true
+  imageAlt:
+    comment: "A concise text description of the image that will be used for accessibility. This not being filled out will hurt SEO."
 

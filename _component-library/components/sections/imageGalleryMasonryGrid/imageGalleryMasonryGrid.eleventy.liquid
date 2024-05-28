@@ -1,3 +1,9 @@
-<div class="c-imageGalleryMasonryGrid">
-    <p>{{ text }}</p>
+<div class="c-imageGalleryMasonryGrid componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
+  <section
+    {% if content.sectionId %}
+    id="{{ content.sectionId | idFilter }}"
+    {% endif %}
+    class="basecontainer w-full py-20">
+    
+    </section>
 </div>
