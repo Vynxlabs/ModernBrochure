@@ -1,4 +1,4 @@
-<button class="{{classes}} transition-all duration-300 scale-100 hover:scale-105"
+<button class="{{classes}} transition-all duration-300 scale-100 hover:scale-[102%] overflow-hidden"
 _=
 "
 on click
@@ -7,7 +7,7 @@ modal.show()
 transition #modal-{{id}} opacity to 1 over 0.2s
 "
 >
-{% bookshop "generic/image" bind: image class: "aspect-square object-cover object-center w-full h-full" %}
+{% bookshop "generic/image" bind: image class: "aspect-square object-cover object-center w-full h-full " %}
 </button>
 <dialog
       id="modal-{{id}}"
