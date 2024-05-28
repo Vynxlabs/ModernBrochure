@@ -3,7 +3,8 @@
     {% if content.sectionId %}
     id="{{ content.sectionId | idFilter }}"
     {% endif %}
-    class="basecontainer w-full py-20">
-    
+    class="basecontainer w-full">
+    {% bookshop "generic/heading" bind: content.heading %}
+    {% bookshop "generic/imageGrid" bind: content %}
     </section>
 </div>
