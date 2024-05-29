@@ -5,12 +5,29 @@
         {% bookshop "generic/heading" bind: content.heading %}
         {% if content.reviews %}
             
-            <div>
+            <div class="flex justify-around gap-4">
             {% for item in content.reviews %}
                 {% for review in reviews %}
                     
                     {% if item.review == review.id %}
-                        <p>{{review.name}}</p>
+                        <div class="max-w-[350px] relative ">
+                            {% assign review = review.resultImage | logFilter %}
+                            {% assign imageAltText = "Service result for " | append: review.name %}
+                            <div class="before:cotent-[''] before:absolute before:opacity-60 before:[background-image:linear-gradient(269deg,#F2F8FD_1.01%,rgba(242,248,253,0.25)_98.69%);]">{% bookshop "generic/image" imagePath: review.resultImage imageAlt: imageAltText class: "rounded" %}</div>
+                            <div class=" absolute top-20 left-1/2 text-nowrap">
+                                <div class="flex">
+                                    {% bookshop "generic/heroLibraryIcon" heroLibraryIconName:"star" iconType:"solid" iconSize:'micro' roundedBorder:false color: "#EBC644"  %}
+                                    {% bookshop "generic/heroLibraryIcon" heroLibraryIconName:"star" iconType:"solid" iconSize:'micro' roundedBorder:false color: "#EBC644"  %}
+                                    {% bookshop "generic/heroLibraryIcon" heroLibraryIconName:"star" iconType:"solid" iconSize:'micro' roundedBorder:false color: "#EBC644"  %}
+                                    {% bookshop "generic/heroLibraryIcon" heroLibraryIconName:"star" iconType:"solid" iconSize:'micro' roundedBorder:false color: "#EBC644"  %}
+                                    {% bookshop "generic/heroLibraryIcon" heroLibraryIconName:"star" iconType:"solid" iconSize:'micro' roundedBorder:false color: "#EBC644"  %}
+                                </div>
+                                <div class="">
+                                    <p class="font-bold text-2xl">{{review.review}}</p>
+                                    <p>{{review.name}}</p>
+                                </div>
+                            </div>
+                        </div>
                     {% endif %}
                 {% endfor %}
             {% endfor %}
