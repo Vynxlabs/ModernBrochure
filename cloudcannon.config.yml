@@ -297,7 +297,7 @@ _inputs:
   review:
     type: select
     options:
-      values: data.reviews
+      values: data.reviews.reviews
       value_key: id
       text_key: name
 _select_data: {}
