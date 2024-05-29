@@ -14,6 +14,7 @@ blueprint:
     heading: bookshop:generic/heading!
     imageSets:
       - images: [bookshop:generic/image]
+    buttons: [bookshop:generic/button]
     setLimit: 8
     patternLimit: 16
     imageClasses:

@@ -54,7 +54,7 @@
       />
     </div>
     {% if content.buttons %}
-        <div class="mt-14 flex w-full gap-8 flex-wrap justify-center {{buttonAlignment}}">
+        <div class="mt-14 flex w-full gap-8 flex-wrap justify-center">
           {% for button in content.buttons %}
             {% bookshop "generic/button" bind: button %}
           {% endfor %}
