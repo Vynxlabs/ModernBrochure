@@ -6,9 +6,9 @@
         {% if content.reviews %}
             <div>
             {% for item in content.reviews %}
-                {% for review in collections.reviews %}
+                {% for review in data.reviews %}
                     {% if item.review == review.id %}
-                        <p>{{item.name}}</p>
+                        <p>{{item | logFilter}}</p>
                     {% endif %}
                 {% endfor %}
             {% endfor %}
