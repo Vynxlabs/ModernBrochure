@@ -1,0 +1,19 @@
+{% assign color_group = styles.color_group %}
+
+<div class="c-textBreakReview c-simpleCta componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
+    <section class="basecontainer w-full">
+        {% bookshop "generic/heading" bind: content.heading %}
+        {% if content.reviews %}
+            <div>
+            {% for item in content.reviews %}
+                {% for review in collections.reviews %}
+                    {% if item.review == review.id %}
+                        <p>{{item.name}}</p>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </div>
+        {% endif %}
+        
+    </section>
+</div>

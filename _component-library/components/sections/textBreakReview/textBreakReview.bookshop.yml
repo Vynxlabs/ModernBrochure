@@ -2,14 +2,21 @@
 spec:
   structures:
     - content_blocks
-  label: "Sample"
-  description:
-  icon:
-  tags: []
+  label: "Text Break Review"
+  description: A result image review where the text breaks out of the image frame
+  icon: reviews
+  tags: [review, result-review, connected]
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  text: "Hello World!"
+  contnent:
+    sectionId:
+    heading: bookshop:generic/heading
+    reviews:
+      - review:
+  styles:
+    color_group: primary
+
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

@@ -293,6 +293,12 @@ _inputs:
       values: collections.services
       value_key: id
       text_key: title
+  review:
+    type: select
+    options:
+      values: collections.reviews
+      value_key: id
+      text_key: name
 _select_data: {}
 _structures:
   content_blocks:
