@@ -4,14 +4,13 @@ spec:
     - content_blocks
   label: "Image Gallery Masonry Grid"
   description:
-  icon:
+  icon: space_dashboard
   tags: []
 
 # Defines the structure of this component, as well as the default values
 blueprint:
   content:
     sectionId:
-    showNote: true
     heading: bookshop:generic/heading!
     imageSets:
       - images: [bookshop:generic/image]
