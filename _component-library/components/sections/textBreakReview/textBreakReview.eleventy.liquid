@@ -13,8 +13,10 @@
                         <div class="max-w-[350px] relative flex flex-wrap ">
                             {% assign review = review.resultImage | logFilter %}
                             {% assign imageAltText = "Service result for " | append: review.name %}
-                            <div class="rounded before:cotent-[''] before:absolute before:opacity-60 before:[background-image:linear-gradient(269deg,#F2F8FD_1.01%,rgba(242,248,253,0.25)_98.69%);]">{% bookshop "generic/image" imagePath: review.resultImage imageAlt: imageAltText class: "rounded " %}</div>
-                            <div class=" md:absolute top-[7%] lg:left-[170px] md:left-[125px] md:-right-[250px]">
+                            <div class="rounded">{% bookshop "generic/image" imagePath: review.resultImage imageAlt: imageAltText class: "rounded " %}</div>
+                            {% comment %} Create custom tailwind classses for this background {% endcomment %}
+                            <div class="hidden sm:block absolute inset-0  bg-gradient-to-t from-transparent to-white/70 opacity-80 before:hidden"></div>
+                            <div class="mt-4 sm:absolute top-[7%] lg:left-[170px] sm:left-[170px] md:left-[125px] sm:-right-[250px]">
                                 <div class="flex">
                                     {% bookshop "generic/heroLibraryIcon" heroLibraryIconName:"star" iconType:"solid" iconSize:'micro' roundedBorder:false color: "#EBC644"  %}
                                     {% bookshop "generic/heroLibraryIcon" heroLibraryIconName:"star" iconType:"solid" iconSize:'micro' roundedBorder:false color: "#EBC644"  %}
@@ -22,8 +24,8 @@
                                     {% bookshop "generic/heroLibraryIcon" heroLibraryIconName:"star" iconType:"solid" iconSize:'micro' roundedBorder:false color: "#EBC644"  %}
                                     {% bookshop "generic/heroLibraryIcon" heroLibraryIconName:"star" iconType:"solid" iconSize:'micro' roundedBorder:false color: "#EBC644"  %}
                                 </div>
-                                <div class="max-w-[250px]">
-                                    <div class="font-bold text-2xl">{{review.review}}</div>
+                                <div class="mt-2 sm:max-w-[250px] relative">
+                                    <div class="font-medium sm:font-bold text-2xl"><span class="absolute text-5xl -left-6 -top-2">"</span>{{review.review}}</div>
                                     <div>{{review.name}}</div>
                                 </div>
                             </div>
