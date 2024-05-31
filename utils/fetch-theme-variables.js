@@ -76,6 +76,12 @@ function appendTailwindUtilityClasses(colorSet,id){
     cssString += `.data-\\[state\\=active\\]\\:decoration-${id}-secondarycolor[data-state=active] { text-decoration-color: ${colorSet.secondaryColor}; }\n`;
     cssString += `.data-\\[state\\=active\\]\\:decoration-${id}-accentcolor[data-state=active] { text-decoration-color: ${colorSet.accentColor}; }\n`;
 
+    //to-color - for gradients
+    cssString += `.to-${id}-textcolor { --tw-gradient-to: ${colorSet.textColor} var(--tw-gradient-to-position); }\n`;
+    cssString += `.to-${id}-backgroundcolor { --tw-gradient-to: ${colorSet.backgroundColor} var(--tw-gradient-to-position); }\n`;
+    cssString += `.to-${id}-primarycolor { --tw-gradient-to: ${colorSet.primaryColor} var(--tw-gradient-to-position); }\n`;
+    cssString += `.to-${id}-secondarycolor { --tw-gradient-to: ${colorSet.secondaryColor} var(--tw-gradient-to-position); }\n`;
+    cssString += `.to-${id}-accentcolor { --tw-gradient-to: ${colorSet.accentColor} var(--tw-gradient-to-position); }\n`;
 
 
     //background
@@ -126,6 +132,7 @@ function appendTailwindUtilityClasses(colorSet,id){
     cssString += `.fill-${id}-primarycolor { fill: ${colorSet.primaryColor}; }\n`;
     cssString += `.fill-${id}-secondarycolor { fill: ${colorSet.secondaryColor}; }\n`;
     cssString += `.fill-${id}-accentcolor { fill: ${colorSet.accentColor}; }\n`;
+
     
 
 
