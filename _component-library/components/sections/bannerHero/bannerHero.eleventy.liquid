@@ -4,15 +4,18 @@
 
 {% capture heading %}
     content:
-        highlightEyebrow: {{heading.content.highlightEyebrow}}
-        eyebrow: {{heading.content.eyebrow}}
-        headline: {{heading.content.headline}}
-        description: {{heading.content.description}}
+        highlightEyebrow: {{content.heading.content.highlightEyebrow}}
+        eyebrow: {{content.heading.content.eyebrow}}
+        headline: {{content.heading.content.headline}}
+        description: {{content.heading.content.description}}
         headingHierarchy: "h1"
+        buttons:
+            {{content.heading.content.buttons | json}}
     styles:
-        contentAlignment: {{heading.styles.contentAlignment}}
-        textAlignment: {{heading.styles.textAlignment}}
+        contentAlignment: {{content.heading.styles.contentAlignment}}
+        textAlignment: {{content.heading.styles.textAlignment}}
 {% endcapture %}
+{% assign heading = heading | ymlify %}
 
 <div class="c-bannerHero componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
     <div class="absolute inset-0 flex items-center justify-center after:contents[''] after:absolute after:inset-0 after:bg-black after:bg-op {{opacity}} ">
