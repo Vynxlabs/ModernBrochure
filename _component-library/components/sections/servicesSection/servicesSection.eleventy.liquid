@@ -1,21 +1,22 @@
 {% assign color_group = styles.color_group %}
 {% assign categories = collections.services | categoriesFilter %}
+{% assign cardStyle = 'generic/services/' |  append: styles.cardStyle  %}
 
 <div class="lg-waiting mt-16"
 _="
 on loaded 
 log $isFocused
-if $isFocused is 0 add .selected-service  to first <button/> in me"
+if $isFocused is 0 add .border-{{styles.color_group}}-secondarycolor  to first <button/> in me"
 >
 {% comment %} Tabs selection {% endcomment %}
-<div>
-    <ul class="flex flex-wrap flex-col md:flex-row">
+<div class=" z-10">
+    <ul class="flex flex-wrap flex-col md:flex-row md:gap-2">
       {% for category in categories %}
         <li>
-            <button id="{{category | slug}}" class="lg-service-categories px-2 py-1 sm:px-4 sm:py-3 font-bold w-full capitalize"
+            <button id="{{category | slug}}" class="lg-service-categories px-2 py-1 sm:px-4 sm:py-2 font-bold w-full border-2 md:border-b-2 md:border-t-0 md:border-r-0 md:border-l-0 capitalize "
             _="
-            on click or focus remove .selected-service from .lg-service-categories
-            add .selected-service to me
+            on click or focus remove .border-{{styles.color_group}}-secondarycolor from .lg-service-categories
+            add .border-{{styles.color_group}}-secondarycolor to me
             add .hidden to .categories
             remove .hidden from .{{category | slug}}
             set  $isFocused to 1 log $isFocused
@@ -33,8 +34,8 @@ if $isFocused is 0 add .selected-service  to first <button/> in me"
     _="
         on loaded if $isFocused is 0 remove .hidden from the next <ul/>"
   ></div>
-    <div class="c-servicesSection componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
-      <section class="basecontainer w-full flex flex-col items-center">
+    <div class="c-servicesSection componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor mt-4">
+      <section class="basecontainer w-full flex flex-col items-center ">
         {% for category in categories %}
           <ul class="categories {{category | slug}} hidden flex flex-wrap justify-around gap-10">
             {% for service in collections.services %}
@@ -45,14 +46,16 @@ if $isFocused is 0 add .selected-service  to first <button/> in me"
               {% endif %}
               {% assign categorySlug = category | slug %}
               {% if serviceCategory == categorySlug %}
-                {% capture card %}
+                {% capture serviceInfo %}
                   url: {{ service.url }}
                   title: {{ service.data.title }}
-                  image: {{ service.data.serviceImage }}
+                  image:
+                    imagePath: {{ service.data.serviceImage }}
+                    imageAlt: {{ service.data.imageAltText }}
                   summary: {{ service.data.summary }}
                 {% endcapture %}
-                <p>{{service.data.title}}</p>
-                {% comment %} {% bookshop "generic/services/defaultCard" bind: blogInfo %} {% endcomment %}
+                {% assign serviceInfo = serviceInfo | ymlify %}
+                {% bookshop {{cardStyle}} bind: serviceInfo %}
               {% endif %}
             {% endfor %}
           </ul>

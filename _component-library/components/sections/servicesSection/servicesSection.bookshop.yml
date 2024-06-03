@@ -11,7 +11,7 @@ spec:
 blueprint:
   styles:
     color_group: primary
-    cardStyle: default
+    cardStyle: defaultCard
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
