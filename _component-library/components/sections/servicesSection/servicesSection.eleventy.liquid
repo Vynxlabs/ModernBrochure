@@ -2,6 +2,10 @@
 {% assign categories = collections.services | categoriesFilter %}
 {% assign cardStyle = 'generic/services/' |  append: styles.cardStyle  %}
 
+{% assign liveEditClasses = 'border-' | append: color_group | append: '-secondarycolor' %}
+
+
+
 <section class="c-servicesSection componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
   <div class="basecontainer w-full">{% bookshop "generic/heading" bind: content.heading %}</div>
   {% if env_bookshop_live and content.showNote %}
@@ -19,7 +23,7 @@
       <ul class="flex flex-wrap flex-col md:flex-row md:gap-2">
         {% for category in categories %}
           <li>
-              <button id="{{category | slug}}" class="lg-service-categories px-2 py-1 sm:px-4 sm:py-2 font-bold w-full border-2 md:border-b-2 md:border-t-0 md:border-r-0 md:border-l-0 capitalize "
+              <button id="{{category | slug}}" class="lg-service-categories px-2 py-1 sm:px-4 sm:py-2 font-bold w-full border-2 md:border-b-2 md:border-t-0 md:border-r-0 md:border-l-0 capitalize {% if env_bookshop_live and categories.first == category %}{{liveEditClasses}}{% endif %}"
               _="
               on click or focus remove .border-{{styles.color_group}}-secondarycolor from .lg-service-categories
               add .border-{{styles.color_group}}-secondarycolor to me
@@ -43,7 +47,7 @@
       <div class=" componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor mt-4">
         <div class="basecontainer w-full flex flex-col items-center ">
           {% for category in categories %}
-            <ul class="categories {{category | slug}} hidden flex flex-wrap justify-around gap-10">
+            <ul class="categories {{category | slug}} flex flex-wrap justify-around gap-10 {% if env_bookshop_live and categories.first == category %}{% else %}hidden{% endif %}">
               {% for service in collections.services %}
                 {% if service.data.category %}
                   {% assign serviceCategory = service.data.category | slug %}
