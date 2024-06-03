@@ -38,7 +38,11 @@ if $isFocused is 0 add .selected-service  to first <button/> in me"
         {% for category in categories %}
           <ul class="categories {{category | slug}} hidden flex flex-wrap justify-around gap-10">
             {% for service in collections.services %}
-              {% assign serviceCategory = service.data.category | slug %}
+              {% if service.data.category %}
+                {% assign serviceCategory = service.data.category | slug %}
+                {% else %}
+                {% assign serviceCategory = 'Services' | slug %}
+              {% endif %}
               {% assign categorySlug = category | slug %}
               {% if serviceCategory == categorySlug %}
                 {% capture card %}

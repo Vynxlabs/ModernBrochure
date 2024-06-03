@@ -165,7 +165,7 @@ collections_config:
         comment: SEO focused page summary
       category:
         type: text
-        comment: The category of the service, used to group services together
+        comment: The category of the service, used to group services together. If no category is specified, the service will be given a cateory of "Services"
       categorySlug:
         hidden: true
       summary:
