@@ -12,14 +12,12 @@ if $isFocused is 0 add .selected-service  to first <button/> in me"
     <ul class="flex flex-wrap flex-col md:flex-row">
       {% for category in categories %}
         <li>
-            <button id="{{category}}" class="lg-service-categories px-2 py-1 sm:px-4 sm:py-3 font-bold w-full"
+            <button id="{{category | slug}}" class="lg-service-categories px-2 py-1 sm:px-4 sm:py-3 font-bold w-full capitalize"
             _="
-            on load if my innerHTML contains '-' call removeDash('{{ category }}') else return {{ category }} end
-            then put it into my innerHTML  end
             on click or focus remove .selected-service from .lg-service-categories
             add .selected-service to me
             add .hidden to .categories
-            remove .hidden from .{{category}}
+            remove .hidden from .{{category | slug}}
             set  $isFocused to 1 log $isFocused
             "
             >
@@ -30,13 +28,27 @@ if $isFocused is 0 add .selected-service  to first <button/> in me"
     </ul>
 </div>
 {% comment %} Services Section {% endcomment %}
+<div
+    class="lg-waiting "
+    _="
+        on loaded if $isFocused is 0 remove .hidden from the next <ul/>"
+  ></div>
     <div class="c-servicesSection componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
       <section class="basecontainer w-full flex flex-col items-center">
-        {% for categorySlug in categories %}
-          <ul class="categories {{category}} hidden flex flex-wrap justify-around gap-10">
+        {% for category in categories %}
+          <ul class="categories {{category | slug}} hidden flex flex-wrap justify-around gap-10">
             {% for service in collections.services %}
-              {% if service.data.categorySlug == category %}
+              {% assign serviceCategory = service.data.category | slug %}
+              {% assign categorySlug = category | slug %}
+              {% if serviceCategory == categorySlug %}
+                {% capture card %}
+                  url: {{ service.url }}
+                  title: {{ service.data.title }}
+                  image: {{ service.data.serviceImage }}
+                  summary: {{ service.data.summary }}
+                {% endcapture %}
                 <p>{{service.data.title}}</p>
+                {% comment %} {% bookshop "generic/services/defaultCard" bind: blogInfo %} {% endcomment %}
               {% endif %}
             {% endfor %}
           </ul>
@@ -46,13 +58,12 @@ if $isFocused is 0 add .selected-service  to first <button/> in me"
           on click
           go to the top of body smoothly
           "
-          >{% bookshop "generic/button" url: '' text: 'Back to top' ghostButton: true blackText: true  %}</div>
+          >{% bookshop "generic/button" url: '#' text: 'Back to top' ghostButton: true blackText: true  %}</div>
       </section>
     </div>
 </div>
 
 <script defer type="text/hyperscript">
-  {# After page load check t  #}
   on load if $isFocused is not 1 set  $isFocused to 0 send loaded to .lg-waiting end
   on load if $isFocusedSpecial is not 1 set  $isFocusedSpecial to 0 send loaded to .lg-waiting
 </script>

@@ -1,12 +1,13 @@
+const slugify = require('slugify');
+
 module.exports = (collection) => {
-    //console.log(collection)
-    const CATEGORIES = new Array();
-    for (counter in collection) {
-      console.log("-----------------------------------------------");
-      console.log(collection[counter].data.categorySlug);
-      CATEGORIES.push(collection[counter].data.categorySlug);
-      counter--;
+    const CATEGORIES = new Map();
+    for (const item of collection) {
+      const slug = slugify(item.data.category, { lower: true });
+      if (!CATEGORIES.has(slug)) {
+        CATEGORIES.set(slug, item.data.category);
+      }
     }
-    return [...new Set(CATEGORIES)];
+    return Array.from(CATEGORIES.values());
   };
   
