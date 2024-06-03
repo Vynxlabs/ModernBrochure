@@ -1,7 +1,7 @@
 import slugify from 'slugify';
 
 module.exports = function (Liquid) {
-    this.registerFilter('getServicesCategories', (collection) => {
+    this.registerFilter('categoriesFilter', (collection) => {
         const CATEGORIES = new Map();
         for (const item of collection) {
             const slug = slugify(item.data.category ? item.data.category : 'Services', { lower: true });
