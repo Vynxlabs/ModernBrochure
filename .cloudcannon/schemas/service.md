@@ -6,6 +6,8 @@ metaDesc:
 serviceImage: 
 imageAltText:
 category: 
+categorySlug: >-
+    {% if category %}{{category | slug}}{% else %}Services{% endif %}
 summary:
 permalink: /services/{{ title | slug }}/index.html
 pagination:

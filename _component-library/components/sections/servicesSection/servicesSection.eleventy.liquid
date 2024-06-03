@@ -1,0 +1,28 @@
+{% assign color_group = styles.color_group %}
+{% assign categories = collections.services | categoriesFilter %}
+
+<div class="c-servicesSection componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
+  <section class="basecontainer w-full flex flex-col items-center">
+    {% for categorySlug in categories %}
+      <ul class="categories {{category}} hidden flex flex-wrap justify-around gap-10">
+        {% for service in collections.services %}
+          {% if service.data.categorySlug == category %}
+
+          {% endif %}
+        {% endfor %}
+      </ul>
+    {% endfor %}
+    <div class="ghost-button mt-10"
+      _="
+      on click
+      go to the top of body smoothly
+      "
+      >Back to top</div>
+  </section>
+</div>
+
+<script defer type="text/hyperscript">
+  {# After page load check t  #}
+  on load if $isFocused is not 1 set  $isFocused to 0 send loaded to .lg-waiting end
+  on load if $isFocusedSpecial is not 1 set  $isFocusedSpecial to 0 send loaded to .lg-waiting
+</script>

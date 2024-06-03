@@ -166,6 +166,8 @@ collections_config:
       category:
         type: text
         comment: The category of the service, used to group services together
+      categorySlug:
+        hidden: true
       summary:
         type: textarea
         comment: A short summary of the service
