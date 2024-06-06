@@ -21,6 +21,7 @@ const configFileLocation = './cloudcannon.config.yml'
 let config = yaml.load(fs.readFileSync(configFileLocation,'utf-8'))
 config['_inputs']['color_group']['options']['values'] = []
 config['_inputs']['footer_color_group']['options']['values'] = []
+config['_inputs']['card_color_group']['options']['values'] = []
 
 /* 
     remove any existing color_groups.scss file and create a new one
@@ -200,6 +201,7 @@ css_string_footer = addColorDefinitions(css_string_footer, 'primary')
 
 config['_inputs']['color_group']['options']['values'].push({id: 'primary', name: primary_color.name})
 config['_inputs']['footer_color_group']['options']['values'].push({id: 'primary', name: primary_color.name})
+config['_inputs']['card_color_group']['options']['values'].push({id: 'primary', name: primary_color.name})
 
 /* 
     iterate through all the user defined color_groups and:
@@ -222,6 +224,7 @@ color_groups = color_groups.forEach((color_set, i) => {
     let obj = { name, id }
     config['_inputs']['color_group']['options']['values'].push(obj)
     config['_inputs']['footer_color_group']['options']['values'].push(obj)
+    config['_inputs']['card_color_group']['options']['values'].push(obj)
     
     css_string_root += `--${id}__background : ${background};\n`
     css_string_root += `--${id}__foreground : ${foreground};\n`

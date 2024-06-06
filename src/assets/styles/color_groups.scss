@@ -16,6 +16,11 @@
 .data-\[state\=active\]\:decoration-primary-primarycolor[data-state=active] { text-decoration-color: #25cbe4; }
 .data-\[state\=active\]\:decoration-primary-secondarycolor[data-state=active] { text-decoration-color: #ef808f; }
 .data-\[state\=active\]\:decoration-primary-accentcolor[data-state=active] { text-decoration-color: #eaca57; }
+.to-primary-textcolor { --tw-gradient-to: #041e25 var(--tw-gradient-to-position); }
+.to-primary-backgroundcolor { --tw-gradient-to: #f6fdfe var(--tw-gradient-to-position); }
+.to-primary-primarycolor { --tw-gradient-to: #25cbe4 var(--tw-gradient-to-position); }
+.to-primary-secondarycolor { --tw-gradient-to: #ef808f var(--tw-gradient-to-position); }
+.to-primary-accentcolor { --tw-gradient-to: #eaca57 var(--tw-gradient-to-position); }
 .bg-primary-backgroundcolor { background-color: #f6fdfe; }
 .bg-primary-primarycolor { background-color: #25cbe4; }
 .bg-primary-secondarycolor { background-color: #ef808f; }
@@ -65,6 +70,11 @@
 .data-\[state\=active\]\:decoration-primary_dark0-primarycolor[data-state=active] { text-decoration-color: #1bc0da; }
 .data-\[state\=active\]\:decoration-primary_dark0-secondarycolor[data-state=active] { text-decoration-color: #7f101f; }
 .data-\[state\=active\]\:decoration-primary_dark0-accentcolor[data-state=active] { text-decoration-color: #a88815; }
+.to-primary_dark0-textcolor { --tw-gradient-to: #daf4fb var(--tw-gradient-to-position); }
+.to-primary_dark0-backgroundcolor { --tw-gradient-to: #010809 var(--tw-gradient-to-position); }
+.to-primary_dark0-primarycolor { --tw-gradient-to: #1bc0da var(--tw-gradient-to-position); }
+.to-primary_dark0-secondarycolor { --tw-gradient-to: #7f101f var(--tw-gradient-to-position); }
+.to-primary_dark0-accentcolor { --tw-gradient-to: #a88815 var(--tw-gradient-to-position); }
 .bg-primary_dark0-backgroundcolor { background-color: #010809; }
 .bg-primary_dark0-primarycolor { background-color: #1bc0da; }
 .bg-primary_dark0-secondarycolor { background-color: #7f101f; }
