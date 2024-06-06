@@ -1,0 +1,21 @@
+{% assign color_group = styles.color_group %}
+
+<div class="c-informationCards componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
+  <section
+    {% if content.sectionId %}
+    id="{{ content.sectionId | idFilter }}"
+    {% endif %}
+    class="basecontainer w-full">
+    {% bookshop "generic/heading" bind: content.heading %}
+
+    {% if content.cards %}
+      <div class="mt-20 flex flex-wrap justify-center gap-16">
+        {% for card in content.cards %}
+          <div class="min-h-[260px] max-w-[380px] bg-white px-7 py-4 shadow-md">
+            {% bookshop "generic/heading" bind: card %}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </section>
+</div>
