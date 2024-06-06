@@ -14,7 +14,7 @@
             
         
         {% for card in content.cards %}
-          <div class="min-h-[260px] max-w-[380px] w-full {% if styles.cardBackground %} bg-white {% endif %} px-7 py-4 shadow-md">
+          <div class="min-h-[260px] max-w-[380px] w-full {% if styles.cardBackground %} bg-white {% endif %} px-7 py-4 shadow-md rounded">
             {% capture heading %}
               content:
                   highlightEyebrow: {{card.heading.content.highlightEyebrow}}
