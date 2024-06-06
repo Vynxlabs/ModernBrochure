@@ -10,9 +10,28 @@
 
     {% if content.cards %}
       <div class="mt-20 flex flex-wrap justify-center gap-16">
+        {% if styles.cardBackground %} {% endif %}
+            
+        
         {% for card in content.cards %}
-          <div class="min-h-[260px] max-w-[380px] bg-white px-7 py-4 shadow-md">
-            {% bookshop "generic/heading" bind: card %}
+          <div class="min-h-[260px] max-w-[380px] w-full {% if styles.cardBackground %} bg-white {% endif %} px-7 py-4 shadow-md">
+            {% capture heading %}
+              content:
+                  highlightEyebrow: {{card.heading.content.highlightEyebrow}}
+                  eyebrow: {{card.heading.content.eyebrow}}
+                  headline: {{card.heading.content.headline}}
+                  description: {{card.heading.content.description}}
+                  headingHierarchy: "h3"
+                  buttons:
+                      {{card.heading.content.buttons | json}}
+              styles:
+                  contentAlignment: {{card.heading.styles.contentAlignment}}
+                  textAlignment: {{card.heading.styles.textAlignment}}
+                  visualInterest: {{card.heading.styles.visualInterest}}
+                  visualInterestColor: "{{card.heading.styles.visualInterestColor}}"
+          {% endcapture %}
+          {% assign heading = heading | ymlify %}
+            {% bookshop "generic/heading" bind: heading %}
           </div>
         {% endfor %}
       </div>
