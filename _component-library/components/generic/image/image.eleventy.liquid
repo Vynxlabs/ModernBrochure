@@ -13,9 +13,11 @@
 
 
 
-{% else  %}
+{% elsif imagePath and imagePath !=""  %}
 
 {% image imagePath, imageAlt, imageComponentclasses, imageSizes %}
-
+{% else %}
+    
+<div class="{{imageComponentclasses}}"></div>
     
 {% endif %}

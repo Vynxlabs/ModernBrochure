@@ -11,6 +11,7 @@ permalink: /services/{{ title | slug }}/index.html
 pagination:
   data: collections.blog
   size: 22
+  generatePageOnEmptyData: true
 layout: "layouts/page.html"
 id:
 hero:
