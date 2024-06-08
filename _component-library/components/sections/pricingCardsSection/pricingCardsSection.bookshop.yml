@@ -2,7 +2,7 @@
 spec:
   structures:
     - content_blocks
-  label: "Pricing Cards Section"
+  label: "Pricing Cards"
   description: Show your pricing through cards!
   icon:
   tags: []

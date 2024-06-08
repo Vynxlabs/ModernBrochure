@@ -7,9 +7,15 @@
     {% endif %}
     class="basecontainer w-full">
     {% bookshop "generic/heading" bind: content.heading %}
-    <div class="mt-24 flex gap-4 justify-center">
+    <div class="mt-24 flex gap-4 justify-center flex-wrap">
 
-      {% bookshop "generic/pricingCard" bind: content.cards %}
+      {% if content.cards %}
+        {% for card in content.cards %}
+          {% bookshop "generic/pricingCard" bind: card %}
+        {% endfor %}
+        
+      {% endif %}
+      
 
     </div>
     {% if content.buttons %}
