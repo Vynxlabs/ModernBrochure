@@ -25,3 +25,5 @@ preview:
 _inputs:
   shortDescription:
     comment: A short description of the service. Example "Perfect for beginners"
+  priceDescription:
+    comment: A description of the price. Examples "Paid monthly" or "Paid upfront"
