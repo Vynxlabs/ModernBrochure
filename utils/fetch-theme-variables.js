@@ -65,6 +65,7 @@ function appendTailwindUtilityClasses(colorSet,id){
     cssString += `.text-${id}-primarycolor { color: ${colorSet.primaryColor}; }\n`;
     cssString += `.text-${id}-secondarycolor { color: ${colorSet.secondaryColor}; }\n`;
     cssString += `.text-${id}-accentcolor { color: ${colorSet.accentColor}; }\n`;
+    cssString += `.text-${id}-backgroundcolor { color: ${colorSet.backgroundColor}; }\n`;
 
     //decoration
     cssString += `.decoration-${id}-textcolor { text-decoration-color: ${colorSet.textColor}; }\n`;
@@ -91,6 +92,8 @@ function appendTailwindUtilityClasses(colorSet,id){
     cssString += `.bg-${id}-primarycolor { background-color: ${colorSet.primaryColor}; }\n`;
     cssString += `.bg-${id}-secondarycolor { background-color: ${colorSet.secondaryColor}; }\n`;
     cssString += `.bg-${id}-accentcolor { background-color: ${colorSet.accentColor}; }\n`;
+    cssString += `.bg-${id}-textcolor { background-color: ${colorSet.textColor}; }\n`;
+
     //background hover
     cssString += `.hover\\:bg-${id}-backgroundcolor:hover { background-color: ${colorSet.backgroundColor}; }\n`;
     cssString += `.hover\\:bg-${id}-primarycolor:hover { background-color: ${colorSet.primaryColor}; }\n`;
