@@ -7,10 +7,10 @@
         {% endif %}
     class="basecontainer w-full">
     {% bookshop "generic/heading" bind: content.heading %}
-    <div class=" flex justify-center items-center md:flex-wrap">
-        {% bookshop "generic/image" bind:content.image class: "max-w-[475px] w-full object-cover object-center" %}
+    <div class=" flex justify-center items-center flex-wrap mt-4">
+        {% bookshop "generic/image" bind:content.image class: "max-w-[475px] w-full object-cover object-center min-[823px]:p-0 px-8 " %}
         {% assign color_group = styles.form_color_group %}
-        <div class="-ml-8">{% bookshop "simple/formBuilder" bind:content.form %}</div>
+        <div class="-mt-8 min-[823px]:mt-0 min-[823px]:-ml-8 bg-{{styles.form_color_group}}-backgroundcolornav p-5 rounded w-full max-w-[512px] flex-1 min-w-[300px]">{% bookshop "simple/formBuilder" bind:content.form %}</div>
     </div>
     </section>
 </div>
