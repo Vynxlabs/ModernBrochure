@@ -250,6 +250,20 @@ _inputs:
         - id: primary
           name: Primary
         - *ref_0
+  form_color_group:
+    type: select
+    options:
+      allow_empty: false
+      value_key: id
+      preview:
+        text:
+          - key: name
+        icon:
+          - key: icon
+      values:
+        - id: primary
+          name: Primary
+        - *ref_0
   id:
     hidden: true
     instance_value: UUID

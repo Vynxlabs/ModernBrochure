@@ -2,8 +2,8 @@
 spec:
   structures:
     - content_blocks
-  label: "Simple Form Section"
-  description: A simple form section with a heading
+  label: "Basic Form With Image"
+  description:
   icon:
   tags: []
 
@@ -12,10 +12,11 @@ blueprint:
   content:
     sectionId:
     heading: bookshop:generic/heading!
+    image: bookshop:generic/image
     form: bookshop:simple/formBuilder!
   styles:
     color_group: primary
-    
+    form_color_group: primary
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

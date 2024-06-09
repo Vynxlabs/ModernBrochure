@@ -1,0 +1,16 @@
+{% assign color_group = styles.color_group %}
+
+<div class="c-basicFormWithImage componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
+    <section
+    {% if content.sectionId %}
+        id="{{ content.sectionId | idFilter }}"
+        {% endif %}
+    class="basecontainer w-full">
+    {% bookshop "generic/heading" bind: content.heading %}
+    <div class=" flex justify-center items-center md:flex-wrap">
+        {% bookshop "generic/image" bind:content.image class: "max-w-[475px] w-full object-cover object-center" %}
+        {% assign color_group = styles.form_color_group %}
+        <div class="-ml-8">{% bookshop "simple/formBuilder" bind:content.form %}</div>
+    </div>
+    </section>
+</div>
