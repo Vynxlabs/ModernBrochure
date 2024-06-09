@@ -30,4 +30,6 @@ _inputs:
       values:
         - name: Default
           id: defaultCard
+        - name: Clean
+          id: cleanCard
     
