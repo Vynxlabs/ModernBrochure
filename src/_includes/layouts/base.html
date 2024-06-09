@@ -22,20 +22,61 @@
       {{ css  }}
     </style>
   </head>
-  {% include "partials/google-analytics.html" %}
-  {% include "partials/watermark.html" %}
+  {% include "partials/google-analytics.html" %} {% include
+  "partials/watermark.html" %}
   <body
     class="mx-4 sm:mx-10  flex flex-col h-screen text-{{site.color_group}}-textcolor bg-{{site.color_group}}-backgroundcolor text-lg "
   >
     {% include "partials/site-head.html" %}
 
-    <main tabindex="-1" id="main-content" class="flex-1 flex flex-col [&>:last-child]:flex-1">
+    <main
+      tabindex="-1"
+      id="main-content"
+      class="flex flex-1 flex-col [&>:last-child]:flex-1"
+    >
       {% bookshop_include "hero" hero: hero %} {% bookshop_include "page"
       content_blocks: content_blocks %} {% block content %}{% endblock %}
     </main>
     {% include "partials/site-foot.html" %}
+    <script defer>
+      // Calculate contrast ratio based on RGB values
+      function calculateContrast(rgb) {
+        var sum = Math.round(
+          (parseInt(rgb[0]) * 299 +
+            parseInt(rgb[1]) * 587 +
+            parseInt(rgb[2]) * 114) /
+            1000,
+        );
+        return sum > 128 ? "text-slate-950" : "text-white";
+      }
+
+      // Function to set foreground color based on contrast
+      function setForegroundColor(element) {
+        // Get RGB values from the element's style or data attribute
+        var style = window.getComputedStyle(element);
+        var backgroundColor = style.backgroundColor;
+        var match = backgroundColor.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+        if (match) {
+          var rgb = [
+            parseInt(match[1]),
+            parseInt(match[2]),
+            parseInt(match[3]),
+          ];
+          var contrastClass = calculateContrast(rgb);
+          element.classList.add(contrastClass);
+        }
+      }
+
+      // Select elements with data-contrast="true" attribute and set foreground color
+      document.addEventListener("DOMContentLoaded", function () {
+        var elements = document.querySelectorAll('[data-contrast="true"]');
+        elements.forEach(function (element) {
+          setForegroundColor(element);
+        });
+      });
+    </script>
     <script src="https://unpkg.com/hyperscript.org@0.9.11"></script>
-    <script>
+    <script defer >
       var prevScrollpos = window.pageYOffset;
       window.onscroll = function () {
         var nav = document.getElementById("navbar");
@@ -43,7 +84,10 @@
 
         if (currentScrollPos > 250 && prevScrollpos < currentScrollPos) {
           nav.style.top = "-" + nav.offsetHeight + "px";
-        } else if (currentScrollPos <= 250 || prevScrollpos > currentScrollPos) {
+        } else if (
+          currentScrollPos <= 250 ||
+          prevScrollpos > currentScrollPos
+        ) {
           nav.style.top = "0";
         }
 
