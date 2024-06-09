@@ -31,8 +31,7 @@
     "openInNewTab": false,
     "text": "Button Text",
     "color_group": "primary",
-    "ghostButton": true,
-    "blackText": true
+    "ghostButton": true
   },
   "color_group": "primary",
   "footer_color_group": "primary_dark0",

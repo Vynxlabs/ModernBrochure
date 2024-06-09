@@ -13,7 +13,6 @@ blueprint:
   text: "Button text"
   color_group: primary
   ghostButton: false
-  blackText: false
   formSubmit: false
 
 

@@ -1,12 +1,13 @@
 {% if formSubmit %}
 
-<button type="submit" class=" {% if blackText %} text-slate-950 {% else %} text-white {% endif %} {% if ghostButton %} border-2 border-{{color_group}}-primarycolor {% else %}bg-{{color_group}}-primarycolor
+<button data-contrast="true" type="submit" class="  {% if ghostButton %} border-2 border-{{color_group}}-primarycolor {% else %}bg-{{color_group}}-primarycolor
 
 {% endif %}  px-3 py-2 rounded font-bold text-sm uppercase transition-all hover:scale-105 ">
 {{ text }}</button>{% else %}
 <a
+data-contrast="true"
   href="{{url}}"
-  class=" {% if blackText %} text-slate-950 {% else %} text-white {% endif %} {% if ghostButton %} border-2 border-{{color_group}}-primarycolor {% else %}bg-{{color_group}}-primarycolor
+  class="  {% if ghostButton %} border-2 border-{{color_group}}-primarycolor {% else %}bg-{{color_group}}-primarycolor
 
 {% endif %}  px-3 py-2 rounded font-bold text-sm uppercase transition-all hover:scale-105 "
   {% if openInNewTab %}
