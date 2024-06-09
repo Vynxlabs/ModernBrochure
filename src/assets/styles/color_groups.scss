@@ -8,6 +8,7 @@
 .text-primary-primarycolor { color: #25cbe4; }
 .text-primary-secondarycolor { color: #ef808f; }
 .text-primary-accentcolor { color: #eaca57; }
+.text-primary-backgroundcolor { color: #f6fdfe; }
 .decoration-primary-textcolor { text-decoration-color: #041e25; }
 .decoration-primary-primarycolor { text-decoration-color: #25cbe4; }
 .decoration-primary-secondarycolor { text-decoration-color: #ef808f; }
@@ -25,6 +26,7 @@
 .bg-primary-primarycolor { background-color: #25cbe4; }
 .bg-primary-secondarycolor { background-color: #ef808f; }
 .bg-primary-accentcolor { background-color: #eaca57; }
+.bg-primary-textcolor { background-color: #041e25; }
 .hover\:bg-primary-backgroundcolor:hover { background-color: #f6fdfe; }
 .hover\:bg-primary-primarycolor:hover { background-color: #25cbe4; }
 .hover\:bg-primary-secondarycolor:hover { background-color: #ef808f; }
@@ -62,6 +64,7 @@
 .text-primary_dark0-primarycolor { color: #1bc0da; }
 .text-primary_dark0-secondarycolor { color: #7f101f; }
 .text-primary_dark0-accentcolor { color: #a88815; }
+.text-primary_dark0-backgroundcolor { color: #010809; }
 .decoration-primary_dark0-textcolor { text-decoration-color: #daf4fb; }
 .decoration-primary_dark0-primarycolor { text-decoration-color: #1bc0da; }
 .decoration-primary_dark0-secondarycolor { text-decoration-color: #7f101f; }
@@ -79,6 +82,7 @@
 .bg-primary_dark0-primarycolor { background-color: #1bc0da; }
 .bg-primary_dark0-secondarycolor { background-color: #7f101f; }
 .bg-primary_dark0-accentcolor { background-color: #a88815; }
+.bg-primary_dark0-textcolor { background-color: #daf4fb; }
 .hover\:bg-primary_dark0-backgroundcolor:hover { background-color: #010809; }
 .hover\:bg-primary_dark0-primarycolor:hover { background-color: #1bc0da; }
 .hover\:bg-primary_dark0-secondarycolor:hover { background-color: #7f101f; }
