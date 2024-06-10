@@ -58,6 +58,82 @@ console.log(color_groups)
 // css_string_utilities += `.bg-primary-secondarycolor { background-color: ${primary_color.secondaryColor}; }\n`
 // css_string_utilities += `.bg-primary-accentcolor { background-color: ${primary_color.accentColor}; }\n\n`
 
+// Helper function to convert hex to RGB
+function hexToRgb(hex) {
+    const bigint = parseInt(hex.slice(1), 16);
+    const r = (bigint >> 16) & 255;
+    const g = (bigint >> 8) & 255;
+    const b = bigint & 255;
+    return { r, g, b };
+  }
+
+  function appendHighContrastClasses(colorSet, id) {
+    let { r, g, b } = hexToRgb(colorSet.backgroundColor);
+    let cssString = `
+
+      --${id}-red: ${r};
+      --${id}-green: ${g};
+      --${id}-blue: ${b};
+
+
+    .text-${id}-highcontrast-backgroundcolor {
+      --${id}-accessible-color: calc((
+        (
+          (
+            (var(--${id}-red) * 299) +
+            (var(--${id}-green) * 587) +
+            (var(--${id}-blue) * 114)
+          ) / 1000
+        ) - 128
+      ) * -1000);
+
+      color: rgb(
+        var(--${id}-accessible-color),
+        var(--${id}-accessible-color),
+        var(--${id}-accessible-color)
+      );
+    }
+  `;
+
+  let primaryRgb = hexToRgb(colorSet.primaryColor);
+  cssString += `
+
+      --${id}-red-primary: ${primaryRgb.r};
+      --${id}-green-primary: ${primaryRgb.g};
+      --${id}-blue-primary: ${primaryRgb.b};
+
+    .text-${id}-highcontrast-primarycolor {
+      --${id}-accessible-color-primary: calc((
+        (
+          (
+            (var(--${id}-red-primary) * 299) +
+            (var(--${id}-green-primary) * 587) +
+            (var(--${id}-blue-primary) * 114)
+          ) / 1000
+        ) - 128
+      ) * -1000);
+
+      color: rgb(
+        var(--${id}-accessible-color-primary),
+        var(--${id}-accessible-color-primary),
+        var(--${id}-accessible-color-primary)
+      );
+    }
+  `;
+    return cssString;
+  }
+
+  function generateHighContrastClasses(color_groups) {
+    let cssString = '';
+    if (color_groups && Array.isArray(color_groups)) {
+      color_groups.forEach((colorSet, index) => {
+        let id = `${colorSet.name.toLowerCase().replace(/[\s|&;$%@'"<>()+,]/g, "_")}${index}`;
+        cssString += appendHighContrastClasses(colorSet, id);
+      });
+    }
+    return cssString;
+  }
+
 function appendTailwindUtilityClasses(colorSet,id){
     let cssString=''
     //text
@@ -165,6 +241,7 @@ function generateTailwindUtilityClasses(color_groups,id) {
 }
 
 css_string_utilities+=appendTailwindUtilityClasses(primary_color,'primary')
+css_string_root += appendHighContrastClasses(primary_color, 'primary');
 
 
 css_string_component += `--main-background-color: #3B3B3D;\n`
@@ -237,6 +314,7 @@ color_groups = color_groups.forEach((color_set, i) => {
     css_string_root += `--${id}__interaction : ${interaction};\n`
     
     css_string_utilities+=appendTailwindUtilityClasses(color_set,id)
+    css_string_root += appendHighContrastClasses(color_set, id);
     css_string_component = addColorDefinitions(css_string_component, id)      
     css_string_nav = addColorDefinitions(css_string_nav, id)      
     css_string_footer = addColorDefinitions(css_string_footer, id)        

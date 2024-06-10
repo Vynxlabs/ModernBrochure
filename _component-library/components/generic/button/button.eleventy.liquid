@@ -1,15 +1,19 @@
 {% if formSubmit %}
 
-<button data-contrast="true" type="submit" class="  {% if ghostButton %} border-2 border-{{color_group}}-primarycolor {% else %}bg-{{color_group}}-primarycolor
-
-{% endif %}  px-3 py-2 rounded font-bold text-sm uppercase transition-all hover:scale-105 ">
-{{ text }}</button>{% else %}
-<a
-data-contrast="true"
-  href="{{url}}"
-  class="  {% if ghostButton %} border-2 border-{{color_group}}-primarycolor {% else %}bg-{{color_group}}-primarycolor
-
-{% endif %}  px-3 py-2 rounded font-bold text-sm uppercase transition-all hover:scale-105 "
-  {% if openInNewTab %}
-  target="_blank"
-  {% endif %}>{{ text }}</a>{% endif %}
+  <button  
+  data-contrast="true"
+  type="submit" class=" {% if ghostButton %} border-2 border-{{color_group}}-primarycolor {% else %}bg-{{color_group}}-primarycolor text-{{color_group}}-highcontrast-primarycolor
+  
+  {% endif %}  px-3 py-2 rounded font-bold text-sm uppercase transition-all hover:scale-105 ">
+  {{ text }}</button>{% else %}
+  <a
+    data-contrast="true"
+    href="{{url}}"
+    class="  {% if ghostButton %} border-2 border-{{color_group}}-primarycolor  {% else %}bg-{{color_group}}-primarycolor text-{{color_group}}-highcontrast-primarycolor
+  
+  {% endif %}  px-3 py-2 rounded font-bold text-sm uppercase transition-all hover:scale-105 "
+    {% if openInNewTab %}
+    target="_blank"
+    {% endif %}>{{ text }}</a>{% endif %}
+  
+    {% assign color_group = color_group | log %}
