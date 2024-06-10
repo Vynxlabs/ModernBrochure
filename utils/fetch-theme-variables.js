@@ -19,6 +19,7 @@ const configFileLocation = './cloudcannon.config.yml'
 
 // load the cloudcannon config and reset the color_group values
 let config = yaml.load(fs.readFileSync(configFileLocation,'utf-8'))
+config['_inputs']['nav_color_group']['options']['values'] = []
 config['_inputs']['color_group']['options']['values'] = []
 config['_inputs']['footer_color_group']['options']['values'] = []
 config['_inputs']['card_color_group']['options']['values'] = []
@@ -280,6 +281,7 @@ css_string_component += `}\n`
 css_string_nav = addColorDefinitions(css_string_nav, 'primary')      
 css_string_footer = addColorDefinitions(css_string_footer, 'primary') 
 
+config['_inputs']['nav_color_group']['options']['values'].push({id: 'primary', name: primary_color.name})
 config['_inputs']['color_group']['options']['values'].push({id: 'primary', name: primary_color.name})
 config['_inputs']['footer_color_group']['options']['values'].push({id: 'primary', name: primary_color.name})
 config['_inputs']['card_color_group']['options']['values'].push({id: 'primary', name: primary_color.name})
@@ -304,6 +306,7 @@ color_groups = color_groups.forEach((color_set, i) => {
     let interaction = color_set.interaction_color
     
     let obj = { name, id }
+    config['_inputs']['nav_color_group']['options']['values'].push(obj)
     config['_inputs']['color_group']['options']['values'].push(obj)
     config['_inputs']['footer_color_group']['options']['values'].push(obj)
     config['_inputs']['card_color_group']['options']['values'].push(obj)

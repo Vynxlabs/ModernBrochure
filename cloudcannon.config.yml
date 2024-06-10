@@ -222,6 +222,20 @@ _inputs:
         - &ref_0
           name: Primary Dark
           id: primary_dark0
+  nav_color_group:
+    type: select
+    options:
+      allow_empty: false
+      value_key: id
+      preview:
+        text:
+          - key: name
+        icon:
+          - key: icon
+      values:
+        - id: primary
+          name: Primary
+        - *ref_0
   footer_color_group:
     type: select
     options:

@@ -2,11 +2,11 @@
 
 {% assign level=-1%}
 
-{% assign color_group=site.color_group%}
+{% assign color_group=site.nav_color_group%}
 
 <nav
 id="navbar"
-  class="transition-all duration-300 fixed left-0 top-0 z-[900] h-auto md:h-auto w-full bg-{{site.color_group}}-backgroundcolornav text-{{site.color_group}}-textcolor  backdrop-blur-sm flex "
+  class="transition-all duration-300 fixed left-0 top-0 z-[900] h-auto md:h-auto w-full bg-{{site.nav_color_group}}-backgroundcolornav text-{{site.nav_color_group}}-textcolor  backdrop-blur-sm flex "
 >
 <a href="/" class="md:flex items-center self-start md:self-center p-4 ml-4 flex-shrink-0 hidden ">
 
@@ -106,7 +106,7 @@ id="navbar"
       id="navbar-sticky"
     >
       <ul
-        class="mt-4 flex  flex-col rounded border border-{{site.color_group}}-backgroundcolor  p-4 font-medium md:mt-0 md:flex-row md:flex-wrap md:space-x-8 md:border-0 md:bg-transparent md:p-0 max-h-[50vh] overflow-y-scroll md:overflow-visible md:max-h-none"
+        class="mt-4 flex  flex-col rounded border border-{{site.nav_color_group}}-backgroundcolor  p-4 font-medium md:mt-0 md:flex-row md:flex-wrap md:space-x-8 md:border-0 md:bg-transparent md:p-0 max-h-[50vh] overflow-y-scroll md:overflow-visible md:max-h-none"
       >
         {% for entry in navPages %} {% render "partials/render-nav.html", 
         entry: entry, color_group: site.color_group, level:level, blogPosts: collections.blog, page:page %} {% endfor %}
