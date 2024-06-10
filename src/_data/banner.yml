@@ -2,7 +2,8 @@ enable_banner: true
 html: <p>This banner is completely optional, and can be shown until a set date!</p>
 id: alto-banner-1
 show_until: 2024-07-27T00:00:00Z
-color_group
+color_group: primary
+colorFromGroup: primary
 _inputs:
   enable_banner:
     type: switch
@@ -21,3 +22,16 @@ _inputs:
     type: date
     comment: Date to stop showing the banner
     hidden: '!enable_banner'
+  colorFromGroup:
+    type: select
+    options:
+      allow_empty: false
+      value_key: id
+      values:
+        - id: primary
+          name: Primary
+        - id: secondary
+          name: Secondary
+        - id: accent
+          name: Accent
+

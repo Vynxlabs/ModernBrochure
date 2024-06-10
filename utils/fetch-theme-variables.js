@@ -69,58 +69,255 @@ function hexToRgb(hex) {
   }
 
   function appendHighContrastClasses(colorSet, id) {
-    let { r, g, b } = hexToRgb(colorSet.backgroundColor);
-    let cssString = `
+    let backgroundRgb = hexToRgb(colorSet.primaryColor);
+  let type = 'background';
+  let cssString = `
 
-      --${id}-red: ${r};
-      --${id}-green: ${g};
-      --${id}-blue: ${b};
+      --${id}-red-${type}: ${backgroundRgb.r};
+      --${id}-green-${type}: ${backgroundRgb.g};
+      --${id}-blue-${type}: ${backgroundRgb.b};
 
-
-    .text-${id}-highcontrast-backgroundcolor {
-      --${id}-accessible-color: calc((
+    .text-${id}-highcontrast-${type}color {
+      --${id}-accessible-color-${type}: calc((
         (
           (
-            (var(--${id}-red) * 299) +
-            (var(--${id}-green) * 587) +
-            (var(--${id}-blue) * 114)
+            (var(--${id}-red-${type}) * 299) +
+            (var(--${id}-green-${type}) * 587) +
+            (var(--${id}-blue-${type}) * 114)
           ) / 1000
         ) - 128
       ) * -1000);
 
       color: rgb(
-        var(--${id}-accessible-color),
-        var(--${id}-accessible-color),
-        var(--${id}-accessible-color)
+        var(--${id}-accessible-color-${type}),
+        var(--${id}-accessible-color-${type}),
+        var(--${id}-accessible-color-${type})
       );
+    }
+      .fill-${id}-highcontrast-${type}color {
+      --${id}-accessible-color-accent: calc((
+        (
+          (
+            (var(--${id}-red-${type}) * 299) +
+            (var(--${id}-green-${type}) * 587) +
+            (var(--${id}-blue-${type}) * 114)
+          ) / 1000
+        ) - 128
+      ) * -1000);
+
+      fill: rgb(
+        var(--${id}-accessible-color-${type}),
+        var(--${id}-accessible-color-${type}),
+        var(--${id}-accessible-color-${type})
+      );
+    }
+      .stroke-${id}-highcontrast-${type}color {
+      --${id}-accessible-color-${type}: calc((
+        (
+          (
+            (var(--${id}-red-${type}) * 299) +
+            (var(--${id}-green-${type}) * 587) +
+            (var(--${id}-blue-${type}) * 114)
+          ) / 1000
+        ) - 128
+      ) * -1000);
+
+      stroke: rgb(
+        var(--${id}-accessible-color-${type}),
+        var(--${id}-accessible-color-${type}),
+        var(--${id}-accessible-color-${type})
+      );
+      
     }
   `;
 
   let primaryRgb = hexToRgb(colorSet.primaryColor);
+  type = 'primary';
   cssString += `
 
-      --${id}-red-primary: ${primaryRgb.r};
-      --${id}-green-primary: ${primaryRgb.g};
-      --${id}-blue-primary: ${primaryRgb.b};
+      --${id}-red-${type}: ${primaryRgb.r};
+      --${id}-green-${type}: ${primaryRgb.g};
+      --${id}-blue-${type}: ${primaryRgb.b};
 
-    .text-${id}-highcontrast-primarycolor {
-      --${id}-accessible-color-primary: calc((
+    .text-${id}-highcontrast-${type}color {
+      --${id}-accessible-color-${type}: calc((
         (
           (
-            (var(--${id}-red-primary) * 299) +
-            (var(--${id}-green-primary) * 587) +
-            (var(--${id}-blue-primary) * 114)
+            (var(--${id}-red-${type}) * 299) +
+            (var(--${id}-green-${type}) * 587) +
+            (var(--${id}-blue-${type}) * 114)
           ) / 1000
         ) - 128
       ) * -1000);
 
       color: rgb(
-        var(--${id}-accessible-color-primary),
-        var(--${id}-accessible-color-primary),
-        var(--${id}-accessible-color-primary)
+        var(--${id}-accessible-color-${type}),
+        var(--${id}-accessible-color-${type}),
+        var(--${id}-accessible-color-${type})
       );
     }
+      .fill-${id}-highcontrast-${type}color {
+      --${id}-accessible-color-accent: calc((
+        (
+          (
+            (var(--${id}-red-${type}) * 299) +
+            (var(--${id}-green-${type}) * 587) +
+            (var(--${id}-blue-${type}) * 114)
+          ) / 1000
+        ) - 128
+      ) * -1000);
+
+      fill: rgb(
+        var(--${id}-accessible-color-${type}),
+        var(--${id}-accessible-color-${type}),
+        var(--${id}-accessible-color-${type})
+      );
+    }
+      .stroke-${id}-highcontrast-${type}color {
+      --${id}-accessible-color-${type}: calc((
+        (
+          (
+            (var(--${id}-red-${type}) * 299) +
+            (var(--${id}-green-${type}) * 587) +
+            (var(--${id}-blue-${type}) * 114)
+          ) / 1000
+        ) - 128
+      ) * -1000);
+
+      stroke: rgb(
+        var(--${id}-accessible-color-${type}),
+        var(--${id}-accessible-color-${type}),
+        var(--${id}-accessible-color-${type})
+      );
+      
+    }
   `;
+
+  let secondaryRgb = hexToRgb(colorSet.secondaryColor);
+  type = 'secondary';
+  cssString += `
+
+      --${id}-red-${type}: ${secondaryRgb.r};
+      --${id}-green-${type}: ${secondaryRgb.g};
+      --${id}-blue-${type}: ${secondaryRgb.b};
+
+    .text-${id}-highcontrast-${type}color {
+      --${id}-accessible-color-${type}: calc((
+        (
+          (
+            (var(--${id}-red-${type}) * 299) +
+            (var(--${id}-green-${type}) * 587) +
+            (var(--${id}-blue-${type}) * 114)
+          ) / 1000
+        ) - 128
+      ) * -1000);
+
+      color: rgb(
+        var(--${id}-accessible-color-${type}),
+        var(--${id}-accessible-color-${type}),
+        var(--${id}-accessible-color-${type})
+      );
+    }
+      .fill-${id}-highcontrast-${type}color {
+      --${id}-accessible-color-accent: calc((
+        (
+          (
+            (var(--${id}-red-${type}) * 299) +
+            (var(--${id}-green-${type}) * 587) +
+            (var(--${id}-blue-${type}) * 114)
+          ) / 1000
+        ) - 128
+      ) * -1000);
+    }
+      fill: rgb(
+        var(--${id}-accessible-color-${type}),
+        var(--${id}-accessible-color-${type}),
+        var(--${id}-accessible-color-${type})
+      );
+
+      .stroke-${id}-highcontrast-${type}color {
+      --${id}-accessible-color-${type}: calc((
+        (
+          (
+            (var(--${id}-red-${type}) * 299) +
+            (var(--${id}-green-${type}) * 587) +
+            (var(--${id}-blue-${type}) * 114)
+          ) / 1000
+        ) - 128
+      ) * -1000);
+
+      stroke: rgb(
+        var(--${id}-accessible-color-${type}),
+        var(--${id}-accessible-color-${type}),
+        var(--${id}-accessible-color-${type})
+      );
+      
+    }
+  `;
+
+  let accentRgb = hexToRgb(colorSet.accentColor);
+  type = 'accent';
+  cssString += `
+
+      --${id}-red-${type}: ${accentRgb.r};
+      --${id}-green-${type}: ${accentRgb.g};
+      --${id}-blue-${type}: ${accentRgb.b};
+
+    .text-${id}-highcontrast-${type}color {
+      --${id}-accessible-color-${type}: calc((
+        (
+          (
+            (var(--${id}-red-${type}) * 299) +
+            (var(--${id}-green-${type}) * 587) +
+            (var(--${id}-blue-${type}) * 114)
+          ) / 1000
+        ) - 128
+      ) * -1000);
+
+      color: rgb(
+        var(--${id}-accessible-color-${type}),
+        var(--${id}-accessible-color-${type}),
+        var(--${id}-accessible-color-${type})
+      );
+}
+      .fill-${id}-highcontrast-${type}color {
+      --${id}-accessible-color-accent: calc((
+        (
+          (
+            (var(--${id}-red-${type}) * 299) +
+            (var(--${id}-green-${type}) * 587) +
+            (var(--${id}-blue-${type}) * 114)
+          ) / 1000
+        ) - 128
+      ) * -1000);
+
+      fill: rgb(
+        var(--${id}-accessible-color-${type}),
+        var(--${id}-accessible-color-${type}),
+        var(--${id}-accessible-color-${type})
+      );
+}
+      .stroke-${id}-highcontrast-${type}color {
+      --${id}-accessible-color-${type}: calc((
+        (
+          (
+            (var(--${id}-red-${type}) * 299) +
+            (var(--${id}-green-${type}) * 587) +
+            (var(--${id}-blue-${type}) * 114)
+          ) / 1000
+        ) - 128
+      ) * -1000);
+
+      stroke: rgb(
+        var(--${id}-accessible-color-${type}),
+        var(--${id}-accessible-color-${type}),
+        var(--${id}-accessible-color-${type})
+      );
+      
+    }
+  `;
+  
+
     return cssString;
   }
 
