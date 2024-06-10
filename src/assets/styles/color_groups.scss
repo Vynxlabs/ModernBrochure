@@ -1,8 +1,102 @@
 :root {
---primary_dark0__background : undefined;
+
+
+      --primary-red: 246;
+      --primary-green: 253;
+      --primary-blue: 254;
+
+
+    .text-primary-highcontrast-backgroundcolor {
+      --primary-accessible-color: calc((
+        (
+          (
+            (var(--primary-red) * 299) +
+            (var(--primary-green) * 587) +
+            (var(--primary-blue) * 114)
+          ) / 1000
+        ) - 128
+      ) * -1000);
+
+      color: rgb(
+        var(--primary-accessible-color),
+        var(--primary-accessible-color),
+        var(--primary-accessible-color)
+      );
+    }
+  
+
+      --primary-red-primary: 37;
+      --primary-green-primary: 203;
+      --primary-blue-primary: 228;
+
+    .text-primary-highcontrast-primarycolor {
+      --primary-accessible-color-primary: calc((
+        (
+          (
+            (var(--primary-red-primary) * 299) +
+            (var(--primary-green-primary) * 587) +
+            (var(--primary-blue-primary) * 114)
+          ) / 1000
+        ) - 128
+      ) * -1000);
+
+      color: rgb(
+        var(--primary-accessible-color-primary),
+        var(--primary-accessible-color-primary),
+        var(--primary-accessible-color-primary)
+      );
+    }
+  --primary_dark0__background : undefined;
 --primary_dark0__foreground : undefined;
 --primary_dark0__interaction : undefined;
-}
+
+
+      --primary_dark0-red: 1;
+      --primary_dark0-green: 8;
+      --primary_dark0-blue: 9;
+
+
+    .text-primary_dark0-highcontrast-backgroundcolor {
+      --primary_dark0-accessible-color: calc((
+        (
+          (
+            (var(--primary_dark0-red) * 299) +
+            (var(--primary_dark0-green) * 587) +
+            (var(--primary_dark0-blue) * 114)
+          ) / 1000
+        ) - 128
+      ) * -1000);
+
+      color: rgb(
+        var(--primary_dark0-accessible-color),
+        var(--primary_dark0-accessible-color),
+        var(--primary_dark0-accessible-color)
+      );
+    }
+  
+
+      --primary_dark0-red-primary: 27;
+      --primary_dark0-green-primary: 192;
+      --primary_dark0-blue-primary: 218;
+
+    .text-primary_dark0-highcontrast-primarycolor {
+      --primary_dark0-accessible-color-primary: calc((
+        (
+          (
+            (var(--primary_dark0-red-primary) * 299) +
+            (var(--primary_dark0-green-primary) * 587) +
+            (var(--primary_dark0-blue-primary) * 114)
+          ) / 1000
+        ) - 128
+      ) * -1000);
+
+      color: rgb(
+        var(--primary_dark0-accessible-color-primary),
+        var(--primary_dark0-accessible-color-primary),
+        var(--primary_dark0-accessible-color-primary)
+      );
+    }
+  }
 
 .text-primary-textcolor { color: #041e25; }
 .text-primary-primarycolor { color: #25cbe4; }

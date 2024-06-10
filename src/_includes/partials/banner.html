@@ -1,0 +1,16 @@
+{% if banner.enable_banner and banner.show_until %}
+    <header class="flex w-full justify-center py-4" 
+        _="on load
+            set my.hidden to (localStorage.getItem('banner_{{ banner.id }}') or ((new Date('{{ banner.show_until }}').getTime() - Date.now()) < 0) or false)
+            if my.hidden is true
+                add .hidden to me
+            end
+        on click
+            from button
+                localStorage.setItem('banner_{{ banner.id }}', 'true')
+                add .hidden to me.parentElement
+        end">
+        <p>{{ banner.html }}</p>
+        <button>{% bookshop "generic/heroLibraryIcon" heroLibraryIconName:"x-mark" iconType:"solid" iconSize:'small' roundedBorder:false classOverride: "mix-blend-difference" %}</button>
+    </header>
+{% endif %}
