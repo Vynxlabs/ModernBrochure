@@ -1,3 +1,4 @@
+{% assign iconClass = "fill-" | append: banner.color_group | append: "-highcontrast-" | append: banner.colorFromGroup | append: 'color' %}
 
 
 {% if banner.enable_banner and banner.show_until %}
@@ -13,6 +14,6 @@
                 add .hidden to me.parentElement
         end">
         <p class="" >{{ banner.html }}</p>
-        <button>{% bookshop "generic/heroLibraryIcon" heroLibraryIconName:"x-mark" iconType:"solid" iconSize:'small' roundedBorder:false classOverride: "fill-{{banner.color_group}}-highcontrast-{{banner.colorFromGroup}}color" %}</button>
+        <button>{% bookshop "generic/heroLibraryIcon" heroLibraryIconName:"x-mark" iconType:"solid" iconSize:'small' roundedBorder:false classOverride: iconClass %}</button>
     </header>
 {% endif %}
