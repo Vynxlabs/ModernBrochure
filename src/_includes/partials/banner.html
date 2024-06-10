@@ -1,3 +1,5 @@
+
+
 {% if banner.enable_banner and banner.show_until %}
     <header class="flex w-full justify-center py-2 bg-{{banner.color_group}}-{{banner.colorFromGroup}}color text-{{banner.color_group}}-highcontrast-{{banner.colorFromGroup}}color" 
         _="on load
@@ -11,6 +13,6 @@
                 add .hidden to me.parentElement
         end">
         <p class="" >{{ banner.html }}</p>
-        <button>{% bookshop "generic/heroLibraryIcon" heroLibraryIconName:"x-mark" iconType:"solid" iconSize:'small' roundedBorder:false classOverride: "mix-blend-difference" %}</button>
+        <button>{% bookshop "generic/heroLibraryIcon" heroLibraryIconName:"x-mark" iconType:"solid" iconSize:'small' roundedBorder:false classOverride: "fill-{{banner.color_group}}-highcontrast-{{banner.colorFromGroup}}color" %}</button>
     </header>
 {% endif %}
