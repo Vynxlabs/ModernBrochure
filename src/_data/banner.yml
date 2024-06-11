@@ -22,8 +22,12 @@ _inputs:
     type: date
     comment: Date to stop showing the banner
     hidden: '!enable_banner'
+  color_group:
+    hidden: '!enable_banner'
   colorFromGroup:
+    hidden: '!enable_banner'
     type: select
+    comment: This will be the background color of the notification banner
     options:
       allow_empty: false
       value_key: id
