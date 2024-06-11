@@ -76,7 +76,7 @@ function hexToRgb(hex) {
   for( colortype in colorSet){
     if(colortype == 'name')
       continue;
-    let rgb = hexToRgb(colortype);
+    let rgb = hexToRgb(colorSet[colortype]);
     type = colortype.toLowerCase();
     cssString += `
 

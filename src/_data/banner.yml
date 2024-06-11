@@ -3,7 +3,7 @@ html: <p>This banner is completely optional, and can be shown until a set date!<
 id: alto-banner-1
 show_until: 2024-07-27T00:00:00Z
 color_group: primary
-colorFromGroup: text
+colorFromGroup: primary
 _inputs:
   enable_banner:
     type: switch
