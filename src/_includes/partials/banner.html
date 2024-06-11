@@ -2,20 +2,24 @@
 
 
 {% if banner.enable_banner and banner.show_until %}
-    <header class="flex w-full justify-center py-2 bg-{{banner.color_group}}-{{banner.colorFromGroup}}color text-{{banner.color_group}}-highcontrast-{{banner.colorFromGroup}}color" 
-        _="on load
-        set my.show_until to new Date('{{ banner.show_until }}').getTime()
-        set my.hide_if to 'banner_{{ banner.id }}'
-        set my.hidden to localStorage.getItem(my.hide_if) or (my.show_until - Date.now()) < 0
-        if my.hidden is true
-            add .hidden to me
-        end
-    end
-    on click from button
-        localStorage.setItem(my.hide_if, 'true')
-        add .hidden to me
-    end">
-        <p class="" >{{ banner.html }}</p>
-        <button>{% bookshop "generic/heroLibraryIcon" heroLibraryIconName:"x-mark" iconType:"solid" iconSize:'small' roundedBorder:false classOverride: iconClass %}</button>
-    </header>
+    <div class="cs-w-full bg-{{banner.color_group}}-{{banner.colorFromGroup}}color text-{{banner.color_group}}-highcontrast-{{banner.colorFromGroup}}color flex flex-col items-center justify-center">
+        <div class="basecontainer w-full">
+            <header class=" hidden flex w-full justify-center items-center py-2 relative"
+                _="on load
+                set :show_until to '{{ banner.show_until }}' as Date log :show_until
+                set :hidden to  localStorage.banner_{{ banner.id | slug | remove: '-' }} or (:show_until - Date.now()) < 0 log :hidden
+                if not :hidden then
+                    log (:show_until - Date.now())
+                    remove .hidden from me
+                end
+            end
+            on click from #banner_button_{{ banner.id }}
+                set localStorage.banner_{{ banner.id | slug | remove: '-' }} to true
+                add .hidden to me
+            end">
+                <div>{{ banner.html }}</div>
+                <button class="absolute top-2 -right-5 sm:-right-8" id="banner_button_{{ banner.id }}">{% bookshop "generic/heroLibraryIcon" heroLibraryIconName:"x-mark" iconType:"solid" iconSize:'small' roundedBorder:false classOverride: iconClass %}</button>
+            </header>
+        </div>
+    </div>
 {% endif %}
