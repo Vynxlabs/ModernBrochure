@@ -68,6 +68,14 @@ function hexToRgb(hex) {
     return { r, g, b };
   }
 
+  function hexToRgbCss(hex) {
+    const bigint = parseInt(hex.slice(1), 16);
+    const r = (bigint >> 16) & 255;
+    const g = (bigint >> 8) & 255;
+    const b = bigint & 255;
+    return `${r}, ${g}, ${b}`;
+  }
+
   function appendHighContrastClasses(colorSet, id) {
     let backgroundRgb = hexToRgb(colorSet.primaryColor);
   let type = '';
@@ -184,11 +192,11 @@ function appendTailwindUtilityClasses(colorSet,id){
 
 
     //background
-    cssString += `.bg-${id}-backgroundcolor { background-color: ${colorSet.backgroundColor}; }\n`;
-    cssString += `.bg-${id}-primarycolor { background-color: ${colorSet.primaryColor}; }\n`;
-    cssString += `.bg-${id}-secondarycolor { background-color: ${colorSet.secondaryColor}; }\n`;
-    cssString += `.bg-${id}-accentcolor { background-color: ${colorSet.accentColor}; }\n`;
-    cssString += `.bg-${id}-textcolor { background-color: ${colorSet.textColor}; }\n`;
+    cssString += `.bg-${id}-backgroundcolor { background-color: rgb( ${hexToRgbCss(colorSet.backgroundColor)} / var(--tw-bg-opacity)); }\n`;
+    cssString += `.bg-${id}-primarycolor { background-color: rgb( ${hexToRgbCss(colorSet.primaryColor)} / var(--tw-bg-opacity)); }\n`;
+    cssString += `.bg-${id}-secondarycolor { background-color: rgb( ${hexToRgbCss(colorSet.secondaryColor)} / var(--tw-bg-opacity)); }\n`;
+    cssString += `.bg-${id}-accentcolor { background-color: rgb( ${hexToRgbCss(colorSet.accentColor)} / var(--tw-bg-opacity)); }\n`;
+    cssString += `.bg-${id}-textcolor { background-color: rgb( ${hexToRgbCss(colorSet.textColor)} / var(--tw-bg-opacity)); }\n`;
 
     //background hover
     cssString += `.hover\\:bg-${id}-backgroundcolor:hover { background-color: ${colorSet.backgroundColor}; }\n`;
