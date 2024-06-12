@@ -73,7 +73,7 @@ function hexToRgb(hex) {
     const r = (bigint >> 16) & 255;
     const g = (bigint >> 8) & 255;
     const b = bigint & 255;
-    return `${r}, ${g}, ${b}`;
+    return `${r} ${g} ${b}`;
   }
 
   function appendHighContrastClasses(colorSet, id) {
@@ -192,11 +192,11 @@ function appendTailwindUtilityClasses(colorSet,id){
 
 
     //background
-    cssString += `.bg-${id}-backgroundcolor { background-color: rgb( ${hexToRgbCss(colorSet.backgroundColor)} / var(--tw-bg-opacity)); }\n`;
-    cssString += `.bg-${id}-primarycolor { background-color: rgb( ${hexToRgbCss(colorSet.primaryColor)} / var(--tw-bg-opacity)); }\n`;
-    cssString += `.bg-${id}-secondarycolor { background-color: rgb( ${hexToRgbCss(colorSet.secondaryColor)} / var(--tw-bg-opacity)); }\n`;
-    cssString += `.bg-${id}-accentcolor { background-color: rgb( ${hexToRgbCss(colorSet.accentColor)} / var(--tw-bg-opacity)); }\n`;
-    cssString += `.bg-${id}-textcolor { background-color: rgb( ${hexToRgbCss(colorSet.textColor)} / var(--tw-bg-opacity)); }\n`;
+    cssString += `.bg-${id}-backgroundcolor { --tw-bg-opacity:1; background-color: rgb( ${hexToRgbCss(colorSet.backgroundColor)} / var(--tw-bg-opacity)); }\n`;
+    cssString += `.bg-${id}-primarycolor { --tw-bg-opacity:1; background-color: rgb( ${hexToRgbCss(colorSet.primaryColor)} / var(--tw-bg-opacity)); }\n`;
+    cssString += `.bg-${id}-secondarycolor { --tw-bg-opacity:1; background-color: rgb( ${hexToRgbCss(colorSet.secondaryColor)} / var(--tw-bg-opacity)); }\n`;
+    cssString += `.bg-${id}-accentcolor { --tw-bg-opacity:1; background-color: rgb( ${hexToRgbCss(colorSet.accentColor)} / var(--tw-bg-opacity)); }\n`;
+    cssString += `.bg-${id}-textcolor { --tw-bg-opacity:1; background-color: rgb( ${hexToRgbCss(colorSet.textColor)} / var(--tw-bg-opacity)); }\n`;
 
     //background hover
     cssString += `.hover\\:bg-${id}-backgroundcolor:hover { background-color: ${colorSet.backgroundColor}; }\n`;
