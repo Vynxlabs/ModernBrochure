@@ -5,7 +5,7 @@ spec:
   label: "Basic Form With Image"
   description:
   icon:
-  tags: []
+  tags: [form]
 
 # Defines the structure of this component, as well as the default values
 blueprint:
