@@ -20,6 +20,8 @@ blueprint:
     textAlignment: center
     visualInterest: none
     visualInterestColor: '#000000'
+    highContrast: false
+    contrastAgainst: 
 
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
@@ -86,3 +88,5 @@ _inputs:
         - name: Underline
           id: underline
           icon: view_headline
+  highContrast:
+    hidden: true
