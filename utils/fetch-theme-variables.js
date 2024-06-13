@@ -184,11 +184,11 @@ function appendTailwindUtilityClasses(colorSet,id){
     cssString += `.data-\\[state\\=active\\]\\:decoration-${id}-accentcolor[data-state=active] { text-decoration-color: ${colorSet.accentColor}; }\n`;
 
     //to-color - for gradients
-    cssString += `.to-${id}-textcolor { --tw-gradient-to: ${colorSet.textColor} var(--tw-gradient-to-position); }\n`;
-    cssString += `.to-${id}-backgroundcolor { --tw-gradient-to: ${colorSet.backgroundColor} var(--tw-gradient-to-position); }\n`;
-    cssString += `.to-${id}-primarycolor { --tw-gradient-to: ${colorSet.primaryColor} var(--tw-gradient-to-position); }\n`;
-    cssString += `.to-${id}-secondarycolor { --tw-gradient-to: ${colorSet.secondaryColor} var(--tw-gradient-to-position); }\n`;
-    cssString += `.to-${id}-accentcolor { --tw-gradient-to: ${colorSet.accentColor} var(--tw-gradient-to-position); }\n`;
+    cssString += `:root .to-${id}-textcolor { --tw-gradient-to: ${colorSet.textColor} var(--tw-gradient-to-position); }\n`;
+    cssString += `:root .to-${id}-backgroundcolor { --tw-gradient-to: ${colorSet.backgroundColor} var(--tw-gradient-to-position); }\n`;
+    cssString += `:root .to-${id}-primarycolor { --tw-gradient-to: ${colorSet.primaryColor} var(--tw-gradient-to-position); }\n`;
+    cssString += `:root .to-${id}-secondarycolor { --tw-gradient-to: ${colorSet.secondaryColor} var(--tw-gradient-to-position); }\n`;
+    cssString += `:root .to-${id}-accentcolor { --tw-gradient-to: ${colorSet.accentColor} var(--tw-gradient-to-position); }\n`;
 
 
     //background
