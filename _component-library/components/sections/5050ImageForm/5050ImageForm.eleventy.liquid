@@ -1,6 +1,6 @@
 {% assign color_group = styles.color_group %}
 
-<div class="c-5050ImageForm componentcontainer  relative">
+<div class="c-5050ImageForm relative">
   <section
     {% if content.sectionId %}
     id="{{ content.sectionId | idFilter }}"
@@ -9,12 +9,14 @@
 
     <div class=" flex ">
 
-      <div class="cs-w-full lg:cs-w-full-r flex  justify-center bg-{{styles.color_group}}-backgroundcolor  bg-opacity-60 text-{{styles.color_group}}-highcontrast-backgroundcolor lg:bg-opacity-100">
-        {% bookshop "generic/heading" bind: content.heading %}
-        {% bookshop "simple/formBuilder" bind: content.form %}
+      <div class="cs-w-full lg:cs-w-full-r flex flex-col items-center  justify-center bg-{{styles.color_group}}-backgroundcolor  bg-opacity-60 text-{{styles.color_group}}-highcontrast-backgroundcolor lg:bg-opacity-100">
+        <div class="max-w-[512px]">
+          {% bookshop "generic/heading" bind: content.heading %}
+          {% bookshop "simple/formBuilder" bind: content.form %}
+        </div>
       </div>
 
-      <div class="cs-w-full lg:cs-w-full-l cs-footer -z-10 flex items-end justify-center bg-cover bg-center pb-16 font-bold md:justify-normal pl-[50%] md:pl-[15%]">
+      <div class="cs-w-full lg:cs-w-full-l -z-10 flex items-end justify-center bg-cover bg-center font-bold md:justify-normal h-full">
         {% bookshop "generic/image" bind: content.image class: "h-screen w-screen object-cover" %}
       </div>
 
