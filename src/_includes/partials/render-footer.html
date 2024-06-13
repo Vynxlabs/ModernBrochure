@@ -36,7 +36,7 @@ md:absolute md:left-0
     
     >{{entry.key}}
       </button></summary>
-  <ul id="{{ entry.key }}" class="pl-4 pb-1 ml-1    transition-all md:duration-300 origin-top mt-2 w-max  rounded   border-l-2 border-{{color_group}}-backgroundcolor bg-{{color_group}}-backgroundcolornav  focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+  <ul id="{{ entry.key }}" class="pl-4 pb-1 ml-1    transition-all md:duration-300 origin-top mt-2 w-max  rounded   border-l-2 border-{{color_group}}-backgroundcolor bg-{{color_group}}-backgroundcolor bg-opacity-70  focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
     {% for child in entry.children %} {% render "partials/render-footer.html",
     entry:child, color_group: color_group, level: level, blogPosts: blogPosts, page:page %} {% endfor %}
   </ul>
