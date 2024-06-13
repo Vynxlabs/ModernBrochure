@@ -206,7 +206,7 @@ module.exports = (eleventyConfig) => {
 
   eleventyConfig.on("eleventy.after", () => {
     execSync(
-      "npx tailwindcss -i ./src/css/styles.css -o ./dist/css/styles.css --minify",
+      "npx tailwindcss -i ./src/css/main.css -o ./dist/css/styles.css --minify",
     );
   });
 
