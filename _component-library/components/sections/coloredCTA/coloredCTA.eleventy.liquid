@@ -2,8 +2,22 @@
 
 <div class="c-simpleCta componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
     <section class="basecontainer w-full max-w-[900px] bg-{{styles.color_group}}-secondarycolor">
-
-        {% bookshop "generic/heading" bind: content.CallToAction %}
+    {% capture heading %}
+        content:
+            highlightEyebrow: {{content.CallToAction.content.highlightEyebrow}}
+            eyebrow: {{content.CallToAction.content.eyebrow}}
+            headline: {{heading.content.headline}}
+            description: {{content.CallToAction.content.description}}
+        styles:
+            contentAlignment: {{content.CallToAction.styles.contentAlignment}}
+            textAlignment: {{content.CallToAction.styles.textAlignment}}
+            visualInterest: {{content.CallToAction.styles.visualInterest}}
+            visualInterestColor: "{{content.CallToAction.styles.visualInterestColor}}"
+            highcontrast: true
+            contrastAgainst: secondary
+    {% endcapture %}
+    {% assign heading = heading | ymlify %}
+        {% bookshop "generic/heading" bind: heading %}
 
     </section>
 </div>
