@@ -1,22 +1,26 @@
 {% assign color_group = styles.color_group %}
 
 <div class="c-simpleCta componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
-    <section class="basecontainer w-full max-w-[900px] bg-{{styles.color_group}}-secondarycolor">
+    <section class="basecontainer w-full max-w-[900px] bg-{{styles.color_group}}-textcolor rounded px-4 py-20">
     {% capture heading %}
         content:
             highlightEyebrow: {{content.CallToAction.content.highlightEyebrow}}
             eyebrow: {{content.CallToAction.content.eyebrow}}
-            headline: {{heading.content.headline}}
+            headline: {{content.CallToAction.content.headline}}
             description: {{content.CallToAction.content.description}}
+            headingHierarchy: "h2"
+            buttons:
+                {{content.CallToAction.content.buttons | json}}
         styles:
             contentAlignment: {{content.CallToAction.styles.contentAlignment}}
             textAlignment: {{content.CallToAction.styles.textAlignment}}
             visualInterest: {{content.CallToAction.styles.visualInterest}}
             visualInterestColor: "{{content.CallToAction.styles.visualInterestColor}}"
-            highcontrast: true
-            contrastAgainst: secondary
+            highContrast: true
+            contrastAgainst: text
     {% endcapture %}
     {% assign heading = heading | ymlify %}
+    {% assign temp = heading | log %}
         {% bookshop "generic/heading" bind: heading %}
 
     </section>
