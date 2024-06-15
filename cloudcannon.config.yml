@@ -347,6 +347,22 @@ _inputs:
       values: data.reviews.reviews
       value_key: id
       text_key: name
+  colorFromGroup:
+    type: select
+    options:
+      allow_empty: false
+      value_key: id
+      values:
+        - id: text
+          name: Text
+        - id: background
+          name: Background
+        - id: primary
+          name: Primary
+        - id: secondary
+          name: Secondary
+        - id: accent
+          name: Accent
 _select_data: {}
 _structures:
   content_blocks:

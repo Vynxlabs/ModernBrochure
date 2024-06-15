@@ -1,7 +1,7 @@
 {% assign color_group = styles.color_group %}
 
 <div class="c-simpleCta componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
-    <section class="basecontainer w-full max-w-[900px] bg-{{styles.color_group}}-textcolor rounded px-4 py-20">
+    <section class="basecontainer w-full max-w-[900px] bg-{{styles.card_color_group}}-{{styles.colorFromGroup}}color rounded px-4 py-20">
     {% capture heading %}
         content:
             highlightEyebrow: {{content.CallToAction.content.highlightEyebrow}}
@@ -17,7 +17,7 @@
             visualInterest: {{content.CallToAction.styles.visualInterest}}
             visualInterestColor: "{{content.CallToAction.styles.visualInterestColor}}"
             highContrast: true
-            contrastAgainst: text
+            contrastAgainst: {{styles.colorFromGroup}}
     {% endcapture %}
     {% assign heading = heading | ymlify %}
     {% assign temp = heading | log %}
