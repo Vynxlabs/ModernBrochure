@@ -21,6 +21,7 @@ blueprint:
     visualInterest: none
     visualInterestColor: '#000000'
     highContrast: false
+    contrastColorGroup:
     contrastAgainst: 
 
 
