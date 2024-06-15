@@ -13,7 +13,25 @@
         <div class="max-w-[512px]">
           {% bookshop "generic/heading" bind: content.heading %}
           {% bookshop "simple/formBuilder" bind: content.form %}
+          <div class="flex justify-between w-full mt-11 ">
+          {% if site.contactInfo.email and site.contactInfo.email != "" %}
+            <div class="flex gap-1 items-center">
+              <a href="mailto:{{ site.contactInfo.email }}" class="block underline"
+                >{{ site.contactInfo.email }}</a
+              >
+            </div>
+            {% endif %}
+
+            {% if site.contactInfo.phone and site.contactInfo.phone != "" %}
+              <div class="flex gap-1 items-center">
+                <a href="tel:{{ site.contactInfo.phone | remove: "-" | remove: " " | remove: "." | remove: "(" | remove: ")" }}" class="block underline"
+                  >{{ site.contactInfo.phone }}</a
+                >
+              </div>
+              {% endif %}
         </div>
+        </div>
+        
       </div>
 
       <div class="cs-w-full lg:cs-w-full-l -z-10 flex items-end justify-center bg-cover bg-center font-bold md:justify-normal h-full">
