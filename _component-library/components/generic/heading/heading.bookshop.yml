@@ -93,3 +93,5 @@ _inputs:
     hidden: true
   contrastAgainst:
     hidden: true
+  contrastColorGroup:
+    hidden: true
