@@ -3,9 +3,9 @@
 {% assign visualInterestPath = "/assets/images/visual-interest/" | append: styles.imageVisualInterest | append: '.svg' %}
 {% assign visualInterestClasses = "" %}
 {% if styles.imageVisualInterest == "dot-grid" %}
-  {% assign visualInterestClasses = "absolute -top-[45px] opacity-50 left-[45%] " | append: "fill-" | append: color_group | append: "-primarycolor " %}
+  {% assign visualInterestClasses = "absolute top-[60px] opacity-50 xl:left-[12%] rotate-90 -z-10 hidden xl:block " | append: "fill-" | append: color_group | append: "-primarycolor " %}
 {% elsif styles.imageVisualInterest == "cross-grid" %}
-  {% assign visualInterestClasses = "absolute -top-[40px] opacity-50 left-[58%] " | append: "stroke-" | append: color_group | append: "-primarycolor " %}
+  {% assign visualInterestClasses = "absolute -top-[40px] opacity-50 xl:left-[12%] -z-10 hidden xl:block " | append: "stroke-" | append: color_group | append: "-primarycolor " %}
 {% endif %}
 
 <div class="c-featuresCenterImage componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
@@ -48,11 +48,13 @@
 
         </div>
         <div class="flex flex-col relative xl:max-w-[300px] order-4 xl:order-2">
-          <div class="sticky top-8">{% bookshop "generic/image" bind: content.image class: "rounded xl:aspect-auto aspect-video object-cover" %}
+          
+          <div class="sticky top-8">
+            {% if styles.imageVisualInterest != "none" %}
+              <div class="relative">{{ '/src' | append: visualInterestPath | svgContents: visualInterestClasses }}</div>
+            {% endif %}{% bookshop "generic/image" bind: content.image class: "rounded xl:aspect-auto aspect-video object-cover" %}
+            
             {% if content.buttons %}
-              <div class="relative">
-                <div class="{{visualInterestClasses}} bg-clip-content [background-image:var(--url)]" style="--url: url('{{ visualInterestPath }}')"></div>
-              </div>
               <div class="mt-10 flex w-full gap-8 flex-wrap justify-center ">
                 {% for button in content.buttons %}
                   {% bookshop "generic/button" bind: button %}
