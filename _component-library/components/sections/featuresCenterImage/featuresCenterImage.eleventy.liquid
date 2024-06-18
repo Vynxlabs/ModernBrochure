@@ -9,9 +9,9 @@
     class="basecontainer w-full">
     {% bookshop "generic/heading" bind: content.heading %}
     {% if content.cards %}
-        <div class="mt-20 flex flex-wrap justify-center gap-16">
+        <div class="mt-20 flex justify-center gap-16">
             {% comment %} Even cards {% endcomment %}
-            <div >
+            <div class="w-full flex flex-col gap-8">
                 {% for card in content.cards %}
                     {% assign evenOdd = counter | modulo: 2 %}
                     {% if evenOdd  == 0 %}
@@ -40,13 +40,16 @@
                   {% endfor %}
 
             </div>
+            <div>
+              {% bookshop "generic/image" bind: content.image  %}
+            </div>
             {% assign counter = 0 %}
             {% assign counter = counter | plus: 1 %}
             {% comment %} Odd cards {% endcomment %}
-            <div >
+            <div class="w-full flex flex-col gap-8">
                 {% for card in content.cards %}
                   {% assign evenOdd = counter | modulo: 2 %}
-                    {% if evenOdd  == 1 %}
+                    {% if evenOdd  == 0 %}
                     {% assign color_group = styles.card_color_group %}
                     <div class="min-h-[260px] max-w-[380px] w-full {% if styles.cardBackground %} bg-{{styles.card_color_group}}-backgroundcolor shadow-md{% endif %} px-7 py-4  rounded">
                       {% capture heading %}
