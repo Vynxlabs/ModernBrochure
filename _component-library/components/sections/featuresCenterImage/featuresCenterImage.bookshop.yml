@@ -20,9 +20,21 @@ blueprint:
     color_group: primary
     card_color_group: primary
     cardBackground: true
+    imageVisualInterest: none
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  imageVisualInterest:
+    type: select
+    options:
+      value_key: id
+      values:
+        - name: None
+          id: none
+        - name: Dots
+          id: dot-grid
+        - name: Crosses
+          id: cross-grid
