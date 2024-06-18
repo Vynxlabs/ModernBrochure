@@ -1,5 +1,5 @@
 {% assign color_group = styles.color_group %}
-{% assign evenOdd = 0 %}
+{% assign counter = 0 %}
 
 <div class="c-featuresCenterImage componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
   <section
@@ -13,7 +13,8 @@
             {% comment %} Even cards {% endcomment %}
             <div >
                 {% for card in content.cards %}
-                    {% if evenOdd | modulo: 2 == 0 %}
+                    {% assign evenOdd = counter | modulo: 2 %}
+                    {% if evenOdd  == 0 %}
                     {% assign color_group = styles.card_color_group %}
                     <div class="min-h-[260px] max-w-[380px] w-full {% if styles.cardBackground %} bg-{{styles.card_color_group}}-backgroundcolor shadow-md{% endif %} px-7 py-4  rounded">
                       {% capture heading %}
@@ -35,16 +36,17 @@
                       {% bookshop "generic/heading" bind: heading %}
                     </div>
                 {% endif %}
-                    {% assign evenOdd = evenOdd | plus: 1 %}
+                    {% assign counter = counter | plus: 1 %}
                   {% endfor %}
 
             </div>
-            {% assign evenOdd = 0 %}
-            {% assign evenOdd = evenOdd | plus: 1 %}
+            {% assign counter = 0 %}
+            {% assign counter = counter | plus: 1 %}
             {% comment %} Odd cards {% endcomment %}
             <div >
                 {% for card in content.cards %}
-                    {% if evenOdd | modulo: 2 == 1 %}
+                  {% assign evenOdd = counter | modulo: 2 %}
+                    {% if evenOdd  == 1 %}
                     {% assign color_group = styles.card_color_group %}
                     <div class="min-h-[260px] max-w-[380px] w-full {% if styles.cardBackground %} bg-{{styles.card_color_group}}-backgroundcolor shadow-md{% endif %} px-7 py-4  rounded">
                       {% capture heading %}
@@ -66,7 +68,7 @@
                       {% bookshop "generic/heading" bind: heading %}
                     </div>
                 {% endif %}
-                    {% assign evenOdd = evenOdd | plus: 1 %}
+                    {% assign counter = counter | plus: 1 %}
                   {% endfor %}
 
             </div>
