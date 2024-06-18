@@ -53,7 +53,7 @@
         <div class="flex flex-col relative xl:max-w-[300px] order-4 xl:order-2">
 
           <div class="sticky top-8">
-            {% if styles.imageVisualInterest != "none" %}
+            {% if styles.imageVisualInterest != "none" and !env_bookshop_live %}
               <div class="relative">{{ '/src' | append: visualInterestPath | svgContents: visualInterestClasses }}</div>
             {% endif %}
             {% bookshop "generic/image" bind: content.image class: "rounded xl:aspect-auto aspect-video object-cover" %}
