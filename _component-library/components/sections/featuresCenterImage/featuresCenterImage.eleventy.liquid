@@ -9,14 +9,14 @@
     class="basecontainer w-full">
     {% bookshop "generic/heading" bind: content.heading %}
     {% if content.cards %}
-        <div class="mt-20 flex justify-center gap-16">
+        <div class="mt-20 flex justify-center gap-16 w-full flex-wrap xl:flex-nowrap">
             {% comment %} Even cards {% endcomment %}
-            <div class="w-full flex flex-col gap-8">
+            <div class="xl:w-full flex-1 order-1 min-w-[275px] flex flex-col gap-8">
                 {% for card in content.cards %}
                     {% assign evenOdd = counter | modulo: 2 %}
                     {% if evenOdd  == 0 %}
                     {% assign color_group = styles.card_color_group %}
-                    <div class="min-h-[260px] max-w-[380px] w-full {% if styles.cardBackground %} bg-{{styles.card_color_group}}-backgroundcolor shadow-md{% endif %} px-7 py-4  rounded">
+                    <div class="min-h-[260px] w-full {% if styles.cardBackground %} bg-{{styles.card_color_group}}-backgroundcolor shadow-md{% endif %} px-7 py-4  rounded">
                       {% capture heading %}
                         content:
                             highlightEyebrow: {{card.heading.content.highlightEyebrow}}
@@ -40,18 +40,28 @@
                   {% endfor %}
 
             </div>
-            <div>
-              {% bookshop "generic/image" bind: content.image  %}
+            <div class="flex flex-col relative xl:max-w-[300px] order-4 xl:order-2">
+              <div class="sticky top-8">{% bookshop "generic/image" bind: content.image class: "rounded xl:aspect-auto aspect-video object-cover" %}
+                {% if content.buttons %}
+                  <div class="mt-10 flex w-full gap-8 flex-wrap justify-center ">
+                    {% for button in content.buttons %}
+                      {% bookshop "generic/button" bind: button %}
+                    {% endfor %}
+          
+                  </div>
+                {% endif %}
+              </div>
+              <div class="flex-1"></div>
             </div>
             {% assign counter = 0 %}
             {% assign counter = counter | plus: 1 %}
             {% comment %} Odd cards {% endcomment %}
-            <div class="w-full flex flex-col gap-8">
+            <div class="xl:w-full flex-1 order-3 min-w-[275px] flex flex-col gap-8">
                 {% for card in content.cards %}
                   {% assign evenOdd = counter | modulo: 2 %}
                     {% if evenOdd  == 0 %}
                     {% assign color_group = styles.card_color_group %}
-                    <div class="min-h-[260px] max-w-[380px] w-full {% if styles.cardBackground %} bg-{{styles.card_color_group}}-backgroundcolor shadow-md{% endif %} px-7 py-4  rounded">
+                    <div class="min-h-[260px] w-full {% if styles.cardBackground %} bg-{{styles.card_color_group}}-backgroundcolor shadow-md{% endif %} px-7 py-4  rounded">
                       {% capture heading %}
                         content:
                             highlightEyebrow: {{card.heading.content.highlightEyebrow}}
