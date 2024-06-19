@@ -2,7 +2,7 @@
 spec:
   structures:
     - content_blocks
-  label: "GridPortfolio"
+  label: "GridPort folio"
   description:
   icon:
   tags: []
@@ -12,10 +12,19 @@ blueprint:
   content:
     sectionId:
     heading: bookshop:generic/heading!
-    images: [bookshop:generic/image]
+    images: 
+      - image: bookshop:generic/image
+        title: 
+        description:
+  styles:
+    color_group: primary
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  title:
+    comment: "A title to go with the image. (optional)"
+  description:
+    comment: "A description to go with the image. (optional)"
