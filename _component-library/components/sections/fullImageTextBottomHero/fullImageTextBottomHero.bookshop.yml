@@ -12,8 +12,8 @@ blueprint:
   content:
     highlightEybrow: false
     eyebrow:
-    headline:
-    description: "Hello World!"
+    headline: "Hero Headline"
+    description: 
     buttons: [bookshop:generic/button]
     image: bookshop:generic/image!
   styles:
