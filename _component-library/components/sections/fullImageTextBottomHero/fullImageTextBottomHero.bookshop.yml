@@ -18,8 +18,6 @@ blueprint:
     image: bookshop:generic/image!
   styles:
     color_group: primary
-    contentAlignment: left
-    textAlignment: left
     backgroundOpacity: 50
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
@@ -27,3 +25,11 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  backgroundOpacity:
+    type: range
+    options:
+      min: 0
+      max: 100
+      step: 5
+      default: 50
+    comment: Set the opacity percentage of the background
