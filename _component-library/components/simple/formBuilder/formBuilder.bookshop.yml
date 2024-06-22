@@ -15,6 +15,7 @@ blueprint:
   submitButton: 
     text: "Submit"
     color_group: primary
+    colorFromGroup: primary
     ghostButton: false
     blackText: false
     formSubmit: true
