@@ -31,6 +31,7 @@
     "openInNewTab": false,
     "text": "Button Text",
     "color_group": "primary",
+    "colorFromGroup": "primary",
     "ghostButton": true
   },
   "nav_color_group": "primary",
