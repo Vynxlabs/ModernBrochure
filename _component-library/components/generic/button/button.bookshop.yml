@@ -12,6 +12,7 @@ blueprint:
   openInNewTab: false
   text: "Button text"
   color_group: primary
+  colorFromGroup: primary
   ghostButton: false
   formSubmit: false
 

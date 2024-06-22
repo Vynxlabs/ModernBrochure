@@ -26,5 +26,6 @@ preview:
 _inputs:
   title:
     comment: "A title to go with the image. (optional)"
+    label: "Project Title"
   description:
     comment: "A description to go with the image. (optional)"
