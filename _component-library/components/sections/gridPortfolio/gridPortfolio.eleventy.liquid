@@ -21,12 +21,17 @@
           {% if evenOdd == 0 %}
             <div class="group rounded overflow-hidden relative mt-6">
               {% bookshop "generic/imageModal" image: imageContent.image classes: "aspect-[3/4]" id: imageId %}
-              {% if (imageContent.title and imageContent.title != "" ) or (imageContent.description and imageContent.description != "" ) %}
+              {% if imageContent.title and imageContent.title != ""   %}
                 <div class="absolute left-4 right-4 top-1/2 rounded bg-{{styles.color_group}}-backgroundcolor text-{{styles.color_group}}-textcolor bg-opacity-70  bg-blur-sm bg-saturate-200 -translate-y-1/2 opacity-0 transition duration-300 group-hover:opacity-100 text-center p-6 lg:py-12">
                   <h5 class="font-medium text-xl">{{ imageContent.title }}</h5>
                   <p class="mb-0">{{ imageContent.description }}</p>
                 </div>
-              {% endif %
+                {% elsif imageContent.description and imageContent.description != "" %}
+                  <div class="absolute left-4 right-4 top-1/2 rounded bg-{{styles.color_group}}-backgroundcolor text-{{styles.color_group}}-textcolor bg-opacity-70  bg-blur-sm bg-saturate-200 -translate-y-1/2 opacity-0 transition duration-300 group-hover:opacity-100 text-center p-6 lg:py-12">
+                  <h5 class="font-medium text-xl">{{ imageContent.title }}</h5>
+                  <p class="mb-0">{{ imageContent.description }}</p>
+                </div>
+              {% endif %}
             </div>
           {% endif %}
 
@@ -42,8 +47,13 @@
           {% if evenOdd == 0 %}
             <div class="group rounded overflow-hidden relative mt-6">
               {% bookshop "generic/imageModal" image: imageContent.image classes: "aspect-[3/4]" id: imageId %}
-              {% if (imageContent.title and imageContent.title != "" ) or (imageContent.description and imageContent.description != "" ) %}
+              {% if imageContent.title and imageContent.title != ""   %}
                 <div class="absolute left-4 right-4 top-1/2 rounded bg-{{styles.color_group}}-backgroundcolor text-{{styles.color_group}}-textcolor bg-opacity-70  bg-blur-sm bg-saturate-200 -translate-y-1/2 opacity-0 transition duration-300 group-hover:opacity-100 text-center p-6 lg:py-12">
+                  <h5 class="font-medium text-xl">{{ imageContent.title }}</h5>
+                  <p class="mb-0">{{ imageContent.description }}</p>
+                </div>
+                {% elsif imageContent.description and imageContent.description != "" %}
+                  <div class="absolute left-4 right-4 top-1/2 rounded bg-{{styles.color_group}}-backgroundcolor text-{{styles.color_group}}-textcolor bg-opacity-70  bg-blur-sm bg-saturate-200 -translate-y-1/2 opacity-0 transition duration-300 group-hover:opacity-100 text-center p-6 lg:py-12">
                   <h5 class="font-medium text-xl">{{ imageContent.title }}</h5>
                   <p class="mb-0">{{ imageContent.description }}</p>
                 </div>
@@ -64,8 +74,13 @@
           {% if evenOdd == 0 %}
             <div class="group rounded overflow-hidden relative mt-6">
               {% bookshop "generic/imageModal" image: imageContent.image classes: "aspect-[3/4]" id: imageId %}
-              {% if (imageContent.title and imageContent.title != "" ) or (imageContent.description and imageContent.description != "" ) %}
+              {% if imageContent.title and imageContent.title != ""   %}
                 <div class="absolute left-4 right-4 top-1/2 rounded bg-{{styles.color_group}}-backgroundcolor text-{{styles.color_group}}-textcolor bg-opacity-70  bg-blur-sm bg-saturate-200 -translate-y-1/2 opacity-0 transition duration-300 group-hover:opacity-100 text-center p-6 lg:py-12">
+                  <h5 class="font-medium text-xl">{{ imageContent.title }}</h5>
+                  <p class="mb-0">{{ imageContent.description }}</p>
+                </div>
+                {% elsif imageContent.description and imageContent.description != "" %}
+                  <div class="absolute left-4 right-4 top-1/2 rounded bg-{{styles.color_group}}-backgroundcolor text-{{styles.color_group}}-textcolor bg-opacity-70  bg-blur-sm bg-saturate-200 -translate-y-1/2 opacity-0 transition duration-300 group-hover:opacity-100 text-center p-6 lg:py-12">
                   <h5 class="font-medium text-xl">{{ imageContent.title }}</h5>
                   <p class="mb-0">{{ imageContent.description }}</p>
                 </div>
