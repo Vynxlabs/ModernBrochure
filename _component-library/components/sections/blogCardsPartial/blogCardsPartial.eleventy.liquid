@@ -1,7 +1,9 @@
 {% if env_bookshop_live %}
   {% assign postListItems = collections.blog %}
+  {% assign date = '2020-01-17' %}
 {% else %}
   {% assign postListItems = pagination.items %}
+  {% capture date %}'{% if entry.data.date %}{{ entry.data.date }}{% else %}{{ entry.date }}{% endif %}'{% endcapture %}
 {% endif %}
 {% assign color_group = styles.color_group %}
 {% if contents.randomize %}
@@ -53,6 +55,7 @@
                     color_group: {{styles.color_group}}
                 {% endcapture %}
         {% assign blogInfo = blogInfo | ymlify %}
+        {% assign temp = blogInfo | log %}
         {% if counter < 3 %}
           {% bookshop "generic/blog/card1" bind: blogInfo %}
         {% endif %}
