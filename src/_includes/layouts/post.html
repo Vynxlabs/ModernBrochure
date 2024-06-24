@@ -44,12 +44,14 @@
       content: 
         headline: "More from the blog"
         description: "These are some of the more interesting posts from our blog."
+        headingHierarchy: h2
       styles:
         color_group: primary
         contentAlignment: left
         textAlignment: left
   styles:
     color_group: {{site.color_group}}
+    cardStyle: default
     
 {% endcapture %}
 {% assign infoPosts = infoPosts | ymlify %}
