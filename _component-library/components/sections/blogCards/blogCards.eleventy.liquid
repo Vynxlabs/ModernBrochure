@@ -30,27 +30,27 @@
                     {% endfor %}
                 {% endcapture %}
                 {% capture image %}
-                    {% if entry.data.blogImage and entry.data.blogImage != ""  %}
-                    image:
-                        imagePath: {{ entry.data.blogImage }}
-                        imageAlt: {{ entry.data.imageAltText }}
-                    {% else %}
-                    image:
-                        imagePath: {{ blog.defaultImage }}
-                        imageAlt: {{ blog.defaultImageAltText }}
-                    {% endif %}
-                  {% endcapture %}
-                {% capture blogInfo %}
-                    blogTitle: {{ entry.data.title }}
-                    url: {{ entry.url }}
-                    author: {{blogAuthor}}
-                    date: '{% if entry.data.date %}{{ entry.data.date }}{% else %}{{ entry.date }}{% endif %}'
-                    length: {{ entry.content | readTimeFilter }}
-                    blogTags: {{ entry.data.tags | ymlify | split: "," | json}}
-                    {{image}}
-                    color_group: {{styles.color_group}}
+                {% if entry.data.blogImage and entry.data.blogImage != ""  %}
+                image:
+                    imagePath: {{ entry.data.blogImage }}
+                    imageAlt: {{ entry.data.imageAltText }}
+                {% else %}
+                image:
+                    imagePath: {{ blog.defaultImage }}
+                    imageAlt: {{ blog.defaultImageAltText }}
+                {% endif %}
                 {% endcapture %}
-        
+                {% capture blogInfo %}
+                blogTitle: {{ entry.data.title }}
+                url: {{ entry.url }}
+                author: {{blogAuthor | strip}}
+                date: '{% if entry.data.date %}{{ entry.data.date }}{% else %}{{ entry.date }}{% endif %}'
+                length: {{ entry.content | readTimeFilter }}
+                blogTags: {{ entry.data.tags | ymlify | split: "," | json}}
+                {{image | strip}}
+                color_group: {{styles.color_group}}
+                {% endcapture %}
+                {% assign temp = blogInfo | log %}
                 {% assign blogInfo = blogInfo | ymlify %}
                 {% if entry == postListItems.first %}
                     {% bookshop "generic/blog/featured1" bind:blogInfo %}

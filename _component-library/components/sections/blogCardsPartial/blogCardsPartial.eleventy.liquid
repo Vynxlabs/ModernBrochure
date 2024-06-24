@@ -51,9 +51,7 @@
         {{ image | strip}}
         color_group: {{styles.color_group}}
         {% endcapture %}
-        {% assign temp = blogInfo | log %}
         {% assign blogInfo = blogInfo | ymlify %}
-        {% assign temp = blogInfo | log %}
         {% if counter < 3 %}
           {% bookshop "generic/blog/card1" bind: blogInfo %}
         {% endif %}
