@@ -137,6 +137,8 @@ collections_config:
         hidden: true
       permalink:
         hidden: true
+      socialImage:
+        hidden: true
       eleventyExcludeFromCollections:
         hidden: true
     schemas:
