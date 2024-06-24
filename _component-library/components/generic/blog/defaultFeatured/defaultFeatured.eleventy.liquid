@@ -27,9 +27,6 @@
         <time datetime="{{ date | date: "%Y-%m-%d" }}">— {{ date | date: "%B %d, %Y" }} —</time>
     </div>
     <a class="" href="{{url}}">
-        {% if env_bookshop_live %}
-          {% bookshop "generic/image" imagePath: "https://picsum.photos/600" imageAlt: "place holder image" class: "w-full rounded transition-all duration-300 scale-100 hover:scale-[1.02] object-cover md:aspect-video aspect-[3/2]" %}
-        {% else %}
-          {% bookshop "generic/image" bind: image class: "w-full rounded transition-all duration-300 scale-100 hover:scale-[1.02] object-cover md:aspect-video aspect-[3/2]" %}{% endif %}
+          {% bookshop "generic/image" bind: image class: "w-full rounded transition-all duration-300 scale-100 hover:scale-[1.02] object-cover md:aspect-video aspect-[3/2]" %}
       </a>
 </div>

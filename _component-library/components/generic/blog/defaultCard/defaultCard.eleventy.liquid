@@ -21,10 +21,7 @@
     </div>
   </div>
   <a class="" href="{{url}}">
-    {% if env_bookshop_live %}
       {% bookshop "generic/image" bind: image class: "w-full rounded transition-all duration-300 scale-100 hover:scale-105 object-cover aspect-[3/2]" %}
-    {% else %}
-      {% bookshop "generic/image" bind: image class: "w-full rounded transition-all duration-300 scale-100 hover:scale-105 object-cover aspect-[3/2]" %}{% endif %}
   </a>
   <ul class=" flex text-{{color_group}}-secondarycolor flex flex-wrap gap-x-4 overflow-hidden opacity-70">
     {% for tag in blogTags %}
