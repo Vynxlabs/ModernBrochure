@@ -11,7 +11,7 @@
 {% endif %}
 {% assign counter = 0 %}
 
-
+{% comment %} {% if entry.data.date %}{{ entry.data.date }}{% else %}{{ entry.date }}{% endif %} {% endcomment %}
 <div class="cs-w-full py-20 bg-{{styles.color_group}}-backgroundcolor flex flex-col items-center justify-center text-{{styles.color_group}}-textcolor">
 
   <div
@@ -46,7 +46,7 @@
                     blogTitle: {{ entry.data.title }}
                     url: {{ entry.url }}
                     author: {{ blogAuthor }}
-                    date: '{% if entry.data.date %}{{ entry.data.date }}{% else %}{{ entry.date }}{% endif %}'
+                    date: '2022-08-01'
                     length: {{ entry.content | readTimeFilter }}
                     blogTags: {{ entry.data.tags | ymlify | split: "," | json}}
                     {{image}}
