@@ -50,7 +50,6 @@
                 {{image | strip}}
                 color_group: {{styles.color_group}}
                 {% endcapture %}
-                {% assign temp = blogInfo | log %}
                 {% assign blogInfo = blogInfo | ymlify %}
                 {% if entry == postListItems.first %}
                     {% bookshop "generic/blog/featured1" bind:blogInfo %}
