@@ -3,7 +3,7 @@ module.exports = function (Liquid) {
         const averageWPM = 250;
 
     // Remove HTML tags from the text
-    const plainText = text.replace(/<[^>]+>/g, '');
+    const plainText = text !== null ? text.replace(/<[^>]+>/g, '') : "";;
 
     // Calculate the number of words in the text
     const wordCount = plainText.trim().split(/\s+/).length;
