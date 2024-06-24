@@ -48,7 +48,7 @@
                     blogTitle: {{ entry.data.title }}
                     url: {{ entry.url }}
                     author: {{blogAuthor}}
-                    date: '{% if entry.data.date %}{{ entry.data.date }}{% else %}{{ entry.date }}{% endif %}'
+                    date: {{date}}
                     length: {{ entry.content | readTimeFilter }}
                     blogTags: {{ entry.data.tags | ymlify | split: "," | json}}
                     {{image}}
