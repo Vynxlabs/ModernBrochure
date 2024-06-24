@@ -1,9 +1,7 @@
 {% if env_bookshop_live %}
   {% assign postListItems = collections.blog %}
-  {% assign date = '2020-01-17' %}
 {% else %}
   {% assign postListItems = pagination.items %}
-  {% capture date %}'{% if entry.data.date %}{{ entry.data.date }}{% else %}{{ entry.date }}{% endif %}'{% endcapture %}
 {% endif %}
 {% assign color_group = styles.color_group %}
 {% if contents.randomize %}
@@ -47,8 +45,8 @@
         {% capture blogInfo %}
                     blogTitle: {{ entry.data.title }}
                     url: {{ entry.url }}
-                    author: {{blogAuthor}}
-                    date: {{date}}
+                    author: {{ blogAuthor }}
+                    date: '{% if entry.data.date %}{{ entry.data.date }}{% else %}{{ entry.date }}{% endif %}'
                     length: {{ entry.content | readTimeFilter }}
                     blogTags: {{ entry.data.tags | ymlify | split: "," | json}}
                     {{image}}
