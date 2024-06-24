@@ -6,8 +6,9 @@
     {% assign postListItems = pagination.items %}
 {% endif %}
 {% assign color_group = styles.color_group %}
-
 {% assign counter = 0 %}
+{% assign cardStyle = 'generic/blog/' |  append: styles.cardStyle | append: "Card" %}
+{% assign featureStyle = 'generic/blog/' |  append: styles.cardStyle | append: "Featured" %}
 
 <div class="cs-w-full py-20 bg-{{styles.color_group}}-backgroundcolor flex flex-col items-center justify-center text-{{styles.color_group}}-textcolor">
     
@@ -52,9 +53,9 @@
                 {% endcapture %}
                 {% assign blogInfo = blogInfo | ymlify %}
                 {% if entry == postListItems.first %}
-                    {% bookshop "generic/blog/featured1" bind:blogInfo %}
+                    {% bookshop {{featureStyle}} bind:blogInfo %}
                     {% elsif counter<21 %}
-                        {% bookshop "generic/blog/card1" bind:blogInfo %}
+                        {% bookshop {{cardStyle}} bind:blogInfo %}
                         {% if env_bookshop_live %}
                             {% assign counter = counter | plus: 1 %}
                         {% endif %}
