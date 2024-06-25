@@ -18,7 +18,7 @@
             
         {% endif %}
         {% if env_bookshop_live and content.showNote %}
-            {% bookshop "generic/notification" heading:"Blog Cards" text:"The blog cards have place holder information. You're real information will show up on the live site. <br> I you see no blog cards its probably because you haven't added any." %}
+            {% bookshop "generic/notification" heading:"Blog Cards" text:"The time to read will not show up while editing, but will show up on the live site" %}
         {% endif %}
         {% bookshop "generic/heading" bind: content.heading %}
         <div class="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3   gap-10 md:gap-20 mt-12">
