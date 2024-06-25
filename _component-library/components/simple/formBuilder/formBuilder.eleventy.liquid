@@ -12,7 +12,7 @@
     {% for element in form_elements %}
       <div class="mt-4">{% bookshop "{{element._bookshop_name}}" bind: element %}</div>
     {% endfor %}
-    <div data-netlify-recaptcha="true"></div>
+    <div class="mt-4" data-netlify-recaptcha="true"></div>
     <div class="mt-5 flex justify-end">{% bookshop "generic/button" bind: submitButton %}</div>
   </form>
 </div>
