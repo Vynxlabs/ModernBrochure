@@ -1,0 +1,43 @@
+name: Weekly Template Update
+
+on:
+  schedule:
+    - cron: '0 0 * * 0'  # Runs every Sunday at midnight UTC 
+
+jobs:
+  update-template:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Set up Git
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
+      
+      - name: Fetch upstream changes
+        run: git fetch upstream main
+        
+      - name: Check mergeability
+        id: check_merge
+        run: |
+          git merge-base --is-ancestor HEAD upstream/main
+          echo "::set-output name=mergeable::true"
+        continue-on-error: true
+      
+      - name: Merge upstream changes
+        if: steps.check_merge.outputs.mergeable == 'true'
+        run: git merge upstream/main --no-edit
+        continue-on-error: true
+        
+      - name: Handle merge conflicts
+        if: steps.check_merge.outputs.mergeable != 'true'
+        run: |
+          echo "Merge conflicts detected. Please resolve conflicts manually."
+          exit 1  # Exit with error to stop the workflow
+        
+      - name: Push changes to origin
+        if: steps.check_merge.outputs.mergeable == 'true' && github.event_name == 'schedule'
+        run: git push origin HEAD:main
