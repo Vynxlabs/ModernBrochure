@@ -27,8 +27,7 @@
     </div>
 
     <div class="mt-10 border-t-2  pt-10">
-        <p>
-        {{content.description}}
-        </p>
+        {% if content.description %}
+        {% bookshop "generic/textBlock" text: content.description %}{% endif %}
     </div>
 </div>
