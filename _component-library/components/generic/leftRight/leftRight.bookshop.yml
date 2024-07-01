@@ -9,10 +9,10 @@ spec:
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  entryNumber: 0
   content:
     heading: bookshop:generic/heading!
     image: bookshop:generic/image
+    entryNumber: 0
   styles:
     color_group: primary
     colorFromGroup: background

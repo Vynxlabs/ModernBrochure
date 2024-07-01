@@ -3,7 +3,7 @@
 
 
 <div class="c-leftRight {% if styles.fullWidth %}{% else %}mt-24 lg:mt-36{% endif %} flex gap-10 lg:gap-20 items-center">
-    {% assign evenOdd = entryNumber | modulo: 2 %}
+    {% assign evenOdd = content.entryNumber | modulo: 2 %}
     {% capture entryHeading %}
         content:
             highlightEyebrow: {{content.heading.content.highlightEyebrow}}
