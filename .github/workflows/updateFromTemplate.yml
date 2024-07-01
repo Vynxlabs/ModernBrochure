@@ -34,7 +34,7 @@ jobs:
       
       - name: Merge upstream changes
         if: steps.check_merge.outputs.mergeable == 'true'
-        run: git merge upstream/main --no-edit
+        run: git merge upstream/main --no-edit --allow-unrelated-histories
         continue-on-error: true
         
       - name: Handle merge conflicts
