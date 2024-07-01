@@ -1,3 +1,14 @@
-<div class="c-sideBySideStandard">
-    <p>{{ text }}</p>
+<div class="c-sideBySideStandard componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
+  <section
+    {% if content.sectionId %}
+    id="{{ content.sectionId | idFilter }}"
+    {% endif %}
+    class="basecontainer w-full py-20">
+    {% bookshop "generic/heading" bind: content.heading %}
+    {% if content.entries %}
+      {% for entry in content.entries %}
+        {% bookshop "generic/leftRight" bind: entry %}
+      {% endfor %}
+    {% endif %}
+  </section>
 </div>

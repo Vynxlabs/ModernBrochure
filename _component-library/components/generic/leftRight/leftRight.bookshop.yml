@@ -9,10 +9,24 @@ spec:
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  text: "Hello World!"
+  entryNumber: 0
+  content:
+    heading: bookshop:generic/heading!
+    image: bookshop:generic/image
+  styles:
+    color_group: primary
+    colorFromGroup: background
+    fullWidth: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  entryNumber:
+    hidden: true
+  fullWidth:
+    hidden: true
+  colorFromGroup:
+    hidden: '!fullWidth'
+    comment: "Select a color from the color group to be used as the background color of the text section"

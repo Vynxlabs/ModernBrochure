@@ -2,9 +2,9 @@
 spec:
   structures:
     - content_blocks
-  label: "SideBySideStandard"
-  description:
-  icon:
+  label: "Side By Side Standard"
+  description: A versile section with alternating text and images from left to right
+  icon: ballot
   tags: []
 
 # Defines the structure of this component, as well as the default values
@@ -12,6 +12,7 @@ blueprint:
   content:
     sectionId:
     heading: bookshop:generic/heading!
+    entries: [bookshop:generic/leftRight!]
   styles:
     color_group: primary
 

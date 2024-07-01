@@ -1,3 +1,9 @@
-<div class="c-leftRight">
-    <p>{{ text }}</p>
+{% assign color_group = styles.color_group %}
+
+
+
+<div class="c-leftRight {% if styles.fullWidth %}{% else %}mt-36{% endif %} flex">
+    {% assign evenOdd = entryNumber | modulo: 2 %}
+    <div class="{% if evenOdd == 0 %}order-1{% endif %} ">{% bookshop "generic/heading" bind: content.heading %}</div>
+    {% bookshop "generic/image" bind: entry.entry.image class: "object-cover object-center aspect-[3/2]" %}
 </div>
