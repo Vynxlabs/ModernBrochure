@@ -1,8 +1,11 @@
-name: Weekly Template Update
+name: Weekly Template Update ${{ secrets.CLIENT_NAME }}
 
 on:
   schedule:
-    - cron: '0 0 * * 0'  # Runs every Sunday at midnight UTC 
+    - cron: '*/5 * * * *'  # Runs every Sunday at midnight UTC 
+
+permissions:
+  contents: read
 
 jobs:
   update-template:
@@ -18,7 +21,9 @@ jobs:
           git config --global user.name "GitHub Actions"
       
       - name: Fetch upstream changes
-        run: git fetch upstream main
+        run: |
+          git remote add upstream https://github.com/Virtuouz/BookShopStarter.git
+          git fetch upstream main
         
       - name: Check mergeability
         id: check_merge
