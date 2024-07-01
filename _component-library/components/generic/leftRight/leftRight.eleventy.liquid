@@ -2,8 +2,24 @@
 
 
 
-<div class="c-leftRight {% if styles.fullWidth %}{% else %}mt-36{% endif %} flex">
+<div class="c-leftRight {% if styles.fullWidth %}{% else %}mt-24 lg:mt-36{% endif %} flex gap-10 lg:gap-20 items-center">
     {% assign evenOdd = entryNumber | modulo: 2 %}
-    <div class="{% if evenOdd == 0 %}order-1{% endif %} ">{% bookshop "generic/heading" bind: content.heading %}</div>
-    {% bookshop "generic/image" bind: entry.entry.image class: "object-cover object-center aspect-[3/2]" %}
+    {% capture entryHeading %}
+        content:
+            highlightEyebrow: {{content.heading.content.highlightEyebrow}}
+            eyebrow: {{content.heading.content.eyebrow}}
+            headline: {{content.heading.content.headline}}
+            description: {{content.heading.content.description}}
+            headingHierarchy: "h3"
+            buttons:
+              {{content.heading.content.buttons | json}}
+        styles:
+            contentAlignment: {{content.heading.styles.contentAlignment}}
+            textAlignment: {{content.heading.styles.textAlignment}}
+            visualInterest: {{content.heading.styles.visualInterest}}
+            visualInterestColor: "{{content.heading.styles.visualInterestColor}}"
+      {% endcapture %}
+      {% assign entryHeading = entryHeading | ymlify %}
+    <div class="{% if evenOdd == 0 %}order-1{% endif %} flex-1 flex justify-center items-center">{% bookshop "generic/heading" bind: entryHeading %}</div>
+    <div class="flex-1 w-full">{% bookshop "generic/image" bind: content.image class: "object-cover object-center w-full rounded aspect-[3/2]" %}</div>
 </div>

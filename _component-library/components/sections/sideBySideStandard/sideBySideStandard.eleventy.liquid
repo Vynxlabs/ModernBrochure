@@ -1,3 +1,5 @@
+{% assign entryCounter = 0 %}
+
 <div class="c-sideBySideStandard componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
   <section
     {% if content.sectionId %}
@@ -7,7 +9,8 @@
     {% bookshop "generic/heading" bind: content.heading %}
     {% if content.entries %}
       {% for entry in content.entries %}
-        {% bookshop "generic/leftRight" bind: entry %}
+        {% bookshop "generic/leftRight" bind: entry entryNumber: entryCounter%}
+        {% assign entryCounter = entryCounter | plus: 1 %}
       {% endfor %}
     {% endif %}
   </section>
