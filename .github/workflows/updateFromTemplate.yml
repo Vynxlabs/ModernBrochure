@@ -1,4 +1,4 @@
-name: Weekly Template Update ${{ secrets.CLIENT_NAME }}
+name: Weekly Template Update
 
 on:
   schedule:
