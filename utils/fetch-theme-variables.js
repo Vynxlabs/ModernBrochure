@@ -198,22 +198,20 @@ function appendTailwindUtilityClasses(colorSet,id){
     cssString += `.bg-${id}-accentcolor { --tw-bg-opacity:1; background-color: rgb( ${hexToRgbCss(colorSet.accentColor)} / var(--tw-bg-opacity)); }\n`;
     cssString += `.bg-${id}-textcolor { --tw-bg-opacity:1; background-color: rgb( ${hexToRgbCss(colorSet.textColor)} / var(--tw-bg-opacity)); }\n`;
 
+     //background media
+     cssString += `@media (min-width: 768px) { .md\\:bg-${id}-backgroundcolor { --tw-bg-opacity:1; background-color: rgb( ${hexToRgbCss(colorSet.backgroundColor)} / var(--tw-bg-opacity)); } }\n`;
+     cssString += `@media (min-width: 768px) { .md\\:bg-${id}-primarycolor { --tw-bg-opacity:1; background-color: rgb( ${hexToRgbCss(colorSet.primaryColor)} / var(--tw-bg-opacity)); } }\n`;
+     cssString += `@media (min-width: 768px) { .md\\:bg-${id}-secondarycolor { --tw-bg-opacity:1; background-color: rgb( ${hexToRgbCss(colorSet.secondaryColor)} / var(--tw-bg-opacity)); } }\n`;
+     cssString += `@media (min-width: 768px) { .md\\:bg-${id}-accentcolor { --tw-bg-opacity:1; background-color: rgb( ${hexToRgbCss(colorSet.accentColor)} / var(--tw-bg-opacity)); } }\n`;
+     cssString += `@media (min-width: 768px) { .md\\:bg-${id}-textcolor { --tw-bg-opacity:1; background-color: rgb( ${hexToRgbCss(colorSet.textColor)} / var(--tw-bg-opacity)); } }\n`;
+
     //background hover
     cssString += `.hover\\:bg-${id}-backgroundcolor:hover { background-color: ${colorSet.backgroundColor}; }\n`;
     cssString += `.hover\\:bg-${id}-primarycolor:hover { background-color: ${colorSet.primaryColor}; }\n`;
     cssString += `.hover\\:bg-${id}-secondarycolor:hover { background-color: ${colorSet.secondaryColor}; }\n`;
     cssString += `.hover\\:bg-${id}-accentcolor:hover { background-color: ${colorSet.accentColor}; }\n`;
 
-    //Nav
-    cssString += `.bg-${id}-backgroundcolornav { background-color: ${colorSet.backgroundColor}70; }\n`;
-    cssString += `.bg-${id}-primarycolornav { background-color: ${colorSet.primaryColor}70; }\n`;
-    cssString += `.bg-${id}-secondarycolornav { background-color: ${colorSet.secondaryColor}70; }\n`;
-    cssString += `.bg-${id}-accentcolornav { background-color: ${colorSet.accentColor}70; }\n`;
-    //Nav media
-    cssString += `@media (min-width: 768px) { .md\\:bg-${id}-backgroundcolornav { background-color: ${colorSet.backgroundColor}70; } }\n`;
-    cssString += `@media (min-width: 768px) { .md\\:bg-${id}-primarycolornav { background-color: ${colorSet.primaryColor}70; } }\n`;
-    cssString += `@media (min-width: 768px) { .md\\:bg-${id}-secondarycolornav { background-color: ${colorSet.secondaryColor}70; } }\n`;
-    cssString += `@media (min-width: 768px) { .md\\:bg-${id}-accentcolornav { background-color: ${colorSet.accentColor}70; } }\n`;
+  
     
     //border color
     cssString += `.border-${id}-textcolor { border-color: ${colorSet.textColor}; }\n`;
