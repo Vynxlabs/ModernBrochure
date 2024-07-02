@@ -1,8 +1,9 @@
 name: Weekly Template Update
 
 on:
+  workflow_dispatch:
   schedule:
-    - cron: '*/10 * * * *'  # Runs every Sunday at midnight UTC 
+    - cron: '0 0 * * 0'  # Every Sunday
 
 permissions:
   contents: read
@@ -25,24 +26,6 @@ jobs:
           git remote add upstream https://github.com/Virtuouz/BookShopStarter.git
           git fetch upstream main
         
-      - name: Check mergeability
-        id: check_merge
+      - name: Pull upstream changes
         run: |
-          git merge-base --is-ancestor HEAD upstream/main
-          echo "::set-output name=mergeable::true"
-        continue-on-error: true
-      
-      - name: Merge upstream changes
-        if: steps.check_merge.outputs.mergeable == 'true'
-        run: git merge upstream/main --no-edit --allow-unrelated-histories
-        continue-on-error: true
-        
-      - name: Handle merge conflicts
-        if: steps.check_merge.outputs.mergeable != 'true'
-        run: |
-          echo "Merge conflicts detected. Please resolve conflicts manually."
-          exit 1  # Exit with error to stop the workflow
-        
-      - name: Push changes to origin
-        if: steps.check_merge.outputs.mergeable == 'true' && github.event_name == 'schedule'
-        run: git push origin HEAD:main
+          git pull upstream main --allow-unrelated-histories --no-edit --no-rebase -X ours || (echo "Merge conflict detected. Resolve conflicts manually."; exit 1)
