@@ -15,9 +15,13 @@ blueprint:
     entries: [bookshop:generic/leftRight!]
   styles:
     color_group: primary
+    startImageRight: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  startImageRight:
+    type: switch
+    comment: Weather the alternating image and content pattern should start with the image on the right.
