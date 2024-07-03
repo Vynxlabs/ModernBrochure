@@ -78,7 +78,7 @@ collections_config:
           website.
       pageLink:
         label: Page Location
-        comment: The location of this page on your webiste i.e. Example.com/mylocation
+        comment: The location of this page on your webiste i.e. Example.com/mylocation. Leave blank if you want to just use the page title as the page location.
         type: text
       metaDesc:
         type: textarea
