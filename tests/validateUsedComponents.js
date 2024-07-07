@@ -35,6 +35,8 @@ const collectComponentBlueprints = (dir, relativePath = '') => {
   });
 };
 
+collectComponentBlueprints(componentsDir);
+
 // Function to traverse pages directories and collect components used
 const collectComponentsInUse = (dir) => {
   const files = fs.readdirSync(dir);
@@ -65,10 +67,47 @@ const collectComponentsInUse = (dir) => {
   });
 };
 
+pagesDirs.forEach((dir) => collectComponentsInUse(dir));
+
 // Function to validate component parameters against blueprint
 const validateParameters = (componentName, usedParameters, blueprintParameters) => {
   for (const key in usedParameters) {
-    if (!blueprintParameters.hasOwnProperty(key) && key !== '_bookshop_name') {
+    if (key === '_bookshop_name') {
+      continue; // Skip _bookshop_name key
+    }
+
+    const paramValue = usedParameters[key];
+    const blueprintValue = blueprintParameters[key];
+
+    if (Array.isArray(paramValue)) {
+      paramValue.forEach((item, index) => {
+        if (typeof item === 'object' && item !== null) {
+          if (item._bookshop_name) {
+            const nestedComponentName = item._bookshop_name;
+            if (!componentBlueprints[nestedComponentName]) {
+              console.log(`Warning: Nested component "${nestedComponentName}" used in "${componentName}" but not found in blueprints.`);
+            } else {
+              validateParameters(nestedComponentName, item, componentBlueprints[nestedComponentName]);
+            }
+          } else if (blueprintValue && blueprintValue.length > index) {
+            validateParameters(componentName, item, blueprintValue[index]);
+          }
+        }
+      });
+    } else if (typeof paramValue === 'object' && paramValue !== null) {
+      if (paramValue._bookshop_name) {
+        const nestedComponentName = paramValue._bookshop_name;
+        if (!componentBlueprints[nestedComponentName]) {
+          console.log(`Warning: Nested component "${nestedComponentName}" used in "${componentName}" but not found in blueprints.`);
+        } else {
+          validateParameters(nestedComponentName, paramValue, componentBlueprints[nestedComponentName]);
+        }
+      } else if (blueprintValue) {
+        validateParameters(componentName, paramValue, blueprintValue);
+      } else {
+        validateParameters(componentName, paramValue, {});
+      }
+    } else if (!blueprintParameters.hasOwnProperty(key)) {
       console.log(`Warning: Parameter "${key}" used in component "${componentName}" but not found in blueprint.`);
     }
   }
@@ -76,36 +115,14 @@ const validateParameters = (componentName, usedParameters, blueprintParameters) 
 
 // Function to validate components used against blueprints, including nested components
 const validateComponents = (componentsUsed, blueprints) => {
-  const validateComponentRecursively = (component, componentKey) => {
-    const componentName = component._bookshop_name;
-
-    if (componentName && !blueprints[componentName]) {
-      console.log(`Warning: Component "${componentName}" used in pages but not found in blueprints.`);
-    } else if (componentName && blueprints[componentName]) {
-      const componentBlueprint = blueprints[componentName];
-      validateParameters(componentName, component, componentBlueprint);
-
-      // Check nested components
-      for (const key in component) {
-        if (component[key] && typeof component[key] === 'object') {
-          validateComponentRecursively(component[key], componentName);
-        }
-      }
-    } else {
-      // Check for nested components even if there's no _bookshop_name directly
-      for (const key in component) {
-        if (component[key] && typeof component[key] === 'object') {
-          validateComponentRecursively(component[key], componentKey);
-        }
-      }
-    }
-  };
-
   componentsUsed.forEach(component => {
-    validateComponentRecursively(component, component._bookshop_name);
+    const componentName = component._bookshop_name;
+    if (!blueprints[componentName]) {
+      console.log(`Warning: Component "${componentName}" used in pages but not found in blueprints.`);
+    } else {
+      validateParameters(componentName, component, blueprints[componentName]);
+    }
   });
 };
 
-collectComponentBlueprints(componentsDir);
-pagesDirs.forEach((dir) => collectComponentsInUse(dir));
 validateComponents(componentsInUse, componentBlueprints);
