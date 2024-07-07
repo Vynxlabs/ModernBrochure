@@ -68,7 +68,7 @@ const collectComponentsInUse = (dir) => {
 // Function to validate component parameters against blueprint
 const validateParameters = (componentName, usedParameters, blueprintParameters) => {
   for (const key in usedParameters) {
-    if (!blueprintParameters.hasOwnProperty(key) && key !== '_bookshop_name') {
+    if (!blueprintParameters.hasOwnProperty(key)) {
       console.log(`Warning: Parameter "${key}" used in component "${componentName}" but not found in blueprint.`);
     }
   }
