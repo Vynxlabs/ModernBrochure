@@ -13,7 +13,8 @@
     "build":"node ./utils/fetch-theme-variables.js && sass --no-source-map src/assets/styles:dist/css && sass --no-source-map src/assets/styles:dist/css && npx eleventy",
     "tailwind": "npx tailwindcss -i ./src/css/styles.css -o ./dist/css/styles.css --watch",
     "unlighthouse": "unlighthouse-ci --site sopriscuisine.com --build-static --root ./dist --output-path ./sopriscuisine",
-    "new": "npx @bookshop/init --component"
+    "new": "npx @bookshop/init --component",
+    "test:componentUse": "node ./tests/validateUsedComponents.js"
   },
   "keywords": [],
   "author": "",
