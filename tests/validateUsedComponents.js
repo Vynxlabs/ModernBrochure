@@ -7,6 +7,8 @@ const componentsDir = './_component-library/components';
 const pagesDirs = ['./src/pages', './src/services'];
 const componentBlueprints = {};
 const componentsInUse = [];
+let hasWarnings = false;
+const warnings = [];
 
 // Function to traverse directory and collect component blueprints
 const collectComponentBlueprints = (dir, relativePath = '') => {
@@ -85,7 +87,8 @@ const validateParameters = (componentName, usedParameters, blueprintParameters, 
           if (item._bookshop_name) {
             const nestedComponentName = item._bookshop_name;
             if (!componentBlueprints[nestedComponentName]) {
-              console.log(`Warning: Nested component "${nestedComponentName}" used in "${componentName}" but not found in blueprints. File: ${filename}`);
+              warnings.push(`Warning: Nested component "${nestedComponentName}" used in "${componentName}" but not found in blueprints. File: ${filename}`);
+              hasWarnings = true;
             } else {
               validateParameters(nestedComponentName, item, componentBlueprints[nestedComponentName], filename);
             }
@@ -98,7 +101,8 @@ const validateParameters = (componentName, usedParameters, blueprintParameters, 
       if (paramValue._bookshop_name) {
         const nestedComponentName = paramValue._bookshop_name;
         if (!componentBlueprints[nestedComponentName]) {
-          console.log(`Warning: Nested component "${nestedComponentName}" used in "${componentName}" but not found in blueprints. File: ${filename}`);
+          warnings.push(`Warning: Nested component "${nestedComponentName}" used in "${componentName}" but not found in blueprints. File: ${filename}`);
+          hasWarnings = true;
         } else {
           validateParameters(nestedComponentName, paramValue, componentBlueprints[nestedComponentName], filename);
         }
@@ -108,7 +112,8 @@ const validateParameters = (componentName, usedParameters, blueprintParameters, 
         validateParameters(componentName, paramValue, {}, filename);
       }
     } else if (!blueprintParameters.hasOwnProperty(key)) {
-      console.log(`Warning: Parameter "${key}" used in component "${componentName}" but not found in blueprint. File: ${filename}`);
+      warnings.push(`Warning: Parameter "${key}" used in component "${componentName}" but not found in blueprint. File: ${filename}`);
+      hasWarnings = true;
     }
   }
 };
@@ -118,7 +123,8 @@ const validateComponents = (componentsUsed, blueprints) => {
   componentsUsed.forEach(({ component, filename }) => {
     const componentName = component._bookshop_name;
     if (!blueprints[componentName]) {
-      console.log(`Warning: Component "${componentName}" used in pages but not found in blueprints. File: ${filename}`);
+      warnings.push(`Warning: Component "${componentName}" used in pages but not found in blueprints. File: ${filename}`);
+      hasWarnings = true;
     } else {
       validateParameters(componentName, component, blueprints[componentName], filename);
     }
@@ -126,3 +132,10 @@ const validateComponents = (componentsUsed, blueprints) => {
 };
 
 validateComponents(componentsInUse, componentBlueprints);
+
+if (hasWarnings) {
+  warnings.forEach(warning => console.log(warning));
+  process.exit(1); // Exit with an error code to indicate failure
+} else {
+  console.log("No warnings found. All components and parameters are valid.");
+}

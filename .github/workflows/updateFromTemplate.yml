@@ -1,9 +1,9 @@
-name: Weekly Template Update
+name: Weekly Template Update and Test
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 0 * * 0'  # Every Sunday
+    - cron: '0 0 * * 0'  # Runs every Sunday at midnight UTC
 
 permissions:
   contents: read
@@ -11,21 +11,42 @@ permissions:
 jobs:
   update-template:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-        
+
       - name: Set up Git
         run: |
           git config --global user.email "actions@github.com"
           git config --global user.name "GitHub Actions"
-      
+
       - name: Fetch upstream changes
         run: |
           git remote add upstream https://github.com/Virtuouz/BookShopStarter.git
           git fetch upstream main
-        
-      - name: Pull upstream changes
+
+      - name: Create temporary branch
         run: |
-          git pull upstream main --allow-unrelated-histories --no-edit --no-rebase -X ours || (echo "Merge conflict detected. Resolve conflicts manually."; exit 1)
+          git checkout -b temp-update-branch
+          git merge upstream/main --allow-unrelated-histories --no-edit -X ours || (echo "Merge conflict detected. Resolve conflicts manually."; exit 1)
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run component validation
+        run: npm run test:componentUse
+
+      - name: Merge changes into main
+        if: success()
+        run: |
+          git checkout main
+          git merge temp-update-branch --no-edit
+          git push origin main
+
+      - name: Clean up
+        run: git branch -D temp-update-branch
+
+      - name: Notify on failure
+        if: failure()
+        run: echo "Automated tests failed. Merge aborted."
