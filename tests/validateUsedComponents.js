@@ -53,13 +53,13 @@ const collectComponentsInUse = (dir) => {
 
       // Collect components used in hero and content_blocks
       if (frontMatter.hero && frontMatter.hero._bookshop_name) {
-        componentsInUse.push(frontMatter.hero);
+        componentsInUse.push({ component: frontMatter.hero, filename: filePath });
       }
 
       if (frontMatter.content_blocks) {
         frontMatter.content_blocks.forEach(block => {
           if (block._bookshop_name) {
-            componentsInUse.push(block);
+            componentsInUse.push({ component: block, filename: filePath });
           }
         });
       }
@@ -70,7 +70,7 @@ const collectComponentsInUse = (dir) => {
 pagesDirs.forEach((dir) => collectComponentsInUse(dir));
 
 // Function to validate component parameters against blueprint
-const validateParameters = (componentName, usedParameters, blueprintParameters) => {
+const validateParameters = (componentName, usedParameters, blueprintParameters, filename) => {
   for (const key in usedParameters) {
     if (key === '_bookshop_name') {
       continue; // Skip _bookshop_name key
@@ -85,12 +85,12 @@ const validateParameters = (componentName, usedParameters, blueprintParameters) 
           if (item._bookshop_name) {
             const nestedComponentName = item._bookshop_name;
             if (!componentBlueprints[nestedComponentName]) {
-              console.log(`Warning: Nested component "${nestedComponentName}" used in "${componentName}" but not found in blueprints.`);
+              console.log(`Warning: Nested component "${nestedComponentName}" used in "${componentName}" but not found in blueprints. File: ${filename}`);
             } else {
-              validateParameters(nestedComponentName, item, componentBlueprints[nestedComponentName]);
+              validateParameters(nestedComponentName, item, componentBlueprints[nestedComponentName], filename);
             }
           } else if (blueprintValue && blueprintValue.length > index) {
-            validateParameters(componentName, item, blueprintValue[index]);
+            validateParameters(componentName, item, blueprintValue[index], filename);
           }
         }
       });
@@ -98,29 +98,29 @@ const validateParameters = (componentName, usedParameters, blueprintParameters) 
       if (paramValue._bookshop_name) {
         const nestedComponentName = paramValue._bookshop_name;
         if (!componentBlueprints[nestedComponentName]) {
-          console.log(`Warning: Nested component "${nestedComponentName}" used in "${componentName}" but not found in blueprints.`);
+          console.log(`Warning: Nested component "${nestedComponentName}" used in "${componentName}" but not found in blueprints. File: ${filename}`);
         } else {
-          validateParameters(nestedComponentName, paramValue, componentBlueprints[nestedComponentName]);
+          validateParameters(nestedComponentName, paramValue, componentBlueprints[nestedComponentName], filename);
         }
       } else if (blueprintValue) {
-        validateParameters(componentName, paramValue, blueprintValue);
+        validateParameters(componentName, paramValue, blueprintValue, filename);
       } else {
-        validateParameters(componentName, paramValue, {});
+        validateParameters(componentName, paramValue, {}, filename);
       }
     } else if (!blueprintParameters.hasOwnProperty(key)) {
-      console.log(`Warning: Parameter "${key}" used in component "${componentName}" but not found in blueprint.`);
+      console.log(`Warning: Parameter "${key}" used in component "${componentName}" but not found in blueprint. File: ${filename}`);
     }
   }
 };
 
 // Function to validate components used against blueprints, including nested components
 const validateComponents = (componentsUsed, blueprints) => {
-  componentsUsed.forEach(component => {
+  componentsUsed.forEach(({ component, filename }) => {
     const componentName = component._bookshop_name;
     if (!blueprints[componentName]) {
-      console.log(`Warning: Component "${componentName}" used in pages but not found in blueprints.`);
+      console.log(`Warning: Component "${componentName}" used in pages but not found in blueprints. File: ${filename}`);
     } else {
-      validateParameters(componentName, component, blueprints[componentName]);
+      validateParameters(componentName, component, blueprints[componentName], filename);
     }
   });
 };
