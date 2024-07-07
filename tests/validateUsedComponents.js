@@ -68,7 +68,7 @@ const collectComponentsInUse = (dir) => {
 // Function to validate component parameters against blueprint
 const validateParameters = (componentName, usedParameters, blueprintParameters) => {
   for (const key in usedParameters) {
-    if (!blueprintParameters.hasOwnProperty(key)) {
+    if (!blueprintParameters.hasOwnProperty(key) && key !== '_bookshop_name') {
       console.log(`Warning: Parameter "${key}" used in component "${componentName}" but not found in blueprint.`);
     }
   }
@@ -76,26 +76,33 @@ const validateParameters = (componentName, usedParameters, blueprintParameters) 
 
 // Function to validate components used against blueprints, including nested components
 const validateComponents = (componentsUsed, blueprints) => {
-  const validateComponentRecursively = (component, blueprint) => {
+  const validateComponentRecursively = (component, componentKey) => {
     const componentName = component._bookshop_name;
 
-    if (!blueprints[componentName]) {
+    if (componentName && !blueprints[componentName]) {
       console.log(`Warning: Component "${componentName}" used in pages but not found in blueprints.`);
-    } else {
+    } else if (componentName && blueprints[componentName]) {
       const componentBlueprint = blueprints[componentName];
       validateParameters(componentName, component, componentBlueprint);
 
       // Check nested components
       for (const key in component) {
         if (component[key] && typeof component[key] === 'object') {
-          validateComponentRecursively(component[key], componentBlueprint[key]);
+          validateComponentRecursively(component[key], componentName);
+        }
+      }
+    } else {
+      // Check for nested components even if there's no _bookshop_name directly
+      for (const key in component) {
+        if (component[key] && typeof component[key] === 'object') {
+          validateComponentRecursively(component[key], componentKey);
         }
       }
     }
   };
 
   componentsUsed.forEach(component => {
-    validateComponentRecursively(component, componentBlueprints[component._bookshop_name]);
+    validateComponentRecursively(component, component._bookshop_name);
   });
 };
 
