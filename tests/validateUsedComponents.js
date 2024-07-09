@@ -73,6 +73,7 @@ pagesDirs.forEach((dir) => collectComponentsInUse(dir));
 
 // Function to validate component parameters against blueprint
 const validateParameters = (componentName, usedParameters, blueprintParameters, filename) => {
+  // Check for extra parameters
   for (const key in usedParameters) {
     if (key === '_bookshop_name') {
       continue; // Skip _bookshop_name key
@@ -113,6 +114,14 @@ const validateParameters = (componentName, usedParameters, blueprintParameters, 
       }
     } else if (!blueprintParameters.hasOwnProperty(key)) {
       warnings.push(`Warning: Parameter "${key}" used in component "${componentName}" but not found in blueprint. File: ${filename}`);
+      hasWarnings = true;
+    }
+  }
+
+  // Check for missing parameters
+  for (const key in blueprintParameters) {
+    if (!usedParameters.hasOwnProperty(key) && key !== '_bookshop_name') {
+      warnings.push(`Warning: Missing parameter "${key}" in component "${componentName}". File: ${filename}`);
       hasWarnings = true;
     }
   }
