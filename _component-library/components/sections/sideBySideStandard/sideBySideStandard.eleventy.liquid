@@ -4,8 +4,9 @@
   {% assign entryCounter = 0 %}
 {% endif %}
 
+{% assign fullWidth = true %}
 
-<div class="c-sideBySideStandard componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
+<div class="c-sideBySideStandard componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor z-20">
   <section
     {% if content.sectionId %}
     id="{{ content.sectionId | idFilter }}"
@@ -13,20 +14,23 @@
     class="basecontainer w-full py-20">
     {% bookshop "generic/heading" bind: content.heading %}
     {% if content.entries %}
-      {% for entry in content.entries %}
-        {% capture entryContent %}
-          content:
-            heading: {{entry.content.heading | json}}
-            image: {{entry.content.image | json}}
-            entryNumber: {{entryCounter}}
-          styles:
-            {{entry.styles | json}}
-        {% endcapture %}
-        {% assign entryContent = entryContent | ymlify %}
-        {% assign temp = entryContent | log %}
-        {% bookshop "generic/leftRight" bind: entryContent%}
-        {% assign entryCounter = entryCounter | plus: 1 %}
-      {% endfor %}
+      
+      <div class="{% if not fullWidth %}mt-20 {% else %} mt-0 md:mt-36{% endif %}">
+        {% for entry in content.entries %}
+          {% capture entryContent %}
+            content:
+              heading: {{entry.content.heading | json}}
+              image: {{entry.content.image | json}}
+              entryNumber: {{entryCounter}}
+            styles:
+              {{entry.styles | json}}
+          {% endcapture %}
+          {% assign entryContent = entryContent | ymlify %}
+          {% assign temp = entryContent | log %}
+          {% bookshop "generic/leftRight" bind: entryContent%}
+          {% assign entryCounter = entryCounter | plus: 1 %}
+        {% endfor %}
+      </div>
     {% endif %}
   </section>
 </div>

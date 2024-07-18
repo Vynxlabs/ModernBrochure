@@ -19,13 +19,19 @@
         visualInterestColor: "{{content.heading.styles.visualInterestColor}}"
   {% endcapture %}
   {% assign entryHeading = entryHeading | ymlify %}
-  {% if styles.fullWidth %}
+  {% if fullWidth %}
     {% capture containerClasses %}
-        mt-24 lg:mt-36
-        flex gap-x-10 gap-y-4  lg:gap-20 items-center 
-        {% if evenOdd == 0 %}flex-wrap {% else %}flex-wrap-reverse{% endif %}
+        flex md:mt-0 mt-24
+        {% if evenOdd == 0 %}md:flex-wrap flex-wrap-reverse{% else %}flex-wrap-reverse{% endif %} 
+    {% endcapture %}
+    {% capture textClasses %}
+        {% if evenOdd == 0 %} order-1 lg:cs-w-full-r  {% else %} lg:cs-w-full-l {% endif %} p-4 lg:p-8 md:cs-w-full  flex justify-center items-center min-w-[300px] bg-{{styles.color_group}}-backgroundcolor  bg-opacity-60 text-{{styles.color_group}}-highcontrast-backgroundcolor lg:bg-opacity-100
+    {% endcapture %}
+    {% capture imageDivClasses %}
+        {% if evenOdd == 0 %} order-1 lg:cs-w-full-l  {% else %} lg:cs-w-full-r {% endif %} -z-10 md:cs-w-full   flex items-end justify-center 
     {% endcapture %}
     {% else %}
+    {% comment %} No full width {% endcomment %}
     {% capture containerClasses %}
         mt-24 lg:mt-36
         flex gap-x-10 gap-y-4  lg:gap-20 items-center 
@@ -35,7 +41,7 @@
     {% if evenOdd == 0 %}order-1{% endif %} flex-1 flex justify-center items-center min-w-[300px]
     {% endcapture %}
     {% capture imageDivClasses %}
-        flex-1 w-full min-w-[250px]
+        flex-1 w-full min-w-[275px]
     {% endcapture %}
     {% capture imageClasses %}
         object-cover object-center w-full rounded aspect-[3/2]
@@ -43,8 +49,6 @@
   {% endif %}
 <div class="c-leftRight {{containerClasses}}">
     
-    
-      
     <div class="{{textClasses}}">{% bookshop "generic/heading" bind: entryHeading %}</div>
     <div class="{{imageDivClasses}}">{% bookshop "generic/image" bind: content.image class: imageClasses %}</div>
 </div>
