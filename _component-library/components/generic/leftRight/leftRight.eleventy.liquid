@@ -2,24 +2,50 @@
 
 
 {% assign evenOdd = content.entryNumber | modulo: 2 %}
-<div class="c-leftRight {% if styles.fullWidth %}{% else %}mt-24 lg:mt-36{% endif %} flex gap-x-10 gap-y-4  lg:gap-20 items-center {% if evenOdd == 0 %}flex-wrap {% else %}flex-wrap-reverse{% endif %}">
+
+{% capture entryHeading %}
+    content:
+        highlightEyebrow: {{content.heading.content.highlightEyebrow}}
+        eyebrow: {{content.heading.content.eyebrow}}
+        headline: {{content.heading.content.headline}}
+        description: {{content.heading.content.description}}
+        headingHierarchy: "h3"
+        buttons:
+          {{content.heading.content.buttons | json}}
+    styles:
+        contentAlignment: {{content.heading.styles.contentAlignment}}
+        textAlignment: {{content.heading.styles.textAlignment}}
+        visualInterest: {{content.heading.styles.visualInterest}}
+        visualInterestColor: "{{content.heading.styles.visualInterestColor}}"
+  {% endcapture %}
+  {% assign entryHeading = entryHeading | ymlify %}
+  {% if styles.fullWidth %}
+    {% capture containerClasses %}
+        mt-24 lg:mt-36
+        flex gap-x-10 gap-y-4  lg:gap-20 items-center 
+        {% if evenOdd == 0 %}flex-wrap {% else %}flex-wrap-reverse{% endif %}
+    {% endcapture %}
+    {% else %}
+    {% capture containerClasses %}
+        mt-24 lg:mt-36
+        flex gap-x-10 gap-y-4  lg:gap-20 items-center 
+        {% if evenOdd == 0 %}flex-wrap {% else %}flex-wrap-reverse{% endif %}
+    {% endcapture %}
+    {% capture textClasses %}
+    {% if evenOdd == 0 %}order-1{% endif %} flex-1 flex justify-center items-center min-w-[300px]
+    {% endcapture %}
+    {% capture imageDivClasses %}
+        flex-1 w-full min-w-[250px]
+    {% endcapture %}
+    {% capture imageClasses %}
+        object-cover object-center w-full rounded aspect-[3/2]
+    {% endcapture %}
+  {% endif %}
+<div class="c-leftRight {{containerClasses}}">
     
-    {% capture entryHeading %}
-        content:
-            highlightEyebrow: {{content.heading.content.highlightEyebrow}}
-            eyebrow: {{content.heading.content.eyebrow}}
-            headline: {{content.heading.content.headline}}
-            description: {{content.heading.content.description}}
-            headingHierarchy: "h3"
-            buttons:
-              {{content.heading.content.buttons | json}}
-        styles:
-            contentAlignment: {{content.heading.styles.contentAlignment}}
-            textAlignment: {{content.heading.styles.textAlignment}}
-            visualInterest: {{content.heading.styles.visualInterest}}
-            visualInterestColor: "{{content.heading.styles.visualInterestColor}}"
-      {% endcapture %}
-      {% assign entryHeading = entryHeading | ymlify %}
-    <div class="{% if evenOdd == 0 %}order-1{% endif %} flex-1 flex justify-center items-center min-w-[300px]">{% bookshop "generic/heading" bind: entryHeading %}</div>
-    <div class="flex-1 w-full min-w-[250px]">{% bookshop "generic/image" bind: content.image class: "object-cover object-center w-full rounded aspect-[3/2]" %}</div>
+    
+      
+    <div class="{{textClasses}}">{% bookshop "generic/heading" bind: entryHeading %}</div>
+    <div class="{{imageDivClasses}}">{% bookshop "generic/image" bind: content.image class: imageClasses %}</div>
 </div>
+
