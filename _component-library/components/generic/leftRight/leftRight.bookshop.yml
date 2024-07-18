@@ -15,7 +15,6 @@ blueprint:
   styles:
     color_group: primary
     colorFromGroup: background
-    fullWidth: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
@@ -24,8 +23,3 @@ preview:
 _inputs:
   entryNumber:
     hidden: true
-  fullWidth:
-    hidden: true
-  colorFromGroup:
-    hidden: '!fullWidth'
-    comment: "Select a color from the color group to be used as the background color of the text section"
