@@ -15,7 +15,7 @@
     {% bookshop "generic/heading" bind: content.heading %}
     {% if content.entries %}
       
-      <div class="{% if not fullWidth %}mt-20 {% else %} mt-0 md:mt-36{% endif %}">
+      <div class="{% if fullWidth != true %}mt-20 {% else %} mt-0 md:mt-36{% endif %}">
         {% for entry in content.entries %}
           {% capture entryContent %}
             content:
