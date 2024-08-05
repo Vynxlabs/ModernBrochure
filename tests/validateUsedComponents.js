@@ -8,7 +8,7 @@ const pagesDirs = ['./src/pages', './src/services'];
 const componentBlueprints = {};
 const componentsInUse = [];
 let hasWarnings = false;
-const warnings = [];
+let warnings = [];
 
 // Function to traverse directory and collect component blueprints
 const collectComponentBlueprints = (dir, relativePath = '') => {
@@ -55,13 +55,13 @@ const collectComponentsInUse = (dir) => {
 
       // Collect components used in hero and content_blocks
       if (frontMatter.hero && frontMatter.hero._bookshop_name) {
-        componentsInUse.push({ component: frontMatter.hero, filename: filePath });
+        componentsInUse.push({ component: frontMatter.hero, filename: filePath, type: 'hero' });
       }
 
       if (frontMatter.content_blocks) {
         frontMatter.content_blocks.forEach(block => {
           if (block._bookshop_name) {
-            componentsInUse.push({ component: block, filename: filePath });
+            componentsInUse.push({ component: block, filename: filePath, type: 'content_blocks' });
           }
         });
       }
@@ -71,8 +71,8 @@ const collectComponentsInUse = (dir) => {
 
 pagesDirs.forEach((dir) => collectComponentsInUse(dir));
 
-// Function to validate component parameters against blueprint
-const validateParameters = (componentName, usedParameters, blueprintParameters, filename) => {
+// Function to validate and resolve conflicts in component parameters against blueprint
+const validateAndResolveParameters = (componentName, usedParameters, blueprintParameters, filename) => {
   // Check for extra parameters
   for (const key in usedParameters) {
     if (key === '_bookshop_name') {
@@ -91,10 +91,10 @@ const validateParameters = (componentName, usedParameters, blueprintParameters, 
               warnings.push(`Warning: Nested component "${nestedComponentName}" used in "${componentName}" but not found in blueprints. File: ${filename}`);
               hasWarnings = true;
             } else {
-              validateParameters(nestedComponentName, item, componentBlueprints[nestedComponentName], filename);
+              validateAndResolveParameters(nestedComponentName, item, componentBlueprints[nestedComponentName], filename);
             }
           } else if (blueprintValue && blueprintValue.length > index) {
-            validateParameters(componentName, item, blueprintValue[index], filename);
+            validateAndResolveParameters(componentName, item, blueprintValue[index], filename);
           }
         }
       });
@@ -105,16 +105,17 @@ const validateParameters = (componentName, usedParameters, blueprintParameters, 
           warnings.push(`Warning: Nested component "${nestedComponentName}" used in "${componentName}" but not found in blueprints. File: ${filename}`);
           hasWarnings = true;
         } else {
-          validateParameters(nestedComponentName, paramValue, componentBlueprints[nestedComponentName], filename);
+          validateAndResolveParameters(nestedComponentName, paramValue, componentBlueprints[nestedComponentName], filename);
         }
       } else if (blueprintValue) {
-        validateParameters(componentName, paramValue, blueprintValue, filename);
+        validateAndResolveParameters(componentName, paramValue, blueprintValue, filename);
       } else {
-        validateParameters(componentName, paramValue, {}, filename);
+        validateAndResolveParameters(componentName, paramValue, {}, filename);
       }
     } else if (!blueprintParameters.hasOwnProperty(key)) {
       warnings.push(`Warning: Parameter "${key}" used in component "${componentName}" but not found in blueprint. File: ${filename}`);
       hasWarnings = true;
+      delete usedParameters[key]; // Remove extra parameter
     }
   }
 
@@ -123,24 +124,58 @@ const validateParameters = (componentName, usedParameters, blueprintParameters, 
     if (!usedParameters.hasOwnProperty(key) && key !== '_bookshop_name') {
       warnings.push(`Warning: Missing parameter "${key}" in component "${componentName}". File: ${filename}`);
       hasWarnings = true;
+      if (blueprintParameters[key] === null || blueprintParameters[key] === undefined) {
+        usedParameters[key] = blueprintParameters[key]; // Add missing optional parameter
+      }
     }
   }
 };
 
-// Function to validate components used against blueprints, including nested components
-const validateComponents = (componentsUsed, blueprints) => {
-  componentsUsed.forEach(({ component, filename }) => {
+// Function to validate and resolve components used against blueprints, including nested components
+const validateAndResolveComponents = (componentsUsed, blueprints) => {
+  componentsUsed.forEach(({ component, filename, type }) => {
     const componentName = component._bookshop_name;
     if (!blueprints[componentName]) {
       warnings.push(`Warning: Component "${componentName}" used in pages but not found in blueprints. File: ${filename}`);
       hasWarnings = true;
     } else {
-      validateParameters(componentName, component, blueprints[componentName], filename);
+      validateAndResolveParameters(componentName, component, blueprints[componentName], filename);
     }
   });
 };
 
-validateComponents(componentsInUse, componentBlueprints);
+// Resolve conflicts first
+componentsInUse.forEach(({ component, filename, type }) => {
+  const componentName = component._bookshop_name;
+  if (componentBlueprints[componentName]) {
+    validateAndResolveParameters(componentName, component, componentBlueprints[componentName], filename);
+  }
+});
+
+// Write updated components back to files
+componentsInUse.forEach(({ component, filename, type }) => {
+  const fileContent = fs.readFileSync(filename, 'utf8');
+  const { data: frontMatter, content } = matter(fileContent);
+
+  if (type === 'hero') {
+    frontMatter.hero = component;
+  } else if (type === 'content_blocks') {
+    const blockIndex = frontMatter.content_blocks.findIndex(block => block._bookshop_name === component._bookshop_name);
+    if (blockIndex !== -1) {
+      frontMatter.content_blocks[blockIndex] = component;
+    }
+  }
+
+  const newFrontMatter = matter.stringify(content, frontMatter);
+  fs.writeFileSync(filename, newFrontMatter);
+});
+
+// Reset warnings and hasWarnings for final validation
+warnings = [];
+hasWarnings = false;
+
+// Validate components again after conflict resolution
+validateAndResolveComponents(componentsInUse, componentBlueprints);
 
 if (hasWarnings) {
   warnings.forEach(warning => console.log(warning));
