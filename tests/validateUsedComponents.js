@@ -59,9 +59,9 @@ const collectComponentsInUse = (dir) => {
       }
 
       if (frontMatter.content_blocks) {
-        frontMatter.content_blocks.forEach(block => {
+        frontMatter.content_blocks.forEach((block, index) => {
           if (block._bookshop_name) {
-            componentsInUse.push({ component: block, filename: filePath, type: 'content_blocks' });
+            componentsInUse.push({ component: block, filename: filePath, type: 'content_blocks', index });
           }
         });
       }
@@ -133,7 +133,7 @@ const validateAndResolveParameters = (componentName, usedParameters, blueprintPa
 
 // Function to validate and resolve components used against blueprints, including nested components
 const validateAndResolveComponents = (componentsUsed, blueprints) => {
-  componentsUsed.forEach(({ component, filename, type }) => {
+  componentsUsed.forEach(({ component, filename, type, index }) => {
     const componentName = component._bookshop_name;
     if (!blueprints[componentName]) {
       warnings.push(`Warning: Component "${componentName}" used in pages but not found in blueprints. File: ${filename}`);
@@ -145,7 +145,7 @@ const validateAndResolveComponents = (componentsUsed, blueprints) => {
 };
 
 // Resolve conflicts first
-componentsInUse.forEach(({ component, filename, type }) => {
+componentsInUse.forEach(({ component, filename, type, index }) => {
   const componentName = component._bookshop_name;
   if (componentBlueprints[componentName]) {
     validateAndResolveParameters(componentName, component, componentBlueprints[componentName], filename);
@@ -153,16 +153,20 @@ componentsInUse.forEach(({ component, filename, type }) => {
 });
 
 // Write updated components back to files
-componentsInUse.forEach(({ component, filename, type }) => {
+componentsInUse.forEach(({ component, filename, type, index }) => {
   const fileContent = fs.readFileSync(filename, 'utf8');
   const { data: frontMatter, content } = matter(fileContent);
 
   if (type === 'hero') {
     frontMatter.hero = component;
   } else if (type === 'content_blocks') {
-    const blockIndex = frontMatter.content_blocks.findIndex(block => block._bookshop_name === component._bookshop_name);
-    if (blockIndex !== -1) {
-      frontMatter.content_blocks[blockIndex] = component;
+    if (index !== undefined && frontMatter.content_blocks[index]._bookshop_name === component._bookshop_name) {
+      frontMatter.content_blocks[index] = component;
+    } else {
+      const blockIndex = frontMatter.content_blocks.findIndex((block, i) => i === index && block._bookshop_name === component._bookshop_name);
+      if (blockIndex !== -1) {
+        frontMatter.content_blocks[blockIndex] = component;
+      }
     }
   }
 
