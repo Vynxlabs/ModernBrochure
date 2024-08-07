@@ -73,11 +73,61 @@ pagesDirs.forEach((dir) => collectComponentsInUse(dir));
 
 // Function to validate and resolve conflicts in component parameters against blueprint
 const validateAndResolveParameters = (componentName, usedParameters, blueprintParameters, filename) => {
-  // Check for extra parameters
-  for (const key in usedParameters) {
-    if (key === '_bookshop_name') {
-      continue; // Skip _bookshop_name key
+  const validateObject = (paramObj, blueprintObj) => {
+    // Validate extra parameters
+    for (const key in paramObj) {
+      if (key === '_bookshop_name') continue;
+
+      const paramValue = paramObj[key];
+      const blueprintValue = blueprintObj[key];
+
+      if (Array.isArray(paramValue)) {
+        paramValue.forEach((item, index) => {
+          validateObject(item, Array.isArray(blueprintValue) ? (blueprintValue[index] || blueprintValue[0] || {}) : {});
+        });
+      } else if (typeof paramValue === 'object' && paramValue !== null) {
+        if (paramValue._bookshop_name) {
+          const nestedComponentName = paramValue._bookshop_name;
+          if (!componentBlueprints[nestedComponentName]) {
+            warnings.push(`Warning: Nested component "${nestedComponentName}" used in "${componentName}" but not found in blueprints. File: ${filename}`);
+            hasWarnings = true;
+          } else {
+            validateObject(paramValue, componentBlueprints[nestedComponentName]);
+          }
+        } else {
+          validateObject(paramValue, blueprintValue || {});
+        }
+      } else if (!blueprintObj.hasOwnProperty(key) && typeof blueprintObj === 'object') {
+        warnings.push(`Warning: Parameter "${key}" used in component "${componentName}" but not found in blueprint. File: ${filename}`);
+        hasWarnings = true;
+        delete paramObj[key]; // Remove extra parameter
+      }
     }
+
+    // Check for missing parameters
+    for (const key in blueprintObj) {
+      if (!paramObj.hasOwnProperty(key) && key !== '_bookshop_name' && typeof blueprintObj === 'object') {
+        warnings.push(`Warning: Missing parameter "${key}" in component "${componentName}". File: ${filename}`);
+        hasWarnings = true;
+        if (blueprintObj[key] === null || blueprintObj[key] === undefined) {
+          paramObj[key] = blueprintObj[key]; // Add missing optional parameter
+        } else if (Array.isArray(blueprintObj[key])) {
+          paramObj[key] = paramObj[key] || [];
+          blueprintObj[key].forEach((blueprintItem, index) => {
+            if (!paramObj[key][index]) paramObj[key][index] = {};
+            validateObject(paramObj[key][index], blueprintItem);
+          });
+        } else if (typeof blueprintObj[key] === 'object') {
+          paramObj[key] = paramObj[key] || {};
+          validateObject(paramObj[key], blueprintObj[key]);
+        }
+      }
+    }
+  };
+
+  // Initial parameter validation
+  for (const key in usedParameters) {
+    if (key === '_bookshop_name') continue;
 
     const paramValue = usedParameters[key];
     const blueprintValue = blueprintParameters[key];
@@ -115,20 +165,14 @@ const validateAndResolveParameters = (componentName, usedParameters, blueprintPa
     } else if (!blueprintParameters.hasOwnProperty(key)) {
       warnings.push(`Warning: Parameter "${key}" used in component "${componentName}" but not found in blueprint. File: ${filename}`);
       hasWarnings = true;
+      console.log("deleted usedParam")
+      console.log(usedParameters[key])
       delete usedParameters[key]; // Remove extra parameter
     }
   }
 
-  // Check for missing parameters
-  for (const key in blueprintParameters) {
-    if (!usedParameters.hasOwnProperty(key) && key !== '_bookshop_name') {
-      warnings.push(`Warning: Missing parameter "${key}" in component "${componentName}". File: ${filename}`);
-      hasWarnings = true;
-      if (blueprintParameters[key] === null || blueprintParameters[key] === undefined) {
-        usedParameters[key] = blueprintParameters[key]; // Add missing optional parameter
-      }
-    }
-  }
+  // Check for missing parameters and validate nested objects
+  validateObject(usedParameters, blueprintParameters);
 };
 
 // Function to validate and resolve components used against blueprints, including nested components
