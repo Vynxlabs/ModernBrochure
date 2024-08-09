@@ -1,0 +1,14 @@
+<div class="c-defaultMemberCard max-w-[350px] flex flex-col justify-center">
+  {% bookshop "generic/image" bind: content.image class: "w-full object-cover object-center aspect-[9/16]" %}
+  {% if content.name or content.titleOrDescription %}
+
+
+    <div class="sm:px-6 px-4">
+      <div class="p-3 bg-{{styles.color_group}}-{{styles.colorFromGroup}}color bg-opacity-90 text-{{styles.color_group}}-highcontrast-{{styles.colorFromGroup}}color rounded">
+        <h3 class="text-[1.375rem] text-center opacity-90 {% if content.link and content.link != '' %}hover:underline{% endif %}">{{ content.name }}</h3>
+        <p class="opacity-75">{{ content.titleOrDescription }}</p>
+      </div>
+    </div>
+  {% endif %}
+
+</div>
