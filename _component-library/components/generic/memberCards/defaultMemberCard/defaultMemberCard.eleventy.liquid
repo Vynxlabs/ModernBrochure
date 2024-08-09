@@ -1,12 +1,17 @@
-<div class="c-defaultMemberCard max-w-[350px] flex flex-col justify-center">
-  {% bookshop "generic/image" bind: content.image class: "w-full object-cover object-center aspect-[9/16]" %}
-  {% if content.name or content.titleOrDescription %}
-    <div class="sm:px-6 px-4 -mt-[50px] shadow-[0px_2px_8px_0px_rgba(0,0,0,0.15)]">
-      <div class="p-3 bg-{{styles.color_group}}-{{styles.colorFromGroup}}color bg-opacity-90 text-{{styles.color_group}}-highcontrast-{{styles.colorFromGroup}}color rounded">
-        <h3 class="text-[1.375rem] text-center opacity-90 {% if content.link and content.link != '' %}hover:underline{% endif %}">{{ content.name }}</h3>
-        <p class="opacity-75">{{ content.titleOrDescription }}</p>
+{% capture imageClasses %}
+    w-full object-cover object-center aspect-[9/16]
+  {% if content.link and content.link != '' %}transition-all duration-300 scale-100 hover:scale-105{% endif %}
+  {% endcapture %}
+  
+  <div class="c-defaultMemberCard max-w-[350px] flex flex-col justify-center">
+    {% bookshop "generic/image" bind: content.image class: imageClasses %}
+    {% if content.name or content.titleOrDescription %}
+      <div class="sm:px-6 px-4 -mt-[50px] ">
+        <div class="p-3 bg-{{style.color_group}}-{{style.colorFromGroup}}color bg-opacity-90 text-{{style.color_group}}-highcontrast-{{style.colorFromGroup}}color rounded shadow-[0px_2px_8px_0px_rgba(0,0,0,0.15)] text-center">
+          <h3 class="text-[1.375rem]  opacity-90 {% if content.link and content.link != '' %}hover:underline{% endif %}">{{ content.name }}</h3>
+          <p class="opacity-75">{{ content.titleOrDescription }}</p>
+        </div>
       </div>
-    </div>
-  {% endif %}
-
-</div>
+    {% endif %}
+  
+  </div>

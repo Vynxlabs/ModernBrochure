@@ -8,7 +8,7 @@
     class="basecontainer w-full">
     
     {% bookshop "generic/heading" bind: content.heading %}
-    <div class="flex flex-wrap justify-around gap-5">
+    <div class="flex flex-wrap justify-around gap-5 mt-20">
         {% for element in content.members %}
             <div class="">{% bookshop "{{element._bookshop_name}}" bind: element %}</div>
           {% endfor %}
