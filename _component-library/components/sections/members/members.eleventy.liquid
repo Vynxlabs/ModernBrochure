@@ -1,0 +1,17 @@
+{% assign color_group = styles.color_group %}
+
+<div class="c-members componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
+  <section
+    {% if content.sectionId %}
+    id="{{ content.sectionId | idFilter }}"
+    {% endif %}
+    class="basecontainer w-full">
+    
+    {% bookshop "generic/heading" bind: content.heading %}
+    <div class="flex flex-wrap justify-around gap-5">
+        {% for element in content.members %}
+            <div class="">{% bookshop "{{element._bookshop_name}}" bind: element %}</div>
+          {% endfor %}
+    </div>
+    </section>
+</div>
