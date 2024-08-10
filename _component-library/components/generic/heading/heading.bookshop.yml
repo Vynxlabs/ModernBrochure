@@ -11,8 +11,11 @@ blueprint:
   content:
     highlightEyebrow: false
     eyebrow: >-
-    headline: primary heading
+      top text!
+    headline: >-
+      primary heading
     description: >-
+      Give it meaning!
     buttons: [bookshop:generic/button]
     headingHierarchy: h2
   styles:
@@ -30,6 +33,78 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  headline:
+    type: markdown
+    options:
+      link: true
+      blockquote: false
+      bold: true
+      italic: true
+      strike: true
+      subscript: true
+      superscript: true
+      underline: true
+      bulletedlist: true
+      numberedlist: true
+      indent: false
+      outdent: false
+      code: false
+      embed: false
+      horizontalrule: false
+      image: false
+      table: false
+      undo: true
+      redo: true
+      removeformat: true
+      copyformatting: true
+  eyebrow:
+    type: markdown
+    options:
+      link: true
+      blockquote: false
+      bold: true
+      italic: true
+      strike: true
+      subscript: true
+      superscript: true
+      underline: true
+      bulletedlist: true
+      numberedlist: true
+      indent: false
+      outdent: false
+      code: false
+      embed: false
+      horizontalrule: false
+      image: false
+      table: false
+      undo: true
+      redo: true
+      removeformat: true
+      copyformatting: true
+  description:
+    type: markdown
+    options:
+      link: true
+      blockquote: false
+      bold: true
+      italic: true
+      strike: true
+      subscript: true
+      superscript: true
+      underline: true
+      bulletedlist: true
+      numberedlist: true
+      indent: false
+      outdent: false
+      code: false
+      embed: false
+      horizontalrule: false
+      image: false
+      table: false
+      undo: true
+      redo: true
+      removeformat: true
+      copyformatting: true
   contentAlignment:
     type: choice
     options:
