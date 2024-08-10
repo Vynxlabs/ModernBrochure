@@ -8,8 +8,8 @@
 {% endcapture %}
 
 {% if env_bookshop_live %}
-    
-    <img class="{{imageComponentclasses}}" src="{{ imagePath }}" alt="{{ imageAlt }}">
+    {% comment %} Div wrap to simulate block level element of picture that real short code generates {% endcomment %}
+    <div><img class="{{imageComponentclasses}}" src="{{ imagePath }}" alt="{{ imageAlt }}"></div>
 
 
 
