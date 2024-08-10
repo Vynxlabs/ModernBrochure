@@ -24,6 +24,6 @@ layout: "layouts/page.html"
 hero:
 content_blocks: []
 _inputs:
-  eleventyNavgiation:
+  eleventyNavigation:
     hidden: '!removeFromNavigation'
 ---

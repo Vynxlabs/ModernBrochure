@@ -10,9 +10,9 @@ spec:
 blueprint:
   content:
     highlightEyebrow: false
-    eyebrow: 
+    eyebrow: >-
     headline: primary heading
-    description:
+    description: >-
     buttons: [bookshop:generic/button]
     headingHierarchy: h2
   styles:
