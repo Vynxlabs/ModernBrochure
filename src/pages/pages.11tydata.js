@@ -45,6 +45,9 @@ module.exports = {
       }
     },
     eleventyNavigation: function (data) {
+      if(!showDraft(data)) {
+        return false;
+      }
       if ("removeFromNavigation" in data && data.removeFromNavigation === true) {
         return false;
       } else {
