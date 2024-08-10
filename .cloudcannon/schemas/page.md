@@ -2,6 +2,7 @@
 draft: true
 title: ""
 eleventyExcludeFromCollections: false
+removeFromNavigation: false
 eleventyNavigation:
   key: page
   order: 1
@@ -22,4 +23,7 @@ metaDesc: ""
 layout: "layouts/page.html"
 hero:
 content_blocks: []
+_inputs:
+  eleventyNavgiation:
+    hiden: '!removeFromNavigation'
 ---

@@ -52,10 +52,12 @@ collections_config:
       title:
         label: Page Title
         comment: Seo focused page title
-      eleventyExcludeFromCollections:
+      removeFromNavigation:
         type: switch
         label: Remove from navigation
         comment: Will remove this page from top navigation top nav and footer
+      eleventyExcludeFromCollections:
+        hidden: true
       eleventyNavigation:
         label: Navigation
       eleventyNavigation.key:

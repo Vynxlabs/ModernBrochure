@@ -44,5 +44,12 @@ module.exports = {
         return false;
       }
     },
+    eleventyNavigation: function (data) {
+      if ("removeFromNavigation" in data && data.removeFromNavigation === true) {
+        return false;
+      } else {
+        return data.eleventyNavigation;
+      }
+    },
   },
 };
