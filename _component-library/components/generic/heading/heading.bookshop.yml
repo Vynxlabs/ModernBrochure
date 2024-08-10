@@ -13,7 +13,7 @@ blueprint:
     eyebrow: >-
       
     headline: >-
-      
+      heading
     description: >-
       
     buttons: [bookshop:generic/button]
