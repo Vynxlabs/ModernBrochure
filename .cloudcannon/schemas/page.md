@@ -25,5 +25,5 @@ hero:
 content_blocks: []
 _inputs:
   eleventyNavigation:
-    hidden: '!removeFromNavigation'
+    hidden: 'removeFromNavigation'
 ---
