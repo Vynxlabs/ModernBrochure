@@ -9,6 +9,7 @@ const linkFilter = require("./src/filters/active-link-filter.js");
 const military_time = require('./src/filters/military-time-filter.js')
 const id_filter = require('./src/filters/id-filter.js')
 const log_filter = require('./src/filters/log-filter.js')
+const fileSubstringFilter = require('./src/filters/extract-file-substring-filter.js')
 const getServiceCategories = require('./src/filters/getServiceCategories-filter.js')
 const rssPlugin = require("@11ty/eleventy-plugin-rss");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
@@ -197,6 +198,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addFilter("idFilter", id_filter);
   eleventyConfig.addFilter("logFilter", log_filter);
   eleventyConfig.addFilter("categoriesFilter", getServiceCategories);
+  eleventyConfig.addFilter("fileSubstringFilter", fileSubstringFilter);
 
   eleventyConfig.on("eleventy.before", () => {
     execSync(
