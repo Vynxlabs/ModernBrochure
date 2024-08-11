@@ -31,5 +31,26 @@
       top: -0.5rem;
       width:2rem;
     }
+    p {
+      margin-top: 12px;
+    }
+    ol,
+    ul {
+      margin-top: 8px;
+      margin-bottom: 8px;
+      padding-left: 32px;
+    }
+    
+    a{
+      color: #5FB6E0;
+      text-decoration: underline;
+    }
+  
+    ul > li {
+      list-style-type: circle;
+    }
+    ol > li {
+      list-style-type: decimal;
+    }
   
   }
