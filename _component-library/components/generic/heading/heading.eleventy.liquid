@@ -45,7 +45,7 @@
     <{{content.headingHierarchy | default: "h2" }} class="cs-visualInterest {{headingClasses}} font-bold mt-1 {{headingSize}}" style="--c-visualColor: {{styles.visualInterestColor}}">
     {% bookshop "generic/textBlock" text: content.headline %}
       </{{content.headingHierarchy | default: "h2" }}>
-      <div class="mt-4">
+      <div class="mt-4 cs-headingLink">
         {% if content.description %}
           {% bookshop "generic/textBlock" text: content.description %}{% endif %}
       </div>
