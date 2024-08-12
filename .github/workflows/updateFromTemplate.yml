@@ -41,15 +41,12 @@ jobs:
           git fetch upstream main
 
       - name: Create temporary branch
-        run: git checkout -b temp-update-branch
-
-      - name: Attempt merge with upstream
-        id: merge
         run: |
-          git merge upstream/main --allow-unrelated-histories --no-edit -X ours || echo "merge_conflict"
+          git checkout -b temp-update-branch
+          git merge upstream/main --allow-unrelated-histories --no-edit || (echo "Merge conflict detected. Proceeding with conditional conflict resolution."; exit 1)
 
       - name: Identify conflicts and resolve
-        if: steps.merge.outputs.result == 'merge_conflict'
+        if: failure()
         run: |
           echo "Identifying conflicts..."
           conflicts=$(git diff --name-only --diff-filter=U)
@@ -82,7 +79,6 @@ jobs:
           git commit -m "Resolved conflicts using conditional logic."
 
       - name: Install dependencies
-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm install
 
       - name: Run component validation
