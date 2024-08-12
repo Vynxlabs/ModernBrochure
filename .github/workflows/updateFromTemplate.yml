@@ -29,7 +29,40 @@ jobs:
       - name: Create temporary branch
         run: |
           git checkout -b temp-update-branch
-          git merge upstream/main --allow-unrelated-histories --no-edit -X ours || (echo "Merge conflict detected. Resolve conflicts manually."; exit 1)
+          git merge upstream/main --allow-unrelated-histories --no-edit || (echo "Merge conflict detected. Proceeding with conditional conflict resolution."; exit 0)
+
+      - name: Identify conflicts and resolve
+        if: failure()
+        run: |
+          echo "Identifying conflicts..."
+          conflicts=$(git diff --name-only --diff-filter=U)
+          echo "Conflicted files: $conflicts"
+
+          for file in $conflicts; do
+            if [[ "$file" == _comopnent-library/* || \
+                  "$file" == .cloudcannon/* || \
+                  "$file" == .github/* || \
+                  "$file" == netlify/* || \
+                  "$file" == src/_includes/* || \
+                  "$file" == src/assets/styles/* || \
+                  "$file" == src/filters/* || \
+                  "$file" == tests/* || \
+                  "$file" == utils/* || \
+                  "$file" == .eleventy.js || \
+                  "$file" == cloudcannon.config.yml || \
+                  ("$file" == src/pages/* && "$file" != *.md) || \
+                  ("$file" == src/posts/* && "$file" != *.md) || \
+                  ("$file" == src/services/* && "$file" != *.md) ]]; then
+              echo "Applying 'theirs' strategy for $file"
+              git checkout --theirs -- "$file"
+            else
+              echo "Applying 'ours' strategy for $file"
+              git checkout --ours -- "$file"
+            fi
+          done
+
+          git add .
+          git commit -m "Resolved conflicts using conditional logic."
 
       - name: Install dependencies
         run: npm install
