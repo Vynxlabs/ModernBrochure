@@ -11,6 +11,8 @@ Thumbs.db
 .Identifier
 .zip
 
+src/css
+
 # Node modules and output
 **/node_modules/**
 dist

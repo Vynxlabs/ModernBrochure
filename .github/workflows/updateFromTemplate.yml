@@ -53,7 +53,7 @@ jobs:
           echo "Conflicted files: $conflicts"
 
           for file in $conflicts; do
-            if [[ "$file" == _comopnent-library/* || \
+            if [[ "$file" == _component-library/* || \
                   "$file" == .cloudcannon/* || \
                   "$file" == .github/* || \
                   "$file" == netlify/* || \
