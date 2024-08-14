@@ -114,3 +114,4 @@ _inputs:
       redo: true
       removeformat: true
       copyformatting: true
+      snippet: true

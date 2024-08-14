@@ -368,6 +368,19 @@ _inputs:
           name: Secondary
         - id: accent
           name: Accent
+_snippets:
+  custom_snippet:
+    template: eleventy_liquid_bookshop_component
+    inline: false
+    preview:
+      text: Image
+    definitions:
+      component_name: snippets/imageModal
+      named_args:
+        - editor_key: imagePath
+          type: string
+        - editor_key: imageAlt
+          type: string
 _select_data: {}
 _structures:
   content_blocks:
