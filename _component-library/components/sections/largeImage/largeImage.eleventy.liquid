@@ -1,13 +1,13 @@
 {% assign color_group = styles.color_group %}
 {% capture orientationClasses %}
   {% if styles.imageOrientation == "landscape" %}
-    max-w-[700px] 
+    max-w-[1000px] max-h-[715px]
     {% else %}
-    max-w-[500px]
+    max-w-[700px] max-h-[500px]
   {% endif %}
 {% endcapture %}
 
-<div class="c-largeImage componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
+<div class="c-largeImage relative left-1/2 right-1/2 mx-[-50vw] flex w-screen flex-col items-center justify-center pt-10 md:pt-20 bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
     <section
     {% if content.sectionId %}
     id="{{ content.sectionId | idFilter }}"
