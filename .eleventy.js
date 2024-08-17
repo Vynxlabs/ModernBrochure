@@ -11,6 +11,7 @@ const id_filter = require("./src/filters/id-filter.js");
 const log_filter = require("./src/filters/log-filter.js");
 const fileSubstringFilter = require("./src/filters/extract-file-substring-filter.js");
 const stringifyFilter = require("./src/filters/stringify-filter.js");
+const evalLiquid = require("./src/filters/evalLiquid-filter.js");
 const getServiceCategories = require("./src/filters/getServiceCategories-filter.js");
 const rssPlugin = require("@11ty/eleventy-plugin-rss");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
@@ -20,6 +21,7 @@ const markdownIt = require("markdown-it"),
     linkify: true,
     typographer: true,
   });
+  md.disable(["code"])
 const markdownItAnchor = require("markdown-it-anchor");
 const pluginTOC = require("eleventy-plugin-toc");
 const pluginBookshop = require("@bookshop/eleventy-bookshop");
@@ -208,6 +210,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addFilter("removeExtraWhitespace", function(str) {
     return str.replace(/\s+/g, ' ').trim();
   });
+  eleventyConfig.addFilter("evalLiquid", evalLiquid);
 
   eleventyConfig.on("eleventy.before", () => {
     execSync("node ./utils/fetch-theme-variables.js");
