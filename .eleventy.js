@@ -6,18 +6,20 @@ const readTimeFilter = require("./src/filters/read-time-filter.js");
 const randomBlogsFilter = require("./src/filters/random-blogs-filter.js");
 const uuidFilter = require("./src/filters/uuid-filter.js");
 const linkFilter = require("./src/filters/active-link-filter.js");
-const military_time = require('./src/filters/military-time-filter.js')
-const id_filter = require('./src/filters/id-filter.js')
-const log_filter = require('./src/filters/log-filter.js')
-const fileSubstringFilter = require('./src/filters/extract-file-substring-filter.js')
-const stringifyFilter = require('./src/filters/stringify-filter.js')
-const getServiceCategories = require('./src/filters/getServiceCategories-filter.js')
+const military_time = require("./src/filters/military-time-filter.js");
+const id_filter = require("./src/filters/id-filter.js");
+const log_filter = require("./src/filters/log-filter.js");
+const fileSubstringFilter = require("./src/filters/extract-file-substring-filter.js");
+const stringifyFilter = require("./src/filters/stringify-filter.js");
+const getServiceCategories = require("./src/filters/getServiceCategories-filter.js");
 const rssPlugin = require("@11ty/eleventy-plugin-rss");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const markdownIt = require("markdown-it"),
-md = new markdownIt({
-  html: true,
-});
+  md = markdownIt({
+    html: true,
+    linkify: true,
+    typographer: true,
+  });
 const markdownItAnchor = require("markdown-it-anchor");
 const pluginTOC = require("eleventy-plugin-toc");
 const pluginBookshop = require("@bookshop/eleventy-bookshop");
@@ -37,34 +39,32 @@ const imageShortcode = async (
 ) => {
   let before = Date.now();
 
-  let inputFilePath =
-    src == null ? src : path.join("src", src);
+  let inputFilePath = src == null ? src : path.join("src", src);
 
-  if(src.includes("http://") || src.includes("https://")) {
+  if (src.includes("http://") || src.includes("https://")) {
     inputFilePath = src;
   }
-    
-    // console.log(
-    //   `[11ty/eleventy-img] ${Date.now() - before}ms: ${inputFilePath}`,
-    // );
-    const imageMetadata = await Image(inputFilePath, {
-      svgShortCircuit: preferSvg ? "size" :false,
-      widths: [...widths],
-      formats: [...formats, null],
-      outputDir: "dist/assets/images",
-      urlPath: "/assets/images",
-    });
 
-    const imageAttributes = {
-      class: cls,
-      alt,
-      sizes: sizes || "100vw",
-      loading: "lazy",
-      decoding: "async",
-    };
+  // console.log(
+  //   `[11ty/eleventy-img] ${Date.now() - before}ms: ${inputFilePath}`,
+  // );
+  const imageMetadata = await Image(inputFilePath, {
+    svgShortCircuit: preferSvg ? "size" : false,
+    widths: [...widths],
+    formats: [...formats, null],
+    outputDir: "dist/assets/images",
+    urlPath: "/assets/images",
+  });
 
-    return Image.generateHTML(imageMetadata, imageAttributes);
+  const imageAttributes = {
+    class: cls,
+    alt,
+    sizes: sizes || "100vw",
+    loading: "lazy",
+    decoding: "async",
+  };
 
+  return Image.generateHTML(imageMetadata, imageAttributes).replace(/\s+/g, ' ').trim();
 };
 
 const logoShortcode = async (
@@ -77,15 +77,13 @@ const logoShortcode = async (
   formats = ["avif", "webp", "svg", "jpeg"],
 ) => {
   let before = Date.now();
-  let inputFilePath =
-    src == null ? src : path.join("src", src);
+  let inputFilePath = src == null ? src : path.join("src", src);
   if (fs.existsSync(inputFilePath)) {
-    
     // console.log(
     //   `[11ty/eleventy-img] ${Date.now() - before}ms: ${inputFilePath}`,
     // );
     const imageMetadata = await Image(inputFilePath, {
-      svgShortCircuit: preferSvg ? "size" :false,
+      svgShortCircuit: preferSvg ? "size" : false,
       widths: [...widths],
       formats: [...formats, null],
       outputDir: "dist/assets/images",
@@ -101,7 +99,7 @@ const logoShortcode = async (
     };
 
     return Image.generateHTML(imageMetadata, imageAttributes);
-  } else{
+  } else {
     return `<img class='${cls}' src='${src}' alt='${alt}'>`;
   }
 };
@@ -141,9 +139,13 @@ function imageCssBackground(src, selector, widths) {
 
 module.exports = (eleventyConfig) => {
   // Markdown
-  eleventyConfig.setLibrary("md", markdownIt().use(markdownItAnchor));
-
-  eleventyConfig.addWatchTarget("./_component-library/**/*");  
+  let options = {
+    html: true,
+    linkify: true,
+    typographer: true,
+  };
+  eleventyConfig.setLibrary("md", markdownIt(options).disable(["code"]).use(markdownItAnchor));
+  eleventyConfig.addWatchTarget("./_component-library/**/*");
 
   eleventyConfig.addDataExtension("yaml", (contents) => yaml.load(contents));
   eleventyConfig.addDataExtension("yml", (contents) => yaml.load(contents));
@@ -164,7 +166,9 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addShortcode("cssBackground", imageCssBackground);
   eleventyConfig.addPlugin(rssPlugin);
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
-  eleventyConfig.addPlugin(pluginTOC, { tags: ["h1", "h2", "h3", "h4", "h5", "h6"] });
+  eleventyConfig.addPlugin(pluginTOC, {
+    tags: ["h1", "h2", "h3", "h4", "h5", "h6"],
+  });
   eleventyConfig.addPlugin(svgContents);
 
   eleventyConfig.addPlugin(
@@ -201,11 +205,12 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addFilter("categoriesFilter", getServiceCategories);
   eleventyConfig.addFilter("fileSubstringFilter", fileSubstringFilter);
   eleventyConfig.addFilter("stringifyFilter", stringifyFilter);
+  eleventyConfig.addFilter("removeExtraWhitespace", function(str) {
+    return str.replace(/\s+/g, ' ').trim();
+  });
 
   eleventyConfig.on("eleventy.before", () => {
-    execSync(
-      "node ./utils/fetch-theme-variables.js",
-    );
+    execSync("node ./utils/fetch-theme-variables.js");
   });
 
   eleventyConfig.on("eleventy.after", () => {
