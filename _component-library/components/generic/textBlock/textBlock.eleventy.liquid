@@ -1,5 +1,5 @@
 {% if text %}
     <div class="">    
-        {{ text | evalLiquid: this | markdownify }}
+        {{ text | evalLiquid | markdownify  }}
     </div>
 {% endif %}

@@ -1,5 +1,5 @@
-
-<button class="c-snippetImageModal {{classes}} transition-all duration-300 scale-100 hover:scale-[101%]  "
+{% assign id = id | uuidFilter %}
+<button class="c-snippetImageModal {{classes}} transition-all duration-300 scale-100 hover:scale-[101%]  py-4"
 _=
 "
 on click
@@ -8,11 +8,10 @@ modal.show()
 transition #modal-{{id}} opacity to 1 over 0.2s
 "
 >
-
 {% bookshop "generic/image" imagePath: imagePath imageAlt: imageAlt class: "object-cover object-center w-full h-auto" %}
 </button>
 <dialog
-    id="modal-{{id | uuidFilter}}"
+    id="modal-{{id }}"
     class="fixed top-0 z-[900] h-full w-full overflow-scroll p-4 opacity-0 open:bg-slate-950 open:bg-opacity-60 open:backdrop-blur-lg sm:p-10"
   >
     <div class="flex flex-col gap-10">
@@ -25,7 +24,7 @@ transition #modal-{{id}} opacity to 1 over 0.2s
           modal.close()
           "
       >
-      {% bookshop "generic/heroLibraryIcon" heroLibraryIconName:"x-mark" iconType:"solid" iconSize:'large' roundedBorder:false color: "#ffffff" %}
+      {%- bookshop "generic/heroLibraryIcon" heroLibraryIconName:"x-mark" iconType:"solid" iconSize:'large' roundedBorder:false color: "#ffffff" -%}
       </button>
       <div class="self-center">
           {% bookshop "generic/image" imagePath: imagePath imageAlt: imageAlt class: "max-w-[90%] object-cover object-center" %}

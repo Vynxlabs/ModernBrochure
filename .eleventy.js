@@ -21,7 +21,7 @@ const markdownIt = require("markdown-it"),
     linkify: true,
     typographer: true,
   });
-  md.disable(["code"])
+  md.disable(["code","blockquote"]);
 const markdownItAnchor = require("markdown-it-anchor");
 const pluginTOC = require("eleventy-plugin-toc");
 const pluginBookshop = require("@bookshop/eleventy-bookshop");
