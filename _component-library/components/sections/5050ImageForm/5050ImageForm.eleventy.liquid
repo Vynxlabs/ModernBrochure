@@ -7,13 +7,13 @@
     {% endif %}
     class="basecontainer w-full">
 
-    <div class=" flex ">
+    <div class=" flex">
 
       <div class="cs-w-full lg:cs-w-full-r flex flex-col items-center p-4   justify-center bg-{{styles.color_group}}-backgroundcolor  bg-opacity-60 text-{{styles.color_group}}-highcontrast-backgroundcolor lg:bg-opacity-100">
-        <div class="max-w-[512px]">
+        <div class="max-w-[512px] w-full">
           {% bookshop "generic/heading" bind: content.heading %}
           {% bookshop "simple/formBuilder" bind: content.form %}
-          <div class="flex justify-between w-full mt-11 ">
+          <div class="flex justify-between w-full mt-11 gap-2 flex-wrap ">
           {% if site.contactInfo.email and site.contactInfo.email != "" %}
             <div class="flex gap-1 items-center">
               <a href="mailto:{{ site.contactInfo.email }}" class="block underline"
@@ -34,8 +34,8 @@
         
       </div>
 
-      <div class="cs-w-full lg:cs-w-full-l -z-10 flex items-end justify-center bg-cover bg-center font-bold md:justify-normal h-full">
-        {% bookshop "generic/image" bind: content.image class: "h-screen w-screen object-cover" %}
+      <div class="cs-w-full min-h-screen lg:cs-w-full-l -z-10 flex items-end justify-center bg-cover bg-center font-bold md:justify-normal ">
+        {% bookshop "generic/image" bind: content.image class: "min-h-screen h-full w-screen object-cover" %}
       </div>
 
     </div>

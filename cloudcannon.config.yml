@@ -363,7 +363,7 @@ _inputs:
         - id: accent
           name: Accent
   review:
-    type: text
+    type: textarea
 _snippets:
   custom_snippet:
     template: eleventy_liquid_bookshop_component
