@@ -346,12 +346,6 @@ _inputs:
       values: collections.services
       value_key: id
       text_key: title
-  review:
-    type: select
-    options:
-      values: data.reviews.reviews
-      value_key: id
-      text_key: name
   colorFromGroup:
     type: select
     options:
