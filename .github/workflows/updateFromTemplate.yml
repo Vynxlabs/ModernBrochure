@@ -64,6 +64,8 @@ jobs:
                   "$file" == utils/* || \
                   "$file" == .eleventy.js || \
                   "$file" == cloudcannon.config.yml || \
+                  "$file" == package-lock.json || \
+                  "$file" == package.json || \
                   ("$file" == src/pages/* && "$file" != *.md) || \
                   ("$file" == src/posts/* && "$file" != *.md) || \
                   ("$file" == src/services/* && "$file" != *.md) ]]; then
