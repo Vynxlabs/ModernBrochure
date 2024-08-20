@@ -11,7 +11,7 @@ spec:
 blueprint:
   content:
     sectionId:
-    heading: bookshop:generic/heading
+    heading: bookshop:generic/heading!
     reviews:
       - review:
   styles:
