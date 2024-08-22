@@ -1,4 +1,4 @@
 module.exports = (obj) => {
-    const objString = JSON.stringify(obj, null, 4);
+    const objString = JSON.stringify(obj);
     return objString
 };
