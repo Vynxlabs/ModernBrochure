@@ -83,7 +83,7 @@ jobs:
           git commit -m "Resolved conflicts using conditional logic."
 
       - name: Install dependencies
-        run: npm install --prefer-offline --no-audit --no-progress -- production
+        run: npm install --prefer-offline --no-audit --no-progress --production
 
       - name: Run component validation
         run: npm run test:componentUse
