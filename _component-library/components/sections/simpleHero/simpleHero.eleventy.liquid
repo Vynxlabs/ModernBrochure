@@ -2,9 +2,9 @@
 {% capture heading %}
     content:
         highlightEyebrow: {{heading.content.highlightEyebrow}}
-        eyebrow: "{{heading.content.eyebrow}}"
-        headline: "{{heading.content.headline}}"
-        description: "{{heading.content.description }}"
+        eyebrow: {{heading.content.eyebrow| stringifyFilter}}
+        headline: {{heading.content.headline| stringifyFilter}}
+        description: {{heading.content.description| stringifyFilter}}
         headingHierarchy: "h1"
     styles:
         contentAlignment: {{heading.styles.contentAlignment}}

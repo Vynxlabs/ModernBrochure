@@ -34,9 +34,9 @@
       {% capture entryHeading %}
           content:
               highlightEyebrow: {{entry.entry.heading.content.highlightEyebrow}}
-              eyebrow: "{{entry.entry.heading.content.eyebrow}}"
-              headline: "{{entry.entry.heading.content.headline}}"
-              description: "{{entry.entry.heading.content.description}}"
+              eyebrow: {{entry.entry.heading.content.eyebrow | stringifyFilter}}
+              headline: {{entry.entry.heading.content.headline | stringifyFilter}}
+              description: {{entry.entry.heading.content.description | stringifyFilter}}
               headingHierarchy: "h3"
               buttons:
                 {{entry.entry.heading.content.buttons | json}}
@@ -87,9 +87,9 @@
         {% capture entryHeading %}
           content:
               highlightEyebrow: {{entry.entry.heading.content.highlightEyebrow}}
-              eyebrow: "{{entry.entry.heading.content.eyebrow}}"
-              headline: "{{entry.entry.heading.content.headline}}"
-              description: "{{entry.entry.heading.content.description}}"
+              eyebrow: {{entry.entry.heading.content.eyebrow | stringifyFilter}}
+              headline: {{entry.entry.heading.content.headline | stringifyFilter}}
+              description: {{entry.entry.heading.content.description | stringifyFilter}}
               headingHierarchy: "h3"
               buttons: 
                 {{entry.entry.heading.content.buttons | json}}
@@ -125,9 +125,9 @@
     {% capture entryHeading %}
         content:
             highlightEyebrow: {{entry.entry.heading.content.highlightEyebrow}}
-            eyebrow: "{{entry.entry.heading.content.eyebrow}}"
-            headline: "{{entry.entry.heading.content.headline}}"
-            description: "{{entry.entry.heading.content.description}}"
+            eyebrow: {{entry.entry.heading.content.eyebrow | stringifyFilter}}
+            headline: {{entry.entry.heading.content.headline | stringifyFilter}}
+            description: {{entry.entry.heading.content.description | stringifyFilter}}
             headingHierarchy: "h3"
             buttons: 
               {{entry.entry.heading.content.buttons | json}}

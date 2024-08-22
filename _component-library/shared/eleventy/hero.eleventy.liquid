@@ -3,7 +3,7 @@
 {% elsif permalink != "/components/" %}
     {% capture default_hero %}
         content:
-            headline: "{{ title }}"
+            headline: {{ title | stringifyFilter}}
             headingHierarchy: h1
         styles:
             contentAlignment: center

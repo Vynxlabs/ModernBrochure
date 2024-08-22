@@ -10,7 +10,7 @@
     <div>
         {% capture heading %}
             content:
-                headline: "{{content.heading}}"
+                headline: {{content.heading | stringifyFilter}}
                 headingHierarchy: "h3"
             styles:
                 contentAlignment: left

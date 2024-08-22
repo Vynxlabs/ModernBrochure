@@ -5,9 +5,9 @@
     {% capture heading %}
         content:
             highlightEyebrow: {{content.CallToAction.content.highlightEyebrow}}
-            eyebrow: "{{content.CallToAction.content.eyebrow}}"
-            headline: "{{content.CallToAction.content.headline}}"
-            description: "{{content.CallToAction.content.description}}"
+            eyebrow: {{content.CallToAction.content.eyebrow | stringifyFilter}}
+            headline: {{content.CallToAction.content.headline | stringifyFilter}}
+            description: {{content.CallToAction.content.description | stringifyFilter}}
             headingHierarchy: "h2"
             buttons:
                 {{content.CallToAction.content.buttons | json}}

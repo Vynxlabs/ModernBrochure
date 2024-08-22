@@ -30,9 +30,9 @@
                 {% capture heading %}
                         content:
                             highlightEyebrow: {{card.heading.content.highlightEyebrow}}
-                            eyebrow: "{{card.heading.content.eyebrow}}"
-                            headline: "{{card.heading.content.headline}}"
-                            description: "{{card.heading.content.description}}"
+                            eyebrow: {{card.heading.content.eyebrow | stringifyFilter}}
+                            headline: {{card.heading.content.headline | stringifyFilter}}
+                            description: {{card.heading.content.description | stringifyFilter}}
                             headingHierarchy: "h3"
                             buttons:
                                 {{card.heading.content.buttons | json}}
@@ -83,9 +83,9 @@
                 {% capture heading %}
                         content:
                             highlightEyebrow: {{card.heading.content.highlightEyebrow}}
-                            eyebrow: "{{card.heading.content.eyebrow}}"
-                            headline: "{{card.heading.content.headline}}"
-                            description: "{{card.heading.content.description}}"
+                            eyebrow: {{card.heading.content.eyebrow | stringifyFilter}}
+                            headline: {{card.heading.content.headline | stringifyFilter}}
+                            description: {{card.heading.content.description | stringifyFilter}}
                             headingHierarchy: "h3"
                             buttons:
                                 {{card.heading.content.buttons | json}}
