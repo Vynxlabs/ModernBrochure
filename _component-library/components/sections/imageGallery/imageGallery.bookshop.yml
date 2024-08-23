@@ -3,7 +3,7 @@ spec:
   structures:
     - content_blocks
   label: "ImageGallery"
-  description:
+  description: A simple image gallery
   icon: space_dashboard
   tags: []
 
@@ -14,14 +14,8 @@ blueprint:
   content:
     sectionId:
     heading: bookshop:generic/heading!
-    imageSets:
-      - images: [bookshop:generic/image]
+    images: [bookshop:generic/image]
     buttons: [bookshop:generic/button]
-    setLimit: 999
-    patternLimit: 1
-    imageClasses:
-    - "" # This will always be empty and is needed for the grid to work
-    - ""
   styles:
     color_group: primary
 
@@ -30,11 +24,3 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
-  imageSets:
-    comment: "Each image set can have up to 8 images. Any image added past the eith will not show up"
-  imageClasses:
-    hidden: true
-  setLimit:
-    hidden: true
-  patternLimit:
-    hidden: true
