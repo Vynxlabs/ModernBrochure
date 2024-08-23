@@ -1,13 +1,23 @@
 {% assign color_group = styles.color_group %}
 
-<div class="c-imageGalleryMasonryGrid componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
+<div class="c-imageGallery componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
   <section
     {% if content.sectionId %}
     id="{{ content.sectionId | idFilter }}"
     {% endif %}
     class="basecontainer w-full">
     {% bookshop "generic/heading" bind: content.heading %}
-    <div class="mt-12">{% bookshop "generic/imageGrid" bind: content %}</div>
+    <div class="mt-12">
+      <div class="c-imageGrid">
+        <div class="flex gap-1 flex-wrap justify-center">
+          {% for image in content.images %}
+            {% assign imageId = "a" | uuidFilter %}
+            {% assign test = image | log %}
+            {% bookshop "generic/imageModal" image: image classes: "max-w-[210px] md:max-w-[420px] md:min-w-[320px] min-w-[160px] flex-1" id: imageId %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
     {% if content.buttons %}
       <div class="mt-14 flex w-full gap-8 flex-wrap justify-center">
         {% for button in content.buttons %}
@@ -16,5 +26,5 @@
 
       </div>
     {% endif %}
-    </section>
+  </section>
 </div>
