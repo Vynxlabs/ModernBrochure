@@ -38,7 +38,7 @@ preview:
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
   imageSets:
-    comment: "Each image set can have up to 8 images. Any image added past the eith will not show up"
+    comment: "Each image set can have up to 5 images. Any image added past the fifth will not show up"
   imageClasses:
     hidden: true
   setLimit:

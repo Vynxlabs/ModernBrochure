@@ -12,7 +12,7 @@
     {% assign default_hero = default_hero | ymlify %}
     {% if permalink contains "blog/" or permalink contains"tag/" %}
         {% else %}
-        {% bookshop "sections/simpleHero" heading: default_hero %}
+        {% bookshop "sections/simpleHero" heading: default_hero %} 
     {% endif %}
     
 {% endif %}
