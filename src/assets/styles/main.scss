@@ -1,9 +1,7 @@
 // @import "reset.scss";
 
-
 @tailwind base;
 @tailwind components;
-
 
 @layer components {
   .basecontainer {
@@ -82,14 +80,13 @@
   width: 1px;
 }
 
-main > :last-child{
+main > :last-child {
   flex: 1 1 0;
 }
 
 main > :last-child > :only-child {
   height: 100%;
 }
-
 
 body {
   font-family: var(--content-font), Lato, sans-serif;
@@ -108,25 +105,31 @@ body {
 }
 
 .cs-mainContent {
+  margin-bottom: 20px;
   h2 {
     margin-top: 48px;
-    font-size: 36px;
+    font-size: 2.25rem;
+    line-height: 2.5rem;
   }
   h3 {
     margin-top: 32px;
-    font-size: 32px;
+    font-size: 2rem;
+    line-height: 2.25rem;
   }
   h4 {
     margin-top: 32px;
-    font-size: 28px;
+    font-size: 1.75rem;
+    line-height: 2rem;
   }
   h5 {
     margin-top: 28px;
-    font-size: 24px;
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
   h6 {
     margin-top: 24px;
-    font-size: 20px;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
   p {
     margin-top: 12px;
@@ -149,8 +152,18 @@ body {
   }
 }
 
-.toc ol ol {
-  padding-left: 16px;
+.toc {
+  margin-bottom: 40px;
+  max-width: 400px;
+  li{
+    margin-top: 8px;
+  }
+  ol {
+    ol {
+      padding-left: 20px;
+      
+    }
+  }
 }
 
 @tailwind utilities;
