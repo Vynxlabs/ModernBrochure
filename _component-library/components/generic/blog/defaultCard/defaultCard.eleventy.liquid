@@ -25,7 +25,8 @@
   </a>
   <ul class=" flex text-{{color_group}}-secondarycolor flex flex-wrap gap-x-4 overflow-hidden opacity-70">
     {% for tag in blogTags %}
-      <li class="hover:underline after:absolute after:content-['·'] after:scale-150  after:left-2 relative before:content-[' '] after:left-[-10px] after:text-lg ">
+      {% if tag != 'undefined' %}
+        <li class="hover:underline after:absolute after:content-['·'] after:scale-150  after:left-2 relative before:content-[' '] after:left-[-10px] after:text-lg ">
         <a class="font-bold" href="/tag/{{ tag | slug }}/">{{ tag | capitalize | replace: ' ', '' }}</a>
       </li>
     {% endfor %}

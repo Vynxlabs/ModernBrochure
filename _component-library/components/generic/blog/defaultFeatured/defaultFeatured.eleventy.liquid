@@ -12,9 +12,11 @@
 <div class="w-full col-span-1 md:col-span-2 lg:col-span-3">
   <ul class=" flex text-{{color_group}}-secondarycolor flex flex-wrap gap-x-4 overflow-hidden opacity-70">
   {% for tag in blogTags %}
-    <li class="hover:underline after:absolute after:content-['·'] after:scale-150  after:left-2 relative before:content-[' '] after:left-[-10px] after:text-lg ">
+    {% if tag != 'undefined' %}
+      <li class="hover:underline after:absolute after:content-['·'] after:scale-150  after:left-2 relative before:content-[' '] after:left-[-10px] after:text-lg ">
       <a class="font-bold" href="/tag/{{ tag | slug }}/">{{ tag | capitalize | replace: ' ', '' }}</a>
     </li>
+    {% endif %}
   {% endfor %}
 </ul>
   <h2 class="text-4xl md:text-5xl hover:underline">{{blogTitle}}</h2>
