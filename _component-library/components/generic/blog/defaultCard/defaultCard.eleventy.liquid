@@ -29,6 +29,7 @@
         <li class="hover:underline after:absolute after:content-['·'] after:scale-150  after:left-2 relative before:content-[' '] after:left-[-10px] after:text-lg ">
         <a class="font-bold" href="/tag/{{ tag | slug }}/">{{ tag | capitalize | replace: ' ', '' }}</a>
       </li>
+    {% endif %}
     {% endfor %}
   </ul>
   <h2 class="hover:underline text-2xl">
