@@ -1,13 +1,15 @@
 <div class="w-full flex flex-col justify-center items-center">
   <form
-    {% if content.sectionId %}
-    id="{{ content.sectionId }}"
+    {% if sectionId %}
+    id="{{ sectionId }}"
     {% endif %}
+    {% if successPage %}
+      id="{{ successPage }}"
+      {% endif %}
     method="POST"
     data-netlify="true"
     data-netlify-recaptcha="true"
     name="{{ formName }}"
-    id="{{ sectionId }}"
     class="w-full max-w-[512px]">
     {% for element in form_elements %}
       <div class="mt-4">{% bookshop "{{element._bookshop_name}}" bind: element %}</div>
