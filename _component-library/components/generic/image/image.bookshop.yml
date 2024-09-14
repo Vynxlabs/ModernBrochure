@@ -12,6 +12,7 @@ spec:
 blueprint:
   imagePath:
   imageAlt:
+  yAxisPosition:
   imageSizes:
   class:
 
@@ -29,4 +30,12 @@ _inputs:
     hidden: true
   imageAlt:
     comment: "A concise text description of the image that will be used for accessibility. This not being filled out will hurt SEO."
+  yAxisPosition:
+    type: range
+    options:
+      min: 0
+      max: 100
+      step: 5
+      default: 50
+    comment: "This shifts the focus of the image up or down by percentage 1-100. 0 is the top of the image and 50 is the center of the image"
 
