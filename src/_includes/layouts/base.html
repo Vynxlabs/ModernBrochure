@@ -32,7 +32,13 @@
     <main
       tabindex="-1"
       id="main-content"
-      class="flex flex-1 flex-col [&>:last-child]:flex-1"
+      class="flex flex-1 flex-col [&>:last-child]:flex-1 mt-20"
+      _='on load 
+      measure #navbar height then set :height to it
+      set :maincontent to the #main-content
+      set :maincontent.style.marginTop to :height.height+"px"
+      log :height.height
+      end'
     >
       {% bookshop_include "hero" hero: hero %} {% bookshop_include "page"
       content_blocks: content_blocks %} {% block content %}{% endblock %}
