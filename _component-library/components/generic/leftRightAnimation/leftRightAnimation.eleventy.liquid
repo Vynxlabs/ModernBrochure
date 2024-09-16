@@ -65,7 +65,7 @@
   </div>
 
 {% else %}
-  <div class="hidden grid-cols-2 gap-[7vw] lg:grid overflow-visible">
+  <div class="hidden grid-cols-2 gap-[7vw] lg:grid [contain:paint;]">
     <div class="sticky top-[20vh] h-[60vh] {{imagePositionClasses}}">
       {% for entry in content.entries %}
         {% assign counter = counter | minus: 1 %}
