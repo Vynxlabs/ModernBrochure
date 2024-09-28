@@ -1,0 +1,20 @@
+{% assign color_group = styles.color_group %}
+{% assign cardStyle = 'generic/mediaCards/' |  append: styles.cardStyle  %}
+
+<div class="c-mediaCards componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
+  <section
+    {% if content.sectionId %}
+    id="{{ content.sectionId | idFilter }}"
+    {% endif %}
+    class="basecontainer w-full">
+    {% bookshop "generic/heading" bind: content.heading %}
+
+    {% if content.cards %}
+      <ul class="mt-20 flex flex-wrap justify-center gap-16">
+        {% for card in content.cards %}
+          {% bookshop {{cardStyle}} bind: card %}
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </section>
+</div>
