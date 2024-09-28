@@ -2,7 +2,7 @@
 spec:
   structures:
     - content_blocks
-  label: "MediaCards"
+  label: "Media Cards"
   description:
   icon:
   tags: []
@@ -12,7 +12,7 @@ blueprint:
   content:
     sectionId:
     heading: bookshop:generic/heading!
-    cards: [bookshop:generic/mediaCard!]
+    cards: [bookshop:generic/mediaCards/defaultMediaCard!]
   styles:
     color_group: primary
     cardStyle: defaultCard
