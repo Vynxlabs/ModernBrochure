@@ -12,7 +12,7 @@ blueprint:
   content:
     sectionId:
     heading: bookshop:generic/heading!
-    cards: [bookshop:structure:mediaCards!]
+    cards: [bookshop:structure:mediaCards]
   styles:
     color_group: primary
 
