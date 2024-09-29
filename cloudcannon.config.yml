@@ -135,6 +135,10 @@ collections_config:
         type: date
         label: Published Date
         instance_value: NOW
+      happeningDate:
+        type: datetime
+        label: Happening Date
+        comment: If this blog post is tagged with a happening tag, enter the happening date here. If not, leave blank.
       image:
         hidden: true
       permalink:
@@ -170,7 +174,7 @@ collections_config:
         options:
           values: data.blogTags
       happeningDate:
-        type: date
+        type: datetime
         label: Happening Date
         instance_value: NOW
       image:
