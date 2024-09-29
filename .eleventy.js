@@ -192,6 +192,9 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addCollection("services", (collection) => {
     return collection.getFilteredByGlob("./src/services/**/*.md");
   });
+  eleventyConfig.addCollection("happenings", (collection) => {
+    return collection.getFilteredByGlob("./src/happenings/**/*.md");
+  });
 
   eleventyConfig.addFilter("dateFilter", dateFilter);
   eleventyConfig.addFilter("w3DateFilter", w3DateFilter);

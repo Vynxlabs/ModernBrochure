@@ -3,7 +3,9 @@
 {% endcomment %}
 {% capture socialShareImage %}
 {% if blogImage and blogImage != "" %} {{ blogImage }} 
-{% elsif page.url contains 'blog/' %} {{blog.defaultImage}} 
+{% elsif page.url contains 'blog/' %} {{blog.defaultImage}}
+{% elsif happeningImage and happeningImage != "" %} {{ happeningImage }} 
+{% elsif page.url contains 'happenings/' %} {{happenings.defaultImage}}
 {% elsif site.socialImage and site.socialImage != "" %} {{ site.socialImage }} {% endif %}
 {% endcapture %}
 {% assign socialShareImage = socialShareImage | strip %}
