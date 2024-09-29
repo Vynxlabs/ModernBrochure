@@ -150,6 +150,7 @@ collections_config:
     path: happenings
     output: true
     url: dist/happenings
+    icon: event
     filter:
       exclude:
         - happenings.json
