@@ -15,7 +15,7 @@ blueprint:
     cards: [bookshop:generic/mediaCards/defaultMediaCard!]
   styles:
     color_group: primary
-    cardStyle: defaultCard
+    cardStyle: Default
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
