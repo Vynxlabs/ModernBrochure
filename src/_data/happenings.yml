@@ -8,5 +8,5 @@ _inputs:
       Select which tags you want to be considered happenings tags.
       This allows you to set a blog post to be a 'happening' post.
     type: multiselect
-      options:
-        values: data.blogTags
+    options:
+      values: data.blogTags
