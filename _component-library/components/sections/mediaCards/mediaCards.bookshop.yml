@@ -12,21 +12,12 @@ blueprint:
   content:
     sectionId:
     heading: bookshop:generic/heading!
-    cards: [bookshop:generic/mediaCards/defaultMediaCard!]
+    cards: [bookshop:structure:mediaCards]
   styles:
     color_group: primary
-    cardStyle: Default
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
-  cardStyle:
-    type: select
-    options:
-      allow_empty: false
-      value_key: id
-      values:
-        - name: Default
-          id: defaultMediaCard
