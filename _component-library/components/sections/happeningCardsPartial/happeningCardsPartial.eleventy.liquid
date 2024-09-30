@@ -1,24 +1,25 @@
 {% if env_bookshop_live %}
-    {% assign postListItems = collections.happenings %}
-  {% else %}
-    {% assign postListItems = pagination.items %}
-  {% endif %}
-  {% assign color_group = styles.color_group %}
-  
-  {% assign postListItems = collections.happenings |  concat: collections.blog | happeningsFilter: page, happenings, contents.tags %}
-  
-  {% assign counter = 0 %}
-  {% assign cardStyle = 'generic/happenings/' | append: styles.cardStyle | append: "Card" %}
-  
-  <div class="cs-w-full py-20 bg-{{styles.color_group}}-backgroundcolor flex flex-col items-center justify-center text-{{styles.color_group}}-textcolor">
-  
+  {% assign postListItems = collections.happenings %}
+{% else %}
+  {% assign postListItems = pagination.items %}
+{% endif %}
+{% assign color_group = styles.color_group %}
+
+{% assign postListItems = collections.happenings | concat: collections.blog | happeningsFilter: page, happenings, contents.tags %}
+
+{% assign counter = 0 %}
+{% assign cardStyle = 'generic/happenings/' | append: styles.cardStyle | append: "Card" %}
+
+
+<div class="cs-w-full py-20 bg-{{styles.color_group}}-backgroundcolor flex flex-col items-center justify-center text-{{styles.color_group}}-textcolor">
+  {% if postListItems.size > 0 %}
     <div
       {% if contents.sectionId %}
       id="{{ contents.sectionId | idFilter }}"
       {% endif %}
       class="basecontainer">
       {% if env_bookshop_live and contents.showNote %}
-        {% bookshop "generic/notification" heading: "Blog Cards" text: "The time to read will not show up while editing, but will show up on the live site" %}
+        {% bookshop "generic/notification" heading: "Happening Cards No Filtering" text: "The filtering do not work while editing, but will show up on the live site" %}
       {% endif %}
       {% bookshop {{contents.heading._bookshop_name}} bind: contents.heading %}
       <div class="mt-12 grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3   gap-10 md:gap-20 ">
@@ -50,4 +51,8 @@
         {% endfor %}
       </div>
     </div>
-  </div>
+  {% elsif contents.noHappeningsHeading %}
+    {% bookshop {{contents.noHappeningsHeading._bookshop_name}} bind: contents.noHappeningsHeading %}
+  {% else %}
+  {% endif %}
+</div>
