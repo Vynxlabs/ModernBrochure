@@ -9,7 +9,8 @@ module.exports = (collection, item, happeningsConfig, tags = [], limit = 3) => {
         return happeningDate >= today;
     });
 
-    if (tags.length > 0) {
+
+    if (tags !== null && tags.length > 0) {
         if (happeningsConfig.tags === null) {
             filteredItems = filteredItems.filter((x) => x.data.tags && x.data.tags.some((tag) => tags.includes(tag)));
         } else {
