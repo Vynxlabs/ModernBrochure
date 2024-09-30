@@ -5,7 +5,7 @@
 {% endif %}
 {% assign color_group = styles.color_group %}
 
-{% assign postListItems = collections.happenings %}
+{% assign postListItems = collections[happenings,posts] %}
 
 {% assign counter = 0 %}
 {% assign cardStyle = 'generic/happenings/' | append: styles.cardStyle | append: "Card" %}
