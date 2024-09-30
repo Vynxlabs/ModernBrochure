@@ -13,6 +13,7 @@ blueprint:
     sectionId:
     showNote: true
     heading: bookshop:structure:headingBlocks
+    tags:
   styles:
     color_group: primary
     cardStyle: default
@@ -30,3 +31,9 @@ _inputs:
       values:
         - name: Default
           id: default
+  tags:
+    type: multiselect
+    label: Filter by tags
+    comment: Filter by specifc tags (set up in the happenings data file) to show only those happenings. Leave blank to show all.
+    options:
+      values: data.happening.tags
