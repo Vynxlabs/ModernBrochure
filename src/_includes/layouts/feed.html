@@ -13,7 +13,7 @@ If this is a tag, grab those items instead as one large collection
 {% endcomment %}
 {% if tag %}
   {% assign postListItems = collections[tag] %}
-  {% assign pageHeaderTitle = 'Blog posts filed under “' | append: tag | append: '”' %}
+  {% assign pageHeaderTitle = 'Posts filed under “' | append: tag | append: '”' %}
 {% endif %}
 
 {% capture heading %}

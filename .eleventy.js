@@ -12,6 +12,7 @@ const log_filter = require("./src/filters/log-filter.js");
 const fileSubstringFilter = require("./src/filters/extract-file-substring-filter.js");
 const stringifyFilter = require("./src/filters/stringify-filter.js");
 const evalLiquid = require("./src/filters/evalLiquid-filter.js");
+const happeningsFilter = require("./src/filters/happenings-filter.js");
 const getServiceCategories = require("./src/filters/getServiceCategories-filter.js");
 const rssPlugin = require("@11ty/eleventy-plugin-rss");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
@@ -192,6 +193,9 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addCollection("services", (collection) => {
     return collection.getFilteredByGlob("./src/services/**/*.md");
   });
+  eleventyConfig.addCollection("happenings", (collection) => {
+    return collection.getFilteredByGlob("./src/happenings/**/*.md");
+  });
 
   eleventyConfig.addFilter("dateFilter", dateFilter);
   eleventyConfig.addFilter("w3DateFilter", w3DateFilter);
@@ -211,6 +215,7 @@ module.exports = (eleventyConfig) => {
     return str.replace(/\s+/g, ' ').trim();
   });
   eleventyConfig.addFilter("evalLiquid", evalLiquid);
+  eleventyConfig.addFilter("happeningsFilter", happeningsFilter);
 
   eleventyConfig.on("eleventy.before", () => {
     execSync("node ./utils/addBlogPagination.js");

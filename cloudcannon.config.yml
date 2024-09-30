@@ -12,6 +12,7 @@ data_config:
   blogTags: true
   reviews: true
   blog: true
+  happenings: true
 collections_config_override: true
 collections_config:
   data:
@@ -135,6 +136,10 @@ collections_config:
         type: date
         label: Published Date
         instance_value: NOW
+      happeningDate:
+        type: datetime
+        label: Happening Date
+        comment: If this blog post is tagged with a happening tag, enter the happening date here. If not, leave blank.
       image:
         hidden: true
       permalink:
@@ -146,6 +151,44 @@ collections_config:
     schemas:
       default:
         path: .cloudcannon/schemas/post.md
+  happenings:
+    path: happenings
+    output: true
+    url: dist/happenings
+    icon: event
+    filter:
+      exclude:
+        - happenings.json
+    _enabled_editors:
+      - content
+      - visual
+    _inputs:
+      title:
+        label: Page Title
+        comment: Seo focused page title
+      metaDesc:
+        type: textarea
+        label: Meta Description
+        comment: SEO focused page summary
+      tags:
+        type: multiselect
+        options:
+          values: data.blogTags
+      happeningDate:
+        type: datetime
+        label: Happening Date
+        instance_value: NOW
+      image:
+        hidden: true
+      permalink:
+        hidden: true
+      socialImage:
+        hidden: true
+      eleventyExcludeFromCollections:
+        hidden: true
+    schemas:
+      default:
+        path: .cloudcannon/schemas/happening.md
   services:
     path: services
     output: true
