@@ -1,7 +1,10 @@
 <div class="w-full ">
-  <a class=" relative" href="{{url}}">
+  <h2 class="hover:underline text-2xl">
+    <a href="{{url}}">{{ happeningTitle }}</a>
+  </h2>
+  <a class="relative" href="{{url}}">
       {% bookshop "generic/image" bind: image class: "w-full rounded transition-all duration-300 scale-100 hover:scale-[1.03] object-cover aspect-[3/2]" %}
-      <time class="abosolute p-2 bg-white text-slate-800 rounded" datetime="{{ happeningDatetime | date: "%Y-%m-%d" }}">{{ happeningDatetime | date: "%Y-%m-%d %H:%M" }}</time>
+      <time class="absolute bottom-5 right-5 p-2 z-10 bg-white text-slate-800 rounded" datetime="{{ happeningDatetime | date: "%Y-%m-%d" }}">{{ happeningDatetime | date: "%Y-%m-%d %H:%M" }}</time>
   </a>
   <ul class=" flex text-{{color_group}}-secondarycolor flex flex-wrap gap-x-4 overflow-hidden opacity-70">
     {% for tag in blogTags %}
@@ -12,7 +15,5 @@
     {% endif %}
     {% endfor %}
   </ul>
-  <h2 class="hover:underline text-2xl">
-    <a href="{{url}}">{{ happeningTitle }}</a>
-  </h2>
+  
 </div>
