@@ -36,4 +36,4 @@ _inputs:
     label: Filter by tags
     comment: Filter by specifc tags (set up in the happenings data file) to show only those happenings. Leave blank to show all.
     options:
-      values: data.happening.tags
+      values: data.happenings.tags
