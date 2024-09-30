@@ -34,6 +34,8 @@ _inputs:
   tags:
     type: multiselect
     label: Filter by tags
-    comment: Filter by specifc tags (set up in the happenings data file) to show only those happenings. Leave blank to show all.
+    comment: >-
+      Filter by specifc tags (set up in the happenings data file) to show only those happenings. Leave blank to show all.
+      Make sure the tag you want to filter on is set up in the happenings data file.
     options:
-      values: data.happenings.tags
+      values: data.blogTags
