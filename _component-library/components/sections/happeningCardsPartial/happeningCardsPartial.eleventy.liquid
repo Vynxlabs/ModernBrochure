@@ -25,14 +25,26 @@
       <div class="mt-12 grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3   gap-10 md:gap-20 ">
         {% for entry in postListItems %}
           {% capture image %}
+            {% if entry.url contains "happenings/" %}
             {% if entry.data.happeningImage and entry.data.happeningImage != ""  %}
             image:
-              imagePath: {{ entry.data.happeningImage }}
-              imageAlt: {{ entry.data.imageAltText }}
+                imagePath: {{ entry.data.happeningImage }}
+                imageAlt: {{ entry.data.imageAltText }}
             {% else %}
             image:
-              imagePath: {{ happenings.defaultImage }}
-              imageAlt: {{ happenings.defaultImageAltText }}
+                imagePath: {{ happenings.defaultImage }}
+                imageAlt: {{ happenings.defaultImageAltText }}
+            {% endif %}
+            {% else %}
+            {% if entry.data.blogImage and entry.data.blogImage != ""  %}
+            image:
+                imagePath: {{ entry.data.blogImage }}
+                imageAlt: {{ entry.data.imageAltText }}
+            {% else %}
+            image:
+                imagePath: {{ blog.defaultImage }}
+                imageAlt: {{ blog.defaultImageAltText }}
+            {% endif %}
             {% endif %}
             {% endcapture %}
           {% capture happeningInfo %}
