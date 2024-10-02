@@ -26,7 +26,8 @@ blueprint:
     visualInterestColor: '#000000'
     highContrast: false
     contrastColorGroup:
-    contrastAgainst: 
+    contrastAgainst:
+    textClassOverride:
 
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
@@ -172,4 +173,6 @@ _inputs:
   contrastAgainst:
     hidden: true
   contrastColorGroup:
+    hidden: true
+  textClassOverride:
     hidden: true

@@ -1,90 +1,101 @@
 {% if env_bookshop_live %}
-  {% assign postListItems = collections.happenings %}
-{% else %}
-  {% assign postListItems = pagination.items %}
-{% endif %}{% assign color_group = styles.color_group %}
-{% comment %} "happenings" is a data file that is being passed into this funciton src/data/happenings.yml {% endcomment %}
-{% assign postListItems = collections.happenings | concat: collections.blog | happeningsFilter: page, happenings, contents.tags, 1 %}
-
-{% capture opacity %}after:bg-opacity-[{{ styles.backgroundOpacity }}%]
-{% endcapture %}
-{% assign counter = 0 %}
-{% assign cardStyle = 'generic/happenings/' | append: styles.cardStyle | append: "Card" %}
-
-
-<div class="cs-w-full py-20 bg-{{styles.color_group}}-backgroundcolor flex flex-col items-center justify-center text-{{styles.color_group}}-textcolor">
-  {% if postListItems.size > 0 %}
-    <div
-      {% if contents.sectionId %}
-      id="{{ contents.sectionId | idFilter }}"
-      {% endif %}
-      class="basecontainer">
-      {% if env_bookshop_live and contents.showNote %}
-        {% bookshop "generic/notification" heading: "Happening Cards No Filtering" text: "The filtering do not work while editing, but works correctly on the live site." %}
-      {% endif %}
-      {% bookshop {{contents.heading._bookshop_name}} bind: contents.heading %}
-      <div class="mt-12 grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3   gap-10 md:gap-20 ">
-        {% for entry in postListItems %}
-          {% capture image %}
-              {% if entry.url contains "happenings/" %}
-              {% if entry.data.happeningImage and entry.data.happeningImage != ""  %}
-              image:
-                  imagePath: {{ entry.data.happeningImage }}
-                  imageAlt: {{ entry.data.imageAltText }}
-              {% else %}
-              image:
-                  imagePath: {{ happenings.defaultImage }}
-                  imageAlt: {{ happenings.defaultImageAltText }}
-              {% endif %}
-              {% else %}
-              {% if entry.data.blogImage and entry.data.blogImage != ""  %}
-              image:
-                  imagePath: {{ entry.data.blogImage }}
-                  imageAlt: {{ entry.data.imageAltText }}
-              {% else %}
-              image:
-                  imagePath: {{ blog.defaultImage }}
-                  imageAlt: {{ blog.defaultImageAltText }}
-              {% endif %}
-              {% endif %}
-              {% endcapture %}
-          {% capture happeningInfo %}
-              happeningTitle: {{ entry.data.title }}
-              url: {{ entry.url }}
-              happeningDatetime: '{% if entry.data.happeningDate %}{{ entry.data.happeningDate }}{% else %}{{ entry.date }}{% endif %}'
-              blogTags: {{ entry.data.tags | ymlify | split: "," | json}}
-              {{ image | strip}}
-              color_group: {{styles.color_group}}
-              {% endcapture %}
-          {% assign happeningInfo = happeningInfo | ymlify %}
-          {% if counter < 1 %}
-            <div class="c-upcomingHappening cs-w-full relative flex flex-col items-center min-h-screen overflow-hidden pb-16">
-              <div class="absolute inset-0 -z-10 flex items-center justify-center after:contents[''] after:absolute after:inset-0 after:bg-black after:bg-op {{opacity}} ">
-                {% bookshop "generic/image" bind: image class: "min-h-screen h-full w-screen object-cover" %}
-              </div>
-
-              <section class="basecontainer w-full flex flex-col h-full justify-end ">
-                <div class=" text-white flex items-end justify-between flex-wrap gap-x-8">
-
-
-                  <div class="w-full max-w-[900px] lg:flex-1">
-                    <p class=" {% if content.highlightEybrow %} text-{{styles.color_group}}-accentcolor {% endif %} ">{{ content.eyebrow }}</p>
-                    {% bookshop "generic/heading" bind: entry.data.title %}
-                  </div>
-                  <div class=" w-full max-w-[350px] flex flex-col justify-end ">
-                    <a href="{{entry.url}}">{{ Learn more }}</a>
-                  </div>
-                </div>
-              </section>
-            </div>
-          {% endif %}
-          {% assign counter = counter | plus: 1 %}
-        {% endfor %}
-      </div>
-    </div>
-  {% elsif contents.noHappeningsHeading %}
-    {% bookshop {{contents.noHappeningsHeading._bookshop_name}} bind: contents.noHappeningsHeading %}
+    {% assign postListItems = collections.happenings %}
   {% else %}
-  {% endif %}
-</div>
-
+    {% assign postListItems = pagination.items %}
+  {% endif %}{% assign color_group = styles.color_group %}
+  {% comment %} "happenings" is a data file that is being passed into this funciton src/data/happenings.yml {% endcomment %}
+  {% assign postListItems = collections.happenings | concat: collections.blog | happeningsFilter: page, happenings, contents.tags, 1 %}
+  
+  {% capture opacity %}after:bg-opacity-[{{ styles.backgroundOpacity }}%]
+  {% endcapture %}
+  {% assign counter = 0 %}
+  {% assign cardStyle = 'generic/happenings/' | append: styles.cardStyle | append: "Card" %}
+  
+  
+  <div class=" ">
+    {% if postListItems.size > 0 %}
+      <div
+        {% if contents.sectionId %}
+        id="{{ contents.sectionId | idFilter }}"
+        {% endif %}
+        class="">
+        {% if env_bookshop_live and contents.showNote %}
+          {% bookshop "generic/notification" heading: "Happening Cards No Filtering" text: "The filtering do not work while editing, but works correctly on the live site." %}
+        {% endif %}
+          {% for entry in postListItems %}
+            {% capture image %}
+                {% if entry.url contains "happenings/" %}
+                {% if entry.data.happeningImage and entry.data.happeningImage != ""  %}
+                image:
+                    imagePath: {{ entry.data.happeningImage }}
+                    imageAlt: {{ entry.data.imageAltText }}
+                {% else %}
+                image:
+                    imagePath: {{ happenings.defaultImage }}
+                    imageAlt: {{ happenings.defaultImageAltText }}
+                {% endif %}
+                {% else %}
+                {% if entry.data.blogImage and entry.data.blogImage != ""  %}
+                image:
+                    imagePath: {{ entry.data.blogImage }}
+                    imageAlt: {{ entry.data.imageAltText }}
+                {% else %}
+                image:
+                    imagePath: {{ blog.defaultImage }}
+                    imageAlt: {{ blog.defaultImageAltText }}
+                {% endif %}
+                {% endif %}
+                {% endcapture %}
+            {% capture happeningInfo %}
+                happeningTitle: {{ entry.data.title }}
+                url: {{ entry.url }}
+                happeningDatetime: '{% if entry.data.happeningDate %}{{ entry.data.happeningDate }}{% else %}{{ entry.date }}{% endif %}'
+                blogTags: {{ entry.data.tags | ymlify | split: "," | json}}
+                {{ image | strip}}
+                color_group: {{styles.color_group}}
+                {% endcapture %}
+            {% assign happeningInfo = happeningInfo | ymlify %}
+            {% capture hapeningHeadline %}
+              
+            {% endcapture %}
+            {% if counter < 1 %}
+              <div class="c-upcomingHappening cs-w-full relative flex flex-col items-center min-h-screen overflow-hidden pb-16">
+                <div class="absolute inset-0 -z-10 flex items-center justify-center after:contents[''] after:absolute after:inset-0 after:bg-black after:bg-op {{opacity}} ">
+                {% assign image = image | strip |ymlify | log %}  
+                {% bookshop "generic/image" bind: image.image class: "min-h-screen h-full w-screen object-cover " %}
+                </div>
+  
+                <section class="basecontainer w-full flex flex-col h-full justify-end text-white">
+                  <div class="  flex items-end justify-between flex-wrap gap-x-8">
+                    {% capture headingHappening %}
+                      content:
+                          headline: {{entry.data.title| stringifyFilter}}
+                          description: {{entry.data.summary| stringifyFilter}}
+                          headingHierarchy: "h2"
+                      styles:
+                          contentAlignment: center
+                          textAlignment: center
+                          textClassOverride: text-white
+                  {% endcapture %}
+                  {% assign headingHappening = headingHappening | ymlify %}
+  
+                      <p _="on load log '{{entry.data.happeningDate | date: "%Y-%m-%d %I:%M %P"}}'"
+                      ></p>
+                      {% bookshop "generic/heading" bind: headingHappening %}
+                      <p>{{entry.data.happeningDate | date: "%Y-%m-%d %I:%M %P"}}</p>
+                    <div class=" w-full max-w-[350px] flex flex-col justify-end ">
+                      <a href="{{entry.url}}">Learn more</a>
+                  </div>
+                </section>
+              </div>
+            {% endif %}
+            {% assign counter = counter | plus: 1 %}
+          {% endfor %}
+      </div>
+    {% elsif contents.noHappeningsHeading %}
+      {% bookshop {{contents.noHappeningsHeading._bookshop_name}} bind: contents.noHappeningsHeading %}
+    {% else %}
+    {% endif %}
+  </div>
+  
+  

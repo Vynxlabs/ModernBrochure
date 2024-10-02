@@ -32,6 +32,7 @@
 
 {% capture textClass %}
 {% if styles.highContrast %} text-{{styles.contrastColorGroup}}-highcontrast-{{styles.contrastAgainst}}color {% else %} text-{{color_group}}-textcolor {% endif %}
+{% if styles.textClassOverride %} {{styles.textClassOverride}} {% endif %}
 {% endcapture %}
 
   
