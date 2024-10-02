@@ -79,8 +79,22 @@
                   {% endcapture %}
                   {% assign headingHappening = headingHappening | ymlify %}
   
-                      <p _="on load log '{{entry.data.happeningDate | date: "%Y-%m-%d %I:%M %P"}}'"
-                      ></p>
+                  <p _="on intersection(intersecting) having threshold 0.1
+                  repeat while intersecting
+                  set :currentTime to Date.now()
+                  set :happeningDate to Date.parse('{{entry.data.happeningDate | date: "%Y-%m-%d %I:%M %P"}}')
+                  set :timeDifference to :happeningDate - :currentTime
+                  set :days to Math.floor(:timeDifference / (1000 * 60 * 60 * 24))
+                  set :hours to Math.floor((:timeDifference mod (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+                  set :minutes to Math.floor((:timeDifference mod (1000 * 60 * 60)) / (1000 * 60))
+                  set :seconds to Math.floor((:timeDifference mod (1000 * 60)) / 1000)
+                  set my innerHTML to :days + 'd ' + :hours + 'h ' + :minutes + 'm ' + :seconds + 's'
+                  log :happeningDate
+                  wait 1s
+                  if intersecting !== true then break end
+                  end
+                  "
+                  ></p>
                       {% bookshop "generic/heading" bind: headingHappening %}
                       <p>{{entry.data.happeningDate | date: "%Y-%m-%d %I:%M %P"}}</p>
                     <div class=" w-full max-w-[350px] flex flex-col justify-end ">
