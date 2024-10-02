@@ -4,7 +4,7 @@
   {% assign postListItems = pagination.items %}
 {% endif %}
 {% assign color_group = styles.color_group %}
-
+{% comment %} "happenings" is a data file that is being passed into this funciton src/data/happenings.yml {% endcomment %}
 {% assign postListItems = collections.happenings | concat: collections.blog | happeningsFilter: page, happenings, contents.tags %}
 
 {% assign counter = 0 %}
