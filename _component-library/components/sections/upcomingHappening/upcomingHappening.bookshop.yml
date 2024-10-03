@@ -17,7 +17,7 @@ blueprint:
   styles:
     color_group: primary
     showCountdown: false
-    countDownPosition: right
+    countDownPosition: center
     backgroundOpacity: 50
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
@@ -47,7 +47,7 @@ _inputs:
       default: 50
     comment: Set the opacity percentage of the background
   countDownPosition:
-    hidden: '!showCountdown'
+    hidden: true #'!showCountdown'
     type: choice
     options:
       allow_empty: false

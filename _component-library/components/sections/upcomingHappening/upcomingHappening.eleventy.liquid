@@ -20,7 +20,7 @@
         {% endif %}
         class="">
         {% if env_bookshop_live and contents.showNote %}
-          {% bookshop "generic/notification" heading: "Happening Cards No Filtering" text: "The filtering do not work while editing, but works correctly on the live site." %}
+          {% bookshop "generic/notification" heading: "No Filtering or Countdown" text: "The filtering do not work while editing, but works correctly on the live site. <br>The countdown will not tick down while editing, but will show up on the live site" %}
         {% endif %}
         {% for entry in postListItems %}
           {% capture image %}
