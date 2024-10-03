@@ -10,9 +10,9 @@
     {% endcapture %}
   {% assign counter = 0 %}
   {% assign cardStyle = 'generic/happenings/' | append: styles.cardStyle | append: "Card" %}
-  
-  
-  <div class=" ">
+  {% assign color_group = styles.color_group %}
+ 
+  <div class=" {% if postListItems.size <= 0 %} bg-{{styles.color_group}}-backgroundcolor componentcontainer {% endif %}">
     {% if postListItems.size > 0 %}
       <div
         {% if contents.sectionId %}
@@ -89,7 +89,7 @@
                     set :hours to Math.floor((:timeDifference mod (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
                     set :minutes to Math.floor((:timeDifference mod (1000 * 60 * 60)) / (1000 * 60))
                     set :seconds to Math.floor((:timeDifference mod (1000 * 60)) / 1000)
-                    if :days <= 0 and :hours <= 0 and :minutes <= 0 and :seconds <= 0 then
+                    if :days == 0 and :hours == 0 and :minutes == 0 and :seconds == 0 then
                     put 'Starting now' into #{{"countdown-" |  append: dateUUID}}
                     set :started to true
                     break
