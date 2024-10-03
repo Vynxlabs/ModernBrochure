@@ -139,7 +139,9 @@ collections_config:
       happeningDate:
         type: datetime
         label: Happening Date
-        comment: If this blog post is tagged with a happening tag, enter the happening date here. If not, leave blank.
+        comment: >-
+          If this blog post is tagged with a happening tag, enter the happening date here. If not, leave blank.
+          IMPORTANT: The date must be in UTC time. You'll need to convert your local time to UTC time.
       image:
         hidden: true
       permalink:
@@ -177,6 +179,8 @@ collections_config:
       happeningDate:
         type: datetime
         label: Happening Date
+        comment: >-
+          IMPORTANT: The date must be in UTC time. You'll need to convert your local time to UTC time.
         instance_value: NOW
       image:
         hidden: true
