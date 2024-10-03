@@ -79,6 +79,7 @@
                     {% endcapture %}
                   {% assign headingHappening = headingHappening | ymlify %}
                   {% assign dateUUID = "" | uuidFilter %}
+                  {% if styles.showCountdown %}
                   <div _="on intersection(intersecting) having threshold 0.1
                     repeat while intersecting and not :started
                     set :started to false
@@ -125,6 +126,8 @@
                       </div>
                     </div>
                   </div>
+                    
+                  {% endif %}
                 </div>
                 <div class="mt-20">{% bookshop "generic/heading" bind: headingHappening %}</div>
                 <div class="flex justify-between w-full items-end flex-wrap mt-20  gap-2 sm:gap-4">
@@ -132,7 +135,7 @@
                     <p class="uppercase font-bold text-2xl sm:text-4xl opacity-70">When:</p>
                     <p class="text-3xl sm:text-5xl font-bold opacity-90">{{ entry.data.happeningDate | date: "%Y-%m-%d %I:%M %P" }}</p>
                   </div>
-                  <a class="text-3xl sm:text-5xl font-bold opacity-80 underline transition-all hover:scale-105" href="{{entry.url}}">Learn more →</a>
+                  <a class="text-3xl sm:text-5xl font-bold opacity-80 underline transition-all hover:scale-105" href="{{entry.url}}">Learn more</a>
                 </div>
               </section>
             </div>

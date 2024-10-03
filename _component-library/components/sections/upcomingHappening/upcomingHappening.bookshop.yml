@@ -16,7 +16,6 @@ blueprint:
     noHappeningsHeading: bookshop:generic/heading!
   styles:
     color_group: primary
-    showDate: true
     showCountdown: false
     countDownPosition: right
     backgroundOpacity: 50
