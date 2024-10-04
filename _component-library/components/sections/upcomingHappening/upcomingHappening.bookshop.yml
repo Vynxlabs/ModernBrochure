@@ -14,7 +14,7 @@ blueprint:
     showNote: true
     tags:
     showCountdown: false
-    noHappeningsHeading: bookshop:generic/heading!
+    noHappeningsHeading: bookshop:generic/heading
   styles:
     color_group: primary
     countDownPosition: center
@@ -37,7 +37,7 @@ _inputs:
     label: No Happenings Heading
     comment: >-
       The heading to show when there are no happenings.
-      If no heading is given, this section will be hidden.
+      If no heading is given, this section will be hidden when there are no happenings.
   backgroundOpacity:
     type: range
     options:
