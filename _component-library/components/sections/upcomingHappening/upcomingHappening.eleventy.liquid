@@ -133,7 +133,18 @@
                 <div class="flex justify-between w-full items-end flex-wrap mt-20  gap-2 sm:gap-4">
                   <div>
                     <p class="uppercase font-bold text-2xl sm:text-4xl opacity-70">When:</p>
-                    <p class="text-3xl sm:text-5xl font-bold opacity-90">{{ entry.data.happeningDate | date: "%Y-%m-%d %I:%M %P" }}</p>
+                    <p 
+                    _="on load
+                    set happeningDate to Date.parse('{{entry.data.happeningDate | date: "%Y-%m-%d %I:%M %P",0}} +0000')
+                    log happeningDate
+                    set timezone to Intl.DateTimeFormat().resolvedOptions().timeZone
+                    js(happeningDate,timezone)  
+                    dt = new Date(happeningDate);
+                    console.log(dt);
+                    return dt.toLocaleDateString('en-US', { timeZone: timezone }) + ' ' + dt.toLocaleTimeString('en-US', { timeZone: timezone }) end
+                    put it into my.innerHTML
+                    "
+                    class="text-3xl sm:text-5xl font-bold opacity-90">{{ entry.data.happeningDate | date: "%Y-%m-%d %I:%M %P", 0 }}</p>
                   </div>
                   <a class="text-3xl sm:text-5xl font-bold opacity-80 underline transition-all hover:scale-105" href="{{entry.url}}">Learn more</a>
                 </div>
