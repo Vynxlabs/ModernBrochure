@@ -13,10 +13,10 @@ blueprint:
     sectionId:
     showNote: true
     tags:
+    showCountdown: false
     noHappeningsHeading: bookshop:generic/heading!
   styles:
     color_group: primary
-    showCountdown: false
     countDownPosition: center
     backgroundOpacity: 50
 

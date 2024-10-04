@@ -79,7 +79,7 @@
                     {% endcapture %}
                   {% assign headingHappening = headingHappening | ymlify %}
                   {% assign dateUUID = "" | uuidFilter %}
-                  {% if styles.showCountdown %}
+                  {% if contents.showCountdown %}
                   <div _="on intersection(intersecting) having threshold 0.1
                     repeat while intersecting and not :started
                     set :started to false
