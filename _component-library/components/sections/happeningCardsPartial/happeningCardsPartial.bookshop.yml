@@ -24,6 +24,9 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  color_group:
+    comment: >-
+      This color group is applied to the No Happenings Heading.
   cardStyle:
     type: select
     options:
