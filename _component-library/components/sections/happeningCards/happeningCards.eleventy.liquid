@@ -1,0 +1,83 @@
+{% if env_bookshop_live %}
+  {% assign postListItems = collections.happenings %}
+{% else %}
+  {% assign postListItems = pagination.items %}
+{% endif %}{% assign color_group = styles.color_group %}
+{% comment %} "happenings" is a data file that is being passed into this funciton src/data/happenings.yml {% endcomment %}
+{% assign postListItems = collections.happenings | concat: collections.blog | happeningsFilter: page, happenings, contents.tags, -1 %}
+
+{% assign counter = 0 %}
+{% assign cardStyle = 'generic/happenings/' | append: styles.cardStyle | append: "Card" %}
+{% assign cardStyle = 'generic/happenings/' | append: styles.cardStyle | append: "Featured" %}
+
+
+<div class="cs-w-full py-20 bg-{{styles.color_group}}-backgroundcolor flex flex-col items-center justify-center text-{{styles.color_group}}-textcolor">
+  {% if postListItems.size > 0 %}
+    <div
+      {% if contents.sectionId %}
+      id="{{ contents.sectionId | idFilter }}"
+      {% endif %}
+      class="basecontainer">
+      {% if env_bookshop_live and contents.showNote %}
+        {% bookshop "generic/notification" heading: "Happening Cards No Filtering" text: "The filtering do not work while editing, but will show up on the live site" %}
+      {% endif %}
+      {% bookshop {{contents.heading._bookshop_name}} bind: contents.heading %}
+      <div class="mt-12 grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3   gap-10 md:gap-20 ">
+        {% for entry in postListItems %}
+          {% capture image %}
+              {% if entry.url contains "happenings/" %}
+              {% if entry.data.happeningImage and entry.data.happeningImage != ""  %}
+              image:
+                  imagePath: {{ entry.data.happeningImage }}
+                  imageAlt: {{ entry.data.imageAltText }}
+              {% else %}
+              image:
+                  imagePath: {{ happenings.defaultImage }}
+                  imageAlt: {{ happenings.defaultImageAltText }}
+              {% endif %}
+              {% else %}
+              {% if entry.data.blogImage and entry.data.blogImage != ""  %}
+              image:
+                  imagePath: {{ entry.data.blogImage }}
+                  imageAlt: {{ entry.data.imageAltText }}
+              {% else %}
+              image:
+                  imagePath: {{ blog.defaultImage }}
+                  imageAlt: {{ blog.defaultImageAltText }}
+              {% endif %}
+              {% endif %}
+              {% endcapture %}
+          {% capture happeningInfo %}
+              happeningTitle: {{ entry.data.title }}
+              url: {{ entry.url }}
+              happeningDatetime: '{% if entry.data.happeningDate %}{{ entry.data.happeningDate }}{% else %}{{ entry.date }}{% endif %}'
+              blogTags: {{ entry.data.tags | ymlify | split: "," | json}}
+              summary: {{ entry.data.summary }}
+              {{ image | strip}}
+              color_group: {{styles.color_group}}
+              {% endcapture %}
+          {% assign happeningInfo = happeningInfo | ymlify %}
+          {% if entry == postListItems.first %}
+            {% bookshop {{featuredStyle}} bind: happeningInfo %}
+
+          {% elsif counter < 21 %}
+            {% bookshop {{cardStyle}} bind: happeningInfo %}
+            {% if env_bookshop_live %}
+              {% assign counter = counter | plus: 1 %}
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  {% elsif contents.noHappeningsHeading %}
+    {% bookshop {{contents.noHappeningsHeading._bookshop_name}} bind: contents.noHappeningsHeading %}
+  {% else %}
+  {% endif %}
+  {% if env_bookshop_live %}
+    {% else %}
+    {% unless tag %}
+        {% bookshop "generic/happenings/pagination" pagination:pagination color_group:color_group %}
+    {% endunless %}
+    
+{% endif %}
+</div>
