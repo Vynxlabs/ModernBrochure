@@ -15,6 +15,9 @@
             styles:
                 contentAlignment: left
                 textAlignment: left
+                highContrast: true
+                contrastColorGroup: "{{styles.card_color_group}}"
+                contrastAgainst: "{{styles.colorFromGroup}}"
         {% endcapture %}
         {% assign heading = heading | ymlify %}
         {% bookshop "generic/heading" bind: heading %}
