@@ -16,6 +16,8 @@ blueprint:
     description:
   styles:
     card_color_group: primary
+    colorFromGroup: background
+    highlightColor: primary
     highlight: false
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
@@ -23,6 +25,24 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  colorFromGroup:
+    label: "Card background color"
+  hilightColor:
+    type: select
+    options:
+      allow_empty: false
+      value_key: id
+      values:
+        - id: text
+          name: Text
+        - id: background
+          name: Background
+        - id: primary
+          name: Primary
+        - id: secondary
+          name: Secondary
+        - id: accent
+          name: Accent
   shortDescription:
     comment: A short description of the service. Example "Perfect for beginners"
   priceDescription:
