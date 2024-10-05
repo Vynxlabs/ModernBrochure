@@ -5,6 +5,8 @@
         eyebrow: {{heading.content.eyebrow| stringifyFilter}}
         headline: {{heading.content.headline| stringifyFilter}}
         description: {{heading.content.description| stringifyFilter}}
+        buttons:
+          {{heading.content.buttons | json}}
         headingHierarchy: "h1"
     styles:
         contentAlignment: {{heading.styles.contentAlignment}}
