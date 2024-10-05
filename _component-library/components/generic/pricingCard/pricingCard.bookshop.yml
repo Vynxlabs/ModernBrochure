@@ -27,7 +27,7 @@ preview:
 _inputs:
   colorFromGroup:
     label: "Card background color"
-  hilightColor:
+  highlightColor:
     type: select
     options:
       allow_empty: false
