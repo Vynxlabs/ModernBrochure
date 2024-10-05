@@ -67,10 +67,15 @@
 
             <section class="basecontainer w-full flex flex-col h-full min-h-[70vh] justify-between text-white">
               <div class="  flex justify-center flex-wrap gap-x-8">
+                {% assign summaryShort = entry.data.summary  %}
+                {% assign summaryCharCount = entry.data.summary | size %}
+                {% if summaryCharCount > 700 %}
+                  {% assign summaryShort = summaryShort| slice: 0, 700 |  append: '...' %}
+                {% endif %}
                 {% capture headingHappening %}
                       content:
                           headline: {{entry.data.title| stringifyFilter}}
-                          description: {{entry.data.summary| stringifyFilter}}
+                          description: {{summaryShort| stringifyFilter}}
                           headingHierarchy: "h2"
                       styles:
                           contentAlignment: center
