@@ -148,7 +148,7 @@
                   return dt.toLocaleString('en-US', { timeZone: timezone }) end
                   put it into my.innerHTML
                   "
-                  class="text-3xl sm:text-5xl font-bold opacity-90">{{ entry.data.happeningDate | date: "%Y-%m-%d %I:%M %P", 0 }}</p>
+                  class="text-3xl sm:text-5xl font-bold opacity-90">{{ entry.data.happeningDate | date: "%Y-%m-%d %I:%M %P", 0 }} UTC</p>
                 </div>
                 <a class="text-3xl sm:text-5xl font-bold opacity-80 underline transition-all hover:scale-105" href="{{entry.url}}">Learn more</a>
               </div>

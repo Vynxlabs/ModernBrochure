@@ -15,7 +15,7 @@
         return dt.toLocaleString('en-US', { timeZone: timezone }) end
         put it into my.innerHTML
         "
-      class="absolute bottom-5 right-5 p-2 z-10 bg-white text-slate-800 rounded" datetime="{{ happeningDatetime | date: "%Y-%m-%d" }}">{{ happeningDatetime | date: "%Y-%m-%d %I:%M %P", 0 }}</time>
+      class="absolute bottom-5 right-5 p-2 z-10 bg-white text-slate-800 rounded" datetime="{{ happeningDatetime | date: "%Y-%m-%d" }}">{{ happeningDatetime | date: "%Y-%m-%d %I:%M %P", 0 }} UTC</time>
   </a>
   <ul class=" flex text-{{color_group}}-secondarycolor flex flex-wrap gap-x-4 overflow-hidden opacity-70">
     {% for tag in blogTags %}
