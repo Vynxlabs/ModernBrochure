@@ -6,7 +6,7 @@
     {% endif %}
 {% endcapture %}
 
-<div class="c-pricingCard min-h-[400px] max-w-[390px] min-w-[250px] w-full py-7 px-6 rounded bg-{{styles.card_color_group}}-backgroundcolor text-{{styles.card_color_group}}-textcolor flex-1 {{highlightClasses}}">
+<div class=" min-h-[400px] max-w-[390px] min-w-[250px] w-full py-7 px-6 rounded bg-{{styles.card_color_group}}-backgroundcolor text-{{styles.card_color_group}}-textcolor flex-1 {{highlightClasses}}">
     <div>
         {% capture heading %}
             content:
@@ -26,7 +26,7 @@
         <p class="opacity-70">{{content.priceDescription}}</p>
     </div>
 
-    <div class="mt-10 border-t-2  pt-10">
+    <div class="c-pricingCard mt-10 border-t-2  pt-10">
         {% if content.description %}
         {% bookshop "generic/textBlock" text: content.description %}{% endif %}
     </div>
