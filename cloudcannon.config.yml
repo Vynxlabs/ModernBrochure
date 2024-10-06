@@ -186,6 +186,8 @@ collections_config:
         type: multiselect
         options:
           values: data.blogTags
+      summary:
+        type: textarea
       happeningDate:
         type: datetime
         label: Happening Date
