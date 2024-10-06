@@ -56,7 +56,7 @@
               url: {{ entry.url }}
               happeningDatetime: '{% if entry.data.happeningDate %}{{ entry.data.happeningDate }}{% else %}{{ entry.date }}{% endif %}'
               blogTags: {{ entry.data.tags | ymlify | split: "," | json}}
-              summary: {{ entry.data.summary }}
+              summary: {{ entry.data.summary | stringifyFilter }}
               {{ image | strip}}
               color_group: {{styles.color_group}}
               {% endcapture %}
