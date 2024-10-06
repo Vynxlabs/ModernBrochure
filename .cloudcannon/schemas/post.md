@@ -4,7 +4,9 @@ eleventyExcludeFromCollections: false
 title: 
 metaDesc: 
 date:
-happeningDate: 
+happening: false
+happeningDate:
+summary:
 author:
 tags: 
 blogImage: 
