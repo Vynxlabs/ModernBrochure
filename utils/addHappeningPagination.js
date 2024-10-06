@@ -27,7 +27,7 @@ function findMarkdownFiles(dir) {
 }
 
 // Append pagination to YAML front matter
-function appendPaginationToFrontMatter(filePath) {
+function appendPaginationToFrontMatter(filePath, pagination) {
     const content = fs.readFileSync(filePath, 'utf8');
     const frontMatterMatch = content.match(/^---\n([\s\S]+?)\n---/);
 
@@ -35,17 +35,9 @@ function appendPaginationToFrontMatter(filePath) {
         let frontMatter = yaml.parse(frontMatterMatch[1]);
 
         if (frontMatter.pageLink && frontMatter.pageLink.match(/happenings/i)) {
-            frontMatter.pagination = {
-                data: 'collections.upcomingHappenings',
-                size: 22,
-                generatePageOnEmptyData: true,
-            };
-        } else if (frontMatter.title && frontMatter.title.match(/happenings/i)) {
-            frontMatter.pagination = {
-                data: 'collections.upcomingHappenings',
-                size: 22,
-                generatePageOnEmptyData: true,
-            };
+            frontMatter.pagination = pagination;
+        } else if (frontMatter.title && frontMatter.title.match(/past/i) && path.dirname(filePath).includes('src/happenings')) {
+            frontMatter.pagination = pagination;
         } else {
             return false; // Skip if neither pageLink nor title is "blog"
         }
@@ -63,20 +55,37 @@ function appendPaginationToFrontMatter(filePath) {
 
 // Main script execution
 function main() {
-    let paginationAppended = false;
+    let upcomingPaginationAppended = false;
+    let pastPaginationAppended = false;
 
     for (const directory of directories) {
         const markdownFiles = findMarkdownFiles(directory);
 
         for (const filePath of markdownFiles) {
-            paginationAppended = appendPaginationToFrontMatter(filePath);
-            if (paginationAppended) {
-                break; // Stop the loop once pagination is appended to one file
+            const upcomingPagination = {
+                data: 'collections.upcomingHappenings',
+                size: 22,
+                generatePageOnEmptyData: true,
+            };
+            const pastPagination = {
+                data: 'collections.pastHappenings',
+                size: 22,
+                generatePageOnEmptyData: true,
+            };
+
+            if (path.dirname(filePath).includes('src/happenings') ) {
+                pastPaginationAppended = appendPaginationToFrontMatter(filePath, pastPagination) || pastPaginationAppended;
+            } else {
+                upcomingPaginationAppended = appendPaginationToFrontMatter(filePath, upcomingPagination) || upcomingPaginationAppended;
+            }
+
+            if (upcomingPaginationAppended && pastPaginationAppended) {
+                break; // Stop the loop once both pagination have been appended to one file
             }
         }
 
-        if (paginationAppended) {
-            break; // Stop the outer loop once pagination is appended to one file
+        if (upcomingPaginationAppended && pastPaginationAppended) {
+            break; // Stop the outer loop once both pagination have been appended to one file
         }
     }
 }
