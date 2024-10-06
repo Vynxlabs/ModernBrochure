@@ -21,7 +21,7 @@
       {% endif %}
       class="basecontainer">
       {% if env_bookshop_live and contents.showNote %}
-        {% bookshop "generic/notification" heading: "Happening Cards No Filtering" text: "The filtering do not work while editing, but will show up on the live site" %}
+        {% bookshop "generic/notification" heading: "All happenings" text: "While editing all happenings will be shown. <br> The correct ones will show up on the live site" %}
       {% endif %}
       {% if contents.heading %}
         {% bookshop {{contents.heading._bookshop_name}} bind: contents.heading %}

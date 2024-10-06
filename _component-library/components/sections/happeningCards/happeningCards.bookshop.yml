@@ -3,9 +3,9 @@ spec:
   structures:
     - content_blocks
   label: "Happening Cards Full"
-  description:
+  description: This will show all upcoming happenings.
   icon:
-  tags: []
+  tags: [happenings]
 
 # Defines the structure of this component, as well as the default values
 blueprint:
@@ -36,6 +36,7 @@ _inputs:
         - name: Default
           id: default
   tags:
+    hidden: true
     type: multiselect
     label: Filter by tags
     comment: >-
