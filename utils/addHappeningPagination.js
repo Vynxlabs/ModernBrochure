@@ -36,17 +36,15 @@ function appendPaginationToFrontMatter(filePath) {
 
         if (frontMatter.pageLink && frontMatter.pageLink.match(/happenings/i)) {
             frontMatter.pagination = {
-                data: 'collections',
+                data: 'collections.upcomingHappenings',
                 size: 22,
                 generatePageOnEmptyData: true,
-                filter: tags
             };
         } else if (frontMatter.title && frontMatter.title.match(/happenings/i)) {
             frontMatter.pagination = {
-                data: 'collections',
+                data: 'collections.upcomingHappenings',
                 size: 22,
                 generatePageOnEmptyData: true,
-                filter: tags
             };
         } else {
             return false; // Skip if neither pageLink nor title is "blog"
