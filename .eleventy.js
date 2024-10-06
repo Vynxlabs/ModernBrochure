@@ -212,7 +212,7 @@ module.exports = (eleventyConfig) => {
       .filter(function (item) {
         const today = new Date();
         return (
-          (item.url.includes("happenings/") ||
+          (item.data.draft === false && item.url.includes("happenings/") ||
             (item.data.happeningDate !== null &&
               (item.data.happening === null || item.data.happening === true) &&
               (happeningsConfig.tags === null ||
@@ -239,7 +239,7 @@ module.exports = (eleventyConfig) => {
       .filter(function (item) {
         const today = new Date();
         return (
-          (item.url.includes("happenings/") ||
+          (item.data.draft === false && item.url.includes("happenings/") ||
             (item.data.happeningDate !== null &&
               (item.data.happening === null || item.data.happening === true) &&
               (happeningsConfig.tags === null ||

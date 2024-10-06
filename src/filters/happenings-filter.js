@@ -1,5 +1,6 @@
 module.exports = (collection, item, happeningsConfig, tags = [], limit = 3) => {
-    let filteredItems = collection.filter((x) => x.url !== item.url);
+    let filteredItems =collection.filter((x) => x.data.draft === false);
+    filteredItems = filteredItems.filter((x) => x.url !== item.url);
     filteredItems = filteredItems.filter((x) => {
         return (x.url.includes("happenings/") || (x.data.happeningDate !== null && (x.data.happening === null || x.data.happening === true) && (happeningsConfig.tags === null || happeningsConfig.tags.some((tag) => x.data.tags && x.data.tags.includes(tag)))))
     });
