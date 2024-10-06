@@ -203,12 +203,12 @@ module.exports = (eleventyConfig) => {
   });
 
   eleventyConfig.addCollection("upcomingHappenings", function (collectionsApi) {
-    const happeningsConfig = yaml.parse(
+    const happeningsConfig = yaml.load(
       fs.readFileSync("./src/_data/happenings.yml", "utf8"),
     );
     const tags = ["happenings"].concat(happeningsConfig.tags);
     return collectionsApi
-      .getFilteredByTag("blog", "happenings")
+      .getFilteredByGlob(["./src/happenings/**/*.md", "./src/posts/**/*.md"])
       .filter(function (item) {
         const today = new Date();
         return (
