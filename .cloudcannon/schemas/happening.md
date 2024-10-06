@@ -11,7 +11,7 @@ happeningDate:
 tags:
 summary:
 permalink: >- 
-    {% assign title = title | slugify %}/happenings/{{ page.filePathStem 
+    {% assign title = title | slugify %}/happenings/{{ page.filePathStem |
     fileSubstringFilter | append: title | downcase }}{% if pagination.pageNumber > 0 %}/page/{{ pagination.pageNumber }}{%
     endif %}/index.html
 socialImage: >- 
