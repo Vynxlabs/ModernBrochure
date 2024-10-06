@@ -229,6 +229,33 @@ module.exports = (eleventyConfig) => {
       });
   });
 
+  eleventyConfig.addCollection("pastHappenings", function (collectionsApi) {
+    const happeningsConfig = yaml.load(
+      fs.readFileSync("./src/_data/happenings.yml", "utf8"),
+    );
+    const tags = ["happenings"].concat(happeningsConfig.tags);
+    return collectionsApi
+      .getFilteredByGlob(["./src/happenings/**/*.md", "./src/posts/**/*.md"])
+      .filter(function (item) {
+        const today = new Date();
+        return (
+          (item.url.includes("happenings/") ||
+            (item.data.happeningDate !== null &&
+              (item.data.happening === null || item.data.happening === true) &&
+              (happeningsConfig.tags === null ||
+                happeningsConfig.tags.some(
+                  (tag) => item.data.tags && item.data.tags.includes(tag),
+                )))) &&
+          new Date(item.data.happeningDate) < today
+        );
+      })
+      .sort((a, b) => {
+        const dateA = new Date(a.data.happeningDate);
+        const dateB = new Date(b.data.happeningDate);
+        return dateA - dateB;
+      });
+  });
+
   eleventyConfig.addFilter("dateFilter", dateFilter);
   eleventyConfig.addFilter("w3DateFilter", w3DateFilter);
   eleventyConfig.addFilter("readTimeFilter", readTimeFilter);
