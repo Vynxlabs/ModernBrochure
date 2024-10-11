@@ -1,9 +1,15 @@
-{% assign summaryShort = summary  %}
+{% assign summaryShort = summary %}
 {% assign summaryCharCount = summary | size %}
 {% if summaryCharCount > 700 %}
-  {% assign summaryShort = summaryShort| slice: 0, 700 |  append: '...' %}
+  {% assign summaryShort = summaryShort | slice: 0, 700 | append: '...' %}
 {% endif %}
-
+{% capture eventTitle %}
+  {% if cancelled == true %}
+    {{"CANCELLED - " |  append: happeningTitle}}
+    {% else %}
+    {{ happeningTitle }}
+  {% endif %}
+{% endcapture %}
 <div class="c-defaultFeatured w-full col-span-1 md:col-span-2 lg:col-span-3">
   <div class="w-full flex flex-wrap gap-x-10 gap-y-4">
     <a class="relative max-w-[700px] md:flex-1 md:min-w-[400px]" href="{{url}}">
@@ -21,9 +27,10 @@
         {% endfor %}
       </ul>
       <h3 class="hover:underline font-bold text-3xl">
-        <a href="{{url}}">{{ happeningTitle }}</a>
+        <a href="{{url}}">{{ eventTitle }}</a>
       </h3>
       <time
+        {% if cancelled != true %}
         _="on load
             set happeningDate to Date.parse('{{entry.data.happeningDate | date: "%Y-%m-%d %I:%M %P",0}} +0000')
             log happeningDate
@@ -34,8 +41,12 @@
             return dt.toLocaleString('en-US', { timeZone: timezone }) end
             put it into my.innerHTML
             "
+        {% endif %}
         class=""
-        datetime="{{ happeningDatetime | date: "%Y-%m-%d" }}">{{ happeningDatetime | date: "%Y-%m-%d %I:%M %P", 0 }} UTC</time>
+        datetime="{{ happeningDatetime | date: "%Y-%m-%d" }}">{% if cancelled %}CANCELLED{% else %}{{ happeningDatetime | date: "%Y-%m-%d %I:%M %P", 0 }} UTC{% endif %}</time>  
+          
+          
+        
       <p class="mt-2">{{ summaryShort }}</p>
       <a class="hover:underline text-[#5FB6E0]" href="{{url}}">Read more</a>
     </div>

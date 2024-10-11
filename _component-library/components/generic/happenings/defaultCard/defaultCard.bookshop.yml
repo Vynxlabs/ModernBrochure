@@ -10,6 +10,7 @@ spec:
 blueprint:
   happeningTitle: "something about blog"
   url: "#"
+  cancelled: false
   happeningDatetime: "2020-01-01"
   blogTags: ['tag1', 'tag2']
   image: bookshop:generic/image

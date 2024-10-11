@@ -11,6 +11,7 @@ blueprint:
   happeningTitle: "something about blog"
   url: "#"
   happeningDatetime: "2020-01-01"
+  cancelled: false
   blogTags: ['tag1', 'tag2']
   image: bookshop:generic/image
   summary:
