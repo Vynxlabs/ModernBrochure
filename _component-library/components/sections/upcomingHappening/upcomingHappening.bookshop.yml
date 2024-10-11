@@ -12,6 +12,7 @@ blueprint:
   contents:
     sectionId:
     showNote: true
+    showCancelled: true
     tags:
     showCountdown: false
     noHappeningsHeading: bookshop:generic/heading

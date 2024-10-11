@@ -5,6 +5,7 @@ title:
 metaDesc: 
 date:
 happening: false
+cancelled: false
 happeningDate:
 summary:
 author:

@@ -7,6 +7,7 @@ happeningImage:
 imageAltText:
 image: >-
     {% if happeningImage %}{{happeningImage}}{% else %}{{happenings.defaultImage}}{% endif %}
+cancelled: false
 happeningDate:
 tags:
 summary:

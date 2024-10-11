@@ -140,6 +140,8 @@ collections_config:
         type: switch
         label: Make into a happening
         comment: Turn this post into a happening
+      cancelled:
+        hidden: '!happening'
       happeningDate:
         hidden: '!happening'
         type: datetime

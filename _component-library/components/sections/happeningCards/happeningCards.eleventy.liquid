@@ -28,6 +28,9 @@
       {% endif %}
       <div class="mt-12 grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3   gap-10 md:gap-20 ">
         {% for entry in postListItems %}
+          {% if contents.showCancelled != true and entry.data.cancelled == true %}
+            {%- continue -%}
+          {% endif %}
           {% capture image %}
               {% if entry.url contains "happenings/" %}
               {% if entry.data.happeningImage and entry.data.happeningImage != ""  %}

@@ -23,6 +23,9 @@
         {% bookshop "generic/notification" heading: "No Filtering or Countdown and UTC" text: "The filtering do not work while editing, but works correctly on the live site. <br>The countdown will not tick down while editing, but will show up on the live site <br><br> The time will show up as UTC while live editing but will show up as local time on the live site" %}
       {% endif %}
       {% for entry in postListItems %}
+        {% if contents.showCancelled != true and entry.data.cancelled == true %}
+          {%- continue -%}
+        {% endif %}
         {% capture image %}
                 {% if entry.url contains "happenings/" %}
                 {% if entry.data.happeningImage and entry.data.happeningImage != ""  %}
