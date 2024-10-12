@@ -3,7 +3,7 @@
 {% elsif pagination.items %}
   {% assign postListItems = pagination.items %}
 {% else %}
-  {% assign postListItems = collections.happenings | concat: collections.blog | happeningsFilter: page, happenings, contents.tags, -1 %}
+  {% assign postListItems = collections.happenings | concat: collections.blog | happeningsFilter: page, happenings, contents.tags, 22 %}
 {% endif %}{% assign color_group = styles.color_group %}
 {% comment %} "happenings" is a data file that is being passed into this funciton src/data/happenings.yml {% endcomment %}
 

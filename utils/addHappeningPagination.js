@@ -34,12 +34,15 @@ function appendPaginationToFrontMatter(filePath, pagination) {
     if (frontMatterMatch) {
         let frontMatter = yaml.parse(frontMatterMatch[1]);
 
-        if (frontMatter.pageLink && frontMatter.pageLink.match(/happenings/i)) {
+        if ( (frontMatter.pageLink === "/" && path.dirname(filePath).toLowerCase().match(/src\/pages\/happenings/)) && pagination.data === 'collections.upcomingHappenings') {
             frontMatter.pagination = pagination;
-        } else if (frontMatter.title && frontMatter.title.match(/past/i) && path.dirname(filePath).includes('src/happenings')) {
+        } else if ( (frontMatter.pageLink && frontMatter.pageLink.length >0) && frontMatter.pageLink.match(/past/i) && path.dirname(filePath).toLowerCase().match(/src\/pages\/happenings/) && pagination.data === 'collections.pastHappenings') {
             frontMatter.pagination = pagination;
-        } else {
-            return false; // Skip if neither pageLink nor title is "blog"
+        } else if ((frontMatter.title && frontMatter.title.length >0) && frontMatter.title.match(/past/i) && path.dirname(filePath).toLowerCase().match(/src\/pages\/happenings/) && pagination.data === 'collections.pastHappenings') {
+            frontMatter.pagination = pagination;
+        } 
+        else  {
+            return false; // Skip if file isn't valid file for pagination
         }
 
         const updatedFrontMatter = `---\n${yaml.stringify(frontMatter)}---`;
@@ -73,11 +76,8 @@ function main() {
                 generatePageOnEmptyData: true,
             };
 
-            if (path.dirname(filePath).includes('src/happenings') ) {
                 pastPaginationAppended = appendPaginationToFrontMatter(filePath, pastPagination) || pastPaginationAppended;
-            } else {
                 upcomingPaginationAppended = appendPaginationToFrontMatter(filePath, upcomingPagination) || upcomingPaginationAppended;
-            }
 
             if (upcomingPaginationAppended && pastPaginationAppended) {
                 break; // Stop the loop once both pagination have been appended to one file
