@@ -9,6 +9,7 @@
 
 
 {% assign counter = 0 %}
+{% assign featuredCreated = false %}
 {% assign cardStyle = 'generic/happenings/' | append: styles.cardStyle | append: "Card" %}
 {% assign featuredStyle = 'generic/happenings/' | append: styles.cardStyle | append: "Featured" %}
 
@@ -65,9 +66,9 @@
               color_group: {{styles.color_group}}
               {% endcapture %}
           {% assign happeningInfo = happeningInfo | ymlify %}
-          {% if entry == postListItems.first %}
+          {% if featuredCreated != true %}
             {% bookshop {{featuredStyle}} bind: happeningInfo %}
-
+            {% assign featuredCreated = true %}
           {% elsif counter < 21 %}
             {% bookshop {{cardStyle}} bind: happeningInfo %}
             {% if env_bookshop_live %}
