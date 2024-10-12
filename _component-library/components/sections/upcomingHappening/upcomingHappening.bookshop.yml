@@ -2,8 +2,8 @@
 spec:
   structures:
     - content_blocks
-  label: "Happening Cards"
-  description:
+  label: "Upcoming Happening"
+  description: Shows the very next upcoming happening (only shows one).
   icon:
   tags: [happenings]
 
@@ -12,13 +12,14 @@ blueprint:
   contents:
     sectionId:
     showNote: true
-    heading: bookshop:structure:headingBlocks
     showCancelled: true
     tags:
+    showCountdown: false
     noHappeningsHeading: bookshop:generic/heading
   styles:
     color_group: primary
-    cardStyle: default
+    countDownPosition: center
+    backgroundOpacity: 50
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
@@ -28,14 +29,6 @@ _inputs:
   color_group:
     comment: >-
       This color group is applied to the No Happenings Heading.
-  cardStyle:
-    type: select
-    options:
-      allow_empty: false
-      value_key: id
-      values:
-        - name: Default
-          id: default
   tags:
     type: multiselect
     label: Filter by tags
@@ -49,4 +42,27 @@ _inputs:
     comment: >-
       The heading to show when there are no happenings.
       If no heading is given, this section will be hidden when there are no happenings.
-
+  backgroundOpacity:
+    type: range
+    options:
+      min: 0
+      max: 100
+      step: 5
+      default: 50
+    comment: Set the opacity percentage of the background
+  countDownPosition:
+    hidden: true #'!showCountdown'
+    type: choice
+    options:
+      allow_empty: false
+      value_key: id
+      values:
+        - name: Left
+          id: left
+          icon: format_align_left
+        - name: Right
+          id: right
+          icon: format_align_right
+        - name: Center
+          id: center
+          icon: format_align_center

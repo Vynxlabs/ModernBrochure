@@ -2,8 +2,8 @@
 spec:
   structures:
     - content_blocks
-  label: "Happening Cards"
-  description:
+  label: "Happening Cards Full"
+  description: This will show all upcoming happenings.
   icon:
   tags: [happenings]
 
@@ -37,6 +37,7 @@ _inputs:
         - name: Default
           id: default
   tags:
+    hidden: true
     type: multiselect
     label: Filter by tags
     comment: >-
@@ -49,4 +50,3 @@ _inputs:
     comment: >-
       The heading to show when there are no happenings.
       If no heading is given, this section will be hidden when there are no happenings.
-

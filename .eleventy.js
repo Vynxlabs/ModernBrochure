@@ -22,7 +22,7 @@ const markdownIt = require("markdown-it"),
     linkify: true,
     typographer: true,
   });
-  md.disable(["code","blockquote"]);
+md.disable(["code", "blockquote"]);
 const markdownItAnchor = require("markdown-it-anchor");
 const pluginTOC = require("eleventy-plugin-toc");
 const pluginBookshop = require("@bookshop/eleventy-bookshop");
@@ -67,7 +67,9 @@ const imageShortcode = async (
     decoding: "async",
   };
 
-  return Image.generateHTML(imageMetadata, imageAttributes).replace(/\s+/g, ' ').trim();
+  return Image.generateHTML(imageMetadata, imageAttributes)
+    .replace(/\s+/g, " ")
+    .trim();
 };
 
 const logoShortcode = async (
@@ -147,7 +149,10 @@ module.exports = (eleventyConfig) => {
     linkify: true,
     typographer: true,
   };
-  eleventyConfig.setLibrary("md", markdownIt(options).disable(["code"]).use(markdownItAnchor));
+  eleventyConfig.setLibrary(
+    "md",
+    markdownIt(options).disable(["code"]).use(markdownItAnchor),
+  );
   eleventyConfig.addWatchTarget("./_component-library/**/*");
 
   eleventyConfig.addDataExtension("yaml", (contents) => yaml.load(contents));
@@ -197,6 +202,60 @@ module.exports = (eleventyConfig) => {
     return collection.getFilteredByGlob("./src/happenings/**/*.md");
   });
 
+  eleventyConfig.addCollection("upcomingHappenings", function (collectionsApi) {
+    const happeningsConfig = yaml.load(
+      fs.readFileSync("./src/_data/happenings.yml", "utf8"),
+    );
+    const tags = ["happenings"].concat(happeningsConfig.tags);
+    return collectionsApi
+      .getFilteredByGlob(["./src/happenings/**/*.md", "./src/posts/**/*.md"])
+      .filter(function (item) {
+        const today = new Date();
+        return (
+          (item.data.draft === false && item.url.includes("happenings/") ||
+            (item.data.happeningDate !== null &&
+              (item.data.happening === null || item.data.happening === true) &&
+              (happeningsConfig.tags === null ||
+                happeningsConfig.tags.some(
+                  (tag) => item.data.tags && item.data.tags.includes(tag),
+                )))) &&
+          new Date(item.data.happeningDate) >= today
+        );
+      })
+      .sort((a, b) => {
+        const dateA = new Date(a.data.happeningDate);
+        const dateB = new Date(b.data.happeningDate);
+        return dateA - dateB;
+      });
+  });
+
+  eleventyConfig.addCollection("pastHappenings", function (collectionsApi) {
+    const happeningsConfig = yaml.load(
+      fs.readFileSync("./src/_data/happenings.yml", "utf8"),
+    );
+    const tags = ["happenings"].concat(happeningsConfig.tags);
+    return collectionsApi
+      .getFilteredByGlob(["./src/happenings/**/*.md", "./src/posts/**/*.md"])
+      .filter(function (item) {
+        const today = new Date();
+        return (
+          (item.data.draft === false && item.url.includes("happenings/") ||
+            (item.data.happeningDate !== null &&
+              (item.data.happening === null || item.data.happening === true) &&
+              (happeningsConfig.tags === null ||
+                happeningsConfig.tags.some(
+                  (tag) => item.data.tags && item.data.tags.includes(tag),
+                )))) &&
+          new Date(item.data.happeningDate) < today
+        );
+      })
+      .sort((a, b) => {
+        const dateA = new Date(a.data.happeningDate);
+        const dateB = new Date(b.data.happeningDate);
+        return dateA - dateB;
+      });
+  });
+
   eleventyConfig.addFilter("dateFilter", dateFilter);
   eleventyConfig.addFilter("w3DateFilter", w3DateFilter);
   eleventyConfig.addFilter("readTimeFilter", readTimeFilter);
@@ -211,13 +270,14 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addFilter("categoriesFilter", getServiceCategories);
   eleventyConfig.addFilter("fileSubstringFilter", fileSubstringFilter);
   eleventyConfig.addFilter("stringifyFilter", stringifyFilter);
-  eleventyConfig.addFilter("removeExtraWhitespace", function(str) {
-    return str.replace(/\s+/g, ' ').trim();
+  eleventyConfig.addFilter("removeExtraWhitespace", function (str) {
+    return str.replace(/\s+/g, " ").trim();
   });
   eleventyConfig.addFilter("evalLiquid", evalLiquid);
   eleventyConfig.addFilter("happeningsFilter", happeningsFilter);
 
   eleventyConfig.on("eleventy.before", () => {
+    execSync("node ./utils/addHappeningPagination.js");
     execSync("node ./utils/addBlogPagination.js");
     execSync("node ./utils/fetch-theme-variables.js");
   });

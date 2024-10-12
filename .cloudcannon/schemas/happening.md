@@ -7,11 +7,14 @@ happeningImage:
 imageAltText:
 image: >-
     {% if happeningImage %}{{happeningImage}}{% else %}{{happenings.defaultImage}}{% endif %}
+cancelled: false
 happeningDate:
 tags:
 summary:
 permalink: >- 
-    /happenings/{% assign title = title | slugify %}{{ page.filePathStem | fileSubstringFilter | append: title | downcase }}/index.html
+    {% assign title = title | slugify %}/happenings/{{ page.filePathStem |
+    fileSubstringFilter | append: title | downcase }}{% if pagination.pageNumber > 0 %}/page/{{ pagination.pageNumber }}{%
+    endif %}/index.html
 socialImage: >- 
     {{ image }}
 layout: "layouts/page.html"

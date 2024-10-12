@@ -136,10 +136,24 @@ collections_config:
         type: date
         label: Published Date
         instance_value: NOW
+      happening:
+        type: switch
+        label: Make into a happening
+        comment: Turn this post into a happening
+      cancelled:
+        hidden: '!happening'
       happeningDate:
+        hidden: '!happening'
         type: datetime
         label: Happening Date
-        comment: If this blog post is tagged with a happening tag, enter the happening date here. If not, leave blank.
+        comment: >-
+          If this blog post is tagged with a happening tag, enter the happening date here. If not, leave blank.
+          IMPORTANT: The date must be in UTC time. You'll need to convert your local time to UTC time.
+      summary:
+        hidden: '!happening'
+        type: textarea
+        label: Happening Summary
+        comment: A short summary of the happening.
       image:
         hidden: true
       permalink:
@@ -174,9 +188,13 @@ collections_config:
         type: multiselect
         options:
           values: data.blogTags
+      summary:
+        type: textarea
       happeningDate:
         type: datetime
         label: Happening Date
+        comment: >-
+          IMPORTANT: The date must be in UTC time. You'll need to convert your local time to UTC time.
         instance_value: NOW
       image:
         hidden: true

@@ -35,8 +35,29 @@
 
 {% assign blogAuthor = blogAuthor | ymlify %}
 
+{% if happening %} 
+{% assign recommendedPosts = collections.happenings | concat: collections.blog | happeningsFilter: page, happenings  %}
+{% assign componentBookshopName ="sections/happeningCardsPartial" %}
+{% capture infoPosts %}
+  contents:
+    heading:
+      _bookshop_name: generic/heading
+      content: 
+        headline: "Looking for more?"
+        description: "These events are up next!"
+        headingHierarchy: h2
+      styles:
+        color_group: primary
+        contentAlignment: left
+        textAlignment: left
+  styles:
+    color_group: {{site.color_group}}
+    cardStyle: default
+    
+{% endcapture %}
+{% else %}
 {% assign recommendedPosts = collections.blog | randomBlogsFilter: page  %}
-
+{% assign componentBookshopName ="sections/blogCardsPartial" %}
 {% capture infoPosts %}
   contents:
     randomize: true 
@@ -54,6 +75,7 @@
     cardStyle: default
     
 {% endcapture %}
+{% endif %}
 {% assign infoPosts = infoPosts | ymlify %}
 
 
@@ -96,7 +118,7 @@
       </div>
   </article>
   {% if recommendedPosts.size > 0 %}
-  <div class="mt-24">{% bookshop "sections/blogCardsPartial" bind: infoPosts  %}</div>
+  <div class="mt-24">{% bookshop {{componentBookshopName}} bind: infoPosts  %}</div>
   {% endif %}
 
 </div>
