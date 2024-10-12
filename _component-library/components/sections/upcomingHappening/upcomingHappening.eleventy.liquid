@@ -53,6 +53,7 @@
                 happeningTitle: {{ entry.data.title }}
                 url: {{ entry.url }}
                 happeningDatetime: '{% if entry.data.happeningDate %}{{ entry.data.happeningDate }}{% else %}{{ entry.date }}{% endif %}'
+                cancelled: {{ entry.data.cancelled }}
                 blogTags: {{ entry.data.tags | ymlify | split: "," | json}}
                 {{ image | strip}}
                 color_group: {{styles.color_group}}
