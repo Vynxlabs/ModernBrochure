@@ -92,7 +92,7 @@
                   set $started to false
                   repeat while intersecting and not :started
                   set :currentTime to Date.now()
-                  set :happeningDate to Date.parse('{{entry.data.happeningDate | date: "%Y-%m-%d %I:%M %P"}}')
+                  set :happeningDate to Date.parse('{{entry.data.happeningDate | date: "%Y-%m-%d %I:%M %P",0}} +0000')
                   set :timeDifference to :happeningDate - :currentTime
                   set :days to Math.floor(:timeDifference / (1000 * 60 * 60 * 24))
                   set :hours to Math.floor((:timeDifference mod (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
