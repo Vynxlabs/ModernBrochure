@@ -5,7 +5,7 @@
 {% endif %}
 {% assign color_group = styles.color_group %}
 {% comment %} "happenings" is a data file that is being passed into this funciton src/data/happenings.yml {% endcomment %}
-{% assign postListItems = collections.happenings | concat: collections.blog | happeningsFilter: page, happenings, contents.tags %}
+{% assign postListItems = collections.happenings | concat: collections.blog | happeningsFilter: page, happenings, contents.tags, 22 %}
 
 {% assign counter = 0 %}
 {% assign cardStyle = 'generic/happenings/' | append: styles.cardStyle | append: "Card" %}
