@@ -2,10 +2,10 @@
 spec:
   structures:
     - content_blocks
-  label: "ServicesSection"
+  label: "Services Section"
   description:
   icon:
-  tags: []
+  tags: [connected]
 
 # Defines the structure of this component, as well as the default values
 blueprint:

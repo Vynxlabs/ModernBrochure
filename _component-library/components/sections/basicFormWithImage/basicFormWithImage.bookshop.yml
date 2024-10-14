@@ -3,7 +3,7 @@ spec:
   structures:
     - content_blocks
   label: "Basic Form With Image"
-  description:
+  description: A form that overlaps an image of your choosing
   icon:
   tags: [form]
 
