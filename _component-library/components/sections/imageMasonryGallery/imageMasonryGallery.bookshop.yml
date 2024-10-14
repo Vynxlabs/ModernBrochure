@@ -2,8 +2,8 @@
 spec:
   structures:
     - content_blocks
-  label: "ImageMasonryGallery"
-  description:
+  label: "Image Gallery Masonry 5"
+  description: Masonry grid of images 5 images per set
   icon: space_dashboard
   tags: []
 

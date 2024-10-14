@@ -3,7 +3,7 @@ spec:
   structures:
     - content_blocks
   label: "Media Cards"
-  description:
+  description: An information card that contains an image and text
   icon:
   tags: []
 

@@ -3,9 +3,9 @@ spec:
   structures:
     - content_blocks
   label: "Happening Cards"
-  description:
+  description: Shows up to 3 upcoming happenings
   icon:
-  tags: [happenings]
+  tags: [happenings, connected]
 
 # Defines the structure of this component, as well as the default values
 blueprint:
