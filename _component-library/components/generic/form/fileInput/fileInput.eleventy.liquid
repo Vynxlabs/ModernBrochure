@@ -1,7 +1,7 @@
 
 {% assign acceptCustom = false %}
 {% if customAccept != true and acceptSelection %}
-    {% assign acceptTypes= acceptSelection | json %}
+    {% assign acceptTypes= acceptSelection | join: ',' %}
     {% assign acceptCustom = true %}
 {% endif %}
 
