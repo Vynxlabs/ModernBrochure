@@ -19,12 +19,13 @@
   and site.umamiAnalytics.dataDomains != "" %}
 
   <script>
-  (function () {
+
+document.addEventListener('DOMContentLoaded', function () {
     var el = document.createElement('script');
     el.setAttribute('src', '{{site.umamiAnalytics.scriptSource}}');
     el.setAttribute('data-website-id', '{{site.umamiAnalytics.websiteId}}');
     el.setAttribute('data-domains', '{{site.umamiAnalytics.dataDomains}}');
     document.body.appendChild(el);
-  })();
+  });
 </script>
 {% endif %}
