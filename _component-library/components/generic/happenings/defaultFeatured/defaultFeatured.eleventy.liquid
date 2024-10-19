@@ -12,7 +12,9 @@
 {% endcapture %}
 <div class="c-defaultFeatured w-full col-span-1 md:col-span-2 lg:col-span-3">
   <div class="w-full flex flex-wrap gap-x-10 gap-y-4">
-    <a class="relative max-w-[700px] md:flex-1 md:min-w-[400px]" href="{{url}}">
+    <a 
+    data-umami-event="{{happeningTitle}}-{{page.url}}-happeningCardImg"
+    class="relative max-w-[700px] md:flex-1 md:min-w-[400px]" href="{{url}}">
       {% bookshop "generic/image" bind: image class: "w-full h-full rounded transition-all duration-300 scale-100 hover:scale-[1.03] object-cover aspect-[3/2]" %}
     </a>
 
@@ -21,13 +23,17 @@
         {% for tag in blogTags %}
           {% if tag != 'undefined' %}
             <li class="hover:underline after:absolute after:content-['·'] after:scale-150  after:left-2 relative before:content-[' '] after:left-[-10px] after:text-lg ">
-              <a class="font-bold" href="/tag/{{ tag | slug }}/">{{ tag | capitalize | replace: ' ', '' }}</a>
+              <a 
+              data-umami-event="{{tag | slug}}-{{happeningTitle}}-{{page.url}}-tags"
+              class="font-bold" href="/tag/{{ tag | slug }}/">{{ tag | capitalize | replace: ' ', '' }}</a>
             </li>
           {% endif %}
         {% endfor %}
       </ul>
       <h3 class="hover:underline font-bold text-3xl">
-        <a href="{{url}}">{{ eventTitle }}</a>
+        <a 
+        data-umami-event="{{happeningTitle}}-{{page.url}}-happeningCardHeading"
+        href="{{url}}">{{ eventTitle }}</a>
       </h3>
       <time
         {% if cancelled != true %}
