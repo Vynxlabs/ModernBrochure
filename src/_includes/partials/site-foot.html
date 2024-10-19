@@ -6,7 +6,9 @@
   <div class="basecontainer w-full">
     <div class="flex flex-wrap justify-around gap-10">
       <div class="max-w-[300px]">
-        <a href="/">
+        <a 
+        data-umami-event="logo-homeLink-footer"
+        href="/">
           {% if not site.logoPath or site.logoPath == "" %}
             <p class="cs-logoFont text-2xl hover:underline">{{site.name}}</p>
             {% else condition %}
@@ -16,7 +18,9 @@
         <ul class="mt-4 flex flex-wrap overflow-hidden gap-x-4 gap-y-1">
         {% for socialLink in site.socialMediaLinks %}
         <li class="hover:underline after:absolute after:content-['|'] after:scale-150   relative before:content-[' '] after:left-[-11px] after:text-lg">
-          <a href="{{ socialLink.linkUrl }}" target="_blank" >{{socialLink.label}}</a>
+          <a 
+          data-umami-event="{{socialLink.label}}-socialLink-footer"
+          href="{{ socialLink.linkUrl }}" target="_blank" >{{socialLink.label}}</a>
         </li>
         {% endfor %}
       </ul>
@@ -36,7 +40,9 @@
     </p>
     <p class="text-center text-sm" data-type="neutral">
       Powered by Vynxlabs. Like it?
-      <a href="https://vynxlabs.com/" class="underline">Lets build one for you!</a>
+      <a 
+      data-umami-event="vynxlabs-link-footer"
+      href="https://vynxlabs.com/" class="underline">Lets build one for you!</a>
     </p>
   </div>
 </footer>

@@ -8,9 +8,13 @@
 
 <div class="w-full ">
   <h3 class="hover:underline text-2xl">
-    <a href="{{url}}">{{ eventTitle }}</a>
+    <a 
+    data-umami-event="{{happeningTitle}}-{{page.url}}-happeningCardHeading"
+    href="{{url}}">{{ eventTitle }}</a>
   </h3>
-  <a class="relative" href="{{url}}">
+  <a 
+  data-umami-event="{{happeningTitle}}-{{page.url}}-happeningCardImg"
+  class="relative" href="{{url}}">
       {% bookshop "generic/image" bind: image class: "w-full rounded transition-all duration-300 scale-100 hover:scale-[1.03] object-cover aspect-[3/2]" %}
       <time 
       {% if cancelled != true %}
@@ -32,7 +36,9 @@
     {% for tag in blogTags %}
       {% if tag != 'undefined' %}
         <li class="hover:underline after:absolute after:content-['·'] after:scale-150  after:left-2 relative before:content-[' '] after:left-[-10px] after:text-lg ">
-        <a class="font-bold" href="/tag/{{ tag | slug }}/">{{ tag | capitalize | replace: ' ', '' }}</a>
+        <a 
+        data-umami-event="{{tag | slug}}-{{happeningTitle}}-{{page.url}}-tags"
+        class="font-bold" href="/tag/{{ tag | slug }}/">{{ tag | capitalize | replace: ' ', '' }}</a>
       </li>
     {% endif %}
     {% endfor %}

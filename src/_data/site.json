@@ -10,6 +10,12 @@
     "hours": "Mon - Fri: 8am-5pm"
   },
   "googleAnalytics": "",
+  "umamiAnalytics": {
+    "bringYourOwnUmami": false,
+    "websiteId": "",
+    "scriptSource": "https://analytics.vynxlabs.com/script.js",
+    "dataDomains":""
+  },
   "socialMediaLinks": [
     {
       "label": "Xwitter",
@@ -38,6 +44,9 @@
   "color_group": "primary",
   "footer_color_group": "primary_dark0",
   "_inputs": {
+    "umamiAnalytics": {
+      "hidden": "true"
+    },
     "color_group": {
       "comment": "The over all color group for the site."
     },

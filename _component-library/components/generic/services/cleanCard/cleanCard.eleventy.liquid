@@ -9,7 +9,9 @@
   {% assign heading = heading | ymlify %}
   
   <li class="relative max-h-[300px] max-w-[400px] rounded transition-all duration-300 scale-100 hover:scale-105">
-            <a href="{{url}}" class=" ">
+            <a 
+            data-umami-event="{{title}}-{{page.url}}-servicesCard"
+            href="{{url}}" class=" ">
               {% bookshop "generic/image" bind: image class: "aspect-[4/3] object-cover object-center" %}
               <div class="absolute -top-8 flex flex-col items-end left-4  font-bold rounded">
                 <div class="p-2 z-10 ">{% bookshop "generic/heading" bind: heading %}</div>
