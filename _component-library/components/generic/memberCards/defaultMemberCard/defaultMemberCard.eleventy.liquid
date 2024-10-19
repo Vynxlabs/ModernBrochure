@@ -5,7 +5,9 @@
 {% capture iconClasses %}
   stroke-{{style.color_group}}-highcontrast-{{style.colorFromGroup}}color
 {% endcapture %}
-{% if content.link and content.link != '' %} <a href="{{ content.link }}">{% endif %}
+{% if content.link and content.link != '' %} <a 
+data-umami-event="{{content.name}}-{{page.url}}-memberCard"
+href="{{ content.link }}">{% endif %}
 
 <div class="c-defaultMemberCard max-w-[350px] flex flex-col justify-center {% if content.link and content.link != '' %} cursor-pointer{% endif %}">
   {% bookshop "generic/image" bind: content.image class: imageClasses %}
