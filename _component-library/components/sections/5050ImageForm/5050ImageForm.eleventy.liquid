@@ -16,7 +16,9 @@
           <div class="flex justify-between w-full mt-11 gap-2 flex-wrap ">
           {% if site.contactInfo.email and site.contactInfo.email != "" %}
             <div class="flex gap-1 items-center">
-              <a href="mailto:{{ site.contactInfo.email }}" class="block underline"
+              <a 
+              data-umami-event="{{site.contactInfo.email}}-{{page.url}}-50/50form"
+              href="mailto:{{ site.contactInfo.email }}" class="block underline"
                 >{{ site.contactInfo.email }}</a
               >
             </div>
@@ -24,7 +26,9 @@
 
             {% if site.contactInfo.phone and site.contactInfo.phone != "" %}
               <div class="flex gap-1 items-center">
-                <a href="tel:{{ site.contactInfo.phone | remove: "-" | remove: " " | remove: "." | remove: "(" | remove: ")" }}" class="block underline"
+                <a 
+                data-umami-event="{{site.contactInfo.phone}}-{{page.url}}-50/50form"
+                href="tel:{{ site.contactInfo.phone | remove: "-" | remove: " " | remove: "." | remove: "(" | remove: ")" }}" class="block underline"
                   >{{ site.contactInfo.phone }}</a
                 >
               </div>
