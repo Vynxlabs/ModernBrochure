@@ -14,7 +14,9 @@ md:absolute md:left-0
   blogPosts.size > 0 %}
  
 <li>
-  <a {{entry.url | linkFilter: page.url}}
+  <a 
+  data-umami-event="{{entry.title}}-footer"
+  {{entry.url | linkFilter: page.url}}
     class="data-[state=active]:link hover:text-sopris-green block rounded py-2 pl-3 pr-4 uppercase  transition-colors hover:bg-gray-700 dark:border-gray-700 md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent"
     href="{{ entry.url }}"
     >{{ entry.title }}</a
@@ -22,7 +24,9 @@ md:absolute md:left-0
 </li>
 {% endif %} {% else %}
 <li>
-  <a {{entry.url | linkFilter: page.url}}
+  <a 
+  data-umami-event="{{entry.title}}-footer"
+  {{entry.url | linkFilter: page.url}}
     class="data-[state=active]:link hover:text-sopris-green block rounded py-2 pl-3 pr-4 uppercase  transition-colors hover:bg-gray-700 dark:border-gray-700 md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent"
     href="{{ entry.url }}"
     >{{ entry.title }}</a

@@ -13,7 +13,9 @@
     class=" transition-all duration-300  h-auto md:h-auto w-full bg-{{site.nav_color_group}}-backgroundcolor bg-opacity-70 text-{{site.nav_color_group}}-textcolor  backdrop-blur-sm flex "
   >
   
-  <a href="/" class="md:flex items-center self-start md:self-center p-4 ml-4 flex-shrink-0 hidden ">
+  <a 
+  data-umami-event="logo-homeLink-navbar"
+  href="/" class="md:flex items-center self-start md:self-center p-4 ml-4 flex-shrink-0 hidden ">
   
     {% if not site.logoPath or site.logoPath == "" %}
     <p class="cs-logoFont text-2xl hover:underline">{{site.name}}</p>
@@ -25,7 +27,9 @@
     id="navbar-container"
       class="mx-auto flex max-w-[1440px] flex-wrap items-center  justify-between p-4 md:gap-1 w-full"
     >
-    <a href="/" class="md:hidden ">{% if not site.logoPath or site.logoPath == "" %}
+    <a 
+    data-umami-event="logo-homeLink-navbar"
+    href="/" class="md:hidden ">{% if not site.logoPath or site.logoPath == "" %}
       <p class="cs-logoFont text-2xl hover:underline">{{site.name}}</p>
       {% else condition %}
       {% logo site.logoPath, "logo for sopris", " w-[100px]"  %}
@@ -33,6 +37,7 @@
       <div class="flex items-center md:order-3 gap-4 justify-self-end">
         {% bookshop "generic/button" bind: site.button %}
         <button
+          data-umami-event="menu-toggle-navbar"
           data-collapse-toggle="navbar-sticky"
           type="button"
           class="inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-gray-500  md:hidden"
@@ -89,7 +94,9 @@
           {% if site.contactInfo.phone and site.contactInfo.phone != "" %}
           <div class="flex gap-1 items-center">
             {% bookshop "generic/heroLibraryIcon" heroLibraryIconName: "phone" iconType: "outline" iconSize: 'micro' roundedBorder: false themeColor: true %}
-            <a href="tel:{{ site.contactInfo.phone | remove: "-" | remove: " " | remove: "." | remove: "(" | remove: ")" }}" class="block underline"
+            <a 
+            data-umami-event="{{site.contactInfo.phone}}-navbar"
+            href="tel:{{ site.contactInfo.phone | remove: "-" | remove: " " | remove: "." | remove: "(" | remove: ")" }}" class="block underline"
               >{{ site.contactInfo.phone }}</a
             >
           </div>
@@ -97,7 +104,9 @@
           {% if site.contactInfo.email and site.contactInfo.email != "" %}
           <div class="flex gap-1 items-center">
             {% bookshop "generic/heroLibraryIcon" heroLibraryIconName: "envelope" iconType: "outline" iconSize: 'micro' roundedBorder: false themeColor: true %}
-            <a href="mailto:{{ site.contactInfo.email }}" class="block underline"
+            <a 
+            data-umami-event="{{site.contactInfo.email}}-navbar"
+            href="mailto:{{ site.contactInfo.email }}" class="block underline"
               >{{ site.contactInfo.email }}</a
             >
           </div>
