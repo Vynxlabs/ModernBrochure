@@ -189,7 +189,9 @@
                     {% endfor %}
                   </ul>
                 </div>
-                <a class="text-3xl sm:text-5xl font-bold opacity-80 underline transition-all hover:scale-105" href="{{entry.url}}">Learn more</a>
+                <a 
+                data-umami-event="{{entry.data.title}}-upcomingHappening-{{page.url}}-link"
+                class="text-3xl sm:text-5xl font-bold opacity-80 underline transition-all hover:scale-105" href="{{entry.url}}">Learn more</a>
               </div>
             </section>
           </div>
