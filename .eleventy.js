@@ -252,7 +252,7 @@ module.exports = (eleventyConfig) => {
       .sort((a, b) => {
         const dateA = new Date(a.data.happeningDate);
         const dateB = new Date(b.data.happeningDate);
-        return dateA - dateB;
+        return dateB - dateA;
       });
   });
 
