@@ -46,6 +46,9 @@ schemaFiles.forEach(schemaFile => {
 
 // Function to update the permalink in front matter
 function updatePermalink(filePath, schema) {
+    if(filePath === './src/pages/404.md' || filePath === './src/pages/tags.md') {
+        return
+    }
     const fileContent = fs.readFileSync(filePath, 'utf8');
     const frontMatterMatch = fileContent.match(/^---\n([\s\S]+?)\n---/);
 
