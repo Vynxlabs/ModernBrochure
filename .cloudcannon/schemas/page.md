@@ -11,7 +11,7 @@ eleventyNavigation:
   url:
 pageLink: 
 permalink: >-
-  {% capture varPagePath %}{% if pageLink%}{% assign pageLink = pageLink | slugify%}{{  page.filePathStem |fileSubstringFilter | append: pageLink }}{% else %}{% assign title = title | slugify%}{{  page.filePathStem |fileSubstringFilter | append: title }}{% endif %}{% endcapture %}{% if pagination.pageNumber > 0 %}/{{varPagePath | strip}}{% if pagination.pageNumber > 0 %}/page/{{ pagination.pageNumber }}{% endif %}{% else pageLink%}/{{varPagePath | strip}}{% endif %}/index.html
+  {% capture varPagePath %}{% if pageLink%}{% assign pageLink = pageLink | slugify%}{{  page.filePathStem |fileSubstringFilter | append: pageLink }}{% else %}{% assign title = title | slugify%}{{  page.filePathStem |fileSubstringFilter | append: title }}{% endif %}{% endcapture %}{% if pagination.pageNumber > 0 %}/{{varPagePath | strip}}{% if pagination.pageNumber > 0 %}/page/{{ pagination.pageNumber }}{% endif %}{% else %}/{{varPagePath | strip}}{% endif %}/index.html
 metaDesc: ""
 layout: "layouts/page.html"
 hero:

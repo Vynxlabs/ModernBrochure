@@ -252,7 +252,7 @@ module.exports = (eleventyConfig) => {
       .sort((a, b) => {
         const dateA = new Date(a.data.happeningDate);
         const dateB = new Date(b.data.happeningDate);
-        return dateA - dateB;
+        return dateB - dateA;
       });
   });
 
@@ -277,6 +277,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addFilter("happeningsFilter", happeningsFilter);
 
   eleventyConfig.on("eleventy.before", () => {
+    execSync("node ./utils/syncPermalinks.js");
     execSync("node ./utils/addHappeningPagination.js");
     execSync("node ./utils/addBlogPagination.js");
     execSync("node ./utils/fetch-theme-variables.js");
