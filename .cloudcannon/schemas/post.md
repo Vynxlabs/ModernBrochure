@@ -18,7 +18,6 @@ permalink: >-
     /blog/{% assign title = title | slugify %}{{ page.filePathStem | fileSubstringFilter | append: title | downcase }}/index.html
 socialImage: >- 
     {{ image }}
-eleventyExcludeFromCollections: false
 ---
 ## Once upon a time...
 There was a...
