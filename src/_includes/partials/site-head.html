@@ -19,8 +19,8 @@
   
     {% if not site.logoPath or site.logoPath == "" %}
     <p class="cs-logoFont text-2xl hover:underline">{{site.name}}</p>
-    {% else condition %}
-    {% logo site.logoPath, "logo for sopris", " w-[100px]"  %}
+    {% else %}
+    {% logo site.logoPath, "logo for {{site.name}}", " w-[100px]"  %}
   {% endif %}
   </a>
     <div
@@ -31,8 +31,8 @@
     data-umami-event="logo-homeLink-navbar"
     href="/" class="md:hidden ">{% if not site.logoPath or site.logoPath == "" %}
       <p class="cs-logoFont text-2xl hover:underline">{{site.name}}</p>
-      {% else condition %}
-      {% logo site.logoPath, "logo for sopris", " w-[100px]"  %}
+      {% else %}
+      {% logo site.logoPath, "logo for {{site.name}}", " w-[100px]"  %}
     {% endif %}</a>
       <div class="flex items-center md:order-3 gap-4 justify-self-end">
         {% bookshop "generic/button" bind: site.button %}
