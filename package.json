@@ -14,7 +14,8 @@
     "tailwind": "npx tailwindcss -i ./src/css/styles.css -o ./dist/css/styles.css --watch",
     "unlighthouse": "unlighthouse-ci --site sopriscuisine.com --build-static --root ./dist --output-path ./sopriscuisine",
     "new": "npx @bookshop/init --component",
-    "test:componentUse": "node ./tests/validateUsedComponents.js"
+    "test:componentUse": "node ./tests/validateUsedComponents.js",
+    "syncPermalinks": "node ./utils/syncPermalinks.js"
   },
   "keywords": [],
   "author": "",
