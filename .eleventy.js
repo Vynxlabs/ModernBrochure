@@ -277,6 +277,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addFilter("happeningsFilter", happeningsFilter);
 
   eleventyConfig.on("eleventy.before", () => {
+    execSync("node ./utils/syncPermalinks.js");
     execSync("node ./utils/addHappeningPagination.js");
     execSync("node ./utils/addBlogPagination.js");
     execSync("node ./utils/fetch-theme-variables.js");
