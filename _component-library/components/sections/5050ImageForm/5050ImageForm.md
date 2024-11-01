@@ -3,7 +3,7 @@ title: 50/50 Image and Form
 layout: layouts/page.html
 eleventyNavigation:
   key: 50/50 Image and Form
-  order:
+  order: 1
 tags: Sections
 draft: false
 _schema: default
