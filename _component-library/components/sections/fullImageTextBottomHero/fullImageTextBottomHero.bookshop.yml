@@ -2,7 +2,7 @@
 spec:
   structures:
     - hero_blocks
-  label: "Full Image Text Bottom Hero"
+  label: "Full Screen Image Text Bottom Hero"
   description:
   icon:
   tags: []
