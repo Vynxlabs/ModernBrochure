@@ -33,5 +33,5 @@ _schema: default
 - **Troubleshooting:** If event times are not displaying correctly, it is likely that the happening's time was not set up in UTC format. Convert your happening's time from your local time to UTC time.
 
 ## Ideas
-**Suggested Combinations:** Pair this component with a "Full Screen Image Hero" section to introduce the event page or a "Colored Call to Action" at the bottom to encourage sign-ups or further engagement.
+**Suggested Combinations:** Combine this section with a "Simple Hero" to immediately drive attention to the happenings.
 
