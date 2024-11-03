@@ -3,7 +3,7 @@
         {% bookshop "generic/heading" bind: content.heading %}
 
         <div class="mt-10">
-            {% bookshop "{{embed._bookshop_name}}" bind: content.embed %}
+            {% bookshop "{{content.embed._bookshop_name}}" bind: content.embed %}
         </div>
 
         {% if content.buttons %}
