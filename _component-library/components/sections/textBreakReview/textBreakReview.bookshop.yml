@@ -26,6 +26,6 @@ _inputs:
   review:
     type: select
     options:
-      values: data.reviews.reviews
+      values: data.reviews
       value_key: id
       text_key: name
