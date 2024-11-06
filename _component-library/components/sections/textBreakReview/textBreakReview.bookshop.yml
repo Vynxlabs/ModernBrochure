@@ -12,6 +12,7 @@ blueprint:
   content:
     sectionId:
     heading: bookshop:generic/heading!
+    usePersonImage: false
     reviews:
       - review:
   styles:
