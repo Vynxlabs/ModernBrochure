@@ -1,0 +1,45 @@
+{% assign color_group = styles.color_group %}
+
+<div class="c-reviewCards componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
+  <section class="basecontainer w-full">
+    {% bookshop "generic/heading" bind: content.heading %}
+    {% if content.reviews %}
+
+      <div class="flex justify-around gap-4 flex-wrap overflow-hidden mt-20">
+        {% for item in content.reviews %}
+          {% for review in reviews %}
+
+            {% if item.review == review.id %}
+              <div class="bg-white shadow-xl  rounded transition -translate-y-1 duration-300 h-full p-6">
+                <div class="mt-4">
+                  <div class="flex">
+                    {% bookshop "generic/heroLibraryIcon" heroLibraryIconName: "star" iconType: "solid" iconSize: 'micro' roundedBorder: false color: "#EBC644" %}
+                    {% bookshop "generic/heroLibraryIcon" heroLibraryIconName: "star" iconType: "solid" iconSize: 'micro' roundedBorder: false color: "#EBC644" %}
+                    {% bookshop "generic/heroLibraryIcon" heroLibraryIconName: "star" iconType: "solid" iconSize: 'micro' roundedBorder: false color: "#EBC644" %}
+                    {% bookshop "generic/heroLibraryIcon" heroLibraryIconName: "star" iconType: "solid" iconSize: 'micro' roundedBorder: false color: "#EBC644" %}
+                    {% bookshop "generic/heroLibraryIcon" heroLibraryIconName: "star" iconType: "solid" iconSize: 'micro' roundedBorder: false color: "#EBC644" %}
+                  </div>
+                  <p class="">
+                    {{ review.review }}
+                  </p>
+                  <div class="flex items-center mt-6">
+                    <div class="mr-2 w-[47px]">
+                      {% bookshop "generic/image" imagePath: review.personImage imageAlt: "{{review.name}}, {{review.titleOrDescription}}" class: "{% bookshop " g eneric/image" imagePath: review.personImage imageAlt: imageAltText class: " r ounded object-cover object-center h-full w-full" %}" %}
+
+                    </div>
+                    <div>
+                      <h4 class="text-xl font-medium">{{ review.name }}</h4>
+                      <p class="text-sm">
+                        <i>{{ review.titleOrDescription }}</i>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </section>
+</div>

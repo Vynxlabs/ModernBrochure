@@ -2,8 +2,8 @@
 spec:
   structures:
     - content_blocks
-  label: "Text Break Review"
-  description: A result image review where the text breaks out of the image frame
+  label: "Review Cards"
+  description: Straight forward reviews
   icon: reviews
   tags: [review, connected]
 
@@ -15,9 +15,10 @@ blueprint:
     usePersonImage: false
     reviews:
       - review:
+        card_color_group: primary
+        colorFromGroup: primary
   styles:
     color_group: primary
-
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
