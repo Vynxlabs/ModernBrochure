@@ -425,7 +425,7 @@ _inputs:
   review:
     type: textarea
 _snippets:
-  custom_snippet:
+  imageModal:
     template: eleventy_liquid_bookshop_component
     inline: false
     preview:
@@ -437,6 +437,32 @@ _snippets:
           type: string
         - editor_key: imageAlt
           type: string
+  videoEmbed:
+    template: eleventy_liquid_bookshop_component
+    inline: false
+    preview:
+      text: Youtube or Vimeo
+    definitions:
+      component_name: snippets/videoEmbed
+      named_args:
+        - editor_key: platform
+          type: string
+        - editor_key: videoId
+          type: string
+    _inputs:
+      videoId:
+        comment: 'You can find this in the URL of the video you want to embed. For example, https://www.youtube.com/watch?v=YOUR_VIDEO_ID, or for vimeo https://vimeo.com/YOUR_VIDEO_ID'
+      platform:
+        comment: 'Youtube or Vimeo'
+        type: choice
+        options:
+          allow_empty: false
+          value_key: id
+          values:
+            - id: youtube
+              name: Youtube
+            - id: vimeo
+              name: Vimeo
 _select_data: {}
 _structures:
   content_blocks:
