@@ -16,7 +16,7 @@ blueprint:
     reviews:
       - review:
         card_color_group: primary
-        colorFromGroup: primary
+        colorFromGroup: background
   styles:
     color_group: primary
 
