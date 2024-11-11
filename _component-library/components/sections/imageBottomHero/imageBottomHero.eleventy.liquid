@@ -29,12 +29,12 @@
       <div class="z-20 min-h-min basecontainer w-full relative">
         {% bookshop {{content.heading._bookshop_name}} bind: heading %}
         <div>
-          <div class="text-{{styles.color_group}}-highcontrast-{{styles.topColorFromGroup}}color mt-5 flex flex-wrap justify-between gap-2 text-sm">
+          <div class="text-{{styles.color_group}}-highcontrast-{{styles.topColorFromGroup}}color mt-5 flex flex-wrap justify-around gap-2 text-sm">
             {% for benefit in content.benefits %}
               <p>{{ benefit }}</p>
             {% endfor %}
           </div>
-          {% bookshop "generic/image" bind: content.image class: " z-30 w-full rounded mt-4 overflow-hidden" %}
+          {% bookshop "generic/image" bind: content.image class: "max-h-screen object-cover z-30 w-full rounded mt-4 overflow-hidden" %}
         </div>
       </div>
 
