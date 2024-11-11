@@ -12,6 +12,7 @@ blueprint:
   content:
     heading: bookshop:structure:headingBlocks
     benefits:
+      - "Benefit 1"
     image: bookshop:generic/image!
   styles:
     color_group: primary
