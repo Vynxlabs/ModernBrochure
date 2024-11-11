@@ -10,14 +10,55 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   content:
-    heading: bookshop:generic/heading!
+    heading: bookshop:structure:headingBlocks
+    benefits:
     image: bookshop:generic/image!
   styles:
     color_group: primary
-    
+    topColorFromGroup: background
+    bottomColorFromGroup: background
+
+
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  benefits:
+    type: array
+    comment: A quick mention of your most important benefits. 1-2 words per benefit is recommened. 
+  topColorFromGroup:
+    label: Top Color
+    type: select
+    options:
+      allow_empty: false
+      value_key: id
+      values:
+        - id: text
+          name: Text
+        - id: background
+          name: Background
+        - id: primary
+          name: Primary
+        - id: secondary
+          name: Secondary
+        - id: accent
+          name: Accent
+  bottomColorFromGroup:
+    label: Bottom Color
+    type: select
+    options:
+      allow_empty: false
+      value_key: id
+      values:
+        - id: text
+          name: Text
+        - id: background
+          name: Background
+        - id: primary
+          name: Primary
+        - id: secondary
+          name: Secondary
+        - id: accent
+          name: Accent

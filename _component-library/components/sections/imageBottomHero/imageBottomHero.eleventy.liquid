@@ -1,44 +1,40 @@
-{% assign color_group = site.color_group %}
+{% assign color_group = styles.color_group %}
 {% capture heading %}
     content:
-        highlightEyebrow: {{heading.content.highlightEyebrow}}
-        eyebrow: {{heading.content.eyebrow| stringifyFilter}}
-        headline: {{heading.content.headline| stringifyFilter}}
-        description: {{heading.content.description| stringifyFilter}}
+        highlightEyebrow: {{content.heading.content.highlightEyebrow}}
+        eyebrow: {{content.heading.content.eyebrow| stringifyFilter}}
+        headline: {{content.heading.content.headline| stringifyFilter}}
+        description: {{content.heading.content.description| stringifyFilter}}
         buttons:
-          {{heading.content.buttons | json}}
+          {{content.heading.content.buttons | json}}
         headingHierarchy: "h1"
     styles:
-        contentAlignment: {{heading.styles.contentAlignment}}
-        textAlignment: {{heading.styles.textAlignment}}
+        contentAlignment: {{content.heading.styles.contentAlignment}}
+        textAlignment: {{content.heading.styles.textAlignment}}
+        headingRight: {{content.heading.styles.headingRight}}
+        visualInterest: {{content.heading.styles.visualInterest}}
+        visualInterestColor: {{content.heading.styles.visualInterestColor}}
+        highContrast: true
+        contrastColorGroup: {{styles.color_group}}
+        contrastAgainst: {{styles.topColorFromGroup}} 
+        textClassOverride: 
 {% endcapture %}
 {% assign heading = heading | ymlify %}
 
 
-<div class="c-imageBottomHero bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
+<div class="c-imageBottomHero   text-{{styles.color_group}}-textcolor">
   <section class="flex">
-    <div class="cs-w-full  max-h-[800px] sm:max-h-[1200px] lg:max-h-[1500px] bg-[url('/images/illustrations/gradient.svg')]  -z-10 bg-cover bg-scroll  lg:bg-fixed"></div>
-    <div class="cs-w-full flex mt-[100px] sm:mt-[300px] md:mt-[350px] lg:mt-[400px] items-center justify-center flex-col">
+    <div class="cs-w-full  max-h-[800px] sm:max-h-[1200px] lg:max-h-[1500px] bg-{{styles.color_group}}-{{styles.topColorFromGroup}}color  -z-10 "></div>
+    <div class="cs-w-full flex mt-[100px] sm:mt-[300px] md:mt-[350px] lg:mt-[400px] items-center justify-center flex-col bg-{{styles.color_group}}-{{styles.bottomColorFromGroup}}color">
       <div class="min-h-min basecontainer w-full relative">
-
+        {% bookshop {{content.heading._bookshop_name}} bind: heading %}
         <div>
           <div class="mt-20 flex justify-between gap-2 text-sm">
-            {% for temp
-              , benefit in hero.benefits %}
+            {% for benefit in content.benefits %}
               <p>{{ benefit }}</p>
             {% endfor %}
           </div>
-          {% image hero.imgDesktop
-            , "mt-4 overflow-hidden"
-            , "desktop image of
-                                Sopris website "
-            , "(max-width: 2000px) 1920px (max-width: 1000px) 850px
-                                (max-width: 850px) 600px (max-width: 500px) 300px"
-            ,[1920
-            , 850
-            , 600
-            , 500
-            , 300] %}
+          {% bookshop "generic/image" bind: content.image class: "mt-4 overflow-hidden" %}
         </div>
       </div>
 
