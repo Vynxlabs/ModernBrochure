@@ -1,0 +1,48 @@
+{% assign color_group = site.color_group %}
+{% capture heading %}
+    content:
+        highlightEyebrow: {{heading.content.highlightEyebrow}}
+        eyebrow: {{heading.content.eyebrow| stringifyFilter}}
+        headline: {{heading.content.headline| stringifyFilter}}
+        description: {{heading.content.description| stringifyFilter}}
+        buttons:
+          {{heading.content.buttons | json}}
+        headingHierarchy: "h1"
+    styles:
+        contentAlignment: {{heading.styles.contentAlignment}}
+        textAlignment: {{heading.styles.textAlignment}}
+{% endcapture %}
+{% assign heading = heading | ymlify %}
+
+
+<div class="c-imageBottomHero bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
+  <section class="flex">
+    <div class="cs-w-full  max-h-[800px] sm:max-h-[1200px] lg:max-h-[1500px] bg-[url('/images/illustrations/gradient.svg')]  -z-10 bg-cover bg-scroll  lg:bg-fixed"></div>
+    <div class="cs-w-full flex mt-[100px] sm:mt-[300px] md:mt-[350px] lg:mt-[400px] items-center justify-center flex-col">
+      <div class="min-h-min basecontainer w-full relative">
+
+        <div>
+          <div class="mt-20 flex justify-between gap-2 text-sm">
+            {% for temp
+              , benefit in hero.benefits %}
+              <p>{{ benefit }}</p>
+            {% endfor %}
+          </div>
+          {% image hero.imgDesktop
+            , "mt-4 overflow-hidden"
+            , "desktop image of
+                                Sopris website "
+            , "(max-width: 2000px) 1920px (max-width: 1000px) 850px
+                                (max-width: 850px) 600px (max-width: 500px) 300px"
+            ,[1920
+            , 850
+            , 600
+            , 500
+            , 300] %}
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+</div>
