@@ -1,0 +1,40 @@
+{% assign color_group = styles.color_group %}
+{% capture heading %}
+    content:
+        highlightEyebrow: {{content.heading.content.highlightEyebrow}}
+        eyebrow: {{content.heading.content.eyebrow| stringifyFilter}}
+        headline: {{content.heading.content.headline| stringifyFilter}}
+        description: {{content.heading.content.description| stringifyFilter}}
+        buttons:
+          {{content.heading.content.buttons | json}}
+        headingHierarchy: "h1"
+    styles:
+        contentAlignment: {{content.heading.styles.contentAlignment}}
+        textAlignment: {{content.heading.styles.textAlignment}}
+        visualInterest: {{content.heading.styles.visualInterest}}
+        visualInterestColor: {{content.heading.styles.visualInterestColor}}
+        highContrast: true
+        contrastColorGroup: {{styles.color_group}}
+        contrastAgainst: {{styles.topColorFromGroup}} 
+        textClassOverride: 
+{% endcapture %}
+{% assign heading = heading | ymlify %}
+
+
+<div class="c-leftRightHero bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
+
+{% if styles.headingRight %}
+    {% capture direction %}
+     flex-row flex-wrap   
+    {% endcapture %}
+   {% else %}
+    {% capture direction %}
+     flex-row-reverse flex-wrap-reverse
+    {% endcapture %} 
+{% endif %}
+
+<section class="basecontainer w-full flex {{direction}}">
+{% bookshop "generic/heading" bind: heading %}
+{% bookshop "generic/image" bind: content.image class: "flex-1 min-w-[300px] object-cover object-center w-full rounded aspect-[3/2]" %}
+</section>
+</div>
