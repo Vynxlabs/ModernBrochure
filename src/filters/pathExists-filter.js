@@ -4,7 +4,10 @@ const path = require("path");
 module.exports = (filePath) => {
   try {
     // Resolve the full path based on the current working directory
-    const fullPath = path.resolve("./src",filePath);
+    let fullPath = path.join("src",filePath);
+    if(filePath.includes("https://") || filePath.includes("http://")){ 
+      return filePath
+    }
 
     // Check if the file exists
     if (fs.existsSync(fullPath)) {
