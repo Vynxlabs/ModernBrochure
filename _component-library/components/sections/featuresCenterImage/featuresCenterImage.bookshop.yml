@@ -6,6 +6,7 @@ spec:
   description: Features section with a central image 
   icon:
   tags: []
+  tabbed: true
 
 # Defines the structure of this component, as well as the default values
 blueprint:

@@ -6,6 +6,7 @@ spec:
   description: A straight forward left right hero
   icon:
   tags: []
+  tabbed: true
 
 # Defines the structure of this component, as well as the default values
 blueprint:

@@ -6,6 +6,7 @@ spec:
   description: Shows a portfolio of images in an offset grid
   icon:
   tags: []
+  tabbed: true
 
 # Defines the structure of this component, as well as the default values
 blueprint:

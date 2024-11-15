@@ -6,6 +6,7 @@ spec:
   description: Block of content with a header
   icon: article
   tags: ['text']
+  tabbed: true
 
 # Defines the structure of this component, as well as the default values
 blueprint:
