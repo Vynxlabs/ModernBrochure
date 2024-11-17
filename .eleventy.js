@@ -213,7 +213,7 @@ module.exports = (eleventyConfig) => {
       .filter(function (item) {
         const today = new Date();
         return (
-          (item.data.draft === false && item.url.includes("happenings/") ||
+          ((item.data.draft === false && item.url.includes("happenings/")) ||
             (item.data.happeningDate !== null &&
               (item.data.happening === null || item.data.happening === true) &&
               (happeningsConfig.tags === null ||
@@ -240,7 +240,7 @@ module.exports = (eleventyConfig) => {
       .filter(function (item) {
         const today = new Date();
         return (
-          (item.data.draft === false && item.url.includes("happenings/") ||
+          ((item.data.draft === false && item.url.includes("happenings/")) ||
             (item.data.happeningDate !== null &&
               (item.data.happening === null || item.data.happening === true) &&
               (happeningsConfig.tags === null ||
@@ -279,6 +279,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addFilter("pathExists", pathExistsFilter);
 
   eleventyConfig.on("eleventy.before", () => {
+    execSync("node ./utils/generateFavicon.js");
     execSync("node ./utils/syncPermalinks.js");
     execSync("node ./utils/permalinkDupCheck.js");
     execSync("node ./utils/addHappeningPagination.js");
