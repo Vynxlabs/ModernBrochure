@@ -48,6 +48,15 @@
     "umamiAnalytics": {
       "hidden": "true"
     },
+    "websiteId": {
+      "hidden": "!bringYourOwnUmami"
+    },
+    "scriptSource": {
+      "hidden": "!bringYourOwnUmami"
+    },
+    "dataDomains": {
+      "hidden": "!bringYourOwnUmami"
+    },
     "color_group": {
       "comment": "The over all color group for the site."
     },
