@@ -284,9 +284,6 @@ _inputs:
       values:
         - id: primary
           name: Primary
-        - &ref_0
-          name: Primary Dark
-          id: primary_dark0
   nav_color_group:
     type: select
     options:
@@ -300,7 +297,6 @@ _inputs:
       values:
         - id: primary
           name: Primary
-        - *ref_0
   footer_color_group:
     type: select
     options:
@@ -314,7 +310,6 @@ _inputs:
       values:
         - id: primary
           name: Primary
-        - *ref_0
   card_color_group:
     type: select
     options:
@@ -328,7 +323,6 @@ _inputs:
       values:
         - id: primary
           name: Primary
-        - *ref_0
   form_color_group:
     type: select
     options:
@@ -342,7 +336,6 @@ _inputs:
       values:
         - id: primary
           name: Primary
-        - *ref_0
   id:
     hidden: true
     instance_value: UUID
@@ -466,6 +459,8 @@ _snippets:
 _select_data: {}
 _structures:
   content_blocks:
+    style: modal
+  hero_blocks:
     style: modal
 _editables: {}
 timezone: Etc/UTC

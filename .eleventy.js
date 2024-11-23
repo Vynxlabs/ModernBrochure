@@ -14,6 +14,7 @@ const stringifyFilter = require("./src/filters/stringify-filter.js");
 const evalLiquid = require("./src/filters/evalLiquid-filter.js");
 const happeningsFilter = require("./src/filters/happenings-filter.js");
 const getServiceCategories = require("./src/filters/getServiceCategories-filter.js");
+const pathExistsFilter = require("./src/filters/pathExists-filter.js");
 const rssPlugin = require("@11ty/eleventy-plugin-rss");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const markdownIt = require("markdown-it"),
@@ -212,7 +213,7 @@ module.exports = (eleventyConfig) => {
       .filter(function (item) {
         const today = new Date();
         return (
-          (item.data.draft === false && item.url.includes("happenings/") ||
+          ((item.data.draft === false && item.url.includes("happenings/")) ||
             (item.data.happeningDate !== null &&
               (item.data.happening === null || item.data.happening === true) &&
               (happeningsConfig.tags === null ||
@@ -239,7 +240,7 @@ module.exports = (eleventyConfig) => {
       .filter(function (item) {
         const today = new Date();
         return (
-          (item.data.draft === false && item.url.includes("happenings/") ||
+          ((item.data.draft === false && item.url.includes("happenings/")) ||
             (item.data.happeningDate !== null &&
               (item.data.happening === null || item.data.happening === true) &&
               (happeningsConfig.tags === null ||
@@ -275,8 +276,10 @@ module.exports = (eleventyConfig) => {
   });
   eleventyConfig.addFilter("evalLiquid", evalLiquid);
   eleventyConfig.addFilter("happeningsFilter", happeningsFilter);
+  eleventyConfig.addFilter("pathExists", pathExistsFilter);
 
   eleventyConfig.on("eleventy.before", () => {
+    execSync("node ./utils/generateFavicon.js");
     execSync("node ./utils/syncPermalinks.js");
     execSync("node ./utils/permalinkDupCheck.js");
     execSync("node ./utils/addHappeningPagination.js");

@@ -4,8 +4,9 @@ spec:
     - hero_blocks
   label: "Full Screen Image Text Bottom Hero"
   description:
-  icon:
+  icon: feed
   tags: []
+  tabbed: true
 
 # Defines the structure of this component, as well as the default values
 blueprint:
