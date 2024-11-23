@@ -4,7 +4,7 @@ spec:
     - hero_blocks
   label: "Bottom Image Hero"
   description: 
-  icon:
+  icon: feed
   tags: []
   tabbed: true
 

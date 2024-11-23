@@ -4,7 +4,7 @@ spec:
     - hero_blocks
   label: "Full Screen Image Text Bottom Hero"
   description:
-  icon:
+  icon: feed
   tags: []
   tabbed: true
 

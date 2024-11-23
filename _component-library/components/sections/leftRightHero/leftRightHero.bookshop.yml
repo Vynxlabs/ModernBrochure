@@ -4,7 +4,7 @@ spec:
     - hero_blocks
   label: "Left Right Hero"
   description: A straight forward left right hero
-  icon:
+  icon: feed
   tags: []
   tabbed: true
 

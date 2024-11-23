@@ -460,5 +460,7 @@ _select_data: {}
 _structures:
   content_blocks:
     style: modal
+  hero_blocks:
+    style: modal
 _editables: {}
 timezone: Etc/UTC
