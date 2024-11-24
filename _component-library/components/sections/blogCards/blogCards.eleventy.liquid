@@ -42,7 +42,7 @@
                 {% endif %}
                 {% endcapture %}
                 {% capture blogInfo %}
-                blogTitle: {{ entry.data.title }}
+                blogTitle: {{ entry.data.title | stringifyFilter }}
                 url: {{ entry.url }}
                 author: {{blogAuthor | strip}}
                 date: '{% if entry.data.date %}{{ entry.data.date }}{% else %}{{ entry.date }}{% endif %}'

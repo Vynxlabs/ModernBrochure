@@ -53,7 +53,7 @@
             {% endif %}
             {% endcapture %}
           {% capture happeningInfo %}
-            happeningTitle: {{ entry.data.title }}
+            happeningTitle: {{ entry.data.title | stringifyFilter}}
             url: {{ entry.url }}
             happeningDatetime: '{% if entry.data.happeningDate %}{{ entry.data.happeningDate }}{% else %}{{ entry.date }}{% endif %}'
             blogTags: {{ entry.data.tags | ymlify | split: "," | json}}
