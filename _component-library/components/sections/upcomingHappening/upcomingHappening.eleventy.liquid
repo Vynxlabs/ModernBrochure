@@ -58,7 +58,7 @@
                 {% endif %}
                 {% endcapture %}
         {% capture happeningInfo %}
-                happeningTitle: {{ eventTitle |  strip }}
+                happeningTitle: {{ eventTitle | stringifyFilter |  strip }}
                 url: {{ entry.url }}
                 happeningDatetime: '{% if entry.data.happeningDate %}{{ entry.data.happeningDate }}{% else %}{{ entry.date }}{% endif %}'
                 cancelled: {{ entry.data.cancelled }}
