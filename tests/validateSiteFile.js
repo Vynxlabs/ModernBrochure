@@ -33,31 +33,78 @@ function syncInputs(referenceInputs, clientInputs) {
 
 // Function to validate and sync arrays
 function validateArray(referenceArray, clientArray, key) {
-  const warnings = [];
   const referenceStructure = referenceArray[0];
   const validatedArray = clientArray.map((item, index) => {
+    if (item === null) {
+      return null; // Preserve null values
+    }
     const newItem = {};
     for (const refKey in referenceStructure) {
       if (!(refKey in item)) {
         newItem[refKey] = referenceStructure[refKey];
         warnings.push(
-          `Array '${key}' index ${index}: Added missing key '${refKey}'.`,
+          `Array '${key}' index ${index}: Added missing key '${refKey}'.`
         );
       } else {
         newItem[refKey] = item[refKey];
       }
     }
+
+    // Remove extra keys not in reference
+    for (const itemKey of Object.keys(item)) {
+      if (!(itemKey in referenceStructure)) {
+        warnings.push(
+          `Array '${key}' index ${index}: Removed extra key '${itemKey}'.`
+        );
+      }
+    }
+
     return newItem;
   });
 
   return { validatedArray, warnings };
 }
 
+// Recursive function to reorder and clean keys in objects
+function reorderKeys(referenceData, clientData) {
+  if (clientData === null || clientData === undefined) {
+    return clientData; // Preserve null or undefined values
+  }
+
+  if (Array.isArray(referenceData) && Array.isArray(clientData)) {
+    return clientData.map((item) => reorderKeys(referenceData[0], item));
+  } else if (
+    typeof referenceData === "object" &&
+    typeof clientData === "object" &&
+    referenceData !== null &&
+    clientData !== null
+  ) {
+    const reorderedClientData = {};
+    // Ensure keys match the reference order
+    Object.keys(referenceData).forEach((key) => {
+      if (key in clientData) {
+        reorderedClientData[key] = reorderKeys(
+          referenceData[key],
+          clientData[key]
+        );
+      } else {
+        reorderedClientData[key] = referenceData[key]; // Add missing keys
+        warnings.push(`Added missing key '${key}' to client data.`);
+      }
+    });
+    // Remove extra keys not in reference
+    Object.keys(clientData).forEach((key) => {
+      if (!(key in referenceData)) {
+        warnings.push(`Removed extra key '${key}' from client data.`);
+      }
+    });
+    return reorderedClientData;
+  }
+  return clientData; // Primitive values are returned as-is
+}
+
 // Function to sync the client file with the reference file
 function syncFiles(referenceFilePath, clientFilePath) {
-  const warnings = [];
-
-  // Read and parse JSON files
   const referenceData = JSON.parse(fs.readFileSync(referenceFilePath, "utf-8"));
   const clientData = JSON.parse(fs.readFileSync(clientFilePath, "utf-8"));
 
@@ -65,7 +112,7 @@ function syncFiles(referenceFilePath, clientFilePath) {
   if (referenceData._inputs && clientData._inputs) {
     const { updatedInputs, warnings: inputWarnings } = syncInputs(
       referenceData._inputs,
-      clientData._inputs,
+      clientData._inputs
     );
     clientData._inputs = updatedInputs;
     warnings.push(...inputWarnings);
@@ -83,7 +130,7 @@ function syncFiles(referenceFilePath, clientFilePath) {
       const { validatedArray, warnings: arrayWarnings } = validateArray(
         referenceData[key],
         clientData[key],
-        key,
+        key
       );
       clientData[key] = validatedArray;
       warnings.push(...arrayWarnings);
@@ -91,7 +138,6 @@ function syncFiles(referenceFilePath, clientFilePath) {
       typeof referenceData[key] === "object" &&
       typeof clientData[key] === "object"
     ) {
-      // Deep merge objects (excluding arrays and _inputs already handled)
       for (const refKey of Object.keys(referenceData[key])) {
         if (!(refKey in clientData[key])) {
           clientData[key][refKey] = referenceData[key][refKey];
@@ -109,24 +155,25 @@ function syncFiles(referenceFilePath, clientFilePath) {
     }
   }
 
+  // Reorder and clean nested keys
+  const reorderedClientData = reorderKeys(referenceData, clientData);
+
   // Write the updated client file
-  fs.writeFileSync(clientFilePath, JSON.stringify(clientData, null, 2));
+  fs.writeFileSync(clientFilePath, JSON.stringify(reorderedClientData, null, 2));
 }
 
 // Execute the script
 syncFiles(referenceFilePath, clientFilePath);
 
-// Log warnings or success message
+// Validation loop
 if (warnings.length > 0) {
   console.warn("Warnings:\n", warnings.join("\n"));
-}
-if (warnings.length > 0) {
   warnings = [];
   console.log("Rechecking for warnings...");
   syncFiles(referenceFilePath, clientFilePath);
 }
 
-// Log warnings or success message
+// Final warnings check
 if (warnings.length > 0) {
   console.warn("Warnings:\n", warnings.join("\n"));
   process.exit(1);

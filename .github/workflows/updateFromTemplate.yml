@@ -86,8 +86,11 @@ jobs:
       - name: Install dependencies
         run: npm install --prefer-offline --no-audit --no-progress --production
 
-      - name: Run component validation
-        run: npm run test:componentUse
+      - name: Run component validation and sync site.json
+        run: |
+          npm run test:componentUse
+          npm run test:siteJsonSync
+          
 
       - name: Merge changes into main
         if: success()
