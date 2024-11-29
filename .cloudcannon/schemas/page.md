@@ -2,6 +2,7 @@
 draft: true
 title: ""
 eleventyExcludeFromCollections: false
+disableNav: false
 removeFromNavigation: false
 eleventyNavigation:
   key: page

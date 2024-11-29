@@ -1,6 +1,6 @@
 {% assign iconClass = "fill-" | append: banner.color_group | append: "-highcontrast-" | append: banner.colorFromGroup | append: 'color' %}
 
-{% if banner.enable_banner and banner.show_until %}
+{% if banner.enable_banner and banner.show_until and disableNav != true %}
     <div class="cs-w-full bg-{{banner.color_group}}-{{banner.colorFromGroup}}color text-{{banner.color_group}}-highcontrast-{{banner.colorFromGroup}}color flex flex-col items-center justify-center">
         <div class="basecontainer w-full">
             <header class=" hidden flex w-full justify-center items-center py-2 relative"

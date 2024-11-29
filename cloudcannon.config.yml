@@ -247,6 +247,10 @@ collections_config:
       default:
         path: .cloudcannon/schemas/service.md
 _inputs:
+  disableNav:
+    type: switch
+    label: Disable Navigation
+    comment: "This will remove the top and bottom navigation from THIS page. Useful for ads landing pages."
   pagination:
     hidden: true
   layout:
