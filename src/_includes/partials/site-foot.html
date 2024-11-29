@@ -1,5 +1,12 @@
 {% assign navPages = collections.all | eleventyNavigation %}
 
+{% capture logoUrl%}
+{% if disableNav == true  %}
+{{page.url}}
+{% else %}
+/
+{% endif %}
+{% endcapture%}
 <footer
   class=" cs-w-full pt-40 bg-{{site.footer_color_group}}-backgroundcolor flex flex-col items-center justify-center text-{{site.footer_color_group}}-textcolor"
 >
@@ -8,7 +15,7 @@
       <div class="max-w-[300px]">
         <a 
         data-umami-event="logo-homeLink-footer"
-        href="/">
+        href="{{logoUrl}}">
           {% if not site.logoPath or site.logoPath == "" %}
             <p class="cs-logoFont text-2xl hover:underline">{{site.name}}</p>
             {% else %}
@@ -25,6 +32,7 @@
         {% endfor %}
       </ul>
       </div>
+      {% if disableNav != true %}
       <div class="">
         <p class="font-bold opacity-90">Navigation</p>
         <ul class="mt-2  flex flex-col justify-center gap-1 md:gap-4">
@@ -32,6 +40,7 @@
           entry as entry, page:page %} {% endfor %}
         </ul>
       </div>
+      {% endif %}
     </div>
   </div>
   <div class="mt-20">

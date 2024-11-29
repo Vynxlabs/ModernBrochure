@@ -4,6 +4,13 @@
 
 {% assign color_group=site.nav_color_group%}
 
+{% capture logoUrl%}
+{% if disableNav == true  %}
+{{page.url}}
+{% else %}
+/
+{% endif %}
+{% endcapture%}
 
 
 <div id="navbar" class="fixed left-0 top-0 z-[900] w-full transition-all duration-300">
@@ -15,7 +22,7 @@
   
   <a 
   data-umami-event="logo-homeLink-navbar"
-  href="/" class="md:flex items-center self-start md:self-center p-4 ml-4 flex-shrink-0 hidden ">
+  href="{{logoUrl}}" class="md:flex items-center self-start md:self-center p-4 ml-4 flex-shrink-0 hidden ">
   
     {% if not site.logoPath or site.logoPath == "" %}
     <p class="cs-logoFont text-2xl hover:underline">{{site.name}}</p>
@@ -29,11 +36,13 @@
     >
     <a 
     data-umami-event="logo-homeLink-navbar"
-    href="/" class="md:hidden ">{% if not site.logoPath or site.logoPath == "" %}
+    href="{{logoUrl}}" class="md:hidden ">{% if not site.logoPath or site.logoPath == "" %}
       <p class="cs-logoFont text-2xl hover:underline">{{site.name}}</p>
       {% else %}
       {% logo site.logoPath, "logo for {{site.name}}", " w-[100px]"  %}
     {% endif %}</a>
+
+{% if disableNav != true  %}
       <div class="flex flex-wrap-reverse justify-end flex-1 sm:flex-none items-center md:order-3 gap-4 justify-self-end">
         {% bookshop "generic/button" bind: site.button %}
         <button
@@ -126,6 +135,7 @@
           entry: entry, color_group: site.nav_color_group, level:level, blogPosts: collections.blog, page:page %} {% endfor %}
         </ul>
       </div>
+    {% endif %}
     </div>
   </nav>
 </div>

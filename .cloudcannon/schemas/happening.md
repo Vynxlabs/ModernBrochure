@@ -1,6 +1,7 @@
 ---
 draft: true
 eleventyExcludeFromCollections: false
+disableNav: false
 title: 
 metaDesc: 
 customCode:
