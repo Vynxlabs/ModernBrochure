@@ -20,6 +20,8 @@
     <style defer>
       {{ css  }}
     </style>
+    {{customCode.headCode}}
+    {{site.customCode.headCode}}
   </head>
   {% include "partials/analytics.html" %} {% include
   "partials/watermark.html" %}
@@ -102,5 +104,8 @@
         prevScrollpos = currentScrollPos;
       };
     </script>
+
+    {{customCode.bodyCode}}
+    {{site.customCode.bodyCode}}
   </body>
 </html>
