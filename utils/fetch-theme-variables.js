@@ -324,7 +324,7 @@ color_groups = color_groups.forEach((color_set, i) => {
         - append index to end for auto-increment unique ids
     */
    
-    let id = `${color_set.name.toLowerCase().replace(/[\s|&;$%@'"<>()+,]/g, "_")}${i}`
+    let id = `${color_set.id.toLowerCase().replace(/[\s|&;$%@'"<>()+,]/g, "_")}`
     let name = color_set.name
     let background = color_set.background_color
     let foreground = color_set.foreground_color
