@@ -12,6 +12,7 @@ customColor_groups:
     primaryColor: '#1bc0da'
     secondaryColor: '#7f101f'
     accentColor: '#a88815'
+    id: 5c9075f8-80f9-4482-b041-91cffdfe02be
 heading_font: Alegreya Sans
 content_font: Fira Sans
 logo_font: Oswald
