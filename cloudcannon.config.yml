@@ -476,10 +476,9 @@ _structures:
           value: 
       - label: Token Group
         value:
-          category:
-            name: 
-            tokens:
-              - key: 
-                value: 
+          groupName: 
+          tokens:
+            - key: 
+              value: 
 _editables: {}
 timezone: Etc/UTC
