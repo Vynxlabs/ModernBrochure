@@ -90,7 +90,9 @@ jobs:
         run: |
           npm run test:componentUse && npm run test:siteJsonSync
           git add .
-          git commit -m "Sync components and site file"
+          if [ -n "$(git status --porcelain)" ]; then
+            git commit -m "Sync components and site file"
+          fi
           
 
       - name: Merge changes into main
