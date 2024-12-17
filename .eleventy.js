@@ -143,58 +143,70 @@ function imageCssBackground(src, selector, widths) {
   return markup.join("");
 }
 
-// Load tokens from the tokens.yml file
+// Load and flatten tokens.yml
 function loadTokens() {
   const tokensFile = path.join(__dirname, "src", "_data", "tokens.yml");
-  const tokens = yaml.load(fs.readFileSync(tokensFile, "utf8"));
 
-  // Recursively flatten the tokens
-  function flattenTokens(tokenList, prefix = "") {
-    let flatTokens = {};
+  try {
+    const tokensData = yaml.load(fs.readFileSync(tokensFile, "utf8"));
+    const tokenList = tokensData?.token_list || []; // Default to an empty array if undefined
 
-    tokenList.forEach((token) => {
-      if (token.key && token.value) {
-        // Add key-value pairs
-        const fullKey = prefix ? `${prefix}.${token.key}` : token.key;
-        flatTokens[fullKey] = token.value;
-      } else if (token.groupName && token.tokens) {
-        // Recurse into nested groups
-        const groupPrefix = prefix ? `${prefix}.${token.groupName}` : token.groupName;
-        Object.assign(flatTokens, flattenTokens(token.tokens, groupPrefix));
+    // Flatten tokens recursively
+    function flattenTokens(tokenList, prefix = "") {
+      let flatTokens = {};
+
+      tokenList.forEach((token) => {
+        if (token?.key && token?.value) {
+          const fullKey = prefix ? `${prefix}.${token.key}` : token.key;
+          flatTokens[fullKey] = token.value;
+        } else if (token?.groupName && Array.isArray(token.tokens)) {
+          const groupPrefix = prefix
+            ? `${prefix}.${token.groupName}`
+            : token.groupName;
+          Object.assign(flatTokens, flattenTokens(token.tokens, groupPrefix));
+        }
+      });
+
+      return flatTokens;
+    }
+
+    return flattenTokens(tokenList);
+  } catch (e) {
+    console.warn("Warning: tokens.yml could not be loaded or is empty.");
+    return {}; // Return an empty object if the file doesn't exist or has errors
+  }
+}
+
+function loadSiteTokens() {
+  const siteFile = path.join(__dirname, "src", "_data", "site.json");
+
+  try {
+    const siteData = JSON.parse(fs.readFileSync(siteFile, "utf8"));
+
+    const allowedFields = ["name", "legalName", "url"];
+    const contactFields = siteData?.contactInfo || {};
+
+    const flattenedTokens = {};
+
+    // Include allowed top-level fields
+    allowedFields.forEach((field) => {
+      if (siteData?.[field]) {
+        flattenedTokens[field] = siteData[field];
       }
     });
 
-    
-    return flatTokens;
+    // Include contactInfo fields
+    Object.keys(contactFields).forEach((key) => {
+      if (contactFields[key]) {
+        flattenedTokens[`contactInfo.${key}`] = contactFields[key];
+      }
+    });
+
+    return flattenedTokens;
+  } catch (e) {
+    console.warn("Warning: site.json could not be loaded or is empty.");
+    return {}; // Return an empty object if the file doesn't exist or has errors
   }
-
-  return flattenTokens(tokens.token_list);
-}
-
-// Load and flatten allowed site.json fields
-function loadSiteTokens() {
-  const siteFile = path.join(__dirname, "src", "_data", "site.json");
-  const siteData = JSON.parse(fs.readFileSync(siteFile, "utf8"));
-
-  // Define the allowed fields and flatten them
-  const allowedFields = ["name", "legalName", "url"];
-  const contactFields = siteData.contactInfo || {};
-
-  const flattenedTokens = {};
-
-  // Include allowed top-level fields
-  allowedFields.forEach((field) => {
-    if (siteData[field]) {
-      flattenedTokens[field] = siteData[field];
-    }
-  });
-
-  // Include contactInfo fields with "contactInfo." prefix
-  Object.keys(contactFields).forEach((key) => {
-    flattenedTokens[`contactInfo.${key}`] = contactFields[key];
-  });
-
-  return flattenedTokens;
 }
 
 module.exports = (eleventyConfig) => {
@@ -336,14 +348,13 @@ module.exports = (eleventyConfig) => {
   const tokens = loadTokens();
   // Load and flatten tokens for st.* tokens
   const siteTokens = loadSiteTokens();
+  // Transform for tk.* tokens
   eleventyConfig.addTransform("replace-tokens", function (content) {
     if ((this.page.outputPath || "").endsWith(".html")) {
-      // Replace tokens in the content
       return content.replace(/\{\{tk\.([^\}]+)\}\}/g, (match, path) => {
-        return tokens[path] || ""; // Replace if key exists, else leave the placeholder
+        return tokens[path] || ""; // Replace with value or empty string
       });
     }
-    // If not an HTML output, return content as-is
     return content;
   });
 
