@@ -20,7 +20,7 @@ const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const markdownIt = require("markdown-it"),
   md = markdownIt({
     html: true,
-    linkify: true,
+    linkify: false,
     typographer: true,
   });
 md.disable(["code", "blockquote"]);
@@ -351,7 +351,7 @@ module.exports = (eleventyConfig) => {
   // Transform for tk.* tokens
   eleventyConfig.addTransform("replace-tokens", function (content) {
     if ((this.page.outputPath || "").endsWith(".html")) {
-      return content.replace(/\{\{tk\.([^\}]+)\}\}/g, (match, path) => {
+      return content.replace(/\[\[tk\.([^\]]+)\]\]/g, (match, path) => {
         return tokens[path] || ""; // Replace with value or empty string
       });
     }
@@ -361,7 +361,7 @@ module.exports = (eleventyConfig) => {
   // Transform for st.* tokens
   eleventyConfig.addTransform("replace-site-tokens", function (content) {
     if ((this.page.outputPath || "").endsWith(".html")) {
-      return content.replace(/\{\{st\.([^\}]+)\}\}/g, (match, path) => {
+      return content.replace(/\[\[st\.([^\]]+)\]\]/g, (match, path) => {
         return siteTokens[path] || ""; // Replace with value or empty string
       });
     }
