@@ -13,6 +13,7 @@ data_config:
   reviews: true
   blog: true
   happenings: true
+  tokens: true
 collections_config_override: true
 collections_config:
   data:
@@ -466,5 +467,26 @@ _structures:
     style: modal
   hero_blocks:
     style: modal
+  tokens:
+    style: modal
+    values:
+      - label: Single Token
+        value:
+          key: 
+          value: 
+      - label: Token Category
+        value:
+          category:
+            name: 
+            tokens:
+              - key: 
+                value: 
+            subcategories:
+              - category:
+                  name: 
+                  tokens:
+                    - key: 
+                      value: 
+                  subcategories: []
 _editables: {}
 timezone: Etc/UTC
