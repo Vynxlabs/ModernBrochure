@@ -143,6 +143,17 @@ function imageCssBackground(src, selector, widths) {
   return markup.join("");
 }
 
+const slugify = (key) =>
+  key
+    .toLowerCase()
+    .replace(/[^a-z0-9._]+/g, "-")
+    .replace(/^-|-$/g, "");
+
+const evaluateToken = (tokens, inputPath) => {
+  const normalizedPath = slugify(inputPath);
+  return tokens[normalizedPath] || "";
+};
+
 // Load and flatten tokens.yml
 function loadTokens() {
   const tokensFile = path.join(__dirname, "src", "_data", "tokens.yml");
@@ -157,16 +168,18 @@ function loadTokens() {
 
       tokenList.forEach((token) => {
         if (token?.key && token?.value) {
-          const fullKey = prefix ? `${prefix}.${token.key}` : token.key;
+          const fullKey = slugify(
+            prefix ? `${prefix}.${token.key}` : token.key,
+          );
           flatTokens[fullKey] = token.value;
         } else if (token?.groupName && Array.isArray(token.tokens)) {
-          const groupPrefix = prefix
-            ? `${prefix}.${token.groupName}`
-            : token.groupName;
+          const groupPrefix = slugify(
+            prefix ? `${prefix}.${token.groupName}` : token.groupName,
+          );
           Object.assign(flatTokens, flattenTokens(token.tokens, groupPrefix));
         }
       });
-
+console.log(flatTokens);
       return flatTokens;
     }
 
@@ -349,24 +362,24 @@ module.exports = (eleventyConfig) => {
   // Load and flatten tokens for st.* tokens
   const siteTokens = loadSiteTokens();
   // Transform for tk.* tokens
-  eleventyConfig.addTransform("replace-tokens", function (content) {
-    if ((this.page.outputPath || "").endsWith(".html")) {
-      return content.replace(/\[\[tk\.([^\]]+)\]\]/g, (match, path) => {
-        return tokens[path] || ""; // Replace with value or empty string
-      });
-    }
-    return content;
-  });
 
-  // Transform for st.* tokens
-  eleventyConfig.addTransform("replace-site-tokens", function (content) {
-    if ((this.page.outputPath || "").endsWith(".html")) {
-      return content.replace(/\[\[st\.([^\]]+)\]\]/g, (match, path) => {
-        return siteTokens[path] || ""; // Replace with value or empty string
-      });
-    }
-    return content;
-  });
+  eleventyConfig.addTransform("replace-tokens", function (content) {
+  if ((this.page.outputPath || "").endsWith(".html")) {
+    return content.replace(/\[\[tk\.([^\]]+)\]\]/g, (match, path) => {
+      return evaluateToken(tokens, path); // Match normalized tokens
+    });
+  }
+  return content;
+});
+
+eleventyConfig.addTransform("replace-site-tokens", function (content) {
+  if ((this.page.outputPath || "").endsWith(".html")) {
+    return content.replace(/\[\[st\.([^\]]+)\]\]/g, (match, path) => {
+      return evaluateToken(siteTokens, path); // Match normalized site tokens
+    });
+  }
+  return content;
+});
 
   eleventyConfig.on("eleventy.before", () => {
     execSync("node ./utils/generateFavicon.js");
