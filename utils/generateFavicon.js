@@ -41,7 +41,7 @@ async function generateFavicon() {
   }
   if (!faviconPath) {
     console.warn("Logo path invalid or missing, using default favicon.");
-    faviconPath = "src/images/logo-white.svg";
+    faviconPath = "src/images/default-favicon.png";
   }
 
   console.log(`Using favicon path: ${faviconPath}`);
