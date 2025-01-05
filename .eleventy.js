@@ -211,10 +211,13 @@ function loadSiteTokens() {
     // Include contactInfo fields
     Object.keys(contactFields).forEach((key) => {
       if (contactFields[key]) {
-        flattenedTokens[`contactInfo.${key}`] = contactFields[key];
+        let contactKey = slugify(`contactInfo.${key}`);
+        console.log(contactKey);
+        flattenedTokens[contactKey] = contactFields[key];
       }
     });
 
+    console.log(flattenedTokens);
     return flattenedTokens;
   } catch (e) {
     console.warn("Warning: site.json could not be loaded or is empty.");
