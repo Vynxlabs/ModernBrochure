@@ -1,17 +1,17 @@
-const fs = require('fs');
-const path = require('path');
-const yaml = require('js-yaml');
-const matter = require('gray-matter');
+const fs = require("fs");
+const path = require("path");
+const yaml = require("js-yaml");
+const matter = require("gray-matter");
 
-const componentsDir = './_component-library/components';
-const pagesDirs = ['./src/pages', './src/services','./src/happenings'];
+const componentsDir = "./_component-library/components";
+const pagesDirs = ["./src/pages", "./src/services", "./src/happenings"];
 const componentBlueprints = {};
 const componentsInUse = [];
 let hasWarnings = false;
 let warnings = [];
 
 // Function to traverse directory and collect component blueprints
-const collectComponentBlueprints = (dir, relativePath = '') => {
+const collectComponentBlueprints = (dir, relativePath = "") => {
   const files = fs.readdirSync(dir);
 
   files.forEach((file) => {
@@ -20,8 +20,8 @@ const collectComponentBlueprints = (dir, relativePath = '') => {
 
     if (stat.isDirectory()) {
       collectComponentBlueprints(filePath, path.join(relativePath, file));
-    } else if (file.endsWith('.bookshop.yml')) {
-      const componentName = path.basename(file, '.bookshop.yml');
+    } else if (file.endsWith(".bookshop.yml")) {
+      const componentName = path.basename(file, ".bookshop.yml");
       let componentKey = path.join(relativePath, componentName);
 
       // Check if the folder name matches the component name
@@ -30,7 +30,7 @@ const collectComponentBlueprints = (dir, relativePath = '') => {
         componentKey = path.join(path.dirname(relativePath), componentName);
       }
 
-      const componentYaml = fs.readFileSync(filePath, 'utf8');
+      const componentYaml = fs.readFileSync(filePath, "utf8");
       const componentData = yaml.load(componentYaml);
       componentBlueprints[componentKey] = componentData.blueprint;
     }
@@ -49,19 +49,28 @@ const collectComponentsInUse = (dir) => {
 
     if (stat.isDirectory()) {
       collectComponentsInUse(filePath);
-    } else if (file.endsWith('.md')) {
-      const fileContent = fs.readFileSync(filePath, 'utf8');
+    } else if (file.endsWith(".md")) {
+      const fileContent = fs.readFileSync(filePath, "utf8");
       const { data: frontMatter } = matter(fileContent);
 
       // Collect components used in hero and content_blocks
       if (frontMatter.hero && frontMatter.hero._bookshop_name) {
-        componentsInUse.push({ component: frontMatter.hero, filename: filePath, type: 'hero' });
+        componentsInUse.push({
+          component: frontMatter.hero,
+          filename: filePath,
+          type: "hero",
+        });
       }
 
       if (frontMatter.content_blocks) {
         frontMatter.content_blocks.forEach((block, index) => {
           if (block._bookshop_name) {
-            componentsInUse.push({ component: block, filename: filePath, type: 'content_blocks', index });
+            componentsInUse.push({
+              component: block,
+              filename: filePath,
+              type: "content_blocks",
+              index,
+            });
           }
         });
       }
@@ -72,10 +81,15 @@ const collectComponentsInUse = (dir) => {
 pagesDirs.forEach((dir) => collectComponentsInUse(dir));
 
 // Updated function to validate and resolve conflicts in component parameters against blueprint
-const validateAndResolveParameters = (componentName, usedParameters, blueprintParameters, filename) => {
+const validateAndResolveParameters = (
+  componentName,
+  usedParameters,
+  blueprintParameters,
+  filename,
+) => {
   // Check for extra parameters
   for (const key in usedParameters) {
-    if (key === '_bookshop_name') {
+    if (key === "_bookshop_name") {
       continue; // Skip _bookshop_name key
     }
 
@@ -84,37 +98,65 @@ const validateAndResolveParameters = (componentName, usedParameters, blueprintPa
 
     if (Array.isArray(paramValue)) {
       paramValue.forEach((item, index) => {
-        if (typeof item === 'object' && item !== null) {
+        if (typeof item === "object" && item !== null) {
           if (item._bookshop_name) {
             const nestedComponentName = item._bookshop_name;
             if (!componentBlueprints[nestedComponentName]) {
-              warnings.push(`Warning: Nested component "${nestedComponentName}" used in "${componentName}" but not found in blueprints. File: ${filename}`);
+              warnings.push(
+                `Warning: Nested component "${nestedComponentName}" used in "${componentName}" but not found in blueprints. File: ${filename}`,
+              );
               hasWarnings = true;
             } else {
-              validateAndResolveParameters(nestedComponentName, item, componentBlueprints[nestedComponentName], filename);
+              validateAndResolveParameters(
+                nestedComponentName,
+                item,
+                componentBlueprints[nestedComponentName],
+                filename,
+              );
             }
           } else {
-            const blueprintArrayItem = Array.isArray(blueprintValue) ? blueprintValue[0] : blueprintValue;
-            validateAndResolveParameters(componentName, item, blueprintArrayItem, filename);
+            const blueprintArrayItem = Array.isArray(blueprintValue)
+              ? blueprintValue[0]
+              : blueprintValue;
+            validateAndResolveParameters(
+              componentName,
+              item,
+              blueprintArrayItem,
+              filename,
+            );
           }
         }
       });
-    } else if (typeof paramValue === 'object' && paramValue !== null) {
+    } else if (typeof paramValue === "object" && paramValue !== null) {
       if (paramValue._bookshop_name) {
         const nestedComponentName = paramValue._bookshop_name;
         if (!componentBlueprints[nestedComponentName]) {
-          warnings.push(`Warning: Nested component "${nestedComponentName}" used in "${componentName}" but not found in blueprints. File: ${filename}`);
+          warnings.push(
+            `Warning: Nested component "${nestedComponentName}" used in "${componentName}" but not found in blueprints. File: ${filename}`,
+          );
           hasWarnings = true;
         } else {
-          validateAndResolveParameters(nestedComponentName, paramValue, componentBlueprints[nestedComponentName], filename);
+          validateAndResolveParameters(
+            nestedComponentName,
+            paramValue,
+            componentBlueprints[nestedComponentName],
+            filename,
+          );
         }
       } else if (blueprintValue) {
-        validateAndResolveParameters(componentName, paramValue, blueprintValue, filename);
+        validateAndResolveParameters(
+          componentName,
+          paramValue,
+          blueprintValue,
+          filename,
+        );
       } else {
         validateAndResolveParameters(componentName, paramValue, {}, filename);
       }
     } else if (!blueprintParameters.hasOwnProperty(key)) {
-      warnings.push(`Warning: Parameter "${key}" used in component "${componentName}" but not found in blueprint. File: ${filename}`);
+      warnings.push(
+        `Warning: Parameter "${key}" used in component "${componentName}" but not found in blueprint. File: ${filename}`,
+      );
       hasWarnings = true;
       delete usedParameters[key]; // Remove extra parameter
     }
@@ -122,10 +164,18 @@ const validateAndResolveParameters = (componentName, usedParameters, blueprintPa
 
   // Check for missing parameters
   for (const key in blueprintParameters) {
-    if (!usedParameters.hasOwnProperty(key) && key !== '_bookshop_name') {
-      warnings.push(`Warning: Missing parameter "${key}" in component "${componentName}". File: ${filename}`);
+    if (!usedParameters.hasOwnProperty(key) && key !== "_bookshop_name") {
+      warnings.push(
+        `Warning: Missing parameter "${key}" in component "${componentName}". File: ${filename}`,
+      );
       hasWarnings = true;
-      if (blueprintParameters[key] === null || blueprintParameters[key] === undefined || blueprintParameters[key].includes('bookshop:')) {
+      if (
+        blueprintParameters[key] === null ||
+        blueprintParameters[key] === undefined ||
+        blueprintParameters[key].includes("bookshop:") ||
+        blueprintParameters[key][0].includes("bookshop:")
+      ) {
+        blueprintParameters[key] = null; // Set to null to allow cloud cannon to handle inputs in the UI
         usedParameters[key] = blueprintParameters[key]; // Add missing optional parameter
       }
     }
@@ -137,10 +187,17 @@ const validateAndResolveComponents = (componentsUsed, blueprints) => {
   componentsUsed.forEach(({ component, filename, type, index }) => {
     const componentName = component._bookshop_name;
     if (!blueprints[componentName]) {
-      warnings.push(`Warning: Component "${componentName}" used in pages but not found in blueprints. File: ${filename}`);
+      warnings.push(
+        `Warning: Component "${componentName}" used in pages but not found in blueprints. File: ${filename}`,
+      );
       hasWarnings = true;
     } else {
-      validateAndResolveParameters(componentName, component, blueprints[componentName], filename);
+      validateAndResolveParameters(
+        componentName,
+        component,
+        blueprints[componentName],
+        filename,
+      );
     }
   });
 };
@@ -149,22 +206,34 @@ const validateAndResolveComponents = (componentsUsed, blueprints) => {
 componentsInUse.forEach(({ component, filename, type, index }) => {
   const componentName = component._bookshop_name;
   if (componentBlueprints[componentName]) {
-    validateAndResolveParameters(componentName, component, componentBlueprints[componentName], filename);
+    validateAndResolveParameters(
+      componentName,
+      component,
+      componentBlueprints[componentName],
+      filename,
+    );
   }
 });
 
 // Write updated components back to files
 componentsInUse.forEach(({ component, filename, type, index }) => {
-  const fileContent = fs.readFileSync(filename, 'utf8');
+  const fileContent = fs.readFileSync(filename, "utf8");
   const { data: frontMatter, content } = matter(fileContent);
 
-  if (type === 'hero') {
+  if (type === "hero") {
     frontMatter.hero = component;
-  } else if (type === 'content_blocks') {
-    if (index !== undefined && frontMatter.content_blocks[index]._bookshop_name === component._bookshop_name) {
+  } else if (type === "content_blocks") {
+    if (
+      index !== undefined &&
+      frontMatter.content_blocks[index]._bookshop_name ===
+        component._bookshop_name
+    ) {
       frontMatter.content_blocks[index] = component;
     } else {
-      const blockIndex = frontMatter.content_blocks.findIndex((block, i) => i === index && block._bookshop_name === component._bookshop_name);
+      const blockIndex = frontMatter.content_blocks.findIndex(
+        (block, i) =>
+          i === index && block._bookshop_name === component._bookshop_name,
+      );
       if (blockIndex !== -1) {
         frontMatter.content_blocks[blockIndex] = component;
       }
@@ -183,7 +252,7 @@ hasWarnings = false;
 validateAndResolveComponents(componentsInUse, componentBlueprints);
 
 if (hasWarnings) {
-  warnings.forEach(warning => console.log(warning));
+  warnings.forEach((warning) => console.log(warning));
   process.exit(1); // Exit with an error code to indicate failure
 } else {
   console.log("No warnings found. All components and parameters are valid.");
