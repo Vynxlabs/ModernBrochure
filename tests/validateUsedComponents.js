@@ -125,7 +125,7 @@ const validateAndResolveParameters = (componentName, usedParameters, blueprintPa
     if (!usedParameters.hasOwnProperty(key) && key !== '_bookshop_name') {
       warnings.push(`Warning: Missing parameter "${key}" in component "${componentName}". File: ${filename}`);
       hasWarnings = true;
-      if (blueprintParameters[key] === null || blueprintParameters[key] === undefined) {
+      if (blueprintParameters[key] === null || blueprintParameters[key] === undefined || blueprintParameters[key].includes('bookshop:')) {
         usedParameters[key] = blueprintParameters[key]; // Add missing optional parameter
       }
     }
