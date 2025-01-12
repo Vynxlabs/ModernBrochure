@@ -255,7 +255,7 @@ _inputs:
   disableSitemap:
     type: switch
     label: Remove From Sitemap
-    comment: "This will remove this page from the sitemap. This means that it wona't be visible to search engines (gooogle, bing, etc). This is useful for ads landing pages."
+    comment: "This will remove this page from the sitemap. This means that it won't be visible to search engines (gooogle, bing, etc). This is useful for ads landing pages."
   pagination:
     hidden: true
   layout:
