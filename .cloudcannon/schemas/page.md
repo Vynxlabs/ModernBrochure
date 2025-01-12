@@ -3,6 +3,7 @@ draft: true
 title: ""
 eleventyExcludeFromCollections: false
 disableNav: false
+disableSitemap: false
 removeFromNavigation: false
 eleventyNavigation:
   key: page
