@@ -1,8 +1,8 @@
 source: src
 paths:
   uploads: assets/uploads/:title
-  static: ''
-  collections: ''
+  static: ""
+  collections: ""
   data: _data
   layouts: _includes
   includes: _includes
@@ -142,16 +142,16 @@ collections_config:
         label: Make into a happening
         comment: Turn this post into a happening
       cancelled:
-        hidden: '!happening'
+        hidden: "!happening"
       happeningDate:
-        hidden: '!happening'
+        hidden: "!happening"
         type: datetime
         label: Happening Date
         comment: >-
           If this blog post is tagged with a happening tag, enter the happening date here. If not, leave blank.
           IMPORTANT: The date must be in UTC time. You'll need to convert your local time to UTC time.
       summary:
-        hidden: '!happening'
+        hidden: "!happening"
         type: textarea
         label: Happening Summary
         comment: A short summary of the happening.
@@ -252,6 +252,10 @@ _inputs:
     type: switch
     label: Disable Navigation
     comment: "This will remove the top and bottom navigation from THIS page. Useful for ads landing pages."
+  disableSitemap:
+    type: switch
+    label: Remove From Sitemap
+    comment: "This will remove this page from the sitemap. This means that it won't be visible to search engines (gooogle, bing, etc). This is useful for ads landing pages."
   pagination:
     hidden: true
   layout:
@@ -449,9 +453,9 @@ _snippets:
           type: string
     _inputs:
       videoId:
-        comment: 'You can find this in the URL of the video you want to embed. For example, https://www.youtube.com/watch?v=YOUR_VIDEO_ID, or for vimeo https://vimeo.com/YOUR_VIDEO_ID'
+        comment: "You can find this in the URL of the video you want to embed. For example, https://www.youtube.com/watch?v=YOUR_VIDEO_ID, or for vimeo https://vimeo.com/YOUR_VIDEO_ID"
       platform:
-        comment: 'Youtube or Vimeo'
+        comment: "Youtube or Vimeo"
         type: choice
         options:
           allow_empty: false
@@ -472,13 +476,13 @@ _structures:
     values:
       - label: Single Token
         value:
-          key: 
-          value: 
+          key:
+          value:
       - label: Token Group
         value:
-          groupName: 
+          groupName:
           tokens:
-            - key: 
-              value: 
+            - key:
+              value:
 _editables: {}
 timezone: Etc/UTC
