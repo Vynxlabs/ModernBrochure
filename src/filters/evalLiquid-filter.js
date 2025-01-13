@@ -4,6 +4,7 @@ const path = require("path");
 const bookshopRenderer = require("@bookshop/eleventy-bookshop/lib/eleventy-one-bookshop");
 const svgContents = require("eleventy-plugin-svg-contents");
 const GetSVGContents = require("eleventy-plugin-svg-contents/src/getSvgContents");
+const { v4: uuidv4 } = require('uuid');
 
 const fs = require("fs");
 
@@ -51,7 +52,9 @@ const svgContentsFilter = ('svgContents', (file, className, extractTag = 'svg') 
 
   return getSVGContents.getSvg();
 })
-
+const uuiFilter = ('uuid', (value) => {
+  return value+uuidv4();
+})
 module.exports = async (input, context) => {
   // Create a new Liquid engine
   const engine = new Liquid();
@@ -68,6 +71,9 @@ module.exports = async (input, context) => {
   // Register the Bookshop and Image tags with the engine
   engine.registerTag('bookshop', renderBookshopTag);
   engine.registerTag('image', imageTagHandler(engine));
+
+  // Register the uuid filter with the engine
+  engine.registerFilter('uuidFilter', uuiFilter);
 
   // Register the svgContents filter with the engine
   engine.registerFilter('svgContents', svgContentsFilter);
