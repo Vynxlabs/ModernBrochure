@@ -4,3 +4,5 @@ _inputs:
     type: array
     options:
       structures: _structures.tokens
+  value:
+    type: textarea
