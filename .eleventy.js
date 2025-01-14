@@ -384,6 +384,43 @@ eleventyConfig.addTransform("replace-site-tokens", function (content) {
   return content;
 });
 
+eleventyConfig.addTransform("replace-tokens-2", function (content) {
+  if ((this.page.outputPath || "").endsWith(".html")) {
+    return content.replace(/\[\[tk\.([^\]]+)\]\]/g, (match, path) => {
+      return evaluateToken(tokens, path); // Match normalized tokens
+    });
+  }
+  return content;
+});
+
+eleventyConfig.addTransform("replace-site-tokens-2", function (content) {
+  if ((this.page.outputPath || "").endsWith(".html")) {
+    return content.replace(/\[\[st\.([^\]]+)\]\]/g, (match, path) => {
+      return evaluateToken(siteTokens, path); // Match normalized site tokens
+    });
+  }
+  return content;
+});
+
+
+eleventyConfig.addTransform("replace-tokens-3", function (content) {
+  if ((this.page.outputPath || "").endsWith(".html")) {
+    return content.replace(/\[\[tk\.([^\]]+)\]\]/g, (match, path) => {
+      return evaluateToken(tokens, path); // Match normalized tokens
+    });
+  }
+  return content;
+});
+
+eleventyConfig.addTransform("replace-site-tokens-3", function (content) {
+  if ((this.page.outputPath || "").endsWith(".html")) {
+    return content.replace(/\[\[st\.([^\]]+)\]\]/g, (match, path) => {
+      return evaluateToken(siteTokens, path); // Match normalized site tokens
+    });
+  }
+  return content;
+});
+
   eleventyConfig.on("eleventy.before", () => {
     execSync("node ./utils/generateFavicon.js");
     execSync("node ./utils/syncPermalinks.js");
