@@ -3,7 +3,7 @@
 <div class="c-mediaCards componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
   <section
     {% if content.sectionId %}
-    id="{{ content.sectionId | idFilter }}"
+      {% bookshop "util/IdScrollEvent" sectionId: content.sectionId  %}
     {% endif %}
     class="basecontainer w-full">
     {% bookshop "generic/heading" bind: content.heading %}
