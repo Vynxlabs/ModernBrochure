@@ -19,11 +19,11 @@
 {% endcapture %}
 {% assign heading = heading | ymlify %}
 
-<div
+<div class="c-bannerHero componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
+
   {% if content.sectionId %}
-    {% bookshop "util/IdScrollEvent" sectionId: content.sectionId  %}
+    {% bookshop "util/IdScrollEvent" sectionId: content.sectionId %}
   {% endif %}
-  class="c-bannerHero componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
   <div class="absolute inset-0 flex items-center justify-center after:contents[''] after:absolute after:inset-0 after:bg-black after:bg-op {{opacity}} ">
     {% bookshop "generic/image" bind: content.backgroundImage class: "h-full w-screen object-cover " %}
   </div>
