@@ -9,11 +9,12 @@
 
 <div class="c-largeImage relative left-1/2 right-1/2 mx-[-50vw] flex w-screen flex-col items-center justify-center pt-10 md:pt-20 bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
     <section
-    {% if content.sectionId %}
-    id="{{ content.sectionId | idFilter }}"
-    {% endif %}
     class="basecontainer w-full flex flex-col items-center"
-    id="{{content.sectionId }}">
+    >
+
+  {% if content.sectionId %}
+    {% bookshop "util/IdScrollEvent" sectionId: content.sectionId %}
+  {% endif %}
     {% bookshop "generic/heading" bind: content.heading %}
     {% comment %} Image container {% endcomment %}
     <div class="relative {% if content.heading %} mt-10 {% endif %} flex {{orientationClasses}}">

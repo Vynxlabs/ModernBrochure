@@ -3,10 +3,11 @@
 
 <div class="c-largeEmbed componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
   <section
-    {% if content.sectionId %}
-    id="{{ content.sectionId | idFilter }}"
-    {% endif %}
     class="basecontainer w-full">
+
+  {% if content.sectionId %}
+    {% bookshop "util/IdScrollEvent" sectionId: content.sectionId %}
+  {% endif %}
     {% if env_bookshop_live and content.showNote %}
       {% bookshop "generic/notification" heading: "Incorrect Embed Size" text: "It is common for the custom embed to not show its size correctly when live editing, but will show up on correctly on the live site. <br>If it does not show up correctly on the live site, check if the size can be adjusted before pasting in the code. <br><br>Embeds with <code><script></script></code>  will not work correctly while live editing but will work on the live site." %}
     {% endif %}

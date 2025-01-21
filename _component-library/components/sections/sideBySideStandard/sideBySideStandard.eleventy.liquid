@@ -8,10 +8,11 @@
 
 <div class="c-sideBySideStandard componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor z-20">
   <section
-    {% if content.sectionId %}
-    id="{{ content.sectionId | idFilter }}"
-    {% endif %}
     class="basecontainer w-full ">
+
+  {% if content.sectionId %}
+    {% bookshop "util/IdScrollEvent" sectionId: content.sectionId %}
+  {% endif %}
     {% bookshop "generic/heading" bind: content.heading %}
     {% if content.entries %}
       

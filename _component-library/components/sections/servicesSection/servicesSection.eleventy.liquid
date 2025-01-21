@@ -7,6 +7,10 @@
 
 
 <section class="c-servicesSection componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
+
+  {% if content.sectionId %}
+    {% bookshop "util/IdScrollEvent" sectionId: content.sectionId %}
+  {% endif %}
   <div class="basecontainer w-full">{% bookshop "generic/heading" bind: content.heading %}</div>
   {% if env_bookshop_live and content.showNote %}
     <div class="mb-20">{% bookshop "generic/notification" heading: "Tabs in live editing" text: "Trying to click through your services tabs will not work while editing" %}

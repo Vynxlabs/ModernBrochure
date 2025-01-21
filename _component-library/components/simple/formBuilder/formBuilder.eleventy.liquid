@@ -1,8 +1,5 @@
 <div class="w-full flex flex-col justify-center items-center">
   <form
-    {% if sectionId %}
-    id="{{ sectionId }}"
-    {% endif %}
     {% if successPage %}
     action="{{ successPage }}"
     {% endif %}
@@ -11,6 +8,10 @@
     data-netlify-recaptcha="true"
     name="{{ formName }}"
     class="w-full max-w-[512px]">
+
+  {% if sectionId %}
+    {% bookshop "util/IdScrollEvent" sectionId: sectionId %}
+  {% endif %}
     {% for element in form_elements %}
       <div class="mt-4">{% bookshop "{{element._bookshop_name}}" bind: element %}</div>
     {% endfor %}

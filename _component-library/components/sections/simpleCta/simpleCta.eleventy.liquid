@@ -1,6 +1,10 @@
 {% assign color_group = styles.color_group %}
 
 <div class="c-simpleCta componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
+
+  {% if content.sectionId %}
+    {% bookshop "util/IdScrollEvent" sectionId: content.sectionId %}
+  {% endif %}
     <section class="basecontainer w-full">
 
         {% bookshop "generic/heading" bind: content.CallToAction %}

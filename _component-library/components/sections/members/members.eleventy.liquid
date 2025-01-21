@@ -2,10 +2,11 @@
 
 <div class="c-members componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
   <section
-    {% if content.sectionId %}
-    id="{{ content.sectionId | idFilter }}"
-    {% endif %}
     class="basecontainer w-full">
+
+  {% if content.sectionId %}
+    {% bookshop "util/IdScrollEvent" sectionId: content.sectionId %}
+  {% endif %}
     
     {% bookshop "generic/heading" bind: content.heading %}
     <div class="flex flex-wrap justify-around gap-8 mt-20">

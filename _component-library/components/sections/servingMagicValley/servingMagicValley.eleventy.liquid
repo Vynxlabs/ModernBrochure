@@ -1,6 +1,10 @@
 {% assign color_group = styles.color_group %}
 
 <div class="c-servingMagicValley componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
+
+  {% if content.sectionId %}
+    {% bookshop "util/IdScrollEvent" sectionId: content.sectionId %}
+  {% endif %}
     <section class="basecontainer w-full">{% bookshop "generic/headingHorizontal" bind: content.heading %}
         <div class="flex justify-between items-center mt-40 flex-wrap min-[700px]:flex-nowrap gap-8">
             <h3 class=" text-7xl md:text-8xl lg:text-9xl xl:text-[200px] font-bold h-auto">Twin Falls</h3>
