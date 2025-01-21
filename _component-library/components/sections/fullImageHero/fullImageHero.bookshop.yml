@@ -12,6 +12,7 @@ spec:
 blueprint:
   content:
     highlightEybrow: false
+    sectionId:
     eyebrow:
     headline:
     description: "Hello World!"

@@ -9,6 +9,10 @@
         </div>
       {% endif %}
       <section class="basecontainer w-full flex flex-col h-full justify-end ">
+
+  {% if content.sectionId %}
+    {% bookshop "util/IdScrollEvent" sectionId: content.sectionId %}
+  {% endif %}
         <div class=" text-white flex items-end justify-between flex-wrap gap-x-8">
 
 
