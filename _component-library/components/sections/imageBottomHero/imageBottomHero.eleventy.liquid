@@ -24,6 +24,10 @@
 
 <div class="c-imageBottomHero pb-20  text-{{styles.color_group}}-textcolor">
   <section class="flex h-full">
+
+  {% if content.sectionId %}
+    {% bookshop "util/IdScrollEvent" sectionId: content.sectionId %}
+  {% endif %}
     <div class="cs-w-full max-h-[90%]  sm:max-h-[80%] bg-{{styles.color_group}}-{{styles.topColorFromGroup}}color  z-10 "></div>
     <div class="cs-w-full flex mt-[100px] sm:mt-[200px] md:mt-[200px] lg:mt-[200px] items-center justify-center flex-col bg-{{styles.color_group}}-{{styles.bottomColorFromGroup}}color ">
       <div class="z-20 min-h-min basecontainer w-full relative">
