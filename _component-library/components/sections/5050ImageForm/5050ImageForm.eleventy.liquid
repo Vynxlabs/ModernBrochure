@@ -2,11 +2,11 @@
 
 <div class="c-5050ImageForm relative">
   <section
-    {% if content.sectionId %}
-    id="{{ content.sectionId | idFilter }}"
-    {% endif %}
     class="basecontainer w-full">
 
+  {% if content.sectionId %}
+    {% bookshop "util/IdScrollEvent" sectionId: content.sectionId %}
+  {% endif %}
     <div class=" flex">
 
       <div class="cs-w-full lg:cs-w-full-r flex flex-col items-center p-4   justify-center bg-{{styles.color_group}}-backgroundcolor  bg-opacity-60 text-{{styles.color_group}}-highcontrast-backgroundcolor lg:bg-opacity-100">

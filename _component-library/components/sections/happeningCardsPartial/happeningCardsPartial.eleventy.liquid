@@ -2,8 +2,7 @@
   {% assign postListItems = collections.happenings %}
 {% else %}
   {% assign postListItems = pagination.items %}
-{% endif %}
-{% assign color_group = styles.color_group %}
+{% endif %}{% assign color_group = styles.color_group %}
 {% comment %} "happenings" is a data file that is being passed into this funciton src/data/happenings.yml {% endcomment %}
 {% assign postListItems = collections.happenings | concat: collections.blog | happeningsFilter: page, happenings, contents.tags, 22 %}
 
@@ -13,11 +12,11 @@
 
 <div class="cs-w-full py-20 bg-{{styles.color_group}}-backgroundcolor flex flex-col items-center justify-center text-{{styles.color_group}}-textcolor">
   {% if postListItems.size > 0 %}
-    <div
+    <div class="basecontainer">
+
       {% if contents.sectionId %}
-      id="{{ contents.sectionId | idFilter }}"
+        {% bookshop "util/IdScrollEvent" sectionId: contents.sectionId %}
       {% endif %}
-      class="basecontainer">
       {% if env_bookshop_live and contents.showNote %}
         {% bookshop "generic/notification" heading: "No Filtering and UTC Time" text: "The filtering does not work while editing, but will show up on the live site <br><br> The time will show up as UTC while live editing but will show up as local time on the live site" %}
       {% endif %}

@@ -1,6 +1,10 @@
 {% assign color_group = styles.color_group %}
 
 <div class="c-simpleCta componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor px-4">
+    
+  {% if content.sectionId %}
+    {% bookshop "util/IdScrollEvent" sectionId: content.sectionId %}
+  {% endif %}
     <section class="basecontainer w-full max-w-[900px] bg-{{styles.card_color_group}}-{{styles.colorFromGroup}}color rounded px-4 py-20">
     {% capture heading %}
         content:

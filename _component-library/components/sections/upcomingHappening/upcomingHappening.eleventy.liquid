@@ -15,10 +15,11 @@
 <div class=" {% if postListItems.size <= 0 %} bg-{{styles.color_group}}-backgroundcolor componentcontainer {% endif %}">
   {% if postListItems.size > 0 %}
     <div
-      {% if contents.sectionId %}
-      id="{{ contents.sectionId | idFilter }}"
-      {% endif %}
       class="">
+
+  {% if contents.sectionId %}
+    {% bookshop "util/IdScrollEvent" sectionId: contents.sectionId %}
+  {% endif %}
       {% if env_bookshop_live and contents.showNote %}
         {% bookshop "generic/notification" heading: "No Filtering or Countdown and UTC" text: "The filtering do not work while editing, but works correctly on the live site. <br>The countdown will not tick down while editing, but will show up on the live site <br><br> The time will show up as UTC while live editing but will show up as local time on the live site" %}
       {% endif %}

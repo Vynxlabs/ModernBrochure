@@ -11,11 +11,12 @@
 {% endcapture %}
 <div class="c-imageCompare componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
   <section
-    {% if content.sectionId %}
-    id="{{ content.sectionId | idFilter }}"
-    {% endif %}
     class="basecontainer w-full flex flex-col items-center"
     id="{{content.sectionId | }}">
+
+  {% if content.sectionId %}
+    {% bookshop "util/IdScrollEvent" sectionId: content.sectionId %}
+  {% endif %}
     {% bookshop "generic/heading" bind: content.heading %}
     {% if env_bookshop_live and content.showNote %}
         <div class="mb-20">{% bookshop "generic/notification" heading: "Slider no sliding" text: "The slider will not slide while editing, but will work on your live site" %}</div>

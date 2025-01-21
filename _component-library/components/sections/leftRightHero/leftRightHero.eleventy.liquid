@@ -22,6 +22,10 @@
 
 
 <div class="c-leftRightHero componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
+  
+  {% if content.sectionId %}
+    {% bookshop "util/IdScrollEvent" sectionId: content.sectionId %}
+  {% endif %}
 
   {% if styles.headingRight %}
     {% capture direction %}
