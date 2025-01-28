@@ -12,6 +12,7 @@ Thumbs.db
 .zip
 
 src/css
+src/images/favicon
 
 # Node modules and output
 **/node_modules/**
