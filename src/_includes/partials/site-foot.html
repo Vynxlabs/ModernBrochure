@@ -12,7 +12,7 @@
 >
   <div class="basecontainer w-full">
     <div class="flex flex-wrap justify-around gap-10">
-      <div class="max-w-[300px]">
+      <div class="max-w-[300px] flex flex-col justify-center items-center">
         <a 
         data-umami-event="logo-homeLink-footer"
         href="{{logoUrl}}">
@@ -43,10 +43,26 @@
       {% endif %}
     </div>
   </div>
-  <div class="mt-20">
+  <div class="mt-20 flex flex-col items-center justify-center">
     <p class="text-center" data-type="neutral">
       © {{ helpers.getTodaysYear }}, by {{site.legalName}}
     </p>
+<ul class="text-sm  flex flex-wrap overflow-hidden gap-x-4 gap-y-1">
+        {% if site.termsAndConditionsUrl and site.termsAndConditionsUrl != "" %}
+        <li class="hover:underline after:absolute after:content-['|'] after:scale-150   relative before:content-[' '] after:left-[-11px] after:text-lg">
+          <a 
+          data-umami-event="TermsAndConditions-footer"
+          href="{{ site.termsAndConditionsUrl }}" target="_blank" >Terms & Conditions</a>
+        </li>
+        {% endif %}
+        {% if site.privacyPolicyUrl and site.privacyPolicyUrl != "" %}
+        <li class="hover:underline after:absolute after:content-['|'] after:scale-150   relative before:content-[' '] after:left-[-11px] after:text-lg">
+          <a 
+          data-umami-event="PrivacyPolicy-footer"
+          href="{{ site.privacyPolicyUrl }}" target="_blank" >Privacy Policy</a>
+        </li>
+        {% endif %}
+      </ul>
     <p class="text-center text-sm" data-type="neutral">
       Powered by Vynxlabs. Like it?
       <a 
