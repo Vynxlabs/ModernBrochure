@@ -3,6 +3,8 @@
   "faviconPath": "",
   "name": "My Business Name",
   "legalName": "Legal Name LLC",
+  "termsAndConditionsUrl": "",
+  "privacyPolicyUrl": "",
   "url": "https://exampe.com",
   "contactInfo": {
     "email": "info@example.com",
@@ -10,7 +12,7 @@
     "location": "Some Rd, Somecity, ID ",
     "hours": "Mon - Fri: 8am-5pm"
   },
-  "customCode":{
+  "customCode": {
     "headCode": "",
     "bodyCode": ""
   },
@@ -47,8 +49,14 @@
   },
   "nav_color_group": "primary",
   "color_group": "primary",
-  "footer_color_group": "primary_dark0",
+  "footer_color_group": "32e06fa7-61eb-4ca0-b91e-74d729c2925d",
   "_inputs": {
+    "privacyPolicyUrl": {
+      "type": "url"
+    },
+    "termsAndConditionsUrl": {
+      "type": "url"
+    },
     "umamiAnalytics": {
       "hidden": true
     },
@@ -62,11 +70,11 @@
       "hidden": "!bringYourOwnUmami"
     },
     "headCode": {
-      "comment":"Add code at the end of the <head> tag",
+      "comment": "Add code at the end of the <head> tag",
       "type": "code"
     },
     "bodyCode": {
-      "comment":"Add code before the </body> tag",
+      "comment": "Add code before the </body> tag",
       "type": "code"
     },
     "color_group": {
