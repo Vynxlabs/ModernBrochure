@@ -59,6 +59,7 @@ jobs:
                   "$file" == .cloudcannon/* || \
                   "$file" == .github/* || \
                   "$file" == netlify/* || \
+                  "$file" == src/_data-ref/* || \
                   "$file" == src/_includes/* || \
                   "$file" == src/assets/styles/* || \
                   "$file" == src/filters/* || \
