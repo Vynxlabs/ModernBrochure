@@ -204,7 +204,8 @@ function loadSiteTokens() {
     // Include allowed top-level fields
     allowedFields.forEach((field) => {
       if (siteData?.[field]) {
-        flattenedTokens[field] = siteData[field];
+        const fieldKey = slugify(field);
+        flattenedTokens[fieldKey] = siteData[field];
       }
     });
 
