@@ -248,6 +248,30 @@ collections_config:
       default:
         path: .cloudcannon/schemas/service.md
 _inputs:
+  helperText:
+    type: markdown
+    options:
+      link: true
+      blockquote: false
+      bold: true
+      italic: true
+      strike: true
+      subscript: true
+      superscript: true
+      underline: true
+      bulletedlist: false
+      numberedlist: false
+      indent: false
+      outdent: false
+      code: false
+      embed: false
+      horizontalrule: false
+      image: false
+      table: false
+      undo: true
+      redo: true
+      removeformat: true
+      copyformatting: true
   disableNav:
     type: switch
     label: Disable Navigation
