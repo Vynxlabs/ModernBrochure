@@ -2,7 +2,7 @@
 spec:
   structures:
     - hero_blocks
-  label: "Bottom Image Hero"
+  label: "Bottom Media Hero"
   description: 
   icon: feed
   tags: []
@@ -15,7 +15,7 @@ blueprint:
     heading: bookshop:structure:headingBlocks
     benefits:
       - "Benefit 1"
-    image: bookshop:generic/image!
+    image: bookshop:structure:assets
   styles:
     color_group: primary
     topColorFromGroup: background
@@ -28,6 +28,8 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  image:
+    label: Media
   benefits:
     type: array
     comment: A quick mention of your most important benefits. 1-2 words per benefit is recommened. 
