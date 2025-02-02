@@ -2,6 +2,7 @@
 spec:
   structures:
     - embeds
+    - assets
   label: "Custom Embed"
   description:
   icon:
