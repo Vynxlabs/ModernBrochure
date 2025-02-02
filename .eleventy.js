@@ -80,7 +80,7 @@ const logoShortcode = async (
   sizes = "100vw",
   preferSvg = true,
   widths = [200],
-  formats = ["avif", "webp", "svg", "jpeg"],
+  formats = ["webp", "svg", "jpeg"],
 ) => {
   let before = Date.now();
   let inputFilePath = src == null ? src : path.join("src", src);
