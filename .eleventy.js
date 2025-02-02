@@ -39,7 +39,7 @@ const imageShortcode = async (
   sizes = "100vw",
   preferSvg = true,
   widths = [200, 400, 850, 1280, 1600],
-  formats = ["avif", "webp", "svg", "jpeg"],
+  formats = ["webp", "svg", "jpeg"],
 ) => {
   let before = Date.now();
 
