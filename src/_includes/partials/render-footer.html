@@ -1,51 +1,22 @@
-{% assign level=level | plus: 1%}
+{% assign level=level | plus: 1 %}
 
-{% capture display %}
-{% if level <= 0%}
-md:absolute md:left-0
-{% else  %}
-  md:absolute md:left-full md:top-1/4
-    {% endif %}
- {% endcapture %}
-
- {%assign hex = 'text-{{color_group}}-textcolor'%}
-
- {% if entry.url == "/blog/" %} {% if
-  blogPosts.size > 0 %}
- 
-<li>
-  <a 
-  data-umami-event="{{entry.title}}-footer"
-  {{entry.url | linkFilter: page.url}}
-    class="data-[state=active]:link hover:text-sopris-green block rounded py-2 pl-3 pr-4 uppercase  transition-colors hover:bg-gray-700 dark:border-gray-700 md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent"
-    href="{{ entry.url }}"
-    >{{ entry.title }}</a
-  >
-</li>
-{% endif %} {% else %}
-<li>
-  <a 
-  data-umami-event="{{entry.title}}-footer"
-  {{entry.url | linkFilter: page.url}}
-    class="data-[state=active]:link hover:text-sopris-green block rounded py-2 pl-3 pr-4 uppercase  transition-colors hover:bg-gray-700 dark:border-gray-700 md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent"
-    href="{{ entry.url }}"
-    >{{ entry.title }}</a
-  >
-</li>
-{% endif %} {% if entry.children.size > 0 %}
-<div class="relative ">
-  
-  <summary class=""><button class="hidden data-[state=active]:link hover:text-sopris-green rounded py-2 pl-3 pr-4 uppercase  transition-colors hover:bg-gray-700 dark:border-gray-700 md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent" 
-
-    
-    >{{entry.key}}
-      </button></summary>
-  <ul id="{{ entry.key }}" class="pl-4 pb-1 ml-1    transition-all md:duration-300 origin-top mt-2 w-max  rounded   border-l-2 border-{{color_group}}-backgroundcolor bg-{{color_group}}-backgroundcolor bg-opacity-70  focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-    {% for child in entry.children %} {% render "partials/render-footer.html",
-    entry:child, color_group: color_group, level: level, blogPosts: blogPosts, page:page %} {% endfor %}
-  </ul>
-</div>
-
-  
-
+{% if entry.children.size > 0 %}
+  <div class="pl-3 flex flex-col min-w-[200px] self-start">
+    <p class="font-bold opacity-90">{{ entry.title }}</p>
+    <ul class="mt-2 flex flex-col gap-1 md:gap-4">
+      {% for child in entry.children %}
+        {% render "partials/render-footer.html", entry:child, level: level, page:page %}
+      {% endfor %}
+    </ul>
+  </div>
+  {% else %}
+  <li>
+        <a 
+          data-umami-event="{{entry.title}}-footer"
+          {{ entry.url | linkFilter: page.url }}
+          class=" data-[state=active]:link hover:text-sopris-green block rounded py-2 pl-3 pr-4 uppercase transition-colors hover:bg-gray-700 dark:border-gray-700  md:hover:bg-transparent md:dark:hover:bg-transparent"
+          href="{{ entry.url }}">
+          {{ entry.title }}
+        </a>
+      </li>
 {% endif %}
