@@ -67,6 +67,7 @@ jobs:
                   "$file" == utils/* || \
                   "$file" == .eleventy.js || \
                   "$file" == cloudcannon.config.yml || \
+                  "$file" == netlify.toml || \
                   "$file" == package-lock.json || \
                   "$file" == package.json || \
                   ("$file" == src/pages/* && "$file" != *.md) || \
