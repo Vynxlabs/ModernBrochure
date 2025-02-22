@@ -1,7 +1,7 @@
 {
   "ssg": "eleventy",
   "mode": "hosted",
-  "build_configuration": {
+  "build": {
     "install_command": "[ -f package.json ] && npm i",
     "build_command": "npx eleventy",
     "output_path": "dist",
