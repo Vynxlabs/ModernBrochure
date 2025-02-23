@@ -6,7 +6,7 @@
     {% endif %}
 {% endcapture %}
 
-<div class=" min-h-[400px] max-w-[390px] min-w-[250px] w-full py-7 px-6 rounded bg-{{styles.card_color_group}}-{{styles.colorFromGroup}}color text-{{styles.card_color_group}}-highcontrast-{{styles.colorFromGroup}}color flex-1 {{highlightClasses}}">
+<div class=" min-h-[400px] max-w-[390px] min-w-[250px] w-full py-7 px-6 {{theme.container_rounding}} bg-{{styles.card_color_group}}-{{styles.colorFromGroup}}color text-{{styles.card_color_group}}-highcontrast-{{styles.colorFromGroup}}color flex-1 {{highlightClasses}}">
     <div>
         {% capture heading %}
             content:

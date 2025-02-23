@@ -17,11 +17,11 @@
               <div class="max-w-[350px] relative flex flex-wrap ">
                 {% assign review = review.resultImage | logFilter %}
                 {% assign imageAltText = "Service result for " | append: review.name %}
-                <div class="rounded">
+                <div class="{{theme.container_rounding}}">
                   {% if content.usePersonImage %}
-                    {% bookshop "generic/image" imagePath: review.personImage imageAlt: imageAltText class: "rounded object-cover object-center h-full w-full" %}
+                    {% bookshop "generic/image" imagePath: review.personImage imageAlt: imageAltText class: "{{theme.image_rounding}} object-cover object-center h-full w-full" %}
                   {% else %}
-                    {% bookshop "generic/image" imagePath: review.resultImage imageAlt: imageAltText class: "rounded object-cover object-center h-full w-full" %}
+                    {% bookshop "generic/image" imagePath: review.resultImage imageAlt: imageAltText class: "{{theme.image_rounding}} object-cover object-center h-full w-full" %}
                   {% endif %}
 
 

@@ -15,7 +15,7 @@
     <a 
     data-umami-event="{{happeningTitle}}-{{page.url}}-happeningCardImg"
     class="relative max-w-[700px] md:flex-1 md:min-w-[400px]" href="{{url}}">
-      {% bookshop "generic/image" bind: image class: "w-full h-full rounded transition-all duration-300 scale-100 hover:scale-[1.03] object-cover aspect-[3/2]" %}
+      {% bookshop "generic/image" bind: image class: "w-full h-full {{theme.image_rounding}} transition-all duration-300 scale-100 hover:scale-[1.03] object-cover aspect-[3/2]" %}
     </a>
 
     <div class="h-fit max-w-[700px] flex-grow flex-shrink basis-20">

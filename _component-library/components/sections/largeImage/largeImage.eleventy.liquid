@@ -18,7 +18,7 @@
     {% bookshop "generic/heading" bind: content.heading %}
     {% comment %} Image container {% endcomment %}
     <div class="relative {% if content.heading %} mt-10 {% endif %} flex {{orientationClasses}}">
-        {% bookshop "generic/image" bind: content.image class:"w-full h-auto rounded" %}
+        {% bookshop "generic/image" bind: content.image class:"w-full h-auto {{theme.image_rounding}}" %}
 
     </div>
     {% if content.buttons %}

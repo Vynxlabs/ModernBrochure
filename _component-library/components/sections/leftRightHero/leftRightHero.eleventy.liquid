@@ -39,6 +39,6 @@
 
   <section class="basecontainer w-full flex {{direction}} gap-x-4 gap-y-2">
     <div class="flex-1 flex justify-center items-center min-w-[300px] sm:min-w-[400px] ">{% bookshop "generic/heading" bind: heading %}</div>
-    <div class="flex-1 w-full min-w-[300px] sm:min-w-[600px]">{% bookshop "generic/image" bind: content.image class: "max-h-screen object-cover object-center rounded w-full" %}</div>
+    <div class="flex-1 w-full min-w-[300px] sm:min-w-[600px]">{% bookshop "generic/image" bind: content.image class: "max-h-screen object-cover object-center {{theme.image_rounding}} w-full" %}</div>
   </section>
 </div>

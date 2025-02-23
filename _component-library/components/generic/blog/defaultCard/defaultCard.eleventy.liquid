@@ -23,7 +23,7 @@
   <a 
   data-umami-event="{{blogTitle}}-{{page.url}}-blogCardImg"
   class="" href="{{url}}">
-      {% bookshop "generic/image" bind: image class: "w-full rounded transition-all duration-300 scale-100 hover:scale-[1.03] object-cover aspect-[3/2]" %}
+      {% bookshop "generic/image" bind: image class: "w-full {{theme.image_rounding}} transition-all duration-300 scale-100 hover:scale-[1.03] object-cover aspect-[3/2]" %}
   </a>
   <ul class=" flex text-{{color_group}}-secondarycolor flex flex-wrap gap-x-4 overflow-hidden opacity-70">
     {% for tag in blogTags %}

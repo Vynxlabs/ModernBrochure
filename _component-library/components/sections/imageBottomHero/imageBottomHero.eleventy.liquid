@@ -39,7 +39,7 @@
             {% endfor %}
         </div>
           {% comment %} Update this to dynamically choose from the image, or the media embeds{% endcomment %}
-          {% bookshop "{{content.image._bookshop_name}}" bind: content.image class: "max-h-screen object-cover z-30 w-full rounded mt-4 overflow-hidden" %}
+          {% bookshop "{{content.image._bookshop_name}}" bind: content.image class: "max-h-screen object-cover z-30 w-full {{theme.image_rounding}} mt-4 overflow-hidden" %}
         </div>
       </div>
 
