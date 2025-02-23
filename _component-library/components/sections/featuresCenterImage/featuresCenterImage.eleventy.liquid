@@ -58,7 +58,12 @@
 
               <div class="relative">{{ '/src' | append: visualInterestPath | svgContents: visualInterestClasses }}</div>
             {% endif %}
-            {% bookshop "generic/image" bind: content.image class: "{{theme.image_rounding}} xl:aspect-auto aspect-video object-cover" %}
+             {% capture imageClasses %}
+                {{theme.image_rounding}} xl:aspect-auto aspect-video object-cover
+              {% endcapture %}
+
+
+            {% bookshop "generic/image" bind: content.image class: imageClasses %}
 
             {% if content.buttons %}
               <div class="mt-10 flex w-full gap-8 flex-wrap justify-center ">

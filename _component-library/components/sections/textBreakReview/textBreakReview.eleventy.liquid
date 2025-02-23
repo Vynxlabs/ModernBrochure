@@ -18,10 +18,13 @@
                 {% assign review = review.resultImage | logFilter %}
                 {% assign imageAltText = "Service result for " | append: review.name %}
                 <div class="{{theme.container_rounding}}">
+                {% capture imageClasses %}
+                 {{theme.image_rounding}} object-cover object-center h-full w-full 
+                {% endcapture %}
                   {% if content.usePersonImage %}
-                    {% bookshop "generic/image" imagePath: review.personImage imageAlt: imageAltText class: "{{theme.image_rounding}} object-cover object-center h-full w-full" %}
+                    {% bookshop "generic/image" imagePath: review.personImage imageAlt: imageAltText class: imageClasses %}
                   {% else %}
-                    {% bookshop "generic/image" imagePath: review.resultImage imageAlt: imageAltText class: "{{theme.image_rounding}} object-cover object-center h-full w-full" %}
+                    {% bookshop "generic/image" imagePath: review.resultImage imageAlt: imageAltText class: imageClasses %}
                   {% endif %}
 
 
