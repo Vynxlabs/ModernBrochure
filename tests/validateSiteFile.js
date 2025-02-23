@@ -1,10 +1,11 @@
 const fs = require("fs");
 const path = require("path");
+const yaml = require('js-yaml');
 
 // Dictionary with reference file paths as keys and client file paths as values
 const fileDictionary = {
   "./src/_data-ref/site.json": "./src/_data/site.json",
-  "./src/_data-ref/site.yml": "./src/_data/site.yml",
+  "./src/_data-ref/theme.yml": "./src/_data/theme.yml",
 };
 
 // Function to validate and sync _inputs key
@@ -105,8 +106,8 @@ function reorderKeys(referenceData, clientData) {
 
 // Function to sync the client file with the reference file
 function syncFiles(referenceFilePath, clientFilePath) {
-  const referenceData = require(referenceFilePath);
-  const clientData = require(clientFilePath);
+  const referenceData = parseFile(referenceFilePath);
+  const clientData = parseFile(clientFilePath);
 
   // Sync _inputs key
   if (referenceData._inputs && clientData._inputs) {
@@ -166,6 +167,20 @@ function syncFiles(referenceFilePath, clientFilePath) {
     fs.writeFileSync(clientFilePath, JSON.stringify(reorderedClientData, null, 2));
   } else if (fileExt === ".yml") {
     fs.writeFileSync(clientFilePath, yaml.dump(reorderedClientData));
+  }
+}
+
+// Helper function to parse a file, whether it's JSON or YAML
+function parseFile(filePath) {
+  const fileContent = fs.readFileSync(filePath, 'utf8');
+  const fileExtension = filePath.split('.').pop().toLowerCase();
+
+  if (fileExtension === 'json') {
+    return JSON.parse(fileContent);
+  } else if (fileExtension === 'yml' || fileExtension === 'yaml') {
+    return yaml.load(fileContent);
+  } else {
+    throw new Error(`Unsupported file format: ${fileExtension}`);
   }
 }
 
