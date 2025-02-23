@@ -21,7 +21,7 @@ image_rounding: rounded
 container_rounding: rounded
 _inputs:
   button_rounding:
-    label: >-
+    comment: >-
       This will change the rounding of all the buttons on the site. Each option mentions which brand it is best suited for,
       and how many pixels of rounding is applied. The brand mentioned is just what is commonly used, but not rule
     type: select
@@ -50,7 +50,7 @@ _inputs:
           name: Rounded Full - Very Quirky (Circular)
   image_rounding:
     type: select
-    label: >-
+    comment: >-
       This will change the rounding of all the images on the site. Each option mentions which brand it is best suited for,
       and how many pixels of rounding is applied. The brand mentioned is just what is commonly used, but not rule
     options:
@@ -76,7 +76,7 @@ _inputs:
           name: Rounded Extra Large - Quirky (12px)
   container_rounding:
     type: select
-    label: >-
+    comment: >-
       This will change the rounding of all the containers (Anything  that isn't a button or image. e.g. cards, form input boxes, etc) on the site. Each option mentions which brand it is best suited for,
       and how many pixels of rounding is applied. The brand mentioned is just what is commonly used, but not rule
     options:
