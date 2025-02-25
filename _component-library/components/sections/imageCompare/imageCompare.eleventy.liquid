@@ -17,7 +17,7 @@
   {% if content.sectionId %}
     {% bookshop "util/IdScrollEvent" sectionId: content.sectionId %}
   {% endif %}
-    {% bookshop "generic/heading" bind: content.heading %}
+    {% bookshop {{content.heading._bookshop_name}} bind: content.heading %}
     {% if env_bookshop_live and content.showNote %}
         <div class="mb-20">{% bookshop "generic/notification" heading: "Slider no sliding" text: "The slider will not slide while editing, but will work on your live site" %}</div>
       {% endif %}

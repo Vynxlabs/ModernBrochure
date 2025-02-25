@@ -13,7 +13,7 @@ blueprint:
   contents:
     sectionId:
     showNote: true
-    heading: bookshop:generic/heading!
+    heading: bookshop:structure:headingBlocks
     randomize: false
   styles:
     color_group: primary

@@ -12,7 +12,7 @@ spec:
 blueprint:
   content:
     sectionId:
-    heading: bookshop:generic/heading!
+    heading: bookshop:structure:headingBlocks
     form: bookshop:simple/formBuilder!
   styles:
     color_group: primary

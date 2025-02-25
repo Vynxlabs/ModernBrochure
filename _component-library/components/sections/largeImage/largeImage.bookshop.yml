@@ -12,7 +12,7 @@ spec:
 blueprint:
   content:
     sectionId:
-    heading: bookshop:generic/heading!
+    heading: bookshop:structure:headingBlocks
     image: bookshop:generic/image!
     buttons: [bookshop:generic/button]
   styles:

@@ -7,7 +7,7 @@
   {% if content.sectionId %}
     {% bookshop "util/IdScrollEvent" sectionId: content.sectionId %}
   {% endif %}
-    {% bookshop "generic/heading" bind: content.heading %}
+    {% bookshop {{content.heading._bookshop_name}} bind: content.heading %}
     {% if content.reviews %}
 
       <div class="flex justify-around gap-4 gap-y-8 flex-wrap mt-20">
