@@ -39,18 +39,22 @@ object-cover object-center w-full {{theme.image_rounding}} aspect-[3/2]
 {% capture containerClasses %}
         
         flex gap-x-10 gap-y-4  lg:gap-20 items-center 
-        {% if styles.imageRigth %}flex-wrap {% else %}flex-wrap-reverse{% endif %}
+        {% if styles.imageRight %}flex-wrap-reverse {% else %}flex-wrap{% endif %}
 {% endcapture %}
 {% capture textDivClasses %}
-    {% if styles.imageRigth %}order-1{% endif %} flex-1 flex justify-center items-center min-w-[300px]
+    {% if styles.imageRight %}order-0 {% else %}order-1 {% endif %} flex-1 flex justify-center items-center min-w-[300px]
 {% endcapture %}
 
 
+{% capture imageDivClasses %}
+        flex-1 w-full min-w-[275px]
+    {% endcapture %}
 
 
-<div class="{{containerClasses}}">
+
+<div class="{{containerClasses}} {{margin}}">
   <div class="{{textDivClasses}}">
-    <header class="c-headingImage w-full flex flex-col justify-center {{contentAlignment}} {{textClass}} {{margin}}">
+    <header class="c-headingImage w-full flex flex-col justify-center {{contentAlignment}} {{textClass}} ">
       <div class="{{textAlignment}} max-w-[700px]">
         {% if content.eyebrow %}
           <div class=" {% if content.highlightEyebrow %} text-{{color_group}}-accentcolor {% endif %} ">{% bookshop "generic/textBlock" text: content.eyebrow %}</div>
