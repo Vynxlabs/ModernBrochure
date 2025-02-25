@@ -5,10 +5,14 @@
         eyebrow: {{content.heading.content.eyebrow| stringifyFilter}}
         headline: {{content.heading.content.headline| stringifyFilter}}
         description: {{content.heading.content.description| stringifyFilter}}
+        image:
+          {{content.heading.content.image}}
         buttons:
           {{content.heading.content.buttons | json}}
         headingHierarchy: "h1"
     styles:
+        imageRight: {{content.heading.styles.imageRight}}
+        headingRight: {{content.heading.styles.headingRight}}
         contentAlignment: {{content.heading.styles.contentAlignment}}
         textAlignment: {{content.heading.styles.textAlignment}}
         headingRight: {{content.heading.styles.headingRight}}
