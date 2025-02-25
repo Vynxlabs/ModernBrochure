@@ -1,3 +1,19 @@
+{% capture contentAlignment %}
+{% if styles.contentAlignment == 'left' %} items-start {% elsif styles.contentAlignment == 'center' %} items-center {% else %} items-end {% endif %}
+{% endcapture %}
+{% capture textAlignment %}
+{% if styles.textAlignment == 'left' %} text-left {% elsif styles.textAlignment == 'center' %} text-center {% else %} text-right {% endif %}
+{% endcapture %}
+{% capture buttonAlignment %}
+{% if styles.textAlignment == 'left' %}  {% elsif styles.textAlignment == 'center' %} justify-center {% else %} justify-end {% endif %}
+{% endcapture %}
+{% if content.headingHierarchy == "h1" %}
+  {% assign margin = "md:mb-24 mb-12" %}
+  {% assign headingSize = "md:text-6xl text-5xl" %}
+{% elsif content.headingHierarchy == "h2" %}
+  {% assign headingSize = "md:text-5xl text-4xl" %}
+{% elsif content.headingHierarchy == "h3" %}
+  {% assign headingSize = "text-3xl" %}
 {% elsif content.headingHierarchy == "h4" %}
   {% assign headingSize = "text-2xl" %}
 {% elsif content.headingHierarchy == "h5" %}
