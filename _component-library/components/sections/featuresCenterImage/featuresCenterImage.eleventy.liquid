@@ -14,7 +14,7 @@
   {% if content.sectionId %}
     {% bookshop "util/IdScrollEvent" sectionId: content.sectionId %}
   {% endif %}
-    {% bookshop {{content.heading._bookshop_name}} bind: content.heading %}
+    {% if content.heading %} {% bookshop {{content.heading._bookshop_name}} bind: content.heading %} {% endif %}
     {% if env_bookshop_live and content.showNote %}
       <div class="mb-20">{% bookshop "generic/notification" heading: "No image visual interest" text: "The visual interest for the images (Dots or Crosses) will not show up when editing, but will show up on the live site" %}</div>
     {% endif %}
