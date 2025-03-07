@@ -15,8 +15,6 @@ summary:
 pageLink:
 permalink: >-
   {% capture varPagePath %}{% if pageLink%}{% assign pageLink = pageLink | slugify%}{{  page.filePathStem |fileSubstringFilter | append: pageLink }}{% else %}{% assign title = title | slugify%}{{  page.filePathStem |fileSubstringFilter | append: title }}{% endif %}{% endcapture %}{% else %}/{{varPagePath | strip}}{% endif %}/index.html
-permalink: >-
-     /services/{% assign title = title | slugify %}{{ page.filePathStem | fileSubstringFilter | append: title | downcase }}/index.html
 layout: "layouts/page.html"
 id:
 hero:
