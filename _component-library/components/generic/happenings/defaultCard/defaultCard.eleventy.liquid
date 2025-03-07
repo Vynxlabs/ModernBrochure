@@ -16,7 +16,7 @@ w-full {{theme.image_rounding}} transition-all duration-300 scale-100 hover:scal
   </h3>
   <a 
   data-umami-event="{{happeningTitle}}-{{page.url}}-happeningCardImg"
-  class="relative" href="{{url}}">
+  class="block relative" href="{{url}}">
       {% bookshop "generic/image" bind: image class: imageClasses %}
       <time 
       {% if cancelled != true %}
