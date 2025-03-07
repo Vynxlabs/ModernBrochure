@@ -13,7 +13,7 @@ blueprint:
   content:
     showNote: true
     sectionId:
-    heading: bookshop:generic/heading!
+    heading: bookshop:structure:headingBlocks
     cards:
       - heading: bookshop:generic/heading!
     image: bookshop:generic/image

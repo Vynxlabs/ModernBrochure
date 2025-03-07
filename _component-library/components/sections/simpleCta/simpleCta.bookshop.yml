@@ -12,7 +12,7 @@ spec:
 blueprint:
   content:
     sectionId:
-    CallToAction: bookshop:generic/heading!
+    CallToAction: bookshop:structure:headingBlocks
   styles:
     color_group: primary
 

@@ -1,11 +1,12 @@
 const fs = require("fs");
 const path = require("path");
+const yaml = require('js-yaml');
 
-// Paths to the reference and client files
-const referenceFilePath = path.resolve("./src/_data-ref/site.json");
-const clientFilePath = path.resolve("./src/_data/site.json");
-
-let warnings = [];
+// Dictionary with reference file paths as keys and client file paths as values
+const fileDictionary = {
+  "./src/_data-ref/site.json": "./src/_data/site.json",
+  "./src/_data-ref/theme.yml": "./src/_data/theme.yml",
+};
 
 // Function to validate and sync _inputs key
 function syncInputs(referenceInputs, clientInputs) {
@@ -105,8 +106,8 @@ function reorderKeys(referenceData, clientData) {
 
 // Function to sync the client file with the reference file
 function syncFiles(referenceFilePath, clientFilePath) {
-  const referenceData = JSON.parse(fs.readFileSync(referenceFilePath, "utf-8"));
-  const clientData = JSON.parse(fs.readFileSync(clientFilePath, "utf-8"));
+  const referenceData = parseFile(referenceFilePath);
+  const clientData = parseFile(clientFilePath);
 
   // Sync _inputs key
   if (referenceData._inputs && clientData._inputs) {
@@ -141,7 +142,9 @@ function syncFiles(referenceFilePath, clientFilePath) {
       for (const refKey of Object.keys(referenceData[key])) {
         if (!(refKey in clientData[key])) {
           clientData[key][refKey] = referenceData[key][refKey];
-          warnings.push(`Added missing key '${key}.${refKey}' to client file.`);
+          warnings.push(
+            `Added missing key '${key}.${refKey}' to client file.`
+          );
         }
       }
     }
@@ -159,18 +162,42 @@ function syncFiles(referenceFilePath, clientFilePath) {
   const reorderedClientData = reorderKeys(referenceData, clientData);
 
   // Write the updated client file
-  fs.writeFileSync(clientFilePath, JSON.stringify(reorderedClientData, null, 2));
+  const fileExt = path.extname(clientFilePath);
+  if (fileExt === ".json") {
+    fs.writeFileSync(clientFilePath, JSON.stringify(reorderedClientData, null, 2));
+  } else if (fileExt === ".yml") {
+    fs.writeFileSync(clientFilePath, yaml.dump(reorderedClientData));
+  }
+}
+
+// Helper function to parse a file, whether it's JSON or YAML
+function parseFile(filePath) {
+  const fileContent = fs.readFileSync(filePath, 'utf8');
+  const fileExtension = filePath.split('.').pop().toLowerCase();
+
+  if (fileExtension === 'json') {
+    return JSON.parse(fileContent);
+  } else if (fileExtension === 'yml' || fileExtension === 'yaml') {
+    return yaml.load(fileContent);
+  } else {
+    throw new Error(`Unsupported file format: ${fileExtension}`);
+  }
 }
 
 // Execute the script
-syncFiles(referenceFilePath, clientFilePath);
+let warnings = [];
+Object.entries(fileDictionary).forEach(([referenceFilePath, clientFilePath]) => {
+  syncFiles(referenceFilePath, clientFilePath);
+});
 
 // Validation loop
 if (warnings.length > 0) {
   console.warn("Warnings:\n", warnings.join("\n"));
   warnings = [];
   console.log("Rechecking for warnings...");
-  syncFiles(referenceFilePath, clientFilePath);
+  Object.entries(fileDictionary).forEach(([referenceFilePath, clientFilePath]) => {
+    syncFiles(referenceFilePath, clientFilePath);
+  });
 }
 
 // Final warnings check
@@ -178,5 +205,6 @@ if (warnings.length > 0) {
   console.warn("Warnings:\n", warnings.join("\n"));
   process.exit(1);
 } else {
-  console.log("Client file is up to date. No warnings.");
+  console.log("Client files are up to date. No warnings.");
 }
+

@@ -17,12 +17,12 @@
   {% if content.sectionId %}
     {% bookshop "util/IdScrollEvent" sectionId: content.sectionId %}
   {% endif %}
-    {% bookshop "generic/heading" bind: content.heading %}
+    {% if content.heading %} {% bookshop {{content.heading._bookshop_name}} bind: content.heading %} {% endif %}
     {% if env_bookshop_live and content.showNote %}
         <div class="mb-20">{% bookshop "generic/notification" heading: "Slider no sliding" text: "The slider will not slide while editing, but will work on your live site" %}</div>
       {% endif %}
     {% comment %} Image container {% endcomment %}
-    <div class="relative mt-10 flex overflow-hidden rounded {{orientationClasses}}">
+    <div class="relative mt-10 flex overflow-hidden {{theme.container_rounding}} {{orientationClasses}}">
         {% bookshop "generic/image" bind: content.leftImage class:"lg-before-img absolute top-0 w-1/2 h-full object-cover object-left" %}
         {% bookshop "generic/image" bind: content.rightImage %}
         <div

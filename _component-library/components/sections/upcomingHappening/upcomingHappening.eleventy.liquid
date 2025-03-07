@@ -104,7 +104,7 @@
                   set $started to false
                   repeat while intersecting and not :started
                   set :currentTime to Date.now()
-                  set :happeningDate to Date.parse('{{entry.data.happeningDate | date: "%Y-%m-%d %I:%M %P",0}} +0000')
+                  set :happeningDate to Date.parse('{{entry.data.happeningDate | date: "%Y-%m-%dT%H:%M:%S%z"}}')
                   set :timeDifference to :happeningDate - :currentTime
                   set :days to Math.floor(:timeDifference / (1000 * 60 * 60 * 24))
                   set :hours to Math.floor((:timeDifference mod (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
@@ -165,7 +165,7 @@
                   <p
                   {% if entry.data.cancelled != true %}
                     _="on load
-                  set happeningDate to Date.parse('{{entry.data.happeningDate | date: "%Y-%m-%d %I:%M %P",0}} +0000')
+                  set happeningDate to Date.parse('{{entry.data.happeningDate | date: "%Y-%m-%dT%H:%M:%S%z"}}')
                   log happeningDate
                   set timezone to Intl.DateTimeFormat().resolvedOptions().timeZone
                   js(happeningDate,timezone)  

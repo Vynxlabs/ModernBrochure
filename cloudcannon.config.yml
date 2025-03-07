@@ -80,10 +80,6 @@ collections_config:
           place that link here. Leave blank for all other situations. WARNING:
           this will prevent this page from building and showing up in your
           website.
-      pageLink:
-        label: Page Location
-        comment: The location of this page on your webiste i.e. Example.com/mylocation. Leave blank if you want to just use the page title as the page location.
-        type: text
       metaDesc:
         type: textarea
         label: Meta Description
@@ -272,6 +268,10 @@ _inputs:
       redo: true
       removeformat: true
       copyformatting: true
+  pageLink:
+    label: Page Location
+    comment: The location of this page on your webiste i.e. /mylocation. This page would then have a link of https://www.example.com/mylocation. Leave blank if you want to just use the page title as the page location.
+    type: text
   disableNav:
     type: switch
     label: Disable Navigation

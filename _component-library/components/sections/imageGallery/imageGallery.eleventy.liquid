@@ -7,7 +7,7 @@
   {% if content.sectionId %}
     {% bookshop "util/IdScrollEvent" sectionId: content.sectionId %}
   {% endif %}
-    {% bookshop "generic/heading" bind: content.heading %}
+    {% if content.heading %} {% bookshop {{content.heading._bookshop_name}} bind: content.heading %} {% endif %}
     <div class="mt-12">
       <div class="c-imageGrid">
         <div class="flex gap-1 flex-wrap justify-center">

@@ -5,7 +5,7 @@
   {% if content.sectionId %}
     {% bookshop "util/IdScrollEvent" sectionId: content.sectionId %}
   {% endif %}
-    <section class="basecontainer w-full max-w-[900px] bg-{{styles.card_color_group}}-{{styles.colorFromGroup}}color rounded px-4 py-20">
+    <section class="basecontainer w-full max-w-[900px] bg-{{styles.card_color_group}}-{{styles.colorFromGroup}}color {{theme.container_rounding}} px-4 py-20">
     {% capture heading %}
         content:
             highlightEyebrow: {{content.CallToAction.content.highlightEyebrow}}

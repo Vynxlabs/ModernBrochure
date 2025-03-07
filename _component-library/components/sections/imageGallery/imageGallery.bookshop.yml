@@ -14,7 +14,7 @@ spec:
 blueprint:
   content:
     sectionId:
-    heading: bookshop:generic/heading!
+    heading: bookshop:structure:headingBlocks
     images: [bookshop:generic/image]
     buttons: [bookshop:generic/button]
   styles:

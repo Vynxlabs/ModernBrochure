@@ -11,7 +11,7 @@
   {% if content.sectionId %}
     {% bookshop "util/IdScrollEvent" sectionId: content.sectionId %}
   {% endif %}
-  <div class="basecontainer w-full">{% bookshop "generic/heading" bind: content.heading %}</div>
+  {% if content.heading %} {% bookshop {{content.heading._bookshop_name}} bind: content.heading %} {% endif %}
   {% if env_bookshop_live and content.showNote %}
     <div class="mb-20">{% bookshop "generic/notification" heading: "Tabs in live editing" text: "Trying to click through your services tabs will not work while editing" %}
       </div>

@@ -5,13 +5,16 @@
         eyebrow: {{content.heading.content.eyebrow| stringifyFilter}}
         headline: {{content.heading.content.headline| stringifyFilter}}
         description: {{content.heading.content.description| stringifyFilter}}
+        image:
+          {{content.heading.content.image | json}}
         buttons:
           {{content.heading.content.buttons | json}}
         headingHierarchy: "h1"
     styles:
+        imageRight: {{content.heading.styles.imageRight}}
+        headingRight: {{content.heading.styles.headingRight}}
         contentAlignment: {{content.heading.styles.contentAlignment}}
         textAlignment: {{content.heading.styles.textAlignment}}
-        headingRight: {{content.heading.styles.headingRight}}
         visualInterest: {{content.heading.styles.visualInterest}}
         visualInterestColor: {{content.heading.styles.visualInterestColor}}
         highContrast: true
@@ -19,7 +22,8 @@
         contrastAgainst: {{styles.topColorFromGroup}} 
         textClassOverride: 
 {% endcapture %}
-{% assign heading = heading | ymlify %}
+{% assign heading = heading | ymlify  %}
+
 
 
 <div class="c-imageBottomHero pb-20  text-{{styles.color_group}}-textcolor">
@@ -38,8 +42,11 @@
               <p>{{ benefit }}</p>
             {% endfor %}
         </div>
+        {% capture imageClasses %}
+ max-h-screen object-cover z-30 w-full {{theme.image_rounding}} mt-4 overflow-hidden 
+{% endcapture %}
           {% comment %} Update this to dynamically choose from the image, or the media embeds{% endcomment %}
-          {% bookshop "{{content.image._bookshop_name}}" bind: content.image class: "max-h-screen object-cover z-30 w-full rounded mt-4 overflow-hidden" %}
+          {% bookshop "{{content.image._bookshop_name}}" bind: content.image class: imageClasses %}
         </div>
       </div>
 

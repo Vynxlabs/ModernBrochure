@@ -10,7 +10,8 @@ Thumbs.db
 .cache
 .Identifier
 .zip
-
+.repomix
+repomix-output.md
 src/css
 src/images/favicon
 

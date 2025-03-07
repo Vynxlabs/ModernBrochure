@@ -12,7 +12,7 @@ spec:
 blueprint:
   content:
     sectionId:
-    heading: bookshop:generic/heading!
+    heading: bookshop:structure:headingBlocks
     entries: [bookshop:generic/leftRight!]
   styles:
     color_group: primary
