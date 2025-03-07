@@ -21,7 +21,7 @@ w-full {{theme.image_rounding}} transition-all duration-300 scale-100 hover:scal
       <time 
       {% if cancelled != true %}
         _="on load
-        set happeningDate to Date.parse('{{entry.data.happeningDate | date: "%Y-%m-%d %I:%M %P",0}} +0000')
+        set happeningDate to Date.parse('{{entry.data.happeningDate | date: "%Y-%m-%dT%H:%M:%S%z"}}')
         log happeningDate
         set timezone to Intl.DateTimeFormat().resolvedOptions().timeZone
         js(happeningDate,timezone)  
