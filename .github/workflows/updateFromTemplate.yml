@@ -39,7 +39,7 @@ jobs:
 
       - name: Fetch upstream changes
         run: |
-          git remote add upstream https://github.com/Virtuouz/BookShopStarter.git
+          git remote add upstream https://github.com/Virtuouz/SiteStitcher.git
           git fetch upstream main
 
       - name: Create temporary branch
