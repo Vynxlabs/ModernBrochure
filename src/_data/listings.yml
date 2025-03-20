@@ -1,3 +1,6 @@
+defaultImage:
+  imagePath: "/assets/uploads/listing.jpeg"
+  imageAlt: "Listing placeholder image"
 disqualificationTags:
   - Sold
   - Not Available
