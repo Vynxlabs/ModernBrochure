@@ -1,6 +1,9 @@
 defaultImage:
   imagePath: "/assets/uploads/listing.jpeg"
   imageAlt: "Listing placeholder image"
+availableTags:
+  - Available
+  - For Sale
 disqualificationTags:
   - Sold
   - Not Available
@@ -24,11 +27,20 @@ filtering:
         - Delivery Available
         - Shipping Available
 _inputs:
+  availableTags:
+    type: multiselect
+    options:
+      values: data.listingTags
+    comment: >- 
+      These tags will consider a listing as available. 
+      A tag not part of this list, or part of the disqualification tags, will be considered a descriptive tag.
   disqualificationTags:
     type: multiselect
     options:
       values: data.listingTags
-    comment: Tags that will disqualify a listing. This is useful if you want to hide listings that have been sold or are not available.
+    comment: >- 
+      Tags that will disqualify a listing. This is useful if you want to hide listings that have been sold or are not available.
+      A tag not part of this list, or part of the available tags, will be considered a descriptive tag.
   filters:
     type: multiselect
     options:
