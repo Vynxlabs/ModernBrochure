@@ -340,6 +340,10 @@ module.exports = (eleventyConfig) => {
       });
   });
 
+  eleventyConfig.addCollection("listings", (collection) => {
+    return collection.getFilteredByGlob("./src/listings/**/*.md");
+  });
+
   eleventyConfig.addFilter("dateFilter", dateFilter);
   eleventyConfig.addFilter("w3DateFilter", w3DateFilter);
   eleventyConfig.addFilter("readTimeFilter", readTimeFilter);
