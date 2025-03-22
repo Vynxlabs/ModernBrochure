@@ -8,7 +8,7 @@ const { Liquid } = require('liquidjs');
 const fileSubstringFilter = require(path.join(process.cwd(), 'src/filters/extract-file-substring-filter'));
 
 // Directories to scan for Markdown files
-const directories = ['./src/pages', './src/posts', './src/services', './src/happenings'];
+const directories = ['./src/pages', './src/posts', './src/services', './src/happenings', './src/listings'];
 
 // Initialize LiquidJS engine and register the custom filter
 const engine = new Liquid();
