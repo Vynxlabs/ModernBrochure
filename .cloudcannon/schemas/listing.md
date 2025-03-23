@@ -9,10 +9,10 @@ metaDesc:
 customCode:
   headCode: ""
   bodyCode: ""
+tags:
 listingSetup:
-  listingImage: 
+  primaryImage: 
   imageAltText:
-  tags:
   canExpire: false
   expireDate:
 pageLink:
@@ -33,4 +33,6 @@ _inputs:
     type: multiselect
     options:
       values: data.listingTags
+  primaryImage:
+    comment: "This image will be used for the listing card, and will be the first image in the gallery"
 ---
