@@ -9,10 +9,12 @@ metaDesc:
 customCode:
   headCode: ""
   bodyCode: ""
-listingImage: 
-imageAltText:
-category: 
-summary:
+listingSetup:
+  listingImage: 
+  imageAltText:
+  tags:
+  canExpire: false
+  expireDate:
 pageLink:
 permalink: >-
   /listing/{% capture varPagePath %}{% if pageLink%}{% assign pageLink = pageLink | slugify%}{{  page.filePathStem |fileSubstringFilter | append: pageLink }}{% else %}{% assign title = title | slugify%}{{  page.filePathStem |fileSubstringFilter | append: title }}{% endif %}{% endcapture %}/{{varPagePath | strip}}/index.html
@@ -27,4 +29,8 @@ _inputs:
   bodyCode:
     type: "code"
     comment: "Add code before the </body> tag"
+  tags:
+    type: multiselect
+    options:
+      values: data.listingTags
 ---
