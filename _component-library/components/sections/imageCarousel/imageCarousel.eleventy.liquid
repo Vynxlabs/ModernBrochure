@@ -1,0 +1,33 @@
+{% assign color_group = styles.color_group %}
+{% assign outerTrack = "glide-" | uuidFilter %}
+{% assign imageCounter = 0 %}
+<div class="c-5050ImageForm relative">
+  <section class="basecontainer w-full">
+
+    {% if content.sectionId %}
+      {% bookshop "util/IdScrollEvent" sectionId: content.sectionId %}
+    {% endif %}
+    <div class=" flex">
+
+      <div class="cs-w-full  flex  bg-{{styles.color_group}}-backgroundcolor ">
+        <div class="max-w-[512px] w-full">
+          {% if content.heading %}
+            {% bookshop {{content.heading._bookshop_name}} bind: content.heading %}
+          {% endif %}
+        </div>
+        <div class="{{outerTrack}} "></div>
+      </div>
+
+    </div>
+
+    {% if imageCounter > 5 %}
+
+      <script src="node_modules/@glidejs/glide/dist/glide.min.js"></script>
+
+      <script>
+
+          let {{outerTrack}} = new Glide('.{{outerTrack}}').mount()
+      </script>
+    {% endif %}
+  </section>
+</div>

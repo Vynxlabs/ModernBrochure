@@ -30,6 +30,7 @@
     "@bookshop/eleventy-bookshop": "3.11.0",
     "@bookshop/eleventy-engine": "3.11.0",
     "@bookshop/generate": "3.11.0",
+    "@glidejs/glide": "^3.7.1",
     "@netlify/functions": "^2.1.0",
     "@realfavicongenerator/generate-favicon": "^0.4.6",
     "@realfavicongenerator/image-adapter-node": "^0.4.6",
