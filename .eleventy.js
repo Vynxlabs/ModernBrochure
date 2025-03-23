@@ -179,7 +179,7 @@ function loadTokens() {
           Object.assign(flatTokens, flattenTokens(token.tokens, groupPrefix));
         }
       });
-console.log(flatTokens);
+      console.log(flatTokens);
       return flatTokens;
     }
 
@@ -247,6 +247,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy("/src/images/");
   eleventyConfig.addPassthroughCopy("./src/assets/uploads/**");
   eleventyConfig.addPassthroughCopy("./src/assets/images");
+  eleventyConfig.addPassthroughCopy("./src/assets/js");
   eleventyConfig.addPassthroughCopy("./src/_includes/partials/background");
   // eleventyConfig.addPassthroughCopy("./src/css/");
   eleventyConfig.addPassthroughCopy({ "./src/images/favicon": "/" });
@@ -372,59 +373,58 @@ module.exports = (eleventyConfig) => {
   // Transform for tk.* tokens
 
   eleventyConfig.addTransform("replace-tokens", function (content) {
-  if ((this.page.outputPath || "").endsWith(".html")) {
-    return content.replace(/\[\[tk\.([^\]]+)\]\]/g, (match, path) => {
-      return evaluateToken(tokens, path); // Match normalized tokens
-    });
-  }
-  return content;
-});
+    if ((this.page.outputPath || "").endsWith(".html")) {
+      return content.replace(/\[\[tk\.([^\]]+)\]\]/g, (match, path) => {
+        return evaluateToken(tokens, path); // Match normalized tokens
+      });
+    }
+    return content;
+  });
 
-eleventyConfig.addTransform("replace-site-tokens", function (content) {
-  if ((this.page.outputPath || "").endsWith(".html")) {
-    return content.replace(/\[\[st\.([^\]]+)\]\]/g, (match, path) => {
-      return evaluateToken(siteTokens, path); // Match normalized site tokens
-    });
-  }
-  return content;
-});
+  eleventyConfig.addTransform("replace-site-tokens", function (content) {
+    if ((this.page.outputPath || "").endsWith(".html")) {
+      return content.replace(/\[\[st\.([^\]]+)\]\]/g, (match, path) => {
+        return evaluateToken(siteTokens, path); // Match normalized site tokens
+      });
+    }
+    return content;
+  });
 
-eleventyConfig.addTransform("replace-tokens-2", function (content) {
-  if ((this.page.outputPath || "").endsWith(".html")) {
-    return content.replace(/\[\[tk\.([^\]]+)\]\]/g, (match, path) => {
-      return evaluateToken(tokens, path); // Match normalized tokens
-    });
-  }
-  return content;
-});
+  eleventyConfig.addTransform("replace-tokens-2", function (content) {
+    if ((this.page.outputPath || "").endsWith(".html")) {
+      return content.replace(/\[\[tk\.([^\]]+)\]\]/g, (match, path) => {
+        return evaluateToken(tokens, path); // Match normalized tokens
+      });
+    }
+    return content;
+  });
 
-eleventyConfig.addTransform("replace-site-tokens-2", function (content) {
-  if ((this.page.outputPath || "").endsWith(".html")) {
-    return content.replace(/\[\[st\.([^\]]+)\]\]/g, (match, path) => {
-      return evaluateToken(siteTokens, path); // Match normalized site tokens
-    });
-  }
-  return content;
-});
+  eleventyConfig.addTransform("replace-site-tokens-2", function (content) {
+    if ((this.page.outputPath || "").endsWith(".html")) {
+      return content.replace(/\[\[st\.([^\]]+)\]\]/g, (match, path) => {
+        return evaluateToken(siteTokens, path); // Match normalized site tokens
+      });
+    }
+    return content;
+  });
 
+  eleventyConfig.addTransform("replace-tokens-3", function (content) {
+    if ((this.page.outputPath || "").endsWith(".html")) {
+      return content.replace(/\[\[tk\.([^\]]+)\]\]/g, (match, path) => {
+        return evaluateToken(tokens, path); // Match normalized tokens
+      });
+    }
+    return content;
+  });
 
-eleventyConfig.addTransform("replace-tokens-3", function (content) {
-  if ((this.page.outputPath || "").endsWith(".html")) {
-    return content.replace(/\[\[tk\.([^\]]+)\]\]/g, (match, path) => {
-      return evaluateToken(tokens, path); // Match normalized tokens
-    });
-  }
-  return content;
-});
-
-eleventyConfig.addTransform("replace-site-tokens-3", function (content) {
-  if ((this.page.outputPath || "").endsWith(".html")) {
-    return content.replace(/\[\[st\.([^\]]+)\]\]/g, (match, path) => {
-      return evaluateToken(siteTokens, path); // Match normalized site tokens
-    });
-  }
-  return content;
-});
+  eleventyConfig.addTransform("replace-site-tokens-3", function (content) {
+    if ((this.page.outputPath || "").endsWith(".html")) {
+      return content.replace(/\[\[st\.([^\]]+)\]\]/g, (match, path) => {
+        return evaluateToken(siteTokens, path); // Match normalized site tokens
+      });
+    }
+    return content;
+  });
 
   eleventyConfig.on("eleventy.before", () => {
     execSync("node ./utils/generateFavicon.js");
@@ -433,6 +433,7 @@ eleventyConfig.addTransform("replace-site-tokens-3", function (content) {
     execSync("node ./utils/addHappeningPagination.js");
     execSync("node ./utils/addBlogPagination.js");
     execSync("node ./utils/fetch-theme-variables.js");
+    execSync("node ./utils/copyGlideAssets.js");
   });
 
   eleventyConfig.on("eleventy.after", () => {

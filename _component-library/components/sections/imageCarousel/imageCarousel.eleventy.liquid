@@ -1,5 +1,5 @@
 {% assign color_group = styles.color_group %}
-{% assign outerTrack = "glide-" | uuidFilter %}
+{% assign outerTrack = "glide-" | uuidFilter | replace: "-", "" %}
 {% assign imageCounter = 0 %}
 {%- capture imageList -%}
     {% for image in content.images %}
@@ -26,7 +26,7 @@
           {% endif %}
         </div>
         <div class="{{outerTrack}} ">
-          <div class="glide__track">
+          <div class="glide__track" data-glide-el="track">
             <ul class="glide__slides">
 
               {% for image in content.images %}
@@ -43,8 +43,7 @@
     </div>
 
     {% if imageCounter > 5 %}
-
-      <script src="node_modules/@glidejs/glide/dist/glide.min.js"></script>
+      <script src="/assets/js/glide.js"></script>
 
       <script>
 
