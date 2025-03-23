@@ -1,6 +1,16 @@
 {% assign color_group = styles.color_group %}
 {% assign outerTrack = "glide-" | uuidFilter %}
 {% assign imageCounter = 0 %}
+{%- capture imageList -%}
+    {% for image in content.images %}
+    - imagePath: {{image.imagePath}}
+      imageAlt: {{image.imageAlt}}
+      yAxisPosition: {{image.yAxisPosition}}
+      imageNumber: {{imageCounter}}
+      {% assign imageCounter = imageCounter | plus: 1 %} 
+    {% endfor %}
+{%- endcapture -%}
+{% assign imageList = imageList | ymlify %}
 <div class="c-5050ImageForm relative">
   <section class="basecontainer w-full">
 
@@ -15,7 +25,19 @@
             {% bookshop {{content.heading._bookshop_name}} bind: content.heading %}
           {% endif %}
         </div>
-        <div class="{{outerTrack}} "></div>
+        <div class="{{outerTrack}} ">
+          <div class="glide__track">
+            <ul class="glide__slides">
+
+              {% for image in content.images %}
+
+                <li class="glide__slide">
+                  {% bookshop "generic/image" bind: image class: "w-full h-full" %%}
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
       </div>
 
     </div>
