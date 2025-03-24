@@ -1,5 +1,6 @@
 {% assign color_group = styles.color_group %}
 {% assign outerTrack = "glide-" | uuidFilter | replace: "-", "" %}
+{% assign outerTrackMobile = "glide-" | uuidFilter | replace: "-", "" %}
 {% assign imageCounter = 0 %}
 {%- capture imageList -%}
     {% for image in content.images %}
@@ -13,6 +14,9 @@
 {% assign imageList = imageList | ymlify %}
 {% assign firstImage = imageList[0] %}
 {% assign remainingImages = imageList | slice: 1, imageList.size %}
+{% capture imageClasses %}
+  w-full h-full object-cover object-center {{theme.image_rounding}}
+  {% endcapture %}
 <div class="c-imageCarousel relative">
   <section class="basecontainer w-full">
 
@@ -24,13 +28,14 @@
       {% bookshop {{content.heading._bookshop_name}} bind: content.heading %}
     {% endif %}
 
-    <div class=" cs-w-full flex bg-{{styles.color_group}}-backgroundcolor h-[70vh]">
-      <div class="{{outerTrack}} w-full">
+    <div class=" cs-w-full relative flex bg-{{styles.color_group}}-backgroundcolor h-[50vh] md:h-[70vh]">
+      <div class="absolute top-[97%] left-[48%] bg-{{styles.color_group}}-backgroundcolor text-base p-2 {{theme.container_rounding}} text-{{styles.color_group}}-textcolor z-10">{{imageCounter}} Photos</div>
+      <div class="hidden md:block {{outerTrack}} w-full">
         <div class="glide__track h-full" data-glide-el="track">
           <ul class="glide__slides flex h-full">
 
-            <li class="glide__slide w-1/2 h-full border-4 border-{{styles.color_group}}-secondarycolor">
-              {% bookshop "generic/image" bind: firstImage class: "w-full h-full object-cover" %}
+            <li class="glide__slide w-1/2 {{theme.container_rounding}} h-full border-4 border-{{styles.color_group}}-secondarycolor">
+              {% bookshop "generic/image" bind: firstImage class: imageClasses %}
             </li>
 
             {% assign groupIndex = 0 %}
@@ -41,12 +46,12 @@
                 {% if forloop.index0 > 0 %}
                   </div></li>
                 {% endif %}
-                <li class="glide__slide  w-1/2 h-full border-4 border-{{styles.color_group}}-secondarycolor">
-                  <div class="grid grid-cols-2 grid-rows-2 gap-1 h-full">
+                <li class="glide__slide {{theme.container_rounding}} w-1/2 h-full border-4 border-{{styles.color_group}}-secondarycolor">
+                  <div class="grid grid-cols-1 grid-rows-1 md:grid-cols-2 md:grid-rows-2 gap-1 h-full">
               {% endif %}
 
-              <div class="w-full h-full">
-                {% bookshop "generic/image" bind: image class: "w-full h-full object-cover object-center" %}
+              <div class="w-full h-full {{theme.container_rounding}}">
+                {% bookshop "generic/image" bind: image class: imageClasses %}
               </div>
 
               {% if forloop.last %}
@@ -57,15 +62,46 @@
           </ul>
         </div>
       </div>
+      <div class="md:hidden {{outerTrackMobile}} w-full">
+        <div class="glide__track h-full" data-glide-el="track">
+          <ul class="glide__slides flex h-full">
+
+ {% for image in imageList %}
+    <li class="glide__slide w-full h-full border-4 border-{{styles.color_group}}-secondarycolor {{theme.container_rounding}}">
+      {% bookshop "generic/image" bind: image class: imageClasses %}
+    </li>
+  {% endfor %}
+          </ul>
+        </div>
+      </div>
     </div>
 
     <script src="/assets/js/glide.js"></script>
     <script>
       new Glide('.{{ outerTrack }}', {
-        type: 'slider',
-        perView: 2,
-        gap: 0, // prevent gaps between slides
-      }).mount();
+  type: 'carousel',
+  perView: 2,
+  gap: 0,
+  breakpoints: {
+    768: {
+      perView: 1
+    }
+  }
+}).mount();
+      new Glide('.{{ outerTrackMobile }}', {
+  type: 'carousel',
+  perView: 2,
+  gap: 0,
+  breakpoints: {
+    768: {
+      perView: 1
+    },
+  peek:{
+    before: 0,
+    after: 25
+  }
+  }
+}).mount();
     </script>
   </section>
 </div>
