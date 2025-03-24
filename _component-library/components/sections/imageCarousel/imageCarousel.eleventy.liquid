@@ -35,7 +35,7 @@
           <ul class="glide__slides flex h-full">
 
             <li class="glide__slide w-1/2 {{theme.container_rounding}} h-full border-4 border-{{styles.color_group}}-secondarycolor">
-              {% bookshop "generic/image" bind: firstImage class: imageClasses %}
+              <button>{% bookshop "generic/image" bind: firstImage class: imageClasses %}</button>
             </li>
 
             {% assign groupIndex = 0 %}
@@ -50,9 +50,9 @@
                   <div class="grid grid-cols-1 grid-rows-1 md:grid-cols-2 md:grid-rows-2 gap-1 h-full">
               {% endif %}
 
-              <div class="w-full h-full {{theme.container_rounding}}">
+              <button class="w-full h-full {{theme.container_rounding}}">
                 {% bookshop "generic/image" bind: image class: imageClasses %}
-              </div>
+              </button>
 
               {% if forloop.last %}
                   </div></li>
