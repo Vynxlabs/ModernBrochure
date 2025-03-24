@@ -16,9 +16,9 @@
     {% endfor %}
 {%- endcapture -%}
 {% endif %}
-{% if unless env_bookshop_live %}
+{% unless env_bookshop_live %}
 {% assign imageList = imageList | ymlify %}
-{% endif %}
+{% endunless %}
 {% assign firstImage = imageList[0] %}
 {% assign remainingImages = imageList | slice: 1, imageList.size %}
 {% capture imageClasses %}
