@@ -2,10 +2,9 @@
 {% assign outerTrack = "glide-" | uuidFilter | replace: "-", "" %}
 {% assign outerTrackMobile = "glide-" | uuidFilter | replace: "-", "" %}
 {% assign imageCounter = 0 %}
-{% if env_bookshop_live %}
 {% assign imagelist = content.images %}
 {% assign imageCounter = content.images.size %}
-{% else %}
+{% unless env_bookshop_live %}
 {%- capture imageList -%}
     {% for image in content.images %}
     - imagePath: {{image.imagePath}}
@@ -15,8 +14,6 @@
       {% assign imageCounter = imageCounter | plus: 1 %} 
     {% endfor %}
 {%- endcapture -%}
-{% endif %}
-{% unless env_bookshop_live %}
 {% assign imageList = imageList | ymlify %}
 {% endunless %}
 {% assign firstImage = imageList[0] %}
