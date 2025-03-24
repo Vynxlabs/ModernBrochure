@@ -11,44 +11,61 @@
     {% endfor %}
 {%- endcapture -%}
 {% assign imageList = imageList | ymlify %}
-<div class="c-5050ImageForm relative">
+{% assign firstImage = imageList[0] %}
+{% assign remainingImages = imageList | slice: 1, imageList.size %}
+<div class="c-imageCarousel relative">
   <section class="basecontainer w-full">
 
     {% if content.sectionId %}
       {% bookshop "util/IdScrollEvent" sectionId: content.sectionId %}
     {% endif %}
-    <div class=" flex">
 
-      <div class="cs-w-full  flex  bg-{{styles.color_group}}-backgroundcolor ">
-        <div class="max-w-[512px] w-full">
-          {% if content.heading %}
-            {% bookshop {{content.heading._bookshop_name}} bind: content.heading %}
-          {% endif %}
-        </div>
-        <div class="{{outerTrack}} ">
-          <div class="glide__track" data-glide-el="track">
-            <ul class="glide__slides">
+    {% if content.heading %}
+      {% bookshop {{content.heading._bookshop_name}} bind: content.heading %}
+    {% endif %}
 
-              {% for image in content.images %}
+    <div class=" cs-w-full flex bg-{{styles.color_group}}-backgroundcolor h-[70vh]">
+      <div class="{{outerTrack}} w-full">
+        <div class="glide__track h-full" data-glide-el="track">
+          <ul class="glide__slides flex h-full">
 
-                <li class="glide__slide">
-                  {% bookshop "generic/image" bind: image class: "w-full h-full" %%}
-                </li>
-              {% endfor %}
-            </ul>
-          </div>
+            <li class="glide__slide w-1/2 h-full border-4 border-{{styles.color_group}}-secondarycolor">
+              {% bookshop "generic/image" bind: firstImage class: "w-full h-full object-cover" %}
+            </li>
+
+            {% assign groupIndex = 0 %}
+            {% assign imageGroup = "" %}
+            {% for image in remainingImages %}
+              {% assign groupMod = forloop.index0 | modulo: 4 %}
+              {% if groupMod == 0 %}
+                {% if forloop.index0 > 0 %}
+                  </div></li>
+                {% endif %}
+                <li class="glide__slide  w-1/2 h-full border-4 border-{{styles.color_group}}-secondarycolor">
+                  <div class="grid grid-cols-2 grid-rows-2 gap-1 h-full">
+              {% endif %}
+
+              <div class="w-full h-full">
+                {% bookshop "generic/image" bind: image class: "w-full h-full object-cover object-center" %}
+              </div>
+
+              {% if forloop.last %}
+                  </div></li>
+              {% endif %}
+            {% endfor %}
+
+          </ul>
         </div>
       </div>
-
     </div>
 
-    {% if imageCounter > 5 %}
-      <script src="/assets/js/glide.js"></script>
-
-      <script>
-
-          let {{outerTrack}} = new Glide('.{{outerTrack}}').mount()
-      </script>
-    {% endif %}
+    <script src="/assets/js/glide.js"></script>
+    <script>
+      new Glide('.{{ outerTrack }}', {
+        type: 'slider',
+        perView: 2,
+        gap: 0, // prevent gaps between slides
+      }).mount();
+    </script>
   </section>
 </div>
