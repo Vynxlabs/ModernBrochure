@@ -24,10 +24,10 @@
 {% assign modValue = 4 %}
 
 {% capture gridClasses %}
- {% if imageCounter >= 43 %}
+ {% if imageCounter > 43 %}
 {% assign modValue = 9 %}
 md:grid-cols-3 md:grid-rows-3
- {% elsif imageCounter >= 25 %}
+ {% elsif imageCounter > 25 %}
   {% assign modValue = 6 %}
   md:grid-cols-2 md:grid-rows-3
   {% else %}
