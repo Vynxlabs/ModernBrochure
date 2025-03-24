@@ -17,6 +17,20 @@
 {% capture imageClasses %}
   w-full h-full object-cover object-center {{theme.image_rounding}}
   {% endcapture %}
+{% assign modValue = 4 %}
+
+{% capture gridClasses %}
+ {% if imageCounter >= 43 %}
+{% assign modValue = 9 %}
+md:grid-cols-3 md:grid-rows-3
+ {% elsif imageCounter >= 25 %}
+  {% assign modValue = 6 %}
+  md:grid-cols-2 md:grid-rows-3
+  {% else %}
+     {% assign modValue = 4 %}
+     md:grid-cols-2 md:grid-rows-2
+ {% endif %} 
+{% endcapture %}
 <div class="c-imageCarousel relative">
   <section class="basecontainer w-full">
 
@@ -35,19 +49,19 @@
           <ul class="glide__slides flex h-full">
 
             <li class="glide__slide w-1/2 {{theme.container_rounding}} h-full border-4 border-{{styles.color_group}}-secondarycolor">
-              <button>{% bookshop "generic/image" bind: firstImage class: imageClasses %}</button>
+              <button onclick="window.open('{{firstImage.imagePath}}')">{% bookshop "generic/image" bind: firstImage class: imageClasses %}</button>
             </li>
 
             {% assign groupIndex = 0 %}
             {% assign imageGroup = "" %}
             {% for image in remainingImages %}
-              {% assign groupMod = forloop.index0 | modulo: 4 %}
+              {% assign groupMod = forloop.index0 | modulo: modValue %}
               {% if groupMod == 0 %}
                 {% if forloop.index0 > 0 %}
                   </div></li>
                 {% endif %}
                 <li class="glide__slide {{theme.container_rounding}} w-1/2 h-full border-4 border-{{styles.color_group}}-secondarycolor">
-                  <div class="grid grid-cols-1 grid-rows-1 md:grid-cols-2 md:grid-rows-2 gap-1 h-full">
+                  <div class="grid grid-cols-1 grid-rows-1 {{gridClasses}} gap-1 h-full">
               {% endif %}
 
               <button class="w-full h-full {{theme.container_rounding}}">
