@@ -59,7 +59,8 @@ md:grid-cols-3 md:grid-rows-3
       set modal to #modal-{{lightBoxId}}
       modal.show()
       transition #modal-{{lightBoxId}} opacity to 1 over 0.2s then
-      call openLightbox_{{ lightBoxId }}()
+      call openLightbox_{{ lightBoxId }}() then
+      call mainCarouselGo(0)
       ">{% bookshop "generic/image" bind: firstImage class: imageClasses %}</button>
             </li>
 
@@ -81,7 +82,8 @@ md:grid-cols-3 md:grid-rows-3
       set modal to #modal-{{lightBoxId}}
       modal.show()
       transition #modal-{{lightBoxId}} opacity to 1 over 0.2s then
-      call openLightbox_{{ lightBoxId }}()
+      call openLightbox_{{ lightBoxId }}() then
+      call mainCarouselGo({{forloop.index}})
       "
               >
                 {% bookshop "generic/image" bind: image class: imageClasses %}
@@ -107,7 +109,8 @@ md:grid-cols-3 md:grid-rows-3
       set modal to #modal-{{lightBoxId}}
       modal.show()
       transition #modal-{{lightBoxId}} opacity to 1 over 0.2s then
-      call openLightbox_{{ lightBoxId }}()
+      call openLightbox_{{ lightBoxId }}() then
+      call mainCarouselGo({{forloop.index0}})
       ">
         
       {% bookshop "generic/image" bind: image class: imageClasses %}</button>

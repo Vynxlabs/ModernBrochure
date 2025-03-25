@@ -76,13 +76,19 @@ h-full w-auto max-w-full object-contain cursor-pointer
     }
   });
 
+
   mainCarousel.mount();
   // Set initial state
-setActiveThumbnail(0);
+//setActiveThumbnail(0);
 
 // Sync on main carousel slide
-mainCarousel.on('run.after', () => {
+function mainCarouselGo(index) {
+  mainCarousel.go(`=${index}`);
+  
+}
+mainCarousel.on('run', () => {
   const currentIndex = mainCarousel.index;
+  console.log(currentIndex);
   setActiveThumbnail(currentIndex);
 });
 
