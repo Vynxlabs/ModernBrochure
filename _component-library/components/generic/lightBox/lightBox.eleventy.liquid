@@ -62,7 +62,7 @@
 
   const thumbCarousel = new Glide('.{{ subTrack }}', {
     type: 'slider',
-    perView: {% if images.size < 5 %}0{% elsif image.size < 10 %}{{ images.size }}{% else %}10{% endif %},
+    perView: {% if images.size < 10 %}{{ images.size }}{% else %}10{% endif %},
     gap: 15,
     breakpoints: {
       1024: { perView: {% if images.size < 7 %}{{ images.size }}{% else %}7{% endif %} },
