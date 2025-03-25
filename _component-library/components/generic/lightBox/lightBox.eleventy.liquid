@@ -2,7 +2,7 @@
 {% assign subTrack = id | replace: "-", "" | append: "sub" %}
 
 {% capture imageClasses %}
-h-full w-auto max-w-full object-contain cursor-pointer border-2 
+h-full w-auto max-w-full object-contain cursor-pointer  
   {% endcapture %}
 <dialog id="modal-{{id}}" class="c-lightBox fixed top-0 z-[900] h-full max-h-screen w-full p-4 opacity-0 open:bg-slate-950 open:bg-opacity-60 open:backdrop-blur-lg sm:p-10 overflow-hidden">
 
@@ -68,7 +68,7 @@ h-full w-auto max-w-full object-contain cursor-pointer border-2
     type: 'slider',
     perView: {% if images.size < 10 %}{{ images.size }}{% else %}10{% endif %},
     gap: 15,
-    bound: true,
+    focusAt: 'center',
     breakpoints: {
       1024: { perView: {% if images.size < 7 %}{{ images.size }}{% else %}7{% endif %} },
       768: { perView: {% if images.size < 5 %}{{ images.size }}{% else %}5{% endif %} },
@@ -77,6 +77,15 @@ h-full w-auto max-w-full object-contain cursor-pointer border-2
   });
 
   mainCarousel.mount();
+  // Set initial state
+setActiveThumbnail(0);
+
+// Sync on main carousel slide
+mainCarousel.on('run.after', () => {
+  const currentIndex = mainCarousel.index;
+  setActiveThumbnail(currentIndex);
+});
+
 
   {% if images.size >= 5 %}thumbCarousel.mount();{% endif %}
   
@@ -96,6 +105,24 @@ h-full w-auto max-w-full object-contain cursor-pointer border-2
     try { mainCarousel.destroy(); } catch (e) {}
     try { thumbCarousel.destroy(); } catch (e) {}
   }
+  function setActiveThumbnail(index) {
+  const thumbnails = document.querySelectorAll('.{{ subTrack }} .glide__slide');
+
+  thumbnails.forEach((thumb, i) => {
+    if (i === index) {
+      thumb.classList.add('ring-2', 'ring-offset-2', 'ring-white');
+    } else {
+      thumb.classList.remove('ring-2', 'ring-offset-2', 'ring-white');
+    }
+  });
+
+  // Scroll the thumbnail carousel to that index
+  {% if images.size >= 5 %}
+    if (thumbCarousel) {
+      thumbCarousel.go(`=${index}`);
+    }
+  {% endif %}
+}
   function openLightbox_{{ id }}() {
   const modal = document.getElementById("modal-{{ id }}");
 
@@ -114,6 +141,7 @@ h-full w-auto max-w-full object-contain cursor-pointer border-2
     thumbnails.forEach((thumb, index) => {
       thumb.addEventListener('click', () => {
         mainCarousel.go(`=${index}`);
+        setActiveThumbnail(index);
       });
     });
   });
