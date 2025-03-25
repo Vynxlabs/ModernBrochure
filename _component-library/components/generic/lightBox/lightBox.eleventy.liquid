@@ -2,7 +2,7 @@
 {% assign subTrack = id | replace: "-", "" | append: "sub" %}
 
 {% capture imageClasses %}
-  w-auto h-auto object-cover object-center {{theme.image_rounding}}
+h-full w-auto max-w-full object-contain cursor-pointer border-2 
   {% endcapture %}
 <dialog id="modal-{{id}}" class="c-lightBox fixed top-0 z-[900] h-full max-h-screen w-full p-4 opacity-0 open:bg-slate-950 open:bg-opacity-60 open:backdrop-blur-lg sm:p-10 overflow-hidden">
 
@@ -15,6 +15,7 @@
           set modal to #modal-{{id}}
           transition #modal-{{id}} opacity to 0 over 0.2s settle then
           modal.close()
+          call destroyLightBox_{{id}}()
           ">
       {% bookshop "generic/heroLibraryIcon" heroLibraryIconName: "x-mark" iconType: "solid" iconSize: 'large' roundedBorder: false color: "#ffffff" %}
     </button>
@@ -32,24 +33,24 @@
       </div>
     </div>
 
-    <!-- Thumbnail Carousel -->
-    <div class="h-24 sm:h-32 mt-2 {{subTrack}}">
-      <div class="glide__track h-full " data-glide-el="track">
-        <ul class="glide__slides h-full items-center">
-          {% for image in images %}
-            <li class="glide__slide flex h-full  items-center justify-center ">
-              {% bookshop "generic/image" bind: image class: "h-full w-auto max-w-full object-contain cursor-pointer" %}
-            </li>
-          {% endfor %}
-        </ul>
+    {% if images.size >= 5 %}
+      <!-- Thumbnail Carousel -->
+      <div class="h-24 sm:h-32 mt-2 {{subTrack}}">
+        <div class="glide__track h-full " data-glide-el="track">
+          <ul class="glide__slides h-full items-center">
+            {% for image in images %}
+              <li class="glide__slide flex h-full  items-center justify-center ">
+                {% bookshop "generic/image" bind: image class: imageClasses %}
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
       </div>
-    </div>
+    {% endif %}
   </div>
 </dialog>
 
-{% if images.size < 10 %}
-{% elsif condition %}
-{% else %}
+{% if images.size < 5 %}
 {% endif %}
 
 
@@ -76,7 +77,9 @@
   });
 
   mainCarousel.mount();
-  thumbCarousel.mount();
+
+  {% if images.size >= 5 %}thumbCarousel.mount();{% endif %}
+  
 
   // Sync thumbnail clicks to main
   document.addEventListener("DOMContentLoaded", function () {
@@ -88,18 +91,23 @@
       });
     });
   });
+  function destroyLightBox_{{ id }}(){
+
+    try { mainCarousel.destroy(); } catch (e) {}
+    try { thumbCarousel.destroy(); } catch (e) {}
+  }
   function openLightbox_{{ id }}() {
   const modal = document.getElementById("modal-{{ id }}");
 
   if (!modal.open) modal.showModal();
-
+  
   requestAnimationFrame(() => {
     // Unmount and re-mount for safety
     try { mainCarousel.destroy(); } catch (e) {}
     try { thumbCarousel.destroy(); } catch (e) {}
 
+  {% if images.size >= 5 %}thumbCarousel.mount();{% endif %}
     mainCarousel.mount();
-    thumbCarousel.mount();
 
     // Sync thumbnails again
     const thumbnails = modal.querySelectorAll('.{{ subTrack }} .glide__slide');
