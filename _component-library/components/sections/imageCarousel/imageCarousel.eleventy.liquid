@@ -58,7 +58,8 @@ md:grid-cols-3 md:grid-rows-3
       on click
       set modal to #modal-{{lightBoxId}}
       modal.show()
-      transition #modal-{{lightBoxId}} opacity to 1 over 0.2s
+      transition #modal-{{lightBoxId}} opacity to 1 over 0.2s then
+      call openLightbox_{{ lightBoxId }}()
       ">{% bookshop "generic/image" bind: firstImage class: imageClasses %}</button>
             </li>
 
@@ -105,7 +106,8 @@ md:grid-cols-3 md:grid-rows-3
       on click
       set modal to #modal-{{lightBoxId}}
       modal.show()
-      transition #modal-{{lightBoxId}} opacity to 1 over 0.2s
+      transition #modal-{{lightBoxId}} opacity to 1 over 0.2s then
+      call openLightbox_{{ lightBoxId }}()
       ">
         
       {% bookshop "generic/image" bind: image class: imageClasses %}</button>
