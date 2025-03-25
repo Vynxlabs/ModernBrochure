@@ -2,13 +2,14 @@
 {% assign subTrack = id | replace: "-", "" | append: "sub" %}
 
 {% capture imageClasses %}
-  w-full h-full object-cover object-center {{theme.image_rounding}}
+  w-auto h-auto object-cover object-center {{theme.image_rounding}}
   {% endcapture %}
-<dialog id="modal-{{id}}" class="c-lightBox fixed top-0 z-[900] h-full w-full  p-4 opacity-0 open:bg-slate-950 open:bg-opacity-60 open:backdrop-blur-lg sm:p-10">
-  <div class="flex flex-col gap-10">
+<dialog id="modal-{{id}}" class="c-lightBox fixed top-0 z-[900] h-full max-h-screen w-full p-4 opacity-0 open:bg-slate-950 open:bg-opacity-60 open:backdrop-blur-lg sm:p-10 overflow-hidden">
+
+  <div class="flex flex-col gap-4 h-full">
     <button
       aria-label="Close image"
-      class="sticky top-0 self-end font-bold text-white opacity-60"
+      class="sticky top-0 self-end z-10 font-bold text-white opacity-60"
       _="
           on click
           set modal to #modal-{{id}}
@@ -17,23 +18,27 @@
           ">
       {% bookshop "generic/heroLibraryIcon" heroLibraryIconName: "x-mark" iconType: "solid" iconSize: 'large' roundedBorder: false color: "#ffffff" %}
     </button>
-    <div class="{{mainTrack}}">
-      <div class="glide__track  self-center" data-glide-el="track">
-        <ul class="glide__slides flex h-full">
+
+    <!-- Main Carousel -->
+    <div class="flex-1 flex items-center justify-center overflow-hidden {{mainTrack}}">
+      <div class="glide__track h-full w-full max-h-full" data-glide-el="track">
+        <ul class="glide__slides h-full flex items-center justify-center">
           {% for image in images %}
-            <li class="glide__slide">
-              {% bookshop "generic/image" bind: image class: imageClasses %}
+            <li class="glide__slide max-h-full max-w-full flex items-center justify-center">
+              {% bookshop "generic/image" bind: image class: "max-h-[75vh] w-auto h-auto object-contain" %}
             </li>
           {% endfor %}
         </ul>
       </div>
     </div>
-    <div class="{{subTrack}}">
-      <div class="glide__track h-full self-center" data-glide-el="track">
-        <ul class="glide__slides flex h-full">
+
+    <!-- Thumbnail Carousel -->
+    <div class="h-24 sm:h-32 mt-2 {{subTrack}}">
+      <div class="glide__track h-full" data-glide-el="track">
+        <ul class="glide__slides h-full items-center">
           {% for image in images %}
-            <li class="glide__slide ">
-              {% bookshop "generic/image" bind: image class: imageClasses imageSizes: "(min-width: 1024px) 400px, 200px" %}
+            <li class="glide__slide h-full flex items-center justify-center">
+              {% bookshop "generic/image" bind: image class: "h-full w-auto max-w-full object-contain cursor-pointer" %}
             </li>
           {% endfor %}
         </ul>
@@ -42,23 +47,28 @@
   </div>
 </dialog>
 
+
 <script src="/assets/js/glide.js"></script>
 <script>
       new Glide('.{{ mainTrack }}', {
   type: 'carousel',
   perView: 1,
-  gap: 0,
+  gap: 20,
+  perTouch: 10
   }).mount();
       new Glide('.{{ subTrack }}', {
-  type: 'carousel',
+  type: 'slider',
   perView: 10,
-  gap: 0,
+  gap: 15,
   breakpoints: {
-    768: {
+    1024: {
       perView: 7
     },
-    640: {
+    768: {
       perView: 5
+    },
+    640: {
+      perView: 3
     }
   }
   }).mount();
