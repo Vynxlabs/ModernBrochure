@@ -1,6 +1,7 @@
 {% assign color_group = styles.color_group %}
 {% assign outerTrack = "glide-" | uuidFilter | replace: "-", "" %}
 {% assign outerTrackMobile = "glide-" | uuidFilter | replace: "-", "" %}
+{% assign lightBoxId = "lightbox" | uuidFilter | replace: "-", "" %}
 {% assign imagelist = content.images %}
 {% assign imageCounter = content.images.size %}
 {% unless env_bookshop_live %}
@@ -53,7 +54,12 @@ md:grid-cols-3 md:grid-rows-3
           <ul class="glide__slides flex h-full">
 
             <li class="glide__slide w-1/2 {{theme.container_rounding}} h-full border-4 border-{{styles.color_group}}-secondarycolor">
-              <button onclick="window.open('{{firstImage.imagePath}}')">{% bookshop "generic/image" bind: firstImage class: imageClasses %}</button>
+              <button _="
+      on click
+      set modal to #modal-{{lightBoxId}}
+      modal.show()
+      transition #modal-{{lightBoxId}} opacity to 1 over 0.2s
+      ">{% bookshop "generic/image" bind: firstImage class: imageClasses %}</button>
             </li>
 
             {% assign groupIndex = 0 %}
@@ -68,7 +74,14 @@ md:grid-cols-3 md:grid-rows-3
                   <div class="grid grid-cols-1 grid-rows-1 {{gridClasses}} gap-1 h-full">
               {% endif %}
 
-              <button class="w-full h-full {{theme.container_rounding}}">
+              <button class="w-full h-full {{theme.container_rounding}}"
+              _="
+      on click
+      set modal to #modal-{{lightBoxId}}
+      modal.show()
+      transition #modal-{{lightBoxId}} opacity to 1 over 0.2s
+      "
+              >
                 {% bookshop "generic/image" bind: image class: imageClasses %}
               </button>
 
@@ -86,7 +99,15 @@ md:grid-cols-3 md:grid-rows-3
 
  {% for image in imageList %}
     <li class="glide__slide w-full h-full border-4 border-{{styles.color_group}}-secondarycolor {{theme.container_rounding}}">
-      {% bookshop "generic/image" bind: image class: imageClasses %}
+      <button _=
+      "
+      on click
+      set modal to #modal-{{lightBoxId}}
+      modal.show()
+      transition #modal-{{lightBoxId}} opacity to 1 over 0.2s
+      ">
+        
+      {% bookshop "generic/image" bind: image class: imageClasses %}</button>
     </li>
   {% endfor %}
           </ul>
@@ -123,3 +144,5 @@ md:grid-cols-3 md:grid-rows-3
     </script>
   </section>
 </div>
+
+{% bookshop "generic/lightBox" images: imageList id: lightBoxId %}

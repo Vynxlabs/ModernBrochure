@@ -1,3 +1,65 @@
-<div class="c-lightBox">
-    <p>{{ text }}</p>
-</div>
+{% assign mainTrack = id | replace: "-", "" %}
+{% assign subTrack = id | replace: "-", "" | append: "sub" %}
+
+{% capture imageClasses %}
+  w-full h-full object-cover object-center {{theme.image_rounding}}
+  {% endcapture %}
+<dialog id="modal-{{id}}" class="c-lightBox fixed top-0 z-[900] h-full w-full  p-4 opacity-0 open:bg-slate-950 open:bg-opacity-60 open:backdrop-blur-lg sm:p-10">
+  <div class="flex flex-col gap-10">
+    <button
+      aria-label="Close image"
+      class="sticky top-0 self-end font-bold text-white opacity-60"
+      _="
+          on click
+          set modal to #modal-{{id}}
+          transition #modal-{{id}} opacity to 0 over 0.2s settle then
+          modal.close()
+          ">
+      {% bookshop "generic/heroLibraryIcon" heroLibraryIconName: "x-mark" iconType: "solid" iconSize: 'large' roundedBorder: false color: "#ffffff" %}
+    </button>
+    <div class="{{mainTrack}}">
+      <div class="glide__track  self-center" data-glide-el="track">
+        <ul class="glide__slides flex h-full">
+          {% for image in images %}
+            <li class="glide__slide">
+              {% bookshop "generic/image" bind: image class: imageClasses %}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="{{subTrack}}">
+      <div class="glide__track h-full self-center" data-glide-el="track">
+        <ul class="glide__slides flex h-full">
+          {% for image in images %}
+            <li class="glide__slide ">
+              {% bookshop "generic/image" bind: image class: imageClasses imageSizes: "(min-width: 1024px) 400px, 200px" %}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<script src="/assets/js/glide.js"></script>
+<script>
+      new Glide('.{{ mainTrack }}', {
+  type: 'carousel',
+  perView: 1,
+  gap: 0,
+  }).mount();
+      new Glide('.{{ subTrack }}', {
+  type: 'carousel',
+  perView: 10,
+  gap: 0,
+  breakpoints: {
+    768: {
+      perView: 7
+    },
+    640: {
+      perView: 5
+    }
+  }
+  }).mount();
+</script>
