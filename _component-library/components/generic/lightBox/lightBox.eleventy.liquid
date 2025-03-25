@@ -33,7 +33,7 @@
     </div>
 
     <!-- Thumbnail Carousel -->
-    <div class="h-24 sm:h-32 mt-2 {{subTrack}} ">
+    <div class="h-24 sm:h-32 mt-2 {{subTrack}}">
       <div class="glide__track h-full flex justify-center" data-glide-el="track">
         <ul class="glide__slides h-full items-center">
           {% for image in images %}
@@ -47,8 +47,11 @@
   </div>
 </dialog>
 
-{% if images.size < 10 %}{% elsif condition %}{% else %}{% endif %}
-  
+{% if images.size < 10 %}
+{% elsif condition %}
+{% else %}
+{% endif %}
+
 
 <script src="/assets/js/glide.js"></script>
 <script src="/assets/js/glide.js"></script>
@@ -84,4 +87,26 @@
       });
     });
   });
+  function openLightbox_{{ id }}() {
+  const modal = document.getElementById("modal-{{ id }}");
+
+  if (!modal.open) modal.showModal();
+
+  requestAnimationFrame(() => {
+    // Unmount and re-mount for safety
+    try { mainCarousel.destroy(); } catch (e) {}
+    try { thumbCarousel.destroy(); } catch (e) {}
+
+    mainCarousel.mount();
+    thumbCarousel.mount();
+
+    // Sync thumbnails again
+    const thumbnails = modal.querySelectorAll('.{{ subTrack }} .glide__slide');
+    thumbnails.forEach((thumb, index) => {
+      thumb.addEventListener('click', () => {
+        mainCarousel.go(`=${index}`);
+      });
+    });
+  });
+  }
 </script>
