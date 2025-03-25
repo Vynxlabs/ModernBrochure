@@ -34,7 +34,7 @@
 
     <!-- Thumbnail Carousel -->
     <div class="h-24 sm:h-32 mt-2 {{subTrack}}">
-      <div class="glide__track h-full flex justify-center" data-glide-el="track">
+      <div class="glide__track h-full " data-glide-el="track">
         <ul class="glide__slides h-full items-center">
           {% for image in images %}
             <li class="glide__slide flex h-full  items-center justify-center ">
@@ -67,6 +67,7 @@
     type: 'slider',
     perView: {% if images.size < 10 %}{{ images.size }}{% else %}10{% endif %},
     gap: 15,
+    bound: true,
     breakpoints: {
       1024: { perView: {% if images.size < 7 %}{{ images.size }}{% else %}7{% endif %} },
       768: { perView: {% if images.size < 5 %}{{ images.size }}{% else %}5{% endif %} },
