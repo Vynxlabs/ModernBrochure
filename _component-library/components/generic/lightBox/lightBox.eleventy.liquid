@@ -1,15 +1,15 @@
 {% assign mainTrack = id | replace: "-", "" %}
 {% assign subTrack = id | replace: "-", "" | append: "sub" %}
 
-{% capture imageClasses %}
-h-full w-auto max-w-full object-contain cursor-pointer  
+{% capture thumbImageClasses %}
+h-full w-auto max-w-full object-contain aspect-square cursor-pointer {{theme.image_rounding}} 
   {% endcapture %}
 <dialog id="modal-{{id}}" class="c-lightBox fixed top-0 z-[900] h-full max-h-screen w-full p-4 opacity-0 open:bg-slate-950 open:bg-opacity-60 open:backdrop-blur-lg sm:p-10 overflow-hidden">
 
   <div class="flex flex-col gap-4 h-full">
     <button
       aria-label="Close image"
-      class="sticky top-0 self-end z-10 font-bold text-white opacity-60"
+      class=" absolute top-0 self-end z-10 font-bold text-white opacity-60"
       _="
           on click
           set modal to #modal-{{id}}
@@ -23,7 +23,7 @@ h-full w-auto max-w-full object-contain cursor-pointer
     <!-- Main Carousel -->
     <div class="flex-1 flex items-center justify-center overflow-hidden relative {{mainTrack}}">
       <div class="w-full flex absolute justify-center">
-        <div class="w-[97%]  z-10 flex justify-between top-1/2 opacity-70" data-glide-el="controls">
+        <div class="w-full  z-10 flex justify-between top-1/2 opacity-70" data-glide-el="controls">
           <button
             class="bg-{{styles.color_group}}-backgroundcolor  p-1 rounded-full"
             data-glide-dir="<">
@@ -43,7 +43,7 @@ h-full w-auto max-w-full object-contain cursor-pointer
         <ul class="glide__slides h-full flex items-center justify-center">
           {% for image in images %}
             <li class="glide__slide max-h-full max-w-full flex items-center justify-center">
-              {% bookshop "generic/image" bind: image class: "max-h-[75vh] w-auto h-auto object-contain" %}
+              {% bookshop "generic/image" bind: image class: "h-full w-auto max-w-full object-contain" %}
             </li>
           {% endfor %}
         </ul>
@@ -73,7 +73,7 @@ h-full w-auto max-w-full object-contain cursor-pointer
           <ul class="glide__slides h-full items-center">
             {% for image in images %}
               <li class="glide__slide flex h-full  items-center justify-center ">
-                {% bookshop "generic/image" bind: image class: imageClasses %}
+                {% bookshop "generic/image" bind: image class: thumbImageClasses %}
               </li>
             {% endfor %}
           </ul>
@@ -145,13 +145,13 @@ h-full w-auto max-w-full object-contain cursor-pointer
     try { thumbCarousel.destroy(); } catch (e) {}
   }
   function setActiveThumbnail(index) {
-  const thumbnails = document.querySelectorAll('.{{ subTrack }} .glide__slide');
+  const thumbnails = document.querySelectorAll('.{{ subTrack }} .glide__slide img');
 
   thumbnails.forEach((thumb, i) => {
     if (i === index) {
-      thumb.classList.add('ring-2', 'ring-offset-2', 'ring-white');
+      thumb.classList.add('border-2', 'border-{{color_group}}-secondarycolor');
     } else {
-      thumb.classList.remove('ring-2', 'ring-offset-2', 'ring-white');
+      thumb.classList.remove('border-2', 'border-{{color_group}}-secondarycolor');
     }
   });
 
