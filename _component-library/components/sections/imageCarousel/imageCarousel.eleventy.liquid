@@ -51,11 +51,11 @@ md:grid-cols-3 md:grid-rows-3
       <div class="absolute top-[97%] left-[48%] bg-{{styles.color_group}}-backgroundcolor text-base p-2 {{theme.container_rounding}} text-{{styles.color_group}}-textcolor z-10">{{imageCounter}} Photos</div>
       <div class="hidden md:block {{outerTrack}} w-full">
         <div class="w-full flex  justify-center">
-          <div class="w-[97%] absolute z-10 flex justify-between top-1/2 opacity-70" data-glide-el="controls">
-            <button class="bg-{{styles.color_group}}-backgroundcolor  p-1 rounded-full" data-glide-dir="<">
+          <div class="pointer-events-none w-[97%] absolute z-10 flex justify-between top-1/2 opacity-70" data-glide-el="controls">
+            <button class="pointer-events-auto bg-{{styles.color_group}}-backgroundcolor  p-1 rounded-full" data-glide-dir="<">
           {% bookshop "generic/heroLibraryIcon" heroLibraryIconName: "arrow-left" iconType: "solid" iconSize: 'small' roundedBorder: false theme:true %}
             </button>
-            <button class="bg-{{styles.color_group}}-backgroundcolor  p-1 rounded-full" data-glide-dir=">">
+            <button class="pointer-events-auto bg-{{styles.color_group}}-backgroundcolor  p-1 rounded-full" data-glide-dir=">">
           {% bookshop "generic/heroLibraryIcon" heroLibraryIconName: "arrow-right" iconType: "solid" iconSize: 'small' roundedBorder: false theme:true %}
             </button>
           </div>
@@ -109,11 +109,11 @@ md:grid-cols-3 md:grid-rows-3
       </div>
       <div class="md:hidden {{outerTrackMobile}} h-full w-full">
         <div class="w-full absolute flex flex-col top-1/2 items-center justify-center">
-          <div class="w-[97%]  z-10 flex justify-between  opacity-70" data-glide-el="controls">
-            <button class="bg-{{styles.color_group}}-backgroundcolor  p-1 rounded-full" data-glide-dir="<">
+          <div class="pointer-events-none w-[97%]  z-10 flex justify-between  opacity-70" data-glide-el="controls">
+            <button class="pointer-events-auto bg-{{styles.color_group}}-backgroundcolor  p-1 rounded-full" data-glide-dir="<">
           {% bookshop "generic/heroLibraryIcon" heroLibraryIconName: "arrow-left" iconType: "solid" iconSize: 'micro' roundedBorder: false theme:true %}
             </button>
-            <button class="bg-{{styles.color_group}}-backgroundcolor  p-1 rounded-full" data-glide-dir=">">
+            <button class="pointer-events-auto bg-{{styles.color_group}}-backgroundcolor  p-1 rounded-full" data-glide-dir=">">
           {% bookshop "generic/heroLibraryIcon" heroLibraryIconName: "arrow-right" iconType: "solid" iconSize: 'micro' roundedBorder: false theme:true %}
             </button>
           </div>

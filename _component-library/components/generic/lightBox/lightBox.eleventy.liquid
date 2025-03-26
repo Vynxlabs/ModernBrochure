@@ -23,14 +23,14 @@ h-full w-auto max-w-full object-contain aspect-square cursor-pointer {{theme.ima
     <!-- Main Carousel -->
     <div class="flex-1 flex items-center justify-center overflow-hidden relative {{mainTrack}}">
       <div class="w-full flex absolute justify-center">
-        <div class="w-full  z-10 flex justify-between top-1/2 opacity-70" data-glide-el="controls">
+        <div class=" pointer-events-none w-full  z-10 flex justify-between top-1/2 opacity-70" data-glide-el="controls">
           <button
-            class="bg-{{styles.color_group}}-backgroundcolor  p-1 rounded-full"
+            class="pointer-events-auto bg-{{styles.color_group}}-backgroundcolor  p-1 rounded-full"
             data-glide-dir="<">
           <div class="hidden md:block">{% bookshop "generic/heroLibraryIcon" heroLibraryIconName: "arrow-left" iconType: "solid" iconSize: 'small' roundedBorder: false theme:true %}</div>
           <div class="block md:hidden">{% bookshop "generic/heroLibraryIcon" heroLibraryIconName: "arrow-left" iconType: "solid" iconSize: 'micro' roundedBorder: false theme:true %}</div>
             </button>
-            <button class="
+            <button class=" pointer-events-auto
             bg-{{styles.color_group}}-backgroundcolor
             p-1
             rounded-full" data-glide-dir=">">
@@ -55,13 +55,13 @@ h-full w-auto max-w-full object-contain aspect-square cursor-pointer {{theme.ima
       <div class="h-24 sm:h-32 mt-2 relative {{subTrack}}">
 
       <div class="w-full flex absolute top-1/2 justify-center">
-        <div class="w-[97%]  z-10 flex justify-between  opacity-70" data-glide-el="controls">
+        <div class="pointer-events-none w-[97%]  z-10 flex justify-between  opacity-70" data-glide-el="controls">
           <button
-            class="bg-{{styles.color_group}}-backgroundcolor  p-1 rounded-full"
+            class="pointer-events-auto bg-{{styles.color_group}}-backgroundcolor  p-1 rounded-full"
             data-glide-dir="<">
           <div class="">{% bookshop "generic/heroLibraryIcon" heroLibraryIconName: "arrow-left" iconType: "solid" iconSize: 'micro' roundedBorder: false theme:true %}</div>
             </button>
-            <button class="
+            <button class=" pointer-events-auto
             bg-{{styles.color_group}}-backgroundcolor
             p-1
             rounded-full" data-glide-dir=">">
