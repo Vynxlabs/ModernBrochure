@@ -90,14 +90,14 @@ h-full w-auto max-w-full object-contain aspect-square cursor-pointer {{theme.ima
 <script src="/assets/js/glide.js"></script>
 <script src="/assets/js/glide.js"></script>
 <script>
-  const mainCarousel = new Glide('.{{ mainTrack }}', {
+  const mainCarousel{{id}} = new Glide('.{{ mainTrack }}', {
     type: 'carousel',
     perView: 1,
     gap: 20,
     perTouch: 10
   });
 
-  const thumbCarousel = new Glide('.{{ subTrack }}', {
+  const thumbCarousel{{id}} = new Glide('.{{ subTrack }}', {
     type: 'slider',
     perView: {% if images.size < 10 %}{{ images.size }}{% else %}10{% endif %},
     gap: 15,
@@ -110,23 +110,23 @@ h-full w-auto max-w-full object-contain aspect-square cursor-pointer {{theme.ima
   });
 
 
-  mainCarousel.mount();
+  mainCarousel{{id}}.mount();
   // Set initial state
-  //setActiveThumbnail(0);
+  //setActiveThumbnail{{id}}(0);
 
   // Sync on main carousel slide
-  function mainCarouselGo(index) {
-  mainCarousel.go(`=${index}`);
+  function mainCarousel{{id}}Go(index) {
+  mainCarousel{{id}}.go(`=${index}`);
   
   }
-  mainCarousel.on('run', () => {
-  const currentIndex = mainCarousel.index;
+  mainCarousel{{id}}.on('run', () => {
+  const currentIndex = mainCarousel{{id}}.index;
   console.log(currentIndex);
-  setActiveThumbnail(currentIndex);
+  setActiveThumbnail{{id}}(currentIndex);
   });
 
 
-  {% if images.size >= 5 %}thumbCarousel.mount();{% endif %}
+  {% if images.size >= 5 %}thumbCarousel{{id}}.mount();{% endif %}
   
 
   // Sync thumbnail clicks to main
@@ -135,16 +135,16 @@ h-full w-auto max-w-full object-contain aspect-square cursor-pointer {{theme.ima
 
     thumbnails.forEach((thumb, index) => {
       thumb.addEventListener('click', () => {
-        mainCarousel.go(`=${index}`);
+        mainCarousel{{id}}.go(`=${index}`);
       });
     });
   });
   function destroyLightBox_{{ id }}(){
 
-    try { mainCarousel.destroy(); } catch (e) {}
-    try { thumbCarousel.destroy(); } catch (e) {}
+    try { mainCarousel{{id}}.destroy(); } catch (e) {}
+    try { thumbCarousel{{id}}.destroy(); } catch (e) {}
   }
-  function setActiveThumbnail(index) {
+  function setActiveThumbnail{{id}}(index) {
   const thumbnails = document.querySelectorAll('.{{ subTrack }} .glide__slide img');
 
   thumbnails.forEach((thumb, i) => {
@@ -157,8 +157,8 @@ h-full w-auto max-w-full object-contain aspect-square cursor-pointer {{theme.ima
 
   // Scroll the thumbnail carousel to that index
   {% if images.size >= 5 %}
-    if (thumbCarousel) {
-      thumbCarousel.go(`=${index}`);
+    if (thumbCarousel{{id}}) {
+      thumbCarousel{{id}}.go(`=${index}`);
     }
   {% endif %}
   }
@@ -169,18 +169,18 @@ h-full w-auto max-w-full object-contain aspect-square cursor-pointer {{theme.ima
   
   requestAnimationFrame(() => {
     // Unmount and re-mount for safety
-    try { mainCarousel.destroy(); } catch (e) {}
-    try { thumbCarousel.destroy(); } catch (e) {}
+    try { mainCarousel{{id}}.destroy(); } catch (e) {}
+    try { thumbCarousel{{id}}.destroy(); } catch (e) {}
 
-  {% if images.size >= 5 %}thumbCarousel.mount();{% endif %}
-    mainCarousel.mount();
+  {% if images.size >= 5 %}thumbCarousel{{id}}.mount();{% endif %}
+    mainCarousel{{id}}.mount();
 
     // Sync thumbnails again
     const thumbnails = modal.querySelectorAll('.{{ subTrack }} .glide__slide');
     thumbnails.forEach((thumb, index) => {
       thumb.addEventListener('click', () => {
-        mainCarousel.go(`=${index}`);
-        setActiveThumbnail(index);
+        mainCarousel{{id}}.go(`=${index}`);
+        setActiveThumbnail{{id}}(index);
       });
     });
   });
