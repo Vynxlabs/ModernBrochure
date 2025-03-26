@@ -21,7 +21,24 @@ h-full w-auto max-w-full object-contain cursor-pointer
     </button>
 
     <!-- Main Carousel -->
-    <div class="flex-1 flex items-center justify-center overflow-hidden {{mainTrack}}">
+    <div class="flex-1 flex items-center justify-center overflow-hidden relative {{mainTrack}}">
+      <div class="w-full flex absolute justify-center">
+        <div class="w-[97%]  z-10 flex justify-between top-1/2 opacity-70" data-glide-el="controls">
+          <button
+            class="bg-{{styles.color_group}}-backgroundcolor  p-1 rounded-full"
+            data-glide-dir="<">
+          <div class="hidden md:block">{% bookshop "generic/heroLibraryIcon" heroLibraryIconName: "arrow-left" iconType: "solid" iconSize: 'small' roundedBorder: false theme:true %}</div>
+          <div class="block md:hidden">{% bookshop "generic/heroLibraryIcon" heroLibraryIconName: "arrow-left" iconType: "solid" iconSize: 'micro' roundedBorder: false theme:true %}</div>
+            </button>
+            <button class="
+            bg-{{styles.color_group}}-backgroundcolor
+            p-1
+            rounded-full" data-glide-dir=">">
+          <div class="hidden md:block">{% bookshop "generic/heroLibraryIcon" heroLibraryIconName: "arrow-right" iconType: "solid" iconSize: 'small' roundedBorder: false theme:true %}</div>
+          <div class="block md:hidden">{% bookshop "generic/heroLibraryIcon" heroLibraryIconName: "arrow-right" iconType: "solid" iconSize: 'micro' roundedBorder: false theme:true %}</div>
+          </button>
+        </div>
+      </div>
       <div class="glide__track h-full w-full max-h-full" data-glide-el="track">
         <ul class="glide__slides h-full flex items-center justify-center">
           {% for image in images %}
@@ -35,7 +52,23 @@ h-full w-auto max-w-full object-contain cursor-pointer
 
     {% if images.size >= 5 %}
       <!-- Thumbnail Carousel -->
-      <div class="h-24 sm:h-32 mt-2 {{subTrack}}">
+      <div class="h-24 sm:h-32 mt-2 relative {{subTrack}}">
+
+      <div class="w-full flex absolute top-1/2 justify-center">
+        <div class="w-[97%]  z-10 flex justify-between  opacity-70" data-glide-el="controls">
+          <button
+            class="bg-{{styles.color_group}}-backgroundcolor  p-1 rounded-full"
+            data-glide-dir="<">
+          <div class="">{% bookshop "generic/heroLibraryIcon" heroLibraryIconName: "arrow-left" iconType: "solid" iconSize: 'micro' roundedBorder: false theme:true %}</div>
+            </button>
+            <button class="
+            bg-{{styles.color_group}}-backgroundcolor
+            p-1
+            rounded-full" data-glide-dir=">">
+          <div class="">{% bookshop "generic/heroLibraryIcon" heroLibraryIconName: "arrow-right" iconType: "solid" iconSize: 'micro' roundedBorder: false theme:true %}</div>
+          </button>
+        </div>
+      </div>
         <div class="glide__track h-full " data-glide-el="track">
           <ul class="glide__slides h-full items-center">
             {% for image in images %}
@@ -79,18 +112,18 @@ h-full w-auto max-w-full object-contain cursor-pointer
 
   mainCarousel.mount();
   // Set initial state
-//setActiveThumbnail(0);
+  //setActiveThumbnail(0);
 
-// Sync on main carousel slide
-function mainCarouselGo(index) {
+  // Sync on main carousel slide
+  function mainCarouselGo(index) {
   mainCarousel.go(`=${index}`);
   
-}
-mainCarousel.on('run', () => {
+  }
+  mainCarousel.on('run', () => {
   const currentIndex = mainCarousel.index;
   console.log(currentIndex);
   setActiveThumbnail(currentIndex);
-});
+  });
 
 
   {% if images.size >= 5 %}thumbCarousel.mount();{% endif %}
@@ -128,7 +161,7 @@ mainCarousel.on('run', () => {
       thumbCarousel.go(`=${index}`);
     }
   {% endif %}
-}
+  }
   function openLightbox_{{ id }}() {
   const modal = document.getElementById("modal-{{ id }}");
 

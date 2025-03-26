@@ -50,6 +50,16 @@ md:grid-cols-3 md:grid-rows-3
     <div class=" cs-w-full relative flex bg-{{styles.color_group}}-backgroundcolor h-[50vh] md:h-[70vh]">
       <div class="absolute top-[97%] left-[48%] bg-{{styles.color_group}}-backgroundcolor text-base p-2 {{theme.container_rounding}} text-{{styles.color_group}}-textcolor z-10">{{imageCounter}} Photos</div>
       <div class="hidden md:block {{outerTrack}} w-full">
+        <div class="w-full flex  justify-center">
+          <div class="w-[97%] absolute z-10 flex justify-between top-1/2 opacity-70" data-glide-el="controls">
+            <button class="bg-{{styles.color_group}}-backgroundcolor  p-1 rounded-full" data-glide-dir="<">
+          {% bookshop "generic/heroLibraryIcon" heroLibraryIconName: "arrow-left" iconType: "solid" iconSize: 'small' roundedBorder: false theme:true %}
+            </button>
+            <button class="bg-{{styles.color_group}}-backgroundcolor  p-1 rounded-full" data-glide-dir=">">
+          {% bookshop "generic/heroLibraryIcon" heroLibraryIconName: "arrow-right" iconType: "solid" iconSize: 'small' roundedBorder: false theme:true %}
+            </button>
+          </div>
+        </div>
         <div class="glide__track h-full" data-glide-el="track">
           <ul class="glide__slides flex h-full">
 
@@ -98,6 +108,17 @@ md:grid-cols-3 md:grid-rows-3
         </div>
       </div>
       <div class="md:hidden {{outerTrackMobile}} w-full">
+
+        <div class="w-full flex relative  justify-center">
+          <div class="w-[97%] absolute z-10 flex justify-between top-1/2 opacity-70" data-glide-el="controls">
+            <button class="bg-{{styles.color_group}}-backgroundcolor  p-1 rounded-full" data-glide-dir="<">
+          {% bookshop "generic/heroLibraryIcon" heroLibraryIconName: "arrow-left" iconType: "solid" iconSize: 'micro' roundedBorder: false theme:true %}
+            </button>
+            <button class="bg-{{styles.color_group}}-backgroundcolor  p-1 rounded-full" data-glide-dir=">">
+          {% bookshop "generic/heroLibraryIcon" heroLibraryIconName: "arrow-right" iconType: "solid" iconSize: 'micro' roundedBorder: false theme:true %}
+            </button>
+          </div>
+        </div>
         <div class="glide__track h-full" data-glide-el="track">
           <ul class="glide__slides flex h-full">
 
