@@ -16,7 +16,7 @@
 
         {% for card in content.cards %}
           {% assign color_group = styles.card_color_group %}
-          <div class="min-h-[260px] max-w-[380px] w-full {% if styles.cardBackground %} bg-{{styles.card_color_group}}-backgroundcolor shadow-md{% endif %} px-7 py-4  {{theme.container_rounding}}">
+          <div class=" max-w-[380px] w-full flex-1 min-w-[250px] {% if styles.cardBackground %}min-h-[260px] bg-{{styles.card_color_group}}-backgroundcolor shadow-md px-7 py-4{% endif %}   {{theme.container_rounding}}">
             {% capture heading %}
               content:
                   highlightEyebrow: {{card.heading.content.highlightEyebrow}}
