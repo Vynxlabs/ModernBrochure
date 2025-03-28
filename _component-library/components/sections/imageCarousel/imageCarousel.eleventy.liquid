@@ -1,6 +1,5 @@
 {% assign color_group = styles.color_group %}
 {% assign outerTrack = "glide-" | uuidFilter | replace: "-", "" %}
-{% assign outerTrackMobile = "glide-" | uuidFilter | replace: "-", "" %}
 {% assign lightBoxId = "lightbox" | uuidFilter | replace: "-", "" %}
 {% assign imageList = content.images %}
 {% assign imageCounter = content.images.size %}
@@ -119,38 +118,6 @@ grid-cols-3 grid-rows-3
           </ul>
         </div>
       </div>
-      <div class="hidden {{outerTrackMobile}} h-full w-full">
-        <div class="w-full absolute flex flex-col top-1/2 items-center justify-center">
-          <div class="pointer-events-none w-[97%]  z-10 flex justify-between  opacity-70" data-glide-el="controls">
-            <button class="pointer-events-auto bg-{{styles.color_group}}-backgroundcolor  p-1 rounded-full" data-glide-dir="<">
-          {% bookshop "generic/heroLibraryIcon" heroLibraryIconName: "arrow-left" iconType: "solid" iconSize: 'micro' roundedBorder: false theme:true %}
-            </button>
-            <button class="pointer-events-auto bg-{{styles.color_group}}-backgroundcolor  p-1 rounded-full" data-glide-dir=">">
-          {% bookshop "generic/heroLibraryIcon" heroLibraryIconName: "arrow-right" iconType: "solid" iconSize: 'micro' roundedBorder: false theme:true %}
-            </button>
-          </div>
-        </div>
-        <div class="glide__track h-full" data-glide-el="track">
-          <ul class="glide__slides flex h-full">
-
- {% for image in imageList %}
-    <li class="glide__slide w-full h-full  {{theme.container_rounding}}">
-      <button class="w-full  h-full" _=
-      "
-      on click
-      set modal to #modal-{{lightBoxId}}
-      modal.show()
-      transition #modal-{{lightBoxId}} opacity to 1 over 0.2s then
-      call openLightbox_{{ lightBoxId }}() then
-      call mainCarousel{{lightBoxId}}Go({{forloop.index0}})
-      ">
-        
-      {% bookshop "generic/image" bind: image class: imageClasses %}</button>
-    </li>
-  {% endfor %}
-          </ul>
-        </div>
-      </div>
     </div>
 
     <script src="/assets/js/glide.js"></script>
@@ -163,20 +130,6 @@ grid-cols-3 grid-rows-3
     768: {
       perView: 1
     }
-  }
-}).mount();
-      new Glide('.{{ outerTrackMobile }}', {
-  type: 'carousel',
-  perView: 2,
-  gap: 0,
-  breakpoints: {
-    768: {
-      perView: 1
-    },
-  peek:{
-    before: 0,
-    after: 25
-  }
   }
 }).mount();
     </script>

@@ -102,6 +102,7 @@ h-full w-auto max-w-full object-contain aspect-square cursor-pointer {{theme.ima
     perView: {% if images.size < 10 %}{{ images.size }}{% else %}10{% endif %},
     gap: 15,
     focusAt: 'center',
+    animationDuration: 250,
     breakpoints: {
       1024: { perView: {% if images.size < 7 %}{{ images.size }}{% else %}7{% endif %} },
       768: { perView: {% if images.size < 5 %}{{ images.size }}{% else %}5{% endif %} },
