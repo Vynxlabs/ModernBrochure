@@ -15,6 +15,7 @@ listingSetup:
   imageAltText:
   canExpire: false
   expireDate:
+  images: [bookshop:generic/image]
 pageLink:
 permalink: >-
   /listing/{% capture varPagePath %}{% if pageLink%}{% assign pageLink = pageLink | slugify%}{{  page.filePathStem |fileSubstringFilter | append: pageLink }}{% else %}{% assign title = title | slugify%}{{  page.filePathStem |fileSubstringFilter | append: title }}{% endif %}{% endcapture %}/{{varPagePath | strip}}/index.html
@@ -32,6 +33,8 @@ _inputs:
     type: multiselect
     options:
       values: data.listingTags
-  primaryImage:
-    comment: "This image will be used for the listing card, and will be the first image in the gallery"
+  expireDate:
+    hidden: !canExpire
+  images:
+    comment: "The first image will be used as the primary image will be used for listing cards"
 ---
