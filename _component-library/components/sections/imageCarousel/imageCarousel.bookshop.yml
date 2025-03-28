@@ -2,7 +2,7 @@
 spec:
   structures:
     - content_blocks
-  label: "ImageCarousel"
+  label: "Image Carousel"
   description:
   icon:
   tags: []
@@ -10,6 +10,7 @@ spec:
 # Defines the structure of this component, as well as the default values
 blueprint:
   content:
+    showNote: true
     sectionId:
     heading: bookshop:structure:headingBlocks
     images: [bookshop:generic/image]

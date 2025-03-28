@@ -42,8 +42,11 @@ grid-cols-3 grid-rows-3
       {% bookshop "util/IdScrollEvent" sectionId: content.sectionId %}
     {% endif %}
 
+    {% if env_bookshop_live and content.showNote %}
+            {% bookshop "generic/notification" heading:"No sliding. No image lightbox" text:"The carousel will not slide and the image lightbox will not open while editing, but will work on your live site" %}
+        {% endif %}
     {% if content.heading %}
-      {% bookshop {{content.heading._bookshop_name}} bind: content.heading %}
+      <div class="py-10 md:py-20">{% bookshop {{content.heading._bookshop_name}} bind: content.heading %}</div>
     {% endif %}
 
     <div class=" cs-w-full relative grid-rows flex bg-{{styles.color_group}}-backgroundcolor h-[50vh] md:h-[70vh]">
