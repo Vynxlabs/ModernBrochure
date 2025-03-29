@@ -11,6 +11,7 @@ spec:
 blueprint:
   id:
   resource: bookshop:structure:resource
+  form_color_group: primary
   text: "Button text"
   color_group: primary
   colorFromGroup: primary
@@ -25,3 +26,5 @@ _inputs:
     hidden: true
   resource:
     comment: 'To what should the pop up open to?'
+  form_color_group:
+    hidden: '!resource._bookshop_name=="simple/formBuilder"'
