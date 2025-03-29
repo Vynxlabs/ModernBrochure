@@ -27,8 +27,8 @@ transition #modal-{{id}} opacity to 1 over 0.2s
     <div class="self-center w-full max-w-[90%] flex justify-center">
       {% if resource._bookshop_name == "simple/formBuilder" %}
 
-        {% assign color_group = styles.form_color_group %}
-        <div class=" bg-{{styles.form_color_group}}-backgroundcolor bg-opacity-70 p-5 {{theme.container_rounding}} w-full max-w-[512px] flex-1 min-w-[300px]">{% bookshop "simple/formBuilder" bind: content.form %}</div>
+        {% assign color_group = form_color_group %}
+        <div class=" bg-{{form_color_group}}-backgroundcolor bg-opacity-70 p-5 {{theme.container_rounding}} w-full max-w-[512px] flex-1 min-w-[300px]">{% bookshop "{{resource._bookshop_name}}" bind: resource class: "max-w-[90%] object-cover object-center" %}</div>
       {% else %}
 
         {% bookshop "{{resource._bookshop_name}}" bind: resource class: "max-w-[90%] object-cover object-center" %}
