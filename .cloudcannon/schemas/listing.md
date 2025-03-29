@@ -18,7 +18,7 @@ listingSetup:
   images: [bookshop:generic/image]
 pageLink:
 permalink: >-
-  /listing/{% capture varPagePath %}{% if pageLink%}{% assign pageLink = pageLink | slugify%}{{  page.filePathStem |fileSubstringFilter | append: pageLink }}{% else %}{% assign title = title | slugify%}{{  page.filePathStem |fileSubstringFilter | append: title }}{% endif %}{% endcapture %}/{{varPagePath | strip}}/index.html
+  /listing/{% capture varPagePath %}{% if pageLink%}{% assign pageLink = pageLink | slugify%}{{  page.filePathStem |fileSubstringFilter | append: pageLink | append: "-" | append: id | uuidHashFilter }}{% else %}{% assign id = id | uuidHashFilter%}{{  page.filePathStem |fileSubstringFilter | append: id }}{% endif %}{% endcapture %}/{{varPagePath | strip}}/index.html
 layout: "layouts/page.html"
 hero:
 content_blocks: []
