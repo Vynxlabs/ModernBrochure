@@ -1,0 +1,10 @@
+<div class="sticky bottom-1 w-full md:w-max md:max-w-[512px] ">
+  {% if content.buttons %}
+    <div class="mt-10 flex w-full gap-8 flex-wrap justify-center bg-{{styles.color_group}}-{{styles.colorFromGroup}}color {{theme.container_rounding}}">
+      {% for button in content.buttons %}
+        {% bookshop "{{button._bookshop_name}}" bind: button %}
+      {% endfor %}
+
+    </div>
+  {% endif %}
+</div>
