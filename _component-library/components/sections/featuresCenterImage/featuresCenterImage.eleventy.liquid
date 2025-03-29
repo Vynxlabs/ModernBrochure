@@ -9,12 +9,13 @@
 {% endif %}
 
 <div class="c-featuresCenterImage componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
-  <section
-    class="basecontainer w-full">
-  {% if content.sectionId %}
-    {% bookshop "util/IdScrollEvent" sectionId: content.sectionId %}
-  {% endif %}
-    {% if content.heading %} {% bookshop {{content.heading._bookshop_name}} bind: content.heading %} {% endif %}
+  <section class="basecontainer w-full">
+    {% if content.sectionId %}
+      {% bookshop "util/IdScrollEvent" sectionId: content.sectionId %}
+    {% endif %}
+    {% if content.heading %}
+      {% bookshop {{content.heading._bookshop_name}} bind: content.heading %}
+    {% endif %}
     {% if env_bookshop_live and content.showNote %}
       <div class="mb-20">{% bookshop "generic/notification" heading: "No image visual interest" text: "The visual interest for the images (Dots or Crosses) will not show up when editing, but will show up on the live site" %}</div>
     {% endif %}
@@ -58,17 +59,16 @@
 
               <div class="relative">{{ '/src' | append: visualInterestPath | svgContents: visualInterestClasses }}</div>
             {% endif %}
-             {% capture imageClasses %}
+            {% capture imageClasses %}
                 {{theme.image_rounding}} xl:aspect-auto aspect-video object-cover
               {% endcapture %}
-
 
             {% bookshop "generic/image" bind: content.image class: imageClasses %}
 
             {% if content.buttons %}
               <div class="mt-10 flex w-full gap-8 flex-wrap justify-center ">
                 {% for button in content.buttons %}
-                  {% bookshop "generic/button" bind: button %}
+                  {% bookshop "{{button._bookshop_name}}" bind: button %}
                 {% endfor %}
 
               </div>

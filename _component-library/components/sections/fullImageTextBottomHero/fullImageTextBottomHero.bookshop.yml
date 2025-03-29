@@ -15,8 +15,8 @@ blueprint:
     highlightEybrow: false
     eyebrow:
     headline: "Hero Headline"
-    description: 
-    buttons: [bookshop:generic/button]
+    description:
+    buttons: [bookshop:structure:buttons]
     image: bookshop:generic/image!
   styles:
     color_group: primary

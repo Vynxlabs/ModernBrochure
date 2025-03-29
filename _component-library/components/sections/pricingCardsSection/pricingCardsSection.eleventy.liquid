@@ -6,7 +6,9 @@
     {% if content.sectionId %}
       {% bookshop "util/IdScrollEvent" sectionId: content.sectionId %}
     {% endif %}
-    {% if content.heading %} {% bookshop {{content.heading._bookshop_name}} bind: content.heading %} {% endif %}
+    {% if content.heading %}
+      {% bookshop {{content.heading._bookshop_name}} bind: content.heading %}
+    {% endif %}
     <div class="mt-24 flex gap-4 justify-center flex-wrap">
 
       {% if content.cards %}
@@ -21,7 +23,7 @@
     {% if content.buttons %}
       <div class="mt-14 flex w-full gap-8 flex-wrap justify-center">
         {% for button in content.buttons %}
-          {% bookshop "generic/button" bind: button %}
+          {% bookshop "{{button._bookshop_name}}" bind: button %}
         {% endfor %}
 
       </div>

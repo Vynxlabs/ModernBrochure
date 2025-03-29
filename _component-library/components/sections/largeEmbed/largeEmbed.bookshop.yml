@@ -15,7 +15,7 @@ blueprint:
     showNote: true
     heading: bookshop:structure:headingBlocks
     embed: bookshop:structure:embeds
-    buttons: [bookshop:generic/button]
+    buttons: [bookshop:structure:buttons]
   styles:
     color_group: primary
 
