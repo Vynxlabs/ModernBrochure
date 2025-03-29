@@ -18,6 +18,7 @@ engine.registerFilter('fileSubstringFilter', fileSubstringFilter);
 async function calculatePermalink(frontMatter, filePath) {
     const fileStem = filePath.replace(/^\.?\/src/, '').replace(/\.mdx?$/, '');
     const context = {
+        id: frontMatter.id || null,
         page: { filePathStem: fileStem },
         title: frontMatter.title || null,
         pageLink: frontMatter.pageLink || null
