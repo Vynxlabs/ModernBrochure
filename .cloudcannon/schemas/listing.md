@@ -11,8 +11,6 @@ customCode:
   bodyCode: ""
 tags:
 listingSetup:
-  primaryImage:
-  imageAltText:
   canExpire: false
   expireDate:
   images: [bookshop:generic/image]
@@ -20,6 +18,15 @@ pageLink:
 permalink: >-
   /listing/{% assign id = id | uuidHashFilter%}{% capture varPagePath %}{% if pageLink%}{% assign pageLink = pageLink | slugify%}{{  page.filePathStem |fileSubstringFilter | append: pageLink | append: "-" | append: id  }}{% else %}{{  page.filePathStem |fileSubstringFilter | append: id }}{% endif %}{% endcapture %}/{{varPagePath | strip}}/index.html
 layout: "layouts/page.html"
+heading:
+  eyebrow:
+  headline:
+  keyInformation:
+imageCarousel: 
+  images: [bookshop:generic/image]
+description:
+actionBar: 
+  buttons: [bookshop:structure:buttons]
 hero:
   _bookshop_name: sections/simpleHero
 content_blocks:
