@@ -172,7 +172,6 @@ const validateAndResolveParameters = (
       if (
         blueprintParameters[key] === null ||
         blueprintParameters[key] === undefined ||
-        blueprintParameters[key] === false || //Allow booleans with a false default. I hope I don't regret this later.
         blueprintParameters[key].includes("bookshop:") || //Allow bookshop: as this won't cause conflicts
         blueprintParameters[key][0].includes("bookshop:") 
       ) {
