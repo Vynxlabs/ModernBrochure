@@ -27,4 +27,4 @@ _inputs:
   resource:
     comment: 'To what should the pop up open to?'
   form_color_group:
-    hidden: '!resource._bookshop_name=="simple/formBuilder"'
+    hidden: '{{ resource._bookshop_name != "simple/formBuilder" }}'
