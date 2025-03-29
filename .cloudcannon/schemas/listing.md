@@ -18,10 +18,13 @@ listingSetup:
   images: [bookshop:generic/image]
 pageLink:
 permalink: >-
-  /listing/{% capture varPagePath %}{% if pageLink%}{% assign pageLink = pageLink | slugify%}{{  page.filePathStem |fileSubstringFilter | append: pageLink | append: "-" | append: id | uuidHashFilter }}{% else %}{% assign id = id | uuidHashFilter%}{{  page.filePathStem |fileSubstringFilter | append: id }}{% endif %}{% endcapture %}/{{varPagePath | strip}}/index.html
+  /listing/{% assign id = id | uuidHashFilter%}{% capture varPagePath %}{% if pageLink%}{% assign pageLink = pageLink | slugify%}{{  page.filePathStem |fileSubstringFilter | append: pageLink | append: "-" | append: id  }}{% else %}{{  page.filePathStem |fileSubstringFilter | append: id }}{% endif %}{% endcapture %}/{{varPagePath | strip}}/index.html
 layout: "layouts/page.html"
 hero:
-content_blocks: []
+  _bookshop_name: sections/simpleHero
+content_blocks:
+  - _bookshop_name: sections/imageCarousel
+  - _bookshop_name: sections/informationCards
 _inputs:
   headCode:
     type: "code"
