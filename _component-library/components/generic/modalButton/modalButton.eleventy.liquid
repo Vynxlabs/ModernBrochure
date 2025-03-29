@@ -19,12 +19,13 @@ transition #modal-{{id}} opacity to 1 over 0.2s
       _="
           on click
           set modal to #modal-{{id}}
-          transition #modal-{{id}} opacity to 0 over 0.2s settle then
+          transition #modal-{{id}} opacity to 0 over 0.1s settle then
           modal.close()
           ">
       {% bookshop "generic/heroLibraryIcon" heroLibraryIconName: "x-mark" iconType: "solid" iconSize: 'large' roundedBorder: false color: "#ffffff" %}
     </button>
-    <div class="self-center w-full max-w-[90%] flex justify-center">
+    <div class="self-center w-full max-w-[90%] {% if resource._bookshop_name != "generic/videoEmbed" %}flex justify-center{% endif %}">
+
       {% if resource._bookshop_name == "simple/formBuilder" %}
 
         {% assign color_group = form_color_group %}
