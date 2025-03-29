@@ -3,6 +3,7 @@ spec:
   structures:
     - assets
     - card_imagery_blocks
+    - resource
   label: "Image"
   description: An image that wil be optimized
   icon: image

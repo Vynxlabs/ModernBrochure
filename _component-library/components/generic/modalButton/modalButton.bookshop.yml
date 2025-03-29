@@ -2,34 +2,26 @@
 spec:
   structures:
     - buttons
-  label: "Button"
-  description: Link to another ocation with the style of a button
-  icon: smart_button
+  label: "Modal Button"
+  description:
+  icon:
   tags: []
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  url: "#"
-  openInNewTab: false
+  id:
+  resource: bookshop:structure:resource
   text: "Button text"
   color_group: primary
   colorFromGroup: primary
   ghostButton: false
-  formSubmit: false
-
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
-  url: "#"
-  text: "Button text"
-  color_group: primary
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
-  openInNewTab:
-    hidden: "!url"
-  blackText:
-    type: switch
-    label: Black Text
-  formSubmit:
+  id:
     hidden: true
+  resource:
+    comment: 'To what should the pop up open to?'
