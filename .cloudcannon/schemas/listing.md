@@ -4,14 +4,14 @@ draft: true
 eleventyExcludeFromCollections: false
 disableNav: false
 disableSitemap: false
-title: 
-metaDesc: 
+title:
+metaDesc:
 customCode:
   headCode: ""
   bodyCode: ""
 tags:
 listingSetup:
-  primaryImage: 
+  primaryImage:
   imageAltText:
   canExpire: false
   expireDate:
@@ -34,7 +34,7 @@ _inputs:
     options:
       values: data.listingTags
   expireDate:
-    hidden: !canExpire
+    hidden: "!canExpire"
   images:
     comment: "The first image will be used as the primary image will be used for listing cards"
 ---
