@@ -35,7 +35,7 @@ function appendPaginationToFrontMatter(filePath) {
         if ((frontMatter.pageLink === "/" && path.dirname(filePath).toLowerCase().match(/src\/pages\/listings/)) ) {
             frontMatter.pagination = {
                 data: 'collections.listings',
-                size: 22,
+                size: 50,
                 generatePageOnEmptyData: true,
             };
         } else {
