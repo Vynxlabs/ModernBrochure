@@ -25,8 +25,7 @@ heading:
 imageCarousel:
   - _bookshop_name: generic/image 
 description:
-actionBar: 
-  buttons: [bookshop:structure:buttons]
+buttons: []
 hero:
   _bookshop_name: sections/simpleHero
 content_blocks:
