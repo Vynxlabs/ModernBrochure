@@ -436,7 +436,7 @@ module.exports = (eleventyConfig) => {
     execSync("node ./utils/permalinkDupCheck.js");
     execSync("node ./utils/addHappeningPagination.js");
     execSync("node ./utils/addBlogPagination.js");
-    execSync("node ./utils/addListingsPagination.js");
+    execSync("node ./utils/addListingPagination.js");
     execSync("node ./utils/fetch-theme-variables.js");
     execSync("node ./utils/copyGlideAssets.js");
   });
