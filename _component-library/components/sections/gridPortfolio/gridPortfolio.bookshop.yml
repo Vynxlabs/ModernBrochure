@@ -2,6 +2,7 @@
 spec:
   structures:
     - content_blocks
+    - extra_blocks
   label: "Image Grid Portfolio"
   description: Shows a portfolio of images in an offset grid
   icon:

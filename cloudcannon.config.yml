@@ -586,7 +586,13 @@ _snippets:
               name: Vimeo
 _select_data: {}
 _structures:
+  extra_blocks:
+    label: Additional Content Sections
+    comment: >-
+      Add any additional content sections below the predefined sections.
+    style: modal
   content_blocks:
+    label: Content Sections
     style: modal
   hero_blocks:
     style: modal

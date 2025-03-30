@@ -2,6 +2,7 @@
 spec:
   structures:
     - content_blocks
+    - extra_blocks
   label: "Simple Text Block"
   description: Block of content with a header
   icon: article

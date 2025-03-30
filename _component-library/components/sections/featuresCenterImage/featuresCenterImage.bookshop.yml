@@ -2,6 +2,7 @@
 spec:
   structures:
     - content_blocks
+    - extra_blocks
   label: "Features - Centered Image"
   description: Features section with a central image
   icon:

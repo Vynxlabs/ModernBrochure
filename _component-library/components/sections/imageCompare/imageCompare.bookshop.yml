@@ -2,6 +2,7 @@
 spec:
   structures:
     - content_blocks
+    - extra_blocks
   label: "Image Compare"
   description: A left right comparison of two images.
   icon: compare
