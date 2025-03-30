@@ -322,15 +322,6 @@ _inputs:
     type: object
     options:
       structures: _structures.hero_blocks
-  description:
-    type: markdown
-    options:
-      link: true
-      bold: true
-      italic: true
-      undo: true
-      redo: true
-      initial_height: 135
   socialImage:
     type: image
     hidden: false
