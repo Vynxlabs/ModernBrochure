@@ -13,7 +13,6 @@ tags:
 listingSetup:
   canExpire: false
   expireDate:
-  images: [bookshop:generic/image]
 pageLink:
 permalink: >-
   /listing/{% assign id = id | uuidHashFilter%}{% capture varPagePath %}{% if pageLink%}{% assign pageLink = pageLink | slugify%}{{  page.filePathStem |fileSubstringFilter | append: pageLink | append: "-" | append: id  }}{% else %}{{  page.filePathStem |fileSubstringFilter | append: id }}{% endif %}{% endcapture %}/{{varPagePath | strip}}/index.html
@@ -22,8 +21,7 @@ heading:
   eyebrow:
   headline:
   keyInformation:
-imageCarousel:
-  - _bookshop_name: generic/image 
+images: []
 description:
 buttons: []
 hero:
