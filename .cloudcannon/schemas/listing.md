@@ -29,6 +29,13 @@ hero:
 content_blocks:
   - _bookshop_name: sections/imageCarousel
   - _bookshop_name: sections/informationCards
+_structures:
+  cards:
+    style: select
+    values:
+      - eyebrow:
+        headline:
+        description:
 _inputs:
   headCode:
     type: "code"
@@ -84,11 +91,4 @@ _inputs:
     type: array
     options:
       sutructure: _structures.cards
-_structures:
-  cards:
-    style: select
-    values:
-      - eyebrow:
-        headline:
-        description:
 ---
