@@ -32,10 +32,10 @@ content_blocks:
 _structures:
   cards:
     style: select
-    values:
-      - eyebrow:
-        headline:
-        description:
+    value:
+      eyebrow:
+      headline:
+      description:
 _inputs:
   headCode:
     type: "code"
@@ -90,5 +90,5 @@ _inputs:
   overviewCards:
     type: array
     options:
-      sutructure: _structures.cards
+      structures: _structures.cards
 ---
