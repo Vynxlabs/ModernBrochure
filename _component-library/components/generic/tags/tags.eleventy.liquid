@@ -1,8 +1,16 @@
 {% assign blacklist = "gray,zinc,neutral,red,green,lime,emerald,rose" | split: "," %}
+{% assign isDisqualified = false %}
+{% for tag in tags %}
+  {% if listings.disqualificationTags contains tag %}
+    {% assign isDisqualified = true %}
+  {% endif %}
+{% endfor %}
 
 <div class="c-tags flex flex-wrap gap-2 mt-2">
   {% for tag in tags %}
-    <a href="/tag/{{tag | slug}}/" class="inline-block px-2 py-0.5 text-xs font-medium border-2 rounded-full transition 
+    {% unless isDisqualified %}
+
+      <a href="/tag/{{tag | slug}}/" class="inline-block px-2 py-0.5 text-xs font-medium border-2 rounded-full transition 
     {% if listings.availableTags contains tag %}
  bg-green-100 text-green-700 border-green-700 hover:bg-green-200
  {% elsif listings.disqualificationTags contains tag %}
@@ -10,7 +18,8 @@
   {% else %}
     {{tag | tagColorFilter: blacklist}} 
 {% endif %} ">
-      {{ tag }}</a>
+        {{ tag }}</a>
+    {% endunless %}
   {% endfor %}
 </div>
 {% comment %}
@@ -30,7 +39,7 @@
   bg-green-100 text-green-700 border-green-700 hover:bg-green-200 border-green-300
   bg-emerald-100 text-emerald-700 border-emerald-700 hover:bg-emerald-200 border-emerald-300
   bg-teal-100 text-teal-700 border-teal-700 hover:bg-teal-200 border-teal-300
-  bg-cyan-100 text-cyan-700 border-cyan-700 hover:bg-cyan-200 border-cyan-300 
+  bg-cyan-100 text-cyan-700 border-cyan-700 hover:bg-cyan-200 border-cyan-300
   bg-sky-100 text-sky-700 border-sky-700 hover:bg-sky-200 border-sky-300
   bg-blue-100 text-blue-700 border-blue-700 hover:bg-blue-200 border-blue-300
   bg-indigo-100 text-indigo-700 border-indigo-700 hover:bg-indigo-200 border-indigo-300
