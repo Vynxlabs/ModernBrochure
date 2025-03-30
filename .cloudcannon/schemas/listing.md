@@ -11,6 +11,7 @@ customCode:
   bodyCode: ""
 pageLink:
 tags:
+tagColors: colorful
 canExpire: false
 expireDate:
 permalink: >-
