@@ -19,7 +19,7 @@ layout: "layouts/listing.html"
 heading:
   eyebrow:
   headline:
-  description:
+  keyInformation:
 images: []
 buttons: []
 overviewCards:
@@ -47,12 +47,32 @@ _inputs:
     hidden: "!canExpire"
   images:
     comment: "The first image will be used as the primary image will be used for listing cards"
-  buttons:
-    label: Action bar
-    comment: "These are button that will always be visible at the bottom of the screen. Greate for CTAs like 'Call now', 'contact us', etc" 
-  description:
+  keyInformation:
     label: Key information
     comment: "Short description of the listing. Will be shown on the listing cards. Should be a few sentences long"
+    type: markdown
+    options:
+      link: true
+      blockquote: false
+      bold: true
+      italic: true
+      strike: true
+      subscript: true
+      superscript: true
+      underline: true
+      bulletedlist: true
+      numberedlist: true
+      indent: false
+      outdent: false
+      code: false
+      embed: false
+      horizontalrule: false
+      image: false
+      table: false
+      undo: true
+      redo: true
+      removeformat: true
+      copyformatting: true
   headline:
     label: Listing Title
     comment: "Main title of the listing. Will be used on the listing cards. If left blank, the page title will be used"
