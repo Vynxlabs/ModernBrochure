@@ -19,7 +19,7 @@ permalink: >-
 layout: "layouts/listing.html"
 heading:
   eyebrow:
-  headline:
+  listingTitle:
   keyInformation:
 images: []
 buttons: []
@@ -50,6 +50,32 @@ _inputs:
     type: datetime
   images:
     comment: "The first image will be used as the primary image will be used for listing cards"
+  listingTitle:
+    comment: "The title of the listing. Will be used on the listing cards. If left blank, the page title will be used"
+    type: markdown
+    options:
+      link: false
+      blockquote: false
+      bold: false
+      italic: true
+      strike: true
+      subscript: true
+      superscript: true
+      underline: false
+      bulletedlist: false
+      numberedlist: false
+      indent: false
+      outdent: false
+      code: false
+      embed: false
+      horizontalrule: false
+      image: false
+      table: false
+      undo: true
+      redo: true
+      removeformat: true
+      copyformatting: true
+      initial_height: 150
   keyInformation:
     label: Key information
     comment: "Short description of the listing. Will be shown on the listing cards. Should be a few sentences long"
@@ -76,9 +102,6 @@ _inputs:
       redo: true
       removeformat: true
       copyformatting: true
-  headline:
-    label: Listing Title
-    comment: "Main title of the listing. Will be used on the listing cards. If left blank, the page title will be used"
   details:
     comment: "This for EVERYTHING else you want someone to know about the listing"
     type: markdown
