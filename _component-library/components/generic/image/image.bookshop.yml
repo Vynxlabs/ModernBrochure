@@ -4,6 +4,7 @@ spec:
     - assets
     - card_imagery_blocks
     - resource
+    - images
   label: "Image"
   description: An image that wil be optimized
   icon: image
