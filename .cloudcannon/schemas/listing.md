@@ -22,8 +22,8 @@ heading:
   eyebrow:
   headline:
   keyInformation:
-imageCarousel: 
-  images: [bookshop:generic/image]
+imageCarousel:
+  - _bookshop_name: generic/image 
 description:
 actionBar: 
   buttons: [bookshop:structure:buttons]
