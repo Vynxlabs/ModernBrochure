@@ -1,4 +1,8 @@
+{% if styles.tagColors == 'greyscale' %}
+{% assign blacklist = "red,orange,amber,yellow,lime,green,emerald,teal,cyan,sky,blue,indigo,violet,purple,fuchsia,pink,rose" | split: "," %}
+ {% else %}
 {% assign blacklist = "gray,zinc,neutral,red,green,lime,emerald,rose" | split: "," %}
+{% endif %}
 {% assign isDisqualified = false %}
 {% for tag in tags %}
   {% if listings.disqualificationTags contains tag %}
