@@ -52,7 +52,9 @@ async function updatePermalinks() {
             if (frontMatterMatch) {
                 let frontMatter = yaml.load(frontMatterMatch[1]);
                 let originalPermalink = await calculatePermalink(frontMatter, filePath);
-
+                //Yes this is a hack, but this is a quick fix
+                originalPermalink = originalPermalink.replace('//', '/');
+                originalPermalink = originalPermalink.replace('//', '/');
                 if (originalPermalink) {
                     let permalink = originalPermalink;
                     console.log(permalink);
