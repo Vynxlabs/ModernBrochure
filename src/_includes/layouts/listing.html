@@ -1,0 +1,14 @@
+
+{% layout "layouts/base.html" %} 
+
+{% bookshop_include "extra" extra_blocks: extra_blocks %}
+
+{% block content %}
+
+{% if content and content != "" %}
+<div class="flex justify-center">
+  <section class="w-full max-w-[720px] cs-mainContent">{{ content }}</section>
+</div>
+{% endif %}
+
+ {% endblock %}
