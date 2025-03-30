@@ -9,21 +9,24 @@ metaDesc:
 customCode:
   headCode: ""
   bodyCode: ""
-tags:
-listingSetup:
-  canExpire: false
-  expireDate:
 pageLink:
+tags:
+canExpire: false
+expireDate:
 permalink: >-
   /listing/{% assign id = id | uuidHashFilter%}{% capture varPagePath %}{% if pageLink%}{% assign pageLink = pageLink | slugify%}{{  page.filePathStem |fileSubstringFilter | append: pageLink | append: "-" | append: id  }}{% else %}{{  page.filePathStem |fileSubstringFilter | append: id }}{% endif %}{% endcapture %}/{{varPagePath | strip}}/index.html
 layout: "layouts/page.html"
 heading:
   eyebrow:
   headline:
-  keyInformation:
+  description:
 images: []
-description:
 buttons: []
+overview:
+  - eyerow::
+    headline:
+    description:
+details:
 hero:
   _bookshop_name: sections/simpleHero
 content_blocks:
@@ -44,4 +47,51 @@ _inputs:
     hidden: "!canExpire"
   images:
     comment: "The first image will be used as the primary image will be used for listing cards"
+  buttons:
+    label: Action bar
+    comment: "These are button that will always be visible at the bottom of the screen. Greate for CTAs like 'Call now', 'contact us', etc" 
+  description:
+    label: Key information
+    comment: "Short description of the listing. Will be shown on the listing cards. Should be a few sentences long"
+  headline:
+    label: Listing Title
+    comment: "Main title of the listing. Will be used on the listing cards. If left blank, the page title will be used"
+  details:
+    comment: "This for EVERYTHING else you want someone to know about the listing"
+    type: markdown
+    options:
+      link: true
+      blockquote: false
+      bold: true
+      format: p h3 h4 h5 h6
+      italic: true
+      strike: true
+      subscript: true
+      superscript: true
+      underline: true
+      bulletedlist: true
+      numberedlist: true
+      indent: false
+      outdent: false
+      code: false
+      embed: false
+      horizontalrule: false
+      image: false
+      table: false
+      undo: true
+      redo: true
+      removeformat: true
+      copyformatting: true
+      snippet: true
+  overviewCards:
+    type: array
+    options:
+      sutructure: _structures.cards
+_structures:
+  cards:
+    style: select
+    values:
+      - eyebrow:
+        headline:
+        description:
 ---
