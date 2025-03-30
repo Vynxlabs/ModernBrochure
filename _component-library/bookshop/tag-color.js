@@ -29,7 +29,7 @@ module.exports = function (Liquid) {
     const shade = 100;
     const textShade = 700;
     const hoverShade = 200;
-    return `bg-${color}-${shade} text-${color}-${textShade} hover:bg-${color}-${hoverShade}`;
+    return `bg-${color}-${shade} text-${color}-${textShade} hover:bg-${color}-${hoverShade} border-${color}-${shade}`;
 
     function hashTag(tagName) {
       let hash = 0;
