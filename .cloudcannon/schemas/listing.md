@@ -46,6 +46,8 @@ _inputs:
       values: data.listingTags
   expireDate:
     hidden: "!canExpire"
+    commenet: "The date the listing will expire. Time must be entered in UTC time."
+    type: datetime
   images:
     comment: "The first image will be used as the primary image will be used for listing cards"
   keyInformation:
