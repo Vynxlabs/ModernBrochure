@@ -22,10 +22,7 @@ heading:
   description:
 images: []
 buttons: []
-overview:
-  - eyerow::
-    headline:
-    description:
+overviewCards:
 details:
 hero:
   _bookshop_name: sections/simpleHero
