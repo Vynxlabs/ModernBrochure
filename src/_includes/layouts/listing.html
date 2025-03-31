@@ -52,7 +52,7 @@
 {% endcapture %}
 {% assign imageCarousel = imageCarousel | ymlify %}
 
-{% bookshop "sections/imageCarousel" bind: imageCarousel %}
+<div class="mt-4">{% bookshop "sections/imageCarousel" bind: imageCarousel %}</div>
 
 {% comment %}
 Overview cards
@@ -108,15 +108,18 @@ Overview cards
       styles:
         contentAlignment: left
         textAlignment: left
-    text: {{details | stringifyFilter}}
+    text:
+      text: {{details | stringifyFilter}}
   styles:
     color_group: {{colorGroupToUse}}
 {% endcapture %}
-{% assign listingDetails = listingDetails | ymlify %}
+{% assign listingDetails = listingDetails | ymlify | log%}
+
 
 {% bookshop "sections/simpleTextBlock" bind: listingDetails %}
 
-
+<p>{{details}}</p>
+<p>{{details | stringifyFilter}}</p>
 {% comment %}
   extra blocks load below this line
 {% endcomment %}
