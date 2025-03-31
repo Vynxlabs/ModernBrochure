@@ -25,7 +25,7 @@ images: []
 buttons: []
 overviewCards:
 details:
-hero: "placeholder"
+hero: false
 extra_blocks: []
 _structures:
   cards:
