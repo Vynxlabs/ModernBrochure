@@ -25,6 +25,7 @@ images: []
 buttons: []
 overviewCards:
 details:
+hero: "placeholder"
 extra_blocks: []
 _structures:
   cards:
@@ -34,6 +35,8 @@ _structures:
       headline:
       description:
 _inputs:
+  hero:
+    hidden: true
   headCode:
     type: "code"
     comment: "Add code at the end of the <head> tag"
