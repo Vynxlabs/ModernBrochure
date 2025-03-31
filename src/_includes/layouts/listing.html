@@ -1,9 +1,125 @@
 
 {% layout "layouts/base.html" %} 
-
-
 {% block content %}
+
+{% assign colorGroupToUse = site.color_group %}
+{% capture listingTitle %}
+{% if heading.listingTitle %}
+ {{heading.listingTitle}}
+ {% else %}
+  {{title}} 
+{% endif %}  
+{% endcapture %}
+
+{% assign listingTitle = listingTitle | strip %}
+
+
+{% comment %}
+  Hero Section
+{% endcomment %}
+{% capture listingHeading %}
+  _bookshop_name: "sections/simpleHero"
+  content:
+    eyebrow: {{heading.eyebrow| stringifyFilter}}
+    headline: {{listingTitle | stringifyFilter}}
+    description: {{heading.keyInformation| stringifyFilter}}
+    headingHierarchy: "h1"
+  styles:
+    contentAlignment: left
+    textAlignment: left 
+{% endcapture %}
+{% assign listingHeading = listingHeading | ymlify %}
+
+{% bookshop "sections/simpleHero" bind: listingHeading %}
+
+{% capture listingTags %}
+  styles:
+    tagColors: {{tagColors.tagColors}}
+{% endcapture %}
+
+{% bookshop "generic/tags" bind: listingTags %}
+
+{% comment %}
+  image carousel
+{% endcomment %}
+{% capture imageCarousel %}
+  _bookshop_name: "sections/imageCarousel"
+  content:
+    images:
+      {{images}}
+  styles:
+    color_group: {{colorGroupToUse}}
+{% endcapture %}
+{% assign imageCarousel = imageCarousel | ymlify %}
+
+{% bookshop "sections/imageCarousel" bind: imageCarousel %}
+
+{% comment %}
+Overview cards
+{% endcomment %}
+
+{%- capture infoCards -%}
+  {% for card in overviewCards %}
+   - heading:
+      _bookshop_name: "generic/heading"
+      content:
+        eyebrow: {{card.eyebrow}}
+        headline: {{card.headline}}
+        description: {{card.description}}
+      styles:
+        contentAlignment: center
+        textAlignment: center
+  {% endfor %}  
+{%- endcapture -%}
+
+{% assign infoCards = infoCards | ymlify %}
+
+{% capture listingOverviewCards %}
+  _bookshop_name: "sections/informationCards"
+  content:
+    heading:
+      _bookshop_name: "generic/heading"
+      content:
+        headline: Overview
+      styles:
+        contentAlignment: left
+        textAlignment: left
+    cards:
+      {{infoCards}}
+  styles:
+    color_group: {{colorGroupToUse}}
+{% endcapture %}
+{% assign listingOverviewCards = listingOverviewCards | ymlify %}
+
+{% bookshop "sections/informationCards" bind: listingOverviewCards %}
+
+{% comment %}
+  Details
+{% endcomment %}
+{% capture listingDetails %}
+  _bookshop_name: "sections/simpleTextBlock"
+  content:
+    heading:
+      _bookshop_name: "generic/heading"
+      content:
+        headline: Details
+      styles:
+        contentAlignment: left
+        textAlignment: left
+    text: {{details}}
+  styles:
+    color_group: {{colorGroupToUse}}
+{% endcapture %}
+{% assign listingDetails = listingDetails | ymlify %}
+
+{% bookshop "sections/simpleTextBlock" bind: listingDetails %}
+
+
+{% comment %}
+  extra blocks load below this line
+{% endcomment %}
 {% bookshop_include "extra" extra_blocks: extra_blocks %}
+
 {% if content and content != "" %}
 <div class="flex justify-center">
   <section class="w-full max-w-[720px] cs-mainContent">{{ content }}</section>
