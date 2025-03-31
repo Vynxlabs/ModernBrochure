@@ -46,7 +46,7 @@
   _bookshop_name: "sections/imageCarousel"
   content:
     images:
-      {{images}}
+      {{images | json}}
   styles:
     color_group: {{colorGroupToUse}}
 {% endcapture %}
@@ -85,7 +85,7 @@ Overview cards
         contentAlignment: left
         textAlignment: left
     cards:
-      {{infoCards}}
+      {{infoCards | json}}
   styles:
     color_group: {{colorGroupToUse}}
 {% endcapture %}
@@ -106,7 +106,7 @@ Overview cards
       styles:
         contentAlignment: left
         textAlignment: left
-    text: {{details}}
+    text: {{details | stringifyFilter}}
   styles:
     color_group: {{colorGroupToUse}}
 {% endcapture %}
