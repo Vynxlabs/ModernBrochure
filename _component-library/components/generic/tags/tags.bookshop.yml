@@ -20,7 +20,8 @@ _inputs:
   tagColors:
     type: select
     options:
-      - name: Colorful
-        id: colorful
-      - name: Grey Scale
-        id: greyscale
+      values:
+        - name: Colorful
+          id: colorful
+        - name: Grey Scale
+          id: greyscale

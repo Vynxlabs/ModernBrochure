@@ -545,13 +545,6 @@ _inputs:
       redo: true
       removeformat: true
       copyformatting: true
-  tagColors:
-    type: select
-    options:
-      - name: Colorful
-        id: colorful
-      - name: Grey Scale
-        id: greyscale
 _snippets:
   imageModal:
     template: eleventy_liquid_bookshop_component
