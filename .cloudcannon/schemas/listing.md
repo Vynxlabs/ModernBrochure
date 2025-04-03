@@ -15,7 +15,7 @@ canExpire: false
 expireDate:
 permalink: >-
   /listings/{% assign id = id | uuidHashFilter%}{% capture varPagePath %}{% if pageLink%}{% assign pageLink = pageLink | slugify%}{{  page.filePathStem |fileSubstringFilter | append: pageLink | append: "-" | append: id  }}{% else %}{{  page.filePathStem |fileSubstringFilter | append: id }}{% endif %}{% endcapture %}/{{varPagePath | strip}}/index.html
-layout: "layouts/page.html"
+layout: "layouts/listing.html"
 keyInformation:
 hero:
 content_blocks: []
