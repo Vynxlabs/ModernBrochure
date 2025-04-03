@@ -11,7 +11,7 @@ function showDraft(data) {
 }
 
 module.exports = {
-	layout: "./layouts/listing.html",
+	layout: "./layouts/page.html",
 	eleventyComputed: {
 		eleventyExcludeFromCollections: function(data) {
 			if (showDraft(data)) {
