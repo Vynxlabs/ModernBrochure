@@ -2,7 +2,7 @@
 {% if env_bookshop_live %}
 {% assign listings = collections.lisings %}    
 {% endif %}
-{% assign listingCardStyle = 'generic/listings/' | append: styles.cardStyle | append: "ListingCard" %}
+{% assign listingCardStyle = 'generic/listings/' | append: styles.listingCardStyle | append: "ListingCard" %}
 <div class="c-listingsAll componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
   <section
     class="basecontainer w-full"
@@ -11,6 +11,7 @@
     {% endif %}>
   {% if listings.size > 0 %}  
     <ul class="mt-20 flex flex-wrap justify-center gap-8">
+
         {% for listing in listings %}
           {% capture card %}
           listingTitle: {{listing.data.listingTitle | stringifyFilter}}
