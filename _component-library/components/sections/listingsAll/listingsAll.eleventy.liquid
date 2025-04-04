@@ -17,10 +17,29 @@
     {% if content.sectionId %}
               {% bookshop "util/IdScrollEvent" sectionId: content.sectionId %}
     {% endif %}>
+        {% if content.heading %}
+      {% bookshop {{content.heading._bookshop_name}} bind: content.heading %}
+    {% endif %}
   {% if listingsItems.size > 0 %}  
     <ul class="mt-20 flex flex-wrap justify-center gap-8">
-
         {% for listing in listingsItems %}
+          {% set continue_loop = false %}
+{% for tag in listing.data.tags %}
+    {% if not (tag in listings.availableTags) %}
+        {% set continue_loop = true %}
+        {% break %}
+    {% endif %}
+{% endfor %}
+
+{% if continue_loop %}
+    {% continue %}
+{% endif %}
+        {% if content.showExpired and listing.data.canExpire == true and listting.data.expireDate < now   %}
+         {%- continue -%} 
+        {% endif %}
+        {% if content.showAvailable and not listings.availableTags contains listing.data.tags %}
+          
+        {% endif %}
           {% capture featuredImage %}
             {% if listing.data.listingImage and listing.data.listingImage != "" %}
              image:
@@ -47,6 +66,8 @@
           {% bookshop {{listingCardStyle}} bind: card %}
         {% endfor %}
       </ul>
+      {% elsif content.noListingsHeading %}
+    {% bookshop {{contents.noListingsHeading._bookshop_name}} bind: contents.noListingsHeading %}
   {% endif %} 
     
     
