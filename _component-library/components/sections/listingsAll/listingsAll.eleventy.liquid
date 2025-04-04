@@ -1,3 +1,45 @@
-<div class="c-listingsAll">
-    <p>{{ text }}</p>
+{% assign color_group = styles.color_group %}
+{% if env_bookshop_live %}
+{% assign listings = collections.lisings %}    
+{% endif %}
+{% assign listingCardStyle = 'generic/listings/' | append: styles.cardStyle | append: "ListingCard" %}
+<div class="c-listingsAll componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
+  <section
+    class="basecontainer w-full"
+    {% if content.sectionId %}
+              {% bookshop "util/IdScrollEvent" sectionId: content.sectionId %}
+    {% endif %}>
+  {% if listings.size > 0 %}  
+    <ul class="mt-20 flex flex-wrap justify-center gap-8">
+        {% for listing in listings %}
+          {% bookshop {{listingCardStyle}} bind: card %}
+        {% endfor %}
+      </ul>
+  {% endif %} 
+    
+    
+    </section>
 </div>
+
+
+<script type="module">
+      document.addEventListener("DOMContentLoaded", async () => {
+        const pagefind = await import("/pagefind/pagefind.js");
+    // Initialize Pagefind
+    await pagefind.init();
+
+    // Example function to filter by tags
+    async function filterListings(tag) {
+      const results = await pagefind.search("", { filters: { tag: [tag] } });
+
+      // Render results
+      renderResults(results.results);
+    }
+
+    console.log("Pagefind initialized.");
+    // Example trigger for filtering
+    document.querySelectorAll('.filter-button').forEach(button => {
+      button.addEventListener('click', () => filterListings(button.dataset.tag));
+    });
+  });
+</script>

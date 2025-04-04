@@ -1,0 +1,76 @@
+{% for tag in listingTags %}
+  {% if data.listings.availableTags contains tag %}
+    {% assign availableTag = tag %}
+    {% assign variable = value %}
+    {% break %}
+  {% else %}
+  {% endif %}
+{% endfor %}
+
+
+{% for tag in listingTags %}
+  {% if data.listings.disqualificationTags contains tag %}
+    {% assign disqualifiedTag = tag %}
+    {% break %}
+  {% else %}
+  {% endif %}
+{% endfor %}
+
+{% if disqualifiedTag and disqualifiedTag != '' %}
+  {% assign tagClasses = 'bg-red-100 text-red-700 border-red-700 hover:bg-red-200' %}
+  {% assign tagToUse = disqualifiedTag %}
+{% elsif availableTag and availableTag != '' %}
+  {% assign tagClasses = 'bg-green-100 text-green-700 border-green-700 hover:bg-green-200' %}
+  {% assign tagToUse = availableTag %}
+{% else %}
+{% endif %}
+
+
+{% capture imageClasses %}
+    {{theme.image_rounding}} aspect-[8/7] object-cover object-center
+  {% endcapture %}
+<li class="c-defaultListingCard {{theme.container_rounding}}  h-full flex-1 flex flex-col max-w-[400px] min-w-[300px] md:min-w-[350px] bg-{{color_group}}-{{colorFromGroup}}color text-{{color_group}}-highcontrast-{{colorFromGroup}}color">
+  <a href="{{ listingUrl }}" class="block relative">
+    {% if tagToUse and tagToUse != '' %}
+
+      <time 
+      {% if expires == true %}
+        _="on load
+        set happeningDate to Date.parse('{{entry.data.happeningDate | date: "%Y-%m-%dT%H:%M:%S%z"}}')
+        log happeningDate
+        set timezone to Intl.DateTimeFormat().resolvedOptions().timeZone
+        js(happeningDate,timezone)
+        today = new Date(); 
+        dt = new Date(happeningDate);
+        console.log(dt);
+        if (dt < today) {
+          return 'EXPIRED'
+        }
+        return dt.toLocaleString('en-US', { timeZone: timezone }) end
+        put it into my.innerHTML
+        "
+      {% endif %}
+      
+      class="absolute bottom-5 right-5 p-2 z-10 bg-white text-slate-800 {{theme.container_rounding}}" datetime="{{ happeningDatetime | date: "%Y-%m-%d" }}">{{ happeningDatetime | date: "%Y-%m-%d %I:%M %P", 0 }} UTC</time>
+      <div class="absolute top-3 right-5 inline-block px-2 py-0.5 text-xs font-medium border-2 rounded-full transition {{tagClasses}} ">{{ tagToUse }}</div>
+    {% endif %}
+    {% bookshop "generic/image" bind: content.image class: imageClasses %}
+  </a>
+  <a href="{{ listingUrl }}" class="hover:underline">
+      <h5>{{ listingTitle }}</h5>
+  </a>
+  <ul class=" flex flex-wrap gap-x-4 overflow-hidden opacity-70">
+    {% for tag in listingTags %}
+      {% if tag != 'undefined' %}
+        <li class="hover:underline after:absolute after:content-['·'] after:scale-150  after:left-2 relative before:content-[' '] after:left-[-10px] after:text-lg ">
+          <a
+            data-umami-event="{{tag | slug}}-{{listingTitle}}-{{page.url}}-tags"
+            class="font-bold text-sm"
+            href="/tag/{{ tag | slug }}/">{{ tag | capitalize }}</a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  <p>{{ keyInformation }}</p>
+  <a class="underline" href="{{ listingUrl }}">Learn more</a>
+</li>
