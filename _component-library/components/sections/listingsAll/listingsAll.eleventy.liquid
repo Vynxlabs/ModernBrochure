@@ -1,10 +1,10 @@
 {% assign color_group = styles.color_group %}
 {% if env_bookshop_live %}
-{% assign listings = collections.listings %}    
+{% assign listingsItems = collections.listings %}    
 {% elsif pagination.items %}
- {% assign listings = pagination.items %}
+ {% assign listingsItems = pagination.items %}
 {% else %}
-{% assign listings = collections.listings %} 
+{% assign listingsItems = collections.listings %} 
 {% endif %}
 {% comment %}
   don't forget to make use of pagination.items
@@ -17,10 +17,10 @@
     {% if content.sectionId %}
               {% bookshop "util/IdScrollEvent" sectionId: content.sectionId %}
     {% endif %}>
-  {% if listings.size > 0 %}  
+  {% if listingsItems.size > 0 %}  
     <ul class="mt-20 flex flex-wrap justify-center gap-8">
 
-        {% for listing in listings %}
+        {% for listing in listingsItems %}
           {% capture featuredImage %}
             {% if listing.data.listingImage and listing.data.listingImage != "" %}
              image:
@@ -28,8 +28,8 @@
                 imageAlt: {{listing.data.imageAltText}}
             {% else %}
             image:
-                imagePath: {{data.listings.defaultImage.imagePath}}
-                imageAlt: {{data.listings.defaultImage.imageAlt}}
+                imagePath: {{listings.defaultImage.imagePath}}
+                imageAlt: {{listings.defaultImage.imageAlt}}
             {% endif %}
           {% endcapture %}
           {% capture card %}
@@ -39,7 +39,7 @@
           expires: {{listing.data.canExpire}}
           listingExpiration: {{listing.data.expireDate}}
           listingTags: {{listing.data.tags | ymlify | split: "," | json}}
-          {{featuredImage | strip}}
+          {{featuredImage | strip | log}}
           color_group: {{styles.card_color_group}}
           colorFromGroup: {{styles.colorFromGroup}}
           {% endcapture %}
