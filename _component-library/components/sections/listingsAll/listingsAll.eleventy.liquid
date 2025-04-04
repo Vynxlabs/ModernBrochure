@@ -23,16 +23,16 @@
   {% if listingsItems.size > 0 %}  
     <ul class="mt-20 flex flex-wrap justify-center gap-8">
         {% for listing in listingsItems %}
-          {% set continue_loop = true %}
-
-        {% if content.showExpired and listing.data.canExpire == true and listting.data.expireDate > {{"now" | date: "%Y-%m-%dT%H:%M:%S", 360}}   %}
-          {% set continue_loop = false %}
+          {% assign continue_loop = true %}
+        {% assign currentTime = "now" | date: "%Y-%m-%dT%H:%M:%S", 360 %}
+        {% if content.showExpired and listing.data.canExpire == true and listting.data.expireDate > currentTime   %}
+          {% assign continue_loop = false %}
         {% endif %}
         {% if content.showAvailable  %}
           
       {% for tag in listing.data.tags %}
           {% if tag in listings.availableTags %}
-              {% set continue_loop = false %}
+              {% assign continue_loop = false %}
               {% break %}
           {% endif %}
       {% endfor %}
@@ -43,7 +43,7 @@
           
       {% for tag in listing.data.tags %}
           {% if tag in listings.disqualificationTags %}
-              {% set continue_loop = false %}
+              {% assign continue_loop = false %}
               {% break %}
           {% endif %}
       {% endfor %}
@@ -53,7 +53,7 @@
           
       {% for tag in listing.data.tags %}
           {% if not tag in listings.disqualificationTags and not tag in listings.availableTags %}
-              {% set continue_loop = false %}
+              {% assign continue_loop = false %}
               {% break %}
           {% endif %}
       {% endfor %}
