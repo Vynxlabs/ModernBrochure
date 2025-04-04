@@ -25,7 +25,7 @@ blueprint:
     color_group: primary
     card_color_group: primary
     colorFromGroup: background
-    listingCardSyle: default
+    listingCardStyle: default
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
