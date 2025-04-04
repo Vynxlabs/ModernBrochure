@@ -1,5 +1,5 @@
 {% for tag in listingTags %}
-  {% if data.listings.availableTags contains tag %}
+  {% if listings.availableTags contains tag %}
     {% assign availableTag = tag %}
     {% assign variable = value %}
     {% break %}
@@ -9,7 +9,7 @@
 
 
 {% for tag in listingTags %}
-  {% if data.listings.disqualificationTags contains tag %}
+  {% if listings.disqualificationTags contains tag %}
     {% assign disqualifiedTag = tag %}
     {% break %}
   {% else %}
@@ -33,31 +33,34 @@
   <a href="{{ listingUrl }}" class="block relative">
     {% if tagToUse and tagToUse != '' %}
 
-      <time 
-      {% if expires == true %}
-        _="on load
-        set happeningDate to Date.parse('{{entry.data.happeningDate | date: "%Y-%m-%dT%H:%M:%S%z"}}')
-        log happeningDate
-        set timezone to Intl.DateTimeFormat().resolvedOptions().timeZone
-        js(happeningDate,timezone)
-        today = new Date(); 
-        dt = new Date(happeningDate);
-        console.log(dt);
-        if (dt < today) {
-          return 'EXPIRED'
-        }
-        return dt.toLocaleString('en-US', { timeZone: timezone }) end
-        put it into my.innerHTML
-        "
-      {% endif %}
-      
-      class="absolute bottom-5 right-5 p-2 z-10 bg-white text-slate-800 {{theme.container_rounding}}" datetime="{{ happeningDatetime | date: "%Y-%m-%d" }}">{{ happeningDatetime | date: "%Y-%m-%d %I:%M %P", 0 }} UTC</time>
-      <div class="absolute top-3 right-5 inline-block px-2 py-0.5 text-xs font-medium border-2 rounded-full transition {{tagClasses}} ">{{ tagToUse }}</div>
+      <div class="z-10 absolute top-5 right-5 inline-block px-2 py-0.5 text-xs font-medium border-2 rounded-full transition {{tagClasses}} ">{{ tagToUse }}</div>
     {% endif %}
+      {% if expires  %}
+        <div class="absolute bottom-5 right-5 p-2 z-10 bg-white text-slate-800 {{theme.container_rounding}}">
+          <p >Expires at:</p>
+                <time
+          _="on load
+          set happeningDate to Date.parse('{{listingExpiration | date: "%Y-%m-%dT%H:%M:%S%z"}}')
+          log happeningDate
+          set timezone to Intl.DateTimeFormat().resolvedOptions().timeZone
+          js(happeningDate,timezone)
+          today = new Date();
+          dt = new Date(happeningDate);
+          console.log(dt);
+          if (dt < today) {
+            return 'EXPIRED'
+          }
+          return dt.toLocaleString('en-US', { timeZone: timezone }) end
+          put it into my.innerHTML
+          "
+                
+                class="" datetime="{{ listitngExpiration | date: "%Y-%m-%d" }}">{{ listingExpiration | date: "%Y-%m-%d %I:%M %P", 0 }} UTC</time>
+        </div>
+      {% endif %}
     {% bookshop "generic/image" bind: image class: imageClasses %}
   </a>
   <a href="{{ listingUrl }}" class="hover:underline">
-      <h5>{{ listingTitle }}</h5>
+      <h5 class="font-bold text-lg mt-2">{{ listingTitle }}</h5>
   </a>
   <ul class=" flex flex-wrap gap-x-4 overflow-hidden opacity-70">
     {% for tag in listingTags %}
@@ -71,6 +74,6 @@
       {% endif %}
     {% endfor %}
   </ul>
-  <p>{% if keyInformation and keyInformation != ''  %}{% bookshop "generic/textBlock" bind: keyInformation %}{% endif %}</p>
+  <div class="text-base">{% if keyInformation and keyInformation != ''  %}{% bookshop "generic/textBlock" text: keyInformation %}{% endif %}</div>
   <a class="underline" href="{{ listingUrl }}">Learn more</a>
 </li>
