@@ -54,7 +54,7 @@
       class="absolute bottom-5 right-5 p-2 z-10 bg-white text-slate-800 {{theme.container_rounding}}" datetime="{{ happeningDatetime | date: "%Y-%m-%d" }}">{{ happeningDatetime | date: "%Y-%m-%d %I:%M %P", 0 }} UTC</time>
       <div class="absolute top-3 right-5 inline-block px-2 py-0.5 text-xs font-medium border-2 rounded-full transition {{tagClasses}} ">{{ tagToUse }}</div>
     {% endif %}
-    {% bookshop "generic/image" bind: content.image class: imageClasses %}
+    {% bookshop "generic/image" bind: image class: imageClasses %}
   </a>
   <a href="{{ listingUrl }}" class="hover:underline">
       <h5>{{ listingTitle }}</h5>
@@ -71,6 +71,6 @@
       {% endif %}
     {% endfor %}
   </ul>
-  <p>{{ keyInformation }}</p>
+  <p></p>
   <a class="underline" href="{{ listingUrl }}">Learn more</a>
 </li>

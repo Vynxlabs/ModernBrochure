@@ -12,6 +12,17 @@
   {% if listings.size > 0 %}  
     <ul class="mt-20 flex flex-wrap justify-center gap-8">
         {% for listing in listings %}
+          {% capture card %}
+          listingTitle: {{listing.data.listingTitle | stringifyFilter}}
+          listingUrl: {{listing.url}}
+          keyInformation: {{listing.data.keyInformation | stringifyFilter}}
+          image:
+            imagePath: {{listing.data.listingImage}}
+            imageAlt: {{listing.data.imageAltText}}
+          color_group: {{styles.card_color_group}}
+          colorFromGroup: {{styles.colorFromGroup}}
+          {% endcapture %}
+          {% assign card = card | ymlify %}
           {% bookshop {{listingCardStyle}} bind: card %}
         {% endfor %}
       </ul>
