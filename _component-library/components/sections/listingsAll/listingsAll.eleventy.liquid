@@ -25,7 +25,7 @@
         {% for listing in listingsItems %}
           {% set continue_loop = true %}
 
-        {% if content.showExpired and listing.data.canExpire == true and listting.data.expireDate > now   %}
+        {% if content.showExpired and listing.data.canExpire == true and listting.data.expireDate > {{"now" | date: "%Y-%m-%dT%H:%M:%S", 360}}   %}
           {% set continue_loop = false %}
         {% endif %}
         {% if content.showAvailable  %}
