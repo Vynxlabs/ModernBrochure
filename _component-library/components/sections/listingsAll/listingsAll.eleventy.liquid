@@ -1,7 +1,15 @@
 {% assign color_group = styles.color_group %}
 {% if env_bookshop_live %}
 {% assign listings = collections.listings %}    
+{% elsif pagination.items %}
+ {% assign listings = pagination.items %}
+{% else %}
+{% assign listings = collections.listings %} 
 {% endif %}
+{% comment %}
+  don't forget to make use of pagination.items
+
+{% endcomment %}
 {% assign listingCardStyle = 'generic/listings/' | append: styles.listingCardStyle | append: "ListingCard" %}
 <div class="c-listingsAll componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
   <section
@@ -25,7 +33,7 @@
             {% endif %}
           {% endcapture %}
           {% capture card %}
-          listingTitle: {{listing.data.listingTitle | stringifyFilter}}
+          listingTitle: {{listing.data.title | stringifyFilter}}
           listingUrl: {{listing.url}}
           keyInformation: {{listing.data.keyInformation | stringifyFilter}}
           expires: {{listing.data.canExpire}}
