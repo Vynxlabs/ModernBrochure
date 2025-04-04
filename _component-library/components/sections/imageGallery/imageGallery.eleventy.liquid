@@ -14,7 +14,7 @@
         <div class="flex gap-1 flex-wrap justify-center">
           {% for image in content.images %}
             {% assign imageId = "a" | uuidFilter %}
-            {% assign test = image | log %}
+            {% assign test = image %}
             {% bookshop "generic/imageModal" image: image classes: "max-w-[210px] md:max-w-[420px] md:min-w-[320px] min-w-[160px] flex-1" id: imageId %}
           {% endfor %}
         </div>
