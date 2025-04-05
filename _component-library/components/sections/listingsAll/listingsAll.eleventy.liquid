@@ -23,47 +23,69 @@
   {% if listingsItems.size > 0 %}  
     <ul class="mt-20 flex flex-wrap justify-center gap-8">
         {% for listing in listingsItems %}
-          {% assign continue_loop = true %}
-        {% assign currentTime = "now" | date: "%Y-%m-%dT%H:%M:%S", 360 %}
-        {% if content.showExpired and listing.data.canExpire == true and listting.data.expireDate > currentTime   %}
-          {% assign continue_loop = false %}
-        {% endif %}
-        {% if content.showAvailable  %}
-          
-      {% for tag in listing.data.tags %}
-          {% if tag in listings.availableTags %}
-              {% assign continue_loop = false %}
-              {% break %}
-          {% endif %}
-      {% endfor %}
+{% assign currentTime = "now" | date: "%Y-%m-%dT%H:%M:%S", 360 %}
+            {% assign showListing = false %}
 
-        {% endif %}
+            {# 1. Check Expired (Highest Priority) #}
+            {% if listing.data.canExpire == true and listing.data.expireDate <= currentTime %}
+                {% if content.showExpired %}
+                    {% assign showListing = true %}
+                {% endif %}
+                {% unless showListing %}
+                    {% continue %}
+                {% endunless %}
+            {% endif %}
 
-        {% if content.showDisqualified %}
-          
-      {% for tag in listing.data.tags %}
-          {% if tag in listings.disqualificationTags %}
-              {% assign continue_loop = false %}
-              {% break %}
-          {% endif %}
-      {% endfor %}
-        {% endif %}
+            {# 2. Check Disqualified (Second Highest Priority) #}
+            {% assign isDisqualified = false %}
+            {% for tag in listing.data.tags %}
+                {% if tag in listings.disqualificationTags %}
+                    {% assign isDisqualified = true %}
+                    {% break %}
+                {% endif %}
+            {% endfor %}
+            {% if isDisqualified %}
+                {% if content.showDisqualified %}
+                    {% assign showListing = true %}
+                {% endif %}
+                {% unless showListing %}
+                    {% continue %}
+                {% endunless %}
+            {% endif %}
 
-        {% if content.showGeneral %}
-          
-      {% for tag in listing.data.tags %}
-          {% if not tag in listings.disqualificationTags and not tag in listings.availableTags %}
-              {% assign continue_loop = false %}
-              {% break %}
-          {% endif %}
-      {% endfor %}
-        {% endif %}
+            {# 3. Check Available (Third Highest Priority) #}
+            {% assign isAvailable = false %}
+            {% for tag in listing.data.tags %}
+                {% if tag in listings.availableTags %}
+                    {% assign isAvailable = true %}
+                    {% break %}
+                {% endif %}
+            {% endfor %}
+            {% if isAvailable %}
+                {% if content.showAvailable %}
+                    {% assign showListing = true %}
+                {% endif %}
+                {% unless showListing %}
+                    {% continue %}
+                {% endunless %}
+            {% endif %}
 
-
-
-{% if continue_loop %}
-    {% continue %}
-{% endif %}
+            {# 4. Check General (Lowest Priority) #}
+            {% assign isGeneral = true %}
+            {% for tag in listing.data.tags %}
+                {% if tag in listings.availableTags or tag in listings.disqualificationTags %}
+                    {% assign isGeneral = false %}
+                    {% break %}
+                {% endif %}
+            {% endfor %}
+            {% if isGeneral %}
+                {% if content.showGeneral %}
+                    {% assign showListing = true %}
+                {% endif %}
+                {% unless showListing %}
+                    {% continue %}
+                {% endunless %}
+            {% endif %}
           {% capture featuredImage %}
             {% if listing.data.listingImage and listing.data.listingImage != "" %}
              image:
