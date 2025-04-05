@@ -20,7 +20,7 @@ blueprint:
     showAvailable: true
     showDisqualified: true
     showGeneral: true
-    noListingsHeading: bookshop:generic/heading
+    noListingsHeading: bookshop:structure:headingBlocks
   styles:
     color_group: primary
     card_color_group: primary
