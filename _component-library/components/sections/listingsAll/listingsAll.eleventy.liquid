@@ -23,7 +23,6 @@
         {% if content.heading %}
       {% bookshop {{content.heading._bookshop_name}} bind: content.heading %}
     {% endif %}
-  {% if listingsItems.size > 0 %} 
     {% assign createdListings = 0 %}
     <ul class="mt-20 flex flex-wrap justify-center gap-8">
         {% for listing in listingsItems %}
@@ -130,7 +129,7 @@
           {% endif %}
         {% endfor %}
       </ul>
-      {% elsif content.noListingsHeading and createdListings == 0 %}
+      {% if content.noListingsHeading and createdListings == 0 %}
     {% bookshop {{contents.noListingsHeading._bookshop_name}} bind: contents.noListingsHeading %}
   {% endif %} 
     
