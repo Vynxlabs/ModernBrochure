@@ -20,7 +20,12 @@ listingImage:
 imageAltText:
 keyInformation:
 hero:
-content_blocks: []
+content_blocks:
+  - _bookshop_name: generic/tags
+  - _bookshop_name: sections/imageCarousel
+  - _bookshop_name: sections/informationCards
+  - _bookshop_name: sections/simpleTextBlocka
+  - _bookshop_name: sections/actionBar
 _inputs:
   headCode:
     type: "code"
