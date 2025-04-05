@@ -26,7 +26,6 @@
 {% assign currentTime = "now" | date: "%Y-%m-%dT%H:%M:%S", 360 %}
             {% assign showListing = false %}
 
-            {# 1. Check Expired (Highest Priority) #}
             {% if listing.data.canExpire == true and listing.data.expireDate <= currentTime %}
                 {% if content.showExpired %}
                     {% assign showListing = true %}
@@ -36,7 +35,6 @@
                 {% endunless %}
             {% endif %}
 
-            {# 2. Check Disqualified (Second Highest Priority) #}
             {% assign isDisqualified = false %}
             {% for tag in listing.data.tags %}
                 {% if tag in listings.disqualificationTags %}
@@ -53,7 +51,6 @@
                 {% endunless %}
             {% endif %}
 
-            {# 3. Check Available (Third Highest Priority) #}
             {% assign isAvailable = false %}
             {% for tag in listing.data.tags %}
                 {% if tag in listings.availableTags %}
@@ -70,7 +67,6 @@
                 {% endunless %}
             {% endif %}
 
-            {# 4. Check General (Lowest Priority) #}
             {% assign isGeneral = true %}
             {% for tag in listing.data.tags %}
                 {% if tag in listings.availableTags or tag in listings.disqualificationTags %}
