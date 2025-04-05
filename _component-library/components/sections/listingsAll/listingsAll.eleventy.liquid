@@ -17,12 +17,19 @@
     {% if content.sectionId %}
               {% bookshop "util/IdScrollEvent" sectionId: content.sectionId %}
     {% endif %}>
+    {% if env_bookshop_live and content.showNote %}
+            {% bookshop "generic/notification" heading:"Incorrect Corner Tag" text:"It is common for the corner tag to not show up correctly when live editing, but will show up on correctly on the live site." %}
+        {% endif %}
         {% if content.heading %}
       {% bookshop {{content.heading._bookshop_name}} bind: content.heading %}
     {% endif %}
-  {% if listingsItems.size > 0 %}  
+  {% if listingsItems.size > 0 %} 
+    {% assign createdListings = 0 %}
     <ul class="mt-20 flex flex-wrap justify-center gap-8">
         {% for listing in listingsItems %}
+          {% if env_bookshop_live and not listing.data.title and listing.data.title or listing.data.title == "" %}
+            {% continue %}
+          {% endif %}
           {% assign currentTime = "now" | date: "%Y-%m-%dT%H:%M:%S", 360  %}
           {% assign listingTime = listing.data.expireDate | date: "%Y-%m-%dT%H:%M:%S", 360 %}
 {% assign showListing = false %}
@@ -118,12 +125,12 @@
           {% endcapture %}
           {% assign card = card | ymlify %}
           {% if showListing %}
-            
+           {% assign createdListings = createdListings | plus: 1 %} 
           {% bookshop {{listingCardStyle}} bind: card %}
           {% endif %}
         {% endfor %}
       </ul>
-      {% elsif content.noListingsHeading %}
+      {% elsif content.noListingsHeading and createdListings == 0 %}
     {% bookshop {{contents.noListingsHeading._bookshop_name}} bind: contents.noListingsHeading %}
   {% endif %} 
     
