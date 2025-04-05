@@ -3,12 +3,24 @@
 {% assign postListItems = pagination.items %}
 {% assign pageHeaderTitle = title %}
 {% assign pageHeaderSummary = subheadline %}
+
+{% capture information %}
+content:
+  showExpired: false
+  showAvailable: true
+  showDisqualified: false
+  showGeneral: true
+styles:
+  color_group: {{site.color_group}}
+  cardStyle: default
+  card_color_group: primary
+  colorFromGroup: background
+  listingCardStyle: default
+{% endcapture %}
+{% assign information = information | ymlify %}
 {% capture styles %}
 color_group: {{site.color_group}}
 cardStyle: default
-card_color_group: primary
-colorFromGroup: background
-listingCardStyle: default
 {% endcapture %}
 {% assign styles = styles | ymlify %}
 {% comment %}
@@ -37,7 +49,7 @@ If this is a tag, grab those items instead as one large collection
       {% if happenings.tags contains tag %}
       {% bookshop "sections/happeningCards" bind: styles %}
       {% elsif listingTags contains tag %}
-      {% bookshop "sections/listingsAll" bind: styles %}
+      {% bookshop "sections/listingsAll" bind: information %}
       {% else  %} 
       {% bookshop "sections/blogCards" bind: styles %}
       {% endif %}
