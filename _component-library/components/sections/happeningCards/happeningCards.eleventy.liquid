@@ -1,5 +1,7 @@
 {% if env_bookshop_live %}
   {% assign postListItems = collections.happenings | concat: collections.blog | happeningsFilter: page, happenings, contents.tags, -1 %}
+  {% elsif tag %}
+   {% assign postListItems = collections[tag] %} 
 {% elsif pagination.items %}
   {% assign postListItems = pagination.items %}
 {% else %}

@@ -1,6 +1,8 @@
 {% assign color_group = styles.color_group %}
 {% if env_bookshop_live %}
-{% assign listingsItems = collections.listings %}    
+{% assign listingsItems = collections.listings %}
+{% elsif tag %}
+  {% assign listingsItems = collections[tag] %} 
 {% elsif pagination.items %}
  {% assign listingsItems = pagination.items %}
 {% else %}
