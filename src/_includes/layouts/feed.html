@@ -6,6 +6,9 @@
 {% capture styles %}
 color_group: {{site.color_group}}
 cardStyle: default
+card_color_group: primary
+colorFromGroup: background
+listingCardStyle: default
 {% endcapture %}
 {% assign styles = styles | ymlify %}
 {% comment %}
@@ -31,7 +34,13 @@ If this is a tag, grab those items instead as one large collection
     <div>
       
       {% unless tag == "pages" %}
+      {% if happenings.tags contains tag %}
+      {% bookshop "sections/happeningCards" bind: styles %}
+      {% elsif listingTags contains tag %}
+      {% bookshop "sections/listingsAll" bind: styles %}
+      {% else  %} 
       {% bookshop "sections/blogCards" bind: styles %}
+      {% endif %}
       {% endunless %}
       
     </div>
