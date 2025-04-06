@@ -4,9 +4,9 @@
 {% elsif tag %}
   {% assign listingsItems = collections[tag] | listingsFilter: page, listingTags, content.tags %} 
 {% elsif pagination.items %}
- {% assign listingsItems = pagination.items %}
+ {% assign listingsItems = pagination.items | listingsFilter: page, listingTags, content.tags %}
 {% else %}
-{% assign listingsItems = collections.listings %} 
+{% assign listingsItems = collections.listings | listingsFilter: page, listingTags, content.tags %} 
 {% endif %}
 
 {% capture listStyle %}
@@ -28,7 +28,7 @@ flex flex-col gap-12
               {% bookshop "util/IdScrollEvent" sectionId: content.sectionId %}
     {% endif %}>
     {% if env_bookshop_live and content.showNote %}
-            {% bookshop "generic/notification" heading:"Incorrect visuals" text:"It is common for the corner tag to not show up correctly when live editing, but will show up on correctly on the live site. <br> Sometimes 'ghost' cards will show up while live editing, but will show up correctly on the live site" %}
+            {% bookshop "generic/notification" heading:"Incorrect visuals" text:"It is common for the corner tag to not show up correctly when live editing, but will show up on correctly on the live site. <br><br> Sometimes 'ghost' cards will show up while live editing, but will show up correctly on the live site <br><br> Filterring will not work while editing, but will show up on the live site" %}
         {% endif %}
         {% if content.heading %}
       {% bookshop {{content.heading._bookshop_name}} bind: content.heading %}
