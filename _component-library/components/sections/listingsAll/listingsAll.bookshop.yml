@@ -14,6 +14,7 @@ blueprint:
     sectionId:
     showNote: true
     filterCollection:
+    listingCount: 50
     heading: bookshop:structure:headingBlocks
     tags:
     showExpired: false
@@ -32,6 +33,13 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  listingCount:
+    comment: "Number of listings to show. Default is 50."
+    type: number
+    options:
+      min: 0
+      max: 50
+      step: 1
   tags:
     comment: >-
       Filter by specifc tags (set up in the listing tags file) to show only those listings. Leave blank to show all.

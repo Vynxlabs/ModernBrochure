@@ -4,9 +4,9 @@
 {% elsif tag %}
   {% assign listingsItems = collections[tag] | listingsFilter: page, listingTags, content.tags %} 
 {% elsif pagination.items %}
- {% assign listingsItems = pagination.items | listingsFilter: page, listingTags, content.tags %}
+ {% assign listingsItems = pagination.items | listingsFilter: page, listingTags, content.tags, content.listingCount %}
 {% else %}
-{% assign listingsItems = collections.listings | listingsFilter: page, listingTags, content.tags %} 
+{% assign listingsItems = collections.listings | listingsFilter: page, listingTags, content.tags, content.listingCount %} 
 {% endif %}
 
 {% capture listStyle %}
