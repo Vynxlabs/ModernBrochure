@@ -13,6 +13,7 @@ const fileSubstringFilter = require("./src/filters/extract-file-substring-filter
 const stringifyFilter = require("./src/filters/stringify-filter.js");
 const evalLiquid = require("./src/filters/evalLiquid-filter.js");
 const happeningsFilter = require("./src/filters/happenings-filter.js");
+const listingsFilter = require("./src/filters/listings-filter.js");
 const getServiceCategories = require("./src/filters/getServiceCategories-filter.js");
 const pathExistsFilter = require("./src/filters/pathExists-filter.js");
 const uuidHashFilter = require("./src/filters/uuid-hash-filter.js");
@@ -366,6 +367,7 @@ module.exports = (eleventyConfig) => {
   });
   eleventyConfig.addFilter("evalLiquid", evalLiquid);
   eleventyConfig.addFilter("happeningsFilter", happeningsFilter);
+  eleventyConfig.addFilter("listingsFilter", listingsFilter);
   eleventyConfig.addFilter("pathExists", pathExistsFilter);
   eleventyConfig.addFilter("uuidHashFilter", uuidHashFilter);
   eleventyConfig.addFilter("tagColorFilter", tagColorFilter);

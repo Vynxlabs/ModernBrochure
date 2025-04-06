@@ -33,6 +33,8 @@ preview:
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
   tags:
+    comment: >-
+      Filter by specifc tags (set up in the listing tags file) to show only those listings. Leave blank to show all.
     type: multiselect
     options:
       values: data.listingTags

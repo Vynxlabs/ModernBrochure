@@ -2,7 +2,7 @@
 {% if env_bookshop_live %}
 {% assign listingsItems = collections.listings %}
 {% elsif tag %}
-  {% assign listingsItems = collections[tag] %} 
+  {% assign listingsItems = collections[tag] | listingsFilter: page, listingTags, content.tags %} 
 {% elsif pagination.items %}
  {% assign listingsItems = pagination.items %}
 {% else %}
