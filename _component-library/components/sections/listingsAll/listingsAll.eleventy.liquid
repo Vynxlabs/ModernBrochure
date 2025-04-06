@@ -20,7 +20,7 @@
               {% bookshop "util/IdScrollEvent" sectionId: content.sectionId %}
     {% endif %}>
     {% if env_bookshop_live and content.showNote %}
-            {% bookshop "generic/notification" heading:"Incorrect Corner Tag" text:"It is common for the corner tag to not show up correctly when live editing, but will show up on correctly on the live site." %}
+            {% bookshop "generic/notification" heading:"Incorrect visuals" text:"It is common for the corner tag to not show up correctly when live editing, but will show up on correctly on the live site. <br> Sometimes 'ghost' cards will show up while live editing, but will show up correctly on the live site" %}
         {% endif %}
         {% if content.heading %}
       {% bookshop {{content.heading._bookshop_name}} bind: content.heading %}

@@ -33,9 +33,10 @@ preview:
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
   filterCollection:
+    hidden: true
     type: select
     options:
-      allow_empty: false
+      allow_empty: true
       values: data.listings.filtering[*]
       value_key: id
       text_key: filterCollectionName

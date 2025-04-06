@@ -27,6 +27,8 @@ filtering:
         - Delivery Available
         - Shipping Available
 _inputs:
+  filtering:
+    hidden: true
   availableTags:
     type: multiselect
     options:
