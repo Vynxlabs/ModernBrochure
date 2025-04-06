@@ -3,10 +3,10 @@ spec:
   structures:
     - content_blocks
     - extra_blocks
-  label: "ListingsAll"
+  label: "Listings"
   description:
-  icon:
-  tags: []
+  icon: lists
+  tags: [connected, listings]
 
 # Defines the structure of this component, as well as the default values
 blueprint:
