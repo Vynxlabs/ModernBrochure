@@ -44,7 +44,7 @@ _inputs:
       values: data.listings.filtering[*]
       value_key: id
       text_key: filterCollectionName
-  listingCardSyle:
+  listingCardStyle:
     type: select
     options:
       allow_empty: false
