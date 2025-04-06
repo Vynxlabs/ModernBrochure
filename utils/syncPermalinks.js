@@ -32,6 +32,9 @@ schemaFiles.forEach(schemaFile => {
             case 'service':
                 files = glob.sync('./src/services/**/*.md');
                 break;
+            case 'listing':
+                files = glob.sync('./src/listings/**/*.md');
+                break;
             default:
                 console.log(`Schema ${schemaName} not supported`);
                 return;

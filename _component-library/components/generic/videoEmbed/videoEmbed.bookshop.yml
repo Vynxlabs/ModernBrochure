@@ -3,6 +3,7 @@ spec:
   structures:
     - embeds
     - assets
+    - resource
   label: "Video Embed"
   description:
   icon:

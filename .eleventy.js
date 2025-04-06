@@ -13,8 +13,11 @@ const fileSubstringFilter = require("./src/filters/extract-file-substring-filter
 const stringifyFilter = require("./src/filters/stringify-filter.js");
 const evalLiquid = require("./src/filters/evalLiquid-filter.js");
 const happeningsFilter = require("./src/filters/happenings-filter.js");
+const listingsFilter = require("./src/filters/listings-filter.js");
 const getServiceCategories = require("./src/filters/getServiceCategories-filter.js");
 const pathExistsFilter = require("./src/filters/pathExists-filter.js");
+const uuidHashFilter = require("./src/filters/uuid-hash-filter.js");
+const tagColorFilter = require("./src/filters/tag-color-filter.js");
 const rssPlugin = require("@11ty/eleventy-plugin-rss");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const markdownIt = require("markdown-it"),
@@ -179,7 +182,7 @@ function loadTokens() {
           Object.assign(flatTokens, flattenTokens(token.tokens, groupPrefix));
         }
       });
-console.log(flatTokens);
+      console.log(flatTokens);
       return flatTokens;
     }
 
@@ -247,6 +250,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy("/src/images/");
   eleventyConfig.addPassthroughCopy("./src/assets/uploads/**");
   eleventyConfig.addPassthroughCopy("./src/assets/images");
+  eleventyConfig.addPassthroughCopy("./src/assets/js");
   eleventyConfig.addPassthroughCopy("./src/_includes/partials/background");
   // eleventyConfig.addPassthroughCopy("./src/css/");
   eleventyConfig.addPassthroughCopy({ "./src/images/favicon": "/" });
@@ -340,6 +344,10 @@ module.exports = (eleventyConfig) => {
       });
   });
 
+  eleventyConfig.addCollection("listings", (collection) => {
+    return collection.getFilteredByGlob("./src/listings/**/*.md");
+  });
+
   eleventyConfig.addFilter("dateFilter", dateFilter);
   eleventyConfig.addFilter("w3DateFilter", w3DateFilter);
   eleventyConfig.addFilter("readTimeFilter", readTimeFilter);
@@ -359,7 +367,10 @@ module.exports = (eleventyConfig) => {
   });
   eleventyConfig.addFilter("evalLiquid", evalLiquid);
   eleventyConfig.addFilter("happeningsFilter", happeningsFilter);
+  eleventyConfig.addFilter("listingsFilter", listingsFilter);
   eleventyConfig.addFilter("pathExists", pathExistsFilter);
+  eleventyConfig.addFilter("uuidHashFilter", uuidHashFilter);
+  eleventyConfig.addFilter("tagColorFilter", tagColorFilter);
 
   // Load and flatten tokens
   const tokens = loadTokens();
@@ -368,59 +379,58 @@ module.exports = (eleventyConfig) => {
   // Transform for tk.* tokens
 
   eleventyConfig.addTransform("replace-tokens", function (content) {
-  if ((this.page.outputPath || "").endsWith(".html")) {
-    return content.replace(/\[\[tk\.([^\]]+)\]\]/g, (match, path) => {
-      return evaluateToken(tokens, path); // Match normalized tokens
-    });
-  }
-  return content;
-});
+    if ((this.page.outputPath || "").endsWith(".html")) {
+      return content.replace(/\[\[tk\.([^\]]+)\]\]/g, (match, path) => {
+        return evaluateToken(tokens, path); // Match normalized tokens
+      });
+    }
+    return content;
+  });
 
-eleventyConfig.addTransform("replace-site-tokens", function (content) {
-  if ((this.page.outputPath || "").endsWith(".html")) {
-    return content.replace(/\[\[st\.([^\]]+)\]\]/g, (match, path) => {
-      return evaluateToken(siteTokens, path); // Match normalized site tokens
-    });
-  }
-  return content;
-});
+  eleventyConfig.addTransform("replace-site-tokens", function (content) {
+    if ((this.page.outputPath || "").endsWith(".html")) {
+      return content.replace(/\[\[st\.([^\]]+)\]\]/g, (match, path) => {
+        return evaluateToken(siteTokens, path); // Match normalized site tokens
+      });
+    }
+    return content;
+  });
 
-eleventyConfig.addTransform("replace-tokens-2", function (content) {
-  if ((this.page.outputPath || "").endsWith(".html")) {
-    return content.replace(/\[\[tk\.([^\]]+)\]\]/g, (match, path) => {
-      return evaluateToken(tokens, path); // Match normalized tokens
-    });
-  }
-  return content;
-});
+  eleventyConfig.addTransform("replace-tokens-2", function (content) {
+    if ((this.page.outputPath || "").endsWith(".html")) {
+      return content.replace(/\[\[tk\.([^\]]+)\]\]/g, (match, path) => {
+        return evaluateToken(tokens, path); // Match normalized tokens
+      });
+    }
+    return content;
+  });
 
-eleventyConfig.addTransform("replace-site-tokens-2", function (content) {
-  if ((this.page.outputPath || "").endsWith(".html")) {
-    return content.replace(/\[\[st\.([^\]]+)\]\]/g, (match, path) => {
-      return evaluateToken(siteTokens, path); // Match normalized site tokens
-    });
-  }
-  return content;
-});
+  eleventyConfig.addTransform("replace-site-tokens-2", function (content) {
+    if ((this.page.outputPath || "").endsWith(".html")) {
+      return content.replace(/\[\[st\.([^\]]+)\]\]/g, (match, path) => {
+        return evaluateToken(siteTokens, path); // Match normalized site tokens
+      });
+    }
+    return content;
+  });
 
+  eleventyConfig.addTransform("replace-tokens-3", function (content) {
+    if ((this.page.outputPath || "").endsWith(".html")) {
+      return content.replace(/\[\[tk\.([^\]]+)\]\]/g, (match, path) => {
+        return evaluateToken(tokens, path); // Match normalized tokens
+      });
+    }
+    return content;
+  });
 
-eleventyConfig.addTransform("replace-tokens-3", function (content) {
-  if ((this.page.outputPath || "").endsWith(".html")) {
-    return content.replace(/\[\[tk\.([^\]]+)\]\]/g, (match, path) => {
-      return evaluateToken(tokens, path); // Match normalized tokens
-    });
-  }
-  return content;
-});
-
-eleventyConfig.addTransform("replace-site-tokens-3", function (content) {
-  if ((this.page.outputPath || "").endsWith(".html")) {
-    return content.replace(/\[\[st\.([^\]]+)\]\]/g, (match, path) => {
-      return evaluateToken(siteTokens, path); // Match normalized site tokens
-    });
-  }
-  return content;
-});
+  eleventyConfig.addTransform("replace-site-tokens-3", function (content) {
+    if ((this.page.outputPath || "").endsWith(".html")) {
+      return content.replace(/\[\[st\.([^\]]+)\]\]/g, (match, path) => {
+        return evaluateToken(siteTokens, path); // Match normalized site tokens
+      });
+    }
+    return content;
+  });
 
   eleventyConfig.on("eleventy.before", () => {
     execSync("node ./utils/generateFavicon.js");
@@ -428,7 +438,9 @@ eleventyConfig.addTransform("replace-site-tokens-3", function (content) {
     execSync("node ./utils/permalinkDupCheck.js");
     execSync("node ./utils/addHappeningPagination.js");
     execSync("node ./utils/addBlogPagination.js");
+    execSync("node ./utils/addListingPagination.js");
     execSync("node ./utils/fetch-theme-variables.js");
+    execSync("node ./utils/copyGlideAssets.js");
   });
 
   eleventyConfig.on("eleventy.after", () => {

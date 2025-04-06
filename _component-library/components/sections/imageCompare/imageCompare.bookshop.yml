@@ -2,6 +2,7 @@
 spec:
   structures:
     - content_blocks
+    - extra_blocks
   label: "Image Compare"
   description: A left right comparison of two images.
   icon: compare
@@ -16,11 +17,10 @@ blueprint:
     heading: bookshop:structure:headingBlocks
     leftImage: bookshop:generic/image!
     rightImage: bookshop:generic/image!
-    buttons: [bookshop:generic/button]
+    buttons: [bookshop:structure:buttons]
   styles:
     color_group: primary
     imageOrientation: landscape
-
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:

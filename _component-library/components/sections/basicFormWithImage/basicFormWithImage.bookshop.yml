@@ -2,6 +2,7 @@
 spec:
   structures:
     - content_blocks
+    - extra_blocks
   label: "Form Overlapping Image"
   description: A form that overlaps an image of your choosing
   icon:

@@ -72,6 +72,7 @@ jobs:
                   "$file" == package.json || \
                   ("$file" == src/pages/* && "$file" != *.md) || \
                   ("$file" == src/posts/* && "$file" != *.md) || \
+                  ("$file" == src/listings/* && "$file" != *.md) || \
                   ("$file" == src/happenings/* && "$file" != *.md) || \
                   ("$file" == src/services/* && "$file" != *.md) ]]; then
               echo "Applying 'theirs' strategy for $file"

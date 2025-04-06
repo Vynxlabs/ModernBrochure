@@ -16,7 +16,7 @@ blueprint:
     eyebrow:
     headline:
     description: "Hello World!"
-    buttons: [bookshop:generic/button]
+    buttons: [bookshop:structure:buttons]
     image: bookshop:generic/image!
   styles:
     color_group: primary

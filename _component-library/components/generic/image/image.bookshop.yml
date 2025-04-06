@@ -3,6 +3,8 @@ spec:
   structures:
     - assets
     - card_imagery_blocks
+    - resource
+    - images
   label: "Image"
   description: An image that wil be optimized
   icon: image
@@ -15,6 +17,7 @@ blueprint:
   yAxisPosition:
   imageSizes:
   class:
+  imageNumber:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
@@ -27,6 +30,8 @@ _inputs:
   imageSizes:
     hidden: true  
   class:
+    hidden: true
+  imageNumber:
     hidden: true
   imageAlt:
     comment: "A concise text description of the image that will be used for accessibility. This not being filled out will hurt SEO."

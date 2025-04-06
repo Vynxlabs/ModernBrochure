@@ -2,6 +2,7 @@
 spec:
   structures:
     - content_blocks
+    - extra_blocks
   label: "Image Gallery Masonry 5"
   description: Masonry grid of images 5 images per set
   icon: space_dashboard
@@ -15,21 +16,21 @@ blueprint:
     heading: bookshop:structure:headingBlocks
     imageSets:
       - images: [bookshop:generic/image]
-    buttons: [bookshop:generic/button]
+    buttons: [bookshop:structure:buttons]
     setLimit: 5
     patternLimit: 10
     imageClasses:
-    - "" # This will always be empty and is needed for the grid to work
-    - sm:row-span-1 sm:col-span-1 sm:row-start-1 sm:col-start-1
-    - sm:row-span-1 sm:col-span-2 sm:row-start-1 sm:col-start-2
-    - sm:row-span-2 sm:col-span-1 sm:row-start-1 sm:col-start-4
-    - sm:row-span-1 sm:col-span-2 sm:row-start-2 sm:col-start-1
-    - sm:row-span-1 sm:col-span-1 sm:row-start-2 sm:col-start-3 col-span-2
-    - sm:row-span-2 sm:col-span-1 sm:row-start-1 sm:col-start-1
-    - sm:row-span-1 sm:col-span-1 sm:row-start-1 sm:col-start-2
-    - sm:row-span-1 sm:col-span-2 sm:row-start-1 sm:col-start-3
-    - sm:row-span-1 sm:col-span-2 sm:row-start-2 sm:col-start-2
-    - sm:row-span-1 sm:col-span-1 sm:row-start-2 sm:col-start-4 col-span-2
+      - "" # This will always be empty and is needed for the grid to work
+      - sm:row-span-1 sm:col-span-1 sm:row-start-1 sm:col-start-1
+      - sm:row-span-1 sm:col-span-2 sm:row-start-1 sm:col-start-2
+      - sm:row-span-2 sm:col-span-1 sm:row-start-1 sm:col-start-4
+      - sm:row-span-1 sm:col-span-2 sm:row-start-2 sm:col-start-1
+      - sm:row-span-1 sm:col-span-1 sm:row-start-2 sm:col-start-3 col-span-2
+      - sm:row-span-2 sm:col-span-1 sm:row-start-1 sm:col-start-1
+      - sm:row-span-1 sm:col-span-1 sm:row-start-1 sm:col-start-2
+      - sm:row-span-1 sm:col-span-2 sm:row-start-1 sm:col-start-3
+      - sm:row-span-1 sm:col-span-2 sm:row-start-2 sm:col-start-2
+      - sm:row-span-1 sm:col-span-1 sm:row-start-2 sm:col-start-4 col-span-2
   styles:
     color_group: primary
 

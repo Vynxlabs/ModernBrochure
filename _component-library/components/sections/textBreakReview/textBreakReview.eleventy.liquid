@@ -15,7 +15,7 @@
 
             {% if item.review == review.id %}
               <div class="max-w-[350px] relative flex flex-wrap ">
-                {% assign review = review.resultImage | logFilter %}
+                {% assign review = review.resultImage  %}
                 {% assign imageAltText = "Service result for " | append: review.name %}
                 <div class="{{theme.container_rounding}}">
                 {% capture imageClasses %}

@@ -2,6 +2,7 @@
 spec:
   structures:
     - content_blocks
+    - extra_blocks
   label: "50/50 Image and Form"
   description: A form where half is an image and half is a form
   icon: splitscreen_landscape

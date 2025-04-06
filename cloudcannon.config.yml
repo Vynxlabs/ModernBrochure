@@ -14,6 +14,8 @@ data_config:
   blog: true
   happenings: true
   tokens: true
+  listingTags: true
+  listings: true
 collections_config_override: true
 collections_config:
   data:
@@ -243,6 +245,34 @@ collections_config:
     schemas:
       default:
         path: .cloudcannon/schemas/service.md
+  listings:
+    path: listings
+    output: true
+    url: dist/listings
+    name: Listings
+    description: All your listings
+    icon: lists
+    documentation: null
+    preview:
+      gallery: lists
+    filter:
+      exclude:
+        - listings.json
+    _inputs:
+      title:
+        label: Page Title
+        comment: Seo focused page title
+      metaDesc:
+        type: textarea
+        label: Meta Description
+        comment: SEO focused page summary
+      permalink:
+        hidden: true
+      eleventyExcludeFromCollections:
+        hidden: true
+    schemas:
+      default:
+        path: .cloudcannon/schemas/listing.md
 _inputs:
   helperText:
     type: markdown
@@ -292,15 +322,6 @@ _inputs:
     type: object
     options:
       structures: _structures.hero_blocks
-  description:
-    type: markdown
-    options:
-      link: true
-      bold: true
-      italic: true
-      undo: true
-      redo: true
-      initial_height: 135
   socialImage:
     type: image
     hidden: false
@@ -450,6 +471,80 @@ _inputs:
           name: Accent
   review:
     type: textarea
+  headline:
+    type: markdown
+    options:
+      link: false
+      blockquote: false
+      bold: false
+      italic: true
+      strike: true
+      subscript: true
+      superscript: true
+      underline: false
+      bulletedlist: false
+      numberedlist: false
+      indent: false
+      outdent: false
+      code: false
+      embed: false
+      horizontalrule: false
+      image: false
+      table: false
+      undo: true
+      redo: true
+      removeformat: true
+      copyformatting: true
+      initial_height: 150
+  eyebrow:
+    type: markdown
+    options:
+      link: true
+      blockquote: false
+      bold: true
+      italic: true
+      strike: true
+      subscript: true
+      superscript: true
+      underline: false
+      bulletedlist: false
+      numberedlist: false
+      indent: false
+      outdent: false
+      code: false
+      embed: false
+      horizontalrule: false
+      image: false
+      table: false
+      undo: true
+      redo: true
+      removeformat: true
+      copyformatting: true
+      initial_height: 150
+  description:
+    type: markdown
+    options:
+      link: true
+      blockquote: false
+      bold: true
+      italic: true
+      strike: true
+      subscript: true
+      superscript: true
+      underline: true
+      bulletedlist: true
+      numberedlist: true
+      indent: false
+      outdent: false
+      code: false
+      embed: false
+      horizontalrule: false
+      image: false
+      table: false
+      undo: true
+      redo: true
+      removeformat: true
+      copyformatting: true
 _snippets:
   imageModal:
     template: eleventy_liquid_bookshop_component
@@ -491,7 +586,13 @@ _snippets:
               name: Vimeo
 _select_data: {}
 _structures:
+  extra_blocks:
+    label: Additional Content Sections
+    comment: >-
+      Add any additional content sections below the predefined sections.
+    style: modal
   content_blocks:
+    label: Content Sections
     style: modal
   hero_blocks:
     style: modal

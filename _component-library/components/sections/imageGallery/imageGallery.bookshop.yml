@@ -2,6 +2,7 @@
 spec:
   structures:
     - content_blocks
+    - extra_blocks
   label: "Simple Image Gallery"
   description: A simple image gallery
   icon: space_dashboard
@@ -16,7 +17,7 @@ blueprint:
     sectionId:
     heading: bookshop:structure:headingBlocks
     images: [bookshop:generic/image]
-    buttons: [bookshop:generic/button]
+    buttons: [bookshop:structure:buttons]
   styles:
     color_group: primary
 
