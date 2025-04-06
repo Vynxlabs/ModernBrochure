@@ -27,10 +27,10 @@
 
 
 {% capture imageClasses %}
-    {{theme.image_rounding}} min-w-[300px] w-full h-full aspect-[16/9] object-cover object-center transition-all duration-300 scale-100 hover:scale-[1.03]
+    {{theme.image_rounding}} min-w-[300px] w-full h-full aspect-[4/3] md:aspect-[20/5] object-cover object-center transition-all duration-300 scale-100 hover:scale-[1.03]
   {% endcapture %}
-<li class="c-horizontalListingCard  items-stretch h-min flex-1 flex flex-wrap gap-8  min-w-[300px] md:min-w-[350px] ">
-  <a href="{{ listingUrl }}" class=" flex-1 block relative ">
+<li class="c-horizontalListingCard  items-stretch h-min flex-1 flex flex-wrap md:flex-nowrap gap-x-4  min-w-[300px] md:min-w-[350px] ">
+  <a href="{{ listingUrl }}" class=" flex-1 block relative basis-3/5">
     {% if tagToUse and tagToUse != '' %}
 
       <div class="z-10 absolute top-5 right-5 inline-block px-2 py-0.5 text-xs font-medium border-2 rounded-full transition {{tagClasses}} ">{{ tagToUse }}</div>
@@ -59,10 +59,10 @@
       {% endif %}
     {% bookshop "generic/image" bind: image class: imageClasses %}
   </a>
-  <div class=" flex-1 {{theme.container_rounding}} bg-{{color_group}}-{{colorFromGroup}}color text-{{color_group}}-highcontrast-{{colorFromGroup}}color min-h-[300px]  p-4   flex flex-col justify-between">
+  <div class="basis-2/5 flex-1 {{theme.container_rounding}} bg-{{color_group}}-{{colorFromGroup}}color text-{{color_group}}-highcontrast-{{colorFromGroup}}color min-h-[300px]  p-4   flex flex-col justify-between">
     <div>
       <a href="{{ listingUrl }}" class="hover:underline">
-          <h5 class="font-bold text-lg mt-1">{{ listingTitle }}</h5>
+          <h5 class="font-bold text-2xl mt-1">{{ listingTitle }}</h5>
       </a>
       <ul class=" flex flex-wrap gap-x-4 overflow-hidden opacity-70">
         {% for tag in listingTags %}
