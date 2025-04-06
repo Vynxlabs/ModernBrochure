@@ -27,10 +27,10 @@
 
 
 {% capture imageClasses %}
-    {{theme.image_rounding}} w-full object-cover object-center transition-all duration-300 scale-100 hover:scale-[1.03]
+    {{theme.image_rounding}} min-w-[300px] w-full h-full aspect-[16/9] object-cover object-center transition-all duration-300 scale-100 hover:scale-[1.03]
   {% endcapture %}
-<li class="c-horizontalListingCard  items-stretch h-min flex-1 flex gap-8  min-w-[300px] md:min-w-[350px] ">
-  <a href="{{ listingUrl }}" class="h-full block relative basis-2/3">
+<li class="c-horizontalListingCard  items-stretch h-min flex-1 flex flex-wrap gap-8  min-w-[300px] md:min-w-[350px] ">
+  <a href="{{ listingUrl }}" class=" flex-1 block relative ">
     {% if tagToUse and tagToUse != '' %}
 
       <div class="z-10 absolute top-5 right-5 inline-block px-2 py-0.5 text-xs font-medium border-2 rounded-full transition {{tagClasses}} ">{{ tagToUse }}</div>
@@ -59,7 +59,7 @@
       {% endif %}
     {% bookshop "generic/image" bind: image class: imageClasses %}
   </a>
-  <div class="h-full {{theme.container_rounding}} bg-{{color_group}}-{{colorFromGroup}}color text-{{color_group}}-highcontrast-{{colorFromGroup}}color min-h-[300px] basis-1/3 p-4 flex-1 h-full flex flex-col justify-between">
+  <div class=" flex-1 {{theme.container_rounding}} bg-{{color_group}}-{{colorFromGroup}}color text-{{color_group}}-highcontrast-{{colorFromGroup}}color min-h-[300px]  p-4   flex flex-col justify-between">
     <div>
       <a href="{{ listingUrl }}" class="hover:underline">
           <h5 class="font-bold text-lg mt-1">{{ listingTitle }}</h5>
