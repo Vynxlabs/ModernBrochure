@@ -4,7 +4,7 @@ spec:
     - content_blocks
     - extra_blocks
   label: "Listings"
-  description:
+  description: "Show off your listings in a clean, organized layout, perfect for showcasing collections, portfolios, or visual highlights."
   icon: lists
   tags: [connected, listings]
 

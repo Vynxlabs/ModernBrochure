@@ -4,7 +4,7 @@ spec:
     - content_blocks
     - extra_blocks
   label: "Action Bar"
-  description:
+  description: "A persistent call to action at the bottom of a page"
   icon: bottom_navigation
   tags: []
 

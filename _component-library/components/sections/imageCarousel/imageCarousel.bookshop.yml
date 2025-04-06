@@ -4,7 +4,7 @@ spec:
     - content_blocks
     - extra_blocks
   label: "Image Carousel"
-  description:
+  description: "Show off your portfolio in a clean, organized layout, perfect for showcasing collections, portfolios, or visual highlights."
   icon: view_carousel
   tags: []
 
