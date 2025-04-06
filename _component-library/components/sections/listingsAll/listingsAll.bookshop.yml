@@ -32,6 +32,10 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  tags:
+    type: multiselect
+    options:
+      values: data.listingTags
   filterCollection:
     hidden: true
     type: select
@@ -48,3 +52,5 @@ _inputs:
       values:
         - name: Default
           id: default
+        - name: Horizontal
+          id: horizontal
