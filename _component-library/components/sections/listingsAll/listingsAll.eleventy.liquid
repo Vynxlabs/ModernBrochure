@@ -8,6 +8,14 @@
 {% else %}
 {% assign listingsItems = collections.listings %} 
 {% endif %}
+
+{% capture listStyle %}
+{% if styles.listingCardStyle == "default" %}
+ flex flex-wrap gap-8
+{% else %}
+flex flex-col gap-12
+{% endif %}  
+{% endcapture %}
 {% comment %}
   don't forget to make use of pagination.items
 
@@ -26,7 +34,7 @@
       {% bookshop {{content.heading._bookshop_name}} bind: content.heading %}
     {% endif %}
     {% assign createdListings = 0 %}
-    <ul class="mt-20 flex flex-wrap justify-center gap-8">
+    <ul class="mt-20 {{listStyle}} justify-center ">
         {% for listing in listingsItems %}
           {% if env_bookshop_live and not listing.data.title and listing.data.title or listing.data.title == "" %}
             {% continue %}
