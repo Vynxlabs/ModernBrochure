@@ -29,6 +29,9 @@ filtering:
 _inputs:
   filtering:
     hidden: true
+    comment: >-
+      You can set up filtering groupings (called filter collections).
+      This will determine what filters are used and how they are grouped together.
   availableTags:
     type: multiselect
     options:
@@ -48,8 +51,3 @@ _inputs:
     options:
       values: data.listingTags
     comment: Tags that will be used to filter the listings.
-  filtering:
-    comment: >-
-      You can set up filtering groupings (called filter collections).
-      This will determine what filters are used and how they are grouped together.
-
