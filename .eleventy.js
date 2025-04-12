@@ -344,8 +344,11 @@ module.exports = (eleventyConfig) => {
       });
   });
 
-  eleventyConfig.addCollection("listings", (collection) => {
-    return collection.getFilteredByGlob("./src/listings/**/*.md");
+    eleventyConfig.addCollection("listings", (collection) => {
+    return collection.getFilteredByGlob("./src/listings/**/*.md").sort((a, b) => {
+      //sort by title
+      return a.data.title.localeCompare(b.data.title);
+    });
   });
 
   eleventyConfig.addFilter("dateFilter", dateFilter);
