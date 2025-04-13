@@ -345,11 +345,18 @@ module.exports = (eleventyConfig) => {
   });
 
     eleventyConfig.addCollection("listings", (collection) => {
-    return collection.getFilteredByGlob("./src/listings/**/*.md").sort((a, b) => {
-      //sort by title
-      return a.data.title.localeCompare(b.data.title);
-    });
+  return collection.getFilteredByGlob("./src/listings/**/*.md").sort((a, b) => {
+    if (a.data.canExpire && !b.data.canExpire) {
+      return -1; // a comes before b if a can expire and b cannot
+    } else if (!a.data.canExpire && b.data.canExpire) {
+      return 1; // b comes before a if b can expire and a cannot
+    } else if (a.data.canExpire && b.data.canExpire) {
+      return new Date(a.data.expireDate) - new Date(b.data.expireDate); // sort by expireDate if both can expire
+    } else {
+      return a.data.title.localeCompare(b.data.title); // sort alphabetically if neither can expire
+    }
   });
+});
 
   eleventyConfig.addFilter("dateFilter", dateFilter);
   eleventyConfig.addFilter("w3DateFilter", w3DateFilter);
