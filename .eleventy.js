@@ -115,7 +115,7 @@ const logoShortcode = async (
   }
 };
 
-const generateLQIP = async (imagePath) => {
+async function  generateLQIP (imagePath) {
   const theSharp = sharp(imagePath);
   
 const [previewBuffer, dominantColor] = await Promise.all([
@@ -161,6 +161,57 @@ const [previewBuffer, dominantColor] = await Promise.all([
 
   const values = cells.map(({ L }) => clamp(0.5 + L - baseL, 0, 1));
   return values;
+}
+
+function clamp(value, min, max) {
+  return Math.min(max, Math.max(min, value));
+}
+
+// find the best bit configuration that would produce a color closest to target
+function findOklabBits(targetL, targetA, targetB) {
+  const targetChroma = Math.hypot(targetA, targetB);
+  const scaledTargetA = scaleComponentForDiff(targetA, targetChroma);
+  const scaledTargetB = scaleComponentForDiff(targetB, targetChroma);
+
+  let bestBits = [0, 0, 0];
+  let bestDifference = Infinity;
+
+  for (let lli = 0; lli <= 0b11; lli++) {
+    for (let aaai = 0; aaai <= 0b111; aaai++) {
+      for (let bbbi = 0; bbbi <= 0b111; bbbi++) {
+        const { L, a, b } = bitsToLab(lli, aaai, bbbi);
+        const chroma = Math.hypot(a, b);
+        const scaledA = scaleComponentForDiff(a, chroma);
+        const scaledB = scaleComponentForDiff(b, chroma);
+
+        const difference = Math.hypot(
+          L - targetL,
+          scaledA - scaledTargetA,
+          scaledB - scaledTargetB
+        );
+
+        if (difference < bestDifference) {
+          bestDifference = difference;
+          bestBits = [lli, aaai, bbbi];
+        }
+      }
+    }
+  }
+
+  return { ll: bestBits[0], aaa: bestBits[1], bbb: bestBits[2] };
+}
+
+// Scales a or b of Oklab to move away from the center
+// so that euclidean comparison won't be biased to the center
+function scaleComponentForDiff(x, chroma) {
+  return x / (1e-6 + Math.pow(chroma, 0.5));
+}
+
+function bitsToLab(ll, aaa, bbb) {
+  const L = (ll / 0b11) * 0.6 + 0.2;
+  const a = (aaa / 0b1000) * 0.7 - 0.35;
+  const b = ((bbb + 1) / 0b1000) * 0.7 - 0.35;
+  return { L, a, b };
 }
 
 
