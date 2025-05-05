@@ -27,6 +27,12 @@ id:
 hero:
 content_blocks: []
 _inputs:
+  hero:
+    image:
+      hidden: false
+  content_blocks:
+    image:
+      hidden: false
   headCode:
     type: "code"
     comment: "Add code at the end of the <head> tag"
