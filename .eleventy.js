@@ -34,6 +34,7 @@ const yaml = require("js-yaml");
 const { execSync } = require("child_process");
 const fs = require("fs");
 const svgContents = require("eleventy-plugin-svg-contents");
+const sharp = require("sharp");
 
 const imageShortcode = async (
   src,
@@ -66,6 +67,7 @@ const imageShortcode = async (
   const imageAttributes = {
     class: cls,
     alt,
+    style: generateLQIP(inputFilePath),
     sizes: sizes || "100vw",
     loading: "lazy",
     decoding: "async",
@@ -112,6 +114,55 @@ const logoShortcode = async (
     return `<img class='${cls}' src='${src}' alt='${alt}'>`;
   }
 };
+
+const generateLQIP = async (imagePath) => {
+  const theSharp = sharp(imagePath);
+  
+const [previewBuffer, dominantColor] = await Promise.all([
+    theSharp
+      .resize(3, 2, { fit: "fill" })
+      .sharpen({ sigma: 1 })
+      .removeAlpha()
+      .toFormat("raw", { bitdepth: 8 })
+      .toBuffer(),
+    getPalette(imagePath, 4, 10).then((palette) => palette[0]),
+  ]);
+
+  const {
+    L: rawBaseL,
+    a: rawBaseA,
+    b: rawBaseB,
+  } = rgbToOkLab({
+    r: dominantColor[0],
+    g: dominantColor[1],
+    b: dominantColor[2],
+  });
+  const { ll, aaa, bbb } = findOklabBits(rawBaseL, rawBaseA, rawBaseB);
+  const { L: baseL, a: baseA, b: baseB } = bitsToLab(ll, aaa, bbb);
+  console.log(
+    "dominant rgb",
+    dominantColor,
+    "lab",
+    Number(rawBaseL.toFixed(4)),
+    Number(rawBaseA.toFixed(4)),
+    Number(rawBaseB.toFixed(4)),
+    "compressed",
+    Number(baseL.toFixed(4)),
+    Number(baseA.toFixed(4)),
+    Number(baseB.toFixed(4))
+  );
+
+  const cells = Array.from({ length: 6 }, (_, index) => {
+    const r = previewBuffer.readUint8(index * 3);
+    const g = previewBuffer.readUint8(index * 3 + 1);
+    const b = previewBuffer.readUint8(index * 3 + 2);
+    return rgbToOkLab({ r, g, b });
+  });
+
+  const values = cells.map(({ L }) => clamp(0.5 + L - baseL, 0, 1));
+  return values;
+}
+
 
 function generateImages(src, widths = [200, 400, 850, 1920, 2500]) {
   let source = src;
