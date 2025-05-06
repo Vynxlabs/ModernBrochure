@@ -1,4 +1,5 @@
 const Image = require("@11ty/eleventy-img");
+const Fetch = requre("@11ty/eleventy-fetch");
 const path = require("path");
 const dateFilter = require("./src/filters/date-filter.js");
 const w3DateFilter = require("./src/filters/w3-date-filter.js");
@@ -36,6 +37,7 @@ const fs = require("fs");
 const svgContents = require("eleventy-plugin-svg-contents");
 const sharp = require("sharp");
 
+const imageHashes = {};
 const imageShortcode = async (
   src,
   alt,
@@ -63,11 +65,20 @@ const imageShortcode = async (
     outputDir: "dist/assets/images",
     urlPath: "/assets/images",
   });
+  console.log(Image.getHash(inputFilePath) in imageHashes)
+  if(!(Image.getHash(inputFilePath) in imageHashes)){
+    
+  imageHashes[Image.getHash(inputFilePath)]=(await sharp(inputFilePath).stats()).dominant
+  console.log(Image.getHash(inputFilePath),imageHashes[Image.getHash(inputFilePath)]);
+  }
+  //const stats = await sharp(inputFilePath).stats(); 
+   //const dominant = stats.dominant;
+
 
   const imageAttributes = {
     class: cls,
     alt,
-    style: generateLQIP(inputFilePath),
+    style: generateLQIP(inputFilePath,imageHashes[Image.getHash(inputFilePath)]),
     sizes: sizes || "100vw",
     loading: "lazy",
     decoding: "async",
@@ -115,27 +126,25 @@ const logoShortcode = async (
   }
 };
 
-const generateLQIP = async (imagePath) => {
+async function generateLQIP(imagePath, dominantColor) {
   const theSharp = sharp(imagePath);
-  
-const [previewBuffer, dominantColor] = await Promise.all([
+
+  const previewBuffer = await
     theSharp
       .resize(3, 2, { fit: "fill" })
       .sharpen({ sigma: 1 })
       .removeAlpha()
       .toFormat("raw", { bitdepth: 8 })
-      .toBuffer(),
-    getPalette(imagePath, 4, 10).then((palette) => palette[0]),
-  ]);
+      .toBuffer();
 
   const {
     L: rawBaseL,
     a: rawBaseA,
     b: rawBaseB,
   } = rgbToOkLab({
-    r: dominantColor[0],
-    g: dominantColor[1],
-    b: dominantColor[2],
+    r: dominantColor.r,
+    g: dominantColor.g,
+    b: dominantColor.b,
   });
   const { ll, aaa, bbb } = findOklabBits(rawBaseL, rawBaseA, rawBaseB);
   const { L: baseL, a: baseA, b: baseB } = bitsToLab(ll, aaa, bbb);
@@ -149,7 +158,7 @@ const [previewBuffer, dominantColor] = await Promise.all([
     "compressed",
     Number(baseL.toFixed(4)),
     Number(baseA.toFixed(4)),
-    Number(baseB.toFixed(4))
+    Number(baseB.toFixed(4)),
   );
 
   const cells = Array.from({ length: 6 }, (_, index) => {
@@ -163,6 +172,75 @@ const [previewBuffer, dominantColor] = await Promise.all([
   return values;
 }
 
+function clamp(value, min, max) {
+  return Math.min(max, Math.max(min, value));
+}
+
+// find the best bit configuration that would produce a color closest to target
+function findOklabBits(targetL, targetA, targetB) {
+  const targetChroma = Math.hypot(targetA, targetB);
+  const scaledTargetA = scaleComponentForDiff(targetA, targetChroma);
+  const scaledTargetB = scaleComponentForDiff(targetB, targetChroma);
+
+  let bestBits = [0, 0, 0];
+  let bestDifference = Infinity;
+
+  for (let lli = 0; lli <= 0b11; lli++) {
+    for (let aaai = 0; aaai <= 0b111; aaai++) {
+      for (let bbbi = 0; bbbi <= 0b111; bbbi++) {
+        const { L, a, b } = bitsToLab(lli, aaai, bbbi);
+        const chroma = Math.hypot(a, b);
+        const scaledA = scaleComponentForDiff(a, chroma);
+        const scaledB = scaleComponentForDiff(b, chroma);
+
+        const difference = Math.hypot(
+          L - targetL,
+          scaledA - scaledTargetA,
+          scaledB - scaledTargetB,
+        );
+
+        if (difference < bestDifference) {
+          bestDifference = difference;
+          bestBits = [lli, aaai, bbbi];
+        }
+      }
+    }
+  }
+
+  return { ll: bestBits[0], aaa: bestBits[1], bbb: bestBits[2] };
+}
+
+// Scales a or b of Oklab to move away from the center
+// so that euclidean comparison won't be biased to the center
+function scaleComponentForDiff(x, chroma) {
+  return x / (1e-6 + Math.pow(chroma, 0.5));
+}
+
+function bitsToLab(ll, aaa, bbb) {
+  const L = (ll / 0b11) * 0.6 + 0.2;
+  const a = (aaa / 0b1000) * 0.7 - 0.35;
+  const b = ((bbb + 1) / 0b1000) * 0.7 - 0.35;
+  return { L, a, b };
+}
+function rgbToOkLab(c) {
+  const r = gamma_inv(c.r / 255);
+  const g = gamma_inv(c.g / 255);
+  const b = gamma_inv(c.b / 255);
+
+  const l = Math.cbrt(0.4122214708 * r + 0.5363325363 * g + 0.0514459929 * b);
+  const m = Math.cbrt(0.2119034982 * r + 0.6806995451 * g + 0.1073969566 * b);
+  const s = Math.cbrt(0.0883024619 * r + 0.2817188376 * g + 0.6299787005 * b);
+
+  return {
+    L: l * +0.2104542553 + m * +0.793617785 + s * -0.0040720468,
+    a: l * +1.9779984951 + m * -2.428592205 + s * +0.4505937099,
+    b: l * +0.0259040371 + m * +0.7827717662 + s * -0.808675766,
+  };
+}
+
+function gamma_inv(x) {
+  return x >= 0.04045 ? Math.pow((x + 0.055) / (1.055), 2.4) : x / 12.92;
+}
 
 function generateImages(src, widths = [200, 400, 850, 1920, 2500]) {
   let source = src;
@@ -395,19 +473,21 @@ module.exports = (eleventyConfig) => {
       });
   });
 
-    eleventyConfig.addCollection("listings", (collection) => {
-  return collection.getFilteredByGlob("./src/listings/**/*.md").sort((a, b) => {
-    if (a.data.canExpire && !b.data.canExpire) {
-      return -1; // a comes before b if a can expire and b cannot
-    } else if (!a.data.canExpire && b.data.canExpire) {
-      return 1; // b comes before a if b can expire and a cannot
-    } else if (a.data.canExpire && b.data.canExpire) {
-      return new Date(a.data.expireDate) - new Date(b.data.expireDate); // sort by expireDate if both can expire
-    } else {
-      return a.data.title.localeCompare(b.data.title); // sort alphabetically if neither can expire
-    }
+  eleventyConfig.addCollection("listings", (collection) => {
+    return collection
+      .getFilteredByGlob("./src/listings/**/*.md")
+      .sort((a, b) => {
+        if (a.data.canExpire && !b.data.canExpire) {
+          return -1; // a comes before b if a can expire and b cannot
+        } else if (!a.data.canExpire && b.data.canExpire) {
+          return 1; // b comes before a if b can expire and a cannot
+        } else if (a.data.canExpire && b.data.canExpire) {
+          return new Date(a.data.expireDate) - new Date(b.data.expireDate); // sort by expireDate if both can expire
+        } else {
+          return a.data.title.localeCompare(b.data.title); // sort alphabetically if neither can expire
+        }
+      });
   });
-});
 
   eleventyConfig.addFilter("dateFilter", dateFilter);
   eleventyConfig.addFilter("w3DateFilter", w3DateFilter);
