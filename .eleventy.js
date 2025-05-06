@@ -35,6 +35,7 @@ const { execSync } = require("child_process");
 const fs = require("fs");
 const svgContents = require("eleventy-plugin-svg-contents");
 const sharp = require("sharp");
+const { getPalette} = require("./utils/thief.js");
 
 const imageHashes = {};
 const imageShortcode = async (
@@ -49,9 +50,10 @@ const imageShortcode = async (
   let before = Date.now();
 
   let inputFilePath = src == null ? src : path.join("src", src);
-
+  let isRemoteUrl = false;
   if (src.includes("http://") || src.includes("https://")) {
     inputFilePath = src;
+    isRemoteUrl = true;
   }
 
   // console.log(
@@ -64,20 +66,30 @@ const imageShortcode = async (
     outputDir: "dist/assets/images",
     urlPath: "/assets/images",
   });
-  console.log(Image.getHash(inputFilePath) in imageHashes)
-  if(!(Image.getHash(inputFilePath) in imageHashes)){
-    
-  imageHashes[Image.getHash(inputFilePath)]=(await sharp(inputFilePath).stats()).dominant
-  console.log(Image.getHash(inputFilePath),imageHashes[Image.getHash(inputFilePath)]);
+  console.log(Image.getHash(inputFilePath) in imageHashes);
+  console.log(inputFilePath, isRemoteUrl);
+  console.log(!(Image.getHash(inputFilePath) in imageHashes) && !isRemoteUrl);
+  if (!(Image.getHash(inputFilePath) in imageHashes) && !isRemoteUrl) {
+    imageHashes[Image.getHash(inputFilePath)] = (
+      await sharp(inputFilePath).stats()
+    ).dominant;
+    console.log(
+      Image.getHash(inputFilePath),
+      imageHashes[Image.getHash(inputFilePath)],
+    );
   }
-  //const stats = await sharp(inputFilePath).stats(); 
-   //const dominant = stats.dominant;
-
+  //const stats = await sharp(inputFilePath).stats();
+  //const dominant = stats.dominant;
 
   const imageAttributes = {
     class: cls,
     alt,
-    style: generateLQIP(inputFilePath,imageHashes[Image.getHash(inputFilePath)]),
+    style: !isRemoteUrl
+      ? await generateLQIP(
+          inputFilePath,
+          imageHashes[Image.getHash(inputFilePath)],
+        )
+      : "",
     sizes: sizes || "100vw",
     loading: "lazy",
     decoding: "async",
@@ -125,16 +137,15 @@ const logoShortcode = async (
   }
 };
 
-async function  generateLQIP (imagePath) {
+async function generateLQIP(imagePath, dominantColor) {
   const theSharp = sharp(imagePath);
 
-  const previewBuffer = await
-    theSharp
-      .resize(3, 2, { fit: "fill" })
-      .sharpen({ sigma: 1 })
-      .removeAlpha()
-      .toFormat("raw", { bitdepth: 8 })
-      .toBuffer();
+  const previewBuffer = await theSharp
+    .resize(3, 2, { fit: "fill" })
+    .sharpen({ sigma: 1 })
+    .removeAlpha()
+    .toFormat("raw", { bitdepth: 8 })
+    .toBuffer();
 
   const {
     L: rawBaseL,
@@ -168,7 +179,24 @@ async function  generateLQIP (imagePath) {
   });
 
   const values = cells.map(({ L }) => clamp(0.5 + L - baseL, 0, 1));
-  return values;
+  const ca = Math.round(values[0] * 0b11);
+  const cb = Math.round(values[1] * 0b11);
+  const cc = Math.round(values[2] * 0b11);
+  const cd = Math.round(values[3] * 0b11);
+  const ce = Math.round(values[4] * 0b11);
+  const cf = Math.round(values[5] * 0b11);
+  const lqip =
+    -(2 ** 19) +
+    ((ca & 0b11) << 18) +
+    ((cb & 0b11) << 16) +
+    ((cc & 0b11) << 14) +
+    ((cd & 0b11) << 12) +
+    ((ce & 0b11) << 10) +
+    ((cf & 0b11) << 8) +
+    ((ll & 0b11) << 6) +
+    ((aaa & 0b111) << 3) +
+    (bbb & 0b111);
+  return `--lqip:${lqip.toFixed(0)}`;
 }
 
 function clamp(value, min, max) {
@@ -195,7 +223,7 @@ function findOklabBits(targetL, targetA, targetB) {
         const difference = Math.hypot(
           L - targetL,
           scaledA - scaledTargetA,
-          scaledB - scaledTargetB
+          scaledB - scaledTargetB,
         );
 
         if (difference < bestDifference) {
@@ -207,6 +235,25 @@ function findOklabBits(targetL, targetA, targetB) {
   }
 
   return { ll: bestBits[0], aaa: bestBits[1], bbb: bestBits[2] };
+}
+function rgbToOkLab(c) {
+  const r = gamma_inv(c.r / 255);
+  const g = gamma_inv(c.g / 255);
+  const b = gamma_inv(c.b / 255);
+
+  const l = Math.cbrt(0.4122214708 * r + 0.5363325363 * g + 0.0514459929 * b);
+  const m = Math.cbrt(0.2119034982 * r + 0.6806995451 * g + 0.1073969566 * b);
+  const s = Math.cbrt(0.0883024619 * r + 0.2817188376 * g + 0.6299787005 * b);
+
+  return {
+    L: l * +0.2104542553 + m * +0.793617785 + s * -0.0040720468,
+    a: l * +1.9779984951 + m * -2.428592205 + s * +0.4505937099,
+    b: l * +0.0259040371 + m * +0.7827717662 + s * -0.808675766,
+  };
+}
+
+function gamma_inv(x) {
+  return x >= 0.04045 ? Math.pow((x + 0.055) / 1.055, 2.4) : x / 12.92;
 }
 
 // Scales a or b of Oklab to move away from the center
