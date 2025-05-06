@@ -36,6 +36,7 @@ const fs = require("fs");
 const svgContents = require("eleventy-plugin-svg-contents");
 const sharp = require("sharp");
 const ColorThief = require("colorthief");
+const Fetch = require("@11ty/eleventy-fetch");
 
 const imageHashes = {};
 const imageShortcode = async (
@@ -67,9 +68,12 @@ const imageShortcode = async (
     urlPath: "/assets/images",
   });
   if (!(Image.getHash(inputFilePath) in imageHashes) && !isRemoteUrl) {
-    imageHashes[Image.getHash(inputFilePath)] = await generateLQIP(inputFilePath);
-  }   //const stats = await sharp(inputFilePath).stats();
-  //const dominant = stats.dominant;
+    imageHashes[Image.getHash(inputFilePath)] =
+      await generateLQIP(inputFilePath);
+  } else if (!(Image.getHash(inputFilePath) in imageHashes) && isRemoteUrl) {
+    let imageBuffer = await Fetch(inputFilePath, { type: "buffer" });
+    imageHashes[Image.getHash(inputFilePath)] = await generateLQIP(imageBuffer);
+  }
 
   const imageAttributes = {
     class: cls,
