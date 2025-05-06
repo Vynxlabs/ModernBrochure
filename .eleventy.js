@@ -65,14 +65,31 @@ const imageShortcode = async (
     widths: [...widths],
     formats: [...formats, null],
     outputDir: "dist/assets/images",
-    urlPath: "/assets/images",
+    cacheOptions: {
+      duration: "7d",
+    }
   });
   if (!(Image.getHash(inputFilePath) in imageHashes) && !isRemoteUrl) {
     imageHashes[Image.getHash(inputFilePath)] =
-      await generateLQIP(inputFilePath);
+      await Fetch(async function() {
+
+		return generateLQIP(inputFilePath);
+	}, {
+		// must supply a unique id for the callback
+		requestId: `imagelqip-${Image.getHash(inputFilePath)}`,
+    duration: "7d"
+	});
   } else if (!(Image.getHash(inputFilePath) in imageHashes) && isRemoteUrl) {
+    imageHashes[Image.getHash(inputFilePath)] = await Fetch(async function() {
+		// do some expensive operation here, this is simplified for brevity
     let imageBuffer = await Fetch(inputFilePath, { type: "buffer" });
-    imageHashes[Image.getHash(inputFilePath)] = await generateLQIP(imageBuffer);
+
+		return generateLQIP(imageBuffer);
+	}, {
+		// must supply a unique id for the callback
+		requestId: `imagelqip-${Image.getHash(inputFilePath)}`,
+    duration: "7d"
+	});
   }
 
   const imageAttributes = {
