@@ -65,6 +65,7 @@ const imageShortcode = async (
     widths: [...widths],
     formats: [...formats, null],
     outputDir: "dist/assets/images",
+    urlPath: "/assets/images",
     cacheOptions: {
       duration: "7d",
     }
