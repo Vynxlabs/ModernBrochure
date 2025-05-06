@@ -35,7 +35,7 @@ const { execSync } = require("child_process");
 const fs = require("fs");
 const svgContents = require("eleventy-plugin-svg-contents");
 const sharp = require("sharp");
-const { getPalette} = require("./utils/thief.js");
+const ColorThief = require("colorthief");
 
 const imageHashes = {};
 const imageShortcode = async (
@@ -66,30 +66,15 @@ const imageShortcode = async (
     outputDir: "dist/assets/images",
     urlPath: "/assets/images",
   });
-  console.log(Image.getHash(inputFilePath) in imageHashes);
-  console.log(inputFilePath, isRemoteUrl);
-  console.log(!(Image.getHash(inputFilePath) in imageHashes) && !isRemoteUrl);
   if (!(Image.getHash(inputFilePath) in imageHashes) && !isRemoteUrl) {
-    imageHashes[Image.getHash(inputFilePath)] = (
-      await sharp(inputFilePath).stats()
-    ).dominant;
-    console.log(
-      Image.getHash(inputFilePath),
-      imageHashes[Image.getHash(inputFilePath)],
-    );
-  }
-  //const stats = await sharp(inputFilePath).stats();
+    imageHashes[Image.getHash(inputFilePath)] = await generateLQIP(inputFilePath);
+  }   //const stats = await sharp(inputFilePath).stats();
   //const dominant = stats.dominant;
 
   const imageAttributes = {
     class: cls,
     alt,
-    style: !isRemoteUrl
-      ? await generateLQIP(
-          inputFilePath,
-          imageHashes[Image.getHash(inputFilePath)],
-        )
-      : "",
+    style: imageHashes[Image.getHash(inputFilePath)],
     sizes: sizes || "100vw",
     loading: "lazy",
     decoding: "async",
@@ -137,24 +122,36 @@ const logoShortcode = async (
   }
 };
 
-async function generateLQIP(imagePath, dominantColor) {
+async function generateLQIP(imagePath) {
   const theSharp = sharp(imagePath);
+  const stats = await theSharp.stats();
 
-  const previewBuffer = await theSharp
-    .resize(3, 2, { fit: "fill" })
-    .sharpen({ sigma: 1 })
-    .removeAlpha()
-    .toFormat("raw", { bitdepth: 8 })
-    .toBuffer();
+  const opaque = stats.isOpaque;
+  console.log(opaque);
+  if (!opaque) {
+    return {
+      opaque: false,
+    };
+  }
+
+  const [previewBuffer, dominantColor] = await Promise.all([
+    theSharp
+      .resize(3, 2, { fit: "fill" })
+      .sharpen({ sigma: 1 })
+      .removeAlpha()
+      .toFormat("raw", { bitdepth: 8 })
+      .toBuffer(),
+    ColorThief.getPalette(imagePath, 4, 10).then((palette) => palette[0]),
+  ]);
 
   const {
     L: rawBaseL,
     a: rawBaseA,
     b: rawBaseB,
   } = rgbToOkLab({
-    r: dominantColor.r,
-    g: dominantColor.g,
-    b: dominantColor.b,
+    r: dominantColor[0],
+    g: dominantColor[1],
+    b: dominantColor[2],
   });
   const { ll, aaa, bbb } = findOklabBits(rawBaseL, rawBaseA, rawBaseB);
   const { L: baseL, a: baseA, b: baseB } = bitsToLab(ll, aaa, bbb);
