@@ -60,7 +60,7 @@ const imageShortcode = async (
   // console.log(
   //   `[11ty/eleventy-img] ${Date.now() - before}ms: ${inputFilePath}`,
   // );
-  const cacheDuration = "30d";
+  const cacheDuration = "90d";
   const imageMetadata = await Image(inputFilePath, {
     svgShortCircuit: preferSvg ? "size" : false,
     widths: [...widths],
