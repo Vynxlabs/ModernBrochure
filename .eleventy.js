@@ -60,6 +60,7 @@ const imageShortcode = async (
   // console.log(
   //   `[11ty/eleventy-img] ${Date.now() - before}ms: ${inputFilePath}`,
   // );
+  const cacheDuration = "30d";
   const imageMetadata = await Image(inputFilePath, {
     svgShortCircuit: preferSvg ? "size" : false,
     widths: [...widths],
@@ -67,7 +68,7 @@ const imageShortcode = async (
     outputDir: "dist/assets/images",
     urlPath: "/assets/images",
     cacheOptions: {
-      duration: "7d",
+      duration: cacheDuration,
     }
   });
   if (!(Image.getHash(inputFilePath) in imageHashes) && !isRemoteUrl) {
@@ -78,7 +79,7 @@ const imageShortcode = async (
 	}, {
 		// must supply a unique id for the callback
 		requestId: `imagelqip-${Image.getHash(inputFilePath)}`,
-    duration: "7d"
+    duration: cacheDuration
 	});
   } else if (!(Image.getHash(inputFilePath) in imageHashes) && isRemoteUrl) {
     imageHashes[Image.getHash(inputFilePath)] = await Fetch(async function() {
@@ -89,7 +90,7 @@ const imageShortcode = async (
 	}, {
 		// must supply a unique id for the callback
 		requestId: `imagelqip-${Image.getHash(inputFilePath)}`,
-    duration: "7d"
+    duration: cacheDuration
 	});
   }
 
