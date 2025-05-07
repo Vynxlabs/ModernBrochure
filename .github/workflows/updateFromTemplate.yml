@@ -18,10 +18,10 @@ jobs:
         with:
           token: ${{ secrets.WORKFLOW_TOKEN }}
 
-      - name: Use Node.js v20.2.0
+      - name: Use Node.js v20.3.0
         uses: actions/setup-node@v3
         with:
-          node-version: 'v20.2.0'
+          node-version: 'v20.3.0'
 
       - name: Cache Node.js modules
         id: cache-node-modules
