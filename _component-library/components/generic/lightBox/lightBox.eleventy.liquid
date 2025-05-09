@@ -43,7 +43,7 @@
         <ul class="glide__slides h-full flex items-center justify-center">
           {% for image in images %}
             <li class="glide__slide max-h-full max-w-full flex items-center justify-center">
-              {% bookshop "generic/image" bind: image class: "max-w-full object-contain" %}
+              {% bookshop "generic/image" bind: image class: "max-h-full w-full max-w-full object-contain" %}
             </li>
           {% endfor %}
         </ul>
@@ -52,7 +52,7 @@
 
     {% if images.size >= 5 %}
       <!-- Thumbnail Carousel -->
-      <div class="h-24 sm:h-32 mt-2 relative {{subTrack}}">
+      <div class="h-24 sm:h-32 mt-2 relative {{subTrack}} thumbnails">
 
       <div class="w-full flex absolute top-1/2 justify-center">
         <div class="pointer-events-none w-[97%]  z-10 flex justify-between  opacity-70" data-glide-el="controls">
