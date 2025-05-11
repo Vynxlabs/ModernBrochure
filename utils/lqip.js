@@ -13,15 +13,25 @@ async function generateLQIP(imagePath) {
     };
   }
 
-  const [previewBuffer, dominantColor] = await Promise.all([
-    theSharp
-      .resize(3, 2, { fit: "fill" })
-      .sharpen({ sigma: 1 })
-      .removeAlpha()
-      .toFormat("raw", { bitdepth: 8 })
-      .toBuffer(),
-    ColorThief.getPalette(imagePath, 4, 10).then((palette) => palette[0]),
-  ]);
+  //This is to deal with a bug caused in jpgs by Samsung Galaxy s9 phones, and any other corrupt images.
+  let dominantColor;
+  try {
+    dominantColor = await ColorThief.getPalette(imagePath, 4, 10).then((palette) => palette[0]);
+  } catch (err) {
+    console.warn("ColorThief failed, falling back to sharp.stats().dominant:", err.message);
+    dominantColor = [
+      Math.round(stats.dominant.r),
+      Math.round(stats.dominant.g),
+      Math.round(stats.dominant.b),
+    ];
+  }
+
+  const previewBuffer = await theSharp
+    .resize(3, 2, { fit: "fill" })
+    .sharpen({ sigma: 1 })
+    .removeAlpha()
+    .toFormat("raw", { bitdepth: 8 })
+    .toBuffer();
 
   const {
     L: rawBaseL,
