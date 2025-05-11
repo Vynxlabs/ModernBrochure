@@ -195,7 +195,7 @@ collections_config:
         comment: >-
           IMPORTANT: The date must be in UTC time. You'll need to convert your local time to UTC time.
         instance_value: NOW
-      image:
+      finalImage:
         hidden: true
       permalink:
         hidden: true
