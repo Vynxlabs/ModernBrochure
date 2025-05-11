@@ -64,3 +64,5 @@ _inputs:
           id: default
         - name: Horizontal
           id: horizontal
+        - name: Member card
+          id: member
