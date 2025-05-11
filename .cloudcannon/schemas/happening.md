@@ -10,7 +10,7 @@ customCode:
   bodyCode: ""
 happeningImage: 
 imageAltText:
-image: >-
+finalImage: >-
     {% if happeningImage %}{{happeningImage}}{% else %}{{happenings.defaultImage}}{% endif %}
 cancelled: false
 happeningDate:
@@ -21,7 +21,7 @@ permalink: >-
     fileSubstringFilter | append: title | downcase }}{% if pagination.pageNumber > 0 %}/page/{{ pagination.pageNumber }}{%
     endif %}/index.html
 socialImage: >- 
-    {{ image }}
+    {{ finalImage }}
 layout: "layouts/page.html"
 id:
 hero:
