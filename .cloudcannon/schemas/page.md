@@ -18,6 +18,11 @@ metaDesc: ""
 customCode:
   headCode: ""
   bodyCode: ""
+addToCollections: false
+tags:
+collectionImage:
+imageAltText:
+keyInformation:
 layout: "layouts/page.html"
 hero:
 content_blocks: []
@@ -30,4 +35,40 @@ _inputs:
   bodyCode:
     type: "code"
     comment: "Add code before the </body> tag"
+  tags:
+    hidden: "!addToCollections"
+    type: multiselect
+    options:
+      values: data.collectionTags
+  collectionImage:
+    hidden: "!addToCollections"
+  imageAltText:
+    hidden: "!addToCollections"
+  keyInformation:
+    hidden: "!addToCollections"
+    label: Key information
+    comment: "Short description or summary for this page. Will be shown on the collection cards"
+    type: markdown
+    options:
+      link: true
+      blockquote: false
+      bold: true
+      italic: true
+      strike: true
+      subscript: true
+      superscript: true
+      underline: true
+      bulletedlist: true
+      numberedlist: true
+      indent: false
+      outdent: false
+      code: false
+      embed: false
+      horizontalrule: false
+      image: false
+      table: false
+      undo: true
+      redo: true
+      removeformat: true
+      copyformatting: true
 ---
