@@ -35,6 +35,9 @@ _inputs:
   bodyCode:
     type: "code"
     comment: "Add code before the </body> tag"
+  addToCollections:
+    type: switch
+    comment: "Enabling this allows this page to be added to collections of your choosing"
   tags:
     hidden: "!addToCollections"
     type: multiselect
