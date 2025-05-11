@@ -17,10 +17,10 @@ blueprint:
     listingCount: 50
     heading: bookshop:structure:headingBlocks
     tags:
-    showExpired: false
     showAvailable: true
-    showDisqualified: false
     showGeneral: true
+    showExpired: false
+    showDisqualified: false
     noListingsHeading: bookshop:structure:headingBlocks
   styles:
     color_group: primary

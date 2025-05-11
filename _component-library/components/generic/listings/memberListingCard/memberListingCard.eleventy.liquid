@@ -1,3 +1,30 @@
+{% for tag in listingTags %}
+  {% if listings.availableTags contains tag %}
+    {% assign availableTag = tag %}
+    {% assign variable = value %}
+    {% break %}
+  {% else %}
+  {% endif %}
+{% endfor %}
+
+
+{% for tag in listingTags %}
+  {% if listings.disqualificationTags contains tag %}
+    {% assign disqualifiedTag = tag %}
+    {% break %}
+  {% else %}
+  {% endif %}
+{% endfor %}
+
+{% if disqualifiedTag and disqualifiedTag != '' %}
+  {% assign tagClasses = 'bg-red-100 text-red-700 border-red-700 hover:bg-red-200' %}
+  {% assign tagToUse = disqualifiedTag %}
+{% elsif availableTag and availableTag != '' %}
+  {% assign tagClasses = 'bg-green-100 text-green-700 border-green-700 hover:bg-green-200' %}
+  {% assign tagToUse = availableTag %}
+{% else %}
+{% endif %}
+
 {% capture imageClasses %}
     w-full object-cover object-center aspect-[3/4] {{theme.image_rounding}}
   {% if listingUrl and listingUrl != '' %} transition-all duration-300 scale-100 hover:scale-105 {% endif %}
@@ -39,7 +66,7 @@ href="{{ listingUrl }}">{% endif %}
         </div>
       {% endif %}
   {% bookshop "generic/image" bind: image class: imageClasses %}</div>
-  {% if content.name or content.titleOrDescription %}
+  {% if listingTitle or keyInformation %}
     <div class="sm:px-6 px-4 -mt-[30px] {% if listingUrl and listingUrl != '' %} relative z-10{% endif %}">
       {% if listingUrl and listingUrl != '' %}
         <div class="absolute top-2 right-8">{% bookshop "generic/heroLibraryIcon" heroLibraryIconName: "arrow-top-right-on-square" iconType: "outline" iconSize: 'micro' roundedBorder: false classOverride: iconClasses %}</div>
