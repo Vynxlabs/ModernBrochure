@@ -56,9 +56,6 @@ const imageShortcode = async (
     isRemoteUrl = true;
   }
 
-  // console.log(
-  //   `[11ty/eleventy-img] ${Date.now() - before}ms: ${inputFilePath}`,
-  // );
   const cacheDuration = "365d";
   const imageMetadata = await Image(inputFilePath, {
     svgShortCircuit: preferSvg ? "size" : false,
@@ -82,7 +79,6 @@ const imageShortcode = async (
 	});
   } else if (!(Image.getHash(inputFilePath) in imageHashes) && isRemoteUrl) {
     imageHashes[Image.getHash(inputFilePath)] = await Fetch(async function() {
-		// do some expensive operation here, this is simplified for brevity
     let imageBuffer = await Fetch(inputFilePath, { type: "buffer" });
 
 		return generateLQIP(imageBuffer);
