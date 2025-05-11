@@ -2,7 +2,7 @@ const sharp = require("sharp");
 const ColorThief = require("colorthief");
 
 async function generateLQIP(imagePath) {
-  const theSharp = sharp(imagePath);
+  const theSharp = sharp(imagePath, { failOnError: false });
   const stats = await theSharp.stats();
 
   const opaque = stats.isOpaque;
