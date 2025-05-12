@@ -67,10 +67,8 @@ flex flex-col gap-12
           colorFromGroup: {{styles.colorFromGroup}}
           {% endcapture %}
           {% assign card = card | ymlify %}
-          {% if showListing %}
            {% assign createdListings = createdListings | plus: 1 %} 
           {% bookshop {{listingCardStyle}} bind: card %}
-          {% endif %}
         {% endfor %}
       </ul>
       {% if content.noItemsHeading and createdListings == 0 %}
