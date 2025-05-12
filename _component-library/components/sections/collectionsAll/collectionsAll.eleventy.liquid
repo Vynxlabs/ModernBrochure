@@ -1,17 +1,14 @@
 {% assign color_group = styles.color_group %}
 
-{% capture pageCollections %}
-   {% for tag in content.tags %}
-   {{pageCollections | contact: collections[tag]}} 
-   {% endfor %} 
-{% endcapture %}
-
+{% for tag in content.tags %}
+  {% assign collectionsOfPages = collectionsOfPages | concat: collections[tag] %}
+{% endfor %}
 {% if env_bookshop_live %}
-{% assign listingsItems = pageCollections %}
+{% assign listingsItems = collectionsOfPages %}
 {% elsif tag %}
   {% assign listingsItems = collections[tag] | collectionsFilter: page, pageCollections.tags, content.tags %} 
 {% else %}
-{% assign listingsItems = pageCollections | collectionsFilter: page, pageCollections.tags, content.tags, content.listingCount %} 
+{% assign listingsItems = collectionsOfPages | collectionsFilter: page, pageCollections.tags, content.tags, content.listingCount %} 
 {% endif %}
 
 {% capture listStyle %}
@@ -77,8 +74,8 @@ flex flex-col gap-12
         {% endfor %}
       </ul>
       {% if content.noItemsHeading and createdListings == 0 %}
-    {% bookshop {{content.noItesHeading._bookshop_name}} bind: content.noItemsHeading %}
-    
+    {% bookshop {{content.noItemsHeading._bookshop_name}} bind: content.noItemsHeading %} 
+   {% endif %} 
     
     </section>
 </div>
