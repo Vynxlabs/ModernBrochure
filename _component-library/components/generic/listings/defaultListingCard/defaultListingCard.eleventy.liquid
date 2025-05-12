@@ -1,3 +1,7 @@
+{% assign availableTag = '' %}
+{% assign disqualifiedTag = '' %}
+{% assign tagToUse = '' %}
+
 {% for tag in listingTags %}
   {% if listings.availableTags contains tag %}
     {% assign availableTag = tag %}
