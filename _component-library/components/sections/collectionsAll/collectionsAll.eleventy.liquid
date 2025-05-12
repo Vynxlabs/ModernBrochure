@@ -4,7 +4,7 @@
   {% assign collectionsOfPages = collectionsOfPages | concat: collections[tag] %}
 {% endfor %}
 {% if env_bookshop_live %}
-{% assign listingsItems = collectionsOfPages %}
+{% assign listingsItems = collections.pageCollections %}
 {% elsif tag %}
   {% assign listingsItems = collections[tag] | collectionsFilter: page, pageCollections.tags, content.tags %} 
 {% else %}
@@ -64,8 +64,17 @@ flex flex-col gap-12
           colorFromGroup: {{styles.colorFromGroup}}
           {% endcapture %}
           {% assign card = card | ymlify %}
+          {% assign hasTag = false %}
+          {% for tag in listing.data.tags %}
+            {% if content.tags contains tag %}
+              {% assign hasTag = true %}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+          {% if hasTag %}
            {% assign createdListings = createdListings | plus: 1 %} 
           {% bookshop {{listingCardStyle}} bind: card %}
+          {% endif %}
         {% endfor %}
       </ul>
       {% if content.noItemsHeading and createdListings == 0 %}
