@@ -41,6 +41,7 @@ _inputs:
       max: 50
       step: 1
   tags:
+    hidden: false
     comment: >-
       Filter by specifc tags (set up in the listing tags file) to show only those listings. Leave blank to show all.
     type: multiselect
