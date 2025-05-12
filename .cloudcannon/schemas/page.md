@@ -42,7 +42,7 @@ _inputs:
     hidden: "!addToCollections"
     type: multiselect
     options:
-      values: data.collectionTags
+      values: data.collections.tags[*]
   collectionImage:
     hidden: "!addToCollections"
   imageAltText:

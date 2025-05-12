@@ -16,7 +16,7 @@ data_config:
   tokens: true
   listingTags: true
   listings: true
-  collectionTags: true
+  collections: true
 collections_config_override: true
 collections_config:
   data:
