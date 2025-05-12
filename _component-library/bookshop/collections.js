@@ -3,6 +3,7 @@ module.exports = function (Liquid) {
     "collectionsFilter",
     (collection, item, collectionTags, tags = [], limit = 50) => {
 let filteredItems = collection.filter((x) => x.data.draft === false);
+        filteredItems = filteredItems.filter((x) => x.data.addToCollections === false);
     filteredItems = filteredItems.filter((x) => x.url !== item.url);
 
     if (tags !== null && tags.length > 0) {

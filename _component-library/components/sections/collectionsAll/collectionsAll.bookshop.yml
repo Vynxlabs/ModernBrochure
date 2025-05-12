@@ -41,7 +41,7 @@ _inputs:
       Which collection you want to display. Cannot be left blank.
     type: multiselect
     options:
-      values: data.collections.tags[*]
+      values: data.pageCollections.tags[*]
   noItemsHeading:
     comment: >-
       The heading to show when there are no items in the collection(s).
