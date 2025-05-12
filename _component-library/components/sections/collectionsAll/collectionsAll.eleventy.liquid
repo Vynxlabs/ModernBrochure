@@ -1,14 +1,11 @@
 {% assign color_group = styles.color_group %}
 
-{% for tag in content.tags %}
-  {% assign collectionsOfPages = collectionsOfPages | concat: collections[tag] %}
-{% endfor %}
 {% if env_bookshop_live %}
-{% assign listingsItems = collections.pageCollections %}
+{% assign listingsItems = collections.pages %}
 {% elsif tag %}
   {% assign listingsItems = collections[tag] | collectionsFilter: page, pageCollections.tags, content.tags %} 
 {% else %}
-{% assign listingsItems = collectionsOfPages | collectionsFilter: page, pageCollections.tags, content.tags, content.listingCount %} 
+{% assign listingsItems = collections.pages | collectionsFilter: page, pageCollections.tags, content.tags, content.listingCount %} 
 {% endif %}
 
 {% capture listStyle %}
@@ -73,6 +70,7 @@ flex flex-col gap-12
           {% endfor %}
           {% if hasTag %}
            {% assign createdListings = createdListings | plus: 1 %} 
+           {% assign tagToUse = '' %}
           {% bookshop {{listingCardStyle}} bind: card %}
           {% endif %}
         {% endfor %}

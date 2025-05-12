@@ -389,24 +389,6 @@ module.exports = (eleventyConfig) => {
       });
   });
 
- eleventyConfig.addCollection("pageCollections", function (collectionsApi) {
-    const collectionsConfig = yaml.load(
-      fs.readFileSync("./src/_data/pageCollections.yml", "utf8"),
-    );
-    return collectionsApi
-      .getFilteredByGlob("./src/pages/**/*.md")
-      .filter(function (item) {
-        return (
-          (item.data.draft === false && item.data.addToCollections === true &&
-            collectionsConfig.tags.some(
-              (tag) => item.data.tags && item.data.tags.includes(tag),
-            )) 
-        );
-      })
-      .sort((a, b) => {
-      return a.data.title.localeCompare(b.data.title);
-      });
-  });
 
   eleventyConfig.addFilter("dateFilter", dateFilter);
   eleventyConfig.addFilter("w3DateFilter", w3DateFilter);
