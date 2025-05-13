@@ -29,7 +29,9 @@ module.exports = function (Liquid) {
         filteredItems = filteredItems.slice(0, limit);
       }
 
-      return filteredItems;
+      return filteredItems.sort((a, b) => {
+    a.data.title.localeCompare(b.data.title);
+  });
     },
   );
 };
