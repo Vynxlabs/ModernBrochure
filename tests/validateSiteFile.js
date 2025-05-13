@@ -8,6 +8,8 @@ const fileDictionary = {
   "./src/_data-ref/site.json": "./src/_data/site.json",
   "./src/_data-ref/theme.yml": "./src/_data/theme.yml",
   "./src/_data-ref/listings.yml": "./src/_data/listings.yml",
+  "./src/_data-ref/happenings.yml": "./src/_data/happenings.yml",
+  "./src/_data-ref/pageCollections.yml": "./src/_data/pageCollections.yml",
 };
 
 // Function to validate and sync _inputs key

@@ -50,6 +50,8 @@ If this is a tag, grab those items instead as one large collection
       {% bookshop "sections/happeningCards" bind: styles %}
       {% elsif listingTags contains tag %}
       {% bookshop "sections/listingsAll" bind: information %}
+      {% elsif pageCollections.tags contains tag %}
+      {% bookshop "sections/collectionsAll" bind: information %}
       {% else  %} 
       {% bookshop "sections/blogCards" bind: styles %}
       {% endif %}

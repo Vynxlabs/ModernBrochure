@@ -10,8 +10,8 @@
 {% endif %}
 
 {% capture listStyle %}
-{% if styles.listingCardStyle == "default" %}
- flex flex-wrap gap-8
+{% if styles.listingCardStyle == "default" or styles.listingCardStyle == "member" %}
+ flex flex-wrap gap-8 justify-around
 {% else %}
 flex flex-col gap-12
 {% endif %}  

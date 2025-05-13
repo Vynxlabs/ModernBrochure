@@ -16,6 +16,7 @@ data_config:
   tokens: true
   listingTags: true
   listings: true
+  pageCollections: true
 collections_config_override: true
 collections_config:
   data:
@@ -186,7 +187,7 @@ collections_config:
       tags:
         type: multiselect
         options:
-          values: data.blogTags
+          values: data.happenings.tags[*]
       summary:
         type: textarea
       happeningDate:

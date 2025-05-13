@@ -39,6 +39,7 @@ _inputs:
         - name: Default
           id: default
   tags:
+    hidden: false
     type: multiselect
     label: Filter by tags
     comment: >-

@@ -2,26 +2,20 @@
 spec:
   structures:
     - content_blocks
-    - extra_blocks
-  label: "Listings"
-  description: "Show off your listings in a clean, organized layout, perfect for showcasing collections, portfolios, or visual highlights."
+  label: "Collections"
+  description: A section that retrieves a collection of pages by tag
   icon: lists
-  tags: [connected, listings]
+  tags: [connected, collections]
 
 # Defines the structure of this component, as well as the default values
 blueprint:
   content:
     sectionId:
     showNote: true
-    filterCollection:
-    listingCount: 50
+    collectiionCount: 50
     heading: bookshop:structure:headingBlocks
     tags:
-    showAvailable: true
-    showGeneral: true
-    showExpired: false
-    showDisqualified: false
-    noListingsHeading: bookshop:structure:headingBlocks
+    noItemsHeading: bookshop:structure:headingBlocks
   styles:
     color_group: primary
     card_color_group: primary
@@ -33,8 +27,9 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
-  listingCount:
-    comment: "Number of listings to show. Default is 50."
+  collectionCount:
+    hidden: true
+    comment: "Number of collection items to show. Default is 50."
     type: number
     options:
       min: 0
@@ -43,19 +38,15 @@ _inputs:
   tags:
     hidden: false
     comment: >-
-      Filter by specifc tags (set up in the listing tags file) to show only those listings. Leave blank to show all.
+      Which collection you want to display. Cannot be left blank.
     type: multiselect
     options:
-      values: data.listingTags
-  filterCollection:
-    hidden: true
-    type: select
-    options:
-      allow_empty: true
-      values: data.listings.filtering[*]
-      value_key: id
-      text_key: filterCollectionName
+      values: data.pageCollections.tags[*]
+  noItemsHeading:
+    comment: >-
+      The heading to show when there are no items in the collection(s).
   listingCardStyle:
+    label: Collection Card Style
     type: select
     options:
       allow_empty: false
@@ -67,3 +58,6 @@ _inputs:
           id: horizontal
         - name: Member card
           id: member
+
+
+

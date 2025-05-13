@@ -32,6 +32,7 @@ _inputs:
     comment: >-
       This color group is applied to the No Happenings Heading.
   tags:
+    hidden: false
     type: multiselect
     label: Filter by tags
     comment: >-
