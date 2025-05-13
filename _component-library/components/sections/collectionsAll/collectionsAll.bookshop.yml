@@ -2,10 +2,10 @@
 spec:
   structures:
     - content_blocks
-  label: "CollectionsAll"
-  description:
-  icon:
-  tags: []
+  label: "Collections"
+  description: A section that retrieves a collection of pages by tag
+  icon: lists
+  tags: [connected, collections]
 
 # Defines the structure of this component, as well as the default values
 blueprint:
