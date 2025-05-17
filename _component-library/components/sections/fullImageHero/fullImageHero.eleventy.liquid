@@ -25,7 +25,7 @@
     <div class="max-w-[700px] text-white {{textAlignment}}">
 
 
-      <p class=" {% if content.highlightEybrow %} text-{{styles.color_group}}-accentcolor {% endif %} ">{% bookshop "generic/textBlock" text: content.eyebrow %}</p>
+      <div class=" {% if content.highlightEybrow %} text-{{styles.color_group}}-accentcolor {% endif %} ">{% bookshop "generic/textBlock" text: content.eyebrow %}</div>
       <h1 class="md:text-5xl text-4xl font-bold">{% bookshop "generic/textBlock" text: content.headline %}</h1>
       <p class="mt-3">
         {% if content.description %}
