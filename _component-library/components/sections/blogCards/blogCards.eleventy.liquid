@@ -2,8 +2,10 @@
     {% assign postListItems = collections.blog %}
     {% elsif tag %}
         {% assign postListItems = collections[tag] %}
-    {% else %}
+    {% elsif pagination and page.url == "/blog/"%}
     {% assign postListItems = pagination.items %}
+    {% else %}
+    {% assign postListItems = collections.blog %}
 {% endif %}
 {% assign color_group = styles.color_group %}
 {% assign counter = 0 %}
