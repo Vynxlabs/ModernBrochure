@@ -51,8 +51,8 @@ collections_config:
     singular_key: null
     _editables: null
     _enabled_editors:
-      - content
       - visual
+      - content
     _inputs:
       title:
         label: Page Title
@@ -174,8 +174,8 @@ collections_config:
       exclude:
         - happenings.json
     _enabled_editors:
-      - content
       - visual
+      - content
     _inputs:
       title:
         label: Page Title
@@ -220,6 +220,9 @@ collections_config:
     filter:
       exclude:
         - services.json
+    _enabled_editors:
+      - visual
+      - content
     _inputs:
       title:
         label: Page Title
@@ -259,6 +262,9 @@ collections_config:
     filter:
       exclude:
         - listings.json
+    _enabled_editors:
+      - visual
+      - content
     _inputs:
       title:
         label: Page Title
