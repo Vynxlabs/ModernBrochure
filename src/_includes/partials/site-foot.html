@@ -1,9 +1,15 @@
-{% assign navPages = collections.all | eleventyNavigation %}
+{% if site.navigation.footerUseNav %}
+
+{% assign navPages = site.navigation.topNav %}
+  {% else %}
+
+{% assign navPages = site.navigation.footerNav %}
+  {% endif %}
 {% assign topLevelLinks = "" %}
 {% assign groupedLinks = "" %}
 
 {% for entry in navPages %}
-  {% if entry.children.size > 0 %}
+  {% if entry.links.size > 0 %}
     {% capture topLevelLinks %}
       {{ topLevelLinks }}
       {% render "partials/render-footer.html" with entry as entry, page: page %}

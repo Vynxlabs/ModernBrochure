@@ -23,7 +23,7 @@ blogPosts.size > 0 %}
     >{{ entry.title }}</a
   >
 </li>
-{% endif %} {% elsif entry.children.size <= 0 %}
+{% endif %} {% elsif entry.links.size == nil %}
 <li>
   <a 
   data-umami-event="{{entry.title}}-navbar"
@@ -33,7 +33,7 @@ blogPosts.size > 0 %}
     >{{ entry.title }}</a
   >
 </li>
-{% endif %} {% if entry.children.size > 0 %}
+{% endif %} {% if entry.links.size > 0 %}
 <div class="relative ">
   <div class="flex items-center">
     <li>
@@ -43,7 +43,7 @@ blogPosts.size > 0 %}
         class="data-[state=active]:link data-[state=active]:decoration-{{color_group}}-accentcolor block rounded py-2 pl-3 pr-4 uppercase  transition-colors hover:bg-gray-700 dark:border-gray-700 md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent"
        _="
       set element opened to false
-      set element submenu to #{{ entry.key | slugify }}
+      set element submenu to #{{ entry.title | slugify }}
       on click
     
       if opened then
@@ -69,7 +69,7 @@ blogPosts.size > 0 %}
     <summary class="absolute left-[87%] "><button class="hover:border-b-2 hidden md:block w-12 h-10 data-[state=active]:link hover:text-sopris-green rounded py-2 pl-3 pr-4 uppercase  transition-colors hover:bg-gray-700 dark:border-gray-700 md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent"
       _="
       set element opened to false
-      set element submenu to #{{ entry.key | slugify }}
+      set element submenu to #{{ entry.title | slugify }}
       on click
     
       if opened then
@@ -97,8 +97,8 @@ blogPosts.size > 0 %}
       </div>
         </button></summary>
   </div>
-  <ul id="{{ entry.key | slugify }}" class="{{display}}    transition-all md:duration-300 origin-top md:invisible   md:scale-y-0  ml-3  md:ml-0 md:p-2 md:pr-6  md:z-10 mt-2 w-max  rounded   border-l-2 border-{{color_group}}-backgroundcolor md:bg-{{color_group}}-backgroundcolor bg-opacity-70  focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-    {% for child in entry.children %} {% render "partials/render-nav.html",
+  <ul id="{{ entry.title | slugify }}" class="{{display}}    transition-all md:duration-300 origin-top md:invisible   md:scale-y-0  ml-3  md:ml-0 md:p-2 md:pr-6  md:z-10 mt-2 w-max  rounded   border-l-2 border-{{color_group}}-backgroundcolor md:bg-{{color_group}}-backgroundcolor bg-opacity-70  focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+    {% for child in entry.links %} {% render "partials/render-nav.html",
     entry:child, color_group: color_group, level: level, blogPosts: blogPosts, page:page %} {% endfor %}
   </ul>
 </div>
