@@ -58,7 +58,7 @@
   "_inputs": {
     "footerUseNav":{
       "label": "Use Top Navigation in Footer",
-      "comment": "This will duplicate the top navigation in the footer to save you time. If you want to use your own navigation in the footer, leave this unchecked.",
+      "comment": "This will duplicate the top navigation in the footer to save you time. If you want to use your own navigation in the footer, leave this unchecked."
     },
     "topNav": {
       "type":"array",
