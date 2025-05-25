@@ -67,7 +67,7 @@
       }
     },
     "footerNav": {
-      "hidden": "!footerUseNav",
+      "hidden": "footerUseNav",
       "type":"array",
       "options": {
         "structures": "_structures.links"
