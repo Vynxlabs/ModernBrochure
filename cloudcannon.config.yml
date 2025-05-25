@@ -608,26 +608,26 @@ _structures:
     values:
       - label: Single Link
         value:
-          linkTitle:
+          title:
           url:
       - label: Link Group
         value:
-          groupTitle:
+          title:
           links:
   rootLinks:
     style: select
     values:
       - label: Single Link
         value:
-          linkTitle:
+          title:
           url:
       - label: Link Group
         value:
-          groupTitle:
+          title:
           links:
       - label: Mega Menu
         value:
-          megaMenuTitle:
+          title:
           links:
   tokens:
     style: select
