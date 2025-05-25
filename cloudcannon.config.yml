@@ -603,6 +603,38 @@ _structures:
     style: modal
   hero_blocks:
     style: modal
+  links:
+    style: select
+    values:
+      - label: Single Link
+        value:
+          key:
+          value:
+      - label: Link Group
+        value:
+          groupTitle:
+          links:
+            - key:
+              value:
+  rootLinks:
+    style: select
+    values:
+      - label: Single Link
+        value:
+          key:
+          value:
+      - label: Link Group
+        value:
+          groupTitle:
+          links:
+            - key:
+              value:
+      - label: Mega Menu
+        value:
+          megaMenuTitle:
+          links:
+            - key:
+              value:
   tokens:
     style: select
     values:
