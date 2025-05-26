@@ -9,6 +9,8 @@
 {% assign groupedLinks = "" %}
 
 {% for entry in navPages %}
+{% if entry._menuType != "mega" %}
+  
   {% if entry.links.size > 0 %}
     {% capture topLevelLinks %}
       {{ topLevelLinks }}
@@ -28,6 +30,29 @@
       </li>
     {% endcapture %}
   {% endif %}
+  {% else  %}
+   {% for megaEntry in entry.links %} 
+  {% if megaEntry.links.size > 0 %}
+    {% capture topLevelLinks %}
+      {{ topLevelLinks }}
+      {% render "partials/render-footer.html" with megaEntry as entry, page: page %}
+    {% endcapture %}
+  {% else %}
+    {% capture groupedLinks %}
+      {{ groupedLinks }}
+      <li>
+        <a 
+          data-umami-event="{{megaEntry.title}}-footer"
+          {{ megaEntry.url | linkFilter: page.url }}
+          class="data-[state=active]:link hover:text-sopris-green block rounded pt-0 pb-2 pl-3 pr-4 transition-colors hover:bg-gray-700 dark:border-gray-700  md:hover:bg-transparent md:dark:hover:bg-transparent"
+          href="{{ megaEntry.url }}">
+          {{ megaEntry.title }}
+        </a>
+      </li>
+    {% endcapture %}
+  {% endif %}
+   {% endfor %}
+{% endif %}
 {% endfor %}
 
 <footer
