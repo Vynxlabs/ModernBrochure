@@ -31,7 +31,7 @@ blogPosts.size > 0 %}
     >{{ entry.title }}</a
   >
 </li>
-{% endif %} {% elsif entry.links.size == nil %}
+{% endif %} {% elsif entry.links.size == nil  %}
 <li>
   <a 
   data-umami-event="{{entry.title}}-navbar"
@@ -43,6 +43,10 @@ blogPosts.size > 0 %}
 </li>
 {% endif %} 
 {% if entry.links.size > 0 and parentType == "mega"%}
+
+
+
+
 <div class=" ">
   <div class="flex items-center">
     <li>
@@ -108,22 +112,52 @@ blogPosts.size > 0 %}
   </div>
   <div
   id="{{ entry.title | slugify }}"
-  class="transition-all md:duration-300 origin-top md:invisible md:scale-y-0 md:absolute md:left-0 md:right-0 md:top-full w-full flex flex-col items-center justify-center md:bg-{{color_group}}-backgroundcolor md:bg-opacity-95 z-10"
+  class="transition-all  {{ themeRounding }} md:duration-300 origin-top md:invisible md:scale-y-0 md:absolute md:left-0 md:right-0 md:top-full w-full flex flex-col items-center justify-center md:bg-{{color_group}}-backgroundcolor md:bg-opacity-95 z-10"
   role="menu"
   aria-orientation="vertical"
   aria-labelledby="options-menu"
 >
-  <ul class=" basecontainer w-full mx-auto md:max-h-[50vh] md:overflow-y-scroll md:gap-6 md:pt-4 ml-4 pl-0 pr-4 md:px-8 pb-4 flex flex-row justify-between flex-wrap md:border-none border-l-2 border-{{color_group}}-textcolor">
-    {% for child in entry.links %}
+{% assign topLevelLinks = "" %}
+{% assign groupedLinks = "" %}
+
+  <ul class=" basecontainer w-full  mx-auto md:max-h-[50vh] md:overflow-y-scroll md:gap-6 md:pt-4 ml-4 pl-0 pr-4 md:px-8 pb-4 flex flex-row justify-between flex-wrap md:border-none border-l-2 border-{{color_group}}-textcolor">
+{% for subEntry in entry.links %}
+  {% if subEntry.links.size > 0 %}
+    {% capture topLevelLinks %}
+      {{ topLevelLinks }}
       {% render "partials/render-nav.html",
-        entry:child,
+        entry:subEntry,
         color_group: color_group,
         level: level,
         blogPosts: blogPosts,
         page: page,
         parentType: "megaSub" %}
-    {% endfor %}
+    {% endcapture %}
+  {% else %}
+    {% capture groupedLinks %}
+      {{ groupedLinks }}
+      <li>
+        <a 
+        data-umami-event="{{subEntry.title}}-navbar"
+        {{subEntry.url | linkFilter: page.url}}
+          class="data-[state=active]:link data-[state=active]:decoration-{{color_group}}-accentcolor block rounded py-2 pl-3 pr-4 md:w-max   transition-colors hover:bg-gray-700 dark:border-gray-700 md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent"
+          href="{{ subEntry.url }}"
+          >{{ subEntry.title }}</a
+        >
+      </li>
+    {% endcapture %}
+  {% endif %}
+{% endfor %}
+
+{{ topLevelLinks }}
+    <li class="data-[state=active]:link data-[state=active]:decoration-{{color_group}}-accentcolor w-max block rounded mt-2 py-2 pl-3 pr-4   transition-colors hover:bg-gray-700 dark:border-gray-700 md:p-0 md:hover:bg-transparent md:dark:hover:bg-transparent" >
+    Links 
+  
+  <ul id="{{ entry.title | slugify }}" class="    transition-all md:duration-300 origin-top   ml-3  md:ml-0 md:p-2 md:pr-6  md:z-10  w-max   border-l-2 border-{{color_group}}-textcolor md:bg-{{color_group}}-backgroundcolor bg-opacity-70  focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+    {{ groupedLinks }}
   </ul>
+  </ul>
+  </li>
 </div>
 </div>
 
@@ -214,7 +248,7 @@ blogPosts.size > 0 %}
       </div>
         </button></summary>
   </div>
-  <ul id="{{ entry.title | slugify }}" class="{{display}}    transition-all md:duration-300 origin-top md:invisible   md:scale-y-0  ml-3  md:ml-0 md:p-2 md:pr-6  md:z-10 mt-2 w-max  rounded   border-l-2 border-{{color_group}}-backgroundcolor md:bg-{{color_group}}-backgroundcolor bg-opacity-70  focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+  <ul id="{{ entry.title | slugify }}" class="{{display}}    transition-all md:duration-300 origin-top md:invisible   md:scale-y-0  ml-3  md:ml-0 md:p-2 md:pr-6  md:z-10 mt-2 w-max    border-l-2 border-{{color_group}}-textcolor md:bg-{{color_group}}-backgroundcolor bg-opacity-70  focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
     {% for child in entry.links %} {% render "partials/render-nav.html",
     entry:child, color_group: color_group, level: level, blogPosts: blogPosts, page:page, parentType: child._menuType %} {% endfor %}
   </ul>
