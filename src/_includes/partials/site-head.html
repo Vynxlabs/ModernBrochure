@@ -1,4 +1,4 @@
-{% assign navPages = collections.all | eleventyNavigation %}
+{% assign navPages = site.navigation.topNav  %}
 
 {% assign level=-1%}
 
@@ -129,10 +129,10 @@
         id="navbar-sticky"
       >
         <ul
-          class="mt-4 flex  flex-col rounded border border-{{site.nav_color_group}}-backgroundcolor  p-4 font-medium md:mt-0 md:flex-row md:flex-wrap md:space-x-8 md:border-0 md:bg-transparent md:p-0 max-h-[50vh] overflow-y-scroll md:overflow-visible md:max-h-none"
+          class="mt-4 text-base flex  flex-col rounded border border-{{site.nav_color_group}}-backgroundcolor  p-4 font-medium md:mt-0 md:flex-row md:flex-wrap md:space-x-8 md:border-0 md:bg-transparent md:p-0 max-h-[50vh] overflow-y-scroll md:overflow-visible md:max-h-none"
         >
           {% for entry in navPages %} {% render "partials/render-nav.html",
-          entry: entry, color_group: site.nav_color_group, level:level, blogPosts: collections.blog, page:page %} {% endfor %}
+          entry: entry, color_group: site.nav_color_group, level:level, blogPosts: collections.blog, page:page, parentType: entry._menuType, themeRounding: theme.container_rounding %} {% endfor %}
         </ul>
       </div>
     {% endif %}
