@@ -27,8 +27,10 @@ layout: "layouts/page.html"
 hero:
 content_blocks: []
 _inputs:
+  removeFromNavigation:
+    hidden: true
   eleventyNavigation:
-    hidden: 'removeFromNavigation'
+    hidden: true
   headCode:
     type: "code"
     comment: "Add code at the end of the <head> tag"
