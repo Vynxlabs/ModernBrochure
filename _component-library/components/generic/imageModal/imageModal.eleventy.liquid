@@ -32,7 +32,7 @@ transition #modal-{{id}} opacity to 1 over 0.2s
 
 {% if image %}
   
-        {% bookshop "{{image._bookshop_name}}" bind: image class: "max-w-[90%] object-cover object-center" %}
+        {% bookshop "{{image._bookshop_name}}" bind: image class: "max-w-[90%] object-cover object-center" attributes: "controls" %}
 {% endif %}
     </div>
   </div>
