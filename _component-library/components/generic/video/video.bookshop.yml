@@ -26,6 +26,10 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  attributes:
+    hidden: true
+  hoverPlay:
+    hidden: true
   class:
     hidden: true
   videoNumber:
