@@ -4,6 +4,7 @@ spec:
     - embeds
     - assets
     - resource
+    - media
   label: "Video Embed"
   description:
   icon: smart_display

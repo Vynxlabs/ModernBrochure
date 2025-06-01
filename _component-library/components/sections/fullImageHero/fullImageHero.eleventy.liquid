@@ -14,9 +14,9 @@
   {% if content.sectionId %}
     {% bookshop "util/IdScrollEvent" sectionId: content.sectionId %}
   {% endif %}
-  {% if content.image.imagePath %}
+  {% if content.image %}
     <div class="absolute inset-0 -z-10 flex items-center justify-center after:contents[''] after:absolute after:inset-0 after:bg-black after:bg-op {{opacity}} ">
-      {% bookshop "generic/image" bind: content.image class: "h-screen w-screen object-cover" %}
+      {% bookshop "{{content.image._bookshop_name}}" bind: content.image class: "h-screen w-screen object-cover" %}
     </div>
   {% endif %}
 

@@ -4,7 +4,8 @@ spec:
     - embeds
     - assets
     - resource
-    - images
+    - media
+    - imgvid
   label: "Video"
   description: An image that wil be optimized
   icon: play_circle

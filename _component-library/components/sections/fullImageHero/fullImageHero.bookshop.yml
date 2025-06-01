@@ -17,7 +17,7 @@ blueprint:
     headline:
     description: "Hello World!"
     buttons: [bookshop:structure:buttons]
-    image: bookshop:generic/image!
+    image: bookshop:structure:imgvid
   styles:
     color_group: primary
     contentAlignment: left
@@ -45,6 +45,8 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  image:
+    label: Media
   contentAlignment:
     type: choice
     options:
