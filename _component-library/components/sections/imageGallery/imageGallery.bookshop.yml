@@ -16,7 +16,7 @@ blueprint:
   content:
     sectionId:
     heading: bookshop:structure:headingBlocks
-    images: [bookshop:generic/image]
+    images: [bookshop:structure:assets]
     buttons: [bookshop:structure:buttons]
   styles:
     color_group: primary
