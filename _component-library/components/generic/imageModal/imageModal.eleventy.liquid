@@ -12,7 +12,7 @@ transition #modal-{{id}} opacity to 1 over 0.2s
 >
 {% if image %}
   
-{% bookshop "{{image._bookshop_name}}" bind: image class: " aspect-square object-cover object-center w-full h-full"  %}
+{% bookshop "{{image._bookshop_name}}" bind: image class: " aspect-square object-cover object-center w-full h-full" hoverPlay: true %}
 {% endif %}
 </button>
 <dialog id="modal-{{id}}" class="fixed top-0 z-[920] h-full w-full overflow-scroll p-4 opacity-0 open:bg-slate-950 open:bg-opacity-60 open:backdrop-blur-lg sm:p-10">
