@@ -4,9 +4,10 @@ spec:
     - embeds
     - assets
     - resource
+    - images
   label: "Video"
   description: An image that wil be optimized
-  icon: image
+  icon: play_circle
   tags: []
 
 # Defines the structure of this component, as well as the default values
@@ -15,7 +16,7 @@ blueprint:
   yAxisPosition:
   class:
   attributes:
-  hoverPlay: true
+  hoverPlay:
   videoNumber:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
