@@ -11,7 +11,7 @@ transition #modal-{{id}} opacity to 1 over 0.2s
 "
 >
 
-{% bookshop "generic/image" bind: image class: " aspect-square object-cover object-center w-full h-full" %}
+{% bookshop "{{resource._bookshop_name}}" bind: image class: " aspect-square object-cover object-center w-full h-full" %}
 </button>
 <dialog
     id="modal-{{id}}"
@@ -30,7 +30,7 @@ transition #modal-{{id}} opacity to 1 over 0.2s
       {% bookshop "generic/heroLibraryIcon" heroLibraryIconName:"x-mark" iconType:"solid" iconSize:'large' roundedBorder:false color: "#ffffff" %}
       </button>
       <div class="self-center">
-          {% bookshop "generic/image" bind: image class: "max-w-[90%] object-cover object-center" %}
+          {% bookshop "{{resource._bookshop_name}}" bind: image class: "max-w-[90%] object-cover object-center" %}
       </div>
     </div>
   </dialog>
