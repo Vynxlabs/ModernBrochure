@@ -17,7 +17,7 @@ blueprint:
     headline: "Hero Headline"
     description:
     buttons: [bookshop:structure:buttons]
-    image: bookshop:generic/image!
+    image: bookshop:structure:imgvid
   styles:
     color_group: primary
     backgroundOpacity: 50
@@ -27,6 +27,8 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  image:
+    label: Media
   backgroundOpacity:
     type: range
     options:

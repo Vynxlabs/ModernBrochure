@@ -3,8 +3,8 @@ spec:
   structures:
     - content_blocks
     - extra_blocks
-  label: "Simple Image Gallery"
-  description: A simple image gallery
+  label: "Simple media Gallery"
+  description: A simple media gallery
   icon: space_dashboard
   tags: []
   tabbed: true
@@ -16,7 +16,7 @@ blueprint:
   content:
     sectionId:
     heading: bookshop:structure:headingBlocks
-    images: [bookshop:generic/image]
+    images: [bookshop:structure:media]
     buttons: [bookshop:structure:buttons]
   styles:
     color_group: primary

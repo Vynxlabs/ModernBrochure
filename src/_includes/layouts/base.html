@@ -122,6 +122,7 @@
     class LiteYTEmbed extends HTMLElement {
     connectedCallback() {
         this.videoId = this.getAttribute('videoid');
+        this.thumbOnly = this.hasAttribute('thumbOnly');
 
         let playBtnEl = this.querySelector('.lty-playbtn');
         // A label for the button takes priority over a [playlabel] attribute on the custom-element
@@ -169,6 +170,9 @@
             });
         }
 
+        if(this.thumbOnly) {
+          return;
+        }
         // On hover (or tap), warm up the TCP connections we're (likely) about to use.
         this.addEventListener('pointerover', LiteYTEmbed.warmConnections, {once: true});
         this.addEventListener('focusin', LiteYTEmbed.warmConnections, {once: true});
@@ -374,6 +378,7 @@
           
             connectedCallback() {
               this.videoId = this.getAttribute('videoid');
+              this.thumbOnly = this.hasAttribute('thumbOnly');
           
               /**
                * Lo, the vimeo placeholder image!  (aka the thumbnail, poster image, etc)
@@ -405,7 +410,10 @@
                 this.append(playBtnEl);
               }
               playBtnEl.removeAttribute('href');
-          
+              
+              if (this.thumbOnly) {
+                return;
+              }
               // On hover (or tap), warm up the TCP connections we're (likely) about to use.
               this.addEventListener('pointerover', LiteVimeo._warmConnections, {
                 once: true
@@ -426,7 +434,7 @@
               iframeEl.height = 360;
               // No encoding necessary as [title] is safe. https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html#:~:text=Safe%20HTML%20Attributes%20include
               iframeEl.title = this.playLabel;
-              iframeEl.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture';
+              iframeEl.allow = 'fullscreen; accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture';
               // AFAIK, the encoding here isn't necessary for XSS, but we'll do it only because this is a URL
               // https://stackoverflow.com/q/64959723/89484
               iframeEl.src = `https://player.vimeo.com/video/${encodeURIComponent(this.videoId)}?autoplay=1`;

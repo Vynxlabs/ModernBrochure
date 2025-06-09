@@ -1,24 +1,24 @@
 # Metadata about this component, to be used in the CMS
 spec:
   structures:
+    - embeds
     - assets
-    - card_imagery_blocks
     - resource
     - media
     - imgvid
-  label: "Image"
+  label: "Video"
   description: An image that wil be optimized
-  icon: image
+  icon: play_circle
   tags: []
 
 # Defines the structure of this component, as well as the default values
 blueprint:
-  imagePath:
-  imageAlt:
+  videoUrl:
   yAxisPosition:
-  imageSizes:
   class:
-  imageNumber:
+  attributes:
+  hoverPlay:
+  videoNumber:
 
 # Overrides any fields in the blueprint when viewing this component in the component browser
 preview:
@@ -28,15 +28,16 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
-  imageSizes:
-    hidden: true  
+  attributes:
+    hidden: true
+  hoverPlay:
+    hidden: true
   class:
     hidden: true
-  imageNumber:
+  videoNumber:
     hidden: true
-  imageAlt:
-    comment: "A concise text description of the image that will be used for accessibility. This not being filled out will hurt SEO."
   yAxisPosition:
+    hidden: true
     type: range
     options:
       min: 0
