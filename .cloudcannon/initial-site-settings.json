@@ -1,9 +1,27 @@
 {
   "ssg": "eleventy",
+  "mode": "hosted",
   "build_configuration": {
-    "build_command": "npx eleventy",
-    "output_path": "dist",
+    "output": "dist",
+    "hugoVersion": "0.128.1",
+    "rubyVersion": "2.7.3",
+    "nodeVersion": "file",
+    "denoVersion": "1.40.2",
+    "preserved_paths": "node_modules/,.cache/,dist/assets/images/",
+    "config": "",
+    "formats": "",
+    "input": "",
+    "pathprefix": "",
+    "quiet": false,
+    "incremental": false,
+    "ignoreinitial": false,
+    "preserveOutput": true,
+    "includeGit": false,
+    "manage_plugin_manually": false,
+    "use_beta_plugin": false,
     "environment_variables": [],
-    "preserved_paths": "node_modules,dist/assets/images,.cache"
+    "output_path": "dist",
+    "install_command": "npm i",
+    "build_command": "npx @11ty/eleventy"
   }
 }
