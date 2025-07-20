@@ -8,6 +8,12 @@
     "nodeVersion": "file",
     "denoVersion": "1.40.2",
     "preserved_paths": "node_modules/,.cache/,dist/assets/images/",
+    "environment_variables": [
+      {
+        "key": "CLOUDCANNON_ENV",
+        "value": "cloudcannon"
+      }
+    ],
     "config": "",
     "formats": "",
     "input": "",
@@ -15,13 +21,12 @@
     "quiet": false,
     "incremental": false,
     "ignoreinitial": false,
-    "preserveOutput": true,
+    "preserveOutput": false,
     "includeGit": false,
     "manage_plugin_manually": false,
     "use_beta_plugin": false,
-    "environment_variables": [],
     "output_path": "dist",
     "install_command": "npm i",
-    "build_command": "npx @11ty/eleventy"
+    "build_command": "npm run eleventy"
   }
 }
