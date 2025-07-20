@@ -11,7 +11,7 @@
     "environment_variables": [
       {
         "key": "CLOUDCANNON_ENV",
-        "value": "true"
+        "value": "cloudcannon"
       }
     ],
     "config": "",
