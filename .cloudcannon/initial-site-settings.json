@@ -10,7 +10,7 @@
     "preserved_paths": "node_modules/,.cache/,dist/assets/images/",
     "environment_variables": [
       {
-        "key": "cloudcannon",
+        "key": "CLOUDCANNON_ENV",
         "value": "true"
       }
     ],
