@@ -113,7 +113,7 @@ logo for {{site.name}}
             data-rot20-text
             data-umami-event="{{site.contactInfo.phone}}-navbar"
             data-rot20-href="{{"tel:" | append: site.contactInfo.phone | remove: "-" | remove: " " | remove: "." | remove: "(" | remove: ")" | rot20Filter}}" class="block underline"
-              >{{ site.contactInfo.phone }}</a
+              >{{ site.contactInfo.phone | rot20Filter }}</a
             >
           </div>
           {% endif %}
@@ -124,7 +124,7 @@ logo for {{site.name}}
             data-rot20-text
             data-umami-event="{{site.contactInfo.email}}-navbar"
             data-rot20-href="{{ "mailto:" | append: site.contactInfo.email | rot20Filter }}" class="block underline"
-              >{{ site.contactInfo.email }}</a
+              >{{ site.contactInfo.email | rot20Filter }}</a
             >
           </div>
           {% endif %}
