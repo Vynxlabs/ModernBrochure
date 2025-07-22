@@ -247,7 +247,7 @@ function loadSiteTokens() {
       if (contactFields[key]) {
         let contactKey = slugify(`contactInfo.${key}`);
         console.log(contactKey);
-        flattenedTokens[contactKey] = contactFields[key];
+        flattenedTokens[contactKey] = key=="email" || key=="phone" ? `<span data-rot20-text>${rot20_7(contactFields[key])}</span>` : contactFields[key];
       }
     });
 
