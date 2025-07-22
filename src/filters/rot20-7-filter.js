@@ -1,5 +1,5 @@
 module.exports = (text) => {
-    return str.replace(/[a-zA-Z0-9]/g, (char) => {
+    return text.replace(/[a-zA-Z0-9]/g, (char) => {
 		const code = char.charCodeAt(0);
 
 		if (code >= 65 && code <= 90) return String.fromCharCode(((code - 65 + 20) % 26) + 65); // A–Z
