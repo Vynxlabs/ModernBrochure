@@ -19,6 +19,7 @@ const pathExistsFilter = require("./src/filters/pathExists-filter.js");
 const uuidHashFilter = require("./src/filters/uuid-hash-filter.js");
 const tagColorFilter = require("./src/filters/tag-color-filter.js");
 const collectionsFilter = require("./src/filters/collections-filter.js");
+const rot20_7 = require("./src/filters/rot20-7-filter.js");
 const rssPlugin = require("@11ty/eleventy-plugin-rss");
 const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
 const markdownIt = require("markdown-it"),
@@ -414,6 +415,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addFilter("pathExists", pathExistsFilter);
   eleventyConfig.addFilter("uuidHashFilter", uuidHashFilter);
   eleventyConfig.addFilter("tagColorFilter", tagColorFilter);
+  eleventyConfig.addFilter("rot20Filter", rot20_7);
 
   // Load and flatten tokens
   const tokens = loadTokens();
