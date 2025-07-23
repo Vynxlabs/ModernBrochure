@@ -495,6 +495,81 @@
             };
           }
   </script>
+  <script>
+
+    'use strict';
+
+document.addEventListener('DOMContentLoaded', function () {
+	const listener = new Listener();
+
+	listener.decode = function () {
+		// Decode plain text nodes
+		const textElements = document.querySelectorAll('[data-rot20-text]');
+		for (const el of textElements) {
+			if (el.firstChild?.nodeType === Node.TEXT_NODE) {
+				el.firstChild.nodeValue = rot20_7(el.firstChild.nodeValue);
+			}
+		}
+
+		// Decode href attributes
+		const linkElements = document.querySelectorAll('[data-rot20-href]');
+		for (const el of linkElements) {
+			const encodedHref = el.getAttribute('data-rot20-href');
+			el.setAttribute('href', rot20_7(encodedHref));
+		}
+	};
+
+	listener.on();
+});
+
+// ROT20 for letters, ROT7 for numbers
+function rot20_7(str) {
+	return str.replace(/[a-zA-Z0-9]/g, (char) => {
+		const code = char.charCodeAt(0);
+
+		// ROT20 for uppercase letters
+		if (code >= 65 && code <= 90) {
+			return String.fromCharCode(((code - 65 + 20) % 26) + 65);
+		}
+
+		// ROT20 for lowercase letters
+		if (code >= 97 && code <= 122) {
+			return String.fromCharCode(((code - 97 + 20) % 26) + 97);
+		}
+
+		// ROT7 for digits
+		if (code >= 48 && code <= 57) {
+			return String.fromCharCode(((code - 48 + 7) % 10) + 48);
+		}
+
+		return char;
+	});
+}
+
+// Listener class
+function Listener() {}
+
+Listener.prototype.decode = null;
+
+Listener.prototype.on = function () {
+	this.listener = this.__onInteraction.bind(this);
+	document.addEventListener('mouseenter', this.listener, true);
+	document.addEventListener('focus', this.listener, true);
+  document.addEventListener('scroll', this.listener, true);
+};
+
+Listener.prototype.off = function () {
+	document.removeEventListener('mouseenter', this.listener, true);
+	document.removeEventListener('focus', this.listener, true);
+  document.removeEventListener('scroll', this.listener, true);
+	delete this.listener;
+};
+
+Listener.prototype.__onInteraction = function () {
+	this.off();
+	this.decode();
+};
+  </script>
     {{site.customCode.bodyCode}}
     {{customCode.bodyCode}}
   </body>

@@ -12,6 +12,12 @@
 {% endif %}
 {% endcapture%}
 
+{% capture logoAltText%}
+logo for {{site.name}}
+{% endcapture%}
+
+
+{% assign logoAltText= logoAltText | removeExtraWhitespace | strip%}
 
 <div id="navbar" class="fixed left-0 top-0 z-[850] w-full transition-all duration-300">
   {% include "partials/banner.html" %}
@@ -27,7 +33,7 @@
     {% if not site.logoPath or site.logoPath == "" %}
     <p class="cs-logoFont text-2xl hover:underline">{{site.name}}</p>
     {% else %}
-    {% logo site.logoPath, "logo for {{site.name}}", " w-[100px]"  %}
+    {% logo site.logoPath, logoAltText, " w-[100px]"  %}
   {% endif %}
   </a>
     <div
@@ -39,7 +45,7 @@
     href="{{logoUrl}}" class="md:hidden ">{% if not site.logoPath or site.logoPath == "" %}
       <p class="cs-logoFont text-2xl hover:underline">{{site.name}}</p>
       {% else %}
-      {% logo site.logoPath, "logo for {{site.name}}", " w-[100px]"  %}
+      {% logo site.logoPath, logoAltText, " w-[100px]"  %}
     {% endif %}</a>
 
 {% if disableNav != true  %}
@@ -104,9 +110,10 @@
           <div class="flex gap-1 items-center">
             {% bookshop "generic/heroLibraryIcon" heroLibraryIconName: "phone" iconType: "outline" iconSize: 'micro' roundedBorder: false themeColor: true %}
             <a 
+            data-rot20-text
             data-umami-event="{{site.contactInfo.phone}}-navbar"
-            href="tel:{{ site.contactInfo.phone | remove: "-" | remove: " " | remove: "." | remove: "(" | remove: ")" }}" class="block underline"
-              >{{ site.contactInfo.phone }}</a
+            data-rot20-href="{{"tel:" | append: site.contactInfo.phone | remove: "-" | remove: " " | remove: "." | remove: "(" | remove: ")" | rot20Filter}}" class="block underline"
+              >{{ site.contactInfo.phone | rot20Filter }}</a
             >
           </div>
           {% endif %}
@@ -114,9 +121,10 @@
           <div class="flex gap-1 items-center">
             {% bookshop "generic/heroLibraryIcon" heroLibraryIconName: "envelope" iconType: "outline" iconSize: 'micro' roundedBorder: false themeColor: true %}
             <a 
+            data-rot20-text
             data-umami-event="{{site.contactInfo.email}}-navbar"
-            href="mailto:{{ site.contactInfo.email }}" class="block underline"
-              >{{ site.contactInfo.email }}</a
+            data-rot20-href="{{ "mailto:" | append: site.contactInfo.email | rot20Filter }}" class="block underline"
+              >{{ site.contactInfo.email | rot20Filter }}</a
             >
           </div>
           {% endif %}
