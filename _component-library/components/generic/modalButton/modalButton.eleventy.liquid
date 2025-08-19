@@ -31,8 +31,9 @@ transition #modal-{{id}} opacity to 1 over 0.2s
         {% assign color_group = form_color_group %}
         <div class=" bg-{{form_color_group}}-backgroundcolor bg-opacity-70 p-5 {{theme.container_rounding}} w-full max-w-[512px] flex-1 min-w-[300px]">{% bookshop "{{resource._bookshop_name}}" bind: resource class: "max-w-[90%] object-cover object-center" %}</div>
       {% else %}
-
-        {% bookshop "{{resource._bookshop_name}}" bind: resource class: "max-w-[90%] object-cover object-center" %}
+        {% if resource and resource != "" %}
+          {% bookshop "{{resource._bookshop_name}}" bind: resource class: "max-w-[90%] object-cover object-center" %}
+        {% endif %}
       {% endif %}
     </div>
   </div>
