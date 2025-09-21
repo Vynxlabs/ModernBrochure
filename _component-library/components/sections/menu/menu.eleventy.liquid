@@ -1,0 +1,93 @@
+{% set categories = helpers.getMenuCategories(collections.menu) %} 
+{% set SpecialDays = helpers.getSpecialDays(collections.specials) %} 
+
+{% assign menuId = "menu" | uuidFilter | replace: "-", ""  %}
+
+<div class="componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
+    <article
+      class="waiting{{menuId}}"
+      _="
+    on loaded
+    log $isFocused{{menuId}}
+    if $isFocused{{menuId}} is 0 add .link  to first <button/> in me"
+    >
+      <h2 class="mb-12 mt-24 text-center text-[40px] font-semibold">
+        {{ mainMenu.headline }}
+      </h2>
+      {% if categories %}
+      <div class="mb-10 flex justify-center border-b border-t border-white/40 py-6">
+        <div class="relative m-[1em] max-w-3xl overflow-hidden">
+          <ul id="categories" class="ml-[-20px] flex flex-wrap justify-between">
+            {% for category in categories %}
+            <li
+              class="cs-menu-category relative mx-0 my-[.25em] flex-grow basis-[auto] px-6 text-center"
+            >
+              <h3>
+                <button
+                  id="{{category}}"
+                  class="menu-categories font-bold transition-colors hover:text-lime-600 z-20"
+                  _="
+                                on load if my innerHTML contains '-' call removeDash('{{ category }}') else return {{ category }} end
+                                then put it into my innerHTML  end
+                                on click or focus remove .link from .menu-categories
+                                add .link to me
+                                add .hidden to .categories
+                                remove .hidden from .{{category}}
+                                set  $isFocused{{menuId}} to 1 log $isFocused{{menuId}}"
+                >
+                  {{ category }}
+                </button>
+              </h3>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <div
+        class="waiting{{menuId}}"
+        _="
+            on loaded if $isFocused{{menuId}} is 0 remove .hidden from the next <ul/>"
+      ></div>
+      {% for category in categories %}
+      <ul
+        class="categories {{category}} hidden flex flex-wrap justify-around lg:justify-between gap-10"
+      >
+        {% for menuItem in collections.menu %} {% if menuItem.data.category ==
+        category%}
+        <li
+          class="h-30 flex min-w-min max-w-xl flex-shrink flex-grow basis-[450px] gap-4"
+        >
+        {% if menuItem.data.img %}
+          {% image menuItem.data.img, "rounded border-white border min-w-[125px]
+          sm:min-w-[150px]","","(max-width: 400px) 400px", [150]%}
+          {% endif %}
+          <div class="flex-shrink flex-grow">
+            <div class="flex justify-between gap-2">
+              <h4 class="text-xl font-semibold">{{ menuItem.data.title }}</h4>
+              <div
+                class="h-2.5 flex-1 self-center border-b border-t border-white opacity-40"
+              ></div>
+              <p class="text-sopris-creme">{{ menuItem.data.price }}</p>
+            </div>
+            <p>{{ menuItem.data.desc }}</p>
+          </div>
+        </li>
+        {% endif %} {% endfor %}
+      </ul>
+      {% endfor %} {% endif %}
+    </article>
+</div>
+
+<script defer type="text/hyperscript">
+  on load if $isFocused{{menuId}} is not 1 set  $isFocused{{menuId}} to 0 send loaded to .waiting{{menuId}} end
+  on load if $isFocused{{menuId}}Special is not 1 set  $isFocused{{menuId}}Special to 0 send loaded to .waiting{{menuId}}
+</script>
+
+<script>
+  function removeDash(category) {
+    console.log(category);
+    return category.replaceAll("-", " ");
+  }
+</script>
+
+{% endblock %}
