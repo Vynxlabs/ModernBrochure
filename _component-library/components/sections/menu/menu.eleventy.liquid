@@ -6,16 +6,19 @@
 {% assign menuId = "menu" | uuidFilter | replace: "-", ""  %}
 
 <div class="componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
-    <article
+    <section
       class="waiting{{menuId}}"
       _="
     on loaded
     log $isFocused{{menuId}}
     if $isFocused{{menuId}} is 0 add .link  to first <button/> in me"
+
+    {% if content.sectionId %}
+        {% bookshop "util/IdScrollEvent" sectionId: content.sectionId %}
+    {% endif %}
     >
-      <h2 class="mb-12 mt-24 text-center text-[40px] font-semibold">
-        {{ mainMenu.headline }}
-      </h2>
+    
+        {% if content.heading %} {% bookshop {{content.heading._bookshop_name}} bind: content.heading %} {% endif %}
       {% if categories %}
       <div class="mb-10 flex justify-center border-b border-t border-{{styles.color_group}}-textcolor py-6">
         <div class="relative m-[1em] max-w-3xl overflow-hidden">
@@ -77,7 +80,7 @@
         {% endif %} {% endfor %}
       </ul>
       {% endfor %} {% endif %}
-    </article>
+    </section>
 </div>
 
 <script defer type="text/hyperscript">
