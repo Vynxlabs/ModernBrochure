@@ -16,8 +16,9 @@ blueprint:
       - category:
         group:
         - label:
+          price:
           description:
-          image: bookshop:generic/image!
+          image: bookshop:generic/image
   styles:
     color_group: primary
 
