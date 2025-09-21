@@ -1,6 +1,8 @@
 {% set categories = helpers.getMenuCategories(collections.menu) %} 
 {% set SpecialDays = helpers.getSpecialDays(collections.specials) %} 
 
+{% assign color_group = styles.color_group %}
+
 {% assign menuId = "menu" | uuidFilter | replace: "-", ""  %}
 
 <div class="componentcontainer bg-{{styles.color_group}}-backgroundcolor  text-{{styles.color_group}}-textcolor">
@@ -15,7 +17,7 @@
         {{ mainMenu.headline }}
       </h2>
       {% if categories %}
-      <div class="mb-10 flex justify-center border-b border-t border-white/40 py-6">
+      <div class="mb-10 flex justify-center border-b border-t border-{{styles.color_group}}-textcolor py-6">
         <div class="relative m-[1em] max-w-3xl overflow-hidden">
           <ul id="categories" class="ml-[-20px] flex flex-wrap justify-between">
             {% for category in categories %}
@@ -25,11 +27,11 @@
               <h3>
                 <button
                   id="{{category}}"
-                  class="menu-categories font-bold transition-colors hover:text-lime-600 z-20"
+                  class="menu-categories{{menuId}} font-bold transition-colors z-20 decoration-{{color_group}}-accentcolor"
                   _="
                                 on load if my innerHTML contains '-' call removeDash('{{ category }}') else return {{ category }} end
                                 then put it into my innerHTML  end
-                                on click or focus remove .link from .menu-categories
+                                on click or focus remove .link from .menu-categories{{menuId}}
                                 add .link to me
                                 add .hidden to .categories
                                 remove .hidden from .{{category}}
