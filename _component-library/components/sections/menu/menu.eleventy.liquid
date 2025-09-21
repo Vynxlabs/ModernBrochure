@@ -23,12 +23,12 @@
     {% endif %}
 
     {% if content.menuGroups %}
-      <div class="mb-10 flex justify-center border-b border-t border-{{styles.color_group}}-textcolor py-6">
+      <div class="mt-12 mb-10 flex justify-center border-b border-t border-{{styles.color_group}}-textcolor py-6">
         <div class="relative m-[1em] max-w-3xl overflow-hidden">
           <ul id="categories" class="ml-[-20px] flex flex-wrap justify-between">
             {% for menuGroup in content.menuGroups %}
               {% assign category_slug = menuGroup.category | slugify %}
-              <li class="cs-menu-category relative mx-0 my-[.25em] flex-grow basis-[auto] px-6 text-center">
+              <li class="cs-menu-category relative mx-0 my-[.25em] flex-grow basis-[auto] px-6 text-center after:absolute after:opacity-60 after:content-['·—·'] after:scale-125 after:-top-0  after:-left-2  before:content-[' '] ">
                 <h3>
                   <button
                     id="{{category_slug}}"
@@ -56,11 +56,12 @@
 
       {% for menuGroup in content.menuGroups %}
         {% assign category_slug = menuGroup.category | slugify %}
-        <ul class="categories {{ category_slug }} hidden flex flex-wrap justify-around lg:justify-between gap-10">
+        
+        <ul class="categories {{ category_slug }} {% if env_bookshop_live and menuGroup == content.menuGroups.first %}{% else %} hidden  {% endif %} flex flex-wrap justify-around lg:justify-between gap-10">
           {% for menuItem in menuGroup.group %}
             <li class="h-30 flex min-w-min max-w-xl flex-shrink flex-grow basis-[450px] gap-4">
               {% if menuItem.image %}
-                <div class="min-w-[125px] sm:min-w-[150px]">
+                <div class="min-w-[125px] sm:min-w-[150px] max-w-[150px]">
                   {% comment %} The 'bind' assumes the image object from YAML matches what the generic/image component expects. {% endcomment %}
                    {% capture imageClasses %}
                    {{theme.image_rounding}} border border-{{styles.color_group}}-textcolor 

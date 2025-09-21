@@ -3,8 +3,8 @@ spec:
   structures:
     - content_blocks
   label: "Menu"
-  description:
-  icon:
+  description: A menu with categories
+  icon: menu_book_2
   tags: []
 
 # Defines the structure of this component, as well as the default values
