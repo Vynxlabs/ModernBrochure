@@ -25,8 +25,8 @@
   },
   "navigation": {
     "footerUseNav": true,
-    "topNav":null,
-    "footerNav":null
+    "topNav": null,
+    "footerNav": null
   },
   "socialMediaLinks": [
     {
@@ -45,9 +45,9 @@
   "socialImage": "",
   "button": {
     "_bookshop_name": "generic/button",
-    "url": "https://example.com",
+    "url": "/#contact",
     "openInNewTab": false,
-    "text": "Button Text",
+    "text": "Contact us",
     "color_group": "primary",
     "colorFromGroup": "primary",
     "ghostButton": true
@@ -56,19 +56,19 @@
   "color_group": "primary",
   "footer_color_group": "5c9075f8-80f9-4482-b041-91cffdfe02be",
   "_inputs": {
-    "footerUseNav":{
+    "footerUseNav": {
       "label": "Use Top Navigation in Footer",
       "comment": "This will duplicate the top navigation in the footer to save you time. If you want to use your own navigation in the footer, leave this unchecked."
     },
     "topNav": {
-      "type":"array",
+      "type": "array",
       "options": {
         "structures": "_structures.rootLinks"
       }
     },
     "footerNav": {
       "hidden": "footerUseNav",
-      "type":"array",
+      "type": "array",
       "options": {
         "structures": "_structures.links"
       }

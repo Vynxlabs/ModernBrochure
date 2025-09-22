@@ -60,6 +60,45 @@ hero:
     textAlignment: center
     backgroundOpacity: 65
 content_blocks:
+  - _bookshop_name: sections/servicesSection
+    content:
+      sectionId:
+      heading:
+      showNote: true
+    styles:
+      color_group: primary
+      cardStyle: defaultCard
+  - _bookshop_name: sections/reviewCards
+    content:
+      sectionId:
+      heading:
+        _bookshop_name: generic/heading
+        content:
+          highlightEyebrow: false
+          eyebrow: ''
+          headline: Kind Words from the Community
+          description: ''
+          buttons: []
+          headingHierarchy: h2
+        styles:
+          contentAlignment: center
+          textAlignment: center
+          visualInterest: none
+          visualInterestColor: '#000000'
+          highContrast: false
+          contrastColorGroup:
+          contrastAgainst:
+          textClassOverride:
+      usePersonImage: false
+      reviews:
+        - review: cf5af1f3-4b28-4280-a664-0ef482ae9215
+          card_color_group: primary
+          colorFromGroup: background
+        - review: e8b58d19-77b3-4e15-9d00-88808b9dc2b4
+          card_color_group: primary
+          colorFromGroup: background
+    styles:
+      color_group: primary
   - _bookshop_name: sections/sideBySideStandard
     content:
       sectionId:
@@ -122,37 +161,6 @@ content_blocks:
       color_group: primary
       startImageRight: false
       fullWidth: true
-  - _bookshop_name: sections/reviewCards
-    content:
-      sectionId:
-      heading:
-        _bookshop_name: generic/heading
-        content:
-          highlightEyebrow: false
-          eyebrow: ''
-          headline: Kind Words from the Community
-          description: ''
-          buttons: []
-          headingHierarchy: h2
-        styles:
-          contentAlignment: center
-          textAlignment: center
-          visualInterest: none
-          visualInterestColor: '#000000'
-          highContrast: false
-          contrastColorGroup:
-          contrastAgainst:
-          textClassOverride:
-      usePersonImage: false
-      reviews:
-        - review: cf5af1f3-4b28-4280-a664-0ef482ae9215
-          card_color_group: primary
-          colorFromGroup: background
-        - review: e8b58d19-77b3-4e15-9d00-88808b9dc2b4
-          card_color_group: primary
-          colorFromGroup: background
-    styles:
-      color_group: primary
   - _bookshop_name: sections/simpleForm
     content:
       sectionId:
