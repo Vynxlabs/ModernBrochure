@@ -64,6 +64,23 @@ content_blocks:
     content:
       sectionId:
       heading:
+        _bookshop_name: generic/heading
+        content:
+          highlightEyebrow: false
+          eyebrow: ''
+          headline: How we can help
+          description: ''
+          buttons: []
+          headingHierarchy: h2
+        styles:
+          contentAlignment: center
+          textAlignment: center
+          visualInterest: none
+          visualInterestColor: '#000000'
+          highContrast: false
+          contrastColorGroup:
+          contrastAgainst:
+          textClassOverride:
       showNote: true
     styles:
       color_group: primary

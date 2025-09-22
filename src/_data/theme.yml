@@ -1,18 +1,25 @@
 primaryColor_group:
   name: Primary
-  textColor: '#041e25'
-  backgroundColor: '#f6fdfe'
-  primaryColor: '#25cbe4'
-  secondaryColor: '#ef808f'
-  accentColor: '#eaca57'
+  textColor: '#3c3c3c'
+  backgroundColor: '#f8f4ef'
+  primaryColor: '#a66b3f'
+  secondaryColor: '#e0b984'
+  accentColor: '#7a9652'
 customColor_groups:
   - name: Primary Dark
-    textColor: '#daf4fb'
-    backgroundColor: '#010809'
-    primaryColor: '#1bc0da'
-    secondaryColor: '#7f101f'
-    accentColor: '#a88815'
+    textColor: '#c2c2c2'
+    backgroundColor: '#120d08'
+    primaryColor: '#c08559'
+    secondaryColor: '#7a541f'
+    accentColor: '#92ae6b'
     id: 5c9075f8-80f9-4482-b041-91cffdfe02be
+  - name: Primary Alternate Background
+    textColor: '#3c3c3c'
+    backgroundColor: '#ffffff'
+    primaryColor: '#a66b3f'
+    secondaryColor: '#e0b984'
+    accentColor: '#7a9652'
+    id: 66cae480-4329-460a-a1fa-5a80a3569411
 heading_font: Alegreya Sans
 content_font: Fira Sans
 logo_font: Oswald
@@ -22,8 +29,10 @@ container_rounding: rounded
 _inputs:
   button_rounding:
     comment: >-
-      This will change the rounding of all the buttons on the site. Each option mentions which brand it is best suited for,
-      and how many pixels of rounding is applied. The brand mentioned is just what is commonly used, but not rule
+      This will change the rounding of all the buttons on the site. Each option
+      mentions which brand it is best suited for, and how many pixels of
+      rounding is applied. The brand mentioned is just what is commonly used,
+      but not rule
     type: select
     options:
       allow_empty: false
@@ -51,8 +60,10 @@ _inputs:
   image_rounding:
     type: select
     comment: >-
-      This will change the rounding of all the images on the site. Each option mentions which brand it is best suited for,
-      and how many pixels of rounding is applied. The brand mentioned is just what is commonly used, but not rule
+      This will change the rounding of all the images on the site. Each option
+      mentions which brand it is best suited for, and how many pixels of
+      rounding is applied. The brand mentioned is just what is commonly used,
+      but not rule
     options:
       allow_empty: false
       value_key: id
@@ -77,8 +88,11 @@ _inputs:
   container_rounding:
     type: select
     comment: >-
-      This will change the rounding of all the containers (Anything  that isn't a button or image. e.g. cards, form input boxes, etc) on the site. Each option mentions which brand it is best suited for,
-      and how many pixels of rounding is applied. The brand mentioned is just what is commonly used, but not rule
+      This will change the rounding of all the containers (Anything  that isn't
+      a button or image. e.g. cards, form input boxes, etc) on the site. Each
+      option mentions which brand it is best suited for, and how many pixels of
+      rounding is applied. The brand mentioned is just what is commonly used,
+      but not rule
     options:
       allow_empty: false
       value_key: id
