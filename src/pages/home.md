@@ -9,9 +9,9 @@ removeFromNavigation: false
 eleventyNavigation:
   key: Home
   order: 1
-  title: null
-  parent: null
-  url: null
+  title:
+  parent:
+  url:
 pageLink: /
 permalink: >-
   {% if pageLink == 'blog' or pageLink == 'Blog' %}/{{pageLink | slugify}}{% if
@@ -21,7 +21,7 @@ permalink: >-
   }}/index.html{% else %}/{% assign title = title | slugify %}{{
   page.filePathStem | fileSubstringFilter | append: title | downcase
   }}/index.html{%endif %}
-metaDesc: null
+metaDesc:
 customCode:
   headCode: ''
   bodyCode: ''
@@ -31,7 +31,7 @@ hero:
   _bookshop_name: sections/fullImageHero
   content:
     highlightEybrow: true
-    sectionId: null
+    sectionId:
     eyebrow: Building a website shouldn't be hard
     headline: A Modern Small Business Template
     description: >-
@@ -49,11 +49,11 @@ hero:
     image:
       _bookshop_name: generic/image
       imagePath: /assets/uploads/aliensunrise-1.jpg
-      imageAlt: null
-      yAxisPosition: null
-      imageSizes: null
-      class: null
-      imageNumber: null
+      imageAlt:
+      yAxisPosition:
+      imageSizes:
+      class:
+      imageNumber:
   styles:
     color_group: primary
     contentAlignment: center
@@ -62,7 +62,7 @@ hero:
 content_blocks:
   - _bookshop_name: sections/servicesSection
     content:
-      sectionId: null
+      sectionId:
       heading:
         _bookshop_name: generic/heading
         content:
@@ -78,16 +78,16 @@ content_blocks:
           visualInterest: none
           visualInterestColor: '#000000'
           highContrast: false
-          contrastColorGroup: null
-          contrastAgainst: null
-          textClassOverride: null
+          contrastColorGroup:
+          contrastAgainst:
+          textClassOverride:
       showNote: true
     styles:
       color_group: primary
       cardStyle: defaultCard
   - _bookshop_name: sections/reviewCards
     content:
-      sectionId: null
+      sectionId:
       heading:
         _bookshop_name: generic/heading
         content:
@@ -103,22 +103,22 @@ content_blocks:
           visualInterest: none
           visualInterestColor: '#000000'
           highContrast: false
-          contrastColorGroup: null
-          contrastAgainst: null
-          textClassOverride: null
+          contrastColorGroup:
+          contrastAgainst:
+          textClassOverride:
       usePersonImage: false
       reviews:
         - review: cf5af1f3-4b28-4280-a664-0ef482ae9215
-          card_color_group: primary
+          card_color_group: 66cae480-4329-460a-a1fa-5a80a3569411
           colorFromGroup: background
         - review: e8b58d19-77b3-4e15-9d00-88808b9dc2b4
-          card_color_group: primary
+          card_color_group: 66cae480-4329-460a-a1fa-5a80a3569411
           colorFromGroup: background
     styles:
       color_group: primary
   - _bookshop_name: sections/sideBySideStandard
     content:
-      sectionId: null
+      sectionId:
       heading:
         _bookshop_name: generic/heading
         content:
@@ -134,9 +134,9 @@ content_blocks:
           visualInterest: none
           visualInterestColor: '#000000'
           highContrast: false
-          contrastColorGroup: null
-          contrastAgainst: null
-          textClassOverride: null
+          contrastColorGroup:
+          contrastAgainst:
+          textClassOverride:
       entries:
         - _bookshop_name: generic/leftRight
           content:
@@ -159,28 +159,28 @@ content_blocks:
                 visualInterest: none
                 visualInterestColor: '#000000'
                 highContrast: false
-                contrastColorGroup: null
-                contrastAgainst: null
-                textClassOverride: null
+                contrastColorGroup:
+                contrastAgainst:
+                textClassOverride:
             image:
               _bookshop_name: generic/image
               imagePath: /assets/uploads/aliensunrise-1.jpg
-              imageAlt: null
-              yAxisPosition: null
-              imageSizes: null
-              class: null
-              imageNumber: null
+              imageAlt:
+              yAxisPosition:
+              imageSizes:
+              class:
+              imageNumber:
             entryNumber: 0
           styles:
-            color_group: 5c9075f8-80f9-4482-b041-91cffdfe02be
-            colorFromGroup: text
+            color_group: 66cae480-4329-460a-a1fa-5a80a3569411
+            colorFromGroup: background
     styles:
       color_group: primary
       startImageRight: false
       fullWidth: true
   - _bookshop_name: sections/simpleForm
     content:
-      sectionId: null
+      sectionId:
       heading:
         _bookshop_name: generic/heading
         content:
@@ -196,14 +196,14 @@ content_blocks:
           visualInterest: none
           visualInterestColor: '#000000'
           highContrast: false
-          contrastColorGroup: null
-          contrastAgainst: null
-          textClassOverride: null
+          contrastColorGroup:
+          contrastAgainst:
+          textClassOverride:
       form:
         _bookshop_name: simple/formBuilder
         formName: Home Contact
         sectionId: contact
-        successPage: null
+        successPage:
         form_elements:
           - _bookshop_name: generic/form/textInput
             label: First Name
@@ -248,7 +248,7 @@ content_blocks:
       color_group: primary
   - _bookshop_name: sections/blogCardsPartial
     contents:
-      sectionId: null
+      sectionId:
       showNote: true
       heading:
         _bookshop_name: generic/headingHorizontal
@@ -264,8 +264,8 @@ content_blocks:
           visualInterest: none
           visualInterestColor: '#000000'
           highContrast: false
-          contrastColorGroup: null
-          contrastAgainst: null
+          contrastColorGroup:
+          contrastAgainst:
       randomize: false
     styles:
       color_group: primary
@@ -288,7 +288,7 @@ _inputs:
     hidden: '!addToCollections'
     type: multiselect
     options:
-      values: 'data.pageCollections.tags[*]'
+      values: data.pageCollections.tags[*]
   collectionImage:
     hidden: '!addToCollections'
   imageAltText:
@@ -323,4 +323,3 @@ _inputs:
       removeformat: true
       copyformatting: true
 ---
-
