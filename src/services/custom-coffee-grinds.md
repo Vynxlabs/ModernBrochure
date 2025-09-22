@@ -9,7 +9,7 @@ metaDesc:
 customCode:
   headCode: ''
   bodyCode: ''
-serviceImage: /assets/uploads/listing.jpeg
+serviceImage: /assets/uploads/custom-coffee-grinds/2148209248.jpg
 imageAltText:
 category:
 summary:
@@ -31,7 +31,7 @@ hero:
       content:
         highlightEyebrow: false
         eyebrow: ''
-        headline: heading
+        headline: Custom Coffees
         description: ''
         buttons: []
         headingHierarchy: h2
@@ -46,9 +46,9 @@ hero:
         textClassOverride:
     backgroundImage:
       _bookshop_name: generic/image
-      imagePath: /assets/uploads/aliensunrise-1.jpg
+      imagePath: /assets/uploads/custom-coffee-grinds/2148209248.jpg
       imageAlt:
-      yAxisPosition:
+      yAxisPosition: 50
       imageSizes:
       class:
       imageNumber:

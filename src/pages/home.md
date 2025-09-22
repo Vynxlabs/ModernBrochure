@@ -30,7 +30,7 @@ layout: layouts/page.html
 hero:
   _bookshop_name: sections/fullImageHero
   content:
-    highlightEybrow: true
+    highlightEybrow: false
     sectionId:
     eyebrow: Building a website shouldn't be hard
     headline: A Modern Small Business Template
@@ -48,7 +48,7 @@ hero:
         formSubmit: false
     image:
       _bookshop_name: generic/image
-      imagePath: /assets/uploads/aliensunrise-1.jpg
+      imagePath: /assets/uploads/home/142005.jpg
       imageAlt:
       yAxisPosition:
       imageSizes:
@@ -56,8 +56,8 @@ hero:
       imageNumber:
   styles:
     color_group: primary
-    contentAlignment: center
-    textAlignment: center
+    contentAlignment: left
+    textAlignment: left
     backgroundOpacity: 65
 content_blocks:
   - _bookshop_name: sections/servicesSection
@@ -164,7 +164,7 @@ content_blocks:
                 textClassOverride:
             image:
               _bookshop_name: generic/image
-              imagePath: /assets/uploads/aliensunrise-1.jpg
+              imagePath: /assets/uploads/home/2148366651.jpg
               imageAlt:
               yAxisPosition:
               imageSizes:
