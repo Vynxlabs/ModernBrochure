@@ -1,0 +1,141 @@
+{% if site.navigation.footerUseNav %}
+
+{% assign navPages = site.navigation.topNav %}
+  {% else %}
+
+{% assign navPages = site.navigation.footerNav %}
+  {% endif %}
+  {% assign topLevelLinks = "" %}
+{% assign groupedLinks = "" %}
+{% assign megaGroupedSections = "" %}
+
+{% for entry in navPages %}
+  {% if entry._menuType != "mega" %}
+    {% if entry.links.size > 0 %}
+      {% capture topLevelLinks %}
+        {{ topLevelLinks }}
+        {% render "partials/render-footer.html" with entry as entry, page: page %}
+      {% endcapture %}
+    {% else %}
+      {% capture groupedLinks %}
+        {{ groupedLinks }}
+        <li>
+          <a 
+            data-umami-event="{{entry.title}}-footer"
+            {{ entry.url | linkFilter: page.url }}
+            class="data-[state=active]:link hover:text-sopris-green block rounded pt-0 pb-2 pl-3 pr-4 transition-colors hover:bg-gray-700 dark:border-gray-700  md:hover:bg-transparent md:dark:hover:bg-transparent"
+            href="{{ entry.url }}">
+            {{ entry.title }}
+          </a>
+        </li>
+      {% endcapture %}
+    {% endif %}
+  {% else %}
+    {%- assign localLinks = "" -%}
+    {% for megaEntry in entry.links %}
+      {% if megaEntry.links.size == nil %}
+        {% capture localLinks %}
+          {{ localLinks }}
+          <li>
+            <a 
+              data-umami-event="{{megaEntry.title}}-footer"
+              {{ megaEntry.url | linkFilter: page.url }}
+              class="data-[state=active]:link hover:text-sopris-green block rounded pt-0 pb-2 pl-3 pr-4 transition-colors hover:bg-gray-700 dark:border-gray-700  md:hover:bg-transparent md:dark:hover:bg-transparent"
+              href="{{ megaEntry.url }}">
+              {{ megaEntry.title }}
+            </a>
+          </li>
+        {% endcapture %}
+      {% else %}
+        {% capture topLevelLinks %}
+          {{ topLevelLinks }}
+          {% render "partials/render-footer.html" with megaEntry as entry, page: page %}
+        {% endcapture %}
+      {% endif %}
+    {% endfor %}
+    {% if localLinks != "" %}
+      {% capture megaGroupedSections %}
+        {{ megaGroupedSections }}
+        <div class="flex flex-col min-w-[200px]">
+          <p class="font-bold opacity-90 ">{{ entry.title }}</p>
+          <ul class="mt-2 flex flex-col gap-1">
+            {{ localLinks }}
+          </ul>
+        </div>
+      {% endcapture %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+<footer
+  class="cs-w-full pt-40 bg-{{site.footer_color_group}}-backgroundcolor flex flex-col items-center justify-center text-{{site.footer_color_group}}-textcolor"
+>
+  <div class="basecontainer w-full">
+    <div class="flex flex-wrap justify-around gap-10">
+      <div class="max-w-[300px] flex flex-col justify-between items-center">
+        <a 
+          data-umami-event="logo-homeLink-footer"
+          href="{{logoUrl}}">
+          {% if not site.logoPath or site.logoPath == "" %}
+            <p class="cs-logoFont text-2xl hover:underline">{{site.name}}</p>
+          {% else %}
+            {% image site.logoPath, "logo for {{site.name}}", "w-full " %}
+          {% endif %}
+        </a>
+        <ul class="mt-4 flex flex-wrap overflow-hidden gap-x-4 gap-y-1">
+          {% for socialLink in site.socialMediaLinks %}
+          <li class="hover:underline after:absolute after:content-['|'] after:scale-150 relative before:content-[' '] after:left-[-11px] after:text-lg">
+            <a 
+              data-umami-event="{{socialLink.label}}-socialLink-footer"
+              href="{{ socialLink.linkUrl }}" target="_blank">{{socialLink.label}}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      
+      {% if disableNav != true %}
+      <div class="flex flex-wrap gap-10 justify-around w-full text-base">
+{% if groupedLinks != "" %}
+  <div class="flex flex-col min-w-[200px]">
+    <p class="font-bold opacity-90 ">Links</p>
+    <ul class="mt-2 flex flex-col gap-1">
+      {{ groupedLinks }}
+    </ul>
+  </div>
+{% endif %}
+
+{{ megaGroupedSections }}
+{{ topLevelLinks }}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="mt-20 flex flex-col items-center justify-center">
+    <p class="text-center" data-type="neutral">
+      © {{ helpers.getTodaysYear }}, by {{site.legalName}}
+    </p>
+    <ul class="text-sm flex flex-wrap overflow-hidden gap-x-4 gap-y-1">
+      {% if site.termsAndConditionsUrl and site.termsAndConditionsUrl != "" %}
+      <li class="hover:underline after:absolute after:content-['|'] after:scale-150 relative before:content-[' '] after:left-[-11px] after:text-lg">
+        <a 
+          data-umami-event="TermsAndConditions-footer"
+          href="{{ site.termsAndConditionsUrl }}" target="_blank">Terms & Conditions</a>
+      </li>
+      {% endif %}
+      {% if site.privacyPolicyUrl and site.privacyPolicyUrl != "" %}
+      <li class="hover:underline after:absolute after:content-['|'] after:scale-150 relative before:content-[' '] after:left-[-11px] after:text-lg">
+        <a 
+          data-umami-event="PrivacyPolicy-footer"
+          href="{{ site.privacyPolicyUrl }}" target="_blank">Privacy Policy</a>
+      </li>
+      {% endif %}
+    </ul>
+    <p class="text-center text-sm" data-type="neutral">
+      Powered by Vynxlabs. Like it?
+      <a 
+        data-umami-event="vynxlabs-link-footer"
+        href="https://vynxlabs.com/" class="underline">Let's build one for you!</a>
+    </p>
+  </div>
+</footer>
