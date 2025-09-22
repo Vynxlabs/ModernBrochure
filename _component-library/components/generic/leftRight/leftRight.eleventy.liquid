@@ -1,8 +1,8 @@
-{% assign color_group = styles.color_group %}
 
 
 {% assign evenOdd = content.entryNumber | modulo: 2 %}
 {% if fullWidth %}
+{% assign color_group = styles.color_group %}
 {% capture entryHeading %}
     content:
         highlightEyebrow: {{content.heading.content.highlightEyebrow}}
