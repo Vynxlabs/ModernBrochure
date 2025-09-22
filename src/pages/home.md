@@ -256,7 +256,7 @@ content_blocks:
           highlightEyebrow: false
           eyebrow: ''
           headline: Industry insights
-          description: a sdf asdf asdfasdf asdf asdf asdf asdf asdfa sdf asdf asdf
+          description: These are some insights about our industry.
           buttons: []
           headingHierarchy: h2
         styles:

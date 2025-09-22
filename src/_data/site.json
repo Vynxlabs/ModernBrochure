@@ -25,7 +25,13 @@
   },
   "navigation": {
     "footerUseNav": true,
-    "topNav": null,
+    "topNav": [
+      {
+        "_menuType": "link",
+        "title": "Home",
+        "url": "/"
+      }
+    ],
     "footerNav": null
   },
   "socialMediaLinks": [
@@ -50,7 +56,7 @@
     "text": "Contact us",
     "color_group": "primary",
     "colorFromGroup": "primary",
-    "ghostButton": true
+    "ghostButton": false
   },
   "nav_color_group": "primary",
   "color_group": "primary",
