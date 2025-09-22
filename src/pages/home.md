@@ -83,7 +83,7 @@ content_blocks:
           textClassOverride:
       showNote: true
     styles:
-      color_group: primary
+      color_group: 66cae480-4329-460a-a1fa-5a80a3569411
       cardStyle: defaultCard
   - _bookshop_name: sections/reviewCards
     content:
