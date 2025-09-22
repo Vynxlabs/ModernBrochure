@@ -23,3 +23,11 @@ preview:
 
 # Any extra CloudCannon inputs configuration to apply to the blueprint
 _inputs:
+  backgroundOpacity:
+    type: range
+    options:
+      min: 0
+      max: 100
+      step: 5
+      default: 50
+    comment: Set the opacity percentage of the background
