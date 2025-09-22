@@ -17,6 +17,9 @@
         textAlignment: {{content.heading.styles.textAlignment}}
         visualInterest: {{content.heading.styles.visualInterest}}
         visualInterestColor: "{{content.heading.styles.visualInterestColor}}"
+        highContrast: true
+        contrastColorGroup: "{{styles.color_group}}"
+        contrastAgainst: "{{styles.colorFromGroup}}"
   {% endcapture %}
   {% assign entryHeading = entryHeading | ymlify %}
   {% if fullWidth %}
@@ -25,7 +28,7 @@
         {% if evenOdd == 0 %}md:flex-wrap flex-wrap-reverse{% else %}flex-wrap-reverse{% endif %} 
     {% endcapture %}
     {% capture textClasses %}
-        {% if evenOdd == 0 %} order-1 lg:cs-w-full-r  {% else %} lg:cs-w-full-l {% endif %} p-4 lg:p-8 md:cs-w-full  flex justify-center items-center min-w-[300px] bg-{{styles.color_group}}-backgroundcolor  bg-opacity-60 text-{{styles.color_group}}-highcontrast-backgroundcolor lg:bg-opacity-100
+        {% if evenOdd == 0 %} order-1 lg:cs-w-full-r  {% else %} lg:cs-w-full-l {% endif %} p-4 lg:p-8 md:cs-w-full  flex justify-center items-center min-w-[300px] bg-{{styles.color_group}}-{{styles.colorFromGroup}}color  bg-opacity-60  lg:bg-opacity-100
     {% endcapture %}
     {% capture imageDivClasses %}
         {% if evenOdd == 0 %} order-1 lg:cs-w-full-l  {% else %} lg:cs-w-full-r {% endif %} -z-10 md:cs-w-full   flex items-end justify-center 
