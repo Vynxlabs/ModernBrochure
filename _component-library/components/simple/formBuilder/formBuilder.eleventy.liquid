@@ -27,6 +27,7 @@
     <p style="display: none"><label>Maiden Name:<input name="_gotcha" ></label></p>
     {% if subject and subject != "" %}
       {% if site.host == "cloudcannon" %}
+        <input type="hidden" name="inbox_key" value="{{inboxKey}}">
          <input type="hidden" name="_subject"  value="{{subject}}" /> 
         {% elsif site.host == "netlify" %}
          <input type="hidden" name="subject"  value="{{subject}}" /> 
