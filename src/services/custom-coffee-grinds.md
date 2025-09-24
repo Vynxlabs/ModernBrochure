@@ -5,14 +5,14 @@ eleventyExcludeFromCollections: false
 disableNav: false
 disableSitemap: false
 title: Custom Coffee Grinds
-metaDesc: null
+metaDesc:
 customCode:
   headCode: ''
   bodyCode: ''
 serviceImage: /assets/uploads/custom-coffee-grinds/2148209248.jpg
-imageAltText: null
-category: null
-summary: null
+imageAltText:
+category:
+summary:
 pageLink: does this work
 permalink: >-
   /services/{% capture varPagePath %}{% if pageLink%}{% assign pageLink =
@@ -25,7 +25,7 @@ id: 35c8fb14-dfa6-44ea-ab33-dfa4f6676f7d
 hero:
   _bookshop_name: sections/bannerHero
   content:
-    sectionId: null
+    sectionId:
     heading:
       _bookshop_name: generic/heading
       content:
@@ -41,25 +41,25 @@ hero:
         visualInterest: none
         visualInterestColor: '#000000'
         highContrast: false
-        contrastColorGroup: null
-        contrastAgainst: null
-        textClassOverride: null
+        contrastColorGroup:
+        contrastAgainst:
+        textClassOverride:
     backgroundImage:
       _bookshop_name: generic/image
       imagePath: /assets/uploads/custom-coffee-grinds/2148209248.jpg
-      imageAlt: null
+      imageAlt:
       yAxisPosition: 50
-      imageSizes: null
-      class: null
-      imageNumber: null
+      imageSizes:
+      class:
+      imageNumber:
   styles:
-    color_group: 5c9075f8-80f9-4482-b041-91cffdfe02be
+    color_group: primary
     backgroundOpacity: 50
 content_blocks:
   - _bookshop_name: sections/simpleTextBlock
     content:
-      sectionId: null
-      heading: null
+      sectionId:
+      heading:
       text:
         _bookshop_name: generic/textBlock
         text: >-
@@ -77,4 +77,3 @@ _inputs:
     type: code
     comment: Add code before the </body> tag
 ---
-
