@@ -52,6 +52,7 @@ hero:
       imageSizes: null
       class: null
       imageNumber: null
+      imageWidths: null
   styles:
     color_group: primary
     backgroundOpacity: 50

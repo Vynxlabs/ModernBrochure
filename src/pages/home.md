@@ -54,6 +54,7 @@ hero:
       imageSizes: null
       class: null
       imageNumber: null
+      imageWidths: null
   styles:
     color_group: primary
     contentAlignment: left
@@ -170,6 +171,7 @@ content_blocks:
               imageSizes: null
               class: null
               imageNumber: null
+              imageWidths: null
             entryNumber: 0
           styles:
             color_group: 66cae480-4329-460a-a1fa-5a80a3569411
