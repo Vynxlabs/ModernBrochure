@@ -44,6 +44,7 @@ hero:
         contrastColorGroup: null
         contrastAgainst: null
         textClassOverride: null
+      _componentId: heading-89db575d-4583-4ff0-89a6-d6931371a72a
     backgroundImage:
       _bookshop_name: generic/image
       imagePath: /assets/uploads/custom-coffee-grinds/2148209248.jpg
@@ -53,9 +54,11 @@ hero:
       class: null
       imageNumber: null
       imageWidths: null
+      _componentId: image-c1cbbc3b-f7dc-4577-8f8f-c37dd7943db2
   styles:
     color_group: primary
     backgroundOpacity: 50
+  _componentId: bannerHero-572788f2-29c0-43e7-84da-08b63db954f6
 content_blocks:
   - _bookshop_name: sections/simpleTextBlock
     content:
@@ -68,8 +71,10 @@ content_blocks:
 
           You can use **bold text** and *italic text* along with
           [links](http://google.com) and others options.
+        _componentId: textBlock-0b312f24-1509-4d49-991b-889f4d113886
     styles:
       color_group: primary
+    _componentId: simpleTextBlock-1a5ab00c-5c73-435e-abf1-efdfaf30e675
 _inputs:
   headCode:
     type: code

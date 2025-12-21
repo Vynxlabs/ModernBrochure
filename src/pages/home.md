@@ -46,6 +46,7 @@ hero:
         colorFromGroup: primary
         ghostButton: false
         formSubmit: false
+        _componentId: button-5a055703-3064-4c18-af21-4c4ef537e497
     image:
       _bookshop_name: generic/image
       imagePath: /assets/uploads/home/142005.jpg
@@ -55,11 +56,13 @@ hero:
       class: null
       imageNumber: null
       imageWidths: null
+      _componentId: image-c1cbbc3b-f7dc-4577-8f8f-c37dd7943db2
   styles:
     color_group: primary
     contentAlignment: left
     textAlignment: left
     backgroundOpacity: 65
+  _componentId: fullImageHero-01f39e7d-cffe-4566-b971-7a8012a0085e
 content_blocks:
   - _bookshop_name: sections/servicesSection
     content:
@@ -82,10 +85,12 @@ content_blocks:
           contrastColorGroup: null
           contrastAgainst: null
           textClassOverride: null
+        _componentId: heading-89db575d-4583-4ff0-89a6-d6931371a72a
       showNote: true
     styles:
       color_group: 66cae480-4329-460a-a1fa-5a80a3569411
       cardStyle: defaultCard
+    _componentId: servicesSection-d06c51f7-7385-4443-8423-400d3f52e2e9
   - _bookshop_name: sections/reviewCards
     content:
       sectionId: null
@@ -107,6 +112,7 @@ content_blocks:
           contrastColorGroup: null
           contrastAgainst: null
           textClassOverride: null
+        _componentId: heading-89db575d-4583-4ff0-89a6-d6931371a72a
       usePersonImage: false
       reviews:
         - review: cf5af1f3-4b28-4280-a664-0ef482ae9215
@@ -117,6 +123,7 @@ content_blocks:
           colorFromGroup: background
     styles:
       color_group: primary
+    _componentId: reviewCards-e9ca074f-936e-4ba6-ba53-c94ee8c1d42b
   - _bookshop_name: sections/sideBySideStandard
     content:
       sectionId: null
@@ -138,6 +145,7 @@ content_blocks:
           contrastColorGroup: null
           contrastAgainst: null
           textClassOverride: null
+        _componentId: heading-89db575d-4583-4ff0-89a6-d6931371a72a
       entries:
         - _bookshop_name: generic/leftRight
           content:
@@ -163,6 +171,7 @@ content_blocks:
                 contrastColorGroup: null
                 contrastAgainst: null
                 textClassOverride: null
+              _componentId: heading-89db575d-4583-4ff0-89a6-d6931371a72a
             image:
               _bookshop_name: generic/image
               imagePath: /assets/uploads/home/2148366651.jpg
@@ -172,14 +181,17 @@ content_blocks:
               class: null
               imageNumber: null
               imageWidths: null
+              _componentId: image-c1cbbc3b-f7dc-4577-8f8f-c37dd7943db2
             entryNumber: 0
           styles:
             color_group: 66cae480-4329-460a-a1fa-5a80a3569411
             colorFromGroup: background
+          _componentId: leftRight-eeb30bac-09e7-41ba-a9ab-424fd98ea4b8
     styles:
       color_group: primary
       startImageRight: false
       fullWidth: true
+    _componentId: sideBySideStandard-f655a3f4-fd11-402d-9794-215be5328ad6
   - _bookshop_name: sections/simpleForm
     content:
       sectionId: null
@@ -201,6 +213,7 @@ content_blocks:
           contrastColorGroup: null
           contrastAgainst: null
           textClassOverride: null
+        _componentId: heading-89db575d-4583-4ff0-89a6-d6931371a72a
       form:
         _bookshop_name: simple/formBuilder
         formName: Home Contact
@@ -213,24 +226,28 @@ content_blocks:
             id: 5818e354-310b-46a6-a1e3-3588d865d162
             required: true
             helperText: ''
+            _componentId: textInput-c93e5b13-0af4-4308-af72-64efb41b1579
           - _bookshop_name: generic/form/textInput
             label: Last Name
             placeholder: Doe
             id: 54386c74-6812-47b1-8122-0f86e03b26f4
             required: true
             helperText: ''
+            _componentId: textInput-c93e5b13-0af4-4308-af72-64efb41b1579
           - _bookshop_name: generic/form/emailInput
             label: Email
             id: 63eefe6d-cf3c-4a8b-97d8-44b2ab761400
             required: true
             placeholder: Jdoe@example.com
             helperText: ''
+            _componentId: emailInput-c344a86b-60c9-4329-bd1c-f2a5106f53d8
           - _bookshop_name: generic/form/phoneInput
             label: Phone
             id: 3f4a014e-d38a-431c-8e1f-f0f99cec6cbe
             required: true
             placeholder: 208-000-0000
             helperText: ''
+            _componentId: phoneInput-4fdb4a87-dc2c-4070-9b11-7549f52d4abc
           - _bookshop_name: generic/form/textAreaInput
             label: Message
             placeholder: I was wondering about...
@@ -238,8 +255,10 @@ content_blocks:
             rows: 4
             required: false
             helperText: ''
+            _componentId: textAreaInput-6d11285a-22c9-4b5b-b45e-34f01182b65c
           - _bookshop_name: generic/form/simpleText
             text: '* are required'
+            _componentId: simpleText-b6172947-286c-4be1-907f-4f7d08c987a8
         submitButton:
           text: Submit
           color_group: primary
@@ -248,8 +267,10 @@ content_blocks:
           formSubmit: true
         inboxKey: null
         subject: null
+        _componentId: formBuilder-1be2b859-3776-47b6-a974-0189cb33295e
     styles:
       color_group: primary
+    _componentId: simpleForm-6cefd50b-1a44-4f70-8275-8fd26b8326e4
   - _bookshop_name: sections/blogCardsPartial
     contents:
       sectionId: null
@@ -270,10 +291,12 @@ content_blocks:
           highContrast: false
           contrastColorGroup: null
           contrastAgainst: null
+        _componentId: headingHorizontal-96565188-1c97-459d-8be1-ba39502ecbc1
       randomize: false
     styles:
       color_group: primary
       cardStyle: default
+    _componentId: blogCardsPartial-f53e2221-04b4-4696-b7c6-ee7e0b52a924
 _inputs:
   removeFromNavigation:
     hidden: true
