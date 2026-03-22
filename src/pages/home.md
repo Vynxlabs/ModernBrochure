@@ -227,6 +227,7 @@ content_blocks:
             required: true
             helperText: ''
             _componentId: textInput-c93e5b13-0af4-4308-af72-64efb41b1579
+            hidden: false
           - _bookshop_name: generic/form/textInput
             label: Last Name
             placeholder: Doe
@@ -234,6 +235,7 @@ content_blocks:
             required: true
             helperText: ''
             _componentId: textInput-c93e5b13-0af4-4308-af72-64efb41b1579
+            hidden: false
           - _bookshop_name: generic/form/emailInput
             label: Email
             id: 63eefe6d-cf3c-4a8b-97d8-44b2ab761400
@@ -241,6 +243,7 @@ content_blocks:
             placeholder: Jdoe@example.com
             helperText: ''
             _componentId: emailInput-c344a86b-60c9-4329-bd1c-f2a5106f53d8
+            hidden: false
           - _bookshop_name: generic/form/phoneInput
             label: Phone
             id: 3f4a014e-d38a-431c-8e1f-f0f99cec6cbe
@@ -248,6 +251,7 @@ content_blocks:
             placeholder: 208-000-0000
             helperText: ''
             _componentId: phoneInput-4fdb4a87-dc2c-4070-9b11-7549f52d4abc
+            hidden: false
           - _bookshop_name: generic/form/textAreaInput
             label: Message
             placeholder: I was wondering about...
@@ -256,6 +260,7 @@ content_blocks:
             required: false
             helperText: ''
             _componentId: textAreaInput-6d11285a-22c9-4b5b-b45e-34f01182b65c
+            hidden: false
           - _bookshop_name: generic/form/simpleText
             text: '* are required'
             _componentId: simpleText-b6172947-286c-4be1-907f-4f7d08c987a8
